@@ -1,0 +1,2 @@
+export const PROPOSAL_REPOSITORY = Symbol('PROPOSAL_REPOSITORY');
+export const SQLITE_DATABASE = Symbol('SQLITE_DATABASE');

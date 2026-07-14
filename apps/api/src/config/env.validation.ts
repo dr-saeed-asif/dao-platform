@@ -9,5 +9,7 @@ export const envValidationSchema = Joi.object({
   CYBERCHAIN_RPC_URL: Joi.string().allow('').optional(),
   CYBERCHAIN_CHAIN_ID: Joi.string().allow('').optional(),
   GOVERNANCE_CONTRACT_ADDRESS: Joi.string().allow('').optional(),
+  DAO_ADMIN_ADDRESS: Joi.string().required(),
+  DEV_AUTH_BYPASS_ENABLED: Joi.boolean().default(false),
   JWT_SECRET: Joi.string().min(32).required(),
 });

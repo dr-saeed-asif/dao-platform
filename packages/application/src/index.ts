@@ -7,4 +7,7 @@ export * from "./ports/transaction-manager.js";
 export * from "./proposal/create-proposal/create-proposal.command.js";
 export * from "./proposal/create-proposal/create-proposal.result.js";
 export * from "./proposal/create-proposal/create-proposal.use-case.js";
+export * from "./proposal/get-proposal/get-proposal.use-case.js";
+export * from "./proposal/list-proposals/list-proposals.use-case.js";
+export * from "./proposal/proposal.view.js";
 export * from "./shared/application.error.js";

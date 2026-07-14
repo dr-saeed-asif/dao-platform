@@ -8,10 +8,8 @@ import { ProposalRepository } from "../../ports/proposal-repository.js";
 import { TransactionManager } from "../../ports/transaction-manager.js";
 import { ApplicationError } from "../../shared/application.error.js";
 import { CreateProposalCommand } from "./create-proposal.command.js";
-import {
-  CreateProposalResult,
-  ProposalView,
-} from "./create-proposal.result.js";
+import { CreateProposalResult } from "./create-proposal.result.js";
+import { toProposalView } from "../proposal.view.js";
 
 export interface CreateProposalDependencies {
   readonly proposals: ProposalRepository;
@@ -86,7 +84,7 @@ export class CreateProposalUseCase {
         metadata: proposal.metadata,
       });
 
-    return { proposal: toView(proposal), transaction };
+    return { proposal: toProposalView(proposal), transaction };
   }
 }
 
@@ -114,21 +112,4 @@ function assertSameRequest(
       "The idempotency key was already used for a different proposal request.",
     );
   }
-}
-
-function toView(proposal: Proposal): ProposalView {
-  return {
-    id: proposal.id,
-    daoId: proposal.daoId,
-    creatorAddress: proposal.creatorAddress.value,
-    title: proposal.title,
-    purpose: proposal.purpose,
-    description: proposal.description,
-    type: proposal.type,
-    status: proposal.status,
-    options: proposal.options.map((option) => ({ ...option })),
-    startsAt: proposal.startsAt.toISOString(),
-    endsAt: proposal.endsAt.toISOString(),
-    createdAt: proposal.createdAt.toISOString(),
-  };
 }

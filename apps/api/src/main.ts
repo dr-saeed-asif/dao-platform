@@ -5,6 +5,7 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
+import { configureApp } from './configure-app';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -14,7 +15,7 @@ async function bootstrap(): Promise<void> {
   const configService = app.get(ConfigService);
   const port = configService.getOrThrow<number>('PORT');
 
-  app.setGlobalPrefix('v1');
+  configureApp(app);
   app.enableShutdownHooks();
 
   await app.listen(port, '0.0.0.0');

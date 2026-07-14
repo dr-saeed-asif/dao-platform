@@ -42,6 +42,10 @@ class InMemoryProposalRepository implements ProposalRepository {
     return this.byIdempotencyKey.get(key) ?? null;
   }
 
+  async list(limit: number, offset: number): Promise<readonly Proposal[]> {
+    return [...this.byId.values()].slice(offset, offset + limit);
+  }
+
   async insert(
     proposal: Proposal,
     options: { readonly idempotencyKey: string },
