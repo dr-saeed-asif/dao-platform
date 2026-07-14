@@ -10,6 +10,12 @@ export const envValidationSchema = Joi.object({
   CYBERCHAIN_CHAIN_ID: Joi.string().allow('').optional(),
   GOVERNANCE_CONTRACT_ADDRESS: Joi.string().allow('').optional(),
   DAO_ADMIN_ADDRESS: Joi.string().required(),
+  SIGN_MODE: Joi.string().valid('ec-dsa', 'ml-dsa').required(),
+  ECDSA_PRIVATE_KEY: Joi.string().required(),
+  MLDSA_PUBLIC_KEY: Joi.string().required(),
+  MLDSA_SECRET_KEY: Joi.string().allow('').optional(),
+  MLDSA_LEVEL: Joi.number().valid(44, 65, 87).required(),
+  EXPECTED_SENDER_ADDRESS: Joi.string().required(),
   DEV_AUTH_BYPASS_ENABLED: Joi.boolean().default(false),
   JWT_SECRET: Joi.string().min(32).required(),
 });

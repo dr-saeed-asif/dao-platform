@@ -3,20 +3,35 @@ import { resolve } from 'node:path';
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
+  AssignmentRepository,
+  AssignMembersUseCase,
+  ChainTransactionRepository,
   CreateProposalUseCase,
   GetProposalUseCase,
+  GovernanceChainGateway,
+  ListMembersUseCase,
   ListProposalsUseCase,
+  PublishProposalUseCase,
   ProposalRepository,
+  UnassignMemberUseCase,
 } from '@dao-platform/application';
 import { CyberChainGovernanceGateway } from '@dao-platform/blockchain-cyberchain';
 import {
   SqliteDatabase,
+  SqliteAssignmentRepository,
+  SqliteChainTransactionRepository,
   SqliteProposalRepository,
 } from '@dao-platform/database';
 import { ConfiguredOwnerAuthorization } from './configured-owner.authorization';
 import { DatabaseLifecycleService } from './database-lifecycle.service';
 import { ProposalsController } from './proposals.controller';
-import { PROPOSAL_REPOSITORY, SQLITE_DATABASE } from './proposals.tokens';
+import {
+  ASSIGNMENT_REPOSITORY,
+  CHAIN_TRANSACTION_REPOSITORY,
+  GOVERNANCE_GATEWAY,
+  PROPOSAL_REPOSITORY,
+  SQLITE_DATABASE,
+} from './proposals.tokens';
 
 @Module({
   controllers: [ProposalsController],
@@ -41,12 +56,49 @@ import { PROPOSAL_REPOSITORY, SQLITE_DATABASE } from './proposals.tokens';
         new SqliteProposalRepository(database),
     },
     {
+      provide: ASSIGNMENT_REPOSITORY,
+      inject: [SQLITE_DATABASE],
+      useFactory: (database: SqliteDatabase) =>
+        new SqliteAssignmentRepository(database),
+    },
+    {
+      provide: CHAIN_TRANSACTION_REPOSITORY,
+      inject: [SQLITE_DATABASE],
+      useFactory: (database: SqliteDatabase) =>
+        new SqliteChainTransactionRepository(database),
+    },
+    {
+      provide: GOVERNANCE_GATEWAY,
+      inject: [ConfigService],
+      useFactory: (config: ConfigService): GovernanceChainGateway =>
+        new CyberChainGovernanceGateway({
+          rpcURL: config.getOrThrow<string>('CYBERCHAIN_RPC_URL'),
+          chainId: config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'),
+          contractAddress: config.getOrThrow<string>(
+            'GOVERNANCE_CONTRACT_ADDRESS',
+          ),
+          signing: {
+            signMode: config.getOrThrow<'ec-dsa' | 'ml-dsa'>('SIGN_MODE'),
+            ecdsaPrivateKey: config.getOrThrow<string>('ECDSA_PRIVATE_KEY'),
+            mldsaPublicKey: config.getOrThrow<string>('MLDSA_PUBLIC_KEY'),
+            mldsaSecretKey: config.get<string>('MLDSA_SECRET_KEY'),
+            mldsaLevel: config.getOrThrow<44 | 65 | 87>('MLDSA_LEVEL'),
+          },
+        }),
+    },
+    {
       provide: CreateProposalUseCase,
-      inject: [PROPOSAL_REPOSITORY, SQLITE_DATABASE, ConfigService],
+      inject: [
+        PROPOSAL_REPOSITORY,
+        SQLITE_DATABASE,
+        ConfigService,
+        GOVERNANCE_GATEWAY,
+      ],
       useFactory: (
         proposals: ProposalRepository,
         database: SqliteDatabase,
         config: ConfigService,
+        chainGateway: GovernanceChainGateway,
       ) =>
         new CreateProposalUseCase({
           proposals,
@@ -54,16 +106,97 @@ import { PROPOSAL_REPOSITORY, SQLITE_DATABASE } from './proposals.tokens';
           authorization: new ConfiguredOwnerAuthorization(
             config.getOrThrow<string>('DAO_ADMIN_ADDRESS'),
           ),
-          chainGateway: new CyberChainGovernanceGateway({
-            rpcURL: config.getOrThrow<string>('CYBERCHAIN_RPC_URL'),
-            chainId: config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'),
-            contractAddress: config.getOrThrow<string>(
-              'GOVERNANCE_CONTRACT_ADDRESS',
-            ),
-          }),
+          chainGateway,
           idGenerator: { next: randomUUID },
           clock: { now: () => new Date() },
         }),
+    },
+    {
+      provide: PublishProposalUseCase,
+      inject: [
+        PROPOSAL_REPOSITORY,
+        CHAIN_TRANSACTION_REPOSITORY,
+        GOVERNANCE_GATEWAY,
+        SQLITE_DATABASE,
+        ConfigService,
+      ],
+      useFactory: (
+        proposals: ProposalRepository,
+        transactions: ChainTransactionRepository,
+        chain: GovernanceChainGateway,
+        database: SqliteDatabase,
+        config: ConfigService,
+      ) =>
+        new PublishProposalUseCase(
+          proposals,
+          transactions,
+          ownerAuthorization(config),
+          chain,
+          database,
+          { now: () => new Date() },
+        ),
+    },
+    {
+      provide: AssignMembersUseCase,
+      inject: [
+        PROPOSAL_REPOSITORY,
+        ASSIGNMENT_REPOSITORY,
+        CHAIN_TRANSACTION_REPOSITORY,
+        GOVERNANCE_GATEWAY,
+        SQLITE_DATABASE,
+        ConfigService,
+      ],
+      useFactory: (
+        proposals: ProposalRepository,
+        assignments: AssignmentRepository,
+        transactions: ChainTransactionRepository,
+        chain: GovernanceChainGateway,
+        database: SqliteDatabase,
+        config: ConfigService,
+      ) =>
+        new AssignMembersUseCase(
+          proposals,
+          assignments,
+          transactions,
+          ownerAuthorization(config),
+          chain,
+          database,
+          { now: () => new Date() },
+        ),
+    },
+    {
+      provide: UnassignMemberUseCase,
+      inject: [
+        PROPOSAL_REPOSITORY,
+        ASSIGNMENT_REPOSITORY,
+        CHAIN_TRANSACTION_REPOSITORY,
+        GOVERNANCE_GATEWAY,
+        SQLITE_DATABASE,
+        ConfigService,
+      ],
+      useFactory: (
+        proposals: ProposalRepository,
+        assignments: AssignmentRepository,
+        transactions: ChainTransactionRepository,
+        chain: GovernanceChainGateway,
+        database: SqliteDatabase,
+        config: ConfigService,
+      ) =>
+        new UnassignMemberUseCase(
+          proposals,
+          assignments,
+          transactions,
+          ownerAuthorization(config),
+          chain,
+          database,
+          { now: () => new Date() },
+        ),
+    },
+    {
+      provide: ListMembersUseCase,
+      inject: [ASSIGNMENT_REPOSITORY],
+      useFactory: (assignments: AssignmentRepository) =>
+        new ListMembersUseCase(assignments),
     },
     {
       provide: GetProposalUseCase,
@@ -81,3 +214,9 @@ import { PROPOSAL_REPOSITORY, SQLITE_DATABASE } from './proposals.tokens';
   ],
 })
 export class ProposalsModule {}
+
+function ownerAuthorization(config: ConfigService) {
+  return new ConfiguredOwnerAuthorization(
+    config.getOrThrow<string>('DAO_ADMIN_ADDRESS'),
+  );
+}

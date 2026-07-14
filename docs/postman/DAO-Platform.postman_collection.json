@@ -10,7 +10,11 @@
       "key": "adminAddress",
       "value": "0xb8163f7d6d404f67a400743b90f7952d2d137b8e"
     },
-    { "key": "proposalId", "value": "" }
+    { "key": "proposalId", "value": "" },
+    {
+      "key": "memberAddress",
+      "value": "0xb8163f7d6d404f67a400743b90f7952d2d137b8e"
+    }
   ],
   "item": [
     {
@@ -68,6 +72,44 @@
       "request": {
         "method": "GET",
         "url": "{{baseUrl}}/proposals/{{proposalId}}"
+      }
+    },
+    {
+      "name": "5 - Publish proposal on-chain",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "x-wallet-address", "value": "{{adminAddress}}" }],
+        "url": "{{baseUrl}}/proposals/{{proposalId}}/publish"
+      }
+    },
+    {
+      "name": "6 - Assign member on-chain",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "x-wallet-address", "value": "{{adminAddress}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"memberAddresses\": [\"{{memberAddress}}\"]\n}"
+        },
+        "url": "{{baseUrl}}/proposals/{{proposalId}}/members"
+      }
+    },
+    {
+      "name": "7 - List assigned members from SQLite",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/proposals/{{proposalId}}/members"
+      }
+    },
+    {
+      "name": "8 - Unassign member on-chain",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "x-wallet-address", "value": "{{adminAddress}}" }],
+        "url": "{{baseUrl}}/proposals/{{proposalId}}/members/{{memberAddress}}"
       }
     }
   ]

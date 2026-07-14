@@ -80,6 +80,23 @@ export class SqliteProposalRepository implements ProposalRepository {
       .execute();
   }
 
+  async markPublished(
+    id: string,
+    onChainId: string,
+    status: ProposalStatus,
+    updatedAt: Date,
+  ): Promise<void> {
+    await this.database.executor
+      .updateTable("proposals")
+      .set({
+        on_chain_id: onChainId,
+        status,
+        updated_at: updatedAt.toISOString(),
+      })
+      .where("id", "=", id)
+      .executeTakeFirstOrThrow();
+  }
+
   private async hydrate(row: ProposalsTable): Promise<Proposal> {
     const optionRows = await this.database.executor
       .selectFrom("proposal_options")

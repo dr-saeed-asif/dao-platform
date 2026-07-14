@@ -21,7 +21,22 @@ async function main(): Promise<void> {
       .orderBy("proposal_id")
       .orderBy("option_index")
       .execute();
-    console.log(JSON.stringify({ proposals, options }, null, 2));
+    const assignments = await database.db
+      .selectFrom("proposal_assignments")
+      .selectAll()
+      .execute();
+    const transactions = await database.db
+      .selectFrom("chain_transactions")
+      .selectAll()
+      .orderBy("recorded_at", "desc")
+      .execute();
+    console.log(
+      JSON.stringify(
+        { proposals, options, assignments, transactions },
+        null,
+        2,
+      ),
+    );
   } finally {
     await database.destroy();
   }

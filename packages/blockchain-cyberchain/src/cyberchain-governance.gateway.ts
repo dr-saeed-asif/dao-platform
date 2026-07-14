@@ -2,10 +2,16 @@ import {
   GovernanceChainGateway,
   PrepareCreateProposalRequest,
   PreparedTransaction,
+  ConfirmedChainTransaction,
+  PublishedProposalTransaction,
 } from "@dao-platform/application";
 import { ProposalType } from "@dao-platform/domain";
 import {
   SmartContractInterface,
+  SignKeyECDSA,
+  SignKeyMLDSA,
+  TransactionReceipt,
+  privateKeyToAddress,
   toHex,
 } from "@cyberchain/smart-contract-wrapper";
 import { CYBER_DAO_GOVERNANCE_WRITE_ABI } from "./cyberchain-governance.abi.js";
@@ -14,6 +20,15 @@ export interface CyberChainGovernanceGatewayOptions {
   readonly rpcURL: string;
   readonly chainId: string;
   readonly contractAddress: string;
+  readonly signing?: CyberChainSigningOptions;
+}
+
+export interface CyberChainSigningOptions {
+  readonly signMode: "ec-dsa" | "ml-dsa";
+  readonly ecdsaPrivateKey: string;
+  readonly mldsaPublicKey: string;
+  readonly mldsaSecretKey?: string;
+  readonly mldsaLevel: 44 | 65 | 87;
 }
 
 export class CyberChainGovernanceGateway implements GovernanceChainGateway {
@@ -54,6 +69,107 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       value: BigInt(transaction.value ?? 0).toString(),
     };
   }
+
+  async publishProposal(
+    request: PrepareCreateProposalRequest,
+  ): Promise<PublishedProposalTransaction> {
+    const metadataURI = metadataString(request.metadata, "metadataURI");
+    const metadataHash = metadataString(request.metadata, "metadataHash");
+    const result = await this.contract.callMutableMethod(
+      "createProposal",
+      [
+        metadataURI,
+        metadataHash,
+        proposalTypeCode(request.type),
+        request.optionLabels.length,
+        toUnixSeconds(request.startsAt),
+        toUnixSeconds(request.endsAt),
+      ],
+      this.transactionOptions(),
+    );
+    const event = this.contract.findEvent(result.receipt, "ProposalCreated");
+    return {
+      ...confirmedTransaction(result.receipt),
+      onChainProposalId: String(event.parameters[0]),
+    };
+  }
+
+  async assignMembers(
+    proposalId: string,
+    members: readonly string[],
+  ): Promise<ConfirmedChainTransaction> {
+    const result = await this.contract.callMutableMethod(
+      "assignMembers",
+      [proposalId, [...members]],
+      this.transactionOptions(),
+    );
+    return confirmedTransaction(result.receipt);
+  }
+
+  async unassignMember(
+    proposalId: string,
+    member: string,
+  ): Promise<ConfirmedChainTransaction> {
+    const result = await this.contract.callMutableMethod(
+      "unassignMember",
+      [proposalId, member],
+      this.transactionOptions(),
+    );
+    return confirmedTransaction(result.receipt);
+  }
+
+  private transactionOptions() {
+    const signing = this.options.signing;
+    if (!signing) {
+      throw new Error("CyberChain administrator signing is not configured.");
+    }
+    const signKey: SignKeyECDSA | SignKeyMLDSA =
+      signing.signMode === "ml-dsa"
+        ? {
+            type: "ml-dsa",
+            spec: signing.mldsaLevel,
+            publicKey: hexBytes(signing.mldsaPublicKey),
+            secretKey: hexBytes(signing.mldsaSecretKey ?? ""),
+          }
+        : {
+            type: "ec-dsa",
+            key: hexBytes(signing.ecdsaPrivateKey),
+          };
+    return {
+      signKey,
+      complementaryAddress:
+        signing.signMode === "ml-dsa"
+          ? privateKeyToAddress({
+              type: "ec-dsa",
+              key: hexBytes(signing.ecdsaPrivateKey),
+            })
+          : privateKeyToAddress({
+              type: "ml-dsa",
+              spec: signing.mldsaLevel,
+              publicKey: hexBytes(signing.mldsaPublicKey),
+              secretKey: new Uint8Array(),
+            }),
+      chainId: this.options.chainId,
+      isFeeMarket: true,
+      receiptWaitTimeout: 120_000,
+    };
+  }
+}
+
+function hexBytes(value: string): Buffer {
+  return Buffer.from(value.replace(/^0x/i, ""), "hex");
+}
+
+function confirmedTransaction(
+  receipt: TransactionReceipt,
+): ConfirmedChainTransaction {
+  return {
+    transactionHash: toHex(receipt.transactionHash),
+    blockNumber: receipt.blockNumber.toString(),
+    blockHash: toHex(receipt.blockHash),
+    gasUsed: receipt.gasUsed.toString(),
+    status: "CONFIRMED",
+  };
 }
 
 function metadataString(

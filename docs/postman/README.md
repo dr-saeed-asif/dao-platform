@@ -1,4 +1,4 @@
-# Postman proposal workflow
+# Postman governance workflow
 
 ## Start the API
 
@@ -6,48 +6,44 @@ From the repository root:
 
 ```powershell
 npm run build
-npm run start:dev --workspace=apps/api
+npm run start:dev --workspace=api
 ```
 
-Import `DAO-Platform.postman_collection.json` into Postman and run the requests
-in numerical order. The create request stores its returned proposal ID as a
-collection variable for the detail request.
+Import `DAO-Platform.postman_collection.json` into Postman. Run requests 1
+through 7 in order. The create request stores the proposal ID as a collection
+variable. Request 8 removes the member, so run it only when you want to test
+unassignment.
 
 ## Development authentication
 
-`POST /v1/proposals` requires these headers:
+Administrator write requests require `x-wallet-address` with the configured
+DAO administrator address. Proposal creation also requires a unique
+`idempotency-key`.
 
-- `idempotency-key`: a unique value for one logical request;
-- `x-wallet-address`: the configured DAO administrator address.
+This header bypass works only with `DEV_AUTH_BYPASS_ENABLED=true` outside
+production. It is a development convenience, not production authentication.
 
-The wallet header is enabled only when `DEV_AUTH_BYPASS_ENABLED=true` and
-`NODE_ENV` is not `production`. It is a Postman development convenience, not
-production authentication.
+## On-chain behavior
 
-## Response meaning
+Creating a proposal persists a `DRAFT` and returns an unsigned transaction
+preview. Publishing submits the real transaction using the administrator
+signing configuration in `.env`, waits for confirmation, stores the on-chain
+proposal ID, and records the receipt in SQLite. Member assignment and
+unassignment follow the same confirmed on-chain workflow.
 
-Creating a proposal persists a `DRAFT` and returns an unsigned CyberChain
-transaction containing `chainId`, `from`, `to`, `data`, and `value`. The draft
-is not yet on-chain. A real wallet must review and sign this transaction, after
-which a transaction-submission and receipt-tracking workflow will be added.
-
-Use a voting start time that is still in the future when the transaction is
-eventually submitted. Replace the sample metadata URI and hash with real,
-content-addressed metadata before an actual on-chain proposal.
+Use a voting start time that is still in the future. Replace the sample
+metadata URI and hash with real content-addressed metadata for production.
 
 ## Inspect SQLite
 
-The database file is:
-
-```text
-data/dao.db
-```
-
-Print its proposal and option rows with:
+The database file is `data/dao.db`. Print its records with:
 
 ```powershell
 npm run db:inspect --workspace=@dao-platform/database
 ```
 
-You can also open `data/dao.db` in a SQLite GUI and inspect the `proposals`,
-`proposal_options`, and `kysely_migration` tables.
+You can also open it in a SQLite GUI and inspect `proposals`,
+`proposal_options`, `proposal_assignments`, `chain_transactions`, and
+`kysely_migration`.
+
+Never commit `.env`; it contains administrator signing material.

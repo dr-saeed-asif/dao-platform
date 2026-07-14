@@ -12,3 +12,10 @@ process.env.CYBERCHAIN_RPC_URL = 'http://localhost:8545';
 process.env.CYBERCHAIN_CHAIN_ID = '1212';
 process.env.GOVERNANCE_CONTRACT_ADDRESS =
   '0x51b43885899bd0301c2beea89addc9d876145d21';
+process.env.SIGN_MODE = 'ec-dsa';
+process.env.ECDSA_PRIVATE_KEY = `0x${'11'.repeat(32)}`;
+process.env.MLDSA_PUBLIC_KEY = `0x${'22'.repeat(32)}`;
+process.env.MLDSA_SECRET_KEY = '';
+process.env.MLDSA_LEVEL = '44';
+process.env.EXPECTED_SENDER_ADDRESS =
+  '0xb8163f7d6d404f67a400743b90f7952d2d137b8e';

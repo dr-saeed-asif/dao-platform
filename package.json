@@ -12,9 +12,11 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present",
+    "build": "npm run build:packages && npm run build --workspace=api",
+    "build:packages": "npm run build --workspace=@dao-platform/domain && npm run build --workspace=@dao-platform/application && npm run build --workspace=@dao-platform/blockchain-cyberchain && npm run build --workspace=@dao-platform/database && npm run build --workspace=@dao-platform/contracts",
+    "test": "npm run build && npm run test --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present"
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "env:migrate-sdk": "node scripts/migrate-sdk-env.mjs"
   }
 }

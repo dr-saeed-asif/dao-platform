@@ -1,4 +1,6 @@
 export * from "./ports/clock.js";
+export * from "./ports/assignment-repository.js";
+export * from "./ports/chain-transaction-repository.js";
 export * from "./ports/governance-chain.gateway.js";
 export * from "./ports/id-generator.js";
 export * from "./ports/proposal-authorization.js";
@@ -10,4 +12,8 @@ export * from "./proposal/create-proposal/create-proposal.use-case.js";
 export * from "./proposal/get-proposal/get-proposal.use-case.js";
 export * from "./proposal/list-proposals/list-proposals.use-case.js";
 export * from "./proposal/proposal.view.js";
+export * from "./proposal/publish-proposal/publish-proposal.use-case.js";
+export * from "./membership/assign-members.use-case.js";
+export * from "./membership/unassign-member.use-case.js";
+export * from "./membership/list-members.use-case.js";
 export * from "./shared/application.error.js";

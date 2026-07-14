@@ -53,6 +53,10 @@ class InMemoryProposalRepository implements ProposalRepository {
     this.byId.set(proposal.id, proposal);
     this.byIdempotencyKey.set(options.idempotencyKey, proposal);
   }
+
+  async markPublished(): Promise<void> {
+    throw new Error("Not used in this test.");
+  }
 }
 
 function createSubject(options?: { readonly authorized?: boolean }) {
@@ -74,6 +78,15 @@ function createSubject(options?: { readonly authorized?: boolean }) {
       async prepareCreateProposal(): Promise<PreparedTransaction> {
         preparationRuns += 1;
         return preparedTransaction;
+      },
+      async publishProposal() {
+        throw new Error("Not used in this test.");
+      },
+      async assignMembers() {
+        throw new Error("Not used in this test.");
+      },
+      async unassignMember() {
+        throw new Error("Not used in this test.");
       },
     },
     transactionManager: {

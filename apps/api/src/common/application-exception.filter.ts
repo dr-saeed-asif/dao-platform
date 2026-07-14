@@ -24,6 +24,11 @@ export class ApplicationExceptionFilter implements ExceptionFilter {
 function statusFor(code: string): number {
   if (code === 'FORBIDDEN') return HttpStatus.FORBIDDEN;
   if (code === 'PROPOSAL_NOT_FOUND') return HttpStatus.NOT_FOUND;
-  if (code === 'IDEMPOTENCY_KEY_CONFLICT') return HttpStatus.CONFLICT;
+  if (
+    code === 'IDEMPOTENCY_KEY_CONFLICT' ||
+    code === 'PROPOSAL_ALREADY_PUBLISHED' ||
+    code === 'DUPLICATE_MEMBER'
+  )
+    return HttpStatus.CONFLICT;
   return HttpStatus.BAD_REQUEST;
 }

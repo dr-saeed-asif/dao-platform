@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   Get,
   Headers,
   Param,
@@ -12,10 +13,15 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
+  AssignMembersUseCase,
   CreateProposalUseCase,
   GetProposalUseCase,
+  ListMembersUseCase,
   ListProposalsUseCase,
+  PublishProposalUseCase,
+  UnassignMemberUseCase,
 } from '@dao-platform/application';
+import { AssignMembersDto } from './assign-members.dto';
 import { CreateProposalDto } from './create-proposal.dto';
 
 @Controller('proposals')
@@ -24,6 +30,10 @@ export class ProposalsController {
     private readonly createProposal: CreateProposalUseCase,
     private readonly getProposal: GetProposalUseCase,
     private readonly listProposals: ListProposalsUseCase,
+    private readonly publishProposal: PublishProposalUseCase,
+    private readonly assignMembers: AssignMembersUseCase,
+    private readonly unassignMember: UnassignMemberUseCase,
+    private readonly listMembers: ListMembersUseCase,
     private readonly config: ConfigService,
   ) {}
 
@@ -66,6 +76,48 @@ export class ProposalsController {
   @Get(':id')
   get(@Param('id') id: string) {
     return this.getProposal.execute(id);
+  }
+
+  @Post(':id/publish')
+  publish(
+    @Param('id') id: string,
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    return this.publishProposal.execute(
+      id,
+      this.developmentActor(walletAddress),
+    );
+  }
+
+  @Post(':id/members')
+  assign(
+    @Param('id') id: string,
+    @Body() body: AssignMembersDto,
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    return this.assignMembers.execute(
+      id,
+      this.developmentActor(walletAddress),
+      body.memberAddresses,
+    );
+  }
+
+  @Get(':id/members')
+  members(@Param('id') id: string) {
+    return this.listMembers.execute(id);
+  }
+
+  @Delete(':id/members/:walletAddress')
+  unassign(
+    @Param('id') id: string,
+    @Param('walletAddress') memberAddress: string,
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    return this.unassignMember.execute(
+      id,
+      this.developmentActor(walletAddress),
+      memberAddress,
+    );
   }
 
   private developmentActor(walletAddress?: string): string {

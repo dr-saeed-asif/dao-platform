@@ -13,10 +13,14 @@ import {
 import { TransactionManager } from "@dao-platform/application";
 import { DatabaseSchema } from "./database-schema.js";
 import * as initialMigration from "./migrations/initial.migration.js";
+import * as governanceRecordsMigration from "./migrations/governance-records.migration.js";
 
 class StaticMigrationProvider implements MigrationProvider {
   async getMigrations(): Promise<Record<string, Migration>> {
-    return { "001_initial": initialMigration };
+    return {
+      "001_initial": initialMigration,
+      "002_governance_records": governanceRecordsMigration,
+    };
   }
 }
 

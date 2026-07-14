@@ -32,6 +32,27 @@ export interface SchemaMigrationsTable {
 export interface DatabaseSchema {
   proposals: ProposalsTable;
   proposal_options: ProposalOptionsTable;
+  proposal_assignments: ProposalAssignmentsTable;
+  chain_transactions: ChainTransactionsTable;
   kysely_migration: SchemaMigrationsTable;
   kysely_migration_lock: { id: Generated<string>; is_locked: number };
+}
+
+export interface ProposalAssignmentsTable {
+  proposal_id: string;
+  wallet_address: string;
+  transaction_hash: string;
+  assigned_at: string;
+}
+
+export interface ChainTransactionsTable {
+  transaction_hash: string;
+  operation: string;
+  proposal_id: string;
+  wallet_address: string;
+  block_number: string;
+  block_hash: string;
+  gas_used: string;
+  status: string;
+  recorded_at: string;
 }

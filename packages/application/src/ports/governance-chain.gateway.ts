@@ -27,4 +27,27 @@ export interface GovernanceChainGateway {
   prepareCreateProposal(
     request: PrepareCreateProposalRequest,
   ): Promise<PreparedTransaction>;
+  publishProposal(
+    request: PrepareCreateProposalRequest,
+  ): Promise<PublishedProposalTransaction>;
+  assignMembers(
+    proposalId: string,
+    members: readonly string[],
+  ): Promise<ConfirmedChainTransaction>;
+  unassignMember(
+    proposalId: string,
+    member: string,
+  ): Promise<ConfirmedChainTransaction>;
+}
+
+export interface ConfirmedChainTransaction {
+  readonly transactionHash: string;
+  readonly blockNumber: string;
+  readonly blockHash: string;
+  readonly gasUsed: string;
+  readonly status: "CONFIRMED";
+}
+
+export interface PublishedProposalTransaction extends ConfirmedChainTransaction {
+  readonly onChainProposalId: string;
 }
