@@ -38,6 +38,23 @@ export interface GovernanceChainGateway {
     proposalId: string,
     member: string,
   ): Promise<ConfirmedChainTransaction>;
+  prepareVote(
+    proposalId: string,
+    voterAddress: string,
+    optionIndex: number,
+  ): Promise<PreparedTransaction>;
+  getConfirmedVote(transactionHash: string): Promise<ConfirmedVote | null>;
+  findConfirmedVotes(
+    fromBlock: bigint,
+    toBlock: bigint,
+  ): Promise<readonly ConfirmedVote[]>;
+  latestBlockNumber(): Promise<bigint>;
+}
+
+export interface ConfirmedVote extends ConfirmedChainTransaction {
+  readonly onChainProposalId: string;
+  readonly voterAddress: string;
+  readonly optionIndex: number;
 }
 
 export interface ConfirmedChainTransaction {

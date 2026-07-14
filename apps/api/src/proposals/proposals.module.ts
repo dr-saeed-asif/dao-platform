@@ -6,14 +6,20 @@ import {
   AssignmentRepository,
   AssignMembersUseCase,
   ChainTransactionRepository,
+  ConfirmVoteUseCase,
   CreateProposalUseCase,
   GetProposalUseCase,
   GovernanceChainGateway,
   ListMembersUseCase,
   ListProposalsUseCase,
+  ListVotesUseCase,
+  PrepareVoteUseCase,
   PublishProposalUseCase,
   ProposalRepository,
+  SyncStateRepository,
+  SyncVotesUseCase,
   UnassignMemberUseCase,
+  VoteRepository,
 } from '@dao-platform/application';
 import { CyberChainGovernanceGateway } from '@dao-platform/blockchain-cyberchain';
 import {
@@ -21,16 +27,21 @@ import {
   SqliteAssignmentRepository,
   SqliteChainTransactionRepository,
   SqliteProposalRepository,
+  SqliteSyncStateRepository,
+  SqliteVoteRepository,
 } from '@dao-platform/database';
 import { ConfiguredOwnerAuthorization } from './configured-owner.authorization';
 import { DatabaseLifecycleService } from './database-lifecycle.service';
 import { ProposalsController } from './proposals.controller';
+import { VotingIndexerService } from './voting-indexer.service';
 import {
   ASSIGNMENT_REPOSITORY,
   CHAIN_TRANSACTION_REPOSITORY,
   GOVERNANCE_GATEWAY,
   PROPOSAL_REPOSITORY,
   SQLITE_DATABASE,
+  SYNC_STATE_REPOSITORY,
+  VOTE_REPOSITORY,
 } from './proposals.tokens';
 
 @Module({
@@ -66,6 +77,18 @@ import {
       inject: [SQLITE_DATABASE],
       useFactory: (database: SqliteDatabase) =>
         new SqliteChainTransactionRepository(database),
+    },
+    {
+      provide: VOTE_REPOSITORY,
+      inject: [SQLITE_DATABASE],
+      useFactory: (database: SqliteDatabase) =>
+        new SqliteVoteRepository(database),
+    },
+    {
+      provide: SYNC_STATE_REPOSITORY,
+      inject: [SQLITE_DATABASE],
+      useFactory: (database: SqliteDatabase) =>
+        new SqliteSyncStateRepository(database),
     },
     {
       provide: GOVERNANCE_GATEWAY,
@@ -199,6 +222,74 @@ import {
         new ListMembersUseCase(assignments),
     },
     {
+      provide: PrepareVoteUseCase,
+      inject: [
+        PROPOSAL_REPOSITORY,
+        ASSIGNMENT_REPOSITORY,
+        VOTE_REPOSITORY,
+        GOVERNANCE_GATEWAY,
+      ],
+      useFactory: (
+        proposals: ProposalRepository,
+        assignments: AssignmentRepository,
+        votes: VoteRepository,
+        chain: GovernanceChainGateway,
+      ) => new PrepareVoteUseCase(proposals, assignments, votes, chain),
+    },
+    {
+      provide: ConfirmVoteUseCase,
+      inject: [
+        PROPOSAL_REPOSITORY,
+        VOTE_REPOSITORY,
+        CHAIN_TRANSACTION_REPOSITORY,
+        GOVERNANCE_GATEWAY,
+        SQLITE_DATABASE,
+      ],
+      useFactory: (
+        proposals: ProposalRepository,
+        votes: VoteRepository,
+        transactions: ChainTransactionRepository,
+        chain: GovernanceChainGateway,
+        database: SqliteDatabase,
+      ) =>
+        new ConfirmVoteUseCase(proposals, votes, transactions, chain, database),
+    },
+    {
+      provide: ListVotesUseCase,
+      inject: [VOTE_REPOSITORY],
+      useFactory: (votes: VoteRepository) => new ListVotesUseCase(votes),
+    },
+    {
+      provide: SyncVotesUseCase,
+      inject: [
+        PROPOSAL_REPOSITORY,
+        VOTE_REPOSITORY,
+        CHAIN_TRANSACTION_REPOSITORY,
+        SYNC_STATE_REPOSITORY,
+        GOVERNANCE_GATEWAY,
+        SQLITE_DATABASE,
+        ConfigService,
+      ],
+      useFactory: (
+        proposals: ProposalRepository,
+        votes: VoteRepository,
+        transactions: ChainTransactionRepository,
+        state: SyncStateRepository,
+        chain: GovernanceChainGateway,
+        database: SqliteDatabase,
+        config: ConfigService,
+      ) =>
+        new SyncVotesUseCase(
+          proposals,
+          votes,
+          transactions,
+          state,
+          chain,
+          database,
+          BigInt(config.getOrThrow<number>('GOVERNANCE_DEPLOYMENT_BLOCK')),
+        ),
+    },
+    {
       provide: GetProposalUseCase,
       inject: [PROPOSAL_REPOSITORY],
       useFactory: (proposals: ProposalRepository) =>
@@ -211,6 +302,7 @@ import {
         new ListProposalsUseCase(proposals),
     },
     DatabaseLifecycleService,
+    VotingIndexerService,
   ],
 })
 export class ProposalsModule {}

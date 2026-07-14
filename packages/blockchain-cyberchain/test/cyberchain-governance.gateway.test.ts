@@ -44,4 +44,19 @@ describe("CyberChainGovernanceGateway", () => {
       /metadataURI/,
     );
   });
+
+  it("encodes a member wallet-signable vote transaction", async () => {
+    const transaction = await gateway.prepareVote(
+      "1",
+      "0xb8163f7d6d404f67a400743b90f7952d2d137b8e",
+      2,
+    );
+    assert.equal(
+      transaction.from,
+      "0xb8163f7d6d404f67a400743b90f7952d2d137b8e",
+    );
+    assert.equal(transaction.to, "0x51b43885899bd0301c2beea89addc9d876145d21");
+    assert.equal(transaction.value, "0");
+    assert.match(transaction.data, /^0x[0-9a-f]+$/);
+  });
 });

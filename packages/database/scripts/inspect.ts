@@ -30,9 +30,18 @@ async function main(): Promise<void> {
       .selectAll()
       .orderBy("recorded_at", "desc")
       .execute();
+    const votes = await database.db
+      .selectFrom("votes")
+      .selectAll()
+      .orderBy("confirmed_at", "desc")
+      .execute();
+    const indexerState = await database.db
+      .selectFrom("indexer_state")
+      .selectAll()
+      .execute();
     console.log(
       JSON.stringify(
-        { proposals, options, assignments, transactions },
+        { proposals, options, assignments, transactions, votes, indexerState },
         null,
         2,
       ),

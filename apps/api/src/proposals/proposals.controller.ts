@@ -14,15 +14,22 @@ import {
 import { ConfigService } from '@nestjs/config';
 import {
   AssignMembersUseCase,
+  ConfirmVoteUseCase,
   CreateProposalUseCase,
   GetProposalUseCase,
   ListMembersUseCase,
+  ListVotesUseCase,
   ListProposalsUseCase,
   PublishProposalUseCase,
+  PrepareVoteUseCase,
+  SyncVotesUseCase,
   UnassignMemberUseCase,
 } from '@dao-platform/application';
 import { AssignMembersDto } from './assign-members.dto';
+import { ConfirmVoteDto } from './confirm-vote.dto';
 import { CreateProposalDto } from './create-proposal.dto';
+import { PrepareVoteDto } from './prepare-vote.dto';
+import { SyncVotesDto } from './sync-votes.dto';
 
 @Controller('proposals')
 export class ProposalsController {
@@ -34,6 +41,10 @@ export class ProposalsController {
     private readonly assignMembers: AssignMembersUseCase,
     private readonly unassignMember: UnassignMemberUseCase,
     private readonly listMembers: ListMembersUseCase,
+    private readonly prepareVote: PrepareVoteUseCase,
+    private readonly confirmVote: ConfirmVoteUseCase,
+    private readonly listVotes: ListVotesUseCase,
+    private readonly syncVotes: SyncVotesUseCase,
     private readonly config: ConfigService,
   ) {}
 
@@ -118,6 +129,55 @@ export class ProposalsController {
       this.developmentActor(walletAddress),
       memberAddress,
     );
+  }
+
+  @Post(':id/votes/prepare')
+  prepareMemberVote(
+    @Param('id') id: string,
+    @Body() body: PrepareVoteDto,
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    return this.prepareVote.execute(
+      id,
+      this.developmentActor(walletAddress),
+      body.optionIndex,
+    );
+  }
+
+  @Post(':id/votes/confirm')
+  confirmMemberVote(
+    @Param('id') id: string,
+    @Body() body: ConfirmVoteDto,
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    return this.confirmVote.execute(
+      id,
+      this.developmentActor(walletAddress),
+      body.transactionHash,
+    );
+  }
+
+  @Get(':id/votes')
+  votes(@Param('id') id: string) {
+    return this.listVotes.execute(id);
+  }
+
+  @Post('sync/votes')
+  synchronizeVotes(
+    @Body() body: SyncVotesDto,
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    this.developmentAdmin(walletAddress);
+    return this.syncVotes.execute(body.full ?? false);
+  }
+
+  private developmentAdmin(walletAddress?: string): string {
+    const actor = this.developmentActor(walletAddress);
+    const admin = this.config.getOrThrow<string>('DAO_ADMIN_ADDRESS');
+    if (actor.toLowerCase() !== admin.toLowerCase()) {
+      throw new UnauthorizedException('DAO administrator wallet is required.');
+    }
+    return actor;
   }
 
   private developmentActor(walletAddress?: string): string {

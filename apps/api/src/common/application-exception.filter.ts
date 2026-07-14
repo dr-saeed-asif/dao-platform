@@ -27,8 +27,10 @@ function statusFor(code: string): number {
   if (
     code === 'IDEMPOTENCY_KEY_CONFLICT' ||
     code === 'PROPOSAL_ALREADY_PUBLISHED' ||
-    code === 'DUPLICATE_MEMBER'
+    code === 'DUPLICATE_MEMBER' ||
+    code === 'ALREADY_VOTED'
   )
     return HttpStatus.CONFLICT;
+  if (code === 'TRANSACTION_NOT_CONFIRMED') return HttpStatus.ACCEPTED;
   return HttpStatus.BAD_REQUEST;
 }

@@ -12,6 +12,8 @@ process.env.CYBERCHAIN_RPC_URL = 'http://localhost:8545';
 process.env.CYBERCHAIN_CHAIN_ID = '1212';
 process.env.GOVERNANCE_CONTRACT_ADDRESS =
   '0x51b43885899bd0301c2beea89addc9d876145d21';
+process.env.GOVERNANCE_DEPLOYMENT_BLOCK = '15400000';
+process.env.VOTE_INDEXER_ENABLED = 'false';
 process.env.SIGN_MODE = 'ec-dsa';
 process.env.ECDSA_PRIVATE_KEY = `0x${'11'.repeat(32)}`;
 process.env.MLDSA_PUBLIC_KEY = `0x${'22'.repeat(32)}`;

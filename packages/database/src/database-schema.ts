@@ -34,8 +34,28 @@ export interface DatabaseSchema {
   proposal_options: ProposalOptionsTable;
   proposal_assignments: ProposalAssignmentsTable;
   chain_transactions: ChainTransactionsTable;
+  votes: VotesTable;
+  indexer_state: IndexerStateTable;
   kysely_migration: SchemaMigrationsTable;
   kysely_migration_lock: { id: Generated<string>; is_locked: number };
+}
+
+export interface VotesTable {
+  proposal_id: string;
+  on_chain_proposal_id: string;
+  voter_address: string;
+  option_index: number;
+  transaction_hash: string;
+  block_number: string;
+  block_hash: string;
+  gas_used: string;
+  confirmed_at: string;
+}
+
+export interface IndexerStateTable {
+  indexer_name: string;
+  last_processed_block: string;
+  updated_at: string;
 }
 
 export interface ProposalAssignmentsTable {

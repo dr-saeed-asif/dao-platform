@@ -4,6 +4,7 @@ import {
   PreparedTransaction,
   ConfirmedChainTransaction,
   PublishedProposalTransaction,
+  ConfirmedVote,
 } from "@dao-platform/application";
 import { ProposalType } from "@dao-platform/domain";
 import {
@@ -11,6 +12,7 @@ import {
   SignKeyECDSA,
   SignKeyMLDSA,
   TransactionReceipt,
+  Web3RPCClient,
   privateKeyToAddress,
   toHex,
 } from "@cyberchain/smart-contract-wrapper";
@@ -118,6 +120,59 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
     return confirmedTransaction(result.receipt);
   }
 
+  async prepareVote(
+    proposalId: string,
+    voterAddress: string,
+    optionIndex: number,
+  ): Promise<PreparedTransaction> {
+    const transaction = this.contract.encodeMutableMethod("vote", [
+      proposalId,
+      optionIndex,
+    ]);
+    return {
+      chainId: this.options.chainId,
+      from: voterAddress,
+      to: String(transaction.to),
+      data: toHex(transaction.data),
+      value: BigInt(transaction.value ?? 0).toString(),
+    };
+  }
+
+  async getConfirmedVote(
+    transactionHash: string,
+  ): Promise<ConfirmedVote | null> {
+    const receipt = await Web3RPCClient.getInstance().getTransactionReceipt(
+      transactionHash,
+      { rpcURL: this.options.rpcURL },
+    );
+    if (!receipt || receipt.status !== 1n) return null;
+    const event = this.contract.findEvent(receipt, "VoteCast");
+    if (!event) return null;
+    return confirmedVote(receipt, event.parameters);
+  }
+
+  async findConfirmedVotes(fromBlock: bigint, toBlock: bigint) {
+    const events = await this.contract.findEvents(fromBlock, toBlock);
+    const hashes = new Set(
+      events
+        .filter((event) => event.name === "VoteCast")
+        .map((event) => toHex(event.log.transactionHash)),
+    );
+    const votes: ConfirmedVote[] = [];
+    for (const hash of hashes) {
+      const vote = await this.getConfirmedVote(hash);
+      if (vote) votes.push(vote);
+    }
+    return votes;
+  }
+
+  async latestBlockNumber(): Promise<bigint> {
+    const block = await Web3RPCClient.getInstance().getBlockByNumber("latest", {
+      rpcURL: this.options.rpcURL,
+    });
+    return block.number;
+  }
+
   private transactionOptions() {
     const signing = this.options.signing;
     if (!signing) {
@@ -154,6 +209,18 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       receiptWaitTimeout: 120_000,
     };
   }
+}
+
+function confirmedVote(
+  receipt: TransactionReceipt,
+  parameters: readonly unknown[],
+): ConfirmedVote {
+  return {
+    ...confirmedTransaction(receipt),
+    onChainProposalId: String(parameters[0]),
+    voterAddress: String(parameters[1]).toLowerCase(),
+    optionIndex: Number(parameters[2]),
+  };
 }
 
 function hexBytes(value: string): Buffer {

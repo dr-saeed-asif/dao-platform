@@ -38,6 +38,14 @@ class InMemoryProposalRepository implements ProposalRepository {
     return this.byId.get(id) ?? null;
   }
 
+  async findByOnChainId(onChainId: string): Promise<Proposal | null> {
+    return (
+      [...this.byId.values()].find(
+        (proposal) => proposal.onChainId === onChainId,
+      ) ?? null
+    );
+  }
+
   async findByIdempotencyKey(key: string): Promise<Proposal | null> {
     return this.byIdempotencyKey.get(key) ?? null;
   }
@@ -86,6 +94,18 @@ function createSubject(options?: { readonly authorized?: boolean }) {
         throw new Error("Not used in this test.");
       },
       async unassignMember() {
+        throw new Error("Not used in this test.");
+      },
+      async prepareVote() {
+        throw new Error("Not used in this test.");
+      },
+      async getConfirmedVote() {
+        throw new Error("Not used in this test.");
+      },
+      async findConfirmedVotes() {
+        throw new Error("Not used in this test.");
+      },
+      async latestBlockNumber() {
         throw new Error("Not used in this test.");
       },
     },

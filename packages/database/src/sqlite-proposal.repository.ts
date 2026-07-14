@@ -23,6 +23,15 @@ export class SqliteProposalRepository implements ProposalRepository {
     return row ? this.hydrate(row) : null;
   }
 
+  async findByOnChainId(onChainId: string): Promise<Proposal | null> {
+    const row = await this.database.executor
+      .selectFrom("proposals")
+      .selectAll()
+      .where("on_chain_id", "=", onChainId)
+      .executeTakeFirst();
+    return row ? this.hydrate(row) : null;
+  }
+
   async findByIdempotencyKey(key: string): Promise<Proposal | null> {
     const row = await this.database.executor
       .selectFrom("proposals")

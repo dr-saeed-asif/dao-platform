@@ -21,6 +21,7 @@ export class SqliteChainTransactionRepository implements ChainTransactionReposit
         status: transaction.status,
         recorded_at: transaction.recordedAt.toISOString(),
       })
+      .onConflict((conflict) => conflict.column("transaction_hash").doNothing())
       .execute();
   }
 }

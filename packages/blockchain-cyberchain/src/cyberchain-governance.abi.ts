@@ -4,6 +4,16 @@ import type { ABILike } from "@cyberchain/smart-contract-wrapper";
 export const CYBER_DAO_GOVERNANCE_WRITE_ABI: ABILike = [
   {
     type: "event",
+    name: "VoteCast",
+    anonymous: false,
+    inputs: [
+      { indexed: true, name: "proposalId", type: "uint256" },
+      { indexed: true, name: "voter", type: "address" },
+      { indexed: true, name: "optionIndex", type: "uint16" },
+    ],
+  },
+  {
+    type: "event",
     name: "ProposalCreated",
     anonymous: false,
     inputs: [
@@ -48,6 +58,16 @@ export const CYBER_DAO_GOVERNANCE_WRITE_ABI: ABILike = [
     inputs: [
       { name: "proposalId", type: "uint256" },
       { name: "member", type: "address" },
+    ],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "vote",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "proposalId", type: "uint256" },
+      { name: "optionIndex", type: "uint16" },
     ],
     outputs: [],
   },

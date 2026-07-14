@@ -14,7 +14,8 @@
     {
       "key": "memberAddress",
       "value": "0xb8163f7d6d404f67a400743b90f7952d2d137b8e"
-    }
+    },
+    { "key": "voteTransactionHash", "value": "" }
   ],
   "item": [
     {
@@ -27,6 +28,17 @@
     {
       "name": "2 - Create proposal draft and prepare transaction",
       "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const startsAt = new Date(Date.now() + 5 * 60 * 1000);",
+              "const endsAt = new Date(startsAt.getTime() + 60 * 60 * 1000);",
+              "pm.collectionVariables.set('startsAt', startsAt.toISOString());",
+              "pm.collectionVariables.set('endsAt', endsAt.toISOString());"
+            ]
+          }
+        },
         {
           "listen": "test",
           "script": {
@@ -55,7 +67,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"daoId\": \"cyber-dao\",\n  \"title\": \"Fund a security audit\",\n  \"purpose\": \"Improve DAO contract safety\",\n  \"description\": \"Approve funding for an independent audit of the DAO contracts.\",\n  \"type\": \"TREASURY\",\n  \"optionLabels\": [\"Approve\", \"Reject\", \"Abstain\"],\n  \"startsAt\": \"2026-08-01T00:00:00.000Z\",\n  \"endsAt\": \"2026-08-08T00:00:00.000Z\",\n  \"metadataURI\": \"ipfs://replace-with-real-cid\",\n  \"metadataHash\": \"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"\n}"
+          "raw": "{\n  \"daoId\": \"cyber-dao\",\n  \"title\": \"Fund a security audit\",\n  \"purpose\": \"Improve DAO contract safety\",\n  \"description\": \"Approve funding for an independent audit of the DAO contracts.\",\n  \"type\": \"TREASURY\",\n  \"optionLabels\": [\"Approve\", \"Reject\", \"Abstain\"],\n  \"startsAt\": \"{{startsAt}}\",\n  \"endsAt\": \"{{endsAt}}\",\n  \"metadataURI\": \"ipfs://replace-with-real-cid\",\n  \"metadataHash\": \"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"\n}"
         },
         "url": "{{baseUrl}}/proposals"
       }
@@ -105,7 +117,53 @@
       }
     },
     {
-      "name": "8 - Unassign member on-chain",
+      "name": "8 - Prepare member vote for wallet signing",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "x-wallet-address", "value": "{{memberAddress}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"optionIndex\": 0\n}" },
+        "url": "{{baseUrl}}/proposals/{{proposalId}}/votes/prepare"
+      }
+    },
+    {
+      "name": "9 - Confirm wallet-submitted vote",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "x-wallet-address", "value": "{{memberAddress}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"transactionHash\": \"{{voteTransactionHash}}\"\n}"
+        },
+        "url": "{{baseUrl}}/proposals/{{proposalId}}/votes/confirm"
+      }
+    },
+    {
+      "name": "10 - List indexed votes from SQLite",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/proposals/{{proposalId}}/votes"
+      }
+    },
+    {
+      "name": "11 - Manually synchronize vote events",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "x-wallet-address", "value": "{{adminAddress}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"full\": false\n}" },
+        "url": "{{baseUrl}}/proposals/sync/votes"
+      }
+    },
+    {
+      "name": "12 - Unassign member on-chain (before voting starts only)",
       "request": {
         "method": "DELETE",
         "header": [{ "key": "x-wallet-address", "value": "{{adminAddress}}" }],
