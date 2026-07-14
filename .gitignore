@@ -11,3 +11,4 @@ Thumbs.db
 .idea/
 data/
 uploads/
+*.tsbuildinfo

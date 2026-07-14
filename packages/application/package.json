@@ -1,0 +1,23 @@
+{
+  "name": "@dao-platform/application",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DAO application use cases and infrastructure ports",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "build": "tsc -b tsconfig.json",
+    "typecheck": "tsc -b tsconfig.json --pretty false",
+    "test": "npm run build && node --test dist/test/create-proposal.use-case.test.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@dao-platform/domain": "0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.7.3"
+  }
+}
