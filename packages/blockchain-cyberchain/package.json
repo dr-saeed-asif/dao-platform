@@ -1,0 +1,22 @@
+{
+  "name": "@dao-platform/blockchain-cyberchain",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CyberChain SDK adapter and deployment tooling",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/test/cyberchain-governance.gateway.test.js",
+    "deploy:governance": "node scripts/deploy-governance.mjs"
+  },
+  "dependencies": {
+    "@dao-platform/application": "0.1.0",
+    "@dao-platform/domain": "0.1.0",
+    "@cyberchain/smart-contract-wrapper": "2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.7.3"
+  }
+}

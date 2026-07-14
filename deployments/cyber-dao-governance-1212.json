@@ -1,0 +1,14 @@
+{
+  "contractName": "CyberDAOGovernance",
+  "address": "0x51b43885899bd0301c2beea89addc9d876145d21",
+  "owner": "0xb8163f7d6d404f67a400743b90f7952d2d137b8e",
+  "networkId": "1212",
+  "transactionHash": "0xf161771c1b4d356ef03b2e18d7ad9202134a45283c66b1a4a7216759cf629ee8",
+  "blockNumber": "15463875",
+  "blockHash": "0x942427bcde6a4b59e71e41925192eb1089ca25bd77ab334b3cb14baa521686ef",
+  "gasUsed": "1413999",
+  "compilerVersion": "0.8.36+commit.8a079791.Emscripten.clang",
+  "evmVersion": "london",
+  "bytecodeSha256": "43d2f0251f3da999086d73d2a550efea0f194385f4345ab14ec4a6fc6935b0b0",
+  "deployedAt": "2026-07-14T11:01:36.612Z"
+}

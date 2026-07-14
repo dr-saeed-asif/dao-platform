@@ -1,0 +1,19 @@
+{
+  "name": "@dao-platform/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CyberChain DAO Solidity contracts, artifacts, and contract tests",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/compile.mjs",
+    "test": "npm run build && node --test test/CyberDAOGovernance.test.mjs"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "5.6.1"
+  },
+  "devDependencies": {
+    "ethers": "6.17.0",
+    "ganache": "7.9.2",
+    "solc": "0.8.36"
+  }
+}
