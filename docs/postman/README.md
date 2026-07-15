@@ -47,6 +47,10 @@ member wallet, and option. Request 10 reads indexed votes from SQLite. Request
 indexer every 30 seconds. Request 12 can unassign a member only before voting
 starts.
 
+The indexer scans at most `VOTE_INDEXER_BLOCK_RANGE` blocks per RPC request
+(default `1000`) and persists its cursor after every batch. Reduce this value
+if your RPC provider enforces a smaller range.
+
 Example browser wallet call using the response from request 8:
 
 ```javascript

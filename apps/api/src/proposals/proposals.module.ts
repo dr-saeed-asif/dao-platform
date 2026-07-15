@@ -287,6 +287,7 @@ import {
           chain,
           database,
           BigInt(config.getOrThrow<number>('GOVERNANCE_DEPLOYMENT_BLOCK')),
+          BigInt(config.getOrThrow<number>('VOTE_INDEXER_BLOCK_RANGE')),
         ),
     },
     {

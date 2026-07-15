@@ -16,6 +16,7 @@ export class SyncVotesUseCase {
     private readonly chain: GovernanceChainGateway,
     private readonly transactionManager: TransactionManager,
     private readonly deploymentBlock: bigint,
+    private readonly maxBlockRange: bigint,
   ) {}
 
   async execute(full = false) {
@@ -30,35 +31,50 @@ export class SyncVotesUseCase {
         toBlock: latest.toString(),
         indexed: 0,
       };
-    const events = await this.chain.findConfirmedVotes(fromBlock, latest);
     let indexed = 0;
-    for (const event of events) {
-      const proposal = await this.proposals.findByOnChainId(
-        event.onChainProposalId,
-      );
-      if (!proposal) continue;
-      const confirmedAt = new Date();
-      await this.transactionManager.runInTransaction(async () => {
-        await this.votes.upsert({
-          proposalId: proposal.id,
-          ...event,
-          confirmedAt,
+    let batches = 0;
+    for (
+      let batchStart = fromBlock;
+      batchStart <= latest;
+      batchStart += this.maxBlockRange
+    ) {
+      const batchEnd = minBigInt(batchStart + this.maxBlockRange - 1n, latest);
+      const events = await this.chain.findConfirmedVotes(batchStart, batchEnd);
+      for (const event of events) {
+        const proposal = await this.proposals.findByOnChainId(
+          event.onChainProposalId,
+        );
+        if (!proposal) continue;
+        const confirmedAt = new Date();
+        await this.transactionManager.runInTransaction(async () => {
+          await this.votes.upsert({
+            proposalId: proposal.id,
+            ...event,
+            confirmedAt,
+          });
+          await this.transactions.record({
+            ...event,
+            operation: "CAST_VOTE",
+            proposalId: proposal.id,
+            walletAddress: event.voterAddress,
+            recordedAt: confirmedAt,
+          });
         });
-        await this.transactions.record({
-          ...event,
-          operation: "CAST_VOTE",
-          proposalId: proposal.id,
-          walletAddress: event.voterAddress,
-          recordedAt: confirmedAt,
-        });
-      });
-      indexed += 1;
+        indexed += 1;
+      }
+      // Persist every successful batch so a later RPC failure resumes here.
+      await this.state.setLastProcessedBlock(INDEXER, batchEnd);
+      batches += 1;
     }
-    await this.state.setLastProcessedBlock(INDEXER, latest);
     return {
       fromBlock: fromBlock.toString(),
       toBlock: latest.toString(),
       indexed,
+      batches,
     };
   }
+}
+
+function minBigInt(left: bigint, right: bigint): bigint {
+  return left < right ? left : right;
 }

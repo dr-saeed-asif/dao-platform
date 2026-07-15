@@ -12,6 +12,7 @@ export const envValidationSchema = Joi.object({
   GOVERNANCE_DEPLOYMENT_BLOCK: Joi.number().integer().min(0).default(0),
   VOTE_INDEXER_ENABLED: Joi.boolean().default(true),
   VOTE_INDEXER_INTERVAL_MS: Joi.number().integer().min(5000).default(30000),
+  VOTE_INDEXER_BLOCK_RANGE: Joi.number().integer().min(1).default(1000),
   DAO_ADMIN_ADDRESS: Joi.string().required(),
   SIGN_MODE: Joi.string().valid('ec-dsa', 'ml-dsa').required(),
   ECDSA_PRIVATE_KEY: Joi.string().required(),
