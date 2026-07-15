@@ -106,6 +106,18 @@ export class SqliteProposalRepository implements ProposalRepository {
       .executeTakeFirstOrThrow();
   }
 
+  async updateStatus(
+    id: string,
+    status: ProposalStatus,
+    updatedAt: Date,
+  ): Promise<void> {
+    await this.database.executor
+      .updateTable("proposals")
+      .set({ status, updated_at: updatedAt.toISOString() })
+      .where("id", "=", id)
+      .executeTakeFirstOrThrow();
+  }
+
   private async hydrate(row: ProposalsTable): Promise<Proposal> {
     const optionRows = await this.database.executor
       .selectFrom("proposal_options")

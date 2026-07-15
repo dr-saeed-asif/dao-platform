@@ -14,6 +14,23 @@ export const CYBER_DAO_GOVERNANCE_WRITE_ABI: ABILike = [
   },
   {
     type: "event",
+    name: "ProposalCancelled",
+    anonymous: false,
+    inputs: [{ indexed: true, name: "proposalId", type: "uint256" }],
+  },
+  {
+    type: "event",
+    name: "ProposalFinalized",
+    anonymous: false,
+    inputs: [
+      { indexed: true, name: "proposalId", type: "uint256" },
+      { indexed: true, name: "winningOption", type: "uint16" },
+      { indexed: false, name: "tied", type: "bool" },
+      { indexed: false, name: "totalVotes", type: "uint32" },
+    ],
+  },
+  {
+    type: "event",
     name: "ProposalCreated",
     anonymous: false,
     inputs: [
@@ -69,6 +86,20 @@ export const CYBER_DAO_GOVERNANCE_WRITE_ABI: ABILike = [
       { name: "proposalId", type: "uint256" },
       { name: "optionIndex", type: "uint16" },
     ],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "cancelProposal",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "proposalId", type: "uint256" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "finalizeProposal",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "proposalId", type: "uint256" }],
     outputs: [],
   },
 ];

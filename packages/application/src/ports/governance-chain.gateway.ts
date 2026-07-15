@@ -49,12 +49,20 @@ export interface GovernanceChainGateway {
     toBlock: bigint,
   ): Promise<readonly ConfirmedVote[]>;
   latestBlockNumber(): Promise<bigint>;
+  cancelProposal(proposalId: string): Promise<ConfirmedChainTransaction>;
+  finalizeProposal(proposalId: string): Promise<ConfirmedFinalization>;
 }
 
 export interface ConfirmedVote extends ConfirmedChainTransaction {
   readonly onChainProposalId: string;
   readonly voterAddress: string;
   readonly optionIndex: number;
+}
+
+export interface ConfirmedFinalization extends ConfirmedChainTransaction {
+  readonly winningOption: number;
+  readonly tied: boolean;
+  readonly totalVotes: number;
 }
 
 export interface ConfirmedChainTransaction {

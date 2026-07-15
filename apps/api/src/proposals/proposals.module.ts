@@ -5,13 +5,16 @@ import { ConfigService } from '@nestjs/config';
 import {
   AssignmentRepository,
   AssignMembersUseCase,
+  CancelProposalUseCase,
   ChainTransactionRepository,
   ConfirmVoteUseCase,
   CreateProposalUseCase,
   GetProposalUseCase,
+  FinalizeProposalUseCase,
   GovernanceChainGateway,
   ListMembersUseCase,
   ListProposalsUseCase,
+  ListTransactionsUseCase,
   ListVotesUseCase,
   PrepareVoteUseCase,
   PublishProposalUseCase,
@@ -258,6 +261,60 @@ import {
       provide: ListVotesUseCase,
       inject: [VOTE_REPOSITORY],
       useFactory: (votes: VoteRepository) => new ListVotesUseCase(votes),
+    },
+    {
+      provide: ListTransactionsUseCase,
+      inject: [CHAIN_TRANSACTION_REPOSITORY],
+      useFactory: (transactions: ChainTransactionRepository) =>
+        new ListTransactionsUseCase(transactions),
+    },
+    {
+      provide: CancelProposalUseCase,
+      inject: [
+        PROPOSAL_REPOSITORY,
+        CHAIN_TRANSACTION_REPOSITORY,
+        GOVERNANCE_GATEWAY,
+        SQLITE_DATABASE,
+        ConfigService,
+      ],
+      useFactory: (
+        proposals: ProposalRepository,
+        transactions: ChainTransactionRepository,
+        chain: GovernanceChainGateway,
+        database: SqliteDatabase,
+        config: ConfigService,
+      ) =>
+        new CancelProposalUseCase(
+          proposals,
+          transactions,
+          ownerAuthorization(config),
+          chain,
+          database,
+        ),
+    },
+    {
+      provide: FinalizeProposalUseCase,
+      inject: [
+        PROPOSAL_REPOSITORY,
+        CHAIN_TRANSACTION_REPOSITORY,
+        GOVERNANCE_GATEWAY,
+        SQLITE_DATABASE,
+        ConfigService,
+      ],
+      useFactory: (
+        proposals: ProposalRepository,
+        transactions: ChainTransactionRepository,
+        chain: GovernanceChainGateway,
+        database: SqliteDatabase,
+        config: ConfigService,
+      ) =>
+        new FinalizeProposalUseCase(
+          proposals,
+          transactions,
+          ownerAuthorization(config),
+          chain,
+          database,
+        ),
     },
     {
       provide: SyncVotesUseCase,

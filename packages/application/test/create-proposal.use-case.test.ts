@@ -65,6 +65,9 @@ class InMemoryProposalRepository implements ProposalRepository {
   async markPublished(): Promise<void> {
     throw new Error("Not used in this test.");
   }
+  async updateStatus(): Promise<void> {
+    throw new Error("Not used in this test.");
+  }
 }
 
 function createSubject(options?: { readonly authorized?: boolean }) {
@@ -106,6 +109,12 @@ function createSubject(options?: { readonly authorized?: boolean }) {
         throw new Error("Not used in this test.");
       },
       async latestBlockNumber() {
+        throw new Error("Not used in this test.");
+      },
+      async cancelProposal() {
+        throw new Error("Not used in this test.");
+      },
+      async finalizeProposal() {
         throw new Error("Not used in this test.");
       },
     },

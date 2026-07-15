@@ -1,4 +1,5 @@
 import type { PreparedTransaction } from "@/lib/api/types";
+import type { WalletAdapter, WalletConnection } from "./types";
 
 interface EthereumProvider {
   request(args: { method: string; params?: unknown[] }): Promise<unknown>;
@@ -96,5 +97,30 @@ export async function submitPreparedTransaction(
     throw new Error(
       `${message} CyberChain mixed-signature transactions may require a compatible wallet.`,
     );
+  }
+}
+
+export class MetaMaskWalletAdapter implements WalletAdapter {
+  async connect(): Promise<WalletConnection> {
+    const address = await connectInjectedWallet();
+    const provider = injectedProvider();
+    const current = provider
+      ? ((await provider.request({ method: "eth_chainId" })) as string)
+      : "0x0";
+    return {
+      kind: "metamask",
+      address,
+      networkName:
+        Number(current) === chainId ? "CyberChain" : `Chain ${Number(current)}`,
+      chainId: Number(current),
+      networkStatus:
+        Number(current) === chainId ? "connected" : "wrong-network",
+    };
+  }
+  submit(transaction: PreparedTransaction) {
+    return submitPreparedTransaction(transaction);
+  }
+  async disconnect(): Promise<void> {
+    /* Injected wallets do not expose programmatic disconnect. */
   }
 }

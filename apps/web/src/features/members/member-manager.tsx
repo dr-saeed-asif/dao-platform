@@ -5,7 +5,13 @@ import { daoApi } from "@/lib/api/client";
 import type { Assignment, Proposal } from "@/lib/api/types";
 import { useWallet } from "@/features/wallet/wallet-provider";
 
-export function MemberManager({ proposal }: { proposal: Proposal }) {
+export function MemberManager({
+  proposal,
+  readOnly = false,
+}: {
+  proposal: Proposal;
+  readOnly?: boolean;
+}) {
   const { address } = useWallet();
   const [members, setMembers] = useState<Assignment[]>([]);
   const [message, setMessage] = useState<string | null>(null);
@@ -50,26 +56,30 @@ export function MemberManager({ proposal }: { proposal: Proposal }) {
         </div>
         <span className="count">{members.length}</span>
       </div>
-      <form className="inline-form" onSubmit={assign}>
-        <input
-          name="member"
-          placeholder="0x member wallet"
-          pattern="0x[0-9a-fA-F]{40}"
-          required
-        />
-        <button className="button button-secondary">Add member</button>
-      </form>
+      {!readOnly && (
+        <form className="inline-form" onSubmit={assign}>
+          <input
+            name="member"
+            placeholder="0x member wallet"
+            pattern="0x[0-9a-fA-F]{40}"
+            required
+          />
+          <button className="button button-secondary">Add member</button>
+        </form>
+      )}
       <div className="member-list">
         {members.length ? (
           members.map((member) => (
             <div className="member-row" key={member.walletAddress}>
               <code>{member.walletAddress}</code>
-              <button
-                onClick={() => void remove(member.walletAddress)}
-                aria-label="Remove member"
-              >
-                Remove
-              </button>
+              {!readOnly && (
+                <button
+                  onClick={() => void remove(member.walletAddress)}
+                  aria-label="Remove member"
+                >
+                  Remove
+                </button>
+              )}
             </div>
           ))
         ) : (

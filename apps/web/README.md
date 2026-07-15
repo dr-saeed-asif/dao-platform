@@ -30,5 +30,17 @@ signing may require a CyberChain-compatible wallet. Replace or extend this
 adapter when that wallet SDK is available; feature components do not need to
 change.
 
+Two adapters are available:
+
+- `MetaMaskWalletAdapter` uses the injected EIP-1193 provider.
+- `CyberChainWalletAdapter` uses the official extension's
+  `window.CyberChainWallet` API, requests hybrid signing, and relays only the
+  resulting signed raw transaction through the allow-listed server RPC route.
+
+The dashboard provides real proposal, assignment, voting, cancellation,
+finalization, indexed-results, and transaction-audit workflows. Contract v1
+does not provide global member activation or arbitrary proposal execution, so
+the UI reports those capability boundaries instead of simulating them.
+
 The current API uses `x-wallet-address` only in development. Production must
 replace it with nonce-based wallet signature authentication.

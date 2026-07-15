@@ -7,27 +7,43 @@ import {
   useMemo,
   useState,
 } from "react";
-import { connectInjectedWallet } from "@/lib/wallet/injected-wallet";
+import { MetaMaskWalletAdapter } from "@/lib/wallet/injected-wallet";
+import { CyberChainWalletAdapter } from "@/lib/wallet/cyberchain-wallet";
+import type {
+  WalletAdapter,
+  WalletConnection,
+  WalletKind,
+} from "@/lib/wallet/types";
 
 interface WalletContextValue {
+  connection: WalletConnection | null;
   address: string | null;
   connecting: boolean;
   error: string | null;
-  connect(): Promise<void>;
-  disconnect(): void;
+  connect(kind: WalletKind): Promise<void>;
+  disconnect(): Promise<void>;
+  submit(
+    transaction: import("@/lib/api/types").PreparedTransaction,
+  ): Promise<string>;
 }
 
 const WalletContext = createContext<WalletContextValue | null>(null);
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
-  const [address, setAddress] = useState<string | null>(null);
+  const [connection, setConnection] = useState<WalletConnection | null>(null);
+  const [adapter, setAdapter] = useState<WalletAdapter | null>(null);
   const [connecting, setConnecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const connect = useCallback(async () => {
+  const connect = useCallback(async (kind: WalletKind) => {
     setConnecting(true);
     setError(null);
     try {
-      setAddress(await connectInjectedWallet());
+      const selected: WalletAdapter =
+        kind === "cyberchain"
+          ? new CyberChainWalletAdapter()
+          : new MetaMaskWalletAdapter();
+      setConnection(await selected.connect());
+      setAdapter(selected);
     } catch (value) {
       setError(
         value instanceof Error ? value.message : "Unable to connect wallet.",
@@ -36,15 +52,30 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       setConnecting(false);
     }
   }, []);
+  const disconnect = useCallback(async () => {
+    await adapter?.disconnect();
+    setConnection(null);
+    setAdapter(null);
+    setError(null);
+  }, [adapter]);
+  const submit = useCallback(
+    async (transaction: import("@/lib/api/types").PreparedTransaction) => {
+      if (!adapter) throw new Error("Connect a wallet first.");
+      return adapter.submit(transaction);
+    },
+    [adapter],
+  );
   const value = useMemo(
     () => ({
-      address,
+      connection,
+      address: connection?.address ?? null,
       connecting,
       error,
       connect,
-      disconnect: () => setAddress(null),
+      disconnect,
+      submit,
     }),
-    [address, connecting, error, connect],
+    [connection, connecting, error, connect, disconnect, submit],
   );
   return (
     <WalletContext.Provider value={value}>{children}</WalletContext.Provider>

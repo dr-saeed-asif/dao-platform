@@ -3,17 +3,18 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ApiError, daoApi } from "@/lib/api/client";
 import type { Proposal, Vote } from "@/lib/api/types";
-import { submitPreparedTransaction } from "@/lib/wallet/injected-wallet";
 import { useWallet } from "@/features/wallet/wallet-provider";
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export function VotingPanel({ proposal }: { proposal: Proposal }) {
-  const { address } = useWallet();
+  const { address, connection, submit } = useWallet();
   const [votes, setVotes] = useState<Vote[]>([]);
   const [selected, setSelected] = useState(0);
   const [message, setMessage] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [transactionHash, setTransactionHash] = useState<string | null>(null);
   const load = useCallback(
     async () => setVotes(await daoApi.listVotes(proposal.id)),
     [proposal.id],
@@ -33,11 +34,14 @@ export function VotingPanel({ proposal }: { proposal: Proposal }) {
     if (!address)
       return setMessage("Connect the assigned member wallet first.");
     setBusy(true);
+    setConfirmOpen(false);
+    setTransactionHash(null);
     setMessage("Preparing your vote…");
     try {
       const prepared = await daoApi.prepareVote(proposal.id, selected, address);
       setMessage("Confirm the transaction in your wallet…");
-      const hash = await submitPreparedTransaction(prepared);
+      const hash = await submit(prepared);
+      setTransactionHash(hash);
       setMessage(`Submitted ${hash.slice(0, 10)}… Waiting for confirmation.`);
       for (let attempt = 0; attempt < 20; attempt += 1) {
         await wait(3_000);
@@ -92,7 +96,11 @@ export function VotingPanel({ proposal }: { proposal: Proposal }) {
       <button
         className="button button-accent full"
         disabled={busy || !proposal.onChainId}
-        onClick={() => void castVote()}
+        onClick={() =>
+          address
+            ? setConfirmOpen(true)
+            : setMessage("Connect the assigned member wallet first.")
+        }
       >
         {busy ? "Processing vote…" : "Sign & cast vote"}
       </button>
@@ -100,6 +108,76 @@ export function VotingPanel({ proposal }: { proposal: Proposal }) {
         The member wallet signs directly. Private keys never reach the DAO API.
       </p>
       {message && <p className="form-message">{message}</p>}
+      {transactionHash && (
+        <div className="transaction-result">
+          <span>Transaction</span>
+          <code>{transactionHash}</code>
+        </div>
+      )}
+      {confirmOpen && (
+        <div
+          className="modal-backdrop"
+          role="presentation"
+          onMouseDown={() => setConfirmOpen(false)}
+        >
+          <div
+            className="modal confirm-modal"
+            role="dialog"
+            aria-modal="true"
+            onMouseDown={(event) => event.stopPropagation()}
+          >
+            <div className="modal-head">
+              <div>
+                <span className="eyebrow">Confirm ballot</span>
+                <h2>Review your vote</h2>
+              </div>
+              <button
+                className="modal-close"
+                onClick={() => setConfirmOpen(false)}
+              >
+                ×
+              </button>
+            </div>
+            <div className="confirmation-summary">
+              <span>
+                <small>Proposal</small>
+                <strong>{proposal.title}</strong>
+              </span>
+              <span>
+                <small>Selected option</small>
+                <strong>
+                  {
+                    proposal.options.find((option) => option.index === selected)
+                      ?.label
+                  }
+                </strong>
+              </span>
+              <span>
+                <small>Connected wallet</small>
+                <code>{address}</code>
+              </span>
+              <span>
+                <small>Network</small>
+                <strong>{connection?.networkName ?? "CyberChain"}</strong>
+              </span>
+            </div>
+            <div className="modal-actions">
+              <button
+                className="button button-ghost"
+                onClick={() => setConfirmOpen(false)}
+              >
+                Go back
+              </button>
+              <button
+                className="button button-primary"
+                onClick={() => void castVote()}
+              >
+                Confirm & sign
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

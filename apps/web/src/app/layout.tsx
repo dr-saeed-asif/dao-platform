@@ -7,7 +7,7 @@ const sans = Manrope({ subsets: ["latin"], variable: "--font-sans" });
 const serif = Newsreader({ subsets: ["latin"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
-  title: "CyberDAO Governance",
+  title: "CyberDAO | Governance Dashboard",
   description: "Proposal, membership, and voting console for CyberChain.",
 };
 

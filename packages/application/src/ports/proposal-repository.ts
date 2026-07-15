@@ -17,4 +17,9 @@ export interface ProposalRepository {
     status: ProposalStatus,
     updatedAt: Date,
   ): Promise<void>;
+  updateStatus(
+    id: string,
+    status: ProposalStatus,
+    updatedAt: Date,
+  ): Promise<void>;
 }

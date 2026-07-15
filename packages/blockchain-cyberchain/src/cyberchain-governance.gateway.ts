@@ -5,6 +5,7 @@ import {
   ConfirmedChainTransaction,
   PublishedProposalTransaction,
   ConfirmedVote,
+  ConfirmedFinalization,
 } from "@dao-platform/application";
 import { ProposalType } from "@dao-platform/domain";
 import {
@@ -171,6 +172,30 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       rpcURL: this.options.rpcURL,
     });
     return block.number;
+  }
+
+  async cancelProposal(proposalId: string): Promise<ConfirmedChainTransaction> {
+    const result = await this.contract.callMutableMethod(
+      "cancelProposal",
+      [proposalId],
+      this.transactionOptions(),
+    );
+    return confirmedTransaction(result.receipt);
+  }
+
+  async finalizeProposal(proposalId: string): Promise<ConfirmedFinalization> {
+    const result = await this.contract.callMutableMethod(
+      "finalizeProposal",
+      [proposalId],
+      this.transactionOptions(),
+    );
+    const event = this.contract.findEvent(result.receipt, "ProposalFinalized");
+    return {
+      ...confirmedTransaction(result.receipt),
+      winningOption: Number(event.parameters[1]),
+      tied: Boolean(event.parameters[2]),
+      totalVotes: Number(event.parameters[3]),
+    };
   }
 
   private transactionOptions() {

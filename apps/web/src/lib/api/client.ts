@@ -4,6 +4,7 @@ import type {
   PreparedTransaction,
   Proposal,
   Vote,
+  ChainTransaction,
 } from "./types";
 
 const baseUrl = "/api/v1";
@@ -58,6 +59,16 @@ export const daoApi = {
       method: "POST",
       headers: actorHeaders(actor),
     }),
+  cancelProposal: (id: string, actor: string) =>
+    request(`/proposals/${id}/cancel`, {
+      method: "POST",
+      headers: actorHeaders(actor),
+    }),
+  finalizeProposal: (id: string, actor: string) =>
+    request(`/proposals/${id}/finalize`, {
+      method: "POST",
+      headers: actorHeaders(actor),
+    }),
   listMembers: (id: string) =>
     request<Assignment[]>(`/proposals/${id}/members`),
   assignMembers: (id: string, members: string[], actor: string) =>
@@ -84,6 +95,8 @@ export const daoApi = {
       body: JSON.stringify({ transactionHash }),
     }),
   listVotes: (id: string) => request<Vote[]>(`/proposals/${id}/votes`),
+  listTransactions: (id: string) =>
+    request<ChainTransaction[]>(`/proposals/${id}/transactions`),
   syncVotes: (actor: string) =>
     request("/proposals/sync/votes", {
       method: "POST",

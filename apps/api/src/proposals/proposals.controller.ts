@@ -14,12 +14,15 @@ import {
 import { ConfigService } from '@nestjs/config';
 import {
   AssignMembersUseCase,
+  CancelProposalUseCase,
   ConfirmVoteUseCase,
   CreateProposalUseCase,
   GetProposalUseCase,
+  FinalizeProposalUseCase,
   ListMembersUseCase,
   ListVotesUseCase,
   ListProposalsUseCase,
+  ListTransactionsUseCase,
   PublishProposalUseCase,
   PrepareVoteUseCase,
   SyncVotesUseCase,
@@ -44,6 +47,9 @@ export class ProposalsController {
     private readonly prepareVote: PrepareVoteUseCase,
     private readonly confirmVote: ConfirmVoteUseCase,
     private readonly listVotes: ListVotesUseCase,
+    private readonly listTransactions: ListTransactionsUseCase,
+    private readonly cancelProposal: CancelProposalUseCase,
+    private readonly finalizeProposal: FinalizeProposalUseCase,
     private readonly syncVotes: SyncVotesUseCase,
     private readonly config: ConfigService,
   ) {}
@@ -95,6 +101,28 @@ export class ProposalsController {
     @Headers('x-wallet-address') walletAddress?: string,
   ) {
     return this.publishProposal.execute(
+      id,
+      this.developmentActor(walletAddress),
+    );
+  }
+
+  @Post(':id/cancel')
+  cancel(
+    @Param('id') id: string,
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    return this.cancelProposal.execute(
+      id,
+      this.developmentActor(walletAddress),
+    );
+  }
+
+  @Post(':id/finalize')
+  finalize(
+    @Param('id') id: string,
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    return this.finalizeProposal.execute(
       id,
       this.developmentActor(walletAddress),
     );
@@ -160,6 +188,11 @@ export class ProposalsController {
   @Get(':id/votes')
   votes(@Param('id') id: string) {
     return this.listVotes.execute(id);
+  }
+
+  @Get(':id/transactions')
+  transactions(@Param('id') id: string) {
+    return this.listTransactions.execute(id);
   }
 
   @Post('sync/votes')
