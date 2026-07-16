@@ -22,6 +22,22 @@ The project demonstrates a maintainable DAO workflow in which:
 It uses clean architecture so domain and application rules do not depend on
 NestJS, SQLite, Next.js, or the CyberChain SDK.
 
+## Screenshots
+
+### Governance dashboard
+
+The administrator dashboard summarizes proposals, active voting periods,
+eligible members, indexed votes, and manual blockchain synchronization.
+
+![CyberDAO governance dashboard](docs/images/governance-dashboard.png)
+
+### Proposal management
+
+The proposal workspace displays on-chain and draft proposals with their
+current governance status, voting options, and deadlines.
+
+![CyberDAO proposal management](docs/images/proposals.png)
+
 ## Main use cases
 
 ### Administrator
