@@ -8,6 +8,7 @@ export type DashboardView =
   | "proposals"
   | "votes"
   | "my-votes"
+  | "decoder"
   | "wallet"
   | "settings";
 const items: { id: DashboardView; label: string; icon: string }[] = [
@@ -16,6 +17,7 @@ const items: { id: DashboardView; label: string; icon: string }[] = [
   { id: "proposals", label: "Proposals", icon: "▤" },
   { id: "votes", label: "Votes", icon: "✓" },
   { id: "my-votes", label: "My Votes", icon: "◎" },
+  { id: "decoder", label: "Decoder", icon: "0x" },
   { id: "wallet", label: "Wallet", icon: "◇" },
   { id: "settings", label: "Settings", icon: "⚙" },
 ];

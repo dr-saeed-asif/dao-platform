@@ -4,6 +4,8 @@ const allowed = new Set([
   "eth_chainId",
   "eth_getRole",
   "eth_getTransactionCount",
+  "eth_getTransactionByHash",
+  "eth_getTransactionReceipt",
   "eth_sendRawTransaction",
 ]);
 

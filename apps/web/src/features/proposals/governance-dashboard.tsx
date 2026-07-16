@@ -8,6 +8,7 @@ import { daoApi } from "@/lib/api/client";
 import type { Assignment, Proposal, Vote } from "@/lib/api/types";
 import { CreateProposalForm } from "./create-proposal-form";
 import { ProposalWorkspace } from "./proposal-workspace";
+import { TransactionDecoder } from "@/features/decoder/transaction-decoder";
 
 interface IndexedAssignment extends Assignment {
   proposalTitle: string;
@@ -173,6 +174,7 @@ export function GovernanceDashboard() {
               }
             />
           )}
+          {active === "decoder" && <TransactionDecoder proposals={proposals} />}
           {active === "wallet" && <WalletView role={role} />}
           {active === "settings" && <SettingsView />}
         </>
@@ -658,11 +660,14 @@ function titleFor(view: DashboardView) {
     proposals: "Proposals",
     votes: "All votes",
     "my-votes": "My votes",
+    decoder: "Transaction decoder",
     wallet: "Wallet",
     settings: "Settings",
   }[view];
 }
 function subtitleFor(view: DashboardView, role: string) {
+  if (view === "decoder")
+    return "Decode CyberChain calldata, receipts and governance events with the contract ABI.";
   return view === "dashboard"
     ? `Welcome back. You are connected as ${role}.`
     : "Transparent, on-chain governance with a fast indexed read model.";
