@@ -107,4 +107,10 @@ export const daoApi = {
       headers: actorHeaders(actor),
       body: JSON.stringify({ full: false }),
     }),
+  syncGovernance: (actor: string, full = false) =>
+    request("/proposals/sync/governance", {
+      method: "POST",
+      headers: actorHeaders(actor),
+      body: JSON.stringify({ full }),
+    }),
 };

@@ -1,6 +1,6 @@
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { SyncVotesUseCase } from '@dao-platform/application';
+import { SyncGovernanceUseCase } from '@dao-platform/application';
 
 @Injectable()
 export class VotingIndexerService implements OnModuleInit, OnModuleDestroy {
@@ -8,7 +8,7 @@ export class VotingIndexerService implements OnModuleInit, OnModuleDestroy {
   private running = false;
 
   constructor(
-    private readonly syncVotes: SyncVotesUseCase,
+    private readonly syncGovernance: SyncGovernanceUseCase,
     private readonly config: ConfigService,
   ) {}
 
@@ -31,9 +31,9 @@ export class VotingIndexerService implements OnModuleInit, OnModuleDestroy {
     if (this.running) return;
     this.running = true;
     try {
-      await this.syncVotes.execute(false);
+      await this.syncGovernance.execute(false);
     } catch (error) {
-      console.error('Vote indexer synchronization failed.', error);
+      console.error('Governance indexer synchronization failed.', error);
     } finally {
       this.running = false;
     }

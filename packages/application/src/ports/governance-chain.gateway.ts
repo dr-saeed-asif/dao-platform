@@ -55,9 +55,24 @@ export interface GovernanceChainGateway {
     fromBlock: bigint,
     toBlock: bigint,
   ): Promise<readonly ConfirmedVote[]>;
+  findGovernanceEvents(
+    fromBlock: bigint,
+    toBlock: bigint,
+  ): Promise<readonly GovernanceChainEvent[]>;
   latestBlockNumber(): Promise<bigint>;
   cancelProposal(proposalId: string): Promise<ConfirmedChainTransaction>;
   finalizeProposal(proposalId: string): Promise<ConfirmedFinalization>;
+}
+
+export type GovernanceChainEvent =
+  | (GovernanceEventBase & { readonly kind: "PROPOSAL_CREATED"; readonly onChainProposalId: string; readonly creatorAddress: string; readonly proposalType: number; readonly metadataHash: string; readonly metadataURI: string; readonly optionCount: number; readonly startsAt: number; readonly endsAt: number })
+  | (GovernanceEventBase & { readonly kind: "MEMBER_ASSIGNED" | "MEMBER_UNASSIGNED"; readonly onChainProposalId: string; readonly memberAddress: string })
+  | (GovernanceEventBase & { readonly kind: "VOTE_CAST"; readonly onChainProposalId: string; readonly voterAddress: string; readonly optionIndex: number })
+  | (GovernanceEventBase & { readonly kind: "PROPOSAL_CANCELLED"; readonly onChainProposalId: string })
+  | (GovernanceEventBase & { readonly kind: "PROPOSAL_FINALIZED"; readonly onChainProposalId: string; readonly winningOption: number; readonly tied: boolean; readonly totalVotes: number });
+
+export interface GovernanceEventBase extends ConfirmedChainTransaction {
+  readonly logIndex: number;
 }
 
 export interface ConfirmedVote extends ConfirmedChainTransaction {

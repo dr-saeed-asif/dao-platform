@@ -25,4 +25,5 @@ export * from "./voting/prepare-vote.use-case.js";
 export * from "./voting/confirm-vote.use-case.js";
 export * from "./voting/list-votes.use-case.js";
 export * from "./voting/sync-votes.use-case.js";
+export * from "./synchronization/sync-governance.use-case.js";
 export * from "./shared/application.error.js";

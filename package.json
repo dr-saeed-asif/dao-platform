@@ -19,6 +19,8 @@
     "typecheck": "npm run typecheck --workspaces --if-present",
     "env:migrate-sdk": "node scripts/migrate-sdk-env.mjs",
     "dev:api": "npm run start:dev --workspace=api",
-    "dev:web": "npm run dev --workspace=@dao-platform/web"
+    "dev:web": "npm run dev --workspace=@dao-platform/web",
+    "db:migrate": "npm run db:migrate --workspace=@dao-platform/database",
+    "db:inspect": "npm run db:inspect --workspace=@dao-platform/database"
   }
 }

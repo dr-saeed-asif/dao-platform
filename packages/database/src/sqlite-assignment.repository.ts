@@ -18,6 +18,12 @@ export class SqliteAssignmentRepository implements AssignmentRepository {
           assigned_at: record.assignedAt.toISOString(),
         })),
       )
+      .onConflict((conflict) =>
+        conflict.columns(["proposal_id", "wallet_address"]).doUpdateSet((eb) => ({
+          transaction_hash: eb.ref("excluded.transaction_hash"),
+          assigned_at: eb.ref("excluded.assigned_at"),
+        })),
+      )
       .execute();
   }
 

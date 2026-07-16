@@ -26,6 +26,7 @@ import {
   PublishProposalUseCase,
   PrepareVoteUseCase,
   SyncVotesUseCase,
+  SyncGovernanceUseCase,
   UnassignMemberUseCase,
 } from '@dao-platform/application';
 import { AssignMembersDto } from './assign-members.dto';
@@ -51,6 +52,7 @@ export class ProposalsController {
     private readonly cancelProposal: CancelProposalUseCase,
     private readonly finalizeProposal: FinalizeProposalUseCase,
     private readonly syncVotes: SyncVotesUseCase,
+    private readonly syncGovernance: SyncGovernanceUseCase,
     private readonly config: ConfigService,
   ) {}
 
@@ -202,6 +204,15 @@ export class ProposalsController {
   ) {
     this.developmentAdmin(walletAddress);
     return this.syncVotes.execute(body.full ?? false);
+  }
+
+  @Post('sync/governance')
+  synchronizeGovernance(
+    @Body() body: SyncVotesDto,
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    this.developmentAdmin(walletAddress);
+    return this.syncGovernance.execute(body.full ?? false);
   }
 
   private developmentAdmin(walletAddress?: string): string {

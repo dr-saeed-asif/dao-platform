@@ -108,6 +108,9 @@ function createSubject(options?: { readonly authorized?: boolean }) {
       async findConfirmedVotes() {
         throw new Error("Not used in this test.");
       },
+      async findGovernanceEvents() {
+        throw new Error("Not used in this test.");
+      },
       async latestBlockNumber() {
         throw new Error("Not used in this test.");
       },

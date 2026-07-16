@@ -7,6 +7,7 @@ import {
   ConfirmedVote,
   ConfirmedFinalization,
   ChainTransactionRevertedError,
+  GovernanceChainEvent,
 } from "@dao-platform/application";
 import { ProposalType } from "@dao-platform/domain";
 import {
@@ -167,6 +168,31 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       if (vote) votes.push(vote);
     }
     return votes;
+  }
+
+  async findGovernanceEvents(fromBlock: bigint, toBlock: bigint) {
+    const events = await this.contract.findEvents(fromBlock, toBlock);
+    const receipts = new Map<string, TransactionReceipt>();
+    const result: GovernanceChainEvent[] = [];
+    for (const event of events) {
+      const hash = toHex(event.log.transactionHash);
+      let receipt = receipts.get(hash);
+      if (!receipt) {
+        const found = await Web3RPCClient.getInstance().getTransactionReceipt(hash, { rpcURL: this.options.rpcURL });
+        if (!found || found.status !== 1n) continue;
+        receipt = found;
+        receipts.set(hash, found);
+      }
+      const base = { ...confirmedTransaction(receipt), logIndex: Number(event.log.logIndex) };
+      const p = event.parameters;
+      if (event.name === "ProposalCreated") result.push({ ...base, kind: "PROPOSAL_CREATED", onChainProposalId: String(p[0]), creatorAddress: String(p[1]).toLowerCase(), proposalType: Number(p[2]), metadataHash: toHex(p[3] as Uint8Array), metadataURI: String(p[4]), optionCount: Number(p[5]), startsAt: Number(p[6]), endsAt: Number(p[7]) });
+      else if (event.name === "MemberAssigned") result.push({ ...base, kind: "MEMBER_ASSIGNED", onChainProposalId: String(p[0]), memberAddress: String(p[1]).toLowerCase() });
+      else if (event.name === "MemberUnassigned") result.push({ ...base, kind: "MEMBER_UNASSIGNED", onChainProposalId: String(p[0]), memberAddress: String(p[1]).toLowerCase() });
+      else if (event.name === "VoteCast") result.push({ ...base, kind: "VOTE_CAST", onChainProposalId: String(p[0]), voterAddress: String(p[1]).toLowerCase(), optionIndex: Number(p[2]) });
+      else if (event.name === "ProposalCancelled") result.push({ ...base, kind: "PROPOSAL_CANCELLED", onChainProposalId: String(p[0]) });
+      else if (event.name === "ProposalFinalized") result.push({ ...base, kind: "PROPOSAL_FINALIZED", onChainProposalId: String(p[0]), winningOption: Number(p[1]), tied: Boolean(p[2]), totalVotes: Number(p[3]) });
+    }
+    return result.sort((a, b) => Number(BigInt(a.blockNumber) - BigInt(b.blockNumber)) || a.logIndex - b.logIndex);
   }
 
   async latestBlockNumber(): Promise<bigint> {

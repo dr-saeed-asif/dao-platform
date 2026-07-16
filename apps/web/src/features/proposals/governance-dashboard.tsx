@@ -203,14 +203,14 @@ function DashboardView({
   const { address } = useWallet();
   const [syncing, setSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
-  async function synchronize() {
+  async function synchronize(full = false) {
     if (!address) return;
     setSyncing(true);
     setSyncMessage(null);
     try {
-      await daoApi.syncVotes(address);
+      await daoApi.syncGovernance(address, full);
       await onSync();
-      setSyncMessage("On-chain activity synchronized into the local database.");
+      setSyncMessage(full ? "Full governance history rebuilt from the deployment block." : "New on-chain governance activity synchronized into the local database.");
     } catch (error) {
       setSyncMessage(
         error instanceof Error ? error.message : "Synchronization failed.",
@@ -252,9 +252,20 @@ function DashboardView({
             <button
               className="button button-secondary"
               disabled={syncing}
-              onClick={() => void synchronize()}
+              onClick={() => void synchronize(false)}
             >
               {syncing ? "Synchronizing…" : "Sync blockchain data"}
+            </button>
+          )}
+          {canAdmin && (
+            <button
+              className="button button-secondary"
+              disabled={syncing}
+              onClick={() => {
+                if (window.confirm("Replay all governance events from the contract deployment block?")) void synchronize(true);
+              }}
+            >
+              Full reindex
             </button>
           )}
         </div>

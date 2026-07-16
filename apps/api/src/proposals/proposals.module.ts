@@ -20,6 +20,7 @@ import {
   PublishProposalUseCase,
   ProposalRepository,
   SyncStateRepository,
+  SyncGovernanceUseCase,
   SyncVotesUseCase,
   UnassignMemberUseCase,
   VoteRepository,
@@ -346,6 +347,20 @@ import {
           BigInt(config.getOrThrow<number>('GOVERNANCE_DEPLOYMENT_BLOCK')),
           BigInt(config.getOrThrow<number>('VOTE_INDEXER_BLOCK_RANGE')),
         ),
+    },
+    {
+      provide: SyncGovernanceUseCase,
+      inject: [PROPOSAL_REPOSITORY, ASSIGNMENT_REPOSITORY, VOTE_REPOSITORY, CHAIN_TRANSACTION_REPOSITORY, SYNC_STATE_REPOSITORY, GOVERNANCE_GATEWAY, SQLITE_DATABASE, ConfigService],
+      useFactory: (
+        proposals: ProposalRepository,
+        assignments: AssignmentRepository,
+        votes: VoteRepository,
+        transactions: ChainTransactionRepository,
+        state: SyncStateRepository,
+        chain: GovernanceChainGateway,
+        database: SqliteDatabase,
+        config: ConfigService,
+      ) => new SyncGovernanceUseCase(proposals, assignments, votes, transactions, state, chain, database, BigInt(config.getOrThrow<number>('GOVERNANCE_DEPLOYMENT_BLOCK')), BigInt(config.getOrThrow<number>('VOTE_INDEXER_BLOCK_RANGE'))),
     },
     {
       provide: GetProposalUseCase,
