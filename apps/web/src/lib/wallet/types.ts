@@ -13,6 +13,7 @@ export interface WalletConnection {
 
 export interface WalletAdapter {
   connect(): Promise<WalletConnection>;
+  restore(): Promise<WalletConnection | null>;
   submit(transaction: PreparedTransaction): Promise<string>;
   disconnect(): Promise<void>;
 }

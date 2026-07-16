@@ -7,7 +7,13 @@ import { useWallet } from "@/features/wallet/wallet-provider";
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export function VotingPanel({ proposal }: { proposal: Proposal }) {
+export function VotingPanel({
+  proposal,
+  onVoteConfirmed,
+}: {
+  proposal: Proposal;
+  onVoteConfirmed?(): void;
+}) {
   const { address, connection, submit } = useWallet();
   const [votes, setVotes] = useState<Vote[]>([]);
   const [selected, setSelected] = useState(0);
@@ -48,6 +54,7 @@ export function VotingPanel({ proposal }: { proposal: Proposal }) {
         try {
           await daoApi.confirmVote(proposal.id, hash, address);
           await load();
+          onVoteConfirmed?.();
           setMessage("Your vote is confirmed and indexed.");
           return;
         } catch (error) {

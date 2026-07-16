@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const allowed = new Set(["eth_getTransactionCount", "eth_sendRawTransaction"]);
+const allowed = new Set([
+  "eth_chainId",
+  "eth_getRole",
+  "eth_getTransactionCount",
+  "eth_sendRawTransaction",
+]);
 
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as {

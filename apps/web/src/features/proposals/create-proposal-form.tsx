@@ -7,7 +7,6 @@ import { useWallet } from "@/features/wallet/wallet-provider";
 interface Props {
   onCreated(): void;
 }
-const hash = `0x${"a".repeat(64)}`;
 const localDate = (minutes: number) => {
   const date = new Date(Date.now() + minutes * 60_000);
   date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
@@ -18,34 +17,86 @@ export function CreateProposalForm({ onCreated }: Props) {
   const { address } = useWallet();
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [options, setOptions] = useState(["Approve", "Reject", "Abstain"]);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!address) return setMessage("Connect the administrator wallet first.");
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const members = String(data.get("members"))
+      .split(/[\s,]+/)
+      .map((value) => value.trim())
+      .filter(Boolean);
+    const invalidMember = members.find(
+      (value) => !/^0x[0-9a-fA-F]{40}$/.test(value),
+    );
+    if (invalidMember) {
+      return setMessage(`Invalid member wallet address: ${invalidMember}`);
+    }
+    if (
+      new Set(members.map((value) => value.toLowerCase())).size !==
+      members.length
+    ) {
+      return setMessage("Each initial member wallet must be unique.");
+    }
+    if (options.filter((value) => value.trim()).length < 2) {
+      return setMessage("Add at least two non-empty voting options.");
+    }
+    const startDate = new Date(String(data.get("startsAt")));
+    const endDate = new Date(String(data.get("endsAt")));
+    if (startDate.getTime() <= Date.now() + 60_000) {
+      return setMessage(
+        "Voting must start at least one minute in the future. Choose a new start time.",
+      );
+    }
+    if (endDate.getTime() <= startDate.getTime()) {
+      return setMessage("Voting end time must be later than its start time.");
+    }
+    const startsAt = startDate.toISOString();
+    const endsAt = endDate.toISOString();
+    const proposalDocument = {
+      schema: "cyberdao.proposal.v1",
+      daoId: String(data.get("daoId")),
+      title: String(data.get("title")),
+      purpose: String(data.get("purpose")),
+      description: String(data.get("description")),
+      type: String(data.get("type")),
+      options: options.map((value) => value.trim()).filter(Boolean),
+      startsAt,
+      endsAt,
+    };
     setBusy(true);
     setMessage(null);
     try {
-      await daoApi.createProposal(
+      const metadata = await createOnChainMetadata(proposalDocument);
+      setMessage("Creating proposal draft…");
+      const created = await daoApi.createProposal(
         {
           daoId: String(data.get("daoId")),
           title: String(data.get("title")),
           purpose: String(data.get("purpose")),
           description: String(data.get("description")),
           type: String(data.get("type")),
-          optionLabels: String(data.get("options"))
-            .split("\n")
-            .map((v) => v.trim())
-            .filter(Boolean),
-          startsAt: new Date(String(data.get("startsAt"))).toISOString(),
-          endsAt: new Date(String(data.get("endsAt"))).toISOString(),
-          metadataURI: String(data.get("metadataURI")),
-          metadataHash: String(data.get("metadataHash")),
+          optionLabels: options.map((value) => value.trim()).filter(Boolean),
+          startsAt,
+          endsAt,
+          metadataURI: metadata.uri,
+          metadataHash: metadata.hash,
         },
         address,
       );
-      event.currentTarget.reset();
+      setMessage("Publishing proposal on CyberChain…");
+      await daoApi.publishProposal(created.proposal.id, address);
+      if (members.length) {
+        setMessage(
+          `Assigning ${members.length} voting member${members.length === 1 ? "" : "s"} on-chain…`,
+        );
+        await daoApi.assignMembers(created.proposal.id, members, address);
+      }
+      form.reset();
+      setOptions(["Approve", "Reject", "Abstain"]);
       setMessage(
-        "Draft created. Select it below to publish and assign members.",
+        "Proposal published and voting members assigned successfully.",
       );
       onCreated();
     } catch (error) {
@@ -61,7 +112,7 @@ export function CreateProposalForm({ onCreated }: Props) {
           <span className="eyebrow">Administrator</span>
           <h2>Create a proposal</h2>
         </div>
-        <span className="step-badge">Step 1</span>
+        <span className="step-badge">Guided setup</span>
       </div>
       <form onSubmit={submit} className="form-grid">
         <label>
@@ -111,6 +162,7 @@ export function CreateProposalForm({ onCreated }: Props) {
             name="startsAt"
             type="datetime-local"
             defaultValue={localDate(10)}
+            min={localDate(1)}
             required
           />
         </label>
@@ -123,38 +175,88 @@ export function CreateProposalForm({ onCreated }: Props) {
             required
           />
         </label>
-        <label>
-          Options, one per line
-          <textarea
-            name="options"
-            defaultValue={"Approve\nReject\nAbstain"}
-            required
-          />
-        </label>
-        <label>
-          Metadata URI
-          <input
-            name="metadataURI"
-            defaultValue="ipfs://replace-with-real-cid"
-            required
-          />
-        </label>
+        <fieldset className="wide proposal-builder-group">
+          <legend>Voting options</legend>
+          <p>Add between 2 and 10 choices members can select on-chain.</p>
+          <div className="builder-list">
+            {options.map((option, index) => (
+              <div className="builder-row" key={index}>
+                <span>{index + 1}</span>
+                <input
+                  aria-label={`Voting option ${index + 1}`}
+                  value={option}
+                  minLength={1}
+                  required
+                  onChange={(event) =>
+                    setOptions((current) =>
+                      current.map((value, itemIndex) =>
+                        itemIndex === index ? event.target.value : value,
+                      ),
+                    )
+                  }
+                />
+                <button
+                  type="button"
+                  className="builder-remove"
+                  disabled={options.length <= 2}
+                  onClick={() =>
+                    setOptions((current) =>
+                      current.filter((_, itemIndex) => itemIndex !== index),
+                    )
+                  }
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="button button-secondary"
+            disabled={options.length >= 10}
+            onClick={() => setOptions((current) => [...current, ""])}
+          >
+            Add voting option
+          </button>
+        </fieldset>
         <label className="wide">
-          Metadata hash
-          <input
-            name="metadataHash"
-            defaultValue={hash}
-            pattern="0x[0-9a-fA-F]{64}"
-            required
-          />
+          Initial voting members
+          <textarea name="members" placeholder={"0x1234…\n0xabcd…"} />
+          <small>
+            Enter wallet addresses separated by a new line, space, or comma.
+            They are assigned on-chain immediately after publishing.
+          </small>
         </label>
+        <div className="wide metadata-notice">
+          <strong>Verifiable proposal metadata</strong>
+          <p>
+            The complete proposal document is encoded into its on-chain metadata
+            URI and protected by a SHA-256 hash. Voting assignments and ballots
+            are recorded as separate contract events.
+          </p>
+        </div>
         <div className="wide form-actions">
           <button className="button button-primary" disabled={busy}>
-            {busy ? "Creating…" : "Create draft"}
+            {busy ? "Publishing workflow…" : "Create, publish & assign members"}
           </button>
           {message && <p className="form-message">{message}</p>}
         </div>
       </form>
     </section>
   );
+}
+
+async function createOnChainMetadata(document: Record<string, unknown>) {
+  const json = JSON.stringify(document);
+  const bytes = new TextEncoder().encode(json);
+  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
+  const hash = `0x${Array.from(digest, (value) => value.toString(16).padStart(2, "0")).join("")}`;
+  let binary = "";
+  bytes.forEach((value) => {
+    binary += String.fromCharCode(value);
+  });
+  return {
+    hash,
+    uri: `data:application/json;base64,${btoa(binary)}`,
+  };
 }

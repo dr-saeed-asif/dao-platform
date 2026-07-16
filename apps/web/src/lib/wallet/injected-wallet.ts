@@ -117,6 +117,27 @@ export class MetaMaskWalletAdapter implements WalletAdapter {
         Number(current) === chainId ? "connected" : "wrong-network",
     };
   }
+  async restore(): Promise<WalletConnection | null> {
+    const provider = injectedProvider();
+    if (!provider) return null;
+    const accounts = (await provider.request({
+      method: "eth_accounts",
+    })) as string[];
+    if (!accounts[0]) return null;
+    await ensureCyberChain(provider);
+    const current = (await provider.request({
+      method: "eth_chainId",
+    })) as string;
+    return {
+      kind: "metamask",
+      address: accounts[0].toLowerCase(),
+      networkName:
+        Number(current) === chainId ? "CyberChain" : `Chain ${Number(current)}`,
+      chainId: Number(current),
+      networkStatus:
+        Number(current) === chainId ? "connected" : "wrong-network",
+    };
+  }
   submit(transaction: PreparedTransaction) {
     return submitPreparedTransaction(transaction);
   }

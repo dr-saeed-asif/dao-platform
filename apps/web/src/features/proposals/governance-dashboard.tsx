@@ -18,7 +18,7 @@ interface IndexedVote extends Vote {
 }
 const adminAddress = (
   process.env.NEXT_PUBLIC_DAO_ADMIN_ADDRESS ??
-  "0xb8163f7d6d404f67a400743b90f7952d2d137b8e"
+  "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b"
 ).toLowerCase();
 const short = (value: string) => `${value.slice(0, 7)}…${value.slice(-5)}`;
 const formatDate = (value: string) =>
@@ -49,7 +49,7 @@ export function GovernanceDashboard() {
   const [assignments, setAssignments] = useState<IndexedAssignment[]>([]);
   const [votes, setVotes] = useState<IndexedVote[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const load = useCallback(async () => {
     setLoading(true);
@@ -93,8 +93,8 @@ export function GovernanceDashboard() {
     }
   }, []);
   useEffect(() => {
-    void load();
-  }, [load]);
+    if (wallet.address) void load();
+  }, [load, wallet.address]);
   const role =
     wallet.address?.toLowerCase() === adminAddress ? "Admin" : "Member";
   const selected = proposals.find((proposal) => proposal.id === selectedId);
@@ -106,6 +106,9 @@ export function GovernanceDashboard() {
   const activeCount = proposals.filter(
     (proposal) => proposalStatus(proposal, votes) === "Active",
   ).length;
+
+  if (wallet.restoring) return <WalletRestoring />;
+  if (!wallet.connection) return <WalletGate />;
 
   return (
     <AppShell
@@ -143,6 +146,8 @@ export function GovernanceDashboard() {
                 setSelectedId(id);
                 setActive("proposals");
               }}
+              canAdmin={role === "Admin"}
+              onSync={load}
             />
           )}
           {active === "members" && <MembersView assignments={assignments} />}
@@ -182,13 +187,36 @@ function DashboardView({
   members,
   activeCount,
   onOpen,
+  canAdmin,
+  onSync,
 }: {
   proposals: Proposal[];
   votes: IndexedVote[];
   members: number;
   activeCount: number;
   onOpen(id: string): void;
+  canAdmin: boolean;
+  onSync(): Promise<void>;
 }) {
+  const { address } = useWallet();
+  const [syncing, setSyncing] = useState(false);
+  const [syncMessage, setSyncMessage] = useState<string | null>(null);
+  async function synchronize() {
+    if (!address) return;
+    setSyncing(true);
+    setSyncMessage(null);
+    try {
+      await daoApi.syncVotes(address);
+      await onSync();
+      setSyncMessage("On-chain activity synchronized into the local database.");
+    } catch (error) {
+      setSyncMessage(
+        error instanceof Error ? error.message : "Synchronization failed.",
+      );
+    } finally {
+      setSyncing(false);
+    }
+  }
   return (
     <>
       <div className="metric-grid">
@@ -218,7 +246,17 @@ function DashboardView({
             <h2>Recent proposals</h2>
             <p>Live governance activity indexed from CyberChain</p>
           </div>
+          {canAdmin && (
+            <button
+              className="button button-secondary"
+              disabled={syncing}
+              onClick={() => void synchronize()}
+            >
+              {syncing ? "Synchronizing…" : "Sync blockchain data"}
+            </button>
+          )}
         </div>
+        {syncMessage && <p className="form-message">{syncMessage}</p>}
         <div className="table-wrap">
           <table>
             <thead>
@@ -271,6 +309,37 @@ function DashboardView({
         )}
       </section>
     </>
+  );
+}
+
+function WalletGate() {
+  return (
+    <main className="wallet-gate">
+      <section className="wallet-gate-card">
+        <span className="brand-symbol">C</span>
+        <span className="eyebrow">CyberChain governance</span>
+        <h1>Connect your wallet to enter CyberDAO</h1>
+        <p>
+          Your connected address determines your DAO role and permissions. The
+          administrator wallet can manage proposals, members, voting, audit
+          activity, and blockchain synchronization.
+        </p>
+        <ConnectWallet />
+        <small>CyberChain network · Chain ID 1212</small>
+      </section>
+    </main>
+  );
+}
+
+function WalletRestoring() {
+  return (
+    <main className="wallet-gate">
+      <section className="wallet-gate-card">
+        <span className="brand-symbol">C</span>
+        <h1>Restoring wallet session</h1>
+        <p>Checking your existing CyberDAO wallet connection…</p>
+      </section>
+    </main>
   );
 }
 

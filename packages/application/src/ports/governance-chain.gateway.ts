@@ -1,5 +1,12 @@
 import { ProposalType } from "@dao-platform/domain";
 
+export class ChainTransactionRevertedError extends Error {
+  constructor() {
+    super("Blockchain transaction reverted.");
+    this.name = "ChainTransactionRevertedError";
+  }
+}
+
 export interface PrepareCreateProposalRequest {
   readonly localProposalId: string;
   readonly daoId: string;

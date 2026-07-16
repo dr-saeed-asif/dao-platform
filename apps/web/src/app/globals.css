@@ -1299,6 +1299,104 @@ td code {
 .text-danger {
   color: #b42318 !important;
 }
+.wallet-gate {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 15% 15%, #dcecff 0, transparent 34%),
+    radial-gradient(circle at 85% 80%, #e8f2ff 0, transparent 30%), #f5f8fd;
+}
+.wallet-gate-card {
+  width: min(560px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px;
+  text-align: center;
+  border: 1px solid #dbe5f4;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 24px 70px rgb(18 55 105 / 12%);
+}
+.wallet-gate-card h1 {
+  margin: 0;
+  color: #102344;
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.05;
+}
+.wallet-gate-card p {
+  max-width: 470px;
+  margin: 0 0 8px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.wallet-gate-card > small {
+  color: var(--muted);
+}
+.proposal-builder-group {
+  min-width: 0;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.proposal-builder-group legend {
+  padding: 0 8px;
+  color: #233b63;
+  font-weight: 800;
+}
+.proposal-builder-group > p,
+.form-grid label > small {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+.builder-list {
+  display: grid;
+  gap: 9px;
+  margin: 12px 0;
+}
+.builder-row {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+.builder-row > span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #1759c7;
+  background: #eaf2ff;
+  font-weight: 800;
+}
+.builder-remove {
+  border: 0;
+  color: #b42318;
+  background: transparent;
+  font-weight: 700;
+}
+.builder-remove:disabled {
+  color: #a8b2c2;
+}
+.metadata-notice {
+  padding: 16px 18px;
+  border: 1px solid #cfe0fa;
+  border-radius: 12px;
+  color: #24446f;
+  background: #f1f7ff;
+}
+.metadata-notice p {
+  margin: 5px 0 0;
+  color: #607493;
+  line-height: 1.55;
+}
 
 @media (max-width: 1100px) {
   .metric-grid {
@@ -1353,6 +1451,9 @@ td code {
   }
 }
 @media (max-width: 520px) {
+  .wallet-gate-card {
+    padding: 34px 20px;
+  }
   .metric-grid {
     grid-template-columns: 1fr 1fr;
     gap: 9px;

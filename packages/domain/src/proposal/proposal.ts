@@ -51,6 +51,13 @@ export class Proposal {
   static create(input: CreateProposalInput): Proposal {
     const now = input.now ?? new Date();
 
+    if (input.startsAt.getTime() <= now.getTime()) {
+      throw new DomainRuleError(
+        "INVALID_VOTING_PERIOD",
+        "Proposal start time must be in the future.",
+      );
+    }
+
     return Proposal.build({
       ...input,
       status: ProposalStatus.Draft,

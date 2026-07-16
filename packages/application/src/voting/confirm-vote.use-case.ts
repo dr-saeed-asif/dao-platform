@@ -1,6 +1,9 @@
 import { WalletAddress } from "@dao-platform/domain";
 import { ChainTransactionRepository } from "../ports/chain-transaction-repository.js";
-import { GovernanceChainGateway } from "../ports/governance-chain.gateway.js";
+import {
+  ChainTransactionRevertedError,
+  GovernanceChainGateway,
+} from "../ports/governance-chain.gateway.js";
 import { ProposalRepository } from "../ports/proposal-repository.js";
 import { TransactionManager } from "../ports/transaction-manager.js";
 import { VoteRepository } from "../ports/vote-repository.js";
@@ -34,7 +37,18 @@ export class ConfirmVoteUseCase {
         "Proposal is not published on-chain.",
       );
     }
-    const confirmed = await this.chain.getConfirmedVote(transactionHash);
+    let confirmed;
+    try {
+      confirmed = await this.chain.getConfirmedVote(transactionHash);
+    } catch (error) {
+      if (error instanceof ChainTransactionRevertedError) {
+        throw new ApplicationError(
+          "TRANSACTION_REVERTED",
+          "Vote transaction was mined but reverted. Verify proposal timing, member assignment, and whether this wallet already voted.",
+        );
+      }
+      throw error;
+    }
     if (!confirmed) {
       throw new ApplicationError(
         "TRANSACTION_NOT_CONFIRMED",

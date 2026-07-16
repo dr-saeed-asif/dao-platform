@@ -6,6 +6,7 @@ import {
   PublishedProposalTransaction,
   ConfirmedVote,
   ConfirmedFinalization,
+  ChainTransactionRevertedError,
 } from "@dao-platform/application";
 import { ProposalType } from "@dao-platform/domain";
 import {
@@ -146,7 +147,8 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       transactionHash,
       { rpcURL: this.options.rpcURL },
     );
-    if (!receipt || receipt.status !== 1n) return null;
+    if (!receipt) return null;
+    if (receipt.status !== 1n) throw new ChainTransactionRevertedError();
     const event = this.contract.findEvent(receipt, "VoteCast");
     if (!event) return null;
     return confirmedVote(receipt, event.parameters);

@@ -47,6 +47,19 @@ describe("Proposal", () => {
     );
   });
 
+  it("rejects a proposal whose voting period starts in the past", () => {
+    assert.throws(
+      () =>
+        Proposal.create({
+          ...validInput,
+          startsAt: new Date("2026-07-13T00:00:00.000Z"),
+        }),
+      (error: unknown) =>
+        error instanceof DomainRuleError &&
+        error.code === "INVALID_VOTING_PERIOD",
+    );
+  });
+
   it("rejects duplicate option labels regardless of case", () => {
     assert.throws(
       () =>

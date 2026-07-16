@@ -123,7 +123,7 @@ export function ProposalWorkspace({
       </div>
       <div className="workflow-grid">
         <MemberManager proposal={proposal} readOnly={!canAdmin} />
-        <VotingPanel proposal={proposal} />
+        <VotingPanel proposal={proposal} onVoteConfirmed={onChanged} />
       </div>
       <section className="dashboard-card audit-card">
         <div className="card-header">
