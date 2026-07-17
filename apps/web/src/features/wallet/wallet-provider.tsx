@@ -31,6 +31,7 @@ interface WalletContextValue {
 
 const WalletContext = createContext<WalletContextValue | null>(null);
 const walletSessionKey = "cyberdao.wallet.kind";
+const walletConnectionKey = "cyberdao.wallet.connection.v1";
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [connection, setConnection] = useState<WalletConnection | null>(null);
@@ -46,9 +47,14 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         kind === "cyberchain"
           ? new CyberChainWalletAdapter()
           : new MetaMaskWalletAdapter();
-      setConnection(await selected.connect());
+      const connected = await selected.connect();
+      setConnection(connected);
       setAdapter(selected);
       window.localStorage.setItem(walletSessionKey, kind);
+      window.localStorage.setItem(
+        walletConnectionKey,
+        JSON.stringify(connected),
+      );
     } catch (value) {
       setError(
         value instanceof Error ? value.message : "Unable to connect wallet.",
@@ -61,24 +67,33 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     let active = true;
     async function restoreSession() {
       try {
-        const kind = window.localStorage.getItem(
-          walletSessionKey,
-        ) as WalletKind | null;
+        const cached = cachedConnection();
+        const kind = (cached?.kind ??
+          window.localStorage.getItem(walletSessionKey)) as WalletKind | null;
         if (kind !== "cyberchain" && kind !== "metamask") return;
         const selected: WalletAdapter =
           kind === "cyberchain"
             ? new CyberChainWalletAdapter()
             : new MetaMaskWalletAdapter();
-        const restored = await selected.restore();
+        // A cached connection contains only public information. Restoring it
+        // avoids extension permission prompts on every page refresh. Signing
+        // still verifies the live provider account and network.
+        const restored = cached ?? (await selected.restore());
         if (!active) return;
         if (restored) {
           setConnection(restored);
           setAdapter(selected);
+          window.localStorage.setItem(
+            walletConnectionKey,
+            JSON.stringify(restored),
+          );
         } else {
           window.localStorage.removeItem(walletSessionKey);
+          window.localStorage.removeItem(walletConnectionKey);
         }
       } catch {
         window.localStorage.removeItem(walletSessionKey);
+        window.localStorage.removeItem(walletConnectionKey);
       } finally {
         if (active) setRestoring(false);
       }
@@ -89,11 +104,15 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
   const disconnect = useCallback(async () => {
-    await adapter?.disconnect();
-    setConnection(null);
-    setAdapter(null);
-    setError(null);
-    window.localStorage.removeItem(walletSessionKey);
+    try {
+      await adapter?.disconnect();
+    } finally {
+      setConnection(null);
+      setAdapter(null);
+      setError(null);
+      window.localStorage.removeItem(walletSessionKey);
+      window.localStorage.removeItem(walletConnectionKey);
+    }
   }, [adapter]);
   const submit = useCallback(
     async (transaction: import("@/lib/api/types").PreparedTransaction) => {
@@ -118,6 +137,34 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   return (
     <WalletContext.Provider value={value}>{children}</WalletContext.Provider>
   );
+}
+
+function cachedConnection(): WalletConnection | null {
+  const serialized = window.localStorage.getItem(walletConnectionKey);
+  if (!serialized) return null;
+  try {
+    const value = JSON.parse(serialized) as Partial<WalletConnection>;
+    if (
+      (value.kind !== "cyberchain" && value.kind !== "metamask") ||
+      typeof value.address !== "string" ||
+      !/^0x[0-9a-fA-F]{40}$/.test(value.address) ||
+      typeof value.networkName !== "string" ||
+      typeof value.chainId !== "number" ||
+      (value.networkStatus !== "connected" &&
+        value.networkStatus !== "wrong-network" &&
+        value.networkStatus !== "disconnected")
+    )
+      return null;
+    return {
+      kind: value.kind,
+      address: value.address.toLowerCase(),
+      networkName: value.networkName,
+      chainId: value.chainId,
+      networkStatus: value.networkStatus,
+    };
+  } catch {
+    return null;
+  }
 }
 
 export function useWallet() {
