@@ -7,6 +7,7 @@ import { useWallet } from "@/features/wallet/wallet-provider";
 import { MemberManager } from "@/features/members/member-manager";
 import { VotingPanel } from "@/features/voting/voting-panel";
 import type { ChainTransaction } from "@/lib/api/types";
+import { CopyableHash } from "@/components/copy-value-button";
 
 const date = (value: string) =>
   new Intl.DateTimeFormat("en", {
@@ -162,9 +163,10 @@ export function ProposalWorkspace({
                   <td>{transaction.blockNumber}</td>
                   <td>{transaction.gasUsed}</td>
                   <td>
-                    <code title={transaction.transactionHash}>
-                      {transaction.transactionHash.slice(0, 10)}…
-                    </code>
+                    <CopyableHash
+                      value={transaction.transactionHash}
+                      display={`${transaction.transactionHash.slice(0, 10)}…`}
+                    />
                   </td>
                   <td>{date(transaction.recordedAt)}</td>
                 </tr>

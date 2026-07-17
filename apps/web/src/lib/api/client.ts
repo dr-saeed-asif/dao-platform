@@ -113,4 +113,9 @@ export const daoApi = {
       headers: actorHeaders(actor),
       body: JSON.stringify({ full }),
     }),
+  clearGovernanceData: (actor: string) =>
+    request("/proposals/sync/clear-local", {
+      method: "POST",
+      headers: actorHeaders(actor),
+    }),
 };

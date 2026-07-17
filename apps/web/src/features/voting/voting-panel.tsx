@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { ApiError, daoApi } from "@/lib/api/client";
 import type { Proposal, Vote } from "@/lib/api/types";
 import { useWallet } from "@/features/wallet/wallet-provider";
+import { CopyableHash } from "@/components/copy-value-button";
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -118,7 +119,7 @@ export function VotingPanel({
       {transactionHash && (
         <div className="transaction-result">
           <span>Transaction</span>
-          <code>{transactionHash}</code>
+          <CopyableHash value={transactionHash} />
         </div>
       )}
       {confirmOpen && (

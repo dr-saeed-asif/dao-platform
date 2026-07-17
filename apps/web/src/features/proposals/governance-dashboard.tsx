@@ -2,6 +2,10 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AppShell, type DashboardView } from "@/components/app-shell";
+import {
+  CopyableHash,
+  CopyValueButton,
+} from "@/components/copy-value-button";
 import { ConnectWallet } from "@/features/wallet/connect-wallet";
 import { useWallet } from "@/features/wallet/wallet-provider";
 import { daoApi } from "@/lib/api/client";
@@ -151,7 +155,9 @@ export function GovernanceDashboard() {
               onSync={load}
             />
           )}
-          {active === "members" && <MembersView assignments={assignments} />}
+          {active === "members" && (
+            <MembersView assignments={assignments} votes={votes} />
+          )}
           {active === "proposals" && (
             <ProposalsView
               proposals={proposals}
@@ -219,6 +225,36 @@ function DashboardView({
       setSyncing(false);
     }
   }
+  async function clearLocalData() {
+    if (!address) return;
+    if (
+      !window.confirm(
+        "Delete every local proposal, assignment, vote and transaction from SQLite? CyberChain will not be changed.",
+      )
+    )
+      return;
+    if (
+      window.prompt(
+        'Type DELETE LOCAL DATA to confirm. Confirmed records remain recoverable with "Full reindex".',
+      ) !== "DELETE LOCAL DATA"
+    )
+      return;
+    setSyncing(true);
+    setSyncMessage(null);
+    try {
+      await daoApi.clearGovernanceData(address);
+      await onSync();
+      setSyncMessage(
+        'Local SQLite governance data deleted. Click "Full reindex" to rebuild it from CyberChain.',
+      );
+    } catch (error) {
+      setSyncMessage(
+        error instanceof Error ? error.message : "Local data deletion failed.",
+      );
+    } finally {
+      setSyncing(false);
+    }
+  }
   return (
     <>
       <div className="metric-grid">
@@ -248,7 +284,7 @@ function DashboardView({
             <h2>Recent proposals</h2>
             <p>Live governance activity indexed from CyberChain</p>
           </div>
-          {canAdmin && (
+          {/* {canAdmin && (
             <button
               className="button button-secondary"
               disabled={syncing}
@@ -256,7 +292,7 @@ function DashboardView({
             >
               {syncing ? "Synchronizing…" : "Sync blockchain data"}
             </button>
-          )}
+          )} */}
           {canAdmin && (
             <button
               className="button button-secondary"
@@ -266,6 +302,15 @@ function DashboardView({
               }}
             >
               Full reindex
+            </button>
+          )}
+          {canAdmin && (
+            <button
+              className="button button-danger"
+              disabled={syncing}
+              onClick={() => void clearLocalData()}
+            >
+              Delete local data
             </button>
           )}
         </div>
@@ -417,7 +462,32 @@ function ProposalsView({
   );
 }
 
-function MembersView({ assignments }: { assignments: IndexedAssignment[] }) {
+function MembersView({
+  assignments,
+  votes,
+}: {
+  assignments: IndexedAssignment[];
+  votes: IndexedVote[];
+}) {
+  const members = Array.from(
+    assignments.reduce((grouped, assignment) => {
+      const address = assignment.walletAddress.toLowerCase();
+      const existing = grouped.get(address) ?? [];
+      existing.push(assignment);
+      grouped.set(address, existing);
+      return grouped;
+    }, new Map<string, IndexedAssignment[]>()),
+  ).map(([walletAddress, memberAssignments]) => ({
+    walletAddress,
+    assignments: memberAssignments,
+    votes: votes.filter(
+      (vote) => vote.voterAddress.toLowerCase() === walletAddress,
+    ),
+  }));
+  const explorerBase =
+    process.env.NEXT_PUBLIC_CYBERCHAIN_EXPLORER_URL ??
+    "https://cyberchain.bisite.es";
+
   return (
     <section className="dashboard-card">
       <div className="card-header">
@@ -433,37 +503,80 @@ function MembersView({ assignments }: { assignments: IndexedAssignment[] }) {
           wallets
         </span>
       </div>
-      <div className="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Wallet</th>
-              <th>Proposal</th>
-              <th>Status</th>
-              <th>Assigned</th>
-              <th>Transaction</th>
-            </tr>
-          </thead>
-          <tbody>
-            {assignments.map((item) => (
-              <tr key={`${item.proposalId}-${item.walletAddress}`}>
-                <td>
-                  <code>{short(item.walletAddress)}</code>
-                </td>
-                <td>{item.proposalTitle}</td>
-                <td>
-                  <StatusBadge status="Active" />
-                </td>
-                <td>{formatDate(item.assignedAt)}</td>
-                <td>
-                  <code title={item.transactionHash}>
-                    {short(item.transactionHash)}
-                  </code>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="member-directory">
+        {members.map((member) => (
+          <article className="member-directory-card" key={member.walletAddress}>
+            <div className="member-wallet-header">
+              <div>
+                <span>Member wallet address</span>
+                <code>{member.walletAddress}</code>
+              </div>
+              <div className="member-wallet-actions">
+                <CopyValueButton
+                  value={member.walletAddress}
+                  label="Copy wallet address"
+                />
+                <a
+                  className="wallet-view-link"
+                  href={`${explorerBase}/accounts/${member.walletAddress}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View on explorer ↗
+                </a>
+              </div>
+            </div>
+            <details className="member-participation">
+              <summary>
+                <span>
+                  Assigned to {member.assignments.length} proposal
+                  {member.assignments.length === 1 ? "" : "s"}
+                </span>
+                <span>
+                  Participated in {member.votes.length}
+                </span>
+              </summary>
+              <div className="member-proposal-list">
+                {member.assignments.map((assignment) => {
+                  const vote = member.votes.find(
+                    (item) => item.proposalId === assignment.proposalId,
+                  );
+                  return (
+                    <div
+                      className="member-proposal-row"
+                      key={`${member.walletAddress}-${assignment.proposalId}`}
+                    >
+                      <div>
+                        <strong>{assignment.proposalTitle}</strong>
+                        <small>
+                          Assigned {formatDate(assignment.assignedAt)}
+                        </small>
+                      </div>
+                      <span
+                        className={
+                          vote
+                            ? "member-participation-status voted"
+                            : "member-participation-status"
+                        }
+                      >
+                        {vote ? `Voted: ${vote.optionLabel}` : "Assigned only"}
+                      </span>
+                      <CopyableHash
+                        value={
+                          vote?.transactionHash ?? assignment.transactionHash
+                        }
+                        display={short(
+                          vote?.transactionHash ??
+                            assignment.transactionHash,
+                        )}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </details>
+          </article>
+        ))}
       </div>
       {!assignments.length && (
         <EmptyState
@@ -521,9 +634,10 @@ function VotesView({
                 </td>
                 <td>{vote.blockNumber}</td>
                 <td>
-                  <code title={vote.transactionHash}>
-                    {short(vote.transactionHash)}
-                  </code>
+                  <CopyableHash
+                    value={vote.transactionHash}
+                    display={short(vote.transactionHash)}
+                  />
                 </td>
                 <td>{formatDate(vote.confirmedAt)}</td>
               </tr>

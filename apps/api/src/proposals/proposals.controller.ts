@@ -15,6 +15,7 @@ import { ConfigService } from '@nestjs/config';
 import {
   AssignMembersUseCase,
   CancelProposalUseCase,
+  ClearGovernanceDataUseCase,
   ConfirmVoteUseCase,
   CreateProposalUseCase,
   GetProposalUseCase,
@@ -53,6 +54,7 @@ export class ProposalsController {
     private readonly finalizeProposal: FinalizeProposalUseCase,
     private readonly syncVotes: SyncVotesUseCase,
     private readonly syncGovernance: SyncGovernanceUseCase,
+    private readonly clearGovernanceData: ClearGovernanceDataUseCase,
     private readonly config: ConfigService,
   ) {}
 
@@ -213,6 +215,14 @@ export class ProposalsController {
   ) {
     this.developmentAdmin(walletAddress);
     return this.syncGovernance.execute(body.full ?? false);
+  }
+
+  @Post('sync/clear-local')
+  clearLocalGovernanceData(
+    @Headers('x-wallet-address') walletAddress?: string,
+  ) {
+    this.developmentAdmin(walletAddress);
+    return this.clearGovernanceData.execute();
   }
 
   private developmentAdmin(walletAddress?: string): string {

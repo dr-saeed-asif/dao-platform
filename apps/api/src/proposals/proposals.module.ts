@@ -6,6 +6,7 @@ import {
   AssignmentRepository,
   AssignMembersUseCase,
   CancelProposalUseCase,
+  ClearGovernanceDataUseCase,
   ChainTransactionRepository,
   ConfirmVoteUseCase,
   CreateProposalUseCase,
@@ -361,6 +362,15 @@ import {
         database: SqliteDatabase,
         config: ConfigService,
       ) => new SyncGovernanceUseCase(proposals, assignments, votes, transactions, state, chain, database, BigInt(config.getOrThrow<number>('GOVERNANCE_DEPLOYMENT_BLOCK')), BigInt(config.getOrThrow<number>('VOTE_INDEXER_BLOCK_RANGE'))),
+    },
+    {
+      provide: ClearGovernanceDataUseCase,
+      inject: [SQLITE_DATABASE, SYNC_STATE_REPOSITORY, GOVERNANCE_GATEWAY],
+      useFactory: (
+        database: SqliteDatabase,
+        state: SyncStateRepository,
+        chain: GovernanceChainGateway,
+      ) => new ClearGovernanceDataUseCase(database, state, chain),
     },
     {
       provide: GetProposalUseCase,

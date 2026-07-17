@@ -10,7 +10,10 @@ import {
   SqliteDialect,
   Transaction,
 } from "kysely";
-import { TransactionManager } from "@dao-platform/application";
+import {
+  GovernanceReadModelReset,
+  TransactionManager,
+} from "@dao-platform/application";
 import { DatabaseSchema } from "./database-schema.js";
 import * as initialMigration from "./migrations/initial.migration.js";
 import * as governanceRecordsMigration from "./migrations/governance-records.migration.js";
@@ -26,7 +29,9 @@ class StaticMigrationProvider implements MigrationProvider {
   }
 }
 
-export class SqliteDatabase implements TransactionManager {
+export class SqliteDatabase
+  implements TransactionManager, GovernanceReadModelReset
+{
   private readonly context = new AsyncLocalStorage<
     Transaction<DatabaseSchema>
   >();
@@ -66,6 +71,18 @@ export class SqliteDatabase implements TransactionManager {
 
   async destroy(): Promise<void> {
     await this.db.destroy();
+  }
+
+  async clearGovernanceData(): Promise<void> {
+    await this.runInTransaction(async () => {
+      const executor = this.executor;
+      await executor.deleteFrom("votes").execute();
+      await executor.deleteFrom("chain_transactions").execute();
+      await executor.deleteFrom("proposal_assignments").execute();
+      await executor.deleteFrom("proposal_options").execute();
+      await executor.deleteFrom("proposals").execute();
+      await executor.deleteFrom("indexer_state").execute();
+    });
   }
 }
 
