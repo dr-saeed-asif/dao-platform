@@ -5,6 +5,7 @@ import { HealthModule } from './health/health.module';
 import { ProposalsModule } from './proposals/proposals.module';
 import { PostgresModule } from './database/postgres.module';
 import { ResearchModule } from './research/research.module';
+import { AiModule } from './ai/ai.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ResearchModule } from './research/research.module';
     PostgresModule,
     ResearchModule,
     ProposalsModule,
+    AiModule,
   ],
 })
 export class AppModule {}

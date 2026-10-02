@@ -283,6 +283,21 @@ export interface OperationalIndexerCheckpointsTable {
   updated_at: PostgresTimestamp;
 }
 
+interface DocumentChunksTable {
+  id: Generated<string>;
+  evidence_id: string;
+  artefact_id: string;
+  proposal_id: PostgresNumeric | null;
+  chunk_index: number;
+  content: string;
+  metadata: PostgresJson;
+  embedding: ColumnType<number[], string, string>;
+  embedding_model: string;
+  embedding_dimension: number;
+  chunking_version: string;
+  created_at: GeneratedPostgresTimestamp;
+}
+
 export interface PostgresDatabaseSchema {
   proposal_artefacts: { proposal_id: string; evidence_id: string; creation_evidence_id: string; created_at: GeneratedPostgresTimestamp };
   dataset_versions: DatasetVersionsTable;
@@ -302,4 +317,5 @@ export interface PostgresDatabaseSchema {
   votes: OperationalVotesTable;
   chain_transactions: OperationalChainTransactionsTable;
   indexer_checkpoints: OperationalIndexerCheckpointsTable;
+  document_chunks: DocumentChunksTable;
 }

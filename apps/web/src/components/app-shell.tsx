@@ -10,7 +10,8 @@ export type DashboardView =
   | "my-votes"
   | "decoder"
   | "wallet"
-  | "settings";
+  | "settings"
+  | "ai";
 const items: { id: DashboardView; label: string; icon: string }[] = [
   { id: "dashboard", label: "Dashboard", icon: "▦" },
   { id: "members", label: "Members", icon: "♙" },
@@ -20,6 +21,7 @@ const items: { id: DashboardView; label: string; icon: string }[] = [
   { id: "decoder", label: "Decoder", icon: "0x" },
   { id: "wallet", label: "Wallet", icon: "◇" },
   { id: "settings", label: "Settings", icon: "⚙" },
+  { id: "ai", label: "AI Assistant", icon: "🤖" },
 ];
 
 export function AppShell({

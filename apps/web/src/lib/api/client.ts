@@ -6,6 +6,9 @@ import type {
   Vote,
   ChainTransaction,
   Artefact,
+  AiQueryRequest,
+  AiQueryResponse,
+  AiHealthResponse,
 } from "./types";
 
 const baseUrl = "/api/v1";
@@ -132,4 +135,7 @@ export const daoApi = {
       method: "POST",
       headers: actorHeaders(actor),
     }),
+  aiHealth: () => request<AiHealthResponse>("/ai/health"),
+  aiQuery: (input: AiQueryRequest) =>
+    request<AiQueryResponse>("/ai/query", { method: "POST", body: JSON.stringify(input) }),
 };

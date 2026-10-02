@@ -13,6 +13,7 @@ import type { Assignment, Proposal, Vote } from "@/lib/api/types";
 import { CreateProposalForm } from "./create-proposal-form";
 import { ProposalWorkspace } from "./proposal-workspace";
 import { TransactionDecoder } from "@/features/decoder/transaction-decoder";
+import { AiPanel } from "@/features/ai/ai-panel";
 
 interface IndexedAssignment extends Assignment {
   proposalTitle: string;
@@ -180,9 +181,10 @@ export function GovernanceDashboard() {
               }
             />
           )}
-          {active === "decoder" && <TransactionDecoder proposals={proposals} />}
-          {active === "wallet" && <WalletView role={role} />}
-          {active === "settings" && <SettingsView />}
+{active === "decoder" && <TransactionDecoder proposals={proposals} />}
+      {active === "wallet" && <WalletView role={role} />}
+      {active === "settings" && <SettingsView />}
+      {active === "ai" && <AiPanel proposals={proposals} />}
         </>
       )}
     </AppShell>
@@ -788,6 +790,7 @@ function titleFor(view: DashboardView) {
     decoder: "Transaction decoder",
     wallet: "Wallet",
     settings: "Settings",
+    ai: "AI Assistant",
   }[view];
 }
 function subtitleFor(view: DashboardView, role: string) {
