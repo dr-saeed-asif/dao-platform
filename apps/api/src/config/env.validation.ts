@@ -5,7 +5,13 @@ export const envValidationSchema = Joi.object({
     .valid('development', 'test', 'production')
     .default('development'),
   PORT: Joi.number().port().default(3000),
-  DATABASE_URL: Joi.string().required(),
+  DATABASE_URL: Joi.string().optional(),
+  POSTGRES_URL: Joi.string()
+    .uri({ scheme: ['postgres', 'postgresql'] })
+    .required(),
+  ARTEFACT_STORAGE_DIR: Joi.string().default('../../data/artefacts'),
+  ARTEFACT_MAX_FILE_SIZE: Joi.number().integer().min(1).default(10_485_760),
+  ARTEFACT_MAX_FILES: Joi.number().integer().min(1).max(20).default(10),
   CYBERCHAIN_RPC_URL: Joi.string().allow('').optional(),
   CYBERCHAIN_CHAIN_ID: Joi.string().allow('').optional(),
   GOVERNANCE_CONTRACT_ADDRESS: Joi.string().allow('').optional(),

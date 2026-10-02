@@ -12,6 +12,7 @@
     "packages/*"
   ],
   "scripts": {
+    "db:import-sqlite": "npm run db:import-sqlite --workspace=@dao-platform/database --",
     "build": "npm run build:packages && npm run build --workspace=api && npm run build --workspace=@dao-platform/web",
     "build:packages": "npm run build --workspace=@dao-platform/domain && npm run build --workspace=@dao-platform/application && npm run build --workspace=@dao-platform/blockchain-cyberchain && npm run build --workspace=@dao-platform/database && npm run build --workspace=@dao-platform/contracts",
     "test": "npm run build && npm run test --workspaces --if-present",

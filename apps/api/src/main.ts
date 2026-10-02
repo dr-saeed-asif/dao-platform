@@ -6,6 +6,7 @@ import {
 } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
 import { configureApp } from './configure-app';
+import multipart from '@fastify/multipart';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -16,6 +17,12 @@ async function bootstrap(): Promise<void> {
   const port = configService.getOrThrow<number>('PORT');
 
   configureApp(app);
+  await app.register(multipart, {
+    limits: {
+      files: configService.get<number>('ARTEFACT_MAX_FILES', 10),
+      fileSize: configService.get<number>('ARTEFACT_MAX_FILE_SIZE', 10_485_760),
+    },
+  });
   app.enableShutdownHooks();
 
   await app.listen(port, '0.0.0.0');

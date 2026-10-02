@@ -47,7 +47,7 @@ export class CreateProposalDto {
   endsAt!: string;
 
   @IsString()
-  @MaxLength(2048)
+  @MaxLength(65_536)
   metadataURI!: string;
 
   @Matches(/^0x[0-9a-fA-F]{64}$/)

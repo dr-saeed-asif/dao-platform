@@ -14,10 +14,11 @@ const localDate = (minutes: number) => {
 };
 
 export function CreateProposalForm({ onCreated }: Props) {
-  const { address } = useWallet();
+  const { address, submit: submitTransaction } = useWallet();
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [options, setOptions] = useState(["Approve", "Reject", "Abstain"]);
+  const [files, setFiles] = useState<File[]>([]);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!address) return setMessage("Connect the administrator wallet first.");
@@ -42,6 +43,9 @@ export function CreateProposalForm({ onCreated }: Props) {
     if (options.filter((value) => value.trim()).length < 2) {
       return setMessage("Add at least two non-empty voting options.");
     }
+    if (files.length > 10 || files.some(file => !/\.(pdf|txt|md|json)$/i.test(file.name) || file.size === 0 || file.size > 10_485_760)) {
+      return setMessage("Attach up to 10 non-empty PDF, TXT, MD, or JSON files, at most 10 MB each.");
+    }
     const startDate = new Date(String(data.get("startsAt")));
     const endDate = new Date(String(data.get("endsAt")));
     if (startDate.getTime() <= Date.now() + 60_000) {
@@ -54,21 +58,21 @@ export function CreateProposalForm({ onCreated }: Props) {
     }
     const startsAt = startDate.toISOString();
     const endsAt = endDate.toISOString();
-    const proposalDocument = {
-      schema: "cyberdao.proposal.v1",
-      daoId: String(data.get("daoId")),
-      title: String(data.get("title")),
-      purpose: String(data.get("purpose")),
-      description: String(data.get("description")),
-      type: String(data.get("type")),
-      options: options.map((value) => value.trim()).filter(Boolean),
-      startsAt,
-      endsAt,
-    };
     setBusy(true);
     setMessage(null);
+    let evidenceIds: string[] = [];
+    let published = false;
     try {
-      const metadata = await createOnChainMetadata(proposalDocument);
+      if (files.length) {
+        setMessage(`Staging ${files.length} document${files.length === 1 ? "" : "s"}…`);
+        const staged = await daoApi.stageArtefacts(files);
+        evidenceIds = staged.items.map((item) => item.evidence_id);
+      }
+      const cleanOptions = options.map((value) => value.trim()).filter(Boolean);
+      const metadata = await daoApi.createManifest({
+        daoId:String(data.get("daoId")), title:String(data.get("title")), purpose:String(data.get("purpose")), description:String(data.get("description")),
+        proposalType:String(data.get("type")), options:cleanOptions, startsAt, endsAt, evidenceIds,
+      });
       setMessage("Creating proposal draft…");
       const created = await daoApi.createProposal(
         {
@@ -77,16 +81,31 @@ export function CreateProposalForm({ onCreated }: Props) {
           purpose: String(data.get("purpose")),
           description: String(data.get("description")),
           type: String(data.get("type")),
-          optionLabels: options.map((value) => value.trim()).filter(Boolean),
+          optionLabels: cleanOptions,
           startsAt,
           endsAt,
-          metadataURI: metadata.uri,
-          metadataHash: metadata.hash,
+          metadataURI: metadata.metadataURI,
+          metadataHash: metadata.metadataHash,
         },
         address,
       );
-      setMessage("Publishing proposal on CyberChain…");
-      await daoApi.publishProposal(created.proposal.id, address);
+      if (evidenceIds.length) await daoApi.setArtefactState(evidenceIds, "PENDING_CHAIN");
+      setMessage("Confirm proposal creation in your wallet…");
+      const transactionHash = await submitTransaction(created.transaction);
+      published = true;
+      setMessage(`Waiting for ProposalCreated and indexing ${transactionHash}…`);
+      let indexed = false;
+      for (let attempt = 0; attempt < 60; attempt++) {
+        await daoApi.syncGovernance(address);
+        const proposal = await daoApi.getProposal(created.proposal.id);
+        if (proposal.onChainId) { indexed = true; break; }
+        await new Promise(resolve => setTimeout(resolve, 2_000));
+      }
+      if (!indexed) throw new Error(`Transaction ${transactionHash} submitted; creation is awaiting indexing. Documents remain pending.`);
+      if (evidenceIds.length) {
+        setMessage("Verifying and linking proposal documents…");
+        await daoApi.linkArtefacts(created.proposal.id, evidenceIds);
+      }
       if (members.length) {
         setMessage(
           `Assigning ${members.length} voting member${members.length === 1 ? "" : "s"} on-chain…`,
@@ -95,11 +114,13 @@ export function CreateProposalForm({ onCreated }: Props) {
       }
       form.reset();
       setOptions(["Approve", "Reject", "Abstain"]);
+      setFiles([]);
       setMessage(
         "Proposal published and voting members assigned successfully.",
       );
       onCreated();
     } catch (error) {
+      if (evidenceIds.length && !published) await daoApi.setArtefactState(evidenceIds, "FAILED").catch(() => undefined);
       setMessage(error instanceof Error ? error.message : "Creation failed.");
     } finally {
       setBusy(false);
@@ -138,6 +159,28 @@ export function CreateProposalForm({ onCreated }: Props) {
             required
           />
         </label>
+        <fieldset
+          className="wide proposal-builder-group"
+          onDragOver={(event) => event.preventDefault()}
+          onDrop={(event) => { event.preventDefault(); setFiles((current) => [...current, ...Array.from(event.dataTransfer.files)]); }}
+        >
+          <legend>Proposal documents</legend>
+          <p>Drop PDF, TXT, Markdown, or JSON files here, or browse. Up to 10 files.</p>
+          <input
+            type="file"
+            multiple
+            accept=".pdf,.txt,.md,.json,application/pdf,text/plain,text/markdown,application/json"
+            onChange={(event) => setFiles(Array.from(event.target.files ?? []))}
+          />
+          <div className="builder-list">
+            {files.map((file, index) => (
+              <div className="builder-row" key={`${file.name}-${file.lastModified}`}>
+                <span>{index + 1}</span><strong>{file.name}</strong><small>{file.type || "unknown"} · {(file.size / 1024).toFixed(1)} KB</small>
+                <button type="button" className="builder-remove" onClick={() => setFiles((current) => current.filter((_, itemIndex) => itemIndex !== index))}>Remove</button>
+              </div>
+            ))}
+          </div>
+        </fieldset>
         <label className="wide">
           Purpose
           <input
@@ -244,19 +287,4 @@ export function CreateProposalForm({ onCreated }: Props) {
       </form>
     </section>
   );
-}
-
-async function createOnChainMetadata(document: Record<string, unknown>) {
-  const json = JSON.stringify(document);
-  const bytes = new TextEncoder().encode(json);
-  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
-  const hash = `0x${Array.from(digest, (value) => value.toString(16).padStart(2, "0")).join("")}`;
-  let binary = "";
-  bytes.forEach((value) => {
-    binary += String.fromCharCode(value);
-  });
-  return {
-    hash,
-    uri: `data:application/json;base64,${btoa(binary)}`,
-  };
 }

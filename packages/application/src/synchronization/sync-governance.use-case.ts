@@ -2,6 +2,7 @@ import { Proposal, ProposalStatus, ProposalType } from "@dao-platform/domain";
 import { AssignmentRepository } from "../ports/assignment-repository.js";
 import { ChainTransactionRepository, RecordChainTransactionInput } from "../ports/chain-transaction-repository.js";
 import { GovernanceChainEvent, GovernanceChainGateway } from "../ports/governance-chain.gateway.js";
+import { GovernanceEventRepository } from "../ports/governance-event-repository.js";
 import { ProposalRepository } from "../ports/proposal-repository.js";
 import { SyncStateRepository } from "../ports/sync-state-repository.js";
 import { TransactionManager } from "../ports/transaction-manager.js";
@@ -11,6 +12,7 @@ const INDEXER = "governance-full";
 export interface SyncCounts { proposals: number; assignments: number; unassignments: number; votes: number; cancellations: number; finalizations: number }
 
 export class SyncGovernanceUseCase {
+  private queue: Promise<unknown> = Promise.resolve();
   constructor(
     private readonly proposals: ProposalRepository,
     private readonly assignments: AssignmentRepository,
@@ -18,12 +20,19 @@ export class SyncGovernanceUseCase {
     private readonly transactions: ChainTransactionRepository,
     private readonly state: SyncStateRepository,
     private readonly chain: GovernanceChainGateway,
+    private readonly governanceEvents: GovernanceEventRepository,
     private readonly transactionManager: TransactionManager,
     private readonly deploymentBlock: bigint,
     private readonly maxBlockRange: bigint,
   ) {}
 
-  async execute(full = false) {
+  execute(full = false) {
+    const work = this.queue.then(() => this.synchronize(full));
+    this.queue = work.catch(() => undefined);
+    return work;
+  }
+
+  private async synchronize(full: boolean) {
     const latest = await this.chain.latestBlockNumber();
     const cursor = full ? null : await this.state.getLastProcessedBlock(INDEXER);
     const fromBlock = cursor === null ? this.deploymentBlock : cursor + 1n;
@@ -32,6 +41,9 @@ export class SyncGovernanceUseCase {
     for (let start = fromBlock; start <= latest; start += this.maxBlockRange) {
       const end = min(start + this.maxBlockRange - 1n, latest);
       const events = await this.chain.findGovernanceEvents(start, end);
+      for (const event of events) {
+        await this.governanceEvents.saveGovernanceEvent(event);
+      }
       for (const event of events) await this.apply(event, counts);
       await this.state.setLastProcessedBlock(INDEXER, end);
       batches += 1;
@@ -42,10 +54,19 @@ export class SyncGovernanceUseCase {
   private async apply(event: GovernanceChainEvent, counts: SyncCounts) {
     if (event.kind === "PROPOSAL_CREATED") {
       let proposal = await this.proposals.findByOnChainId(event.onChainProposalId);
+      if (!proposal) proposal = await this.proposals.findDraftByMetadataHash?.(event.metadataHash, event.creatorAddress) ?? null;
+      if (proposal) {
+        if (proposal.startsAt.getTime() !== event.startsAt * 1000 || proposal.endsAt.getTime() !== event.endsAt * 1000 || proposal.options.length !== event.optionCount || proposal.type !== proposalType(event.proposalType, undefined) || proposal.creatorAddress.value !== event.creatorAddress.toLowerCase() || proposal.metadata.metadataURI !== event.metadataURI || String(proposal.metadata.metadataHash).toLowerCase() !== event.metadataHash.toLowerCase()) throw new Error('ProposalCreated does not match the local draft.');
+        await this.transactionManager.runInTransaction(async () => {
+          const status = proposal!.status === ProposalStatus.Draft || proposal!.status === ProposalStatus.PendingOnChain ? ProposalStatus.Active : proposal!.status;
+          await this.proposals.markPublished(proposal!.id, event.onChainProposalId, status, new Date(Math.max(Number(event.blockTimestamp) * 1000, proposal!.updatedAt.getTime())));
+          await this.record(event, proposal!.id, 'CREATE_PROPOSAL', event.creatorAddress);
+        });
+      }
       if (!proposal) {
         const document = decodeMetadata(event.metadataURI);
         const optionLabels = stringArray(document.options, event.optionCount);
-        const now = new Date();
+        const now = new Date(Number(event.blockTimestamp) * 1000);
         proposal = Proposal.rehydrate({
           id: `onchain-${event.onChainProposalId}`,
           daoId: text(document.daoId, "recovered-dao"),

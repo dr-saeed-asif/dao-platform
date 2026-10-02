@@ -5,6 +5,7 @@ import type {
   Proposal,
   Vote,
   ChainTransaction,
+  Artefact,
 } from "./types";
 
 const baseUrl = "/api/v1";
@@ -21,7 +22,7 @@ export class ApiError extends Error {
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const headers = new Headers(init?.headers);
-  if (init?.body != null && !headers.has("Content-Type")) {
+  if (init?.body != null && !(init.body instanceof FormData) && !headers.has("Content-Type")) {
     headers.set("Content-Type", "application/json");
   }
   const response = await fetch(`${baseUrl}${path}`, {
@@ -45,7 +46,20 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 const actorHeaders = (address: string) => ({ "x-wallet-address": address });
 
 export const daoApi = {
+  stageArtefacts: (files: File[]) => {
+    const body = new FormData();
+    files.forEach((file) => body.append("files", file));
+    return request<{ items: Artefact[] }>("/artefacts/stage", { method: "POST", body });
+  },
+  createManifest: (input: {daoId:string;title:string;purpose:string;description:string;proposalType:string;options:string[];startsAt:string;endsAt:string;evidenceIds:string[]}) =>
+    request<{metadataURI:string;metadataHash:string;hashAlgorithm:string}>("/artefacts/manifest", { method:"POST", body:JSON.stringify(input) }),
+  setArtefactState: (evidenceIds:string[], state:"PENDING_CHAIN"|"FAILED"|"ORPHANED") =>
+    request("/artefacts/state", { method:"POST", body:JSON.stringify({evidenceIds,state}) }),
+  linkArtefacts: (proposalId:string, evidenceIds:string[]) =>
+    request<Artefact[]>(`/proposals/${proposalId}/artefacts/link`, { method:"POST", body:JSON.stringify({evidenceIds}) }),
+  listArtefacts: (proposalId:string) => request<Artefact[]>(`/proposals/${proposalId}/artefacts`),
   listProposals: () => request<{ items: Proposal[] }>("/proposals?limit=100"),
+  getProposal: (id: string) => request<Proposal>(`/proposals/${id}`),
   createProposal: (input: CreateProposalInput, actor: string) =>
     request<{ proposal: Proposal; transaction: PreparedTransaction }>(
       "/proposals",

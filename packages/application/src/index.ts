@@ -2,6 +2,7 @@ export * from "./ports/clock.js";
 export * from "./ports/assignment-repository.js";
 export * from "./ports/chain-transaction-repository.js";
 export * from "./ports/governance-chain.gateway.js";
+export * from "./ports/governance-event-repository.js";
 export * from "./ports/governance-read-model-reset.js";
 export * from "./ports/id-generator.js";
 export * from "./ports/proposal-authorization.js";

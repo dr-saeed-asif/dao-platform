@@ -1,5 +1,4 @@
 import { randomUUID } from 'node:crypto';
-import { resolve } from 'node:path';
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
@@ -13,6 +12,7 @@ import {
   GetProposalUseCase,
   FinalizeProposalUseCase,
   GovernanceChainGateway,
+  GovernanceEventRepository,
   ListMembersUseCase,
   ListProposalsUseCase,
   ListTransactionsUseCase,
@@ -28,15 +28,18 @@ import {
 } from '@dao-platform/application';
 import { CyberChainGovernanceGateway } from '@dao-platform/blockchain-cyberchain';
 import {
-  SqliteDatabase,
-  SqliteAssignmentRepository,
-  SqliteChainTransactionRepository,
-  SqliteProposalRepository,
-  SqliteSyncStateRepository,
-  SqliteVoteRepository,
+  PostgresOperationalDatabase,
+  PostgresProposalRepository,
+  PostgresAssignmentRepository,
+  PostgresChainTransactionRepository,
+  PostgresVoteRepository,
+  PostgresSyncStateRepository,
 } from '@dao-platform/database';
+import { PostgresService } from '../database/postgres.service';
 import { ConfiguredOwnerAuthorization } from './configured-owner.authorization';
-import { DatabaseLifecycleService } from './database-lifecycle.service';
+import { GOVERNANCE_EVENT_REPOSITORY } from '../database/database.tokens';
+import { PostgresModule } from '../database/postgres.module';
+import { ResearchModule } from '../research/research.module';
 import { ProposalsController } from './proposals.controller';
 import { VotingIndexerService } from './voting-indexer.service';
 import {
@@ -44,56 +47,51 @@ import {
   CHAIN_TRANSACTION_REPOSITORY,
   GOVERNANCE_GATEWAY,
   PROPOSAL_REPOSITORY,
-  SQLITE_DATABASE,
+  OPERATIONAL_DATABASE,
   SYNC_STATE_REPOSITORY,
   VOTE_REPOSITORY,
 } from './proposals.tokens';
 
 @Module({
+  imports: [PostgresModule, ResearchModule],
   controllers: [ProposalsController],
   providers: [
     {
-      provide: SQLITE_DATABASE,
-      inject: [ConfigService],
-      async useFactory(config: ConfigService): Promise<SqliteDatabase> {
-        const repositoryRoot = resolve(process.cwd(), '../..');
-        const database = new SqliteDatabase(
-          config.getOrThrow<string>('DATABASE_URL'),
-          repositoryRoot,
-        );
-        await database.migrateToLatest();
-        return database;
+      provide: OPERATIONAL_DATABASE,
+      inject: [PostgresService],
+      async useFactory(postgres: PostgresService): Promise<PostgresOperationalDatabase> {
+        await postgres.initialize();
+        if (!postgres.database) throw new Error('POSTGRES_URL is required.');
+        return new PostgresOperationalDatabase(postgres.database);
       },
     },
     {
       provide: PROPOSAL_REPOSITORY,
-      inject: [SQLITE_DATABASE],
-      useFactory: (database: SqliteDatabase) =>
-        new SqliteProposalRepository(database),
+      inject: [OPERATIONAL_DATABASE, ConfigService],
+      useFactory: (database: PostgresOperationalDatabase, config: ConfigService) =>
+        new PostgresProposalRepository(database, config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'), config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS')),
     },
     {
       provide: ASSIGNMENT_REPOSITORY,
-      inject: [SQLITE_DATABASE],
-      useFactory: (database: SqliteDatabase) =>
-        new SqliteAssignmentRepository(database),
+      inject: [OPERATIONAL_DATABASE],
+      useFactory: (database: PostgresOperationalDatabase) => new PostgresAssignmentRepository(database),
     },
     {
       provide: CHAIN_TRANSACTION_REPOSITORY,
-      inject: [SQLITE_DATABASE],
-      useFactory: (database: SqliteDatabase) =>
-        new SqliteChainTransactionRepository(database),
+      inject: [OPERATIONAL_DATABASE, ConfigService],
+      useFactory: (database: PostgresOperationalDatabase, config: ConfigService) =>
+        new PostgresChainTransactionRepository(database, config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'), config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS')),
     },
     {
       provide: VOTE_REPOSITORY,
-      inject: [SQLITE_DATABASE],
-      useFactory: (database: SqliteDatabase) =>
-        new SqliteVoteRepository(database),
+      inject: [OPERATIONAL_DATABASE],
+      useFactory: (database: PostgresOperationalDatabase) => new PostgresVoteRepository(database),
     },
     {
       provide: SYNC_STATE_REPOSITORY,
-      inject: [SQLITE_DATABASE],
-      useFactory: (database: SqliteDatabase) =>
-        new SqliteSyncStateRepository(database),
+      inject: [OPERATIONAL_DATABASE, ConfigService],
+      useFactory: (database: PostgresOperationalDatabase, config: ConfigService) =>
+        new PostgresSyncStateRepository(database, config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'), config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS'), 'v1'),
     },
     {
       provide: GOVERNANCE_GATEWAY,
@@ -118,13 +116,13 @@ import {
       provide: CreateProposalUseCase,
       inject: [
         PROPOSAL_REPOSITORY,
-        SQLITE_DATABASE,
+        OPERATIONAL_DATABASE,
         ConfigService,
         GOVERNANCE_GATEWAY,
       ],
       useFactory: (
         proposals: ProposalRepository,
-        database: SqliteDatabase,
+        database: PostgresOperationalDatabase,
         config: ConfigService,
         chainGateway: GovernanceChainGateway,
       ) =>
@@ -145,14 +143,14 @@ import {
         PROPOSAL_REPOSITORY,
         CHAIN_TRANSACTION_REPOSITORY,
         GOVERNANCE_GATEWAY,
-        SQLITE_DATABASE,
+        OPERATIONAL_DATABASE,
         ConfigService,
       ],
       useFactory: (
         proposals: ProposalRepository,
         transactions: ChainTransactionRepository,
         chain: GovernanceChainGateway,
-        database: SqliteDatabase,
+        database: PostgresOperationalDatabase,
         config: ConfigService,
       ) =>
         new PublishProposalUseCase(
@@ -171,7 +169,7 @@ import {
         ASSIGNMENT_REPOSITORY,
         CHAIN_TRANSACTION_REPOSITORY,
         GOVERNANCE_GATEWAY,
-        SQLITE_DATABASE,
+        OPERATIONAL_DATABASE,
         ConfigService,
       ],
       useFactory: (
@@ -179,7 +177,7 @@ import {
         assignments: AssignmentRepository,
         transactions: ChainTransactionRepository,
         chain: GovernanceChainGateway,
-        database: SqliteDatabase,
+        database: PostgresOperationalDatabase,
         config: ConfigService,
       ) =>
         new AssignMembersUseCase(
@@ -199,7 +197,7 @@ import {
         ASSIGNMENT_REPOSITORY,
         CHAIN_TRANSACTION_REPOSITORY,
         GOVERNANCE_GATEWAY,
-        SQLITE_DATABASE,
+        OPERATIONAL_DATABASE,
         ConfigService,
       ],
       useFactory: (
@@ -207,7 +205,7 @@ import {
         assignments: AssignmentRepository,
         transactions: ChainTransactionRepository,
         chain: GovernanceChainGateway,
-        database: SqliteDatabase,
+        database: PostgresOperationalDatabase,
         config: ConfigService,
       ) =>
         new UnassignMemberUseCase(
@@ -248,14 +246,14 @@ import {
         VOTE_REPOSITORY,
         CHAIN_TRANSACTION_REPOSITORY,
         GOVERNANCE_GATEWAY,
-        SQLITE_DATABASE,
+        OPERATIONAL_DATABASE,
       ],
       useFactory: (
         proposals: ProposalRepository,
         votes: VoteRepository,
         transactions: ChainTransactionRepository,
         chain: GovernanceChainGateway,
-        database: SqliteDatabase,
+        database: PostgresOperationalDatabase,
       ) =>
         new ConfirmVoteUseCase(proposals, votes, transactions, chain, database),
     },
@@ -276,14 +274,14 @@ import {
         PROPOSAL_REPOSITORY,
         CHAIN_TRANSACTION_REPOSITORY,
         GOVERNANCE_GATEWAY,
-        SQLITE_DATABASE,
+        OPERATIONAL_DATABASE,
         ConfigService,
       ],
       useFactory: (
         proposals: ProposalRepository,
         transactions: ChainTransactionRepository,
         chain: GovernanceChainGateway,
-        database: SqliteDatabase,
+        database: PostgresOperationalDatabase,
         config: ConfigService,
       ) =>
         new CancelProposalUseCase(
@@ -300,14 +298,14 @@ import {
         PROPOSAL_REPOSITORY,
         CHAIN_TRANSACTION_REPOSITORY,
         GOVERNANCE_GATEWAY,
-        SQLITE_DATABASE,
+        OPERATIONAL_DATABASE,
         ConfigService,
       ],
       useFactory: (
         proposals: ProposalRepository,
         transactions: ChainTransactionRepository,
         chain: GovernanceChainGateway,
-        database: SqliteDatabase,
+        database: PostgresOperationalDatabase,
         config: ConfigService,
       ) =>
         new FinalizeProposalUseCase(
@@ -326,7 +324,7 @@ import {
         CHAIN_TRANSACTION_REPOSITORY,
         SYNC_STATE_REPOSITORY,
         GOVERNANCE_GATEWAY,
-        SQLITE_DATABASE,
+        OPERATIONAL_DATABASE,
         ConfigService,
       ],
       useFactory: (
@@ -335,7 +333,7 @@ import {
         transactions: ChainTransactionRepository,
         state: SyncStateRepository,
         chain: GovernanceChainGateway,
-        database: SqliteDatabase,
+        database: PostgresOperationalDatabase,
         config: ConfigService,
       ) =>
         new SyncVotesUseCase(
@@ -351,7 +349,17 @@ import {
     },
     {
       provide: SyncGovernanceUseCase,
-      inject: [PROPOSAL_REPOSITORY, ASSIGNMENT_REPOSITORY, VOTE_REPOSITORY, CHAIN_TRANSACTION_REPOSITORY, SYNC_STATE_REPOSITORY, GOVERNANCE_GATEWAY, SQLITE_DATABASE, ConfigService],
+      inject: [
+        PROPOSAL_REPOSITORY,
+        ASSIGNMENT_REPOSITORY,
+        VOTE_REPOSITORY,
+        CHAIN_TRANSACTION_REPOSITORY,
+        SYNC_STATE_REPOSITORY,
+        GOVERNANCE_GATEWAY,
+        GOVERNANCE_EVENT_REPOSITORY,
+        OPERATIONAL_DATABASE,
+        ConfigService,
+      ],
       useFactory: (
         proposals: ProposalRepository,
         assignments: AssignmentRepository,
@@ -359,15 +367,30 @@ import {
         transactions: ChainTransactionRepository,
         state: SyncStateRepository,
         chain: GovernanceChainGateway,
-        database: SqliteDatabase,
+        governanceEvents: GovernanceEventRepository,
+        database: PostgresOperationalDatabase,
         config: ConfigService,
-      ) => new SyncGovernanceUseCase(proposals, assignments, votes, transactions, state, chain, database, BigInt(config.getOrThrow<number>('GOVERNANCE_DEPLOYMENT_BLOCK')), BigInt(config.getOrThrow<number>('VOTE_INDEXER_BLOCK_RANGE'))),
+      ) =>
+        new SyncGovernanceUseCase(
+          proposals,
+          assignments,
+          votes,
+          transactions,
+          state,
+          chain,
+          governanceEvents,
+          database,
+          BigInt(
+            config.getOrThrow<number>('GOVERNANCE_DEPLOYMENT_BLOCK'),
+          ),
+          BigInt(config.getOrThrow<number>('VOTE_INDEXER_BLOCK_RANGE')),
+        ),
     },
     {
       provide: ClearGovernanceDataUseCase,
-      inject: [SQLITE_DATABASE, SYNC_STATE_REPOSITORY, GOVERNANCE_GATEWAY],
+      inject: [OPERATIONAL_DATABASE, SYNC_STATE_REPOSITORY, GOVERNANCE_GATEWAY],
       useFactory: (
-        database: SqliteDatabase,
+        database: PostgresOperationalDatabase,
         state: SyncStateRepository,
         chain: GovernanceChainGateway,
       ) => new ClearGovernanceDataUseCase(database, state, chain),
@@ -384,7 +407,6 @@ import {
       useFactory: (proposals: ProposalRepository) =>
         new ListProposalsUseCase(proposals),
     },
-    DatabaseLifecycleService,
     VotingIndexerService,
   ],
 })

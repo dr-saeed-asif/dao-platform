@@ -71,8 +71,32 @@ export type GovernanceChainEvent =
   | (GovernanceEventBase & { readonly kind: "PROPOSAL_CANCELLED"; readonly onChainProposalId: string })
   | (GovernanceEventBase & { readonly kind: "PROPOSAL_FINALIZED"; readonly onChainProposalId: string; readonly winningOption: number; readonly tied: boolean; readonly totalVotes: number });
 
-export interface GovernanceEventBase extends ConfirmedChainTransaction {
+export type GovernanceEventName = "ProposalCreated" | "MemberAssigned" |
+  "MemberUnassigned" | "VoteCast" | "ProposalCancelled" | "ProposalFinalized";
+
+export interface GovernanceEventEnvelope {
+  readonly evidenceId: string;
+  readonly chainId: string;
+  readonly contractAddress: string;
+  readonly eventName: GovernanceEventName;
+  readonly transactionHash: string;
+  readonly transactionIndex?: number;
   readonly logIndex: number;
+  readonly blockNumber: string;
+  readonly blockHash?: string;
+  /** Blockchain occurrence time, as lossless decimal Unix seconds. */
+  readonly blockTimestamp: string;
+  readonly transactionSender?: string;
+  /** Named ABI arguments; integers are decimal strings, never floating point. */
+  readonly eventArgs: Readonly<Record<string, string | boolean>>;
+  readonly rawTopics?: readonly string[];
+  readonly rawData?: string;
+  /** Indexing time, independent of blockchain occurrence time and identity. */
+  readonly ingestionTimestamp: string;
+}
+
+export interface GovernanceEventBase extends ConfirmedChainTransaction,
+  Omit<GovernanceEventEnvelope, "blockHash"> {
 }
 
 export interface ConfirmedVote extends ConfirmedChainTransaction {

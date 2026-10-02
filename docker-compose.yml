@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: cybergovai-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: cybergovai
+      POSTGRES_USER: cybergovai
+      POSTGRES_PASSWORD: cybergovai_dev
+
+    ports:
+      - "55432:5432"
+
+    volumes:
+      - cybergovai_pgdata:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cybergovai -d cybergovai"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: cybergovai-pgadmin
+    restart: unless-stopped
+
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+
+    ports:
+      - "5050:80"
+
+    volumes:
+      - cybergovai_pgadmin:/var/lib/pgadmin
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  cybergovai_pgdata:
+  cybergovai_pgadmin:

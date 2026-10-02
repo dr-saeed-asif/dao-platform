@@ -27,6 +27,7 @@ function statusFor(code: string): number {
   if (
     code === 'IDEMPOTENCY_KEY_CONFLICT' ||
     code === 'PROPOSAL_ALREADY_PUBLISHED' ||
+    code === 'PROPOSAL_ALREADY_FINALIZED' ||
     code === 'DUPLICATE_MEMBER' ||
     code === 'ALREADY_VOTED'
   )

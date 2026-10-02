@@ -1,42 +1,36 @@
-import { resolve } from "node:path";
-import { SqliteDatabase } from "../src/index.js";
+import { createPostgresDatabase } from "../src/index.js";
 
 async function main(): Promise<void> {
-  const repositoryRoot = resolve(process.cwd(), "../..");
-  const database = new SqliteDatabase(
-    process.env.DATABASE_URL ?? "file:./data/dao.db",
-    repositoryRoot,
-  );
+  const database = createPostgresDatabase(process.env.POSTGRES_URL ?? "");
 
   try {
-    await database.migrateToLatest();
-    const proposals = await database.db
+    const proposals = await database
       .selectFrom("proposals")
       .selectAll()
       .orderBy("created_at", "desc")
       .execute();
-    const options = await database.db
+    const options = await database
       .selectFrom("proposal_options")
       .selectAll()
       .orderBy("proposal_id")
       .orderBy("option_index")
       .execute();
-    const assignments = await database.db
+    const assignments = await database
       .selectFrom("proposal_assignments")
       .selectAll()
       .execute();
-    const transactions = await database.db
+    const transactions = await database
       .selectFrom("chain_transactions")
       .selectAll()
-      .orderBy("recorded_at", "desc")
+       .orderBy("created_at", "desc")
       .execute();
-    const votes = await database.db
+    const votes = await database
       .selectFrom("votes")
       .selectAll()
-      .orderBy("confirmed_at", "desc")
+      .orderBy("created_at", "desc")
       .execute();
-    const indexerState = await database.db
-      .selectFrom("indexer_state")
+    const indexerState = await database
+      .selectFrom("indexer_checkpoints")
       .selectAll()
       .execute();
     console.log(

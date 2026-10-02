@@ -18,7 +18,9 @@ import {
   Web3RPCClient,
   privateKeyToAddress,
   toHex,
+  BlockData,
 } from "@cyberchain/smart-contract-wrapper";
+import { createGovernanceEventEnvelope, isGovernanceEventName } from "./governance-event-envelope.js";
 import { CYBER_DAO_GOVERNANCE_WRITE_ABI } from "./cyberchain-governance.abi.js";
 
 export interface CyberChainGovernanceGatewayOptions {
@@ -171,10 +173,19 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
   }
 
   async findGovernanceEvents(fromBlock: bigint, toBlock: bigint) {
+    const rpc = Web3RPCClient.getInstance();
+    const rpcOptions = { rpcURL: this.options.rpcURL };
+    // net_version is a network ID, not an authoritative chain ID.
+    const chainId = BigInt(await rpc.rpcRequest("eth_chainId", [], rpcOptions)).toString();
+    if (chainId !== BigInt(this.options.chainId).toString()) {
+      throw new Error("RPC chain ID does not match configured chain ID.");
+    }
     const events = await this.contract.findEvents(fromBlock, toBlock);
     const receipts = new Map<string, TransactionReceipt>();
+    const blocks = new Map<string, BlockData>();
     const result: GovernanceChainEvent[] = [];
     for (const event of events) {
+      if (!isGovernanceEventName(event.name)) continue;
       const hash = toHex(event.log.transactionHash);
       let receipt = receipts.get(hash);
       if (!receipt) {
@@ -183,7 +194,17 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
         receipt = found;
         receipts.set(hash, found);
       }
-      const base = { ...confirmedTransaction(receipt), logIndex: Number(event.log.logIndex) };
+      const blockKey = toHex(event.log.blockHash);
+      let block = blocks.get(blockKey);
+      if (!block) {
+        block = await rpc.getBlockByNumber(event.log.blockNumber, rpcOptions);
+        blocks.set(blockKey, block);
+      }
+      const envelope = createGovernanceEventEnvelope(
+        event, receipt, block, chainId, this.options.contractAddress, new Date().toISOString(),
+      );
+      const base = { ...confirmedTransaction(receipt), ...envelope,
+        blockHash: envelope.blockHash!, };
       const p = event.parameters;
       if (event.name === "ProposalCreated") result.push({ ...base, kind: "PROPOSAL_CREATED", onChainProposalId: String(p[0]), creatorAddress: String(p[1]).toLowerCase(), proposalType: Number(p[2]), metadataHash: toHex(p[3] as Uint8Array), metadataURI: String(p[4]), optionCount: Number(p[5]), startsAt: Number(p[6]), endsAt: Number(p[7]) });
       else if (event.name === "MemberAssigned") result.push({ ...base, kind: "MEMBER_ASSIGNED", onChainProposalId: String(p[0]), memberAddress: String(p[1]).toLowerCase() });

@@ -1,11 +1,12 @@
 import { Inject, Injectable, OnApplicationShutdown } from '@nestjs/common';
-import { SqliteDatabase } from '@dao-platform/database';
-import { SQLITE_DATABASE } from './proposals.tokens';
+import { PostgresOperationalDatabase } from '@dao-platform/database';
+import { OPERATIONAL_DATABASE } from './proposals.tokens';
 
 @Injectable()
 export class DatabaseLifecycleService implements OnApplicationShutdown {
   constructor(
-    @Inject(SQLITE_DATABASE) private readonly database: SqliteDatabase,
+    @Inject(OPERATIONAL_DATABASE)
+    private readonly database: PostgresOperationalDatabase,
   ) {}
 
   async onApplicationShutdown(): Promise<void> {

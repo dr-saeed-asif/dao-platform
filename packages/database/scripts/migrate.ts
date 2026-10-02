@@ -1,16 +1,11 @@
-import { resolve } from "node:path";
-import { SqliteDatabase } from "../src/index.js";
+import { createPostgresDatabase, migratePostgresToLatest } from "../src/index.js";
 
 async function main(): Promise<void> {
-  const repositoryRoot = resolve(process.cwd(), "../..");
-  const database = new SqliteDatabase(
-    process.env.DATABASE_URL ?? "file:./data/dao.db",
-    repositoryRoot,
-  );
+  const database = createPostgresDatabase(process.env.POSTGRES_URL ?? "");
 
   try {
-    await database.migrateToLatest();
-    console.log(`SQLite migrations completed: ${database.filename}`);
+    await migratePostgresToLatest(database);
+    console.log("PostgreSQL migrations completed.");
   } finally {
     await database.destroy();
   }

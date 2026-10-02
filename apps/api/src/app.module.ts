@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { envValidationSchema } from './config/env.validation';
 import { HealthModule } from './health/health.module';
 import { ProposalsModule } from './proposals/proposals.module';
+import { PostgresModule } from './database/postgres.module';
+import { ResearchModule } from './research/research.module';
 
 @Module({
   imports: [
@@ -13,6 +15,8 @@ import { ProposalsModule } from './proposals/proposals.module';
       validationOptions: { abortEarly: false },
     }),
     HealthModule,
+    PostgresModule,
+    ResearchModule,
     ProposalsModule,
   ],
 })

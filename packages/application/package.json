@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.json",
     "typecheck": "tsc -b tsconfig.json --pretty false",
-    "test": "npm run build && node --test dist/test/create-proposal.use-case.test.js"
+    "test": "npm run build && node --test dist/test/create-proposal.use-case.test.js dist/test/sync-governance.use-case.test.js"
   },
   "engines": {
     "node": ">=20.0.0"

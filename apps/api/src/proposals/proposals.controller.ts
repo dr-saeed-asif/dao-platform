@@ -35,6 +35,7 @@ import { ConfirmVoteDto } from './confirm-vote.dto';
 import { CreateProposalDto } from './create-proposal.dto';
 import { PrepareVoteDto } from './prepare-vote.dto';
 import { SyncVotesDto } from './sync-votes.dto';
+import { ResearchService } from '../research/research.service';
 
 @Controller('proposals')
 export class ProposalsController {
@@ -56,6 +57,7 @@ export class ProposalsController {
     private readonly syncGovernance: SyncGovernanceUseCase,
     private readonly clearGovernanceData: ClearGovernanceDataUseCase,
     private readonly config: ConfigService,
+    private readonly research: ResearchService,
   ) {}
 
   @Post()
@@ -68,6 +70,7 @@ export class ProposalsController {
       throw new BadRequestException('idempotency-key header is required.');
     }
     const actorAddress = this.developmentActor(walletAddress);
+    await this.research.validateProposalManifest(body);
     return this.createProposal.execute({
       idempotencyKey,
       actorAddress,
