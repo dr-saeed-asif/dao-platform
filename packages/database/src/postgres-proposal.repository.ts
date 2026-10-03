@@ -65,10 +65,12 @@ export class PostgresProposalRepository implements ProposalRepository {
   }
 
   async findDraftByMetadataHash(metadataHash: string, creatorAddress: string): Promise<Proposal | null> {
-    const row = await this.database.executor.selectFrom('proposals').selectAll()
+    const rows = await this.database.executor.selectFrom('proposals').selectAll()
       .where('chain_id', '=', this.chainId).where('contract_address', '=', this.contractAddress)
       .where('on_chain_id', 'is', null).where('metadata_hash', '=', normalizeOperationalHash(metadataHash))
-      .where('creator_address', '=', normalizeOperationalAddress(creatorAddress)).orderBy('created_at').executeTakeFirst();
+      .orderBy('created_at').limit(2).execute();
+    const exact = rows.find((row) => row.creator_address === normalizeOperationalAddress(creatorAddress));
+    const row = exact ?? (rows.length === 1 ? rows[0] : undefined);
     return row ? this.hydrate(row) : null;
   }
 

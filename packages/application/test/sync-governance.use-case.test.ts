@@ -51,19 +51,22 @@ function createSubject(persistenceError?: Error) {
   const calls: string[] = [];
   const saved: GovernanceChainEvent[] = [];
   const proposalsByChainId = new Map<string, Proposal>();
+  const chainEvent = { ...proposalCreated } as Extract<GovernanceChainEvent, { kind: "PROPOSAL_CREATED" }>;
+  let draft: Proposal | null = null;
   let checkpoint: bigint | null = null;
   let recordedTransactions = 0;
 
   const proposals: ProposalRepository = {
     async findById() { return null; },
     async findByOnChainId(id) { return proposalsByChainId.get(id) ?? null; },
+    async findDraftByMetadataHash() { return draft; },
     async findByIdempotencyKey() { return null; },
     async list() { return []; },
     async insert(proposal) {
       calls.push("project");
       proposalsByChainId.set(proposal.onChainId!, proposal);
     },
-    async markPublished() {},
+    async markPublished(_id, onChainId) { if (draft) proposalsByChainId.set(onChainId, draft); },
     async updateStatus() {},
   };
   const governanceEvents: GovernanceEventRepository = {
@@ -101,7 +104,7 @@ function createSubject(persistenceError?: Error) {
     },
     {
       async latestBlockNumber() { return 100n; },
-      async findGovernanceEvents() { return [proposalCreated]; },
+      async findGovernanceEvents() { return [chainEvent]; },
       async prepareCreateProposal() { throw new Error("Not used."); },
       async publishProposal() { throw new Error("Not used."); },
       async assignMembers() { throw new Error("Not used."); },
@@ -124,6 +127,11 @@ function createSubject(persistenceError?: Error) {
     saved,
     checkpoint: () => checkpoint,
     proposal: () => proposalsByChainId.get("7"),
+    chainEvent,
+    useProjectionAsDraft() {
+      draft = proposalsByChainId.get("7") ?? null;
+      proposalsByChainId.clear();
+    },
     recordedTransactions: () => recordedTransactions,
   };
 }
@@ -135,7 +143,7 @@ describe("SyncGovernanceUseCase", () => {
     const result = await fixture.subject.execute();
 
     assert.deepEqual(fixture.calls, ["persist", "project", "checkpoint"]);
-    assert.equal(fixture.saved[0], proposalCreated);
+    assert.deepEqual(fixture.saved[0], proposalCreated);
     assert.equal(fixture.proposal()?.onChainId, "7");
     assert.equal(fixture.recordedTransactions(), 1);
     assert.equal(fixture.checkpoint(), 100n);
@@ -152,5 +160,29 @@ describe("SyncGovernanceUseCase", () => {
     assert.equal(fixture.proposal(), undefined);
     assert.equal(fixture.recordedTransactions(), 0);
     assert.equal(fixture.checkpoint(), null);
+  });
+
+  it("treats an existing on-chain projection as idempotent during full replay", async () => {
+    const fixture = createSubject();
+    await fixture.subject.execute();
+    Object.assign(fixture.chainEvent, { startsAt: fixture.chainEvent.startsAt + 60 });
+
+    const result = await fixture.subject.execute(true);
+
+    assert.equal(result.mode, "FULL");
+    assert.equal(result.indexed.proposals, 0);
+    assert.equal(fixture.proposal()?.onChainId, "7");
+  });
+
+  it("links a manifest-matched draft when the backend signer is the chain creator", async () => {
+    const fixture = createSubject();
+    await fixture.subject.execute();
+    fixture.useProjectionAsDraft();
+    Object.assign(fixture.chainEvent, { creatorAddress: `0x${"77".repeat(20)}` });
+
+    const result = await fixture.subject.execute(true);
+
+    assert.equal(result.mode, "FULL");
+    assert.equal(fixture.proposal()?.id, "onchain-7");
   });
 });
