@@ -1,7 +1,7 @@
 export interface AiQueryRequest {
   question: string;
   proposalId?: string;
-  system: 'llm-only' | 'vector-rag' | 'multi-agent';
+  system: 'hybrid' | 'hybrid-verified' | 'multi-agent' | 'llm-only' | 'vector-rag';
   topK?: number;
   datasetVersion?: string;
   policyVersion?: string;
@@ -9,7 +9,7 @@ export interface AiQueryRequest {
 
 export interface AiQueryResponse {
   runId: string;
-  system: 'llm-only' | 'vector-rag' | 'multi-agent';
+  system: 'hybrid' | 'hybrid-verified' | 'multi-agent' | 'llm-only' | 'vector-rag';
   answer: string;
   evidence: Array<{
     chunkEvidenceId: string;

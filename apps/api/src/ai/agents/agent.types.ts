@@ -1,6 +1,7 @@
 export type AgentName = 'coordinator'|'sql'|'rag'|'compliance'|'provenance'|'synthesis'|'verification';
 export type ClaimType = 'FACTUAL'|'NUMERIC'|'TEMPORAL'|'SEMANTIC'|'COMPLIANCE';
 export type VerificationStatus = 'SUPPORTED'|'PARTIALLY_SUPPORTED'|'UNSUPPORTED';
+export type ResearchSystem = 'hybrid'|'hybrid-verified'|'multi-agent';
 
 export interface AgentContext {
   question:string;
@@ -24,9 +25,9 @@ export interface AgentError { code:string; message:string; retryable:boolean }
 export interface AgentClaim { text:string; type:ClaimType; evidenceIds:string[] }
 export interface VerificationItem { claim:AgentClaim; status:VerificationStatus; reasons:string[] }
 export interface MultiAgentResponse {
-  runId:string; system:'multi-agent'; answer:string; agentsUsed:string[]; toolsUsed:string[];
+  runId:string; system:ResearchSystem; answer:string; agentsUsed:string[]; toolsUsed:string[];
   evidence:AgentEvidence[]; retrieval:Array<{chunkEvidenceId:string;score:number;rank:number}>;
-  claims:AgentClaim[]; verification:{status:VerificationStatus;claims:VerificationItem[];correctionRounds:number};
+  claims:AgentClaim[]; verification?:{status:VerificationStatus;claims:VerificationItem[];correctionRounds:number};
   agentTrace:AgentTrace[]; abstained:boolean; latencyMs:number; llmCalls:number; embeddingCalls:number; errors:string[];
 }
 

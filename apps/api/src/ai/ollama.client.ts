@@ -78,7 +78,7 @@ export class OllamaClient implements OnModuleInit {
     }
   }
 
-  async chat(messages: Array<{ role: string; content: string }>, options?: { json?: boolean }): Promise<OllamaChatResponse> {
+  async chat(messages: Array<{ role: string; content: string }>, options?: { json?: boolean; maxTokens?: number; signal?: AbortSignal }): Promise<OllamaChatResponse> {
     const start = Date.now();
     const response = await this.fetchWithTimeout(`${this.baseUrl}/api/chat`, {
       method: 'POST',
@@ -87,9 +87,11 @@ export class OllamaClient implements OnModuleInit {
         model: this.chatModel,
         messages,
         stream: false,
+        think: false,
         ...(options?.json ? { format: 'json' } : {}),
-        options: { temperature: 0.1 },
+        options: { temperature: 0.1, num_predict: options?.maxTokens ?? 768 },
       }),
+      signal: options?.signal,
     });
 
     if (!response.ok) {
@@ -160,9 +162,12 @@ export class OllamaClient implements OnModuleInit {
     const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
     try {
+      const signal = options.signal
+        ? AbortSignal.any([controller.signal, options.signal])
+        : controller.signal;
       return await fetch(url, {
         ...options,
-        signal: controller.signal,
+        signal,
       });
     } catch (error) {
       if (error instanceof Error && error.name === 'AbortError') {

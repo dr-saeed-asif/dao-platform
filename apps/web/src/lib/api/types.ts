@@ -83,10 +83,11 @@ export interface Artefact {
   uri: string;
 }
 
+export type ResearchSystem = 'hybrid'|'hybrid-verified'|'multi-agent';
 export interface AiQueryRequest {
   question: string;
   proposalId?: string;
-  system: 'llm-only' | 'vector-rag' | 'multi-agent';
+  system: ResearchSystem | 'llm-only' | 'vector-rag';
   topK?: number;
   datasetVersion?: string;
   policyVersion?: string;
@@ -94,7 +95,7 @@ export interface AiQueryRequest {
 
 export interface AiQueryResponse {
   runId: string;
-  system: 'llm-only' | 'vector-rag' | 'multi-agent';
+  system: ResearchSystem | 'llm-only' | 'vector-rag';
   answer: string;
   evidence: Array<{
     chunkEvidenceId?: string;
@@ -125,7 +126,12 @@ export interface AiQueryResponse {
   llmCalls?: number;
   embeddingCalls?: number;
   errors?: string[];
+  inputTokens?: number;
+  outputTokens?: number;
 }
+
+export interface ResearchRunSummary {runId:string;createdAt:string;proposalId:string|null;onChainProposalId:string|null;system:string;question:string;verificationStatus:string|null;abstained:boolean;evidenceCount:number;retrievalCount:number;supportedClaims:number;unsupportedClaims:number;latencyMs:number;tokens:number;status:string;error:string|null;answer:string;agentsUsed:string[]}
+export interface ResearchRunDetail extends ResearchRunSummary {models:{chat:string|null;embedding:string|null;embeddingDimension:number|null};datasetVersion:string|null;policyVersion:string|null;evidence:AiQueryResponse['evidence'];evidenceIds:string[];retrieval:unknown[];claims:unknown[];verification:unknown;toolsUsed:string[];agentTrace:AiQueryResponse['agentTrace'];errors:string[]}
 
 export interface AiHealthResponse {
   status: 'ok' | 'degraded';

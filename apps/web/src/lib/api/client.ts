@@ -9,6 +9,8 @@ import type {
   AiQueryRequest,
   AiQueryResponse,
   AiHealthResponse,
+  ResearchRunSummary,
+  ResearchRunDetail,
 } from "./types";
 
 const baseUrl = "/api/v1";
@@ -138,4 +140,7 @@ export const daoApi = {
   aiHealth: () => request<AiHealthResponse>("/ai/health"),
   aiQuery: (input: AiQueryRequest) =>
     request<AiQueryResponse>("/ai/query", { method: "POST", body: JSON.stringify(input) }),
+  listResearchRuns: (query = "") => request<{items:ResearchRunSummary[];page:number;limit:number;hasMore:boolean}>(`/research/runs${query?`?${query}`:""}`),
+  getResearchRun: (runId:string) => request<ResearchRunDetail>(`/research/runs/${encodeURIComponent(runId)}`),
+  researchRunsExportUrl: (query:string,format:"csv"|"json") => `${baseUrl}/research/runs/export?${query?`${query}&`:""}format=${format}`,
 };

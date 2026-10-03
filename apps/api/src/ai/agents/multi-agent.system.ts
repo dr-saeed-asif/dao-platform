@@ -12,6 +12,7 @@ import type {
   AgentTask,
   AgentTrace,
   MultiAgentResponse,
+  ResearchSystem,
   VerificationItem,
   VerificationStatus,
 } from './agent.types';
@@ -35,10 +36,14 @@ export class MultiAgentSystem {
   }
 
   execute(input: AgentInput): Promise<MultiAgentResponse> {
-    return withTimeout(this.run(input), this.overallTimeout, 'Multi-agent request');
+    return withTimeout(this.run(input, 'multi-agent', true), this.overallTimeout, 'Multi-agent request');
   }
 
-  private async run(input: AgentInput): Promise<MultiAgentResponse> {
+  executeHybrid(input: AgentInput, verified: boolean): Promise<MultiAgentResponse> {
+    return withTimeout(this.run(input, verified ? 'hybrid-verified' : 'hybrid', verified), this.overallTimeout, 'Hybrid request');
+  }
+
+  private async run(input: AgentInput, system: ResearchSystem, verified: boolean): Promise<MultiAgentResponse> {
     const started = Date.now();
     const runId = randomUUID();
     const trace: AgentTrace[] = [];
@@ -54,11 +59,11 @@ export class MultiAgentSystem {
 
     if (context.scopeConflict) {
       trace.push({ agent: 'coordinator', action: 'scope-conflict', status: 'skipped', evidenceIds: [], latencyMs: 0 });
-      return this.response(runId, context.scopeConflict, [], [], [], trace, errors, started, 0, 0, false, 'UNSUPPORTED');
+      return this.response(runId, system, verified, context.scopeConflict, [], [], [], trace, errors, started, 0, 0, false, 'UNSUPPORTED');
     }
     if (!context.localProposalId && /\b(?:this|the) proposal\b/i.test(context.question)) {
       trace.push({ agent: 'coordinator', action: 'proposal-scope-required', status: 'skipped', evidenceIds: [], latencyMs: 0 });
-      return this.response(runId, 'Select a proposal scope before asking about this proposal.', [], [], [], trace, errors, started, 0, 0, false, 'UNSUPPORTED');
+      return this.response(runId, system, verified, 'Select a proposal scope before asking about this proposal.', [], [], [], trace, errors, started, 0, 0, false, 'UNSUPPORTED');
     }
 
     const routeStart = Date.now();
@@ -87,25 +92,26 @@ export class MultiAgentSystem {
         const failedCall = (item.reason as { toolCall?: { tool: string; latencyMs?: number } }).toolCall;
         errors.push(`${task.agent}: ${message}`);
         trace.push({ agent: task.agent, tool: failedCall?.tool, status: 'error', evidenceIds: [], latencyMs: failedCall?.latencyMs ?? 0, error: message });
-        if (task.required) return this.abstain(runId, trace, errors, started, llmCalls, embeddingCalls, results);
+        if (task.required) return this.abstain(runId, system, verified, trace, errors, started, llmCalls, embeddingCalls, results);
       }
     }
 
     const evidence = dedupe(results.flatMap((result) => result.evidence));
     const rag = results.find((result) => result.agent === 'rag');
     if (rag && ((rag.facts?.chunks as unknown[])?.length ?? 0) === 0) {
-      if (isOverviewQuestion(context.question) && results.some((result) => result.agent === 'sql')) {
+      if (system === 'multi-agent' && isOverviewQuestion(context.question) && results.some((result) => result.agent === 'sql')) {
         const overview = deterministicOverviewWithoutDocuments(context, results);
         const verification = this.verify(context, overview.claims, results, evidence);
         trace.push(verification.trace);
-        return this.response(runId, overview.answer, results, evidence, overview.claims, trace, errors, started, llmCalls, embeddingCalls, false, verification.status, verification.items);
+        return this.response(runId, system, true, overview.answer, results, evidence, overview.claims, trace, errors, started, llmCalls, embeddingCalls, false, verification.status, verification.items);
       }
-      return this.response(runId, 'No indexed document evidence was found for this proposal.', results, evidence, [], trace, errors, started, llmCalls, embeddingCalls, true, 'UNSUPPORTED');
+      if (!results.some((result) => result.agent === 'sql')) return this.response(runId, system, verified, 'No indexed document evidence was found for this proposal.', results, evidence, [], trace, errors, started, llmCalls, embeddingCalls, true, 'UNSUPPORTED');
     }
 
     let answer = '';
     let claims: AgentClaim[] = [];
-    if (plan.requiresSynthesis) {
+    const requiresSynthesis = system !== 'multi-agent' || plan.requiresSynthesis;
+    if (requiresSynthesis) {
       try {
         const synthesis = await this.synthesize(context, results, evidence);
         llmCalls++;
@@ -115,15 +121,17 @@ export class MultiAgentSystem {
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error);
         errors.push(`synthesis: ${message}`);
-        return this.abstain(runId, trace, errors, started, llmCalls, embeddingCalls, results, evidence);
+        return this.abstain(runId, system, verified, trace, errors, started, llmCalls, embeddingCalls, results, evidence);
       }
     } else {
       ({ answer, claims } = deterministicAnswer(context, results));
     }
 
+    if (!verified) return this.response(runId, system, false, answer, results, evidence, claims, trace, errors, started, llmCalls, embeddingCalls, !answer.trim(), 'SUPPORTED', [], 0, requiresSynthesis);
+
     let verification = this.verify(context, claims, results, evidence);
     trace.push(verification.trace);
-    if (verification.status === 'UNSUPPORTED' && plan.requiresSynthesis && llmCalls < this.maxLlmCalls) {
+    if (verification.status === 'UNSUPPORTED' && requiresSynthesis && llmCalls < this.maxLlmCalls) {
       try {
         const corrected = await this.synthesize(context, results, evidence, verification.items);
         llmCalls++;
@@ -140,16 +148,17 @@ export class MultiAgentSystem {
 
     const abstained = !answer.trim() || verification.status === 'UNSUPPORTED';
     if (abstained) answer = 'Insufficient verified evidence to answer this question.';
-    return this.response(runId, answer, results, evidence, claims, trace, errors, started, llmCalls, embeddingCalls, abstained, verification.status, verification.items, verification.correctionRounds, plan.requiresSynthesis);
+    return this.response(runId, system, true, answer, results, evidence, claims, trace, errors, started, llmCalls, embeddingCalls, abstained, verification.status, verification.items, verification.correctionRounds, requiresSynthesis);
   }
 
   private route(context: AgentContext): AgentExecutionPlan {
     const q = context.question.toLowerCase();
-    const overview = /overview|information about (?:this|the) proposal|tell me about (?:this|the) proposal|what is (?:this|the) proposal about|what happened with (?:this|the) proposal/.test(q);
+    const complete = /complete governance analysis|full governance analysis/.test(q);
+    const overview = complete || /summar(?:y|ize)|overview|information about (?:this|the) proposal|tell me about (?:this|the) proposal|what is (?:this|the) proposal about|what happened with (?:this|the) proposal/.test(q);
     const voteCount = /how many votes|vote count|number of votes/.test(q);
     const semantic = overview || /why|risks?|summar(?:y|ize)|explain (?:this|the) proposal|documents?|objectives?|budget/.test(q);
-    const compliance = /quorum|compliance|eligible|eligibility|voting window|before|after|duplicate|unique|integrity|lifecycle/.test(q);
-    const provenance = /blockchain evidence|transaction|proof|provenance/.test(q);
+    const compliance = complete || /quorum|compliance|eligible|eligibility|voting window|before|after|duplicate|unique|integrity|lifecycle/.test(q);
+    const provenance = complete || /blockchain evidence|transaction|proof|provenance|supporting evidence/.test(q);
     const temporal = /when did voting (?:end|start)|timeline|voting end|voting start/.test(q);
     const factual = voteCount || /\bvotes?\b|state|status|finalized|members?/.test(q);
     const usesSql = overview || factual || temporal || compliance || provenance;
@@ -190,7 +199,7 @@ export class MultiAgentSystem {
 
     if (task.agent === 'sql') {
       const q = context.question.toLowerCase();
-      const overview = /overview|information about (?:this|the) proposal|tell me about (?:this|the) proposal|what is (?:this|the) proposal about|what happened with (?:this|the) proposal/.test(q);
+      const overview = /summar(?:y|ize)|overview|information about (?:this|the) proposal|tell me about (?:this|the) proposal|what is (?:this|the) proposal about|what happened with (?:this|the) proposal/.test(q);
       facts.proposal = await invoke('getProposal', { proposalId });
       if (overview || /how many votes|vote count|number of votes|\bvotes?\b|quorum/.test(q)) facts.votes = await invoke('getProposalVotes', { proposalId });
       if (overview || /when did voting (?:end|start)|timeline|voting end|voting start|finalized/.test(q)) facts.timeline = await invoke('getProposalTimeline', { proposalId });
@@ -204,10 +213,10 @@ export class MultiAgentSystem {
       }
     } else if (task.agent === 'compliance') {
       const q = context.question.toLowerCase();
-      const all = /compliance/.test(q);
+      const all = /compliance|complete governance analysis|full governance analysis/.test(q);
       if (/quorum/.test(q) || all) facts.quorum = await invoke('calculateQuorum', { proposalId, policyVersion: context.policyVersion });
       if (/window|before|after/.test(q) || all) facts.votingWindow = await invoke('checkVotingWindow', { proposalId, memberAddress: extractAddress(context.question) });
-      if ((/eligible|eligibility/.test(q) || all) && extractAddress(context.question)) facts.eligibility = await invoke('checkMemberEligibility', { proposalId, memberAddress: extractAddress(context.question) });
+      if (/eligible|eligibility/.test(q) || all) facts.eligibility = await invoke('checkMemberEligibility', { proposalId, ...(extractAddress(context.question) ? { memberAddress: extractAddress(context.question) } : {}) });
       if (/integrity|evidence/.test(q) || all) facts.evidenceIntegrity = await invoke('checkEvidenceIntegrity', { proposalId });
       if (/lifecycle|transition|finalized/.test(q) || all) facts.lifecycle = await invoke('checkLifecycleTransitions', { proposalId });
       if (/duplicate|unique|replacement/.test(q) || all) facts.voteUniqueness = await invoke('checkVoteUniqueness', { proposalId });
@@ -246,8 +255,11 @@ export class MultiAgentSystem {
     const response = await this.ollama.chat([
       { role: 'system', content: 'Answer only from the supplied evidence. Combine structured/on-chain facts with document facts when both are present. Return JSON only: {"answer":"...","claims":[{"text":"...","type":"FACTUAL|NUMERIC|TEMPORAL|SEMANTIC|COMPLIANCE","evidenceIds":["..."]}]}. Semantic claims may cite DOCUMENT_CHUNK evidence. Vote counts must cite vote or structured vote-summary evidence. Finalization claims must cite ProposalFinalized or structured proposal evidence. Never invent evidence IDs.' },
       { role: 'user', content: JSON.stringify(payload) },
-    ], { json: true });
-    const parsed = augmentSynthesis(parseSynthesis(response.content), context, results);
+    ], { json: true, maxTokens: 768 });
+    let structured: {answer:string;claims:AgentClaim[]};
+    try { structured = parseSynthesis(response.content); }
+    catch { structured = deterministicSynthesisFallback(context, results); }
+    const parsed = augmentSynthesis(structured, context, results);
     parsed.claims = groundClaims(parsed.claims, evidence);
     return {
       ...parsed,
@@ -279,12 +291,14 @@ export class MultiAgentSystem {
     return { status, items, correctionRounds: 0, trace: { agent: 'verification', action: 'verify-claims', status: 'success' as const, evidenceIds: claims.flatMap((claim) => claim.evidenceIds), latencyMs: Date.now() - start } };
   }
 
-  private abstain(runId: string, trace: AgentTrace[], errors: string[], started: number, llmCalls: number, embeddingCalls: number, results: AgentResult[] = [], evidence: AgentEvidence[] = []) {
-    return this.response(runId, 'Insufficient verified evidence to answer this question.', results, evidence, [], trace, errors, started, llmCalls, embeddingCalls, true, 'UNSUPPORTED');
+  private abstain(runId: string, system: ResearchSystem, verified: boolean, trace: AgentTrace[], errors: string[], started: number, llmCalls: number, embeddingCalls: number, results: AgentResult[] = [], evidence: AgentEvidence[] = []) {
+    return this.response(runId, system, verified, 'Insufficient evidence to answer this question.', results, evidence, [], trace, errors, started, llmCalls, embeddingCalls, true, 'UNSUPPORTED');
   }
 
   private response(
     runId: string,
+    system: ResearchSystem,
+    verified: boolean,
     answer: string,
     results: AgentResult[],
     evidence: AgentEvidence[],
@@ -302,14 +316,14 @@ export class MultiAgentSystem {
   ): MultiAgentResponse {
     return {
       runId,
-      system: 'multi-agent',
+      system,
       answer,
-      agentsUsed: [...new Set(['coordinator', ...results.map((result) => result.agent), ...(synthesized ? ['synthesis'] : []), ...(results.length ? ['verification'] : [])])],
+      agentsUsed: [...new Set(['coordinator', ...results.map((result) => result.agent), ...(synthesized ? ['synthesis'] : []), ...(verified && results.length ? ['verification'] : [])])],
       toolsUsed: [...new Set(results.flatMap((result) => result.toolCalls.map((call) => call.tool)))],
       evidence,
       retrieval: evidence.filter((item) => item.sourceType === 'DOCUMENT_CHUNK').map((item, index) => ({ chunkEvidenceId: item.evidenceId, score: item.score ?? 0, rank: index + 1 })),
       claims,
-      verification: { status, claims: verificationItems, correctionRounds },
+      ...(verified ? { verification: { status, claims: verificationItems, correctionRounds } } : {}),
       agentTrace: trace,
       abstained,
       latencyMs: Date.now() - started,
@@ -392,18 +406,10 @@ function deterministicOverviewWithoutDocuments(context: AgentContext, results: A
   const members = Array.isArray(proposal.members) ? proposal.members.length : 0;
   const voteCount = facts.votes?.count ?? 0;
   const answer = `Proposal ${id}, "${proposal.title}", is ${proposal.status}. Voting runs from ${new Date(proposal.starts_at).toISOString()} to ${new Date(proposal.ends_at).toISOString()}, with ${members} currently eligible member${members === 1 ? '' : 's'} and ${voteCount} recorded vote${voteCount === 1 ? '' : 's'}.\n\nNo indexed document evidence was found for this proposal.`;
-  return {
-    answer,
-    claims: [
-      { text: answer.split('\n\n')[0]!, type: 'FACTUAL' as const, evidenceIds: [`structured:proposal:${context.localProposalId}`] },
-      { text: `Proposal ${id} has ${voteCount} recorded votes.`, type: 'NUMERIC' as const, evidenceIds: [`structured:votes:${context.localProposalId}`, ...(facts.votes?.evidenceIds ?? [])] },
-    ],
-  };
+  return {answer,claims:[{text:answer.split('\n\n')[0]!,type:'FACTUAL' as const,evidenceIds:[`structured:proposal:${context.localProposalId}`]},{text:`Proposal ${id} has ${voteCount} recorded votes.`,type:'NUMERIC' as const,evidenceIds:[`structured:votes:${context.localProposalId}`,...(facts.votes?.evidenceIds??[])]}]};
 }
 
-function isOverviewQuestion(question: string) {
-  return /overview|information about (?:this|the) proposal|tell me about (?:this|the) proposal|what is (?:this|the) proposal about|what happened with (?:this|the) proposal/i.test(question);
-}
+function isOverviewQuestion(question:string){return /summar(?:y|ize)|overview|information about|tell me about|what is .*proposal about|what happened/i.test(question)}
 
 function groundClaims(claims: AgentClaim[], evidence: AgentEvidence[]): AgentClaim[] {
   const known = new Set(evidence.map((item) => item.evidenceId));
@@ -423,8 +429,13 @@ function groundClaims(claims: AgentClaim[], evidence: AgentEvidence[]): AgentCla
 
 function augmentSynthesis(parsed: { answer: string; claims: AgentClaim[] }, context: AgentContext, results: AgentResult[]) {
   const q = context.question.toLowerCase();
-  if (!/overview|information about|tell me about|what is .*proposal about|what happened|summar/.test(q)) return parsed;
   const facts = results.find((result) => result.agent === 'sql')?.facts as any;
+  if (/how many votes|vote count|number of votes/.test(q) && facts?.votes?.count !== undefined) {
+    const id = context.onChainProposalId ?? facts.proposal?.on_chain_id ?? context.localProposalId;
+    const answer = `Proposal ${id} received ${facts.votes.count} vote${facts.votes.count === 1 ? '' : 's'}.`;
+    return { answer, claims: [{ text: answer, type: 'NUMERIC' as const, evidenceIds: [`structured:votes:${context.localProposalId}`, ...(facts.votes.evidenceIds ?? [])] }] };
+  }
+  if (!/overview|information about|tell me about|what is .*proposal about|what happened|summar/.test(q)) return parsed;
   if (!facts?.proposal) return parsed;
   const proposal = facts.proposal;
   const id = context.onChainProposalId ?? proposal.on_chain_id ?? context.localProposalId;
@@ -439,8 +450,10 @@ function augmentSynthesis(parsed: { answer: string; claims: AgentClaim[] }, cont
 
 function parseSynthesis(content: string): { answer: string; claims: AgentClaim[] } {
   const clean = content.trim().replace(/^```json\s*/, '').replace(/```$/, '');
-  const value = JSON.parse(clean) as { answer?: unknown; claims?: unknown };
-  if (typeof value.answer !== 'string') throw new Error('Invalid structured synthesis output');
+  const parsed = JSON.parse(clean) as any;
+  const value = Array.isArray(parsed) ? parsed[0] : parsed;
+  const answer = textValue(value?.answer) ?? textValue(value?.response) ?? textValue(value?.output) ?? textValue(value?.text) ?? textValue(value?.summary);
+  if (!answer) throw new Error('Invalid structured synthesis output');
   const types = new Set(['FACTUAL', 'NUMERIC', 'TEMPORAL', 'SEMANTIC', 'COMPLIANCE']);
   const claims = (Array.isArray(value.claims) ? value.claims : []).flatMap((claim: any) => {
     if (typeof claim?.text !== 'string') return [];
@@ -448,6 +461,16 @@ function parseSynthesis(content: string): { answer: string; claims: AgentClaim[]
     const evidenceIds = Array.isArray(claim.evidenceIds) ? claim.evidenceIds.filter((id: unknown): id is string => typeof id === 'string') : [];
     return [{ text: claim.text, type, evidenceIds } as AgentClaim];
   });
-  if (!claims.length) claims.push({ text: value.answer, type: 'SEMANTIC', evidenceIds: [] });
-  return { answer: value.answer, claims };
+  if (!claims.length) claims.push({ text: answer, type: 'SEMANTIC', evidenceIds: [] });
+  return { answer, claims };
+}
+
+function textValue(value:unknown):string|undefined{if(typeof value==='string'&&value.trim())return value.trim();if(value&&typeof value==='object'){const item=value as Record<string,unknown>;return textValue(item.text)??textValue(item.content)??textValue(item.value)}return undefined}
+
+function deterministicSynthesisFallback(context:AgentContext,results:AgentResult[]){
+  const numeric=deterministicAnswer(context,results);if(numeric.answer)return numeric;
+  if(isOverviewQuestion(context.question))return deterministicOverviewWithoutDocuments(context,results);
+  const compliance=results.find(result=>result.agent==='compliance')?.facts as Record<string,any>|undefined;
+  if(compliance){const values=Object.values(compliance).filter(value=>value?.ruleId);if(values.length){const claims=values.map(value=>({text:`${value.ruleId} result is ${value.result}.`,type:'COMPLIANCE' as const,evidenceIds:[`compliance:${value.ruleId}:${context.localProposalId}`]}));return {answer:claims.map(claim=>claim.text).join(' '),claims};}}
+  return {answer:'The available evidence could not be converted into a reliable answer.',claims:[] as AgentClaim[]};
 }

@@ -1,275 +1,54 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { daoApi } from "@/lib/api/client";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import { CopyValueButton } from "@/components/copy-value-button";
-import type { AiQueryResponse } from "@/lib/api/types";
+import { daoApi } from "@/lib/api/client";
+import type { AiQueryResponse, ResearchSystem } from "@/lib/api/types";
 
-type System = "llm-only" | "vector-rag" | "multi-agent";
+const systems: Array<{value:ResearchSystem;label:string;description:string}> = [
+  {value:"hybrid",label:"Hybrid",description:"Combines structured DAO data, blockchain evidence and proposal-document retrieval."},
+  {value:"hybrid-verified",label:"Hybrid + Verifier",description:"Hybrid retrieval with claim-level verification and abstention."},
+  {value:"multi-agent",label:"Multi-Agent Hybrid + Verifier",description:"Specialized agents coordinate retrieval, compliance, provenance, synthesis and verification."},
+];
+const suggestions=["Summarize this proposal","How many votes did it receive?","What risks are mentioned in the documents?","Did it satisfy quorum?","Were all voters eligible?","Show the blockchain evidence","Give me a complete governance analysis"];
 
-interface AiPanelProps {
-  proposals: Array<{ id: string; title: string }>;
-  selectedProposalId?: string;
-}
+interface AiPanelProps {proposals:Array<{id:string;title:string;onChainId:string|null}>;selectedProposalId?:string}
 
-export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
-  const [question, setQuestion] = useState("");
-  const [system, setSystem] = useState<System>("vector-rag");
-  const [proposalId, setProposalId] = useState<string | undefined>(selectedProposalId);
-  const [topK, setTopK] = useState(5);
-  const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState<AiQueryResponse | null>(null);
-  const [health, setHealth] = useState<{
-    status: string;
-    ollama: { status: string; latencyMs?: number; model?: string; error?: string };
-    postgres: string;
-    timestamp: string;
-  } | null>(null);
-  const isLlmOnly = system === "llm-only";
-  const retrievedEvidence = response?.evidence.filter(
-    (item) => item.chunkEvidenceId || item.sourceType === "DOCUMENT_CHUNK",
-  ) ?? [];
-
-  useEffect(() => {
-    const checkHealth = async () => {
-      try {
-        const h = await daoApi.aiHealth();
-        setHealth(h);
-      } catch {
-        setHealth({
-          status: "error",
-          ollama: { status: "unhealthy" },
-          postgres: "error",
-          timestamp: new Date().toISOString()
-        });
-      }
-    };
-    void checkHealth();
-  }, []);
-
-  useEffect(() => {
-    if (selectedProposalId) setProposalId(selectedProposalId);
-  }, [selectedProposalId]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!question.trim()) return;
-
-    setLoading(true);
-    setResponse(null);
-
-    try {
-      const res = await daoApi.aiQuery({
-        question,
-        system,
-        ...(isLlmOnly ? {} : { proposalId, topK }),
-      });
-      setResponse(res);
-    } catch (error) {
-      setResponse({
-        runId: "",
-        system,
-        answer: "",
-        evidence: [],
-        retrieval: [],
-        latencyMs: 0,
-        error: error instanceof Error ? error.message : "Unknown error",
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div style={{ border: "1px solid #e5e7eb", borderRadius: "8px", padding: "16px", marginTop: "24px" }}>
-      <h2 style={{ margin: "0 0 16px", fontSize: "18px", fontWeight: 600 }}>AI Assistant</h2>
-
-      <div style={{ display: "flex", gap: "16px", marginBottom: "16px", flexWrap: "wrap" }}>
-        <div style={{ flex: 1, minWidth: "200px" }}>
-          <label style={{ display: "block", marginBottom: "4px", fontSize: "14px", fontWeight: 500 }}>
-            System
-          </label>
-          <select
-            value={system}
-            onChange={(e) => setSystem(e.target.value as System)}
-            style={{ width: "100%", padding: "8px", border: "1px solid #d1d5db", borderRadius: "4px" }}
-          >
-            <option value="llm-only">LLM Only</option>
-            <option value="vector-rag">Vector RAG</option>
-            <option value="multi-agent">Multi-Agent</option>
-          </select>
-        </div>
-
-        <div style={{ flex: 1, minWidth: "200px" }}>
-          <label style={{ display: "block", marginBottom: "4px", fontSize: "14px", fontWeight: 500 }}>
-            Proposal Scope (optional)
-          </label>
-          <select
-            value={proposalId ?? ""}
-            onChange={(e) => setProposalId(e.target.value || undefined)}
-            disabled={isLlmOnly}
-            style={{ width: "100%", padding: "8px", border: "1px solid #d1d5db", borderRadius: "4px" }}
-          >
-            <option value="">All Proposals</option>
-            {proposals.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.title}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div style={{ flex: 1, minWidth: "100px" }}>
-          <label style={{ display: "block", marginBottom: "4px", fontSize: "14px", fontWeight: 500 }}>
-            Top K
-          </label>
-          <input
-            type="number"
-            value={topK}
-            onChange={(e) => setTopK(Number(e.target.value))}
-            min={1}
-            max={20}
-            disabled={isLlmOnly}
-            style={{ width: "100%", padding: "8px", border: "1px solid #d1d5db", borderRadius: "4px" }}
-          />
-        </div>
+export function AiPanel({proposals,selectedProposalId}:AiPanelProps){
+  const [question,setQuestion]=useState("");
+  const [system,setSystem]=useState<ResearchSystem>("hybrid");
+  const [proposalId,setProposalId]=useState(selectedProposalId??"");
+  const [loading,setLoading]=useState(false);
+  const [response,setResponse]=useState<AiQueryResponse|null>(null);
+  useEffect(()=>{if(selectedProposalId)setProposalId(selectedProposalId)},[selectedProposalId]);
+  const description=systems.find(item=>item.value===system)?.description;
+  const grouped=useMemo(()=>groupSources(response?.evidence??[]),[response]);
+  async function submit(event:React.FormEvent){event.preventDefault();if(!question.trim()||!proposalId)return;setLoading(true);setResponse(null);try{setResponse(await daoApi.aiQuery({question:question.trim(),proposalId,system,topK:5}))}catch(error){setResponse({runId:"",system,answer:"",evidence:[],retrieval:[],latencyMs:0,error:error instanceof Error?error.message:"Unknown error"})}finally{setLoading(false)}}
+  const verified=system!=="hybrid";
+  return <section className="dashboard-card" style={{padding:24}}>
+    <div className="card-header"><div><span className="eyebrow">CyberGovAI</span><h2>CyberGovAI Assistant</h2></div><Link className="button button-secondary" href="/analysis">View Research Runs</Link></div>
+    <form onSubmit={submit}>
+      <div className="form-grid">
+        <label>Proposal<select value={proposalId} onChange={e=>setProposalId(e.target.value)} required><option value="">Select proposal</option>{proposals.map(p=><option key={p.id} value={p.id}>{p.title} · #{p.onChainId??"draft"}</option>)}</select></label>
+        <label>Research System<select value={system} onChange={e=>setSystem(e.target.value as ResearchSystem)}>{systems.map(item=><option key={item.value} value={item.value}>{item.label}</option>)}</select><small>{description}</small></label>
       </div>
-
-      {isLlmOnly && (
-        <p role="note" style={{ margin: "-8px 0 16px", fontSize: "13px", color: "#4b5563" }}>
-          LLM Only does not use DAO database or document context.
-        </p>
-      )}
-
-      <form onSubmit={handleSubmit} style={{ marginBottom: "16px" }}>
-        <textarea
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Ask a question about the proposal documents..."
-          style={{
-            width: "100%",
-            minHeight: "100px",
-            padding: "12px",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
-            fontFamily: "inherit",
-            fontSize: "14px",
-            resize: "vertical",
-            marginBottom: "12px",
-          }}
-        />
-        <button
-          type="submit"
-          disabled={loading || !question.trim()}
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#2563eb",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: loading || !question.trim() ? "not-allowed" : "pointer",
-            opacity: loading || !question.trim() ? 0.6 : 1,
-          }}
-        >
-          {loading ? "Thinking..." : "Ask"}
-        </button>
-      </form>
-
-      {health && (
-        <div
-          style={{
-            display: "flex",
-            gap: "16px",
-            padding: "8px",
-            backgroundColor: "#f9fafb",
-            borderRadius: "4px",
-            marginBottom: "16px",
-            fontSize: "12px",
-          }}
-        >
-          <span>Status: <strong>{health.status}</strong></span>
-          <span>Ollama: <strong>{health.ollama.status}</strong></span>
-          {health.ollama.latencyMs && <span>Ollama Latency: {health.ollama.latencyMs}ms</span>}
-        </div>
-      )}
-
-      {response && (
-        <div style={{ marginTop: "16px" }}>
-          {response.error && (
-            <div style={{ color: "#dc2626", padding: "12px", backgroundColor: "#fef2f2", borderRadius: "4px", marginBottom: "16px" }}>
-              Error: {response.error}
-            </div>
-          )}
-
-          <div style={{ marginBottom: "16px" }}>
-            <h3 style={{ margin: "0 0 8px", fontSize: "14px", fontWeight: 600 }}>Answer</h3>
-            <div style={{ padding: "12px", backgroundColor: "#f9fafb", borderRadius: "4px", whiteSpace: "pre-wrap", fontSize: "14px" }}>
-              {response.answer || "<empty>"}
-            </div>
-          </div>
-
-          {retrievedEvidence.length > 0 && (
-            <div style={{ marginBottom: "16px" }}>
-              <h3 style={{ margin: "0 0 8px", fontSize: "14px", fontWeight: 600 }}>Retrieved Sources</h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                {retrievedEvidence.map((e) => (
-                  <div
-                    key={e.chunkEvidenceId ?? e.evidenceId}
-                    style={{
-                      border: "1px solid #e5e7eb",
-                      borderRadius: "4px",
-                      padding: "12px",
-                    }}
-                  >
-                    <div style={{ display: "flex", gap: "8px", marginBottom: "8px", flexWrap: "wrap", fontSize: "12px" }}>
-                      {e.rank !== undefined && <span><strong>Rank:</strong> {e.rank}</span>}
-                      {e.score !== undefined && <span><strong>Score:</strong> {e.score.toFixed(4)}</span>}
-                      <span><strong>Proposal:</strong> {e.proposalId ?? "N/A"}</span>
-                      <span><strong>File:</strong> {e.filename ?? "N/A"}</span>
-                    </div>
-                    <div style={{ marginBottom: "8px" }}>
-                      <strong>Chunk Evidence ID:</strong>
-                      <CopyValueButton value={e.chunkEvidenceId ?? e.evidenceId ?? ""} />
-                    </div>
-                    <div style={{ marginBottom: "8px" }}>
-                      <strong>Artefact Evidence ID:</strong>
-                      <CopyValueButton value={e.artefactEvidenceId ?? e.sourceType ?? ""} />
-                    </div>
-                    <details style={{ fontSize: "13px" }}>
-                      <summary style={{ cursor: "pointer", color: "#6b7280" }}>Show content</summary>
-                      <pre style={{ marginTop: "8px", whiteSpace: "pre-wrap", backgroundColor: "#f3f4f6", padding: "8px", borderRadius: "4px", overflow: "auto", maxHeight: "200px" }}>
-                        {e.content ?? "No content included in this trace."}
-                      </pre>
-                    </details>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {response.system === "multi-agent" && (
-            <div style={{ marginBottom: "16px", fontSize: "13px" }}>
-              <p><strong>Agents Used:</strong> {response.agentsUsed?.join(" → ") || "None"}</p>
-              <p><strong>Tools Used:</strong> {response.toolsUsed?.join(", ") || "None"}</p>
-              <p><strong>Verification:</strong> {response.verification?.status ?? "N/A"}{response.abstained ? " · Abstained" : ""}</p>
-              {!!response.claims?.length && <div><strong>Claims</strong><ul>{response.claims.map((claim,index)=><li key={index}>{claim.text} ({claim.type}) — {response.verification?.claims[index]?.status}</li>)}</ul></div>}
-              <details><summary style={{cursor:"pointer"}}>Agent Trace</summary><ol>{response.agentTrace?.map((item,index)=><li key={index}>{item.agent}{item.tool?` → ${item.tool}`:item.action?` → ${item.action}`:""} — {item.status} ({item.latencyMs}ms)</li>)}</ol></details>
-            </div>
-          )}
-
-          <div style={{ fontSize: "12px", color: "#6b7280" }}>
-            <div>Run ID: <CopyValueButton value={response.runId} /></div>
-            <div>System: {response.system}</div>
-            <div>Total Latency: {response.latencyMs}ms</div>
-            {response.retrievalLatencyMs !== undefined && (
-              <div>Retrieval: {response.retrievalLatencyMs}ms</div>
-            )}
-            {response.generationLatencyMs !== undefined && (
-              <div>Generation: {response.generationLatencyMs}ms</div>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
+      <label>Question<textarea value={question} onChange={e=>setQuestion(e.target.value)} placeholder="Ask about this proposal, voting, documents, evidence or compliance..." style={{minHeight:110}} /></label>
+      <div style={{display:"flex",gap:8,flexWrap:"wrap",margin:"10px 0 16px"}}>{suggestions.map(item=><button type="button" className="table-action" key={item} onClick={()=>setQuestion(item)}>{item}</button>)}</div>
+      <button className="button button-primary" disabled={loading||!question.trim()||!proposalId}>{loading?"Running analysis…":"Run Analysis"}</button>
+    </form>
+    {response&&<div style={{marginTop:24}}>
+      {response.error&&<div className="alert alert-error">{response.error}</div>}
+      <ResultSection title="ANSWER"><div style={{whiteSpace:"pre-wrap"}}>{response.answer||"No answer returned."}</div></ResultSection>
+      {verified&&<ResultSection title="VERIFICATION"><strong>{verificationLabel(response.verification?.status,response.abstained)}</strong></ResultSection>}
+      <ResultSection title="SOURCES">{Object.entries(grouped).filter(([,items])=>items.length).map(([group,items])=><div key={group} style={{marginBottom:12}}><strong>{group}</strong><ul>{items.map((item,index)=><li key={item.evidenceId??item.chunkEvidenceId??index}><CopyValueButton value={item.evidenceId??item.chunkEvidenceId??item.artefactEvidenceId??""}/>{item.filename?` ${item.filename}`:""}</li>)}</ul></div>)}{!response.evidence.length&&<span>No evidence returned.</span>}</ResultSection>
+      {verified&&<ResultSection title="CLAIMS">{response.claims?.length?<ul>{response.claims.map((claim,index)=><li key={index}>{claim.text} — <strong>{response.verification?.claims[index]?.status??"UNVERIFIED"}</strong></li>)}</ul>:<span>No claims produced.</span>}</ResultSection>}
+      <details><summary style={{cursor:"pointer",fontWeight:700}}>ANALYSIS PATH</summary><ol>{response.agentTrace?.map((item,index)=><li key={index}>{item.agent}{item.tool?` → ${item.tool}`:""} · {item.status} · {item.latencyMs}ms · {item.evidenceIds.length} evidence</li>)}</ol>{response.system==="multi-agent"&&<p><strong>Agents:</strong> {response.agentsUsed?.join(" → ")||"None"}</p>}</details>
+      <p style={{fontSize:12,color:"#6b7280"}}>Run <CopyValueButton value={response.runId}/> · {response.latencyMs}ms</p>
+    </div>}
+  </section>
 }
+
+function ResultSection({title,children}:{title:string;children:React.ReactNode}){return <div style={{borderTop:"1px solid #e5e7eb",padding:"16px 0"}}><h3 style={{fontSize:13,letterSpacing:1}}>{title}</h3>{children}</div>}
+function verificationLabel(status?:string,abstained?:boolean){if(abstained||status==="UNSUPPORTED")return "Insufficient Evidence";if(status==="PARTIALLY_SUPPORTED")return "Partially Verified";return status==="SUPPORTED"?"Verified":"Pending"}
+function groupSources(items:AiQueryResponse["evidence"]){const groups:Record<string,AiQueryResponse["evidence"]>={Database:[],Blockchain:[],Documents:[],Compliance:[]};for(const item of items){const type=item.sourceType??(item.chunkEvidenceId?"DOCUMENT_CHUNK":"");if(type==="STRUCTURED_DB")groups.Database.push(item);else if(type==="ON_CHAIN_EVENT"||item.evidenceId?.startsWith("event:"))groups.Blockchain.push(item);else if(type==="COMPLIANCE"||item.evidenceId?.startsWith("compliance:"))groups.Compliance.push(item);else groups.Documents.push(item)}return groups}

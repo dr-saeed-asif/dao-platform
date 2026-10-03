@@ -16,7 +16,7 @@ describe('OllamaClient', () => {
     mockConfig.getOrThrow.mockImplementation((key: string) => {
       const values: Record<string, string | number> = {
         OLLAMA_BASE_URL: 'http://localhost:11434',
-        OLLAMA_CHAT_MODEL: 'qwen3.5:4b',
+        OLLAMA_CHAT_MODEL: 'qwen3:0.6b',
         OLLAMA_EMBED_MODEL: 'qwen3-embedding:0.6b',
         OLLAMA_EMBED_DIMENSION: 1024,
       };
@@ -29,7 +29,7 @@ describe('OllamaClient', () => {
 
   describe('getters', () => {
     it('should return chat model', () => {
-      expect(client.getChatModel()).toBe('qwen3.5:4b');
+      expect(client.getChatModel()).toBe('qwen3:0.6b');
     });
 
     it('should return embed model', () => {
@@ -61,5 +61,13 @@ describe('OllamaClient', () => {
 
       await expect(client.embed('test')).rejects.toThrow('Invalid embedding dimension');
     });
+  });
+
+  it('disables thinking and bounds chat generation',async()=>{
+    global.fetch=jest.fn().mockResolvedValue({ok:true,json:async()=>({message:{content:'{}'}})});
+    await client.chat([{role:'user',content:'test'}],{json:true});
+    const body=JSON.parse((global.fetch as jest.Mock).mock.calls[0][1].body);
+    expect(body.think).toBe(false);
+    expect(body.options.num_predict).toBe(768);
   });
 });

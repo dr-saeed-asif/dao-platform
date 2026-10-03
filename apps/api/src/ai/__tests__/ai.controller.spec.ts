@@ -5,6 +5,8 @@ import { LlmOnlySystem } from '../llm-only.system';
 import { VectorRagSystem } from '../vector-rag.system';
 import { VectorSearchService, SearchResult } from '../vector-search.service';
 import { PostgresService } from '../../database/postgres.service';
+import { ResearchRunsService } from '../../research/research-runs.service';
+import { MultiAgentSystem } from '../agents/multi-agent.system';
 
 describe('AiController', () => {
   let controller: AiController;
@@ -14,13 +16,15 @@ describe('AiController', () => {
   let mockVectorSearch: jest.Mocked<VectorSearchService>;
   let mockPostgres: jest.Mocked<PostgresService>;
   let mockDb: any;
+  let mockRuns: {record:jest.Mock};
+  let mockMultiAgent: {execute:jest.Mock;executeHybrid:jest.Mock};
 
   beforeEach(async () => {
     mockOllama = {
       healthCheck: jest.fn(),
       chat: jest.fn(),
       embed: jest.fn(),
-      getChatModel: jest.fn().mockReturnValue('qwen3.5:4b'),
+      getChatModel: jest.fn().mockReturnValue('qwen3:0.6b'),
       getEmbedModel: jest.fn().mockReturnValue('qwen3-embedding:0.6b'),
       getEmbedDimension: jest.fn().mockReturnValue(1024),
     } as any;
@@ -62,6 +66,8 @@ describe('AiController', () => {
       database: mockDb,
       checkConnection: jest.fn().mockResolvedValue(undefined),
     } as any;
+    mockRuns={record:jest.fn().mockResolvedValue(undefined)};
+    mockMultiAgent={execute:jest.fn(),executeHybrid:jest.fn()};
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AiController],
@@ -71,6 +77,8 @@ describe('AiController', () => {
         { provide: VectorRagSystem, useValue: mockVectorRag },
         { provide: VectorSearchService, useValue: mockVectorSearch },
         { provide: PostgresService, useValue: mockPostgres },
+        { provide: ResearchRunsService, useValue: mockRuns },
+        { provide: MultiAgentSystem, useValue: mockMultiAgent },
       ],
     }).compile();
 
@@ -175,6 +183,26 @@ describe('AiController', () => {
 
       expect(result.error).toBe('Ollama error');
       expect(result.answer).toBe('');
+    });
+
+    it.each([
+      ['hybrid',false],
+      ['hybrid-verified',true],
+    ] as const)('runs and stores %s using the shared hybrid engine',async(system,verified)=>{
+      const response={runId:`run-${system}`,system,answer:'answer',evidence:[],retrieval:[],claims:[],agentTrace:[],agentsUsed:[],toolsUsed:[],abstained:false,latencyMs:3,llmCalls:1,embeddingCalls:0,errors:[]};
+      mockMultiAgent.executeHybrid.mockResolvedValue(response);
+      const result=await controller.query({question:'How many votes did this proposal receive?',proposalId:'prop-1',system});
+      expect(mockMultiAgent.executeHybrid).toHaveBeenCalledWith(expect.objectContaining({localProposalId:'prop-1',onChainProposalId:'12'}),verified);
+      expect(mockRuns.record).toHaveBeenCalledWith(expect.anything(),expect.anything(),response);
+      expect(result.system).toBe(system);
+    });
+
+    it('runs and stores the multi-agent system separately',async()=>{
+      const response={runId:'run-multi',system:'multi-agent',answer:'answer',evidence:[],retrieval:[],claims:[],verification:{status:'SUPPORTED',claims:[],correctionRounds:0},agentTrace:[],agentsUsed:['coordinator','sql','verification'],toolsUsed:['getProposalVotes'],abstained:false,latencyMs:3,llmCalls:0,embeddingCalls:0,errors:[]};
+      mockMultiAgent.execute.mockResolvedValue(response);
+      const result=await controller.query({question:'How many votes did this proposal receive?',proposalId:'prop-1',system:'multi-agent'});
+      expect(mockRuns.record).toHaveBeenCalledWith(expect.anything(),expect.anything(),response);
+      expect(result.system).toBe('multi-agent');
     });
   });
 });
