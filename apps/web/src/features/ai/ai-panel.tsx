@@ -3,66 +3,53 @@
 import { useState, useEffect } from "react";
 import { daoApi } from "@/lib/api/client";
 import { CopyValueButton } from "@/components/copy-value-button";
+import type { AiQueryResponse } from "@/lib/api/types";
 
-type System = "llm-only" | "vector-rag";
+type System = "llm-only" | "vector-rag" | "multi-agent";
 
 interface AiPanelProps {
   proposals: Array<{ id: string; title: string }>;
+  selectedProposalId?: string;
 }
 
-export function AiPanel({ proposals }: AiPanelProps) {
+export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
   const [question, setQuestion] = useState("");
   const [system, setSystem] = useState<System>("vector-rag");
-  const [proposalId, setProposalId] = useState<string | undefined>(undefined);
+  const [proposalId, setProposalId] = useState<string | undefined>(selectedProposalId);
   const [topK, setTopK] = useState(5);
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState<{
-    runId: string;
-    system: System;
-    answer: string;
-    evidence: Array<{
-      chunkEvidenceId: string;
-      artefactEvidenceId: string;
-      proposalId: string | null;
-      filename: string | null;
-      content: string;
-      score: number;
-      rank: number;
-    }>;
-    retrieval: Array<{
-      chunkEvidenceId: string;
-      score: number;
-      rank: number;
-    }>;
-    latencyMs: number;
-    retrievalLatencyMs?: number;
-    generationLatencyMs?: number;
-    error?: string;
-  } | null>(null);
+  const [response, setResponse] = useState<AiQueryResponse | null>(null);
   const [health, setHealth] = useState<{
     status: string;
     ollama: { status: string; latencyMs?: number; model?: string; error?: string };
     postgres: string;
     timestamp: string;
   } | null>(null);
+  const isLlmOnly = system === "llm-only";
+  const retrievedEvidence = response?.evidence.filter(
+    (item) => item.chunkEvidenceId || item.sourceType === "DOCUMENT_CHUNK",
+  ) ?? [];
 
   useEffect(() => {
-    checkHealth();
+    const checkHealth = async () => {
+      try {
+        const h = await daoApi.aiHealth();
+        setHealth(h);
+      } catch {
+        setHealth({
+          status: "error",
+          ollama: { status: "unhealthy" },
+          postgres: "error",
+          timestamp: new Date().toISOString()
+        });
+      }
+    };
+    void checkHealth();
   }, []);
 
-  const checkHealth = async () => {
-    try {
-      const h = await daoApi.aiHealth();
-      setHealth(h);
-    } catch {
-      setHealth({ 
-        status: "error", 
-        ollama: { status: "unhealthy" },
-        postgres: "error",
-        timestamp: new Date().toISOString()
-      });
-    }
-  };
+  useEffect(() => {
+    if (selectedProposalId) setProposalId(selectedProposalId);
+  }, [selectedProposalId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,9 +61,8 @@ export function AiPanel({ proposals }: AiPanelProps) {
     try {
       const res = await daoApi.aiQuery({
         question,
-        proposalId,
         system,
-        topK,
+        ...(isLlmOnly ? {} : { proposalId, topK }),
       });
       setResponse(res);
     } catch (error) {
@@ -92,10 +78,6 @@ export function AiPanel({ proposals }: AiPanelProps) {
     } finally {
       setLoading(false);
     }
-  };
-
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
   };
 
   return (
@@ -114,6 +96,7 @@ export function AiPanel({ proposals }: AiPanelProps) {
           >
             <option value="llm-only">LLM Only</option>
             <option value="vector-rag">Vector RAG</option>
+            <option value="multi-agent">Multi-Agent</option>
           </select>
         </div>
 
@@ -124,6 +107,7 @@ export function AiPanel({ proposals }: AiPanelProps) {
           <select
             value={proposalId ?? ""}
             onChange={(e) => setProposalId(e.target.value || undefined)}
+            disabled={isLlmOnly}
             style={{ width: "100%", padding: "8px", border: "1px solid #d1d5db", borderRadius: "4px" }}
           >
             <option value="">All Proposals</option>
@@ -145,10 +129,17 @@ export function AiPanel({ proposals }: AiPanelProps) {
             onChange={(e) => setTopK(Number(e.target.value))}
             min={1}
             max={20}
+            disabled={isLlmOnly}
             style={{ width: "100%", padding: "8px", border: "1px solid #d1d5db", borderRadius: "4px" }}
           />
         </div>
       </div>
+
+      {isLlmOnly && (
+        <p role="note" style={{ margin: "-8px 0 16px", fontSize: "13px", color: "#4b5563" }}>
+          LLM Only does not use DAO database or document context.
+        </p>
+      )}
 
       <form onSubmit={handleSubmit} style={{ marginBottom: "16px" }}>
         <textarea
@@ -217,13 +208,13 @@ export function AiPanel({ proposals }: AiPanelProps) {
             </div>
           </div>
 
-          {response.evidence.length > 0 && (
+          {retrievedEvidence.length > 0 && (
             <div style={{ marginBottom: "16px" }}>
               <h3 style={{ margin: "0 0 8px", fontSize: "14px", fontWeight: 600 }}>Retrieved Sources</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                {response.evidence.map((e) => (
+                {retrievedEvidence.map((e) => (
                   <div
-                    key={e.chunkEvidenceId}
+                    key={e.chunkEvidenceId ?? e.evidenceId}
                     style={{
                       border: "1px solid #e5e7eb",
                       borderRadius: "4px",
@@ -231,28 +222,38 @@ export function AiPanel({ proposals }: AiPanelProps) {
                     }}
                   >
                     <div style={{ display: "flex", gap: "8px", marginBottom: "8px", flexWrap: "wrap", fontSize: "12px" }}>
-                      <span><strong>Rank:</strong> {e.rank}</span>
-                      <span><strong>Score:</strong> {e.score.toFixed(4)}</span>
+                      {e.rank !== undefined && <span><strong>Rank:</strong> {e.rank}</span>}
+                      {e.score !== undefined && <span><strong>Score:</strong> {e.score.toFixed(4)}</span>}
                       <span><strong>Proposal:</strong> {e.proposalId ?? "N/A"}</span>
                       <span><strong>File:</strong> {e.filename ?? "N/A"}</span>
                     </div>
                     <div style={{ marginBottom: "8px" }}>
                       <strong>Chunk Evidence ID:</strong>
-                      <CopyValueButton value={e.chunkEvidenceId} />
+                      <CopyValueButton value={e.chunkEvidenceId ?? e.evidenceId ?? ""} />
                     </div>
                     <div style={{ marginBottom: "8px" }}>
                       <strong>Artefact Evidence ID:</strong>
-                      <CopyValueButton value={e.artefactEvidenceId} />
+                      <CopyValueButton value={e.artefactEvidenceId ?? e.sourceType ?? ""} />
                     </div>
                     <details style={{ fontSize: "13px" }}>
                       <summary style={{ cursor: "pointer", color: "#6b7280" }}>Show content</summary>
                       <pre style={{ marginTop: "8px", whiteSpace: "pre-wrap", backgroundColor: "#f3f4f6", padding: "8px", borderRadius: "4px", overflow: "auto", maxHeight: "200px" }}>
-                        {e.content}
+                        {e.content ?? "No content included in this trace."}
                       </pre>
                     </details>
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {response.system === "multi-agent" && (
+            <div style={{ marginBottom: "16px", fontSize: "13px" }}>
+              <p><strong>Agents Used:</strong> {response.agentsUsed?.join(" → ") || "None"}</p>
+              <p><strong>Tools Used:</strong> {response.toolsUsed?.join(", ") || "None"}</p>
+              <p><strong>Verification:</strong> {response.verification?.status ?? "N/A"}{response.abstained ? " · Abstained" : ""}</p>
+              {!!response.claims?.length && <div><strong>Claims</strong><ul>{response.claims.map((claim,index)=><li key={index}>{claim.text} ({claim.type}) — {response.verification?.claims[index]?.status}</li>)}</ul></div>}
+              <details><summary style={{cursor:"pointer"}}>Agent Trace</summary><ol>{response.agentTrace?.map((item,index)=><li key={index}>{item.agent}{item.tool?` → ${item.tool}`:item.action?` → ${item.action}`:""} — {item.status} ({item.latencyMs}ms)</li>)}</ol></details>
             </div>
           )}
 

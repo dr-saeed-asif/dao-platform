@@ -38,6 +38,10 @@ describe('AiController', () => {
     } as any;
 
     mockDb = {
+      selectFrom: jest.fn().mockReturnThis(),
+      select: jest.fn().mockReturnThis(),
+      where: jest.fn().mockReturnThis(),
+      executeTakeFirst: jest.fn().mockResolvedValue({ id: 'prop-1', on_chain_id: '12', chain_id: '1212', contract_address: '0x51b43885899bd0301c2beea89addc9d876145d21' }),
       transaction: jest.fn().mockReturnValue({
         execute: jest.fn().mockImplementation(async (cb: any) => {
           const tx = {

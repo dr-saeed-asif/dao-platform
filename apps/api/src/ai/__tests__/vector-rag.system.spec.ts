@@ -28,7 +28,7 @@ describe('VectorRagSystem', () => {
 
       const result = await system.answer('Test question');
 
-      expect(result.answer).toBe('Insufficient evidence found to answer the question.');
+      expect(result.answer).toBe('No indexed document evidence was found for this proposal.');
       expect(result.evidence).toEqual([]);
       expect(result.retrievalLatencyMs).toBeGreaterThanOrEqual(0);
       expect(result.generationLatencyMs).toBe(0);

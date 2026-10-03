@@ -33,7 +33,7 @@ export class OllamaClient implements OnModuleInit {
     this.chatModel = config.getOrThrow<string>('OLLAMA_CHAT_MODEL');
     this.embedModel = config.getOrThrow<string>('OLLAMA_EMBED_MODEL');
     this.embedDimension = config.getOrThrow<number>('OLLAMA_EMBED_DIMENSION');
-    this.timeout = 60_000;
+    this.timeout = 300_000;
   }
 
   async onModuleInit(): Promise<void> {
@@ -78,7 +78,7 @@ export class OllamaClient implements OnModuleInit {
     }
   }
 
-  async chat(messages: Array<{ role: string; content: string }>): Promise<OllamaChatResponse> {
+  async chat(messages: Array<{ role: string; content: string }>, options?: { json?: boolean }): Promise<OllamaChatResponse> {
     const start = Date.now();
     const response = await this.fetchWithTimeout(`${this.baseUrl}/api/chat`, {
       method: 'POST',
@@ -87,6 +87,7 @@ export class OllamaClient implements OnModuleInit {
         model: this.chatModel,
         messages,
         stream: false,
+        ...(options?.json ? { format: 'json' } : {}),
         options: { temperature: 0.1 },
       }),
     });

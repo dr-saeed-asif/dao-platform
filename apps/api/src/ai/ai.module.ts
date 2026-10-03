@@ -10,6 +10,10 @@ import { VectorSearchService } from './vector-search.service';
 import { LlmOnlySystem } from './llm-only.system';
 import { VectorRagSystem } from './vector-rag.system';
 import { AiController } from './ai.controller';
+import { ToolRegistry } from './agents/tool-registry';
+import { GovernanceToolsService } from './agents/governance-tools.service';
+import { MultiAgentSystem } from './agents/multi-agent.system';
+import { McpToolRegistryAdapter } from './agents/mcp.adapter';
 
 @Module({
   imports: [ConfigModule, PostgresModule, ResearchModule],
@@ -22,6 +26,10 @@ import { AiController } from './ai.controller';
     VectorSearchService,
     LlmOnlySystem,
     VectorRagSystem,
+    ToolRegistry,
+    GovernanceToolsService,
+    MultiAgentSystem,
+    McpToolRegistryAdapter,
   ],
   exports: [
     TextExtractionService,
@@ -31,6 +39,7 @@ import { AiController } from './ai.controller';
     VectorSearchService,
     LlmOnlySystem,
     VectorRagSystem,
+    MultiAgentSystem,
   ],
 })
 export class AiModule {}

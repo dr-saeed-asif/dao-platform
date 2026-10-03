@@ -1,13 +1,15 @@
 export interface AiQueryRequest {
   question: string;
   proposalId?: string;
-  system: 'llm-only' | 'vector-rag';
+  system: 'llm-only' | 'vector-rag' | 'multi-agent';
   topK?: number;
+  datasetVersion?: string;
+  policyVersion?: string;
 }
 
 export interface AiQueryResponse {
   runId: string;
-  system: 'llm-only' | 'vector-rag';
+  system: 'llm-only' | 'vector-rag' | 'multi-agent';
   answer: string;
   evidence: Array<{
     chunkEvidenceId: string;

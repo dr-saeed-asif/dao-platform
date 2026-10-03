@@ -13,6 +13,8 @@ import * as contractDeployment1212Migration from "./postgres-migrations/contract
 import * as operationalDaoMigration from "./postgres-migrations/operational-dao.migration.js";
 import * as artefactDatasetCoreMigration from "./postgres-migrations/artefact-dataset-core.migration.js";
 import * as proposalArtefactLinksMigration from "./postgres-migrations/proposal-artefact-links.migration.js";
+import * as documentChunksMigration from "./postgres-migrations/document-chunks.migration.js";
+import * as agentRunMetadataMigration from "./postgres-migrations/agent-run-metadata.migration.js";
 
 export type PostgresDatabase = Kysely<PostgresDatabaseSchema>;
 
@@ -24,6 +26,8 @@ class PostgresMigrationProvider implements MigrationProvider {
       "003_operational_dao": operationalDaoMigration,
       "004_artefact_dataset_core": artefactDatasetCoreMigration,
       "005_proposal_artefact_links": proposalArtefactLinksMigration,
+      "006_document_chunks": documentChunksMigration,
+      "007_agent_run_metadata": agentRunMetadataMigration,
     };
   }
 }

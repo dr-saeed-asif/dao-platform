@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnApplicationShutdown, OnModuleInit } from '@nestjs/common';
 import { PostgresService } from '../database/postgres.service';
 import { LocalArtefactStorage } from '../research/local-artefact.storage';
 import { TextExtractionService, ExtractionResult } from './text-extraction.service';
 import { ChunkingService, Chunk } from './chunking.service';
 import { OllamaClient, OllamaEmbeddingResponse } from './ollama.client';
+import { sha256 } from '@dao-platform/database';
 
 export interface IndexResult {
   artefactEvidenceId: string;
@@ -23,7 +24,9 @@ interface ArtefactRow {
 }
 
 @Injectable()
-export class EmbeddingPipelineService {
+export class EmbeddingPipelineService implements OnModuleInit, OnApplicationShutdown {
+  private indexing: Promise<void> | undefined;
+  private timer: NodeJS.Timeout | undefined;
   constructor(
     private readonly postgres: PostgresService,
     private readonly storage: LocalArtefactStorage,
@@ -34,6 +37,34 @@ export class EmbeddingPipelineService {
 
   private get db() {
     return this.postgres.database;
+  }
+
+  async onModuleInit(): Promise<void> {
+    await this.indexLinkedArtefacts();
+    this.timer = setInterval(() => void this.indexLinkedArtefacts(), 5_000);
+    this.timer.unref();
+  }
+
+  onApplicationShutdown(): void {
+    if (this.timer) clearInterval(this.timer);
+  }
+
+  async indexLinkedArtefacts(): Promise<void> {
+    if (this.indexing) return this.indexing;
+    this.indexing = (async () => {
+      const rows = await this.db.selectFrom('artefacts')
+        .innerJoin('proposal_artefacts', 'proposal_artefacts.evidence_id', 'artefacts.evidence_id')
+        .select('artefacts.evidence_id')
+        .where('artefacts.verification_status', '=', 'VERIFIED')
+        .where('artefacts.lifecycle_state', '=', 'LINKED')
+        .distinct()
+        .execute();
+      for (const row of rows) {
+        try { await this.indexArtefact(row.evidence_id); }
+        catch (error) { console.error(`Failed to index ${row.evidence_id}:`, error); }
+      }
+    })().finally(() => { this.indexing = undefined; });
+    return this.indexing;
   }
 
   async indexArtefact(artefactEvidenceId: string): Promise<IndexResult> {
@@ -52,6 +83,10 @@ export class EmbeddingPipelineService {
     }
 
     const fileBytes = await this.storage.get(artefact.storage_key);
+    if (sha256(fileBytes) !== artefact.computed_hash) {
+      await this.db.updateTable('artefacts').set({ verification_status: 'FAILED' }).where('evidence_id', '=', artefactEvidenceId).execute();
+      throw new Error(`Artefact hash verification failed: ${artefactEvidenceId}`);
+    }
 
     return this.indexArtefactWithContent(artefact as ArtefactRow, fileBytes);
   }
@@ -81,11 +116,11 @@ export class EmbeddingPipelineService {
 
     const existingChunks = await this.db
       .selectFrom('document_chunks')
-      .select(['evidence_id', 'content'])
+      .select(['evidence_id', 'content', 'embedding', 'embedding_model', 'embedding_dimension', 'chunking_version'])
       .where('artefact_id', '=', artefact.id)
       .execute();
 
-    const existingByEvidenceId = new Map(existingChunks.map((c) => [c.evidence_id, c.content]));
+    const existingByEvidenceId = new Map(existingChunks.map((c) => [c.evidence_id, c]));
 
     const chunks = this.chunking.chunk(
       artefact.evidence_id,
@@ -94,8 +129,8 @@ export class EmbeddingPipelineService {
     );
 
     for (const chunk of chunks) {
-      const existingContent = existingByEvidenceId.get(chunk.evidenceId);
-      if (existingContent && existingContent === chunk.content) {
+      const existing = existingByEvidenceId.get(chunk.evidenceId);
+      if (existing && existing.content === chunk.content && existing.embedding && existing.embedding_model === this.ollama.getEmbedModel() && existing.embedding_dimension === this.ollama.getEmbedDimension() && existing.chunking_version === this.chunking.getChunkingVersion()) {
         chunksSkipped++;
         continue;
       }
@@ -131,6 +166,12 @@ export class EmbeddingPipelineService {
       chunksIndexed++;
     }
 
+    const currentIds = chunks.map((chunk) => chunk.evidenceId);
+    let stale = this.db.deleteFrom('document_chunks').where('artefact_id', '=', artefact.id);
+    if (currentIds.length) stale = stale.where('evidence_id', 'not in', currentIds);
+    await stale.execute();
+    await this.db.updateTable('artefacts').set({ content: extraction.text }).where('id', '=', artefact.id).execute();
+
     return {
       artefactEvidenceId: artefact.evidence_id,
       chunksIndexed,
@@ -145,6 +186,8 @@ export class EmbeddingPipelineService {
       .innerJoin('proposal_artefacts', 'proposal_artefacts.evidence_id', 'artefacts.evidence_id')
       .selectAll('artefacts')
       .where('proposal_artefacts.proposal_id', '=', proposalId)
+      .where('artefacts.verification_status', '=', 'VERIFIED')
+      .where('artefacts.lifecycle_state', '=', 'LINKED')
       .execute();
 
     const results: IndexResult[] = [];

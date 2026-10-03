@@ -132,7 +132,7 @@ interface QuestionsTable {
   required_evidence_ids: PostgresJson;
   acceptable_alternative_evidence: PostgresJson | null;
   answerable: boolean;
-  dataset_version_id: PostgresBigInt;
+  dataset_version_id: PostgresBigInt | null;
   metadata: GeneratedPostgresJson;
   created_at: GeneratedPostgresTimestamp;
 }
@@ -141,7 +141,7 @@ interface ExperimentRunsTable {
   id: Generated<string>;
   run_id: string;
   system: string;
-  dataset_version_id: PostgresBigInt;
+  dataset_version_id: PostgresBigInt | null;
   policy_id: PostgresBigInt | null;
   git_commit: string;
   chat_model: string | null;
@@ -286,7 +286,7 @@ export interface OperationalIndexerCheckpointsTable {
 interface DocumentChunksTable {
   id: Generated<string>;
   evidence_id: string;
-  artefact_id: string;
+  artefact_id: PostgresBigInt;
   proposal_id: PostgresNumeric | null;
   chunk_index: number;
   content: string;

@@ -10,7 +10,7 @@ export async function up(db: Kysely<PostgresDatabaseSchema>): Promise<void> {
       column.primaryKey().generatedAlwaysAsIdentity(),
     )
     .addColumn("evidence_id", "text", (column) => column.notNull())
-    .addColumn("artefact_id", "text", (column) =>
+    .addColumn("artefact_id", "bigint", (column) =>
       column.notNull().references("artefacts.id").onDelete("cascade"),
     )
     .addColumn("proposal_id", sql`numeric(78,0)`)
@@ -50,12 +50,7 @@ export async function up(db: Kysely<PostgresDatabaseSchema>): Promise<void> {
     .column("artefact_id")
     .execute();
 
-  await db.schema
-    .createIndex("document_chunks_embedding_idx")
-    .on("document_chunks")
-    .using("hnsw")
-    .column("embedding")
-    .execute();
+  await sql`CREATE INDEX document_chunks_embedding_idx ON document_chunks USING hnsw (embedding vector_cosine_ops)`.execute(db);
 }
 
 export async function down(db: Kysely<PostgresDatabaseSchema>): Promise<void> {

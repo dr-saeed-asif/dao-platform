@@ -26,7 +26,7 @@ export class VectorRagSystem {
 
     if (results.length === 0) {
       return {
-        answer: 'Insufficient evidence found to answer the question.',
+        answer: 'No indexed document evidence was found for this proposal.',
         evidence: [],
         latencyMs: retrievalLatencyMs,
         retrievalLatencyMs,
@@ -35,7 +35,7 @@ export class VectorRagSystem {
     }
 
     const context = results
-      .map((r, i) => `[${i + 1}] ${r.content} (source: ${r.artefactEvidenceId})`)
+      .map((r, i) => `[${i + 1}] ${r.content} [source: ${r.chunkEvidenceId}; artefact: ${r.artefactEvidenceId}]`)
       .join('\n\n');
 
     const messages = [

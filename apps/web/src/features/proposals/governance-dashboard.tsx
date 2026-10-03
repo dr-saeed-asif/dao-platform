@@ -184,7 +184,7 @@ export function GovernanceDashboard() {
 {active === "decoder" && <TransactionDecoder proposals={proposals} />}
       {active === "wallet" && <WalletView role={role} />}
       {active === "settings" && <SettingsView />}
-      {active === "ai" && <AiPanel proposals={proposals} />}
+      {active === "ai" && <AiPanel proposals={proposals} selectedProposalId={selectedId ?? undefined} />}
         </>
       )}
     </AppShell>

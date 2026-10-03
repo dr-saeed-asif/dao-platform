@@ -32,4 +32,10 @@ export const envValidationSchema = Joi.object({
   OLLAMA_CHAT_MODEL: Joi.string().required(),
   OLLAMA_EMBED_MODEL: Joi.string().required(),
   OLLAMA_EMBED_DIMENSION: Joi.number().integer().min(1).required(),
+  MAX_AGENT_STEPS: Joi.number().integer().min(1).max(32).default(8),
+  MAX_LLM_CALLS: Joi.number().integer().min(0).max(4).default(2),
+  AGENT_REQUEST_TIMEOUT_MS: Joi.number().integer().min(1000).default(120000),
+  MCP_ENABLED: Joi.boolean().default(false),
+  MCP_SERVER_ALLOWLIST: Joi.string().allow('').default(''),
+  MCP_TOOL_ALLOWLIST: Joi.string().allow('').default(''),
 });
