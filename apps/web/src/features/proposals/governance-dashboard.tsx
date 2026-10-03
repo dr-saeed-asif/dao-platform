@@ -49,7 +49,7 @@ function proposalStatus(proposal: Proposal, votes: IndexedVote[]) {
 
 export function GovernanceDashboard() {
   const wallet = useWallet();
-  const [active, setActive] = useState<DashboardView>("dashboard");
+  const [active, setActive] = useState<DashboardView>("proposals");
   const [collapsed, setCollapsed] = useState(false);
   const [proposals, setProposals] = useState<Proposal[]>([]);
   const [assignments, setAssignments] = useState<IndexedAssignment[]>([]);
@@ -127,9 +127,25 @@ export function GovernanceDashboard() {
         <div>
           <span className="eyebrow">CyberChain governance</span>
           <h1>{titleFor(active)}</h1>
-          <p>{subtitleFor(active, role)}</p>
+          <p>{subtitleFor(active)}</p>
         </div>
-        <div className={`role-badge role-${role.toLowerCase()}`}>{role}</div>
+        <div className="ref-hero-actions">
+          {(active === "proposals" || active === "dashboard") && (
+            <button
+              className="btn-create"
+              onClick={() => {
+                if (active !== "proposals") setActive("proposals");
+                requestAnimationFrame(() => {
+                  document
+                    .getElementById("create")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+              }}
+            >
+              <span className="plus">+</span> Create Proposal
+            </button>
+          )}
+        </div>
       </div>
       {error && (
         <div className="alert alert-error">
@@ -163,6 +179,8 @@ export function GovernanceDashboard() {
             <ProposalsView
               proposals={proposals}
               votes={votes}
+              members={uniqueMembers}
+              activeCount={activeCount}
               selected={selected}
               onSelect={setSelectedId}
               onChanged={load}
@@ -259,115 +277,52 @@ function DashboardView({
   }
   return (
     <>
-      <div className="metric-grid">
-        <Metric
-          label="Total proposals"
-          value={proposals.length}
-          icon="▤"
-          tone="blue"
-        />
-        <Metric label="Active votes" value={activeCount} icon="✓" tone="cyan" />
-        <Metric
-          label="Eligible members"
-          value={members}
-          icon="♙"
-          tone="violet"
-        />
-        <Metric
-          label="Votes recorded"
-          value={votes.length}
-          icon="◎"
-          tone="green"
-        />
-      </div>
-      <section className="dashboard-card">
-        <div className="card-header">
-          <div>
-            <h2>Recent proposals</h2>
-            <p>Live governance activity indexed from CyberChain</p>
+      <StatsRow
+        proposals={proposals}
+        votes={votes}
+        members={members}
+        activeCount={activeCount}
+      />
+      <ProposalsTable proposals={proposals} votes={votes} onOpen={onOpen} />
+      {canAdmin && (
+        <section className="dashboard-card" style={{ marginTop: 16 }}>
+          <div className="card-header">
+            <div>
+              <h2 style={{ fontSize: 18 }}>Blockchain sync</h2>
+              <p>Manual maintenance for the local indexed read model</p>
+            </div>
+            <div className="table-toolbar">
+              <button
+                className="button button-secondary"
+                disabled={syncing}
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      "Replay all governance events from the contract deployment block?",
+                    )
+                  )
+                    void synchronize(true);
+                }}
+              >
+                Full reindex
+              </button>
+              <button
+                className="button button-danger"
+                disabled={syncing}
+                onClick={() => void clearLocalData()}
+              >
+                Delete local data
+              </button>
+            </div>
           </div>
-          {/* {canAdmin && (
-            <button
-              className="button button-secondary"
-              disabled={syncing}
-              onClick={() => void synchronize(false)}
-            >
-              {syncing ? "Synchronizing…" : "Sync blockchain data"}
-            </button>
-          )} */}
-          {canAdmin && (
-            <button
-              className="button button-secondary"
-              disabled={syncing}
-              onClick={() => {
-                if (window.confirm("Replay all governance events from the contract deployment block?")) void synchronize(true);
-              }}
-            >
-              Full reindex
-            </button>
+          {syncMessage && (
+            <p className="form-message" style={{ padding: "0 24px 16px" }}>
+              {syncMessage}
+            </p>
           )}
-          {canAdmin && (
-            <button
-              className="button button-danger"
-              disabled={syncing}
-              onClick={() => void clearLocalData()}
-            >
-              Delete local data
-            </button>
-          )}
-        </div>
-        {syncMessage && <p className="form-message">{syncMessage}</p>}
-        <div className="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Proposal</th>
-                <th>Status</th>
-                <th>Voting period</th>
-                <th>Votes</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {proposals.slice(0, 6).map((proposal) => (
-                <tr key={proposal.id}>
-                  <td>
-                    <strong>{proposal.title}</strong>
-                    <small>
-                      #{proposal.onChainId ?? "draft"} ·{" "}
-                      {proposal.type.replaceAll("_", " ")}
-                    </small>
-                  </td>
-                  <td>
-                    <StatusBadge status={proposalStatus(proposal, votes)} />
-                  </td>
-                  <td>{formatDate(proposal.endsAt)}</td>
-                  <td>
-                    {
-                      votes.filter((vote) => vote.proposalId === proposal.id)
-                        .length
-                    }
-                  </td>
-                  <td>
-                    <button
-                      className="table-action"
-                      onClick={() => onOpen(proposal.id)}
-                    >
-                      Open
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        {!proposals.length && (
-          <EmptyState
-            title="No proposals yet"
-            copy="Create the first proposal to start governing."
-          />
-        )}
-      </section>
+        </section>
+      )}
+      {!canAdmin && syncMessage && <p className="form-message">{syncMessage}</p>}
     </>
   );
 }
@@ -406,6 +361,8 @@ function WalletRestoring() {
 function ProposalsView({
   proposals,
   votes,
+  members,
+  activeCount,
   selected,
   onSelect,
   onChanged,
@@ -413,6 +370,8 @@ function ProposalsView({
 }: {
   proposals: Proposal[];
   votes: IndexedVote[];
+  members: number;
+  activeCount: number;
   selected?: Proposal;
   onSelect(id: string): void;
   onChanged(): void;
@@ -420,38 +379,18 @@ function ProposalsView({
 }) {
   return (
     <div className="view-stack">
-      <section className="dashboard-card">
-        <div className="card-header">
-          <div>
-            <h2>All proposals</h2>
-            <p>Select a proposal to manage eligibility and voting.</p>
-          </div>
-        </div>
-        <div className="proposal-card-grid">
-          {proposals.map((proposal) => (
-            <button
-              key={proposal.id}
-              className={
-                selected?.id === proposal.id
-                  ? "governance-proposal selected"
-                  : "governance-proposal"
-              }
-              onClick={() => onSelect(proposal.id)}
-            >
-              <div>
-                <StatusBadge status={proposalStatus(proposal, votes)} />
-                <span>#{proposal.onChainId ?? "draft"}</span>
-              </div>
-              <h3>{proposal.title}</h3>
-              <p>{proposal.purpose}</p>
-              <footer>
-                <span>{proposal.options.length} options</span>
-                <span>Ends {formatDate(proposal.endsAt)}</span>
-              </footer>
-            </button>
-          ))}
-        </div>
-      </section>
+      <StatsRow
+        proposals={proposals}
+        votes={votes}
+        members={members}
+        activeCount={activeCount}
+      />
+      <ProposalsTable
+        proposals={proposals}
+        votes={votes}
+        onOpen={onSelect}
+        selectedId={selected?.id}
+      />
       {selected && (
         <ProposalWorkspace
           proposal={selected}
@@ -782,7 +721,7 @@ function LoadingState() {
 }
 function titleFor(view: DashboardView) {
   return {
-    dashboard: "Governance overview",
+    dashboard: "Proposals",
     members: "DAO members",
     proposals: "Proposals",
     votes: "All votes",
@@ -793,10 +732,172 @@ function titleFor(view: DashboardView) {
     ai: "AI Assistant",
   }[view];
 }
-function subtitleFor(view: DashboardView, role: string) {
+function subtitleFor(view: DashboardView) {
   if (view === "decoder")
     return "Decode CyberChain calldata, receipts and governance events with the contract ABI.";
-  return view === "dashboard"
-    ? `Welcome back. You are connected as ${role}.`
-    : "Transparent, on-chain governance with a fast indexed read model.";
+  if (view === "dashboard" || view === "proposals")
+    return "Create, explore, and participate in governance proposals for CyberDAO.";
+  return "Transparent, on-chain governance with a fast indexed read model.";
+}
+
+function filterProposals(
+  proposals: Proposal[],
+  votes: IndexedVote[],
+  query: string,
+  statusFilter: string,
+) {
+  const q = query.trim().toLowerCase();
+  return proposals.filter((proposal) => {
+    const status = proposalStatus(proposal, votes);
+    if (statusFilter !== "All" && status !== statusFilter) return false;
+    if (!q) return true;
+    return (
+      proposal.title.toLowerCase().includes(q) ||
+      proposal.purpose.toLowerCase().includes(q) ||
+      String(proposal.onChainId ?? "draft").toLowerCase().includes(q)
+    );
+  });
+}
+
+function StatsRow({
+  proposals,
+  votes,
+  members,
+  activeCount,
+}: {
+  proposals: Proposal[];
+  votes: IndexedVote[];
+  members: number;
+  activeCount: number;
+}) {
+  return (
+    <div className="metric-grid">
+      <Metric
+        label="Total proposals"
+        value={proposals.length}
+        icon="▤"
+        tone="blue"
+      />
+      <Metric label="Active votes" value={activeCount} icon="✓" tone="cyan" />
+      <Metric label="Eligible members" value={members} icon="♙" tone="violet" />
+      <Metric label="Votes recorded" value={votes.length} icon="◎" tone="green" />
+    </div>
+  );
+}
+
+function ProposalsTable({
+  proposals,
+  votes,
+  onOpen,
+  selectedId,
+  showSearch = true,
+}: {
+  proposals: Proposal[];
+  votes: IndexedVote[];
+  onOpen(id: string): void;
+  selectedId?: string | null;
+  showSearch?: boolean;
+}) {
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("All");
+  const filtered = filterProposals(proposals, votes, query, statusFilter);
+  return (
+    <section className="dashboard-card">
+      <div className="card-header">
+        <div>
+          <h2>All Proposals</h2>
+          <p>Governance proposals created by the CyberDAO community</p>
+        </div>
+        {showSearch && (
+          <div className="table-toolbar">
+            <label className="search-box">
+              <span aria-hidden>⌕</span>
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search proposals..."
+                aria-label="Search proposals"
+              />
+            </label>
+            <select
+              className="status-select"
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              aria-label="Filter by status"
+            >
+              <option value="All">All Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Active">Active</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Voting Ended">Voting Ended</option>
+              <option value="Cancelled">Cancelled</option>
+              <option value="Executed">Executed</option>
+            </select>
+          </div>
+        )}
+      </div>
+      <div className="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Proposal</th>
+              <th>Status</th>
+              <th>Voting period</th>
+              <th>Votes</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filtered.map((proposal) => (
+              <tr
+                key={proposal.id}
+                style={
+                  selectedId === proposal.id
+                    ? { background: "#eff6ff" }
+                    : undefined
+                }
+              >
+                <td className="proposal-cell">
+                  <strong>{proposal.title}</strong>
+                  <small>
+                    #{proposal.onChainId ?? "draft"} ·{" "}
+                    {proposal.type.replaceAll("_", " ")}
+                  </small>
+                </td>
+                <td>
+                  <StatusBadge status={proposalStatus(proposal, votes)} />
+                </td>
+                <td>{formatDate(proposal.endsAt)}</td>
+                <td>
+                  {
+                    votes.filter((vote) => vote.proposalId === proposal.id)
+                      .length
+                  }
+                </td>
+                <td>
+                  <button
+                    className="table-action"
+                    onClick={() => onOpen(proposal.id)}
+                  >
+                    Open
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {!filtered.length && (
+        <EmptyState
+          title={proposals.length ? "No matching proposals" : "No proposals yet"}
+          copy={
+            proposals.length
+              ? "Try a different search or status filter."
+              : "Create the first proposal to start governing."
+          }
+        />
+      )}
+    </section>
+  );
 }

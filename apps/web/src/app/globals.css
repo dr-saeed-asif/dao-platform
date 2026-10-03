@@ -1765,3 +1765,414 @@ td code {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== Reference UI redesign — top pill nav + page card (apps/web only) ===== */
+.cyber-shell {
+  min-height: 100vh;
+  background: #eef3fa;
+  padding: 16px clamp(12px, 2.5vw, 28px) 28px;
+}
+.topnav-pill {
+  max-width: 1540px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f2;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(25, 68, 140, 0.06);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 30;
+  overflow: visible;
+}
+.topnav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  min-width: 0;
+}
+.topnav-logo {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 900;
+  font-size: 20px;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.28);
+}
+.topnav-name strong {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: #0f172a;
+  white-space: nowrap;
+}
+.topnav-name strong span {
+  color: #2563eb;
+}
+.topnav-sub {
+  display: grid;
+  line-height: 1.25;
+  border-left: 1px solid #e2e8f2;
+  padding-left: 10px;
+  margin-left: 2px;
+}
+.topnav-sub small {
+  font-size: 10px;
+  color: #68758c;
+  white-space: nowrap;
+}
+.topnav-sub small:first-child {
+  font-weight: 700;
+  color: #475569;
+}
+.topnav-burger {
+  display: none;
+  border: 1px solid var(--line);
+  background: #f8faff;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  color: #334155;
+  flex: none;
+}
+.topnav-tabs {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: #f8faff;
+  border: 1px solid #e2e8f2;
+  border-radius: 12px;
+  padding: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  min-width: 0;
+}
+.topnav-tabs::-webkit-scrollbar {
+  display: none;
+}
+.topnav-tab {
+  position: relative;
+  border: 0;
+  background: transparent;
+  color: #546178;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.topnav-tab i {
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+.topnav-tab:hover {
+  background: #eef4ff;
+  color: #1e3a5f;
+}
+.topnav-tab-active {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+.topnav-tab-active:hover {
+  background: #1d4ed8;
+  color: #fff;
+}
+.topnav-caret {
+  position: absolute;
+  left: 50%;
+  bottom: -13px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid #2563eb;
+}
+.topnav-wallet {
+  flex: none;
+  display: flex;
+  align-items: center;
+}
+.topnav-wallet .wallet-summary {
+  border: 1px solid #e2e8f2;
+  border-radius: 12px;
+  background: #fff;
+  padding: 7px 8px 7px 12px;
+  gap: 10px;
+  box-shadow: none;
+  align-items: center;
+  white-space: nowrap;
+}
+.topnav-wallet .wallet-summary .wallet-role {
+  font-size: 9px;
+  padding: 5px 10px;
+  letter-spacing: 0.8px;
+  flex: none;
+}
+.topnav-wallet .wallet-ident strong {
+  font-size: 12px;
+  color: #0f172a;
+}
+.topnav-wallet .wallet-ident small {
+  font-size: 10px;
+  color: #64748b;
+}
+.topnav-wallet .text-button {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 6px;
+}
+.topnav-wallet .button-primary {
+  background: #2563eb;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 13px;
+}
+.page-outer {
+  max-width: 1540px;
+  margin: 16px auto 0;
+  width: 100%;
+}
+.page-card {
+  background: #fbfdff;
+  border: 1px solid #e2e8f2;
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(25, 68, 140, 0.07);
+  padding: clamp(18px, 2.5vw, 32px);
+  min-width: 0;
+}
+/* Hero to match reference */
+.page-card .page-heading {
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.page-card .page-heading .eyebrow,
+.ref-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #2563eb;
+}
+.page-card .page-heading h1,
+.ref-title {
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1;
+  color: #0f172a;
+  margin: 8px 0 8px;
+}
+.page-card .page-heading p,
+.ref-subtitle {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+.ref-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+.btn-create {
+  border: 0;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.28);
+  white-space: nowrap;
+}
+.btn-create:hover {
+  background: #1d4ed8;
+}
+.btn-create .plus {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 900;
+}
+/* Stats — match reference cards */
+.page-card .metric-grid {
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.page-card .metric-card {
+  border-color: #e6edf5;
+  border-radius: 14px;
+  padding: 20px;
+  min-height: 104px;
+  box-shadow: 0 5px 20px rgba(30, 69, 130, 0.05);
+}
+.page-card .metric-card strong {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #0f172a;
+}
+.page-card .metric-card span:not(.metric-icon) {
+  font-size: 12px;
+  color: #64748b;
+}
+.page-card .metric-card small {
+  font-size: 11px;
+  color: #16a34a;
+}
+/* Table card toolbar */
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search-box > span {
+  position: absolute;
+  left: 12px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+.search-box input {
+  width: 250px;
+  max-width: 100%;
+  border: 1px solid #e2e8f2;
+  border-radius: 8px;
+  padding: 10px 12px 10px 34px;
+  font-size: 13px;
+  background: #fff;
+}
+.status-select {
+  border: 1px solid #e2e8f2;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  background: #fff;
+  min-width: 130px;
+}
+.page-card .dashboard-card {
+  border-color: #e6edf5;
+  border-radius: 16px;
+}
+.page-card .card-header {
+  padding: 20px 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.page-card .card-header h2 {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+.page-card th {
+  background: #f8faff;
+}
+.page-card .table-action {
+  padding: 7px 18px;
+  border-radius: 8px;
+  border-color: #bfdbfe;
+  font-size: 12px;
+}
+.page-card .table-action:hover {
+  background: #eff6ff;
+}
+.proposal-cell strong {
+  font-size: 14px;
+}
+.proposal-cell small {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 1100px) {
+  .topnav-pill {
+    flex-wrap: wrap;
+  }
+  .topnav-tabs {
+    order: 3;
+    flex-basis: 100%;
+  }
+  .topnav-sub {
+    display: none;
+  }
+}
+@media (max-width: 780px) {
+  .cyber-shell {
+    padding: 10px 10px 20px;
+  }
+  .topnav-burger {
+    display: grid;
+    place-items: center;
+    margin-left: auto;
+  }
+  .topnav-tabs {
+    display: none;
+    order: 4;
+  }
+  .cyber-shell.nav-open .topnav-tabs {
+    display: grid;
+    gap: 4px;
+  }
+  .cyber-shell.nav-open .topnav-tab {
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .topnav-caret {
+    display: none;
+  }
+  .page-card {
+    padding: 16px 14px 20px;
+    border-radius: 16px;
+  }
+  .page-card .page-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .table-toolbar {
+    width: 100%;
+  }
+  .search-box,
+  .search-box input {
+    width: 100%;
+  }
+  .topnav-wallet .wallet-summary .wallet-ident {
+    display: none;
+  }
+}

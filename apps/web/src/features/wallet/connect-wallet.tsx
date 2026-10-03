@@ -3,25 +3,60 @@
 import { useState } from "react";
 import { useWallet } from "./wallet-provider";
 
-const short = (value: string) => `${value.slice(0, 6)}…${value.slice(-4)}`;
+const short = (value: string) => `${value.slice(0, 6)}...${value.slice(-4)}`;
+
+const adminAddress = (
+  process.env.NEXT_PUBLIC_DAO_ADMIN_ADDRESS ??
+  "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b"
+).toLowerCase();
 
 export function ConnectWallet({ expanded = false }: { expanded?: boolean }) {
   const wallet = useWallet();
   const [open, setOpen] = useState(false);
   if (wallet.connection) {
+    const isAdmin =
+      wallet.connection.address.toLowerCase() === adminAddress;
+    const walletLabel =
+      wallet.connection.kind === "cyberchain"
+        ? "CyberChain Wallet"
+        : "MetaMask";
+    if (!expanded) {
+      return (
+        <div
+          className="wallet-summary"
+          title={wallet.connection.address}
+        >
+          <div className="wallet-ident">
+            <span className="connection-pulse" />
+            <div>
+              <strong>{isAdmin ? "Admin" : "Member"}</strong>
+              <small>{walletLabel}</small>
+            </div>
+          </div>
+          <button
+            className="text-button"
+            onClick={() => void wallet.disconnect()}
+          >
+            Disconnect
+          </button>
+        </div>
+      );
+    }
     return (
-      <div className={expanded ? "wallet-card connected" : "wallet-summary"}>
+      <div className="wallet-card connected">
         <div className="wallet-ident">
           <span className="connection-pulse" />
           <div>
             <strong>{short(wallet.connection.address)}</strong>
-            <small>
-              {wallet.connection.kind === "cyberchain"
-                ? "CyberChain Wallet"
-                : "MetaMask"}
-            </small>
+            <small>{walletLabel}</small>
           </div>
         </div>
+        <span
+          className={`role-badge wallet-role role-${isAdmin ? "admin" : "member"}`}
+          title={isAdmin ? "DAO Administrator" : "DAO Member"}
+        >
+          {isAdmin ? "Admin" : "Member"}
+        </span>
         {expanded && (
           <div className="wallet-metadata">
             <span>
