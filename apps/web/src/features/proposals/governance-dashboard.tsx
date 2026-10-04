@@ -64,9 +64,29 @@ export function GovernanceDashboard() {
   useEffect(() => {
     if (active === "dashboard") setActive("proposals");
   }, [active]);
+  const [votesTab, setVotesTab] = useState<"all" | "mine">("all");
+  // Backward compatibility: the old My Votes entry opens Votes preselected.
+  useEffect(() => {
+    if (active === "my-votes") {
+      setActive("votes");
+      setVotesTab("mine");
+    }
+  }, [active]);
+  const [settingsTab, setSettingsTab] = useState<
+    "general" | "wallet" | "contract"
+  >("general");
+  // Backward compatibility: the old Wallet entry opens Settings preselected.
+  useEffect(() => {
+    if (active === "wallet") {
+      setActive("settings");
+      setSettingsTab("wallet");
+    }
+  }, [active]);
   function navigate(view: DashboardView) {
     setActive(view);
     if (view === "proposals") setProposalScreen("list");
+    if (view === "votes") setVotesTab("all");
+    if (view === "settings") setSettingsTab("general");
   }
   const load = useCallback(async () => {
     setLoading(true);
@@ -222,21 +242,23 @@ export function GovernanceDashboard() {
           {active === "members" && (
             <MembersView assignments={assignments} votes={votes} />
           )}
-          {active === "votes" && <VotesView votes={votes} />}
-          {active === "my-votes" && (
-            <VotesView
-              votes={myVotes}
-              mine
-              emptyMessage={
-                wallet.address
-                  ? "You have not voted yet."
-                  : "Connect your wallet to see your votes."
-              }
+          {(active === "votes" || active === "my-votes") && (
+            <UnifiedVotesView
+              votes={votes}
+              myVotes={myVotes}
+              tab={active === "my-votes" ? "mine" : votesTab}
+              onTabChange={setVotesTab}
+              connected={Boolean(wallet.address)}
             />
           )}
 {active === "decoder" && <TransactionDecoder proposals={proposals} />}
-      {active === "wallet" && <WalletView role={role} />}
-      {active === "settings" && <SettingsView />}
+      {(active === "settings" || active === "wallet") && (
+        <SettingsPage
+          tab={active === "wallet" ? "wallet" : settingsTab}
+          onTabChange={setSettingsTab}
+          role={role}
+        />
+      )}
       {active === "ai" && <AiPanel proposals={proposals} selectedProposalId={selectedId ?? undefined} />}
         </>
       )}
@@ -519,25 +541,86 @@ function MembersView({
   );
 }
 
-function VotesView({
+function UnifiedVotesView({
   votes,
-  mine = false,
-  emptyMessage = "No votes have been indexed yet.",
+  myVotes,
+  tab,
+  onTabChange,
+  connected,
 }: {
   votes: IndexedVote[];
-  mine?: boolean;
-  emptyMessage?: string;
+  myVotes: IndexedVote[];
+  tab: "all" | "mine";
+  onTabChange(tab: "all" | "mine"): void;
+  connected: boolean;
 }) {
+  const [query, setQuery] = useState("");
+  const [selection, setSelection] = useState("All");
+  const source = tab === "mine" ? myVotes : votes;
+  const selections = ["All", ...Array.from(new Set(votes.map((vote) => vote.optionLabel)))];
+  const q = query.trim().toLowerCase();
+  const filtered = source.filter((vote) => {
+    if (selection !== "All" && vote.optionLabel !== selection) return false;
+    if (!q) return true;
+    return (
+      vote.proposalTitle.toLowerCase().includes(q) ||
+      vote.voterAddress.toLowerCase().includes(q)
+    );
+  });
   return (
     <section className="dashboard-card">
       <div className="card-header">
-        <div>
-          <h2>{mine ? "My voting history" : "Voting activity"}</h2>
-          <p>
-            Confirmed on-chain ballots with auditable transaction references.
-          </p>
+        <div
+          className="details-tabs"
+          role="tablist"
+          aria-label="Vote history scope"
+        >
+          <button
+            role="tab"
+            aria-selected={tab === "all"}
+            className={tab === "all" ? "details-tab active" : "details-tab"}
+            onClick={() => onTabChange("all")}
+          >
+            All Votes
+            <span className="details-tab-count">{votes.length}</span>
+          </button>
+          <button
+            role="tab"
+            aria-selected={tab === "mine"}
+            className={tab === "mine" ? "details-tab active" : "details-tab"}
+            onClick={() => onTabChange("mine")}
+          >
+            My Votes
+            <span className="details-tab-count">{myVotes.length}</span>
+          </button>
         </div>
-        <span className="info-chip">{votes.length} confirmed</span>
+        <div className="table-toolbar">
+          <label className="search-box">
+            <span aria-hidden>⌕</span>
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search proposal or wallet..."
+              aria-label="Search votes"
+            />
+          </label>
+          <select
+            className="status-select"
+            value={selection}
+            onChange={(event) => setSelection(event.target.value)}
+            aria-label="Filter by selection"
+          >
+            {selections.map((option) => (
+              <option key={option} value={option}>
+                {option === "All" ? "All selections" : option}
+              </option>
+            ))}
+          </select>
+          <span className="votes-count-badge">
+            <strong>{filtered.length}</strong>
+            <span>confirmed</span>
+          </span>
+        </div>
       </div>
       <div className="table-wrap">
         <table>
@@ -552,7 +635,7 @@ function VotesView({
             </tr>
           </thead>
           <tbody>
-            {votes.map((vote) => (
+            {filtered.map((vote) => (
               <tr key={vote.transactionHash}>
                 <td>
                   <strong>{vote.proposalTitle}</strong>
@@ -576,87 +659,143 @@ function VotesView({
           </tbody>
         </table>
       </div>
-      {!votes.length && (
-        <EmptyState title="Nothing to show" copy={emptyMessage} />
+      {!filtered.length && (
+        <EmptyState
+          title="Nothing to show"
+          copy={
+            votes.length && (q || selection !== "All")
+              ? "Try a different search or selection filter."
+              : tab === "mine"
+                ? connected
+                  ? "You have not voted yet."
+                  : "Connect your wallet to see your votes."
+                : "No votes have been indexed yet."
+          }
+        />
       )}
     </section>
   );
 }
 
-function WalletView({ role }: { role: string }) {
+type SettingsTab = "general" | "wallet" | "contract";
+
+function SettingsPage({
+  tab,
+  onTabChange,
+  role,
+}: {
+  tab: SettingsTab;
+  onTabChange(tab: SettingsTab): void;
+  role: string;
+}) {
   return (
-    <div className="settings-grid">
-      <section className="dashboard-card padded">
-        <div className="card-header">
-          <div>
-            <h2>Connected wallet</h2>
-            <p>Your signing identity and CyberChain connection.</p>
+    <div className="view-stack">
+      <div
+        className="details-tabs"
+        role="tablist"
+        aria-label="Settings sections"
+      >
+        <button
+          role="tab"
+          aria-selected={tab === "general"}
+          className={tab === "general" ? "details-tab active" : "details-tab"}
+          onClick={() => onTabChange("general")}
+        >
+          General / Network
+        </button>
+        <button
+          role="tab"
+          aria-selected={tab === "wallet"}
+          className={tab === "wallet" ? "details-tab active" : "details-tab"}
+          onClick={() => onTabChange("wallet")}
+        >
+          Wallet & Permissions
+        </button>
+        <button
+          role="tab"
+          aria-selected={tab === "contract"}
+          className={tab === "contract" ? "details-tab active" : "details-tab"}
+          onClick={() => onTabChange("contract")}
+        >
+          Contract Capabilities
+        </button>
+      </div>
+
+      {tab === "general" && (
+        <section className="dashboard-card padded">
+          <h2>Network configuration</h2>
+          <div className="permission-list">
+            <span>
+              <b>DAO API</b>
+              <code>/api/v1</code>
+            </span>
+            <span>
+              <b>Chain ID</b>
+              <code>1212</code>
+            </span>
+            <span>
+              <b>Indexer</b>
+              <strong>30-second incremental sync</strong>
+            </span>
+            <span>
+              <b>Database</b>
+              <strong>SQLite local read model</strong>
+            </span>
           </div>
+        </section>
+      )}
+
+      {tab === "wallet" && (
+        <div className="settings-grid">
+          <section className="dashboard-card padded">
+            <div className="card-header">
+              <div>
+                <h2>Connected wallet</h2>
+                <p>Your signing identity and CyberChain connection.</p>
+              </div>
+            </div>
+            <ConnectWallet expanded />
+          </section>
+          <section className="dashboard-card padded">
+            <h2>Permissions</h2>
+            <div className="permission-list">
+              <span>
+                <b>Role</b>
+                <strong>{role}</strong>
+              </span>
+              <span>
+                <b>Network</b>
+                <strong>CyberChain · 1212</strong>
+              </span>
+              <span>
+                <b>Transaction signing</b>
+                <strong>Wallet controlled</strong>
+              </span>
+              <span>
+                <b>Private key custody</b>
+                <strong>Never shared</strong>
+              </span>
+            </div>
+          </section>
         </div>
-        <ConnectWallet expanded />
-      </section>
-      <section className="dashboard-card padded">
-        <h2>Permissions</h2>
-        <div className="permission-list">
-          <span>
-            <b>Role</b>
-            <strong>{role}</strong>
-          </span>
-          <span>
-            <b>Network</b>
-            <strong>CyberChain · 1212</strong>
-          </span>
-          <span>
-            <b>Transaction signing</b>
-            <strong>Wallet controlled</strong>
-          </span>
-          <span>
-            <b>Private key custody</b>
-            <strong>Never shared</strong>
-          </span>
-        </div>
-      </section>
-    </div>
-  );
-}
-function SettingsView() {
-  return (
-    <div className="settings-grid">
-      <section className="dashboard-card padded">
-        <h2>Network configuration</h2>
-        <div className="permission-list">
-          <span>
-            <b>DAO API</b>
-            <code>/api/v1</code>
-          </span>
-          <span>
-            <b>Chain ID</b>
-            <code>1212</code>
-          </span>
-          <span>
-            <b>Indexer</b>
-            <strong>30-second incremental sync</strong>
-          </span>
-          <span>
-            <b>Database</b>
-            <strong>SQLite local read model</strong>
-          </span>
-        </div>
-      </section>
-      <section className="dashboard-card padded">
-        <h2>Contract capabilities</h2>
-        <div className="capability-list">
-          <span className="supported">✓ Create and cancel proposals</span>
-          <span className="supported">✓ Assign proposal members</span>
-          <span className="supported">✓ Vote and finalize results</span>
-          <span className="unsupported">
-            — Arbitrary proposal execution is not in contract v1
-          </span>
-          <span className="unsupported">
-            — Global member activation is not in contract v1
-          </span>
-        </div>
-      </section>
+      )}
+
+      {tab === "contract" && (
+        <section className="dashboard-card padded">
+          <h2>Contract capabilities</h2>
+          <div className="capability-list">
+            <span className="supported">✓ Create and cancel proposals</span>
+            <span className="supported">✓ Assign proposal members</span>
+            <span className="supported">✓ Vote and finalize results</span>
+            <span className="unsupported">
+              — Arbitrary proposal execution is not in contract v1
+            </span>
+            <span className="unsupported">
+              — Global member activation is not in contract v1
+            </span>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
@@ -714,10 +853,10 @@ function titleFor(view: DashboardView) {
     dashboard: "Proposals",
     members: "DAO members",
     proposals: "Proposals",
-    votes: "All votes",
-    "my-votes": "My votes",
+    votes: "Votes",
+    "my-votes": "Votes",
     decoder: "Transaction decoder",
-    wallet: "Wallet",
+    wallet: "Settings",
     settings: "Settings",
     ai: "AI Assistant",
   }[view];
@@ -727,6 +866,8 @@ function subtitleFor(view: DashboardView) {
     return "Decode CyberChain calldata, receipts and governance events with the contract ABI.";
   if (view === "dashboard" || view === "proposals")
     return "Create, explore, and participate in governance proposals for CyberDAO.";
+  if (view === "votes" || view === "my-votes")
+    return "View all on-chain voting activity and your personal voting history.";
   return "Transparent, on-chain governance with a fast indexed read model.";
 }
 

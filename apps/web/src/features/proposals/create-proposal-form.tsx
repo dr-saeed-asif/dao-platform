@@ -358,31 +358,47 @@ export function CreateProposalWizard({
           <span className="eyebrow">Administrator</span>
           <h2>Create a proposal</h2>
         </div>
-        <span className="step-badge">
+        {onCancel ? (
+          <button
+            type="button"
+            className="btn-create wizard-back"
+            onClick={onCancel}
+            disabled={publishing}
+          >
+            ← Back to proposals
+          </button>
+        ) : (
+          <span className="step-badge">
+            Step {step + 1} of {steps.length}
+          </span>
+        )}
+      </div>
+
+      <div className="wizard-steps-row">
+        <ol className="wizard-steps">
+          {steps.map((label, index) => (
+            <li key={label}>
+              <button
+                type="button"
+                className={
+                  index === step
+                    ? "wizard-step current"
+                    : index < step || index <= maxVisited
+                      ? "wizard-step visited"
+                      : "wizard-step"
+                }
+                onClick={() => goTo(index)}
+                disabled={index > maxVisited}
+              >
+                <span className="wizard-step-num">{index + 1}</span> {label}
+              </button>
+            </li>
+          ))}
+        </ol>
+        <span className="step-badge wizard-step-counter">
           Step {step + 1} of {steps.length}
         </span>
       </div>
-
-      <ol className="wizard-steps">
-        {steps.map((label, index) => (
-          <li key={label}>
-            <button
-              type="button"
-              className={
-                index === step
-                  ? "wizard-step current"
-                  : index < step || index <= maxVisited
-                    ? "wizard-step visited"
-                    : "wizard-step"
-              }
-              onClick={() => goTo(index)}
-              disabled={index > maxVisited}
-            >
-              <span className="wizard-step-num">{index + 1}</span> {label}
-            </button>
-          </li>
-        ))}
-      </ol>
 
       {!canAdmin && (
         <p className="metadata-notice">

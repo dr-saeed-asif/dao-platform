@@ -12,16 +12,16 @@ export type DashboardView =
   | "wallet"
   | "settings"
   | "ai";
-// "dashboard" is kept in DashboardView for backward compatibility but is
-// intentionally not shown: the Proposals page is the governance overview.
+// "dashboard", "my-votes" and "wallet" are kept in DashboardView for
+// backward compatibility but intentionally not shown: dashboard renders
+// Proposals, my-votes renders Votes with the My Votes tab selected, and
+// wallet renders Settings with the Wallet section selected.
 const items: { id: DashboardView; label: string; icon: string }[] = [
   { id: "proposals", label: "Proposal", icon: "▤" },
   { id: "votes", label: "Votes", icon: "✓" },
   { id: "decoder", label: "Decoder", icon: "0x" },
   { id: "ai", label: "AI Assistant", icon: "🤖" },
   { id: "members", label: "Members", icon: "♙" },
-  { id: "my-votes", label: "My Votes", icon: "◎" },
-  { id: "wallet", label: "Wallet", icon: "◇" },
   { id: "settings", label: "Settings", icon: "⚙" },
 ];
 
@@ -38,8 +38,15 @@ export function AppShell({
   onToggle(): void;
   children: React.ReactNode;
 }) {
-  // Legacy "dashboard" view renders the Proposals overview.
-  const highlighted = active === "dashboard" ? "proposals" : active;
+  // Legacy views render inside their unified screens.
+  const highlighted =
+    active === "dashboard"
+      ? "proposals"
+      : active === "my-votes"
+        ? "votes"
+        : active === "wallet"
+          ? "settings"
+          : active;
   return (
     <div className={collapsed ? "cyber-shell nav-open" : "cyber-shell"}>
       <header className="topnav-pill">
