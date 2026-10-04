@@ -12,13 +12,14 @@ export type DashboardView =
   | "wallet"
   | "settings"
   | "ai";
+// "dashboard" is kept in DashboardView for backward compatibility but is
+// intentionally not shown: the Proposals page is the governance overview.
 const items: { id: DashboardView; label: string; icon: string }[] = [
   { id: "proposals", label: "Proposal", icon: "▤" },
   { id: "votes", label: "Votes", icon: "✓" },
   { id: "decoder", label: "Decoder", icon: "0x" },
   { id: "ai", label: "AI Assistant", icon: "🤖" },
   { id: "members", label: "Members", icon: "♙" },
-  { id: "dashboard", label: "Dashboard", icon: "▦" },
   { id: "my-votes", label: "My Votes", icon: "◎" },
   { id: "wallet", label: "Wallet", icon: "◇" },
   { id: "settings", label: "Settings", icon: "⚙" },
@@ -37,6 +38,8 @@ export function AppShell({
   onToggle(): void;
   children: React.ReactNode;
 }) {
+  // Legacy "dashboard" view renders the Proposals overview.
+  const highlighted = active === "dashboard" ? "proposals" : active;
   return (
     <div className={collapsed ? "cyber-shell nav-open" : "cyber-shell"}>
       <header className="topnav-pill">
@@ -64,7 +67,7 @@ export function AppShell({
             <button
               key={item.id}
               className={
-                active === item.id
+                highlighted === item.id
                   ? "topnav-tab topnav-tab-active"
                   : "topnav-tab"
               }
@@ -73,7 +76,7 @@ export function AppShell({
             >
               <i aria-hidden>{item.icon}</i>
               <span>{item.label}</span>
-              {active === item.id && (
+              {highlighted === item.id && (
                 <em className="topnav-caret" aria-hidden />
               )}
             </button>

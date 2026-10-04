@@ -10,8 +10,8 @@ import { ConnectWallet } from "@/features/wallet/connect-wallet";
 import { useWallet } from "@/features/wallet/wallet-provider";
 import { daoApi } from "@/lib/api/client";
 import type { Assignment, Proposal, Vote } from "@/lib/api/types";
-import { CreateProposalForm } from "./create-proposal-form";
-import { ProposalWorkspace } from "./proposal-workspace";
+import { CreateProposalWizard } from "./create-proposal-form";
+import { ProposalDetails } from "./proposal-details";
 import { TransactionDecoder } from "@/features/decoder/transaction-decoder";
 import { AiPanel } from "@/features/ai/ai-panel";
 
@@ -55,8 +55,19 @@ export function GovernanceDashboard() {
   const [assignments, setAssignments] = useState<IndexedAssignment[]>([]);
   const [votes, setVotes] = useState<IndexedVote[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [proposalScreen, setProposalScreen] = useState<
+    "list" | "details" | "create"
+  >("list");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Backward compatibility: the old Dashboard tab now shows Proposals.
+  useEffect(() => {
+    if (active === "dashboard") setActive("proposals");
+  }, [active]);
+  function navigate(view: DashboardView) {
+    setActive(view);
+    if (view === "proposals") setProposalScreen("list");
+  }
   const load = useCallback(async () => {
     setLoading(true);
     try {
@@ -116,37 +127,38 @@ export function GovernanceDashboard() {
   if (wallet.restoring) return <WalletRestoring />;
   if (!wallet.connection) return <WalletGate />;
 
+  const isProposals = active === "proposals" || active === "dashboard";
+  const showHero = !isProposals || proposalScreen === "list";
+
   return (
     <AppShell
       active={active}
-      onNavigate={setActive}
+      onNavigate={navigate}
       collapsed={collapsed}
       onToggle={() => setCollapsed((value) => !value)}
     >
-      <div className="page-heading">
-        <div>
-          <span className="eyebrow">CyberChain governance</span>
-          <h1>{titleFor(active)}</h1>
-          <p>{subtitleFor(active)}</p>
+      {showHero && (
+        <div className="page-heading">
+          <div>
+            <span className="eyebrow">CyberChain governance</span>
+            <h1>{titleFor(active)}</h1>
+            <p>{subtitleFor(active)}</p>
+          </div>
+          <div className="ref-hero-actions">
+            {isProposals && (
+              <button
+                className="btn-create"
+                onClick={() => {
+                  if (active !== "proposals") setActive("proposals");
+                  setProposalScreen("create");
+                }}
+              >
+                <span className="plus">+</span> Create Proposal
+              </button>
+            )}
+          </div>
         </div>
-        <div className="ref-hero-actions">
-          {(active === "proposals" || active === "dashboard") && (
-            <button
-              className="btn-create"
-              onClick={() => {
-                if (active !== "proposals") setActive("proposals");
-                requestAnimationFrame(() => {
-                  document
-                    .getElementById("create")
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                });
-              }}
-            >
-              <span className="plus">+</span> Create Proposal
-            </button>
-          )}
-        </div>
-      </div>
+      )}
       {error && (
         <div className="alert alert-error">
           <strong>Could not load dashboard</strong>
@@ -158,34 +170,57 @@ export function GovernanceDashboard() {
         <LoadingState />
       ) : (
         <>
-          {active === "dashboard" && (
-            <DashboardView
+          {isProposals && proposalScreen === "list" && (
+            <ProposalsListView
               proposals={proposals}
               votes={votes}
               members={uniqueMembers}
               activeCount={activeCount}
               onOpen={(id) => {
                 setSelectedId(id);
-                setActive("proposals");
+                setProposalScreen("details");
               }}
               canAdmin={role === "Admin"}
               onSync={load}
             />
           )}
-          {active === "members" && (
-            <MembersView assignments={assignments} votes={votes} />
+          {isProposals && proposalScreen === "details" && selected && (
+            <ProposalDetails
+              proposal={selected}
+              status={proposalStatus(selected, votes)}
+              votesCount={
+                votes.filter((vote) => vote.proposalId === selected.id).length
+              }
+              onChanged={load}
+              canAdmin={role === "Admin"}
+              onBack={() => setProposalScreen("list")}
+            />
           )}
-          {active === "proposals" && (
-            <ProposalsView
+          {isProposals && proposalScreen === "details" && !selected && (
+            <ProposalsListView
               proposals={proposals}
               votes={votes}
               members={uniqueMembers}
               activeCount={activeCount}
-              selected={selected}
-              onSelect={setSelectedId}
-              onChanged={load}
+              onOpen={(id) => {
+                setSelectedId(id);
+                setProposalScreen("details");
+              }}
+              canAdmin={role === "Admin"}
+              onSync={load}
+            />
+          )}
+          {isProposals && proposalScreen === "create" && (
+            <CreateProposalWizard
+              onCreated={() => {
+                void load().then(() => setProposalScreen("list"));
+              }}
+              onCancel={() => setProposalScreen("list")}
               canAdmin={role === "Admin"}
             />
+          )}
+          {active === "members" && (
+            <MembersView assignments={assignments} votes={votes} />
           )}
           {active === "votes" && <VotesView votes={votes} />}
           {active === "my-votes" && (
@@ -209,7 +244,7 @@ export function GovernanceDashboard() {
   );
 }
 
-function DashboardView({
+function ProposalsListView({
   proposals,
   votes,
   members,
@@ -355,51 +390,6 @@ function WalletRestoring() {
         <p>Checking your existing CyberDAO wallet connection…</p>
       </section>
     </main>
-  );
-}
-
-function ProposalsView({
-  proposals,
-  votes,
-  members,
-  activeCount,
-  selected,
-  onSelect,
-  onChanged,
-  canAdmin,
-}: {
-  proposals: Proposal[];
-  votes: IndexedVote[];
-  members: number;
-  activeCount: number;
-  selected?: Proposal;
-  onSelect(id: string): void;
-  onChanged(): void;
-  canAdmin: boolean;
-}) {
-  return (
-    <div className="view-stack">
-      <StatsRow
-        proposals={proposals}
-        votes={votes}
-        members={members}
-        activeCount={activeCount}
-      />
-      <ProposalsTable
-        proposals={proposals}
-        votes={votes}
-        onOpen={onSelect}
-        selectedId={selected?.id}
-      />
-      {selected && (
-        <ProposalWorkspace
-          proposal={selected}
-          onChanged={onChanged}
-          canAdmin={canAdmin}
-        />
-      )}
-      {canAdmin && <CreateProposalForm onCreated={onChanged} />}
-    </div>
   );
 }
 
