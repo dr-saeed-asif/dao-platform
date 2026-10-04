@@ -340,9 +340,8 @@ function ProposalsListView({
         members={members}
         activeCount={activeCount}
       />
-      <ProposalsTable proposals={proposals} votes={votes} onOpen={onOpen} />
       {canAdmin && (
-        <section className="dashboard-card" style={{ marginTop: 16 }}>
+        <section className="dashboard-card" style={{ marginBottom: 16 }}>
           <div className="card-header">
             <div>
               <h2 style={{ fontSize: 18 }}>Blockchain sync</h2>
@@ -380,6 +379,7 @@ function ProposalsListView({
         </section>
       )}
       {!canAdmin && syncMessage && <p className="form-message">{syncMessage}</p>}
+      <ProposalsTable proposals={proposals} votes={votes} onOpen={onOpen} />
     </>
   );
 }
