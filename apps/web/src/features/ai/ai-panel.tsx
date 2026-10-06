@@ -54,7 +54,7 @@ export function AiPanel({proposals,selectedProposalId}:AiPanelProps){
   },[response,question,system,proposalId,proposals,completedAt]);
   return <section className="dashboard-card" style={{padding:24}}>
     <div className="card-header"><div><span className="eyebrow">CyberGovAI</span><h2>CyberGovAI Assistant</h2></div><Link className="button button-secondary" href="/analysis">View Research Runs</Link></div>
-    <form onSubmit={submit}>
+    <form onSubmit={submit} className="ai-form">
       <div className="form-grid">
         <label>Proposal<select value={proposalId} onChange={e=>setProposalId(e.target.value)} required><option value="">Select proposal</option>{proposals.map(p=><option key={p.id} value={p.id}>{p.title} · #{p.onChainId??"draft"}</option>)}</select></label>
         <label>Research System<select value={system} onChange={e=>setSystem(e.target.value as ResearchSystem)}>{systems.map(item=><option key={item.value} value={item.value}>{item.label}</option>)}</select><small>{description}</small></label>

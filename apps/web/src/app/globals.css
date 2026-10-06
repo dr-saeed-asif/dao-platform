@@ -2433,6 +2433,71 @@ td code {
   }
 }
 
+/* ===== AI Assistant form (presentation only) ===== */
+.ai-form .form-grid {
+  align-items: start;
+  gap: 18px;
+}
+.ai-form .form-grid > label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #334155;
+}
+.ai-form select,
+.ai-form input,
+.ai-form textarea {
+  margin-top: 8px;
+  border: 1px solid #dbe4f0;
+  border-radius: 12px;
+  padding: 13px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  background: #fbfdff;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.ai-form select {
+  appearance: auto;
+  min-height: 50px;
+  cursor: pointer;
+}
+.ai-form textarea {
+  font-weight: 400;
+  line-height: 1.6;
+  resize: vertical;
+}
+.ai-form select:hover,
+.ai-form input:hover,
+.ai-form textarea:hover {
+  border-color: #b9cdf0;
+}
+.ai-form select:focus,
+.ai-form input:focus,
+.ai-form textarea:focus {
+  border-color: #2563eb;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  outline: none;
+}
+.ai-form .form-grid small {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.ai-form > label {
+  display: grid;
+  gap: 0;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #334155;
+}
+
 /* ===== Analysis result modal + report (presentation only) ===== */
 .result-backdrop {
   background: rgba(9, 25, 53, 0.62);
