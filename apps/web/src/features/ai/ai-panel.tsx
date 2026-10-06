@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { CopyValueButton } from "@/components/copy-value-button";
 import { daoApi } from "@/lib/api/client";
 import type { AiQueryResponse, ResearchSystem } from "@/lib/api/types";
+import { AnalysisResultModal } from "./analysis-result-modal";
+import { extractChecks, type ResultModel } from "./analysis-result";
 
 const systems: Array<{value:ResearchSystem;label:string;description:string}> = [
   {value:"hybrid",label:"Hybrid",description:"Combines structured DAO data, blockchain evidence and proposal-document retrieval."},
@@ -21,11 +22,36 @@ export function AiPanel({proposals,selectedProposalId}:AiPanelProps){
   const [proposalId,setProposalId]=useState(selectedProposalId??"");
   const [loading,setLoading]=useState(false);
   const [response,setResponse]=useState<AiQueryResponse|null>(null);
+  const [modalOpen,setModalOpen]=useState(false);
+  const [completedAt,setCompletedAt]=useState("");
   useEffect(()=>{if(selectedProposalId)setProposalId(selectedProposalId)},[selectedProposalId]);
   const description=systems.find(item=>item.value===system)?.description;
-  const grouped=useMemo(()=>groupSources(response?.evidence??[]),[response]);
-  async function submit(event:React.FormEvent){event.preventDefault();if(!question.trim()||!proposalId)return;setLoading(true);setResponse(null);try{setResponse(await daoApi.aiQuery({question:question.trim(),proposalId,system,topK:5}))}catch(error){setResponse({runId:"",system,answer:"",evidence:[],retrieval:[],latencyMs:0,error:error instanceof Error?error.message:"Unknown error"})}finally{setLoading(false)}}
-  const verified=system!=="hybrid";
+  async function submit(event:React.FormEvent){event.preventDefault();if(!question.trim()||!proposalId)return;setLoading(true);setResponse(null);setModalOpen(false);try{const result=await daoApi.aiQuery({question:question.trim(),proposalId,system,topK:5});setResponse(result);setCompletedAt(new Date().toLocaleString());if(result.runId)setModalOpen(true)}catch(error){setResponse({runId:"",system,answer:"",evidence:[],retrieval:[],latencyMs:0,error:error instanceof Error?error.message:"Unknown error"})}finally{setLoading(false)}}
+  const model:ResultModel|null=useMemo(()=>{
+    if(!response?.runId)return null;
+    const selected=proposals.find(item=>item.id===proposalId);
+    const status=response.error?"Failed":response.abstained?"Abstained":"Completed";
+    return {
+      runId:response.runId,
+      question:question.trim(),
+      system,
+      proposalTitle:selected?`${selected.title} - #${selected.onChainId??"draft"}`:"Analysis Result",
+      proposalRef:selected?`#${selected.onChainId??"draft"}`:"—",
+      completedAt,
+      status,
+      statusTone:status==="Completed"?"green":status==="Failed"?"red":"amber",
+      answer:response.answer,
+      checks:extractChecks(response.claims,response.evidence),
+      evidence:response.evidence,
+      agentTrace:response.agentTrace,
+      agentsUsed:response.agentsUsed,
+      latencyMs:response.latencyMs,
+      retrievalCount:response.retrieval.length,
+      llmCalls:response.llmCalls,
+      embeddingCalls:response.embeddingCalls,
+      errors:response.errors,
+    };
+  },[response,question,system,proposalId,proposals,completedAt]);
   return <section className="dashboard-card" style={{padding:24}}>
     <div className="card-header"><div><span className="eyebrow">CyberGovAI</span><h2>CyberGovAI Assistant</h2></div><Link className="button button-secondary" href="/analysis">View Research Runs</Link></div>
     <form onSubmit={submit}>
@@ -37,18 +63,8 @@ export function AiPanel({proposals,selectedProposalId}:AiPanelProps){
       <div style={{display:"flex",gap:8,flexWrap:"wrap",margin:"10px 0 16px"}}>{suggestions.map(item=><button type="button" className="table-action" key={item} onClick={()=>setQuestion(item)}>{item}</button>)}</div>
       <button className="button button-primary" disabled={loading||!question.trim()||!proposalId}>{loading?"Running analysis…":"Run Analysis"}</button>
     </form>
-    {response&&<div style={{marginTop:24}}>
-      {response.error&&<div className="alert alert-error">{response.error}</div>}
-      <ResultSection title="ANSWER"><div style={{whiteSpace:"pre-wrap"}}>{response.answer||"No answer returned."}</div></ResultSection>
-      {verified&&<ResultSection title="VERIFICATION"><strong>{verificationLabel(response.verification?.status,response.abstained)}</strong></ResultSection>}
-      <ResultSection title="SOURCES">{Object.entries(grouped).filter(([,items])=>items.length).map(([group,items])=><div key={group} style={{marginBottom:12}}><strong>{group}</strong><ul>{items.map((item,index)=><li key={item.evidenceId??item.chunkEvidenceId??index}><CopyValueButton value={item.evidenceId??item.chunkEvidenceId??item.artefactEvidenceId??""}/>{item.filename?` ${item.filename}`:""}</li>)}</ul></div>)}{!response.evidence.length&&<span>No evidence returned.</span>}</ResultSection>
-      {verified&&<ResultSection title="CLAIMS">{response.claims?.length?<ul>{response.claims.map((claim,index)=><li key={index}>{claim.text} — <strong>{response.verification?.claims[index]?.status??"UNVERIFIED"}</strong></li>)}</ul>:<span>No claims produced.</span>}</ResultSection>}
-      <details><summary style={{cursor:"pointer",fontWeight:700}}>ANALYSIS PATH</summary><ol>{response.agentTrace?.map((item,index)=><li key={index}>{item.agent}{item.tool?` → ${item.tool}`:""} · {item.status} · {item.latencyMs}ms · {item.evidenceIds.length} evidence</li>)}</ol>{response.system==="multi-agent"&&<p><strong>Agents:</strong> {response.agentsUsed?.join(" → ")||"None"}</p>}</details>
-      <p style={{fontSize:12,color:"#6b7280"}}>Run <CopyValueButton value={response.runId}/> · {response.latencyMs}ms</p>
-    </div>}
+    {response?.error&&<div className="alert alert-error" style={{marginTop:24}}>{response.error}</div>}
+    {model&&!modalOpen&&<div style={{marginTop:24,display:"flex",justifyContent:"flex-end"}}><button type="button" className="button button-secondary" onClick={()=>setModalOpen(true)}>View result</button></div>}
+    <AnalysisResultModal model={modalOpen?model:null} onClose={()=>setModalOpen(false)} />
   </section>
 }
-
-function ResultSection({title,children}:{title:string;children:React.ReactNode}){return <div style={{borderTop:"1px solid #e5e7eb",padding:"16px 0"}}><h3 style={{fontSize:13,letterSpacing:1}}>{title}</h3>{children}</div>}
-function verificationLabel(status?:string,abstained?:boolean){if(abstained||status==="UNSUPPORTED")return "Insufficient Evidence";if(status==="PARTIALLY_SUPPORTED")return "Partially Verified";return status==="SUPPORTED"?"Verified":"Pending"}
-function groupSources(items:AiQueryResponse["evidence"]){const groups:Record<string,AiQueryResponse["evidence"]>={Database:[],Blockchain:[],Documents:[],Compliance:[]};for(const item of items){const type=item.sourceType??(item.chunkEvidenceId?"DOCUMENT_CHUNK":"");if(type==="STRUCTURED_DB")groups.Database.push(item);else if(type==="ON_CHAIN_EVENT"||item.evidenceId?.startsWith("event:"))groups.Blockchain.push(item);else if(type==="COMPLIANCE"||item.evidenceId?.startsWith("compliance:"))groups.Compliance.push(item);else groups.Documents.push(item)}return groups}
