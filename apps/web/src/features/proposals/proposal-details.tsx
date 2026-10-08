@@ -11,12 +11,9 @@ import { useWallet } from "@/features/wallet/wallet-provider";
 import { MemberManager } from "@/features/members/member-manager";
 import { VotingPanel } from "@/features/voting/voting-panel";
 import { CopyableHash } from "@/components/copy-value-button";
+import { formatLocalDateTime } from "@/lib/date-time";
 
-const date = (value: string) =>
-  new Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value));
+const date = formatLocalDateTime;
 
 type DetailsTab = "overview" | "voting" | "members" | "documents" | "history";
 
@@ -48,27 +45,58 @@ export function ProposalDetails({
   const [message, setMessage] = useState<string | null>(null);
   const [transactions, setTransactions] = useState<ChainTransaction[]>([]);
   const [artefacts, setArtefacts] = useState<Artefact[]>([]);
+  const [artefactsLoading, setArtefactsLoading] = useState(false);
+  const [artefactsError, setArtefactsError] = useState<string | null>(null);
+  const [publishing, setPublishing] = useState(false);
+  const [votingStarted, setVotingStarted] = useState(false);
   const [votingEnded, setVotingEnded] = useState(false);
   const finalized =
     proposal.status === "CLOSED" || proposal.status === "EXECUTED";
 
   useEffect(() => {
-    const update = () =>
+    const update = () => {
+      setVotingStarted(Date.now() >= Date.parse(proposal.startsAt));
       setVotingEnded(Date.now() >= Date.parse(proposal.endsAt));
+    };
     update();
     const timer = window.setInterval(update, 15_000);
     return () => window.clearInterval(timer);
-  }, [proposal.endsAt]);
+  }, [proposal.startsAt, proposal.endsAt]);
 
   useEffect(() => {
     setTab("overview");
     setMessage(null);
     void daoApi.listTransactions(proposal.id).then(setTransactions);
-    void daoApi.listArtefacts(proposal.id).then(setArtefacts);
   }, [proposal.id]);
+
+  useEffect(() => {
+    let active = true;
+    setArtefactsLoading(true);
+    setArtefactsError(null);
+    void daoApi
+      .listArtefacts(proposal.id)
+      .then((items) => {
+        if (active) setArtefacts(items);
+      })
+      .catch((error: unknown) => {
+        if (active) {
+          setArtefactsError(
+            error instanceof Error ? error.message : "Unable to load documents.",
+          );
+        }
+      })
+      .finally(() => {
+        if (active) setArtefactsLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, [proposal.id, proposal.onChainId, proposal.updatedAt]);
 
   async function publish() {
     if (!address) return setMessage("Connect the administrator wallet first.");
+    if (publishing) return;
+    setPublishing(true);
     try {
       setMessage("Publishing on CyberChain…");
       await daoApi.publishProposal(proposal.id, address);
@@ -76,6 +104,8 @@ export function ProposalDetails({
       onChanged();
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Publishing failed.");
+    } finally {
+      setPublishing(false);
     }
   }
 
@@ -129,9 +159,19 @@ export function ProposalDetails({
             {!proposal.onChainId && canAdmin && (
               <button
                 className="button button-primary"
+                disabled={publishing || votingStarted}
+                title={
+                  votingStarted
+                    ? "Publishing must complete before voting opens. Create a replacement proposal with a future start time."
+                    : undefined
+                }
                 onClick={() => void publish()}
               >
-                Publish on-chain
+                {publishing
+                  ? "Publishing…"
+                  : votingStarted
+                    ? "Voting already started"
+                    : "Publish on-chain"}
               </button>
             )}
             {proposal.onChainId &&
@@ -165,10 +205,12 @@ export function ProposalDetails({
           <div>
             <span>Voting opens</span>
             <strong>{date(proposal.startsAt)}</strong>
+            <small>{proposal.startsAt} UTC</small>
           </div>
           <div>
             <span>Voting closes</span>
             <strong>{date(proposal.endsAt)}</strong>
+            <small>{proposal.endsAt} UTC</small>
           </div>
           <div>
             <span>Type</span>
@@ -249,13 +291,16 @@ export function ProposalDetails({
             <div>
               <h2>Documents</h2>
               <p>
-                Verified proposal evidence linked to the on-chain creation
-                event.
+                Verified evidence committed to this proposal. Lifecycle status
+                shows whether each document is pending or linked on-chain.
               </p>
             </div>
             <span className="info-chip">{artefacts.length} files</span>
           </div>
           <div className="table-wrap">
+            {artefactsError && (
+              <p className="form-message">Documents could not be loaded: {artefactsError}</p>
+            )}
             <table>
               <thead>
                 <tr>
@@ -300,9 +345,14 @@ export function ProposalDetails({
                     </td>
                   </tr>
                 ))}
-                {!artefacts.length && (
+                {!artefacts.length && !artefactsLoading && !artefactsError && (
                   <tr>
                     <td colSpan={5}>No documents linked.</td>
+                  </tr>
+                )}
+                {artefactsLoading && (
+                  <tr>
+                    <td colSpan={5}>Loading documents…</td>
                   </tr>
                 )}
               </tbody>

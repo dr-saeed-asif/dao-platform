@@ -65,9 +65,19 @@ export class ResearchService {
     return { bytes, filename: row.filename ?? 'document', mediaType: row.media_type ?? 'application/octet-stream' };
   }
   async listProposalArtefacts(proposalId: string) {
-    const rows = await this.db.selectFrom('artefacts').innerJoin('proposal_artefacts', 'proposal_artefacts.evidence_id', 'artefacts.evidence_id')
+    const linked = await this.db.selectFrom('artefacts').innerJoin('proposal_artefacts', 'proposal_artefacts.evidence_id', 'artefacts.evidence_id')
       .selectAll('artefacts').where('proposal_artefacts.proposal_id', '=', proposalId).orderBy('artefacts.created_at').execute();
-    return rows.map(({ storage_key: _storage, ...row }) => row);
+    const proposal = await this.db.selectFrom('proposals').select('metadata_uri').where('id', '=', proposalId).executeTakeFirst();
+    const linkedIds = new Set(linked.map(row => row.evidence_id));
+    const pendingIds = proposal?.metadata_uri
+      ? manifestEvidenceIds(proposal.metadata_uri).filter(id => !linkedIds.has(id))
+      : [];
+    const pending = pendingIds.length
+      ? await this.db.selectFrom('artefacts').selectAll().where('evidence_id', 'in', pendingIds).orderBy('created_at').execute()
+      : [];
+    return [...linked, ...pending]
+      .sort((left, right) => left.created_at.getTime() - right.created_at.getTime())
+      .map(({ storage_key: _storage, ...row }) => row);
   }
   async createManifest(input: ManifestDto) {
     if (new Date(input.endsAt) <= new Date(input.startsAt)) throw new BadRequestException('Voting end must follow start.');
@@ -142,6 +152,20 @@ export class ResearchService {
       }
       return tx.updateTable('dataset_versions').set({ status: 'FROZEN', end_block: endBlock, end_block_hash: endBlockHash.toLowerCase(), frozen_at: new Date() }).where('id', '=', id).returningAll().executeTakeFirstOrThrow();
     });
+  }
+}
+
+function manifestEvidenceIds(uri: string): string[] {
+  const prefix = 'data:application/json;base64,';
+  if (!uri.startsWith(prefix)) return [];
+  try {
+    const manifest = JSON.parse(Buffer.from(uri.slice(prefix.length), 'base64').toString('utf8')) as Record<string, unknown>;
+    if (manifest.schemaVersion !== PROPOSAL_MANIFEST_SCHEMA || !Array.isArray(manifest.artefacts)) return [];
+    return manifest.artefacts
+      .map(entry => entry && typeof entry === 'object' ? (entry as Record<string, unknown>).evidenceId : undefined)
+      .filter((id): id is string => typeof id === 'string');
+  } catch {
+    return [];
   }
 }
 

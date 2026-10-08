@@ -33,5 +33,9 @@ function statusFor(code: string): number {
   )
     return HttpStatus.CONFLICT;
   if (code === 'TRANSACTION_NOT_CONFIRMED') return HttpStatus.ACCEPTED;
+  if (code === 'INVALID_VOTING_PERIOD' || code === 'TRANSACTION_REVERTED') {
+    return HttpStatus.UNPROCESSABLE_ENTITY;
+  }
+  if (code === 'CHAIN_EVENT_MISSING') return HttpStatus.BAD_GATEWAY;
   return HttpStatus.BAD_REQUEST;
 }

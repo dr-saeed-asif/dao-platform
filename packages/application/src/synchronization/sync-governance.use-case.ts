@@ -54,7 +54,14 @@ export class SyncGovernanceUseCase {
   private async apply(event: GovernanceChainEvent, counts: SyncCounts) {
     if (event.kind === "PROPOSAL_CREATED") {
       let proposal = await this.proposals.findByOnChainId(event.onChainProposalId);
-      if (proposal) return;
+      if (proposal) {
+        await this.transactionManager.runInTransaction(async () => {
+          const status = proposal!.status === ProposalStatus.Draft || proposal!.status === ProposalStatus.PendingOnChain ? ProposalStatus.Active : proposal!.status;
+          await this.proposals.markPublished(proposal!.id, event.onChainProposalId, status, new Date(Math.max(Number(event.blockTimestamp) * 1000, proposal!.updatedAt.getTime())));
+          await this.record(event, proposal!.id, 'CREATE_PROPOSAL', event.creatorAddress);
+        });
+        return;
+      }
       proposal = await this.proposals.findDraftByMetadataHash?.(event.metadataHash, event.creatorAddress) ?? null;
       if (proposal) {
         if (proposal.startsAt.getTime() !== event.startsAt * 1000 || proposal.endsAt.getTime() !== event.endsAt * 1000 || proposal.options.length !== event.optionCount || proposal.type !== proposalType(event.proposalType, undefined) || proposal.metadata.metadataURI !== event.metadataURI || String(proposal.metadata.metadataHash).toLowerCase() !== event.metadataHash.toLowerCase()) throw new Error('ProposalCreated does not match the local draft.');

@@ -10,6 +10,7 @@ import { ConnectWallet } from "@/features/wallet/connect-wallet";
 import { useWallet } from "@/features/wallet/wallet-provider";
 import { daoApi } from "@/lib/api/client";
 import type { Assignment, Proposal, Vote } from "@/lib/api/types";
+import { formatLocalDateTime as formatDate } from "@/lib/date-time";
 import { CreateProposalWizard } from "./create-proposal-form";
 import { ProposalDetails } from "./proposal-details";
 import { TransactionDecoder } from "@/features/decoder/transaction-decoder";
@@ -27,11 +28,6 @@ const adminAddress = (
   "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b"
 ).toLowerCase();
 const short = (value: string) => `${value.slice(0, 7)}…${value.slice(-5)}`;
-const formatDate = (value: string) =>
-  new Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value));
 
 function proposalStatus(proposal: Proposal, votes: IndexedVote[]) {
   if (proposal.status === "CANCELLED") return "Cancelled";

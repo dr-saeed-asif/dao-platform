@@ -2,6 +2,12 @@
 
 import { useRef, useState } from "react";
 import { daoApi } from "@/lib/api/client";
+import {
+  browserTimeZone,
+  formatLocalDateTime,
+  futureLocalDateTimeInput,
+  localDateTimeInputToUtc,
+} from "@/lib/date-time";
 import { useWallet } from "@/features/wallet/wallet-provider";
 
 interface Props {
@@ -18,12 +24,6 @@ const steps = [
   "Review & Publish",
 ] as const;
 
-const localDate = (minutes: number) => {
-  const date = new Date(Date.now() + minutes * 60_000);
-  date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
-  return date.toISOString().slice(0, 16);
-};
-
 const fileSig = (list: File[]) =>
   list.map((file) => `${file.name}:${file.size}:${file.lastModified}`).join("|");
 
@@ -38,7 +38,7 @@ export function CreateProposalWizard({
   onCancel,
   canAdmin = true,
 }: Props) {
-  const { address, submit: submitTransaction } = useWallet();
+  const { address } = useWallet();
 
   // Step state
   const [step, setStep] = useState(0);
@@ -52,8 +52,8 @@ export function CreateProposalWizard({
   const [purpose, setPurpose] = useState("");
   const [description, setDescription] = useState("");
   const [files, setFiles] = useState<File[]>([]);
-  const [startsAtInput, setStartsAtInput] = useState(() => localDate(10));
-  const [endsAtInput, setEndsAtInput] = useState(() => localDate(70));
+  const [startsAtInput, setStartsAtInput] = useState(() => futureLocalDateTimeInput(10));
+  const [endsAtInput, setEndsAtInput] = useState(() => futureLocalDateTimeInput(70));
   const [options, setOptions] = useState(["Approve", "Reject", "Abstain"]);
   const [membersText, setMembersText] = useState("");
 
@@ -207,8 +207,8 @@ export function CreateProposalWizard({
     }
     const members = parseMembers(membersText);
     const cleanOptions = options.map((value) => value.trim()).filter(Boolean);
-    const startsAt = new Date(startsAtInput).toISOString();
-    const endsAt = new Date(endsAtInput).toISOString();
+    const startsAt = localDateTimeInputToUtc(startsAtInput);
+    const endsAt = localDateTimeInputToUtc(endsAtInput);
 
     setPublishing(true);
     setPublishError(null);
@@ -262,11 +262,11 @@ export function CreateProposalWizard({
       );
       if (evidenceIds.length)
         await daoApi.setArtefactState(evidenceIds, "PENDING_CHAIN");
-      setProgress("Confirm proposal creation in your wallet…");
-      const transactionHash = await submitTransaction(created.transaction);
+      setProgress("Publishing proposal on CyberChain…");
+      const publication = await daoApi.publishProposal(created.proposal.id, address);
       published = true;
       setProgress(
-        `Waiting for ProposalCreated and indexing ${transactionHash}…`,
+        `Waiting for ProposalCreated and indexing ${publication.transactionHash}…`,
       );
       let indexed = false;
       for (let attempt = 0; attempt < 60; attempt++) {
@@ -280,7 +280,7 @@ export function CreateProposalWizard({
       }
       if (!indexed)
         throw new Error(
-          `Transaction ${transactionHash} submitted; creation is awaiting indexing. Documents remain pending.`,
+          `Transaction ${publication.transactionHash} confirmed; creation is awaiting indexing. Documents remain pending.`,
         );
       if (evidenceIds.length) {
         setProgress("Verifying and linking proposal documents…");
@@ -318,8 +318,8 @@ export function CreateProposalWizard({
     setPurpose("");
     setDescription("");
     setFileList([]);
-    setStartsAtInput(localDate(10));
-    setEndsAtInput(localDate(70));
+    setStartsAtInput(futureLocalDateTimeInput(10));
+    setEndsAtInput(futureLocalDateTimeInput(70));
     setOptions(["Approve", "Reject", "Abstain"]);
     setMembersText("");
     setPublishError(null);
@@ -532,17 +532,17 @@ export function CreateProposalWizard({
       {step === 2 && (
         <div className="form-grid">
           <label>
-            Voting starts
+            Voting starts ({browserTimeZone()})
             <input
               type="datetime-local"
               value={startsAtInput}
-              min={localDate(1)}
+              min={futureLocalDateTimeInput(1)}
               onChange={(event) => setStartsAtInput(event.target.value)}
               required
             />
           </label>
           <label>
-            Voting ends
+            Voting ends ({browserTimeZone()})
             <input
               type="datetime-local"
               value={endsAtInput}
@@ -639,8 +639,11 @@ export function CreateProposalWizard({
             <div>
               <span>Voting period</span>
               <strong>
-                {startsAtInput} → {endsAtInput}
+                {formatLocalDateTime(startsAtInput)} → {formatLocalDateTime(endsAtInput)}
               </strong>
+              <small>
+                Stored as {localDateTimeInputToUtc(startsAtInput)} → {localDateTimeInputToUtc(endsAtInput)} UTC
+              </small>
             </div>
             <div>
               <span>Options</span>

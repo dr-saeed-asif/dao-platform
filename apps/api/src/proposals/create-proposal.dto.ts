@@ -41,9 +41,15 @@ export class CreateProposalDto {
   optionLabels!: string[];
 
   @IsISO8601({ strict: true })
+  @Matches(/(?:Z|[+-]\d{2}:\d{2})$/, {
+    message: 'startsAt must include an explicit UTC offset.',
+  })
   startsAt!: string;
 
   @IsISO8601({ strict: true })
+  @Matches(/(?:Z|[+-]\d{2}:\d{2})$/, {
+    message: 'endsAt must include an explicit UTC offset.',
+  })
   endsAt!: string;
 
   @IsString()

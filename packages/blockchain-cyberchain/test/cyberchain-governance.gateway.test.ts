@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { ProposalType } from "@dao-platform/domain";
+import { ChainEventNotFoundError, ChainTransactionRevertedError } from "@dao-platform/application";
 import { CyberChainGovernanceGateway, createGovernanceEventEnvelope, eventEvidenceId } from "../src/index.js";
 import { SmartContractInterface, Web3RPCClient } from "@cyberchain/smart-contract-wrapper";
 import type { BlockData, SmartContractEvent, TransactionReceipt } from "@cyberchain/smart-contract-wrapper";
@@ -158,6 +159,29 @@ describe("CyberChainGovernanceGateway", () => {
     await assert.rejects(
       gateway.prepareCreateProposal({ ...request, metadata: {} }),
       /metadataURI/,
+    );
+  });
+
+  it("rejects a reverted createProposal receipt before reading events", async (t) => {
+    const subject = new CyberChainGovernanceGateway({ rpcURL: "http://fixture.invalid", chainId: "1212", contractAddress: emitter });
+    (subject as unknown as { transactionOptions(): object }).transactionOptions = () => ({});
+    t.mock.method(SmartContractInterface.prototype, "callMutableMethod", async () => ({ receipt: { ...receipt, status: 0n } }));
+
+    await assert.rejects(
+      subject.publishProposal(request),
+      (error: unknown) => error instanceof ChainTransactionRevertedError,
+    );
+  });
+
+  it("rejects a confirmed createProposal receipt without ProposalCreated", async (t) => {
+    const subject = new CyberChainGovernanceGateway({ rpcURL: "http://fixture.invalid", chainId: "1212", contractAddress: emitter });
+    (subject as unknown as { transactionOptions(): object }).transactionOptions = () => ({});
+    t.mock.method(SmartContractInterface.prototype, "callMutableMethod", async () => ({ receipt }));
+    t.mock.method(SmartContractInterface.prototype, "findEvent", () => null);
+
+    await assert.rejects(
+      subject.publishProposal(request),
+      (error: unknown) => error instanceof ChainEventNotFoundError,
     );
   });
 

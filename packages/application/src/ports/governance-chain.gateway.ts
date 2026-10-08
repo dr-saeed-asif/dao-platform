@@ -7,6 +7,13 @@ export class ChainTransactionRevertedError extends Error {
   }
 }
 
+export class ChainEventNotFoundError extends Error {
+  constructor(eventName: string) {
+    super(`Confirmed blockchain transaction did not emit ${eventName}.`);
+    this.name = "ChainEventNotFoundError";
+  }
+}
+
 export interface PrepareCreateProposalRequest {
   readonly localProposalId: string;
   readonly daoId: string;

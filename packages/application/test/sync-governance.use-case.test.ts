@@ -66,7 +66,10 @@ function createSubject(persistenceError?: Error) {
       calls.push("project");
       proposalsByChainId.set(proposal.onChainId!, proposal);
     },
-    async markPublished(_id, onChainId) { if (draft) proposalsByChainId.set(onChainId, draft); },
+    async markPublished(_id, onChainId) {
+      calls.push("reconcile");
+      if (draft) proposalsByChainId.set(onChainId, draft);
+    },
     async updateStatus() {},
   };
   const governanceEvents: GovernanceEventRepository = {
@@ -172,6 +175,8 @@ describe("SyncGovernanceUseCase", () => {
     assert.equal(result.mode, "FULL");
     assert.equal(result.indexed.proposals, 0);
     assert.equal(fixture.proposal()?.onChainId, "7");
+    assert.equal(fixture.calls.filter((call) => call === "reconcile").length, 1);
+    assert.equal(fixture.recordedTransactions(), 2);
   });
 
   it("links a manifest-matched draft when the backend signer is the chain creator", async () => {

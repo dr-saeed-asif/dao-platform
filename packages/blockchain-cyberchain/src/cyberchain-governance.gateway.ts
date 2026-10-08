@@ -7,6 +7,7 @@ import {
   ConfirmedVote,
   ConfirmedFinalization,
   ChainTransactionRevertedError,
+  ChainEventNotFoundError,
   GovernanceChainEvent,
 } from "@dao-platform/application";
 import { ProposalType } from "@dao-platform/domain";
@@ -94,7 +95,11 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       ],
       this.transactionOptions(),
     );
+    if (result.receipt.status !== 1n) {
+      throw new ChainTransactionRevertedError();
+    }
     const event = this.contract.findEvent(result.receipt, "ProposalCreated");
+    if (!event) throw new ChainEventNotFoundError("ProposalCreated");
     return {
       ...confirmedTransaction(result.receipt),
       onChainProposalId: String(event.parameters[0]),

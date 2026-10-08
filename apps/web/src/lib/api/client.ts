@@ -78,7 +78,7 @@ export const daoApi = {
       },
     ),
   publishProposal: (id: string, actor: string) =>
-    request(`/proposals/${id}/publish`, {
+    request<{ transactionHash: string; onChainProposalId: string }>(`/proposals/${id}/publish`, {
       method: "POST",
       headers: actorHeaders(actor),
     }),
