@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AiController } from '../ai.controller';
-import { OllamaClient, OllamaHealthResponse, OllamaChatResponse, OllamaEmbeddingResponse } from '../ollama.client';
+import { GeminiClient, GeminiHealthResponse, GeminiChatResponse, GeminiEmbeddingResponse } from '../gemini.client';
 import { LlmOnlySystem } from '../llm-only.system';
 import { VectorRagSystem } from '../vector-rag.system';
 import { VectorSearchService, SearchResult } from '../vector-search.service';
@@ -10,7 +10,7 @@ import { MultiAgentSystem } from '../agents/multi-agent.system';
 
 describe('AiController', () => {
   let controller: AiController;
-  let mockOllama: jest.Mocked<OllamaClient>;
+  let mockOllama: jest.Mocked<GeminiClient>;
   let mockLlmOnly: jest.Mocked<LlmOnlySystem>;
   let mockVectorRag: jest.Mocked<VectorRagSystem>;
   let mockVectorSearch: jest.Mocked<VectorSearchService>;
@@ -72,7 +72,7 @@ describe('AiController', () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AiController],
       providers: [
-        { provide: OllamaClient, useValue: mockOllama },
+        { provide: GeminiClient, useValue: mockOllama },
         { provide: LlmOnlySystem, useValue: mockLlmOnly },
         { provide: VectorRagSystem, useValue: mockVectorRag },
         { provide: VectorSearchService, useValue: mockVectorSearch },
@@ -91,7 +91,7 @@ describe('AiController', () => {
         status: 'healthy',
         latencyMs: 50,
         model: 'qwen3.5:4b',
-      } as OllamaHealthResponse);
+      } as GeminiHealthResponse);
 
       const result = await controller.health();
 
@@ -105,7 +105,7 @@ describe('AiController', () => {
         status: 'unhealthy',
         latencyMs: 50,
         error: 'Connection refused',
-      } as OllamaHealthResponse);
+      } as GeminiHealthResponse);
 
       const result = await controller.health();
 

@@ -270,7 +270,15 @@ export function CreateProposalWizard({
       );
       let indexed = false;
       for (let attempt = 0; attempt < 60; attempt++) {
-        await daoApi.syncGovernance(address);
+        try {
+          await daoApi.syncGovernance(address);
+        } catch (error) {
+          // Transient indexer/RPC failures must not abort publishing:
+          // keep polling until the proposal is indexed or attempts run out.
+          setProgress(
+            `Sync attempt failed (${error instanceof Error ? error.message : "sync error"}), retrying…`,
+          );
+        }
         const proposal = await daoApi.getProposal(created.proposal.id);
         if (proposal.onChainId) {
           indexed = true;

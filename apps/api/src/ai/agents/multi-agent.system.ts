@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { OllamaClient } from '../ollama.client';
+import { GeminiClient } from '../gemini.client';
 import { ToolRegistry, withTimeout } from './tool-registry';
 import type {
   AgentClaim,
@@ -27,7 +27,7 @@ export class MultiAgentSystem {
 
   constructor(
     private readonly tools: ToolRegistry,
-    private readonly ollama: OllamaClient,
+    private readonly ollama: GeminiClient,
     config: ConfigService,
   ) {
     this.maxSteps = config.get<number>('MAX_AGENT_STEPS', 8);

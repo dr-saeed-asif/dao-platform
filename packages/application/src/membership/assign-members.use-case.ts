@@ -1,4 +1,4 @@
-import { WalletAddress } from "@dao-platform/domain";
+import { ProposalStatus, WalletAddress } from "@dao-platform/domain";
 import { AssignmentRepository } from "../ports/assignment-repository.js";
 import { ChainTransactionRepository } from "../ports/chain-transaction-repository.js";
 import { Clock } from "../ports/clock.js";
@@ -51,6 +51,20 @@ export class AssignMembersUseCase {
       throw new ApplicationError(
         "PROPOSAL_NOT_PUBLISHED",
         "Publish the proposal on-chain before assigning members.",
+      );
+    }
+    if (proposal.status === ProposalStatus.Cancelled) {
+      throw new ApplicationError(
+        "PROPOSAL_CANCELLED",
+        "Proposal is cancelled; members cannot be assigned.",
+      );
+    }
+    // Mirror the on-chain AssignmentLocked rule: reject stale requests
+    // before submitting a transaction that is guaranteed to revert.
+    if (proposal.startsAt.getTime() <= this.clock.now().getTime()) {
+      throw new ApplicationError(
+        "ASSIGNMENT_LOCKED",
+        "Member assignment is locked once voting starts. Assign members before the voting period.",
       );
     }
 

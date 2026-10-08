@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { OllamaClient, OllamaChatResponse } from './ollama.client';
+import { GeminiClient, GeminiChatResponse } from './gemini.client';
 
 export interface LlmOnlyResponse {
   answer: string;
@@ -10,7 +10,7 @@ export interface LlmOnlyResponse {
 
 @Injectable()
 export class LlmOnlySystem {
-  constructor(private readonly ollama: OllamaClient) {}
+  constructor(private readonly ollama: GeminiClient) {}
 
   async answer(question: string): Promise<LlmOnlyResponse> {
     const messages = [

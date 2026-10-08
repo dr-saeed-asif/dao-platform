@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { VectorSearchService, SearchResult } from './vector-search.service';
-import { OllamaClient, OllamaChatResponse } from './ollama.client';
+import { GeminiClient, GeminiChatResponse } from './gemini.client';
 
 export interface VectorRagResponse {
   answer: string;
@@ -16,7 +16,7 @@ export interface VectorRagResponse {
 export class VectorRagSystem {
   constructor(
     private readonly vectorSearch: VectorSearchService,
-    private readonly ollama: OllamaClient,
+    private readonly ollama: GeminiClient,
   ) {}
 
   async answer(question: string, proposalId?: string, topK: number = 5): Promise<VectorRagResponse> {

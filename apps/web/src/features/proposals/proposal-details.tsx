@@ -1,11 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type {
-  Artefact,
-  ChainTransaction,
-  Proposal,
-} from "@/lib/api/types";
+import type { Artefact, ChainTransaction, Proposal } from "@/lib/api/types";
 import { daoApi } from "@/lib/api/client";
 import { useWallet } from "@/features/wallet/wallet-provider";
 import { MemberManager } from "@/features/members/member-manager";
@@ -81,7 +77,9 @@ export function ProposalDetails({
       .catch((error: unknown) => {
         if (active) {
           setArtefactsError(
-            error instanceof Error ? error.message : "Unable to load documents.",
+            error instanceof Error
+              ? error.message
+              : "Unable to load documents.",
           );
         }
       })
@@ -95,8 +93,11 @@ export function ProposalDetails({
 
   async function publish() {
     if (!address) return setMessage("Connect the administrator wallet first.");
-    if (publishing) return;
-    setPublishing(true);
+    if (Date.parse(proposal.startsAt) <= Date.now()) {
+      return setMessage(
+        "Voting start time has already passed. This draft can no longer be published — create a new proposal with a future voting period.",
+      );
+    }
     try {
       setMessage("Publishing on CyberChain…");
       await daoApi.publishProposal(proposal.id, address);
@@ -148,9 +149,7 @@ export function ProposalDetails({
             <span
               className={`status status-${proposal.onChainId ? "chain" : "draft"}`}
             >
-              {proposal.onChainId
-                ? `On-chain #${proposal.onChainId}`
-                : "Draft"}
+              {proposal.onChainId ? `On-chain #${proposal.onChainId}` : "Draft"}
             </span>
             <h2>{proposal.title}</h2>
             <p>{proposal.purpose}</p>
@@ -231,7 +230,11 @@ export function ProposalDetails({
         {message && <p className="form-message">{message}</p>}
       </section>
 
-      <div className="details-tabs" role="tablist" aria-label="Proposal sections">
+      <div
+        className="details-tabs"
+        role="tablist"
+        aria-label="Proposal sections"
+      >
         {tabs.map((item) => (
           <button
             key={item.id}
@@ -299,7 +302,9 @@ export function ProposalDetails({
           </div>
           <div className="table-wrap">
             {artefactsError && (
-              <p className="form-message">Documents could not be loaded: {artefactsError}</p>
+              <p className="form-message">
+                Documents could not be loaded: {artefactsError}
+              </p>
             )}
             <table>
               <thead>

@@ -64,7 +64,10 @@ describe('OllamaClient', () => {
   });
 
   it('disables thinking and bounds chat generation',async()=>{
-    global.fetch=jest.fn().mockResolvedValue({ok:true,json:async()=>({message:{content:'{}'}})});
+    const encoder=new TextEncoder();
+    const chunks=['{"message":{"content":"{}"}}'].map(line=>encoder.encode(`${line}\n`));
+    let index=0;
+    global.fetch=jest.fn().mockResolvedValue({ok:true,body:{getReader:()=>({read:async()=>index<chunks.length?{done:false,value:chunks[index++]}:{done:true,value:undefined}})}});
     await client.chat([{role:'user',content:'test'}],{json:true});
     const body=JSON.parse((global.fetch as jest.Mock).mock.calls[0][1].body);
     expect(body.think).toBe(false);

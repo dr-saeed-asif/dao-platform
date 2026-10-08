@@ -22,6 +22,8 @@ export class ApplicationExceptionFilter implements ExceptionFilter {
 }
 
 function statusFor(code: string): number {
+  if (code === 'CHAIN_SENDER_UNAUTHORIZED')
+    return HttpStatus.SERVICE_UNAVAILABLE;
   if (code === 'FORBIDDEN') return HttpStatus.FORBIDDEN;
   if (code === 'PROPOSAL_NOT_FOUND') return HttpStatus.NOT_FOUND;
   if (

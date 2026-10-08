@@ -1,9 +1,9 @@
 import { LlmOnlySystem } from '../llm-only.system';
-import { OllamaClient, OllamaChatResponse } from '../ollama.client';
+import { GeminiClient, GeminiChatResponse } from '../gemini.client';
 
 describe('LlmOnlySystem', () => {
   let system: LlmOnlySystem;
-  let mockOllama: jest.Mocked<OllamaClient>;
+  let mockOllama: jest.Mocked<GeminiClient>;
 
   beforeEach(() => {
     mockOllama = {
@@ -18,7 +18,7 @@ describe('LlmOnlySystem', () => {
 
   describe('answer', () => {
     it('should call ollama chat with correct messages', async () => {
-      const mockResponse: OllamaChatResponse = {
+      const mockResponse: GeminiChatResponse = {
         content: 'Test answer',
         latencyMs: 100,
         inputTokens: 10,

@@ -1,4 +1,4 @@
-import { WalletAddress } from "@dao-platform/domain";
+import { ProposalStatus, WalletAddress } from "@dao-platform/domain";
 import { AssignmentRepository } from "../ports/assignment-repository.js";
 import { ChainTransactionRepository } from "../ports/chain-transaction-repository.js";
 import { Clock } from "../ports/clock.js";
@@ -33,6 +33,20 @@ export class UnassignMemberUseCase {
       throw new ApplicationError(
         "PROPOSAL_NOT_PUBLISHED",
         "Proposal is not published on-chain.",
+      );
+    }
+    if (proposal.status === ProposalStatus.Cancelled) {
+      throw new ApplicationError(
+        "PROPOSAL_CANCELLED",
+        "Proposal is cancelled; members cannot be removed.",
+      );
+    }
+    // Mirror the on-chain AssignmentLocked rule: reject stale requests
+    // before submitting a transaction that is guaranteed to revert.
+    if (proposal.startsAt.getTime() <= this.clock.now().getTime()) {
+      throw new ApplicationError(
+        "ASSIGNMENT_LOCKED",
+        "Member assignment is locked once voting starts. Members cannot be removed after the voting period begins.",
       );
     }
     const result = await this.chain.unassignMember(

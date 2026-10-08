@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { OllamaClient, OllamaEmbeddingResponse } from './ollama.client';
+import { GeminiClient, GeminiEmbeddingResponse } from './gemini.client';
 import { PostgresService } from '../database/postgres.service';
 import { sql } from 'kysely';
 import { EmbeddingPipelineService } from './embedding-pipeline.service';
@@ -24,7 +24,7 @@ export interface SearchOptions {
 export class VectorSearchService {
   constructor(
     private readonly postgres: PostgresService,
-    private readonly ollama: OllamaClient,
+    private readonly ollama: GeminiClient,
     private readonly pipeline: EmbeddingPipelineService,
   ) {}
 

@@ -1,4 +1,5 @@
 import {
+  ApplicationError,
   GovernanceChainGateway,
   PrepareCreateProposalRequest,
   PreparedTransaction,
@@ -18,6 +19,7 @@ import {
   TransactionReceipt,
   Web3RPCClient,
   privateKeyToAddress,
+  privateKeyToMixedAddress,
   toHex,
   BlockData,
 } from "@cyberchain/smart-contract-wrapper";
@@ -78,22 +80,66 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
     };
   }
 
+  /**
+   * Derives the on-chain transaction sender from the configured signing
+   * material (same derivation as the deployment script) and fails fast when
+   * it does not match the expected address. Call once at startup so a
+   * misconfigured backend key can never silently submit transactions from an
+   * unauthorized account.
+   */
+  verifyConfiguredSender(expectedAddress: string): string {
+    const signing = this.options.signing;
+    if (!signing) {
+      throw new Error("CyberChain administrator signing is not configured.");
+    }
+    const ecdsaKey: SignKeyECDSA = {
+      type: "ec-dsa",
+      key: hexBytes(signing.ecdsaPrivateKey),
+    };
+    const mldsaKey: SignKeyMLDSA = {
+      type: "ml-dsa",
+      spec: signing.mldsaLevel,
+      publicKey: hexBytes(signing.mldsaPublicKey),
+      secretKey: signing.mldsaSecretKey
+        ? hexBytes(signing.mldsaSecretKey)
+        : new Uint8Array(),
+    };
+    const sender =
+      signing.signMode === "ml-dsa"
+        ? privateKeyToMixedAddress(mldsaKey, privateKeyToAddress(ecdsaKey))
+        : privateKeyToMixedAddress(ecdsaKey, privateKeyToAddress(mldsaKey));
+    const configured = (expectedAddress ?? "").trim();
+    if (!configured) {
+      throw new Error(
+        "EXPECTED_SENDER_ADDRESS is not configured; refusing to start without a verified backend transaction sender.",
+      );
+    }
+    if (sender.toLowerCase() !== configured.toLowerCase()) {
+      throw new Error(
+        `Backend signing material derives ${sender} but EXPECTED_SENDER_ADDRESS is ${configured}. Refusing to start with a mismatched transaction sender.`,
+      );
+    }
+    return sender;
+  }
+
   async publishProposal(
     request: PrepareCreateProposalRequest,
   ): Promise<PublishedProposalTransaction> {
     const metadataURI = metadataString(request.metadata, "metadataURI");
     const metadataHash = metadataString(request.metadata, "metadataHash");
-    const result = await this.contract.callMutableMethod(
-      "createProposal",
-      [
-        metadataURI,
-        metadataHash,
-        proposalTypeCode(request.type),
-        request.optionLabels.length,
-        toUnixSeconds(request.startsAt),
-        toUnixSeconds(request.endsAt),
-      ],
-      this.transactionOptions(),
+    const result = await this.submitChainTransaction(() =>
+      this.contract.callMutableMethod(
+        "createProposal",
+        [
+          metadataURI,
+          metadataHash,
+          proposalTypeCode(request.type),
+          request.optionLabels.length,
+          toUnixSeconds(request.startsAt),
+          toUnixSeconds(request.endsAt),
+        ],
+        this.transactionOptions(),
+      ),
     );
     if (result.receipt.status !== 1n) {
       throw new ChainTransactionRevertedError();
@@ -110,10 +156,12 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
     proposalId: string,
     members: readonly string[],
   ): Promise<ConfirmedChainTransaction> {
-    const result = await this.contract.callMutableMethod(
-      "assignMembers",
-      [proposalId, [...members]],
-      this.transactionOptions(),
+    const result = await this.submitChainTransaction(() =>
+      this.contract.callMutableMethod(
+        "assignMembers",
+        [proposalId, [...members]],
+        this.transactionOptions(),
+      ),
     );
     return confirmedTransaction(result.receipt);
   }
@@ -122,10 +170,12 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
     proposalId: string,
     member: string,
   ): Promise<ConfirmedChainTransaction> {
-    const result = await this.contract.callMutableMethod(
-      "unassignMember",
-      [proposalId, member],
-      this.transactionOptions(),
+    const result = await this.submitChainTransaction(() =>
+      this.contract.callMutableMethod(
+        "unassignMember",
+        [proposalId, member],
+        this.transactionOptions(),
+      ),
     );
     return confirmedTransaction(result.receipt);
   }
@@ -229,19 +279,23 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
   }
 
   async cancelProposal(proposalId: string): Promise<ConfirmedChainTransaction> {
-    const result = await this.contract.callMutableMethod(
-      "cancelProposal",
-      [proposalId],
-      this.transactionOptions(),
+    const result = await this.submitChainTransaction(() =>
+      this.contract.callMutableMethod(
+        "cancelProposal",
+        [proposalId],
+        this.transactionOptions(),
+      ),
     );
     return confirmedTransaction(result.receipt);
   }
 
   async finalizeProposal(proposalId: string): Promise<ConfirmedFinalization> {
-    const result = await this.contract.callMutableMethod(
-      "finalizeProposal",
-      [proposalId],
-      this.transactionOptions(),
+    const result = await this.submitChainTransaction(() =>
+      this.contract.callMutableMethod(
+        "finalizeProposal",
+        [proposalId],
+        this.transactionOptions(),
+      ),
     );
     const event = this.contract.findEvent(result.receipt, "ProposalFinalized");
     return {
@@ -250,6 +304,16 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       tied: Boolean(event.parameters[2]),
       totalVotes: Number(event.parameters[3]),
     };
+  }
+
+  private async submitChainTransaction<T>(
+    action: () => Promise<T>,
+  ): Promise<T> {
+    try {
+      return await action();
+    } catch (error) {
+      throw toChainSubmissionError(error);
+    }
   }
 
   private transactionOptions() {
@@ -316,6 +380,17 @@ function confirmedTransaction(
     gasUsed: receipt.gasUsed.toString(),
     status: "CONFIRMED",
   };
+}
+
+function toChainSubmissionError(error: unknown): Error {
+  const message = error instanceof Error ? error.message : String(error);
+  if (/32007|not authorized to send transactions/i.test(message)) {
+    return new ApplicationError(
+      "CHAIN_SENDER_UNAUTHORIZED",
+      "Backend transaction signer is not authorized to send transactions on CyberChain. Verify the backend signing key and grant the sender a transaction-capable network role.",
+    );
+  }
+  return error instanceof Error ? error : new Error(message);
 }
 
 function metadataString(

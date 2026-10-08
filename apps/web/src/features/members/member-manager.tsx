@@ -15,6 +15,17 @@ export function MemberManager({
   const { address } = useWallet();
   const [members, setMembers] = useState<Assignment[]>([]);
   const [message, setMessage] = useState<string | null>(null);
+  // Mirror the on-chain AssignmentLocked rule: membership can only change
+  // before the voting period starts. Tracked in state (refreshed on an
+  // interval like the voting clock) to keep render pure.
+  const [assignmentsOpen, setAssignmentsOpen] = useState(false);
+  useEffect(() => {
+    const update = () =>
+      setAssignmentsOpen(Date.parse(proposal.startsAt) > Date.now());
+    update();
+    const timer = window.setInterval(update, 15_000);
+    return () => window.clearInterval(timer);
+  }, [proposal.startsAt]);
   const load = useCallback(
     async () => setMembers(await daoApi.listMembers(proposal.id)),
     [proposal.id],
@@ -56,7 +67,7 @@ export function MemberManager({
         </div>
         <span className="count">{members.length}</span>
       </div>
-      {!readOnly && (
+      {!readOnly && assignmentsOpen && (
         <form className="inline-form" onSubmit={assign}>
           <input
             name="member"
@@ -67,12 +78,18 @@ export function MemberManager({
           <button className="button button-secondary">Add member</button>
         </form>
       )}
+      {!readOnly && !assignmentsOpen && (
+        <p className="empty">
+          Member assignment is locked once voting starts. Assign members
+          before the voting period.
+        </p>
+      )}
       <div className="member-list">
         {members.length ? (
           members.map((member) => (
             <div className="member-row" key={member.walletAddress}>
               <code>{member.walletAddress}</code>
-              {!readOnly && (
+              {!readOnly && assignmentsOpen && (
                 <button
                   onClick={() => void remove(member.walletAddress)}
                   aria-label="Remove member"

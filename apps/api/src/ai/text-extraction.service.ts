@@ -1,5 +1,6 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import pdfParse from 'pdf-parse';
+import { ocrPdf } from './pdf-ocr';
 
 export interface ExtractionResult {
   text: string;
@@ -10,6 +11,8 @@ export interface ExtractionResult {
 
 @Injectable()
 export class TextExtractionService {
+  // Coalesce background/query extraction and avoid repeating OCR every indexing tick.
+  private readonly ocrCache = new Map<string, Promise<string>>();
   async extract(buffer: Buffer, mediaType: string, filename: string): Promise<ExtractionResult> {
     const contentHash = this.computeHash(buffer);
 
@@ -51,7 +54,22 @@ export class TextExtractionService {
 
   private async extractPdf(buffer: Buffer): Promise<string> {
     const data = await pdfParse(buffer);
-    return data.text;
+    if (data.text.trim()) return data.text;
+    const hash = this.computeHash(buffer);
+    const cached = this.ocrCache.get(hash);
+    if (cached) return cached;
+    const pending: Promise<string> = ocrPdf(buffer).catch((error: unknown) => {
+      // A background indexer runs every five seconds. Cache failures briefly too,
+      // so an unreadable image does not continually consume an OCR worker.
+      const timer = setTimeout(() => {
+        if (this.ocrCache.get(hash) === pending) this.ocrCache.delete(hash);
+      }, 60_000);
+      timer.unref();
+      throw error;
+    });
+    if (this.ocrCache.size >= 16) this.ocrCache.delete(this.ocrCache.keys().next().value!);
+    this.ocrCache.set(hash, pending);
+    return pending;
   }
 
   private extractText(buffer: Buffer): string {

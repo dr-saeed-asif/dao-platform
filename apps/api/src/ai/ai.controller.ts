@@ -8,7 +8,7 @@ import {
   Optional,
 } from '@nestjs/common';
 import { randomUUID } from 'crypto';
-import { OllamaClient } from './ollama.client';
+import { GeminiClient } from './gemini.client';
 import { LlmOnlySystem } from './llm-only.system';
 import { VectorRagSystem } from './vector-rag.system';
 import { PostgresService } from '../database/postgres.service';
@@ -21,7 +21,7 @@ import { ResearchRunsService } from '../research/research-runs.service';
 @Controller('ai')
 export class AiController {
   constructor(
-    private readonly ollama: OllamaClient,
+    private readonly ollama: GeminiClient,
     private readonly llmOnly: LlmOnlySystem,
     private readonly vectorRag: VectorRagSystem,
     private readonly postgres: PostgresService,

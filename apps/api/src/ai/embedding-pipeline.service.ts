@@ -3,7 +3,7 @@ import { PostgresService } from '../database/postgres.service';
 import { LocalArtefactStorage } from '../research/local-artefact.storage';
 import { TextExtractionService, ExtractionResult } from './text-extraction.service';
 import { ChunkingService, Chunk } from './chunking.service';
-import { OllamaClient, OllamaEmbeddingResponse } from './ollama.client';
+import { GeminiClient, GeminiEmbeddingResponse } from './gemini.client';
 import { sha256 } from '@dao-platform/database';
 
 export interface IndexResult {
@@ -32,7 +32,7 @@ export class EmbeddingPipelineService implements OnModuleInit, OnApplicationShut
     private readonly storage: LocalArtefactStorage,
     private readonly textExtraction: TextExtractionService,
     private readonly chunking: ChunkingService,
-    private readonly ollama: OllamaClient,
+    private readonly ollama: GeminiClient,
   ) {}
 
   private get db() {
@@ -193,8 +193,17 @@ export class EmbeddingPipelineService implements OnModuleInit, OnApplicationShut
     const results: IndexResult[] = [];
 
     for (const artefact of artefacts) {
-      const result = await this.indexArtefact(artefact.evidence_id);
-      results.push(result);
+      try {
+        const result = await this.indexArtefact(artefact.evidence_id);
+        results.push(result);
+      } catch (error) {
+        // One unreadable artefact (e.g. missing file) must not kill the
+        // whole query: log it and continue with the remaining evidence.
+        console.error(
+          `Skipping artefact ${artefact.evidence_id} during proposal indexing:`,
+          error instanceof Error ? error.message : error,
+        );
+      }
     }
 
     return results;

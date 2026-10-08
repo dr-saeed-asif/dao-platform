@@ -1,11 +1,11 @@
 import { VectorRagSystem } from '../vector-rag.system';
 import { VectorSearchService, SearchResult } from '../vector-search.service';
-import { OllamaClient, OllamaChatResponse } from '../ollama.client';
+import { GeminiClient, GeminiChatResponse } from '../gemini.client';
 
 describe('VectorRagSystem', () => {
   let system: VectorRagSystem;
   let mockVectorSearch: jest.Mocked<VectorSearchService>;
-  let mockOllama: jest.Mocked<OllamaClient>;
+  let mockOllama: jest.Mocked<GeminiClient>;
 
   beforeEach(() => {
     mockVectorSearch = {
@@ -49,7 +49,7 @@ describe('VectorRagSystem', () => {
       ];
       mockVectorSearch.search.mockResolvedValue(mockResults);
 
-      const mockChatResponse: OllamaChatResponse = {
+      const mockChatResponse: GeminiChatResponse = {
         content: 'Answer based on context',
         latencyMs: 200,
         inputTokens: 50,

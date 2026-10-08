@@ -33,7 +33,10 @@ export class OllamaClient implements OnModuleInit {
     this.chatModel = config.getOrThrow<string>('OLLAMA_CHAT_MODEL');
     this.embedModel = config.getOrThrow<string>('OLLAMA_EMBED_MODEL');
     this.embedDimension = config.getOrThrow<number>('OLLAMA_EMBED_DIMENSION');
-    this.timeout = 300_000;
+    // Backstop for a single model call. Must exceed any single generation
+    // (CPU-bound 4b synthesis can take several minutes) while staying below
+    // the 900s overall agent timeout.
+    this.timeout = 840_000;
   }
 
   async onModuleInit(): Promise<void> {
@@ -80,13 +83,16 @@ export class OllamaClient implements OnModuleInit {
 
   async chat(messages: Array<{ role: string; content: string }>, options?: { json?: boolean; maxTokens?: number; signal?: AbortSignal }): Promise<OllamaChatResponse> {
     const start = Date.now();
+    // Streamed so response headers arrive with the first tokens: a
+    // minutes-long CPU generation must never look like a stalled request.
+    // The assembled content is identical to stream:false.
     const response = await this.fetchWithTimeout(`${this.baseUrl}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: this.chatModel,
         messages,
-        stream: false,
+        stream: true,
         think: false,
         ...(options?.json ? { format: 'json' } : {}),
         options: { temperature: 0.1, num_predict: options?.maxTokens ?? 768 },
@@ -98,15 +104,51 @@ export class OllamaClient implements OnModuleInit {
       const error = await response.text().catch(() => '');
       throw new Error(`Ollama chat failed: ${response.status} ${error}`);
     }
+    if (!response.body) {
+      throw new Error('Ollama chat failed: empty response body.');
+    }
 
-    const data = await response.json();
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let content = '';
+    let inputTokens: number | undefined;
+    let outputTokens: number | undefined;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() ?? '';
+      for (const line of lines) {
+        const text = line.trim();
+        if (!text) continue;
+        const chunk = JSON.parse(text) as {
+          message?: { content?: string };
+          error?: string;
+          prompt_eval_count?: number;
+          eval_count?: number;
+        };
+        if (chunk.error) throw new Error(`Ollama chat failed: ${chunk.error}`);
+        if (typeof chunk.message?.content === 'string') {
+          content += chunk.message.content;
+        }
+        if (typeof chunk.prompt_eval_count === 'number') {
+          inputTokens = chunk.prompt_eval_count;
+        }
+        if (typeof chunk.eval_count === 'number') {
+          outputTokens = chunk.eval_count;
+        }
+      }
+    }
+
     const latencyMs = Date.now() - start;
 
     return {
-      content: data.message?.content ?? '',
+      content,
       latencyMs,
-      inputTokens: data.prompt_eval_count,
-      outputTokens: data.eval_count,
+      inputTokens,
+      outputTokens,
     };
   }
 

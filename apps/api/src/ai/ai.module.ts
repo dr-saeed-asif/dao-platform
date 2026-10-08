@@ -4,7 +4,7 @@ import { PostgresModule } from '../database/postgres.module';
 import { ResearchModule } from '../research/research.module';
 import { TextExtractionService } from './text-extraction.service';
 import { ChunkingService } from './chunking.service';
-import { OllamaClient } from './ollama.client';
+import { GeminiClient } from './gemini.client';
 import { EmbeddingPipelineService } from './embedding-pipeline.service';
 import { VectorSearchService } from './vector-search.service';
 import { LlmOnlySystem } from './llm-only.system';
@@ -21,7 +21,7 @@ import { McpToolRegistryAdapter } from './agents/mcp.adapter';
   providers: [
     TextExtractionService,
     ChunkingService,
-    OllamaClient,
+    GeminiClient,
     EmbeddingPipelineService,
     VectorSearchService,
     LlmOnlySystem,
@@ -34,7 +34,7 @@ import { McpToolRegistryAdapter } from './agents/mcp.adapter';
   exports: [
     TextExtractionService,
     ChunkingService,
-    OllamaClient,
+    GeminiClient,
     EmbeddingPipelineService,
     VectorSearchService,
     LlmOnlySystem,

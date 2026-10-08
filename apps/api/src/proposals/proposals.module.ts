@@ -96,8 +96,8 @@ import {
     {
       provide: GOVERNANCE_GATEWAY,
       inject: [ConfigService],
-      useFactory: (config: ConfigService): GovernanceChainGateway =>
-        new CyberChainGovernanceGateway({
+      useFactory: (config: ConfigService): GovernanceChainGateway => {
+        const gateway = new CyberChainGovernanceGateway({
           rpcURL: config.getOrThrow<string>('CYBERCHAIN_RPC_URL'),
           chainId: config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'),
           contractAddress: config.getOrThrow<string>(
@@ -110,7 +110,14 @@ import {
             mldsaSecretKey: config.get<string>('MLDSA_SECRET_KEY'),
             mldsaLevel: config.getOrThrow<44 | 65 | 87>('MLDSA_LEVEL'),
           },
-        }),
+        });
+        // Fail fast at startup: a mismatched backend key must never
+        // silently submit transactions from an unauthorized account.
+        gateway.verifyConfiguredSender(
+          config.getOrThrow<string>('EXPECTED_SENDER_ADDRESS'),
+        );
+        return gateway;
+      },
     },
     {
       provide: CreateProposalUseCase,

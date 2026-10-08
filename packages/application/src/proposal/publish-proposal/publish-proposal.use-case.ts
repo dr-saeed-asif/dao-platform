@@ -36,41 +36,29 @@ export class PublishProposalUseCase {
         "Proposal is already published on-chain.",
       );
     }
-    const validationTime = this.clock.now();
-    if (proposal.startsAt.getTime() <= validationTime.getTime()) {
+
+    // Mirror the on-chain rule (startsAt >= block.timestamp): reject stale
+    // drafts before submitting a transaction that is guaranteed to revert.
+    if (proposal.startsAt.getTime() <= this.clock.now().getTime()) {
       throw new ApplicationError(
-        "INVALID_VOTING_PERIOD",
-        `Publishing must complete before voting opens. Voting opened at ${proposal.startsAt.toISOString()} UTC; current server time is ${validationTime.toISOString()} UTC. Create a replacement proposal with a future start time.`,
+        "PROPOSAL_START_PASSED",
+        "Voting start time has already passed. Create a new proposal with a future voting period.",
       );
     }
 
-    let result;
-    try {
-      result = await this.chain.publishProposal({
-        localProposalId: proposal.id,
-        daoId: proposal.daoId,
-        creatorAddress: proposal.creatorAddress.value,
-        title: proposal.title,
-        purpose: proposal.purpose,
-        description: proposal.description,
-        type: proposal.type,
-        optionLabels: proposal.options.map((option) => option.label),
-        startsAt: proposal.startsAt,
-        endsAt: proposal.endsAt,
-        metadata: proposal.metadata,
-      });
-    } catch (error) {
-      if (error instanceof ChainTransactionRevertedError) {
-        throw new ApplicationError(
-          "TRANSACTION_REVERTED",
-          "Proposal transaction was mined but reverted. Verify the contract owner, proposal timing, and contract configuration.",
-        );
-      }
-      if (error instanceof ChainEventNotFoundError) {
-        throw new ApplicationError("CHAIN_EVENT_MISSING", error.message);
-      }
-      throw error;
-    }
+    const result = await this.chain.publishProposal({
+      localProposalId: proposal.id,
+      daoId: proposal.daoId,
+      creatorAddress: proposal.creatorAddress.value,
+      title: proposal.title,
+      purpose: proposal.purpose,
+      description: proposal.description,
+      type: proposal.type,
+      optionLabels: proposal.options.map((option) => option.label),
+      startsAt: proposal.startsAt,
+      endsAt: proposal.endsAt,
+      metadata: proposal.metadata,
+    });
     const now = this.clock.now();
     await this.transactionManager.runInTransaction(async () => {
       await this.proposals.markPublished(
