@@ -41,6 +41,7 @@ import { GOVERNANCE_EVENT_REPOSITORY } from '../database/database.tokens';
 import { PostgresModule } from '../database/postgres.module';
 import { ResearchModule } from '../research/research.module';
 import { ProposalsController } from './proposals.controller';
+import { ProposalQueryService } from './proposal-query.service';
 import { VotingIndexerService } from './voting-indexer.service';
 import {
   ASSIGNMENT_REPOSITORY,
@@ -56,10 +57,13 @@ import {
   imports: [PostgresModule, ResearchModule],
   controllers: [ProposalsController],
   providers: [
+    ProposalQueryService,
     {
       provide: OPERATIONAL_DATABASE,
       inject: [PostgresService],
-      async useFactory(postgres: PostgresService): Promise<PostgresOperationalDatabase> {
+      async useFactory(
+        postgres: PostgresService,
+      ): Promise<PostgresOperationalDatabase> {
         await postgres.initialize();
         if (!postgres.database) throw new Error('POSTGRES_URL is required.');
         return new PostgresOperationalDatabase(postgres.database);
@@ -68,30 +72,54 @@ import {
     {
       provide: PROPOSAL_REPOSITORY,
       inject: [OPERATIONAL_DATABASE, ConfigService],
-      useFactory: (database: PostgresOperationalDatabase, config: ConfigService) =>
-        new PostgresProposalRepository(database, config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'), config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS')),
+      useFactory: (
+        database: PostgresOperationalDatabase,
+        config: ConfigService,
+      ) =>
+        new PostgresProposalRepository(
+          database,
+          config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'),
+          config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS'),
+        ),
     },
     {
       provide: ASSIGNMENT_REPOSITORY,
       inject: [OPERATIONAL_DATABASE],
-      useFactory: (database: PostgresOperationalDatabase) => new PostgresAssignmentRepository(database),
+      useFactory: (database: PostgresOperationalDatabase) =>
+        new PostgresAssignmentRepository(database),
     },
     {
       provide: CHAIN_TRANSACTION_REPOSITORY,
       inject: [OPERATIONAL_DATABASE, ConfigService],
-      useFactory: (database: PostgresOperationalDatabase, config: ConfigService) =>
-        new PostgresChainTransactionRepository(database, config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'), config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS')),
+      useFactory: (
+        database: PostgresOperationalDatabase,
+        config: ConfigService,
+      ) =>
+        new PostgresChainTransactionRepository(
+          database,
+          config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'),
+          config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS'),
+        ),
     },
     {
       provide: VOTE_REPOSITORY,
       inject: [OPERATIONAL_DATABASE],
-      useFactory: (database: PostgresOperationalDatabase) => new PostgresVoteRepository(database),
+      useFactory: (database: PostgresOperationalDatabase) =>
+        new PostgresVoteRepository(database),
     },
     {
       provide: SYNC_STATE_REPOSITORY,
       inject: [OPERATIONAL_DATABASE, ConfigService],
-      useFactory: (database: PostgresOperationalDatabase, config: ConfigService) =>
-        new PostgresSyncStateRepository(database, config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'), config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS'), 'v1'),
+      useFactory: (
+        database: PostgresOperationalDatabase,
+        config: ConfigService,
+      ) =>
+        new PostgresSyncStateRepository(
+          database,
+          config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'),
+          config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS'),
+          'v1',
+        ),
     },
     {
       provide: GOVERNANCE_GATEWAY,
@@ -380,9 +408,7 @@ import {
           chain,
           governanceEvents,
           database,
-          BigInt(
-            config.getOrThrow<number>('GOVERNANCE_DEPLOYMENT_BLOCK'),
-          ),
+          BigInt(config.getOrThrow<number>('GOVERNANCE_DEPLOYMENT_BLOCK')),
           BigInt(config.getOrThrow<number>('VOTE_INDEXER_BLOCK_RANGE')),
         ),
     },
@@ -409,6 +435,7 @@ import {
     },
     VotingIndexerService,
   ],
+  exports: [ProposalQueryService, GOVERNANCE_GATEWAY],
 })
 export class ProposalsModule {}
 

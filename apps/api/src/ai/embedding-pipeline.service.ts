@@ -1,9 +1,9 @@
 import { Injectable, OnApplicationShutdown, OnModuleInit } from '@nestjs/common';
 import { PostgresService } from '../database/postgres.service';
 import { LocalArtefactStorage } from '../research/local-artefact.storage';
-import { TextExtractionService, ExtractionResult } from './text-extraction.service';
-import { ChunkingService, Chunk } from './chunking.service';
-import { OllamaClient, OllamaEmbeddingResponse } from './ollama.client';
+import { TextExtractionService } from './text-extraction.service';
+import { ChunkingService } from './chunking.service';
+import { OllamaClient } from './ollama.client';
 import { sha256 } from '@dao-platform/database';
 
 export interface IndexResult {
@@ -130,7 +130,7 @@ export class EmbeddingPipelineService implements OnModuleInit, OnApplicationShut
 
     for (const chunk of chunks) {
       const existing = existingByEvidenceId.get(chunk.evidenceId);
-      if (existing && existing.content === chunk.content && existing.embedding && existing.embedding_model === this.ollama.getEmbedModel() && existing.embedding_dimension === this.ollama.getEmbedDimension() && existing.chunking_version === this.chunking.getChunkingVersion()) {
+      if (existing && existing.content === chunk.content && existing.embedding && existing.embedding_model === this.ollama.getEmbeddingIdentity() && existing.embedding_dimension === this.ollama.getEmbedDimension() && existing.chunking_version === this.chunking.getChunkingVersion()) {
         chunksSkipped++;
         continue;
       }
@@ -147,7 +147,7 @@ export class EmbeddingPipelineService implements OnModuleInit, OnApplicationShut
           content: chunk.content,
           metadata: JSON.stringify(chunk.metadata),
           embedding: JSON.stringify(embedding.embedding),
-          embedding_model: this.ollama.getEmbedModel(),
+          embedding_model: this.ollama.getEmbeddingIdentity(),
           embedding_dimension: this.ollama.getEmbedDimension(),
           chunking_version: this.chunking.getChunkingVersion(),
         })
@@ -156,7 +156,7 @@ export class EmbeddingPipelineService implements OnModuleInit, OnApplicationShut
             content: chunk.content,
             metadata: JSON.stringify(chunk.metadata),
             embedding: JSON.stringify(embedding.embedding),
-            embedding_model: this.ollama.getEmbedModel(),
+            embedding_model: this.ollama.getEmbeddingIdentity(),
             embedding_dimension: this.ollama.getEmbedDimension(),
             chunking_version: this.chunking.getChunkingVersion(),
           }),

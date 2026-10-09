@@ -28,6 +28,11 @@ describe('OllamaClient', () => {
   });
 
   describe('getters', () => {
+    it('should select Ollama when IS_ACTIVE is missing', () => {
+      expect(client.getProvider()).toBe('ollama');
+      expect(client.getEmbeddingIdentity()).toBe('ollama:qwen3-embedding:0.6b');
+    });
+
     it('should return chat model', () => {
       expect(client.getChatModel()).toBe('qwen3:0.6b');
     });
@@ -69,5 +74,68 @@ describe('OllamaClient', () => {
     const body=JSON.parse((global.fetch as jest.Mock).mock.calls[0][1].body);
     expect(body.think).toBe(false);
     expect(body.options.num_predict).toBe(768);
+  });
+
+  it('uses Gemini for chat and embeddings only when IS_ACTIVE is true', async () => {
+    mockConfig.get.mockImplementation((key: string, fallback?: unknown) => {
+      const values: Record<string, unknown> = {
+        IS_ACTIVE: 'true',
+      };
+      return key in values ? values[key] : fallback;
+    });
+    mockConfig.getOrThrow.mockImplementation((key: string) => {
+      const values: Record<string, string> = {
+        GEMINI_API_KEY: 'test-key',
+        GEMINI_LLM_MODEL: 'gemini-test',
+        GEMINI_EMBEDDING_MODEL: 'gemini-embedding-test',
+      };
+      if (key in values) return values[key];
+      throw new Error(`Missing config: ${key}`);
+    });
+    client = new OllamaClient(mockConfig);
+    global.fetch = jest.fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          candidates: [{ content: { parts: [{ text: '{"ok":true}' }] } }],
+          usageMetadata: { promptTokenCount: 4, candidatesTokenCount: 3 },
+        }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ embedding: { values: Array(1024).fill(0.1) } }),
+      });
+
+    const chat = await client.chat([{ role: 'user', content: 'test' }], { json: true });
+    const embedding = await client.embed('test', 'query');
+
+    expect(client.getProvider()).toBe('gemini');
+    expect(client.getEmbeddingIdentity()).toBe('gemini:gemini-embedding-test');
+    expect(chat.content).toBe('{"ok":true}');
+    expect(chat.inputTokens).toBe(4);
+    expect(embedding.embedding).toHaveLength(1024);
+    const calls = (global.fetch as jest.Mock).mock.calls;
+    expect(calls[0][0]).toContain('gemini-test:generateContent');
+    expect(JSON.parse(calls[1][1].body).taskType).toBe('RETRIEVAL_QUERY');
+  });
+
+  it('treats the string false as Ollama', () => {
+    mockConfig.get.mockImplementation((key: string, fallback?: unknown) =>
+      key === 'IS_ACTIVE' ? 'false' : fallback,
+    );
+    client = new OllamaClient(mockConfig);
+    expect(client.getProvider()).toBe('ollama');
+  });
+
+  it('reuses an embedding generated for the same model, purpose, and text', async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ embeddings: [Array(1024).fill(0.1)] }),
+    });
+
+    await client.embed('same text', 'query');
+    await client.embed('same text', 'query');
+
+    expect(global.fetch).toHaveBeenCalledTimes(1);
   });
 });

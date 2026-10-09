@@ -1,5 +1,6 @@
+import { checkRequestBudget, abortable, requestSignal } from './request-budget';
 import { Injectable } from '@nestjs/common';
-import { OllamaClient, OllamaEmbeddingResponse } from './ollama.client';
+import { OllamaClient } from './ollama.client';
 import { PostgresService } from '../database/postgres.service';
 import { sql } from 'kysely';
 import { EmbeddingPipelineService } from './embedding-pipeline.service';
@@ -36,9 +37,10 @@ export class VectorSearchService {
     const topK = options.topK ?? 5;
     const proposalId = options.proposalId;
 
-    if (proposalId) await this.pipeline.indexProposal(proposalId);
+    // Linked artefacts are indexed by the background pipeline, never on the query path.
+    checkRequestBudget();
 
-    const embedding = await this.ollama.embed(question);
+    const embedding = await this.ollama.embed(question, 'query');
     const embeddingVector = JSON.stringify(embedding.embedding);
 
     let query = this.db
@@ -56,6 +58,8 @@ export class VectorSearchService {
       ])
       .where('artefacts.verification_status', '=', 'VERIFIED')
       .where('artefacts.lifecycle_state', '=', 'LINKED')
+      .where('document_chunks.embedding_model', '=', this.ollama.getEmbeddingIdentity())
+      .where('document_chunks.embedding_dimension', '=', this.ollama.getEmbedDimension())
       .where('document_chunks.embedding', 'is not', null);
 
     if (proposalId) {
@@ -69,7 +73,8 @@ export class VectorSearchService {
       .orderBy('similarity', 'desc')
       .limit(topK);
 
-    const results = await query.execute();
+    checkRequestBudget();
+    const results = await abortable(query.execute(), requestSignal());
 
     return results.map((row, index) => ({
       rank: index + 1,

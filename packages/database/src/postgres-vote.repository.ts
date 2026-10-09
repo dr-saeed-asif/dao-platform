@@ -5,6 +5,7 @@ import {
   normalizeOperationalHash,
   operationalUnsignedDecimal,
 } from "./postgres-operational-normalization.js";
+import type { ProposalVoteDetail } from './proposal-votes.types.js';
 
 export class PostgresVoteRepository implements VoteRepository {
   constructor(private readonly database: PostgresOperationalDatabase) {}
@@ -83,6 +84,45 @@ export class PostgresVoteRepository implements VoteRepository {
       .orderBy("block_timestamp")
       .execute();
     return rows.map(mapVote);
+  }
+
+  async listDetailed(proposalId: string): Promise<readonly ProposalVoteDetail[]> {
+    const rows = await this.database.executor
+      .selectFrom("votes")
+      .leftJoin("chain_transactions", (join) => join
+        .onRef("chain_transactions.proposal_id", "=", "votes.proposal_id")
+        .onRef("chain_transactions.transaction_hash", "=", "votes.transaction_hash"))
+      .select([
+        "votes.voter_address",
+        "votes.option_index",
+        "votes.voting_weight",
+        "votes.transaction_hash",
+        "votes.block_number",
+        "votes.block_hash",
+        "votes.block_timestamp",
+        "votes.gas_used",
+        "votes.created_at",
+        "votes.evidence_id",
+        "chain_transactions.sender as transaction_sender",
+      ])
+      .where("votes.proposal_id", "=", proposalId)
+      .orderBy("votes.block_timestamp")
+      .orderBy("votes.transaction_hash")
+      .execute();
+    return rows.map((row) => ({
+      voterAddress: row.voter_address,
+      transactionSender: row.transaction_sender,
+      optionIndex: row.option_index,
+      optionLabel: null,
+      votingPower: row.voting_weight,
+      transactionHash: row.transaction_hash,
+      blockNumber: row.block_number,
+      blockHash: row.block_hash,
+      blockTimestamp: row.block_timestamp.toISOString(),
+      gasUsed: row.gas_used,
+      confirmedAt: row.created_at.toISOString(),
+      evidenceId: row.evidence_id,
+    }));
   }
 
   private async findVoteEvidence(

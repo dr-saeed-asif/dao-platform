@@ -8,7 +8,10 @@ import {
   ProposalStatus,
   ProposalType,
 } from "@dao-platform/domain";
-import type { Selectable } from "kysely";
+import { sql, type Selectable } from "kysely";
+import type { ProposalListQuery, ProposalListResult, ProposalListStatus } from "./proposal-list.types.js";
+import type { DaoStatisticsQuery, DaoStatisticsResult } from "./dao-statistics.types.js";
+import type { GetContractDeploymentResult } from "./contract-deployment.types.js";
 import type { OperationalProposalsTable } from "./postgres-database-schema.js";
 import { PostgresOperationalDatabase } from "./postgres-operational-database.js";
 import { linkProposalManifest } from './proposal-manifest.js';
@@ -31,11 +34,74 @@ export class PostgresProposalRepository implements ProposalRepository {
     this.contractAddress = normalizeOperationalAddress(contractAddress);
   }
 
+  getChainId(): string {
+    return this.chainId;
+  }
+
+  getContractAddress(): string {
+    return this.contractAddress;
+  }
+
+  async getContractDeployment(): Promise<GetContractDeploymentResult> {
+    const asOf = new Date();
+    const chainId = this.chainId;
+    const contractAddress = this.contractAddress;
+
+    const row = await this.database.executor
+      .selectFrom("contract_deployments")
+      .selectAll()
+      .where("chain_id", "=", chainId)
+      .where("contract_address", "=", contractAddress)
+      .executeTakeFirst();
+
+    const evidenceId = `deployment:${chainId}:${contractAddress}`;
+
+    if (!row) {
+      return {
+        found: false,
+        chainId,
+        contractAddress,
+        deploymentTransaction: null,
+        deploymentBlockNumber: null,
+        deploymentBlockHash: null,
+        deploymentTimestamp: null,
+        initialOwner: null,
+        contractVersion: null,
+        abiVersion: null,
+        compilerVersion: null,
+        bytecodeHash: null,
+        metadata: {},
+        asOf: asOf.toISOString(),
+        evidenceIds: [],
+      };
+    }
+
+    return {
+      found: true,
+      chainId,
+      contractAddress,
+      deploymentTransaction: row.deployment_tx_hash,
+      deploymentBlockNumber: row.deployment_block_number,
+      deploymentBlockHash: row.deployment_block_hash,
+      deploymentTimestamp: row.deployment_timestamp?.toISOString() ?? null,
+      initialOwner: row.initial_owner,
+      contractVersion: row.contract_version,
+      abiVersion: row.abi_version,
+      compilerVersion: row.compiler_version,
+      bytecodeHash: row.bytecode_hash,
+      metadata: (row.metadata ?? {}) as Record<string, unknown>,
+      asOf: asOf.toISOString(),
+      evidenceIds: [evidenceId],
+    };
+  }
+
   async findById(id: string): Promise<Proposal | null> {
     const row = await this.database.executor
       .selectFrom("proposals")
       .selectAll()
       .where("id", "=", id)
+      .where("chain_id", "=", this.chainId)
+      .where("contract_address", "=", this.contractAddress)
       .executeTakeFirst();
     return row ? this.hydrate(row) : null;
   }
@@ -83,6 +149,150 @@ export class PostgresProposalRepository implements ProposalRepository {
       .offset(offset)
       .execute();
     return Promise.all(rows.map((row) => this.hydrate(row)));
+  }
+
+  /** Resolve mutable operational evidence within the configured deployment. */
+  async findStructuredEvidence(id: string) {
+    return this.database.executor.selectFrom("proposals")
+      .select(["id", "chain_id", "contract_address", "updated_at", "creation_evidence_id"])
+      .where("id", "=", id)
+      .where("chain_id", "=", this.chainId)
+      .where("contract_address", "=", this.contractAddress)
+      .executeTakeFirst();
+  }
+
+  async findCreationEvidenceIdForQuery(id: string): Promise<string | null> {
+    const row = await this.database.executor
+      .selectFrom('proposals')
+      .select('creation_evidence_id')
+      .where('id', '=', id)
+      .where('chain_id', '=', this.chainId)
+      .where('contract_address', '=', this.contractAddress)
+      .executeTakeFirst();
+    return row?.creation_evidence_id ?? null;
+  }
+
+  /** A read-only, snapshot-consistent listing for structured query consumers. */
+  async listFiltered(
+    query: ProposalListQuery,
+    asOf: Date,
+    daoId?: string,
+  ): Promise<ProposalListResult> {
+    return this.database.db.transaction()
+      .setIsolationLevel("repeatable read")
+      .execute(async (transaction) => {
+        await sql`SET TRANSACTION READ ONLY`.execute(transaction);
+        // Bound database work too: a caller timing out alone does not cancel SQL.
+        await sql`SET LOCAL statement_timeout = '4000ms'`.execute(transaction);
+        const status = sql<ProposalListStatus>`CASE
+          WHEN cancelled_at IS NOT NULL THEN 'CANCELLED'
+          WHEN finalized_at IS NOT NULL THEN 'FINALIZED'
+          WHEN starts_at > ${asOf} THEN 'UPCOMING'
+          WHEN ends_at < ${asOf} THEN 'ENDED'
+          ELSE 'ACTIVE'
+        END`;
+        let filtered = transaction.selectFrom("proposals")
+          .where("chain_id", "=", this.chainId)
+          .where("contract_address", "=", this.contractAddress);
+        if (daoId !== undefined) filtered = filtered.where("dao_id", "=", daoId);
+        if (query.from !== null) filtered = filtered.where("starts_at", ">=", new Date(query.from));
+        if (query.to !== null) filtered = filtered.where("starts_at", "<=", new Date(query.to));
+        if (query.status === "ENDED") {
+          filtered = filtered.where((eb) => eb.or([
+            eb("ends_at", "<", asOf),
+            eb("cancelled_at", "is not", null),
+            eb("finalized_at", "is not", null),
+          ]));
+        } else if (query.status !== null) {
+          filtered = filtered.where(status, "=", query.status);
+        }
+        const total = await filtered.select((eb) => eb.fn.countAll<string>().as("count"))
+          .executeTakeFirstOrThrow();
+        const rows = await filtered.select([
+          "id", "on_chain_id", "title", "creator_address", "starts_at", "ends_at",
+        ]).select(status.as("derived_status"))
+          .select((eb) => [
+            eb.selectFrom("proposal_assignments")
+              .select((sub) => sub.fn.countAll<string>().as("count"))
+              .whereRef("proposal_assignments.proposal_id", "=", "proposals.id")
+              .where("assigned", "=", true).as("member_count"),
+            eb.selectFrom("votes")
+              .select((sub) => sub.fn.countAll<string>().as("count"))
+              .whereRef("votes.proposal_id", "=", "proposals.id").as("vote_count"),
+          ])
+          .orderBy("created_at", "desc").orderBy("id", "asc")
+          .limit(query.limit).offset(query.offset).execute();
+        return {
+          count: exactCount(total.count),
+          proposals: rows.map((row) => ({
+            proposalId: row.id,
+            onChainProposalId: row.on_chain_id,
+            title: row.title,
+            creator: row.creator_address,
+            status: row.derived_status,
+            startsAt: row.starts_at.toISOString(),
+            endsAt: row.ends_at.toISOString(),
+            memberCount: exactCount(row.member_count),
+            voteCount: exactCount(row.vote_count),
+          })),
+          query: { ...query, asOf: asOf.toISOString(), chainId: this.chainId,
+            contractAddress: this.contractAddress, daoId: daoId ?? null },
+};
+      });
+  }
+
+  /** A read-only, snapshot-consistent DAO statistics aggregate. */
+  async getDaoStatistics(
+    query: DaoStatisticsQuery,
+    asOf: Date,
+  ): Promise<DaoStatisticsResult> {
+    return this.database.db.transaction()
+      .setIsolationLevel("repeatable read")
+      .execute(async (transaction) => {
+        await sql`SET TRANSACTION READ ONLY`.execute(transaction);
+        await sql`SET LOCAL statement_timeout = '4000ms'`.execute(transaction);
+
+        let base = transaction.selectFrom("proposals")
+          .where("chain_id", "=", this.chainId)
+          .where("contract_address", "=", this.contractAddress);
+        if (query.daoId !== null) {
+          base = base.where("dao_id", "=", query.daoId);
+        }
+
+        const proposalCount = await base
+          .select((eb) => eb.fn.countAll<string>().as("count"))
+          .executeTakeFirstOrThrow();
+
+        const voteCount = await base
+          .innerJoin("votes", "votes.proposal_id", "proposals.id")
+          .select((eb) => eb.fn.countAll<string>().as("count"))
+          .executeTakeFirstOrThrow();
+
+        const memberCount = await base
+          .innerJoin("proposal_assignments", "proposal_assignments.proposal_id", "proposals.id")
+          .where("proposal_assignments.assigned", "=", true)
+          .select((eb) => sql<number>`count(distinct ${eb.ref("proposal_assignments.member_address")})`.as("count"))
+          .executeTakeFirstOrThrow();
+
+        const artefactCount = await base
+          .innerJoin("proposal_artefacts", "proposal_artefacts.proposal_id", "proposals.id")
+          .select((eb) => eb.fn.countAll<string>().as("count"))
+          .executeTakeFirstOrThrow();
+
+        const evidenceId = `structured:dao-statistics:${crypto.randomUUID()}`;
+
+        return {
+          proposalCount: exactCount(proposalCount.count),
+          voteCount: exactCount(voteCount.count),
+          memberCount: exactCount(memberCount.count),
+          artefactCount: exactCount(artefactCount.count),
+          asOf: asOf.toISOString(),
+          chainId: this.chainId,
+          contractAddress: this.contractAddress,
+          daoId: query.daoId ?? null,
+          evidenceIds: [evidenceId],
+        };
+      });
   }
 
   async insert(
@@ -278,6 +488,14 @@ function metadataString(
 ): string | null {
   const value = metadata[key];
   return typeof value === "string" && value.trim() ? value.trim() : null;
+}
+
+function exactCount(value: string | number | null): number {
+  const count = Number(value);
+  if (value === null || !Number.isSafeInteger(count) || count < 0) {
+    throw new Error("Proposal count is outside the supported exact integer range.");
+  }
+  return count;
 }
 
 function toOperationalStatus(status: ProposalStatus): string {

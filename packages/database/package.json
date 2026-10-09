@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.json",
     "typecheck": "tsc -b tsconfig.json --pretty false",
-    "test": "npm run build && node --test dist/test/sqlite-proposal.repository.test.js dist/test/postgres-database.test.js dist/test/postgres-governance-event.repository.test.js dist/test/postgres-operational-repositories.test.js dist/test/import-sqlite.test.js",
+    "test": "npm run build && node --test dist/test/sqlite-proposal.repository.test.js dist/test/postgres-database.test.js dist/test/postgres-governance-event.repository.test.js dist/test/postgres-operational-repositories.test.js dist/test/postgres-list-proposals.test.js dist/test/import-sqlite.test.js",
     "db:migrate": "npm run build && node dist/scripts/migrate.js",
     "db:inspect": "npm run build && node dist/scripts/inspect.js",
     "db:import-sqlite": "npm run build && node dist/scripts/import-sqlite.js"

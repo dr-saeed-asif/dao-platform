@@ -1,8 +1,14 @@
+import { withRequestBudget, checkRequestBudget, requestSignal, remainingRequestMs, analysisTimeoutMs } from '../request-budget';
 import { randomUUID } from 'node:crypto';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { OllamaClient } from '../ollama.client';
-import { ToolRegistry, withTimeout } from './tool-registry';
+import { OllamaClient, AiProviderError } from '../ollama.client';
+import { QueryOrchestrator } from '../orchestration/query-orchestrator';
+import { SynthesisService } from '../synthesis/synthesis.service';
+import type { ComplianceResult } from '../tools/compliance/compliance.tools';
+import type { QueryUnderstanding } from '../router/query-understanding.service';
+import { fuseProposalMembers, fuseMemberActivity, fuseProposalTransactions, fuseDaoStatistics, fuseProposalList, fuseContractDeployment, fuseIndexerStatus, fuseVerifyAgainstRpc, fuseComplianceResult, fuseProposalDetails, fuseProposalVotes, fuseProposalTimeline } from '../orchestration/evidence-fusion';
+import { ToolRegistry } from './tool-registry';
 import type {
   AgentClaim,
   AgentContext,
@@ -29,18 +35,20 @@ export class MultiAgentSystem {
     private readonly tools: ToolRegistry,
     private readonly ollama: OllamaClient,
     config: ConfigService,
+    private readonly queryOrchestrator?: QueryOrchestrator,
+    private readonly synthesisService: SynthesisService = new SynthesisService(ollama),
   ) {
     this.maxSteps = config.get<number>('MAX_AGENT_STEPS', 8);
     this.maxLlmCalls = config.get<number>('MAX_LLM_CALLS', 2);
-    this.overallTimeout = config.get<number>('AGENT_REQUEST_TIMEOUT_MS', 120_000);
+    this.overallTimeout = analysisTimeoutMs(config);
   }
 
   execute(input: AgentInput): Promise<MultiAgentResponse> {
-    return withTimeout(this.run(input, 'multi-agent', true), this.overallTimeout, 'Multi-agent request');
+    return withRequestBudget(() => this.run(input, 'multi-agent', true), this.overallTimeout);
   }
 
   executeHybrid(input: AgentInput, verified: boolean): Promise<MultiAgentResponse> {
-    return withTimeout(this.run(input, verified ? 'hybrid-verified' : 'hybrid', verified), this.overallTimeout, 'Hybrid request');
+    return withRequestBudget(() => this.run(input, verified ? 'hybrid-verified' : 'hybrid', verified), this.overallTimeout);
   }
 
   private async run(input: AgentInput, system: ResearchSystem, verified: boolean): Promise<MultiAgentResponse> {
@@ -61,17 +69,46 @@ export class MultiAgentSystem {
       trace.push({ agent: 'coordinator', action: 'scope-conflict', status: 'skipped', evidenceIds: [], latencyMs: 0 });
       return this.response(runId, system, verified, context.scopeConflict, [], [], [], trace, errors, started, 0, 0, false, 'UNSUPPORTED');
     }
+
+    let understanding: QueryUnderstanding | undefined;
+    if (this.queryOrchestrator) {
+      try {
+        const routed = await this.queryOrchestrator.routeQuestion(context, system, verified, () => { llmCalls++; });
+        if (routed.response) return routed.response;
+        understanding = routed.understanding;
+        const selectedId = understanding?.entities.find(entity => entity.type === 'proposalId')?.value;
+        if (!context.localProposalId && selectedId) {
+          context.localProposalId = selectedId;
+          context.proposalId = selectedId;
+        }
+      } catch (error) {
+        trace.push({ agent: 'coordinator', action: 'query-understanding', status: 'error', evidenceIds: [], latencyMs: Date.now() - started });
+        if (error instanceof AiProviderError) {
+          return this.response(runId, system, verified, error.message, [], [], [], trace, [error.code], started, llmCalls, 0, true, 'UNSUPPORTED');
+        }
+        return this.response(runId, system, verified, 'Unable to understand the question because the AI routing service is unavailable or returned an invalid plan. Please retry.', [], [], [], trace, ['Query understanding failed.'], started, llmCalls, 0, true, 'UNSUPPORTED');
+      }
+    }
+
     if (!context.localProposalId && /\b(?:this|the) proposal\b/i.test(context.question)) {
       trace.push({ agent: 'coordinator', action: 'proposal-scope-required', status: 'skipped', evidenceIds: [], latencyMs: 0 });
       return this.response(runId, system, verified, 'Select a proposal scope before asking about this proposal.', [], [], [], trace, errors, started, 0, 0, false, 'UNSUPPORTED');
     }
 
     const routeStart = Date.now();
-    const plan = this.route(context);
+    const plan = understanding ? this.semanticRoute(understanding) : this.route(context);
+    if (!plan.tasks.length) {
+      return this.response(runId, system, verified, 'No supported governance tool was selected for this question. Please clarify which proposal, document, or governance fact you need.', [], [], [], trace, errors, started, llmCalls, 0, true, 'UNSUPPORTED');
+    }
+    const needsProposal = understanding && this.tools.list().some(tool => understanding.requiredTools.includes(tool.name) &&
+      (tool.name === 'vectorSearch' || (tool.inputSchema.required as string[] | undefined)?.includes('proposalId')));
+    if (needsProposal && !context.localProposalId) {
+      return this.response(runId, system, verified, 'Please select a proposal or include its ID for this analysis.', [], [], [], trace, errors, started, llmCalls, 0, true, 'UNSUPPORTED');
+    }
     trace.push({ agent: 'coordinator', action: `route:${plan.intent}`, status: 'success', evidenceIds: [], latencyMs: Date.now() - routeStart });
     if (plan.tasks.length > this.maxSteps) throw new Error(`Execution plan exceeds MAX_AGENT_STEPS (${this.maxSteps})`);
 
-    const settled = await Promise.allSettled(plan.tasks.map((task) => this.executeTask(task, context)));
+    const settled = await Promise.allSettled(plan.tasks.map((task) => this.executeTask(task, context, understanding)));
     const results: AgentResult[] = [];
     for (let i = 0; i < settled.length; i++) {
       const item = settled[i]!;
@@ -110,11 +147,13 @@ export class MultiAgentSystem {
 
     let answer = '';
     let claims: AgentClaim[] = [];
-    const requiresSynthesis = system !== 'multi-agent' || plan.requiresSynthesis;
+    const requiresSynthesis = plan.requiresSynthesis;
     if (requiresSynthesis) {
       try {
-        const synthesis = await this.synthesize(context, results, evidence);
+        checkRequestBudget();
+        if (llmCalls >= this.maxLlmCalls) throw new Error('LLM call budget exhausted.');
         llmCalls++;
+        const synthesis = await this.synthesize(context, results, evidence);
         answer = synthesis.answer;
         claims = synthesis.claims;
         trace.push(synthesis.trace);
@@ -131,7 +170,7 @@ export class MultiAgentSystem {
 
     let verification = this.verify(context, claims, results, evidence);
     trace.push(verification.trace);
-    if (verification.status === 'UNSUPPORTED' && requiresSynthesis && llmCalls < this.maxLlmCalls) {
+    if (verification.status === 'UNSUPPORTED' && requiresSynthesis && llmCalls < this.maxLlmCalls && remainingRequestMs() >= 3_000) {
       try {
         const corrected = await this.synthesize(context, results, evidence, verification.items);
         llmCalls++;
@@ -149,6 +188,17 @@ export class MultiAgentSystem {
     const abstained = !answer.trim() || verification.status === 'UNSUPPORTED';
     if (abstained) answer = 'Insufficient verified evidence to answer this question.';
     return this.response(runId, system, true, answer, results, evidence, claims, trace, errors, started, llmCalls, embeddingCalls, abstained, verification.status, verification.items, verification.correctionRounds, requiresSynthesis);
+  }
+
+  private semanticRoute(understanding: QueryUnderstanding): AgentExecutionPlan {
+    const selected = new Set(understanding.requiredTools);
+    const tasks: AgentTask[] = [];
+    const add = (agent: AgentTask['agent']) => tasks.push({ id: agent, agent, required: true, dependsOn: [] });
+    if (this.tools.list('sql').some(tool => selected.has(tool.name))) add('sql');
+    if (selected.has('vectorSearch')) add('rag');
+    if (this.tools.list('compliance').some(tool => selected.has(tool.name))) add('compliance');
+    if (this.tools.list('provenance').some(tool => selected.has(tool.name))) add('provenance');
+    return { intent: tasks.length > 1 ? 'mixed' : tasks[0]?.agent === 'rag' ? 'semantic' : tasks[0]?.agent === 'compliance' ? 'compliance' : tasks.length ? 'factual' : 'unsupported', tasks, requiresSynthesis: tasks.length > 0, reason: 'LLM selected registered governance tools.' };
   }
 
   private route(context: AgentContext): AgentExecutionPlan {
@@ -185,14 +235,18 @@ export class MultiAgentSystem {
     };
   }
 
-  private async executeTask(task: AgentTask, context: AgentContext): Promise<AgentResult> {
+  private async executeTask(task: AgentTask, context: AgentContext, understanding?: QueryUnderstanding): Promise<AgentResult> {
     const start = Date.now();
     const calls: AgentResult['toolCalls'] = [];
     const evidence: AgentEvidence[] = [];
     const facts: Record<string, any> = {};
+    const selected = understanding ? new Set(understanding.requiredTools) : undefined;
+    const wants = (tool: string, legacy: boolean) => selected ? selected.has(tool) : legacy;
+    const entity = (type: string) => understanding?.entities.find(item => item.type === type)?.value;
     const proposalId = context.localProposalId ?? context.proposalId ?? extractProposalId(context.question);
     const invoke = async (name: string, args: Record<string, unknown>) => {
-      const value = await this.tools.invoke(task.agent, name, args);
+      checkRequestBudget();
+      const value = await this.tools.invoke(task.agent, name, args, { signal: requestSignal(), daoId: context.daoId });
       calls.push({ ...value.call, evidenceIds: findEvidenceIds(value.result) });
       return value.result as any;
     };
@@ -200,9 +254,25 @@ export class MultiAgentSystem {
     if (task.agent === 'sql') {
       const q = context.question.toLowerCase();
       const overview = /summar(?:y|ize)|overview|information about (?:this|the) proposal|tell me about (?:this|the) proposal|what is (?:this|the) proposal about|what happened with (?:this|the) proposal/.test(q);
-      facts.proposal = await invoke('getProposal', { proposalId });
-      if (overview || /how many votes|vote count|number of votes|\bvotes?\b|quorum/.test(q)) facts.votes = await invoke('getProposalVotes', { proposalId });
-      if (overview || /when did voting (?:end|start)|timeline|voting end|voting start|finalized/.test(q)) facts.timeline = await invoke('getProposalTimeline', { proposalId });
+      const queries: Array<Promise<void>> = [];
+      const collect = (key: string, tool: string) => queries.push(invoke(tool, { proposalId }).then(value => { facts[key] = value; }));
+      if (!selected || selected.has('getProposal')) collect('proposal', 'getProposal');
+      if (wants('getProposalVotes', overview || /how many votes|vote count|number of votes|\bvotes?\b|quorum/.test(q))) collect('votes', 'getProposalVotes');
+      if (wants('getProposalTimeline', overview || /when did voting (?:end|start)|timeline|voting end|voting start|finalized/.test(q))) collect('timeline', 'getProposalTimeline');
+      if (selected) {
+        const extra = (tool: string, args: Record<string, unknown>, fuse: (value: any, runId: string) => { evidence: AgentEvidence[] }) => {
+          if (selected.has(tool)) queries.push(invoke(tool, args).then(value => {
+            facts[tool] = value;
+            evidence.push(...fuse(value, randomUUID()).evidence);
+          }));
+        };
+        extra('getProposalMembers', { proposalId }, fuseProposalMembers);
+        extra('getMemberActivity', { proposalId, memberAddress: entity('memberAddress') ?? extractAddress(context.question) }, fuseMemberActivity);
+        extra('getProposalTransactions', { proposalId, operation: entity('operation') ?? null, limit: understanding?.filters.limit ?? 20, offset: understanding?.filters.offset ?? 0 }, fuseProposalTransactions);
+        extra('getDaoStatistics', { daoId: context.daoId ?? null }, fuseDaoStatistics);
+        extra('listProposals', { status: entity('status') ?? null, from: understanding?.filters.from ?? null, to: understanding?.filters.to ?? null, limit: understanding?.filters.limit ?? 20, offset: understanding?.filters.offset ?? 0 }, (value, id) => fuseProposalList(value, id, understanding?.answerMode === 'count' ? 'count' : 'list'));
+      }
+      await Promise.all(queries);
       addSqlEvidence(facts, proposalId, evidence);
     } else if (task.agent === 'rag') {
       const rows = await invoke('vectorSearch', { question: context.question, proposalId, topK: context.topK });
@@ -213,20 +283,49 @@ export class MultiAgentSystem {
       }
     } else if (task.agent === 'compliance') {
       const q = context.question.toLowerCase();
+      const memberAddress = entity('memberAddress') ?? extractAddress(context.question);
       const all = /compliance|complete governance analysis|full governance analysis/.test(q);
-      if (/quorum/.test(q) || all) facts.quorum = await invoke('calculateQuorum', { proposalId, policyVersion: context.policyVersion });
-      if (/window|before|after/.test(q) || all) facts.votingWindow = await invoke('checkVotingWindow', { proposalId, memberAddress: extractAddress(context.question) });
-      if (/eligible|eligibility/.test(q) || all) facts.eligibility = await invoke('checkMemberEligibility', { proposalId, ...(extractAddress(context.question) ? { memberAddress: extractAddress(context.question) } : {}) });
-      if (/integrity|evidence/.test(q) || all) facts.evidenceIntegrity = await invoke('checkEvidenceIntegrity', { proposalId });
-      if (/lifecycle|transition|finalized/.test(q) || all) facts.lifecycle = await invoke('checkLifecycleTransitions', { proposalId });
-      if (/duplicate|unique|replacement/.test(q) || all) facts.voteUniqueness = await invoke('checkVoteUniqueness', { proposalId });
+      const queries: Array<Promise<void>> = [];
+      if (wants('calculateQuorum', /quorum/.test(q) || all)) queries.push(invoke('calculateQuorum', { proposalId, policyVersion: context.policyVersion }).then(value => { facts.quorum = value; }));
+      if (wants('checkVotingWindow', /window|before|after/.test(q) || all)) queries.push(invoke('checkVotingWindow', { proposalId, ...(memberAddress ? { memberAddress } : {}) }).then(value => { facts.votingWindow = value; }));
+      if (wants('checkMemberEligibility', /eligible|eligibility/.test(q) || all)) queries.push(invoke('checkMemberEligibility', { proposalId, ...(memberAddress ? { memberAddress } : {}) }).then(value => { facts.eligibility = value; }));
+      if (wants('checkEvidenceIntegrity', /integrity|evidence/.test(q) || all)) queries.push(invoke('checkEvidenceIntegrity', { proposalId }).then(value => { facts.evidenceIntegrity = value; }));
+      if (wants('checkLifecycleTransitions', /lifecycle|transition|finalized/.test(q) || all)) queries.push(invoke('checkLifecycleTransitions', { proposalId }).then(value => { facts.lifecycle = value; }));
+      if (wants('checkVoteUniqueness', /duplicate|unique|replacement/.test(q) || all)) queries.push(invoke('checkVoteUniqueness', { proposalId }).then(value => { facts.voteUniqueness = value; }));
+      await Promise.all(queries);
       for (const value of Object.values(facts)) {
         if (!value?.ruleId) continue;
-        evidence.push({ evidenceId: `compliance:${value.ruleId}:${proposalId}`, sourceType: 'COMPLIANCE', proposalId, data: { ...value, valid: value.result !== 'INDETERMINATE' } });
-        addEventEvidence(value.evidenceIds, proposalId, evidence);
+        evidence.push(...fuseComplianceResult(value, proposalId).evidence);
+        for (const evidenceId of value.evidenceIds as string[]) {
+          evidence.push({ evidenceId, proposalId, sourceType: value.ruleId === 'GOV-04' ? 'ARTEFACT' : 'ON_CHAIN_EVENT', data: { valid: true } });
+        }
       }
     } else if (task.agent === 'provenance') {
-      const base = await invoke('getProposalEvidence', { proposalId });
+      if (selected) {
+        for (const [tool, args, fuse] of [
+          ['getContractDeployment', {}, fuseContractDeployment],
+          ['getIndexerStatus', { indexerName: entity('indexerName') ?? 'governance-events' }, fuseIndexerStatus],
+          ['verifyAgainstRpc', { evidenceId: entity('evidenceId') ?? '' }, fuseVerifyAgainstRpc],
+        ] as const) {
+          if (selected.has(tool)) {
+            const value = await invoke(tool, args);
+            facts[tool] = value;
+            evidence.push(...fuse(value, randomUUID()).evidence);
+          }
+        }
+        if (selected.has('getProposalArtefacts')) {
+          const artefacts = await invoke('getProposalArtefacts', { proposalId });
+          facts.artefacts = artefacts;
+          for (const artefact of artefacts) evidence.push({ evidenceId: artefact.evidence_id, sourceType: 'ARTEFACT', proposalId, data: artefact });
+        }
+        if (!selected.has('getProposalEvidence') && !selected.has('getEvidenceById')) {
+          return { agent: task.agent, facts, evidence: dedupe(evidence), toolCalls: calls, latencyMs: Date.now() - start };
+        }
+      }
+      const explicitEvidence = entity('evidenceId');
+      const base = selected && !selected.has('getProposalEvidence') && explicitEvidence
+        ? { evidenceIds: [explicitEvidence] }
+        : await invoke('getProposalEvidence', { proposalId });
       const ids = (base.evidenceIds ?? []) as string[];
       const validated = await Promise.all(ids.map((id) => invoke('getEvidenceById', { evidenceId: id, datasetVersion: context.datasetVersion })));
       facts.evidence = validated;
@@ -238,6 +337,41 @@ export class MultiAgentSystem {
 
   private async synthesize(context: AgentContext, results: AgentResult[], evidence: AgentEvidence[], corrections?: VerificationItem[]) {
     const start = Date.now();
+    const compliance = results.find(result => result.agent === 'compliance');
+    if (compliance) {
+      const proposalId = context.localProposalId ?? context.proposalId ?? extractProposalId(context.question);
+      const statements = Object.values(compliance.facts ?? {})
+        .filter((value): value is ComplianceResult => !!value && typeof value === 'object' && 'ruleId' in value)
+        .flatMap(value => fuseComplianceResult(value, proposalId).statements);
+      if (statements.length) {
+        // Preserve supporting structured facts and document excerpts in mixed
+        // questions without letting generated prose override a rule verdict.
+        const sql = results.find(result => result.agent === 'sql')?.facts;
+        for (const key of ['proposal', 'votes', 'timeline'] as const) {
+          const value = sql?.[key];
+          if (value && typeof value === 'object' && 'found' in value) {
+            const fused = key === 'votes'
+              ? fuseProposalVotes(value as Parameters<typeof fuseProposalVotes>[0], proposalId, 'votes')
+              : key === 'proposal'
+                ? fuseProposalDetails(value as Parameters<typeof fuseProposalDetails>[0], proposalId)
+                : fuseProposalTimeline(value as Parameters<typeof fuseProposalTimeline>[0], proposalId);
+            evidence.push(...fused.evidence);
+            statements.push(...fused.statements.map(statement => ({ ...statement, id: `${key}:${statement.id}` })));
+          }
+        }
+        for (const item of evidence) {
+          if (item.sourceType === 'DOCUMENT_CHUNK' && item.content) {
+            statements.push({ id: item.evidenceId, claim: { text: `Indexed document excerpt: ${item.content}`, type: 'SEMANTIC', evidenceIds: [item.evidenceId] } });
+          }
+        }
+        const output = await this.synthesisService.compliance(context.question, statements, requestSignal());
+        return { answer: output.answer, claims: output.claims, trace: {
+          agent: 'synthesis', action: output.fallback ? 'synthesize:compliance-fallback' : 'synthesize:compliance', status: 'success' as const,
+          evidenceIds: output.claims.flatMap(claim => claim.evidenceIds), latencyMs: Date.now() - start,
+          model: this.ollama.getChatModel(), inputTokens: output.response.inputTokens, outputTokens: output.response.outputTokens,
+        } };
+      }
+    }
     const payload = {
       question: context.question,
       proposalContext: {
@@ -248,14 +382,14 @@ export class MultiAgentSystem {
         contractAddress: context.contractAddress,
         datasetVersion: context.datasetVersion,
       },
-      validatedAgentOutputs: results.map((result) => ({ agent: result.agent, facts: result.facts })),
+      validatedAgentOutputs: results.filter(result => result.agent !== 'rag').map((result) => ({ agent: result.agent, facts: result.facts })),
       evidence: evidence.map((item) => ({ evidenceId: item.evidenceId, sourceType: item.sourceType, content: item.content, data: item.data })),
       corrections,
     };
     const response = await this.ollama.chat([
       { role: 'system', content: 'Answer only from the supplied evidence. Combine structured/on-chain facts with document facts when both are present. Return JSON only: {"answer":"...","claims":[{"text":"...","type":"FACTUAL|NUMERIC|TEMPORAL|SEMANTIC|COMPLIANCE","evidenceIds":["..."]}]}. Semantic claims may cite DOCUMENT_CHUNK evidence. Vote counts must cite vote or structured vote-summary evidence. Finalization claims must cite ProposalFinalized or structured proposal evidence. Never invent evidence IDs.' },
       { role: 'user', content: JSON.stringify(payload) },
-    ], { json: true, maxTokens: 768 });
+    ], { json: true, maxTokens: 768, signal: requestSignal() });
     let structured: {answer:string;claims:AgentClaim[]};
     try { structured = parseSynthesis(response.content); }
     catch { structured = deterministicSynthesisFallback(context, results); }

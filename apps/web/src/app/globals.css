@@ -2950,6 +2950,47 @@ td code {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
+.result-columns-single {
+  grid-template-columns: 1fr;
+}
+.result-answer {
+  margin-top: 12px;
+  padding: 18px 20px;
+  border: 1px solid #d8e4f4;
+  border-radius: 12px;
+  background: #f8fbff;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.result-answer > :first-child {
+  margin-top: 0;
+}
+.result-answer > :last-child {
+  margin-bottom: 0;
+}
+.result-answer p {
+  margin: 0 0 12px;
+}
+.result-answer h4 {
+  margin: 18px 0 6px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+}
+.result-answer ul,
+.result-answer ol {
+  margin: 8px 0 14px;
+  padding-left: 22px;
+}
+.result-answer li + li {
+  margin-top: 5px;
+}
+.result-answer strong {
+  color: var(--ink);
+  font-weight: 800;
+}
 .finding-list {
   list-style: none;
   margin: 12px 0 0;
@@ -3013,6 +3054,32 @@ td code {
   justify-self: start;
   padding: 0;
   font-size: 11px;
+}
+.sources-inline {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.sources-inline strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+.sources-inline b {
+  color: #246bfd;
+  font-weight: 800;
+}
+.sources-inline-button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.sources-inline-button:hover {
+  text-decoration: underline;
 }
 .evidence-group {
   margin-top: 16px;

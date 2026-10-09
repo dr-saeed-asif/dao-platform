@@ -34,7 +34,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     ...init,
     headers,
   });
-  const body = (await response.json().catch(() => ({}))) as Record<
+  const body = (await response.json().catch(() => { if (init?.signal?.aborted) throw init.signal.reason; return {}; })) as Record<
     string,
     unknown
   >;
@@ -139,7 +139,10 @@ export const daoApi = {
     }),
   aiHealth: () => request<AiHealthResponse>("/ai/health"),
   aiQuery: (input: AiQueryRequest) =>
-    request<AiQueryResponse>("/ai/query", { method: "POST", body: JSON.stringify(input) }),
+    request<AiQueryResponse>("/ai/query", {
+      method: "POST",
+      body: JSON.stringify(input),
+    }),
   listResearchRuns: (query = "") => request<{items:ResearchRunSummary[];page:number;limit:number;hasMore:boolean}>(`/research/runs${query?`?${query}`:""}`),
   getResearchRun: (runId:string) => request<ResearchRunDetail>(`/research/runs/${encodeURIComponent(runId)}`),
   researchRunsExportUrl: (query:string,format:"csv"|"json") => `${baseUrl}/research/runs/export?${query?`${query}&`:""}format=${format}`,

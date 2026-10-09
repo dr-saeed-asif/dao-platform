@@ -9,6 +9,19 @@ import {
   operationalUnsignedDecimal,
 } from "./postgres-operational-normalization.js";
 
+export interface DetailedChainTransaction {
+  transactionHash: string;
+  operation: string;
+  proposalId: string;
+  sender: string;
+  blockNumber: string;
+  blockHash: string;
+  transactionIndex: number | null;
+  gasUsed: string;
+  status: string;
+  recordedAt: Date;
+}
+
 export class PostgresChainTransactionRepository
   implements ChainTransactionRepository
 {
@@ -66,11 +79,34 @@ export class PostgresChainTransactionRepository
   async listForProposal(
     proposalId: string,
   ): Promise<readonly RecordChainTransactionInput[]> {
+    const rows = await this.listForProposalDetailed(proposalId);
+    return rows.map((row) => ({
+      transactionHash: row.transactionHash,
+      operation: row.operation as RecordChainTransactionInput["operation"],
+      proposalId: row.proposalId,
+      walletAddress: row.sender,
+      blockNumber: row.blockNumber,
+      blockHash: row.blockHash,
+      gasUsed: row.gasUsed,
+      status: "CONFIRMED",
+      recordedAt: row.recordedAt,
+    }));
+  }
+
+  async listForProposalDetailed(
+    proposalId: string,
+  ): Promise<readonly DetailedChainTransaction[]> {
     const rows = await this.database.executor
       .selectFrom("chain_transactions")
       .selectAll()
+      .where("chain_id", "=", this.chainId)
       .where("proposal_id", "=", proposalId)
-      .orderBy("created_at", "desc")
+      .where((eb) => this.recipient === null
+        ? eb.val(true)
+        : eb("recipient", "=", this.recipient))
+      .orderBy("block_number", "desc")
+      .orderBy("transaction_index", "asc")
+      .orderBy("transaction_hash", "asc")
       .execute();
     return rows.map((row) => {
       if (!row.proposal_id || !row.block_number || !row.block_hash ||
@@ -79,15 +115,24 @@ export class PostgresChainTransactionRepository
       }
       return {
         transactionHash: row.transaction_hash,
-        operation: row.operation as RecordChainTransactionInput["operation"],
+        operation: row.operation,
         proposalId: row.proposal_id,
-        walletAddress: row.sender,
+        sender: row.sender,
         blockNumber: row.block_number,
         blockHash: row.block_hash,
+        transactionIndex: row.transaction_index === null ? null : safeIndex(row.transaction_index),
         gasUsed: row.gas_used,
-        status: "CONFIRMED",
+        status: row.receipt_status,
         recordedAt: row.created_at,
       };
     });
   }
+}
+
+function safeIndex(value: string | bigint): number {
+  const number = Number(value);
+  if (!Number.isSafeInteger(number) || number < 0) {
+    throw new Error('Transaction index is outside the supported exact integer range.');
+  }
+  return number;
 }

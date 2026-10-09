@@ -8,6 +8,15 @@ import {
   normalizeOperationalHash,
 } from "./postgres-operational-normalization.js";
 
+export interface DetailedProposalAssignment {
+  proposalId: string;
+  walletAddress: string;
+  votingWeight: number;
+  transactionHash: string;
+  evidenceId: string | null;
+  assignedAt: Date;
+}
+
 export class PostgresAssignmentRepository implements AssignmentRepository {
   constructor(private readonly database: PostgresOperationalDatabase) {}
 
@@ -120,6 +129,7 @@ export class PostgresAssignmentRepository implements AssignmentRepository {
       .selectAll()
       .where("proposal_id", "=", proposalId)
       .where("assigned", "=", true)
+      .orderBy("member_address")
       .orderBy("effective_from")
       .execute();
     return rows.map((row) => {
@@ -133,5 +143,49 @@ export class PostgresAssignmentRepository implements AssignmentRepository {
         assignedAt: row.effective_from,
       };
     });
+  }
+
+  async listDetailed(proposalId: string): Promise<readonly DetailedProposalAssignment[]> {
+    const rows = await this.database.executor
+      .selectFrom("proposal_assignments")
+      .selectAll()
+      .where("proposal_id", "=", proposalId)
+      .where("assigned", "=", true)
+      .orderBy("member_address")
+      .orderBy("effective_from")
+      .execute();
+    return rows.map((row) => {
+      if (!row.transaction_hash || !row.effective_from) {
+        throw new Error(`Incomplete current assignment ${row.id}.`);
+      }
+      return {
+        proposalId: row.proposal_id,
+        walletAddress: row.member_address,
+        votingWeight: row.voting_weight,
+        transactionHash: row.transaction_hash,
+        evidenceId: row.latest_evidence_id,
+        assignedAt: row.effective_from,
+      };
+    });
+  }
+
+  async findDetailed(proposalId: string, walletAddress: string): Promise<(DetailedProposalAssignment & { assigned: boolean }) | null> {
+    const row = await this.database.executor
+      .selectFrom('proposal_assignments')
+      .selectAll()
+      .where('proposal_id', '=', proposalId)
+      .where('member_address', '=', normalizeOperationalAddress(walletAddress))
+      .executeTakeFirst();
+    if (!row) return null;
+    if (!row.transaction_hash || !row.effective_from) throw new Error(`Incomplete assignment ${row.id}.`);
+    return {
+      proposalId: row.proposal_id,
+      walletAddress: row.member_address,
+      votingWeight: row.voting_weight,
+      transactionHash: row.transaction_hash,
+      evidenceId: row.latest_evidence_id,
+      assignedAt: row.effective_from,
+      assigned: row.assigned,
+    };
   }
 }

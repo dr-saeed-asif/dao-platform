@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { CopyValueButton } from "@/components/copy-value-button";
 import type { AiQueryResponse } from "@/lib/api/types";
 
@@ -203,6 +203,75 @@ function resultWord(result: CheckResult): string {
   return "Indeterminate";
 }
 
+function formatInline(text: string): ReactNode[] {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={index}>{part.slice(2, -2)}</strong>
+    ) : (
+      part
+    ),
+  );
+}
+
+function FormattedAnswer({ answer }: { answer: string }) {
+  const blocks: ReactNode[] = [];
+  let paragraph: string[] = [];
+  let list: { ordered: boolean; items: string[] } | null = null;
+
+  const flushParagraph = () => {
+    if (!paragraph.length) return;
+    const text = paragraph.join(" ");
+    blocks.push(<p key={`paragraph-${blocks.length}`}>{formatInline(text)}</p>);
+    paragraph = [];
+  };
+  const flushList = () => {
+    if (!list) return;
+    const items = list.items.map((item, index) => (
+      <li key={index}>{formatInline(item)}</li>
+    ));
+    blocks.push(
+      list.ordered ? (
+        <ol key={`list-${blocks.length}`}>{items}</ol>
+      ) : (
+        <ul key={`list-${blocks.length}`}>{items}</ul>
+      ),
+    );
+    list = null;
+  };
+
+  for (const rawLine of answer.trim().split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line) {
+      flushParagraph();
+      flushList();
+      continue;
+    }
+    const heading = /^(#{1,4})\s+(.+)$/.exec(line);
+    if (heading) {
+      flushParagraph();
+      flushList();
+      blocks.push(<h4 key={`heading-${blocks.length}`}>{formatInline(heading[2])}</h4>);
+      continue;
+    }
+    const unordered = /^[-*]\s+(.+)$/.exec(line);
+    const ordered = /^\d+[.)]\s+(.+)$/.exec(line);
+    if (unordered || ordered) {
+      flushParagraph();
+      const isOrdered = Boolean(ordered);
+      if (list && list.ordered !== isOrdered) flushList();
+      list ??= { ordered: isOrdered, items: [] };
+      list.items.push((ordered ?? unordered)![1]);
+      continue;
+    }
+    flushList();
+    paragraph.push(line);
+  }
+  flushParagraph();
+  flushList();
+
+  return <div className="result-answer">{blocks}</div>;
+}
+
 function download(filename: string, mime: string, content: string) {
   const blob = new Blob([content], { type: mime });
   const url = URL.createObjectURL(blob);
@@ -333,12 +402,12 @@ export function AnalysisResultView({ model }: { model: ResultModel }) {
   const fail = model.checks.filter((check) => check.result === "FAIL").length;
   const total = model.checks.length || 1;
   const pct = (count: number) => `${Math.round((count / total) * 100)}%`;
-  const sources: Array<{ group: EvidenceGroup; icon: string; count: number }> = [
+  const sourceEntries: Array<{ group: EvidenceGroup; icon: string; count: number }> = [
     { group: "Database", icon: "▤", count: grouped.Database.length },
     { group: "Blockchain", icon: "◇", count: grouped.Blockchain.length },
     { group: "Documents", icon: "▦", count: grouped.Documents.length },
     { group: "Compliance", icon: "✓", count: grouped.Compliance.length },
-  ];
+  ].filter((source): source is { group: EvidenceGroup; icon: string; count: number } => source.count > 0);
   return (
     <div>
       <section className="result-meta">
@@ -377,46 +446,54 @@ export function AnalysisResultView({ model }: { model: ResultModel }) {
         ))}
       </div>
 
-      {tab === "summary" && (
-        <div className="result-summary-grid">
-          <section className={`verdict-card verdict-${verdict.tone}`}>
-            <span className="verdict-icon" aria-hidden="true">
-              {verdict.tone === "green" ? "✓" : verdict.tone === "red" ? "!" : "•"}
-            </span>
-            <div>
-              <span>Overall Verdict</span>
-              <strong>{verdict.label}</strong>
-              <p>{verdict.blurb}</p>
-            </div>
-          </section>
-          <section className="counter-card counter-green">
-            <strong>{pass}</strong>
-            <span>Passed</span>
-            <small>{pct(pass)}</small>
-          </section>
-          <section className="counter-card counter-amber">
-            <strong>{ind}</strong>
-            <span>Indeterminate</span>
-            <small>{pct(ind)}</small>
-          </section>
-          <section className="counter-card counter-red">
-            <strong>{fail}</strong>
-            <span>Failed</span>
-            <small>{pct(fail)}</small>
-          </section>
-        </div>
+      {tab === "summary" && model.checks.length > 0 && (
+        <>
+          <div className="result-summary-grid">
+            <section className={`verdict-card verdict-${verdict.tone}`}>
+              <span className="verdict-icon" aria-hidden="true">
+                {verdict.tone === "green" ? "✓" : verdict.tone === "red" ? "!" : "•"}
+              </span>
+              <div>
+                <span>Overall Verdict</span>
+                <strong>{verdict.label}</strong>
+                <p>{verdict.blurb}</p>
+              </div>
+            </section>
+            <section className="counter-card counter-green">
+              <strong>{pass}</strong>
+              <span>Passed</span>
+              <small>{pct(pass)}</small>
+            </section>
+            <section className="counter-card counter-amber">
+              <strong>{ind}</strong>
+              <span>Indeterminate</span>
+              <small>{pct(ind)}</small>
+            </section>
+            <section className="counter-card counter-red">
+              <strong>{fail}</strong>
+              <span>Failed</span>
+              <small>{pct(fail)}</small>
+            </section>
+          </div>
+        </>
       )}
 
-      {tab === "summary" && (
+      {tab === "summary" && model.answer.trim() && (
+        <section className="result-section result-answer-section">
+          <h3>Analysis Summary</h3>
+          <FormattedAnswer answer={model.answer} />
+        </section>
+      )}
+
+      {model.checks.length > 0 && (
         <>
           <section className="result-section">
             <div className="result-section-head">
               <h3>Governance Checks</h3>
               <span>{model.checks.length} checks evaluated</span>
             </div>
-            {model.checks.length ? (
-              <div className="check-grid">
-                {model.checks.map((check) => (
+            <div className="check-grid">
+              {model.checks.map((check) => (
                   <article key={check.ruleId} className="check-card">
                     <strong>{check.ruleId}</strong>
                     <span className={`check-pill check-${resultTone(check.result)}`}>
@@ -458,15 +535,11 @@ export function AnalysisResultView({ model }: { model: ResultModel }) {
                   </article>
                 ))}
               </div>
-            ) : (
-              <p className="empty">No governance checks were produced for this run.</p>
-            )}
-          </section>
+            </section>
 
-          <div className="result-columns">
-            <section className="result-section">
-              <h3>Key Findings</h3>
-              {model.checks.length ? (
+          <div className={sourceEntries.length ? "result-columns" : "result-columns result-columns-single"}>
+              <section className="result-section">
+                <h3>Key Findings</h3>
                 <ul className="finding-list">
                   {model.checks.map((check) => (
                     <li key={check.ruleId} className={`finding-${resultTone(check.result)}`}>
@@ -474,27 +547,27 @@ export function AnalysisResultView({ model }: { model: ResultModel }) {
                     </li>
                   ))}
                 </ul>
-              ) : (
-                <p className="empty">No findings available.</p>
-              )}
-            </section>
-            <section className="result-section">
-              <h3>Sources Used</h3>
-              <div className="source-grid">
-                {sources.map((source) => (
-                  <div key={source.group} className="source-card">
-                    <span aria-hidden="true">{source.icon}</span>
-                    <strong>{source.group}</strong>
-                    <b>{source.count}</b>
-                    <button type="button" className="text-button" onClick={() => setTab("evidence")}>
-                      View sources →
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </section>
-          </div>
-        </>
+              </section>
+            </div>
+          </>
+        )}
+
+      {sourceEntries.length > 0 && (
+        <section className="result-section">
+          <h3>Sources Used</h3>
+          <button
+            type="button"
+            className="sources-inline-button"
+            onClick={() => setTab("evidence")}
+          >
+{sourceEntries.map((source, index) => (
+              <span key={index} >
+                <strong>{source.group}</strong> <b>{source.count}</b>
+                {index < sourceEntries.length - 1 && ", "}
+              </span>
+            ))}
+          </button>
+        </section>
       )}
 
       {tab === "compliance" && (

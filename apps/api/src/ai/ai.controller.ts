@@ -1,3 +1,5 @@
+import { withRequestBudget, checkRequestBudget, analysisTimeoutMs, AI_PERSISTENCE_GRACE_MS } from './request-budget';
+import { ConfigService } from '@nestjs/config';
 import {
   Controller,
   Get,
@@ -26,6 +28,7 @@ export class AiController {
     private readonly vectorRag: VectorRagSystem,
     private readonly postgres: PostgresService,
     private readonly runs: ResearchRunsService,
+    private readonly config: ConfigService,
     @Optional() private readonly multiAgent?: MultiAgentSystem,
   ) {}
 
@@ -52,6 +55,24 @@ export class AiController {
   @Post('query')
   @HttpCode(HttpStatus.OK)
   async query(@Body() request: AiQueryRequest): Promise<AiQueryResponse | MultiAgentResponse> {
+    const started = Date.now();
+    const timeoutMs = analysisTimeoutMs(this.config);
+    try {
+      return await withRequestBudget(async () => {
+        const { response, context } = await withRequestBudget(() => this.analyze(request), timeoutMs);
+        checkRequestBudget();
+        const persistenceStarted = Date.now();
+        await this.runs.record(request, context, response);
+        checkRequestBudget();
+        return { ...response, timings: { analysisMs: persistenceStarted - started, persistenceMs: Date.now() - persistenceStarted, serverTotalMs: Date.now() - started } };
+      }, timeoutMs + AI_PERSISTENCE_GRACE_MS);
+    } catch {
+      return { runId: '', system: request.system, answer: '', evidence: [], retrieval: [], latencyMs: Date.now() - started,
+        error: 'Analysis could not complete within the response budget. Please retry or narrow the question.' };
+    }
+  }
+
+  private async analyze(request: AiQueryRequest): Promise<{ response: AiQueryResponse | MultiAgentResponse; context?: AgentContext }> {
     const runId = randomUUID();
     const startTime = Date.now();
     let context: AgentContext | undefined;
@@ -60,11 +81,11 @@ export class AiController {
       if (request.system === 'multi-agent' || request.system === 'hybrid' || request.system === 'hybrid-verified') {
         if (!this.multiAgent) throw new Error('Multi-agent system is unavailable.');
         context = await this.resolveAgentContext(request);
+        checkRequestBudget();
         const result = request.system === 'multi-agent'
           ? await this.multiAgent.execute(context)
           : await this.multiAgent.executeHybrid(context, request.system === 'hybrid-verified');
-        await this.runs.record(request, context, result);
-        return result;
+        return { response: result, context };
       }
       if (request.system === 'llm-only') {
         const result = await this.llmOnly.answer(request.question);
@@ -80,12 +101,12 @@ export class AiController {
           inputTokens: result.inputTokens,
           outputTokens: result.outputTokens,
         };
-        await this.runs.record(request, undefined, response);
-        return response;
+        return { response };
       }
 
       if (request.system === 'vector-rag') {
         context = await this.resolveAgentContext(request);
+        checkRequestBudget();
         const result = await this.vectorRag.answer(
           request.question,
           context.localProposalId,
@@ -117,8 +138,7 @@ export class AiController {
           inputTokens: result.inputTokens,
           outputTokens: result.outputTokens,
         };
-        await this.runs.record(request, context, response);
-        return response;
+        return { response, context };
       }
 
       throw new Error(`Unknown system: ${(request as any).system}`);
@@ -135,8 +155,8 @@ export class AiController {
         latencyMs,
         error: errorMessage,
       };
-      await this.runs.record(request, context, response, errorMessage);
-      return response;
+      checkRequestBudget();
+      return { response, context };
     }
   }
 
@@ -168,6 +188,7 @@ export class AiController {
 
     return {
       question: request.question,
+      daoId: proposal?.dao_id,
       proposalId: proposal?.id,
       localProposalId: proposal?.id,
       onChainProposalId: proposal?.on_chain_id ?? undefined,
@@ -183,7 +204,7 @@ export class AiController {
   private findProposal(id: string) {
     let query = this.postgres.database
       .selectFrom('proposals')
-      .select(['id', 'on_chain_id', 'chain_id', 'contract_address']);
+      .select(['id', 'dao_id', 'on_chain_id', 'chain_id', 'contract_address']);
     query = /^\d+$/.test(id)
       ? query.where((eb) => eb.or([eb('id', '=', id), eb('on_chain_id', '=', id)]))
       : query.where('id', '=', id);

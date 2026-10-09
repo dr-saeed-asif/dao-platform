@@ -5,6 +5,7 @@ export type ResearchSystem = 'hybrid'|'hybrid-verified'|'multi-agent';
 
 export interface AgentContext {
   question:string;
+  daoId?:string;
   proposalId?:string;
   localProposalId?:string;
   onChainProposalId?:string;
@@ -16,7 +17,7 @@ export interface AgentContext {
   scopeConflict?:string;
 }
 export interface AgentTask { id:string; agent:AgentName; required:boolean; dependsOn:string[] }
-export interface AgentToolCall { tool:string; arguments:Record<string,unknown>; startedAt:string; evidenceIds?:string[]; latencyMs?:number; status?:'success'|'error'; error?:string }
+export interface AgentToolCall { tool:string; evidenceIds?:string[]; latencyMs?:number; status?:'success'|'error'; error?:string }
 export interface AgentEvidence { evidenceId:string; sourceType:string; proposalId?:string|null; content?:string; score?:number; data?:unknown }
 export interface AgentResult { agent:AgentName; facts?:Record<string,unknown>; evidence:AgentEvidence[]; toolCalls:AgentToolCall[]; latencyMs:number; error?:AgentError }
 export interface AgentExecutionPlan { intent:'factual'|'temporal'|'semantic'|'compliance'|'provenance'|'mixed'|'unsupported'; tasks:AgentTask[]; requiresSynthesis:boolean; reason:string }
