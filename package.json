@@ -8,20 +8,26 @@
     "node": ">=20.0.0"
   },
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "frontend-application",
+    "backend-application",
+    "llm-implementation",
+    "shared-modules/*"
   ],
   "scripts": {
     "db:import-sqlite": "npm run db:import-sqlite --workspace=@dao-platform/database --",
-    "build": "npm run build:packages && npm run build --workspace=api && npm run build --workspace=@dao-platform/web",
-    "build:packages": "npm run build --workspace=@dao-platform/domain && npm run build --workspace=@dao-platform/application && npm run build --workspace=@dao-platform/blockchain-cyberchain && npm run build --workspace=@dao-platform/database && npm run build --workspace=@dao-platform/contracts",
+    "build": "npm run build:shared-modules && npm run build --workspace=api && npm run build --workspace=@dao-platform/web",
+    "build:packages": "npm run build:shared-modules",
     "test": "npm run build && npm run test --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "env:migrate-sdk": "node scripts/migrate-sdk-env.mjs",
+    "env:migrate-sdk": "node repository-maintenance-scripts/migrate-cyberchain-signing-environment.mjs",
     "dev:api": "npm run start:dev --workspace=api",
     "dev:web": "npm run dev --workspace=@dao-platform/web",
     "db:migrate": "npm run db:migrate --workspace=@dao-platform/database",
-    "db:inspect": "npm run db:inspect --workspace=@dao-platform/database"
+    "db:inspect": "npm run db:inspect --workspace=@dao-platform/database",
+    "dev:frontend": "npm run dev --workspace=@dao-platform/web",
+    "dev:backend": "npm run start:dev --workspace=api",
+    "build:shared-modules": "npm run build --workspace=@dao-platform/frontend-backend-data-contracts && npm run build --workspace=@dao-platform/domain && npm run build --workspace=@dao-platform/application && npm run build --workspace=@dao-platform/blockchain-cyberchain && npm run build --workspace=@dao-platform/database && npm run build --workspace=@dao-platform/contracts && npm run build --workspace=@dao-platform/language-models",
+    "database:services": "docker compose -p dao-platform -f deployment-configuration/docker/docker-compose.yml up -d"
   }
 }

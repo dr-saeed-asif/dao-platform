@@ -1,0 +1,31 @@
+import { ConfigService } from '@nestjs/config';
+import { NestFactory } from '@nestjs/core';
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from '@nestjs/platform-fastify';
+import { AppModule } from './backend-application.module';
+import { configureApp } from './configure-backend-request-handling';
+import multipart from '@fastify/multipart';
+
+async function bootstrap(): Promise<void> {
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter({ logger: false }),
+  );
+  const configService = app.get(ConfigService);
+  const port = configService.getOrThrow<number>('PORT');
+
+  configureApp(app);
+  await app.register(multipart, {
+    limits: {
+      files: configService.get<number>('ARTEFACT_MAX_FILES', 10),
+      fileSize: configService.get<number>('ARTEFACT_MAX_FILE_SIZE', 10_485_760),
+    },
+  });
+  app.enableShutdownHooks();
+
+  await app.listen(port, '0.0.0.0');
+}
+
+void bootstrap();

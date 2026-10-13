@@ -13,4 +13,4 @@ Thumbs.db
 data/
 uploads/
 *.tsbuildinfo
-packages/contracts/artifacts/
+shared-modules/governance-smart-contracts/artifacts/

@@ -1,0 +1,33 @@
+{
+  "name": "@dao-platform/database",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PostgreSQL DAO persistence and read-only SQLite migration importer",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "build": "tsc -b tsconfig.json",
+    "typecheck": "tsc -b tsconfig.json --pretty false",
+    "test": "npm run build && node --test dist/test/sqlite-governance-proposal.repository.test.js dist/test/postgresql-database.test.js dist/test/postgresql-governance-event.repository.test.js dist/test/postgresql-operational-repositories.test.js dist/test/postgresql-list-proposals.test.js dist/test/import-sqlite-data-into-postgresql.test.js",
+    "db:migrate": "npm run build && node dist/scripts/apply-database-schema-migrations.js",
+    "db:inspect": "npm run build && node dist/scripts/inspect-governance-database.js",
+    "db:import-sqlite": "npm run build && node dist/scripts/import-sqlite-data-into-postgresql.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@dao-platform/application": "0.1.0",
+    "@dao-platform/domain": "0.1.0",
+    "better-sqlite3": "12.11.1",
+    "kysely": "0.28.8",
+    "pg": "^8.23.0",
+    "pgvector": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "7.6.13",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.23.1",
+    "typescript": "^5.7.3"
+  }
+}
