@@ -2,10 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AppShell, type DashboardView } from "@/components/app-shell";
-import {
-  CopyableHash,
-  CopyValueButton,
-} from "@/components/copy-value-button";
+import { CopyableHash, CopyValueButton } from "@/components/copy-value-button";
 import { ConnectWallet } from "@/features/wallet/connect-wallet";
 import { useWallet } from "@/features/wallet/wallet-provider";
 import { daoApi } from "@/lib/api/client";
@@ -25,7 +22,7 @@ interface IndexedVote extends Vote {
 }
 const adminAddress = (
   process.env.NEXT_PUBLIC_DAO_ADMIN_ADDRESS ??
-  "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b"
+  "0xb8163f7d6d404f67a400743b90f7952d2d137b8e"
 ).toLowerCase();
 const short = (value: string) => `${value.slice(0, 7)}…${value.slice(-5)}`;
 
@@ -36,11 +33,7 @@ function proposalStatus(proposal: Proposal, votes: IndexedVote[]) {
   if (!proposal.onChainId) return "Pending";
   if (now < Date.parse(proposal.startsAt)) return "Pending";
   if (now < Date.parse(proposal.endsAt)) return "Active";
-  const proposalVotes = votes.filter((vote) => vote.proposalId === proposal.id);
-  if (!proposalVotes.length) return "Voting Ended";
-  const approve = proposalVotes.filter((vote) => vote.optionIndex === 0).length;
-  const reject = proposalVotes.filter((vote) => vote.optionIndex === 1).length;
-  return approve > reject ? "Approved" : "Rejected";
+  return "Voting Ended";
 }
 
 export function GovernanceDashboard() {
@@ -247,15 +240,20 @@ export function GovernanceDashboard() {
               connected={Boolean(wallet.address)}
             />
           )}
-{active === "decoder" && <TransactionDecoder proposals={proposals} />}
-      {(active === "settings" || active === "wallet") && (
-        <SettingsPage
-          tab={active === "wallet" ? "wallet" : settingsTab}
-          onTabChange={setSettingsTab}
-          role={role}
-        />
-      )}
-      {active === "ai" && <AiPanel proposals={proposals} selectedProposalId={selectedId ?? undefined} />}
+          {active === "decoder" && <TransactionDecoder proposals={proposals} />}
+          {(active === "settings" || active === "wallet") && (
+            <SettingsPage
+              tab={active === "wallet" ? "wallet" : settingsTab}
+              onTabChange={setSettingsTab}
+              role={role}
+            />
+          )}
+          {active === "ai" && (
+            <AiPanel
+              proposals={proposals}
+              selectedProposalId={selectedId ?? undefined}
+            />
+          )}
         </>
       )}
     </AppShell>
@@ -289,7 +287,11 @@ function ProposalsListView({
     try {
       await daoApi.syncGovernance(address, full);
       await onSync();
-      setSyncMessage(full ? "Full governance history rebuilt from the deployment block." : "New on-chain governance activity synchronized into the local database.");
+      setSyncMessage(
+        full
+          ? "Full governance history rebuilt from the deployment block."
+          : "New on-chain governance activity synchronized into the local database.",
+      );
     } catch (error) {
       setSyncMessage(
         error instanceof Error ? error.message : "Synchronization failed.",
@@ -374,7 +376,9 @@ function ProposalsListView({
           )}
         </section>
       )}
-      {!canAdmin && syncMessage && <p className="form-message">{syncMessage}</p>}
+      {!canAdmin && syncMessage && (
+        <p className="form-message">{syncMessage}</p>
+      )}
       <ProposalsTable proposals={proposals} votes={votes} onOpen={onOpen} />
     </>
   );
@@ -481,9 +485,7 @@ function MembersView({
                   Assigned to {member.assignments.length} proposal
                   {member.assignments.length === 1 ? "" : "s"}
                 </span>
-                <span>
-                  Participated in {member.votes.length}
-                </span>
+                <span>Participated in {member.votes.length}</span>
               </summary>
               <div className="member-proposal-list">
                 {member.assignments.map((assignment) => {
@@ -515,8 +517,7 @@ function MembersView({
                           vote?.transactionHash ?? assignment.transactionHash
                         }
                         display={short(
-                          vote?.transactionHash ??
-                            assignment.transactionHash,
+                          vote?.transactionHash ?? assignment.transactionHash,
                         )}
                       />
                     </div>
@@ -553,7 +554,10 @@ function UnifiedVotesView({
   const [query, setQuery] = useState("");
   const [selection, setSelection] = useState("All");
   const source = tab === "mine" ? myVotes : votes;
-  const selections = ["All", ...Array.from(new Set(votes.map((vote) => vote.optionLabel)))];
+  const selections = [
+    "All",
+    ...Array.from(new Set(votes.map((vote) => vote.optionLabel))),
+  ];
   const q = query.trim().toLowerCase();
   const filtered = source.filter((vote) => {
     if (selection !== "All" && vote.optionLabel !== selection) return false;
@@ -881,7 +885,9 @@ function filterProposals(
     return (
       proposal.title.toLowerCase().includes(q) ||
       proposal.purpose.toLowerCase().includes(q) ||
-      String(proposal.onChainId ?? "draft").toLowerCase().includes(q)
+      String(proposal.onChainId ?? "draft")
+        .toLowerCase()
+        .includes(q)
     );
   });
 }
@@ -907,7 +913,12 @@ function StatsRow({
       />
       <Metric label="Active votes" value={activeCount} icon="✓" tone="cyan" />
       <Metric label="Eligible members" value={members} icon="♙" tone="violet" />
-      <Metric label="Votes recorded" value={votes.length} icon="◎" tone="green" />
+      <Metric
+        label="Votes recorded"
+        value={votes.length}
+        icon="◎"
+        tone="green"
+      />
     </div>
   );
 }
@@ -1017,7 +1028,9 @@ function ProposalsTable({
       </div>
       {!filtered.length && (
         <EmptyState
-          title={proposals.length ? "No matching proposals" : "No proposals yet"}
+          title={
+            proposals.length ? "No matching proposals" : "No proposals yet"
+          }
           copy={
             proposals.length
               ? "Try a different search or status filter."

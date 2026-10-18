@@ -91,7 +91,7 @@ export class ToolRegistry {
     checkRequestBudget();
     const inherited = requestSignal();
     if (inherited) context = { ...context, signal: context.signal ? AbortSignal.any([context.signal, inherited]) : inherited };
-    const started = Date.now();
+    const started = performance.now();
     // Only metadata belongs in tool observability, never arguments or results.
     const call: AgentToolCall = { tool: name, evidenceIds: [] };
     try {
@@ -119,7 +119,7 @@ export class ToolRegistry {
         call: {
           ...call,
           status: 'success',
-          latencyMs: Date.now() - started,
+          latencyMs: performance.now() - started,
           evidenceIds: getEvidenceIds(result),
         },
       };
@@ -127,7 +127,7 @@ export class ToolRegistry {
       const failure =
         error instanceof Error ? error : new Error('Tool execution failed.');
       throw Object.assign(failure, {
-        toolCall: { ...call, status: 'error', latencyMs: Date.now() - started },
+        toolCall: { ...call, status: 'error', latencyMs: performance.now() - started },
       });
     }
   }

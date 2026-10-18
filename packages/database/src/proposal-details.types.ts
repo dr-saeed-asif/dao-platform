@@ -15,6 +15,9 @@ export interface GetProposalDetailsResult {
   description: string | null;
   creator: string | null;
   status: string | null;
+  databaseStatus: string | null;
+  timeStatus: 'UPCOMING' | 'ACTIVE' | 'ENDED' | null;
+  statusSource: string | null;
   startsAt: string | null;
   endsAt: string | null;
   options: Array<{ optionIndex: number; label: string }>;

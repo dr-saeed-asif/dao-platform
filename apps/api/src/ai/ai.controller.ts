@@ -79,20 +79,20 @@ export class AiController {
           (origin && !['http://127.0.0.1:3001', 'http://localhost:3001'].includes(origin)))
         throw new ForbiddenException('Python AI is currently available through local CyberDAO only.');
     }
-    const started = Date.now();
+    const started = performance.now();
     const timeoutMs = analysisTimeoutMs(this.config);
     try {
       return await withRequestBudget(async () => {
         const { response, context } = await withRequestBudget(() => this.analyze(request), timeoutMs);
         checkRequestBudget();
-        const persistenceStarted = Date.now();
+        const persistenceStarted = performance.now();
         await this.runs.record(request, context, response);
         checkRequestBudget();
-        return { ...response, timings: { analysisMs: persistenceStarted - started, persistenceMs: Date.now() - persistenceStarted, serverTotalMs: Date.now() - started } };
+        return { ...response, timings: { analysisMs: persistenceStarted - started, persistenceMs: performance.now() - persistenceStarted, serverTotalMs: performance.now() - started } };
       }, timeoutMs + AI_PERSISTENCE_GRACE_MS);
     } catch (error) {
       if (error instanceof HttpException) throw error;
-      return { runId: '', system: request.system, answer: '', evidence: [], retrieval: [], latencyMs: Date.now() - started,
+      return { runId: '', system: request.system, answer: '', evidence: [], retrieval: [], latencyMs: performance.now() - started,
         error: 'Analysis could not complete within the response budget. Please retry or narrow the question.' };
     }
   }
@@ -105,6 +105,10 @@ export class AiController {
     const pythonOrigin = this.config.get<string>('AI_SERVER_URL');
     if (pythonOrigin) {
       context = await this.resolveAgentContext(request);
+      if (/\b(?:blockchain|on[- ]chain)\s+(?:records?|events?|transactions?)\b/i.test(request.question) && this.multiAgent) {
+        const response = await this.multiAgent.executeHybrid(context, false);
+        return { response, context };
+      }
       const response = await queryPythonAi(
         request, pythonOrigin, this.config.get<string>('AI_SERVER_TOKEN', ''),
         AbortSignal.any([AbortSignal.timeout(180_000), ...(requestSignal() ? [requestSignal()!] : [])]),

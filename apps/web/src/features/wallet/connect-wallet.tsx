@@ -7,25 +7,21 @@ const short = (value: string) => `${value.slice(0, 6)}...${value.slice(-4)}`;
 
 const adminAddress = (
   process.env.NEXT_PUBLIC_DAO_ADMIN_ADDRESS ??
-  "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b"
+  "0xb8163f7d6d404f67a400743b90f7952d2d137b8e"
 ).toLowerCase();
 
 export function ConnectWallet({ expanded = false }: { expanded?: boolean }) {
   const wallet = useWallet();
   const [open, setOpen] = useState(false);
   if (wallet.connection) {
-    const isAdmin =
-      wallet.connection.address.toLowerCase() === adminAddress;
+    const isAdmin = wallet.connection.address.toLowerCase() === adminAddress;
     const walletLabel =
       wallet.connection.kind === "cyberchain"
         ? "CyberChain Wallet"
         : "MetaMask";
     if (!expanded) {
       return (
-        <div
-          className="wallet-summary"
-          title={wallet.connection.address}
-        >
+        <div className="wallet-summary" title={wallet.connection.address}>
           <div className="wallet-ident">
             <span className="connection-pulse" />
             <div>

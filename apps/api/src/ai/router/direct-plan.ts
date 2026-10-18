@@ -26,6 +26,9 @@ export function directPlan(question: string, context?: Pick<AgentContext, 'local
   }
   const ref = '(?:#?\\d+|onchain-\\d+|[0-9a-f]{8}-[0-9a-f-]{27})';
   const scopedProposalId = context?.localProposalId ?? context?.proposalId;
+  if (scopedProposalId && /^(?:retrie?v?e|show|list|get|fetch)(?: me)? (?:the )?(?:blockchain )?(?:records|transactions|events|history|timeline)(?: for| of)?(?: (?:this|the) proposal)?$/.test(q)) {
+    return { kind: 'proposal-timeline', tool: 'getProposalTimeline', input: getProposalTimelineInputSchema.parse({ proposalId: scopedProposalId }), answerMode: 'timeline' };
+  }
   const quorum = q.match(new RegExp(`^(?:did|has) proposal (${ref}) (?:satisfy|meet|reach|pass) (?:the )?quorum$`))
     ?? q.match(new RegExp(`^(?:is|was) (?:the )?quorum (?:met|reached|satisfied) (?:for|on) proposal (${ref})$`));
   const compliance = q.match(new RegExp(`^(?:run|check|calculate|verify) (?:the )?(all six governance compliance checks|all compliance checks|compliance|quorum|voting window|member eligibility|evidence integrity|lifecycle transitions|vote uniqueness|gov-0[1-6]) (?:for|of|on) (?:proposal (${ref})|this proposal)$`))
@@ -67,6 +70,9 @@ export function directPlan(question: string, context?: Pick<AgentContext, 'local
   if (scopedProposalId && /^(?:how many votes|what is the vote count|show the votes)$/.test(q)) return { kind: 'proposal-votes', tool: 'getProposalVotes', input: getProposalVotesInputSchema.parse({ proposalId: scopedProposalId }), answerMode: 'votes' };
   const details = q.match(new RegExp(`^(?:what is|show|describe|tell me about|show me the details for) proposal (${ref})$`));
   if (details) return { kind: 'proposal-details', tool: 'getProposal', input: getProposalDetailsInputSchema.parse({ proposalId: details[1].replace(/^#/, '') }), answerMode: 'details' };
+  const status = q.match(new RegExp(`^(?:what is|check|show) (?:the )?status (?:of|for) proposal (${ref})$`));
+  if (status) return { kind: 'proposal-details', tool: 'getProposal', input: getProposalDetailsInputSchema.parse({ proposalId: status[1].replace(/^#/, '') }), answerMode: 'details' };
+  if (scopedProposalId && /^(?:what is|check|show) (?:(?:the )?status(?: of| for) (?:this|the) proposal|(?:this|the) proposal(?:'s)? status)$/.test(q)) return { kind: 'proposal-details', tool: 'getProposal', input: getProposalDetailsInputSchema.parse({ proposalId: scopedProposalId }), answerMode: 'details' };
   if (scopedProposalId && /^(?:what is|show|describe|tell me about) (?:this|the) proposal$/.test(q)) return { kind: 'proposal-details', tool: 'getProposal', input: getProposalDetailsInputSchema.parse({ proposalId: scopedProposalId }), answerMode: 'details' };
   const members = q.match(new RegExp(`^(?:how many (?:eligible |assigned )?(?:members|voters) does proposal (${ref}) have|(?:list|show) (?:the )?(?:members|voters) assigned to proposal (${ref})|who can vote on proposal (${ref})|what is the total voting power (?:of|for) proposal (${ref}))$`));
   const scopedMembers = /^(?:who can vote on this proposal|how many (?:eligible |assigned )?members does this proposal have|list members assigned to this proposal|what is the total voting power of (?:its|this proposal's) assigned members)$/.test(q);

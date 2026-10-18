@@ -8,6 +8,7 @@ describe('direct structured query routing', () => {
     ['Who can vote on proposal 8?', 'proposal-members'],
     ['List members assigned to proposal 8', 'proposal-members'],
     ['How many proposals are active now?', 'proposal-list'],
+    ['What is the status of proposal 8?', 'proposal-details'],
     ['Show finalized proposals', 'proposal-list'],
     ['Which proposals are upcoming?', 'proposal-list'],
     ['Give me DAO statistics', 'dao-statistics'],
@@ -27,6 +28,11 @@ describe('direct structured query routing', () => {
     expect(isProposalMembersQuestion('Who can vote on this proposal?')).toBe(true);
     expect(isDaoStatisticsQuestion('How many members does proposal 8 have?')).toBe(false);
     expect(isProposalMembersQuestion('Were all voters eligible for proposal 8?')).toBe(false);
+  });
+
+  it('uses selected proposal scope for status questions', () => {
+    expect(directPlan("What is this proposal's status?", { localProposalId: 'local-8' }))
+      .toMatchObject({ kind: 'proposal-details', tool: 'getProposal', input: { proposalId: 'local-8' } });
   });
 
   it.each([

@@ -75,7 +75,7 @@ export function fuseProposalDetails(result: GetProposalDetailsOutput, runId: str
   evidence.push(...result.evidenceIds.map((evidenceId) => ({ evidenceId, sourceType: 'ON_CHAIN_EVENT' as const, proposalId: result.proposalId, data: { valid: true, sourceTool: 'getProposal' } })));
   if (!result.found) return { evidence, statements: [{ id: 'not-found', claim: { text: `Proposal ${result.proposalId} was not found in the configured governance deployment.`, type: 'FACTUAL' as const, evidenceIds: [snapshotId] } }] };
   const statements: AnswerStatement[] = [
-    { id: 'details', claim: { text: `Proposal ${result.onChainProposalId ?? result.proposalId}, "${result.title}", is ${result.status}. It was created by ${result.creator}, with voting from ${result.startsAt} to ${result.endsAt}. It has ${result.memberCount} assigned member${result.memberCount === 1 ? '' : 's'} and ${result.voteCount} recorded vote${result.voteCount === 1 ? '' : 's'}.`, type: 'FACTUAL', evidenceIds: [snapshotId] } },
+    { id: 'details', claim: { text: `Proposal ${result.onChainProposalId ?? result.proposalId}, "${result.title}", has status ${result.status} as of ${result.asOf} (stored: ${result.databaseStatus}; time-derived: ${result.timeStatus}; source: ${result.statusSource}). Voting runs from ${result.startsAt} to ${result.endsAt}. It has ${result.memberCount} assigned members and ${result.voteCount} recorded votes. An ended voting period does not establish approval or execution.`, type: 'FACTUAL', evidenceIds: [snapshotId] } },
     { id: 'options', claim: { text: `Voting options: ${result.options.map((option) => `${option.optionIndex}: ${option.label}`).join(', ')}.`, type: 'FACTUAL', evidenceIds: [snapshotId] } },
   ];
   return { evidence, statements };

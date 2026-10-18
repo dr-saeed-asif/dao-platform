@@ -26,6 +26,7 @@ import { PROPOSAL_REPOSITORY, ASSIGNMENT_REPOSITORY, CHAIN_TRANSACTION_REPOSITOR
 import { GOVERNANCE_EVENT_REPOSITORY } from '../database/database.tokens';
 import type { StoredGovernanceEvent } from '@dao-platform/application';
 import type { PostgresSyncStateRepository } from '@dao-platform/database';
+import { proposalStatusAt } from './proposal-status';
 
 export interface ProposalTimelineResult {
   found: boolean;
@@ -172,6 +173,7 @@ export class ProposalQueryService {
     if (!proposal) return {
       ...base, found: false, proposalId: query.proposalId, onChainProposalId: null,
       title: null, purpose: null, description: null, creator: null, status: null,
+      databaseStatus: null, timeStatus: null, statusSource: null,
       startsAt: null, endsAt: null, options: [], memberCount: 0, voteCount: 0,
       creationEvidenceId: null,
     };
@@ -180,6 +182,7 @@ export class ProposalQueryService {
       this.votes.list(proposal.id),
     ]);
     const creationEvidenceId = await this.proposals.findCreationEvidenceIdForQuery(proposal.id);
+    const liveStatus = proposalStatusAt(String(proposal.status), proposal.startsAt, proposal.endsAt, asOf);
     const evidenceIds = creationEvidenceId ? [creationEvidenceId] : [];
     return {
       ...base,
@@ -191,7 +194,7 @@ export class ProposalQueryService {
       purpose: proposal.purpose,
       description: proposal.description,
       creator: proposal.creatorAddress.value,
-      status: proposal.status,
+      ...liveStatus,
       startsAt: proposal.startsAt.toISOString(),
       endsAt: proposal.endsAt.toISOString(),
       options: proposal.options.map((option) => ({ optionIndex: option.index, label: option.label })),

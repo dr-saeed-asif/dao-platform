@@ -260,6 +260,10 @@ export class QueryRouter {
     if (compliance?.kind === 'workflow') {
       return { plan: compliance, response: { content: '', latencyMs: 0, inputTokens: 0, outputTokens: 0, model: undefined as string | undefined } };
     }
+    const timeline = directPlan(question, context);
+    if (timeline?.kind === 'proposal-timeline') {
+      return { plan: timeline, response: { content: '', latencyMs: 0, inputTokens: 0, outputTokens: 0, model: undefined as string | undefined } };
+    }
     // Deterministic plans are an explicit offline fallback, never a gate on natural language.
     if (!allowModel || !this.understanding) {
       const direct = directPlan(question, context);

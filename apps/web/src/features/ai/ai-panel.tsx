@@ -6,6 +6,7 @@ import { daoApi } from "@/lib/api/client";
 import type { AiQueryResponse, ResearchSystem } from "@/lib/api/types";
 import { AnalysisResultModal } from "./analysis-result-modal";
 import { extractChecks, type ResultModel } from "./analysis-result";
+import { ResearchRuns } from "./research-runs";
 
 const systems: Array<{
   value: ResearchSystem;
@@ -32,6 +33,7 @@ interface AiPanelProps {
 }
 
 export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
+  const [tab, setTab] = useState<"assistant" | "evaluation">("assistant");
   const [question, setQuestion] = useState("");
   const [system, setSystem] = useState<ResearchSystem>("hybrid");
   const [proposalId, setProposalId] = useState(selectedProposalId ?? "");
@@ -54,7 +56,7 @@ export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
     try {
       const result = await daoApi.aiQuery({
         question: question.trim(),
-        ...(proposalId ? { proposalId } : {}),
+        proposalId,
         system,
         topK: 5,
       });
@@ -128,6 +130,11 @@ export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
           View Research Runs
         </Link>
       </div>
+      <div role="tablist" aria-label="AI Assistant views" style={{ display: "flex", gap: 8, margin: "16px 0" }}>
+        <button type="button" role="tab" aria-selected={tab === "assistant"} className="button button-secondary" onClick={() => setTab("assistant")}>Assistant</button>
+        <button type="button" role="tab" aria-selected={tab === "evaluation"} className="button button-secondary" onClick={() => setTab("evaluation")}>Evaluation</button>
+      </div>
+      {tab === "evaluation" ? <ResearchRuns /> : <>
       <form onSubmit={submit} className="ai-form">
         <div className="form-grid">
           <label>
@@ -200,6 +207,7 @@ export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
         model={modalOpen ? model : null}
         onClose={() => setModalOpen(false)}
       />
+      </>}
     </section>
   );
 }
