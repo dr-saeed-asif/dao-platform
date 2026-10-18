@@ -11,6 +11,7 @@ export interface ProposalRepository {
   findDraftByMetadataHash?(metadataHash: string, creatorAddress: string): Promise<Proposal | null>;
   findByIdempotencyKey(idempotencyKey: string): Promise<Proposal | null>;
   list(limit: number, offset: number): Promise<readonly Proposal[]>;
+  closeExpiredVoting?(asOf: Date): Promise<void>;
   insert(proposal: Proposal, options: SaveProposalOptions): Promise<void>;
   markPublished(
     id: string,

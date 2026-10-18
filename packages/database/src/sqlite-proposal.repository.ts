@@ -52,6 +52,14 @@ export class SqliteProposalRepository implements ProposalRepository {
     return Promise.all(rows.map((row) => this.hydrate(row)));
   }
 
+  async closeExpiredVoting(asOf: Date): Promise<void> {
+    await this.database.executor.updateTable("proposals")
+      .set({ status: ProposalStatus.VotingClosed, updated_at: asOf.toISOString() })
+      .where("status", "=", ProposalStatus.Active)
+      .where("ends_at", "<=", asOf.toISOString())
+      .execute();
+  }
+
   async insert(
     proposal: Proposal,
     options: SaveProposalOptions,

@@ -104,6 +104,7 @@ export class Proposal {
 
     const statusesRequiringOnChainId = new Set([
       ProposalStatus.Active,
+      ProposalStatus.VotingClosed,
       ProposalStatus.Closed,
       ProposalStatus.Executed,
       ProposalStatus.Failed,

@@ -8,7 +8,7 @@ export interface ProposalStatusSnapshot {
 export function proposalStatusAt(databaseStatus: string, startsAt: Date,
   endsAt: Date, asOf: Date): ProposalStatusSnapshot {
   const timeStatus = asOf < startsAt ? 'UPCOMING' : asOf < endsAt ? 'ACTIVE' : 'ENDED';
-  const terminal = ['CANCELLED', 'CLOSED', 'EXECUTED', 'FAILED'].includes(databaseStatus);
+  const terminal = ['CANCELLED', 'CLOSED', 'EXECUTED', 'FAILED', 'VOTING_CLOSED'].includes(databaseStatus);
   const pending = ['DRAFT', 'PENDING_ON_CHAIN'].includes(databaseStatus);
   return {
     status: terminal || pending ? databaseStatus : timeStatus,

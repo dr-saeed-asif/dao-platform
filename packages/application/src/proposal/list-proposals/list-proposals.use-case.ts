@@ -18,6 +18,7 @@ export class ListProposalsUseCase {
   async execute(query: ListProposalsQuery): Promise<ListProposalsResult> {
     const limit = Math.min(Math.max(query.limit ?? 20, 1), 100);
     const offset = Math.max(query.offset ?? 0, 0);
+    await this.proposals.closeExpiredVoting?.(new Date());
     const proposals = await this.proposals.list(limit, offset);
     return { items: proposals.map(toProposalView), limit, offset };
   }

@@ -151,6 +151,16 @@ export class PostgresProposalRepository implements ProposalRepository {
     return Promise.all(rows.map((row) => this.hydrate(row)));
   }
 
+  async closeExpiredVoting(asOf: Date): Promise<void> {
+    await this.database.executor.updateTable("proposals")
+      .set({ status: "VOTING_CLOSED", updated_at: asOf })
+      .where("chain_id", "=", this.chainId)
+      .where("contract_address", "=", this.contractAddress)
+      .where("status", "=", "ACTIVE")
+      .where("ends_at", "<=", asOf)
+      .execute();
+  }
+
   /** Resolve mutable operational evidence within the configured deployment. */
   async findStructuredEvidence(id: string) {
     return this.database.executor.selectFrom("proposals")
@@ -506,6 +516,8 @@ function toOperationalStatus(status: ProposalStatus): string {
       return "PENDING";
     case ProposalStatus.Active:
       return "ACTIVE";
+    case ProposalStatus.VotingClosed:
+      return "VOTING_CLOSED";
     case ProposalStatus.Closed:
       return "FINALIZED";
     case ProposalStatus.Cancelled:
@@ -525,6 +537,7 @@ function fromOperationalStatus(status: string): ProposalStatus {
     case "ACTIVE":
       return ProposalStatus.Active;
     case "VOTING_CLOSED":
+      return ProposalStatus.VotingClosed;
     case "FINALIZED":
       return ProposalStatus.Closed;
     case "CANCELLED":

@@ -10,6 +10,7 @@ export enum ProposalStatus {
   Draft = "DRAFT",
   PendingOnChain = "PENDING_ON_CHAIN",
   Active = "ACTIVE",
+  VotingClosed = "VOTING_CLOSED",
   Closed = "CLOSED",
   Cancelled = "CANCELLED",
   Executed = "EXECUTED",

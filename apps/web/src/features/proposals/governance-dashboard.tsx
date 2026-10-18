@@ -28,6 +28,7 @@ const short = (value: string) => `${value.slice(0, 7)}…${value.slice(-5)}`;
 
 function proposalStatus(proposal: Proposal, votes: IndexedVote[]) {
   if (proposal.status === "CANCELLED") return "Cancelled";
+  if (proposal.status === "VOTING_CLOSED") return "Voting Ended";
   if (proposal.status === "EXECUTED") return "Executed";
   const now = Date.now();
   if (!proposal.onChainId) return "Pending";
