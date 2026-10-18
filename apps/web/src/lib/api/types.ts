@@ -83,7 +83,7 @@ export interface Artefact {
   uri: string;
 }
 
-export type ResearchSystem = 'hybrid'|'hybrid-verified'|'multi-agent';
+export type ResearchSystem = 'hybrid'|'vector-rag'|'hybrid-verified'|'multi-agent';
 export interface AiQueryRequest {
   question: string;
   proposalId?: string;

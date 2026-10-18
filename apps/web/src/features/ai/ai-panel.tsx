@@ -16,19 +16,13 @@ const systems: Array<{
     value: "hybrid",
     label: "Hybrid",
     description:
-      "Combines structured DAO data, blockchain evidence and proposal-document retrieval.",
+      "Combines proposal records with verified linked PDF evidence.",
   },
   {
-    value: "hybrid-verified",
-    label: "Hybrid + Verifier",
+    value: "vector-rag",
+    label: "Vector RAG",
     description:
-      "Hybrid retrieval with claim-level verification and abstention.",
-  },
-  {
-    value: "multi-agent",
-    label: "Multi-Agent Hybrid + Verifier",
-    description:
-      "Specialized agents coordinate retrieval, compliance, provenance, synthesis and verification.",
+      "Answers using the selected proposal’s indexed PDF documents.",
   },
 ];
 
@@ -53,7 +47,7 @@ export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
   )?.description;
   async function submit(event: React.FormEvent) {
     event.preventDefault();
-    if (!question.trim()) return;
+    if (!question.trim() || !proposalId) return;
     setLoading(true);
     setResponse(null);
     setModalOpen(false);
@@ -142,7 +136,7 @@ export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
               value={proposalId}
               onChange={(e) => setProposalId(e.target.value)}
             >
-              <option value="">All proposals</option>
+              <option value="">Select a proposal</option>
               {proposals.map((p) => (
                 <option key={p.id} value={p.id}>
                   {p.title} · #{p.onChainId ?? "draft"}
@@ -150,8 +144,7 @@ export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
               ))}
             </select>
             <small>
-              Use All proposals for listing and count questions. Select a
-              proposal for its details.
+              Select a proposal to ask about its details and linked documents.
             </small>
           </label>
           <label>
@@ -180,7 +173,7 @@ export function AiPanel({ proposals, selectedProposalId }: AiPanelProps) {
         </label>
         <button
           className="button button-primary"
-          disabled={loading || !question.trim()}
+          disabled={loading || question.trim().length < 3 || !proposalId}
         >
           {loading ? "Running analysis…" : "Run Analysis"}
         </button>

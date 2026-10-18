@@ -80,6 +80,8 @@ export const envValidationSchema = Joi.object({
     .max(2_147_463_647)
     .default(120_000),
   MCP_ENABLED: Joi.boolean().default(false),
+  AI_SERVER_URL: Joi.string().uri().optional(),
+  AI_SERVER_TOKEN: Joi.string().min(24).optional(),
   MCP_SERVER_ALLOWLIST: Joi.string().allow('').default(''),
   MCP_TOOL_ALLOWLIST: Joi.string().allow('').default(''),
 });

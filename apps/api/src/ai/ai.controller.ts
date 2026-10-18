@@ -1,5 +1,7 @@
-import { withRequestBudget, checkRequestBudget, analysisTimeoutMs, AI_PERSISTENCE_GRACE_MS } from './request-budget';
+import { withRequestBudget, checkRequestBudget, analysisTimeoutMs, AI_PERSISTENCE_GRACE_MS, requestSignal } from './request-budget';
 import { ConfigService } from '@nestjs/config';
+import { queryPythonAi } from './python-ai.adapter';
+import type { FastifyRequest } from 'fastify';
 import {
   Controller,
   Get,
@@ -8,6 +10,9 @@ import {
   HttpCode,
   HttpStatus,
   Optional,
+  HttpException,
+  Req,
+  ForbiddenException,
 } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { OllamaClient } from './ollama.client';
@@ -34,6 +39,18 @@ export class AiController {
 
   @Get('health')
   async health(): Promise<AiHealthResponse> {
+    const pythonOrigin = this.config.get<string>('AI_SERVER_URL');
+    if (pythonOrigin) {
+      try {
+        const response = await fetch(new URL('/health', pythonOrigin), { signal: AbortSignal.timeout(10_000) });
+        if (!response.ok) throw new Error('Python health check failed');
+        return await response.json() as AiHealthResponse;
+      } catch {
+        return { status: 'degraded', postgres: await this.checkPostgres() ? 'ok' : 'error',
+          ollama: { status: 'unhealthy', latencyMs: 0, error: 'Python AI server is unavailable.' },
+          timestamp: new Date().toISOString() };
+      }
+    }
     const [ollamaHealth, postgresOk] = await Promise.all([
       this.ollama.healthCheck(),
       this.checkPostgres(),
@@ -54,7 +71,14 @@ export class AiController {
 
   @Post('query')
   @HttpCode(HttpStatus.OK)
-  async query(@Body() request: AiQueryRequest): Promise<AiQueryResponse | MultiAgentResponse> {
+  async query(@Body() request: AiQueryRequest, @Req() httpRequest?: FastifyRequest): Promise<AiQueryResponse | MultiAgentResponse> {
+    if (this.config.get<string>('AI_SERVER_URL')) {
+      const ip = httpRequest?.ip;
+      const origin = httpRequest?.headers.origin;
+      if (!ip || !['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(ip) ||
+          (origin && !['http://127.0.0.1:3001', 'http://localhost:3001'].includes(origin)))
+        throw new ForbiddenException('Python AI is currently available through local CyberDAO only.');
+    }
     const started = Date.now();
     const timeoutMs = analysisTimeoutMs(this.config);
     try {
@@ -66,7 +90,8 @@ export class AiController {
         checkRequestBudget();
         return { ...response, timings: { analysisMs: persistenceStarted - started, persistenceMs: Date.now() - persistenceStarted, serverTotalMs: Date.now() - started } };
       }, timeoutMs + AI_PERSISTENCE_GRACE_MS);
-    } catch {
+    } catch (error) {
+      if (error instanceof HttpException) throw error;
       return { runId: '', system: request.system, answer: '', evidence: [], retrieval: [], latencyMs: Date.now() - started,
         error: 'Analysis could not complete within the response budget. Please retry or narrow the question.' };
     }
@@ -76,6 +101,16 @@ export class AiController {
     const runId = randomUUID();
     const startTime = Date.now();
     let context: AgentContext | undefined;
+
+    const pythonOrigin = this.config.get<string>('AI_SERVER_URL');
+    if (pythonOrigin) {
+      context = await this.resolveAgentContext(request);
+      const response = await queryPythonAi(
+        request, pythonOrigin, this.config.get<string>('AI_SERVER_TOKEN', ''),
+        AbortSignal.any([AbortSignal.timeout(180_000), ...(requestSignal() ? [requestSignal()!] : [])]),
+      );
+      return { response, context };
+    }
 
     try {
       if (request.system === 'multi-agent' || request.system === 'hybrid' || request.system === 'hybrid-verified') {

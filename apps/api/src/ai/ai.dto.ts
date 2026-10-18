@@ -28,6 +28,9 @@ export interface AiQueryResponse {
   latencyMs: number;
   retrievalLatencyMs?: number;
   generationLatencyMs?: number;
+  inputTokens?: number;
+  outputTokens?: number;
+  models?: { chat: string; embedding: string; embeddingDimension: number };
   error?: string;
 }
 
