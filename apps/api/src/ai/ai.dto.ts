@@ -12,6 +12,9 @@ export interface AiQueryResponse {
   system: 'hybrid' | 'hybrid-verified' | 'multi-agent' | 'llm-only' | 'vector-rag';
   answer: string;
   evidence: Array<{
+    evidenceId?: string;
+    sourceType?: string;
+    data?: unknown;
     chunkEvidenceId: string;
     artefactEvidenceId: string;
     proposalId: string | null;

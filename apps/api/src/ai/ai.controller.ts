@@ -24,6 +24,7 @@ import { MultiAgentSystem } from './agents/multi-agent.system';
 import type { MultiAgentResponse } from './agents/agent.types';
 import type { AgentContext } from './agents/agent.types';
 import { ResearchRunsService } from '../research/research-runs.service';
+import { LiveChainQuery, asksLiveChain } from './live-chain-query';
 
 @Controller('ai')
 export class AiController {
@@ -35,6 +36,7 @@ export class AiController {
     private readonly runs: ResearchRunsService,
     private readonly config: ConfigService,
     @Optional() private readonly multiAgent?: MultiAgentSystem,
+    @Optional() private readonly liveChain?: LiveChainQuery,
   ) {}
 
   @Get('health')
@@ -102,13 +104,15 @@ export class AiController {
     const startTime = Date.now();
     let context: AgentContext | undefined;
 
+    if (asksLiveChain(request.question)) {
+      context = await this.resolveAgentContext(request);
+      if (!this.liveChain) throw new Error('Live CyberChain tool is unavailable.');
+      return { response: await this.liveChain.answer(request, context), context };
+    }
+
     const pythonOrigin = this.config.get<string>('AI_SERVER_URL');
     if (pythonOrigin) {
       context = await this.resolveAgentContext(request);
-      if (/\b(?:blockchain|on[- ]chain)\s+(?:records?|events?|transactions?)\b/i.test(request.question) && this.multiAgent) {
-        const response = await this.multiAgent.executeHybrid(context, false);
-        return { response, context };
-      }
       const response = await queryPythonAi(
         request, pythonOrigin, this.config.get<string>('AI_SERVER_TOKEN', ''),
         AbortSignal.any([AbortSignal.timeout(180_000), ...(requestSignal() ? [requestSignal()!] : [])]),

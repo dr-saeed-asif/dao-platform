@@ -29,6 +29,8 @@ import { QueryOrchestrator } from './orchestration/query-orchestrator';
 import { SynthesisService } from './synthesis/synthesis.service';
 import { GovernanceToolsService } from './agents/governance-tools.service';
 import { MultiAgentSystem } from './agents/multi-agent.system';
+import { LiveChainTools } from './tools/onchain/live-chain.tools';
+import { LiveChainQuery } from './live-chain-query';
 import { McpToolRegistryAdapter } from './agents/mcp.adapter';
 import {
   CalculateQuorumTool,
@@ -60,6 +62,8 @@ import {
     TransactionTools,
     IndexerStatusTools,
     VerifyAgainstRpcTools,
+    LiveChainTools,
+    LiveChainQuery,
     DeploymentTools,
     TimelineTools,
     ProposalEvidenceTools,

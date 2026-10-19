@@ -40,6 +40,26 @@ current governance status, voting options, and deadlines.
 
 ## Main use cases
 
+### Fresh blockchain answers
+
+In the AI assistant, ask "Cross-check this proposal with the blockchain",
+"Answer the votes from onchain", or "How many proposals are on CyberChain?".
+These requests invoke the read-only `fetchLiveCyberChain` tool before document
+or cached-record analysis. It queries the configured CyberChain RPC on every
+request, pins contract reads to one block, and includes the block hash and fetch
+time. Proposal state, vote totals, option totals, current membership checks, and
+explicit transaction receipts come from RPC. Cross-checks compare the fresh
+snapshot with separately labelled database records and report differences.
+
+Event/timeline requests fetch at most the latest 1,000 blocks and label that
+coverage; they do not claim to list complete history. Paste a transaction hash
+to inspect a specific older transaction. Contract overview requests also list
+the latest 10 on-chain proposals by ID with live state and counts.
+RPC errors produce an abstention,
+never a cached answer labelled as live. The tool uses no signing keys and
+submits no transactions. On-chain proposal totals cover the configured
+governance contract across all DAOs and exclude unpublished drafts.
+
 ### Administrator
 
 - Connect the configured DAO administrator wallet.

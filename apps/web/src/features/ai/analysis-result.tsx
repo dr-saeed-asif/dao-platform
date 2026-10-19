@@ -138,9 +138,9 @@ export function groupAnalysisEvidence(
   for (const item of items) {
     const type =
       item.sourceType ?? (item.chunkEvidenceId ? "DOCUMENT_CHUNK" : "");
-    if (type === "STRUCTURED_DB") groups.Database.push(item);
+    if (type === "STRUCTURED_DB" || type === "governance-db") groups.Database.push(item);
     else if (
-      type === "ON_CHAIN_EVENT" ||
+      type === "ON_CHAIN_EVENT" || type === "ON_CHAIN_RPC" ||
       item.evidenceId?.startsWith("event:")
     )
       groups.Blockchain.push(item);
