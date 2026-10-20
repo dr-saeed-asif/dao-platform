@@ -2,11 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { daoApi } from "@/lib/api/client";
-import type { Proposal, ResearchRunDetail, ResearchRunSummary } from "@/lib/api/types";
+import type { AiBatchQueryResponse, Proposal, ResearchRunDetail, ResearchRunSummary } from "@/lib/api/types";
 
 const names:Record<string,string>={hybrid:"Hybrid","hybrid-verified":"Hybrid + Verifier","multi-agent":"Multi-Agent Hybrid + Verifier"};
 
-export function ResearchRuns(){
+export function ResearchRuns({ latestBatch }: { latestBatch?: AiBatchQueryResponse | null } = {}){
   const [runs,setRuns]=useState<ResearchRunSummary[]>([]),[proposals,setProposals]=useState<Proposal[]>([]),[detail,setDetail]=useState<ResearchRunDetail|null>(null),[selected,setSelected]=useState<string[]>([]),[loading,setLoading]=useState(true),[page,setPage]=useState(1),[hasMore,setHasMore]=useState(false);
   const [filters,setFilters]=useState({proposalId:"",system:"",verificationStatus:"",from:"",to:"",search:""});
   const query=useMemo(()=>{const value=new URLSearchParams();Object.entries(filters).forEach(([key,item])=>{if(item)value.set(key,key==="from"?`${item}T00:00:00.000Z`:key==="to"?`${item}T23:59:59.999Z`:item)});return value.toString()},[filters]);
@@ -15,6 +15,7 @@ export function ResearchRuns(){
   async function open(runId:string){setDetail(await daoApi.getResearchRun(runId))}
   const compared=runs.filter(run=>selected.includes(run.runId));
   return <>
+    {latestBatch && <LatestBatchEvaluation batch={latestBatch}/>}
     <section className="dashboard-card" style={{padding:20}}>
       <div className="form-grid">
         <label>Proposal<select value={filters.proposalId} onChange={e=>setFilters({...filters,proposalId:e.target.value})}><option value="">All proposals</option>{proposals.map(p=><option key={p.id} value={p.id}>{p.title} · #{p.onChainId??"draft"}</option>)}</select></label>
@@ -33,6 +34,34 @@ export function ResearchRuns(){
     {detail&&<ResearchRunDetailView run={detail} onClose={()=>setDetail(null)}/>} 
   </>
 }
+
+function LatestBatchEvaluation({batch}:{batch:AiBatchQueryResponse}){
+  const m=batch.metrics,wall=typeof m.toolWallMs==="number"&&m.toolWallMs>0?m.toolWallMs:undefined;
+  const calls=m.toolCalls??[];
+  return <section className="dashboard-card batch-evaluation" style={{padding:20,marginBottom:20}}>
+    <div className="card-header"><div><span className="eyebrow">Latest Batch</span><h2>Evaluation Metrics</h2></div><span className={`result-status result-status-${batch.status==="completed"?"green":batch.status==="failed"?"red":"amber"}`}>{batch.status}</span></div>
+    <p className="mono">Batch ID: {batch.batchId}</p>
+    <div className="table-wrap"><table><thead><tr><th>Batch metric</th><th>Value</th><th>Batch metric</th><th>Value</th></tr></thead><tbody>
+      <tr><td>System / model</td><td>{batch.system} · {m.model??"Unavailable"}</td><td>Embedding model / profile</td><td>{m.embeddingModel??"Unavailable"} · {m.embeddingProfile??"Unavailable"}</td></tr>
+      <tr><td>Total end to end</td><td>{ms(m.latencyMs)}</td><td>Parallel tool wall time</td><td>{ms(m.toolWallMs)}</td></tr>
+      <tr><td>PostgreSQL duration sum</td><td>{ms(m.postgresLatencyMs)}</td><td>Blockchain RPC duration sum</td><td>{ms(m.blockchainRpcLatencyMs)}</td></tr>
+      <tr><td>PDF/vector duration sum</td><td>{ms(m.pdfVectorLatencyMs)}</td><td>Embedding / LLM duration</td><td>{ms(m.embeddingLatencyMs)} / {ms(m.generationLatencyMs)}</td></tr>
+      <tr><td>Tokens input / output / total</td><td>{m.inputTokens??"Unavailable"} / {m.outputTokens??"Unavailable"} / {m.totalTokens??"Unavailable"}</td><td>Tools / questions</td><td>{m.toolInvocationCount??calls.length} / {batch.results.length}</td></tr>
+      <tr><td>Source combination</td><td>{m.sourceCombination??"No sources"}</td><td>Output tokens / second</td><td>{typeof m.outputTokensPerSecond==="number"?m.outputTokensPerSecond:"Unavailable"}</td></tr>
+    </tbody></table></div>
+    <h3>Parallel execution timeline</h3>
+    <div className="table-wrap"><table><thead><tr><th>Tool</th><th>Source</th><th>Timeline</th><th>Latency</th><th>Outcome</th></tr></thead><tbody>
+      {calls.map((call,index)=>{const start=typeof call.start_offset_ms==="number"?call.start_offset_ms:undefined,duration=call.duration_ms??0;const hasTimeline=wall!==undefined&&start!==undefined;const left=hasTimeline?Math.min(100,start!/wall!*100):0;const width=hasTimeline?Math.min(100-left,duration/wall!*100):0;return <tr key={`${call.tool??"tool"}-${index}`}><td>{call.tool??"Unavailable"}</td><td>{source(call.tool)}</td><td><div className="batch-timeline-track" title={!hasTimeline?"Timeline unavailable":`Starts at ${start}ms; lasts ${duration}ms`}>{hasTimeline&&<span style={{left:`${left}%`,width:`${width}%`}}/>}</div><small>{!hasTimeline?"Timeline unavailable":`${start}ms → ${duration}ms`}</small></td><td>{ms(call.duration_ms)}</td><td>{call.outcome??call.error_code??"Unavailable"}</td></tr>})}
+      {!calls.length&&<tr><td colSpan={5}>No tool timing data was returned.</td></tr>}
+    </tbody></table></div>
+    <h3>Per-question metrics</h3><div className="table-wrap"><table><thead><tr><th>#</th><th>Question</th><th>Status</th><th>PostgreSQL</th><th>Blockchain</th><th>PDF/vector</th><th>LLM</th><th>Total</th><th>Tokens</th><th>Tools / citations</th></tr></thead><tbody>
+      {batch.results.map((row,index)=><tr key={row.questionId}><td>{index+1}</td><td>{row.question}</td><td>{row.status}</td><td>{ms(row.metrics.postgresLatencyMs)}</td><td>{ms(row.metrics.blockchainRpcLatencyMs)}</td><td>{ms(row.metrics.pdfVectorLatencyMs)}</td><td>{ms(row.metrics.generationLatencyMs)}</td><td>{ms(row.metrics.totalLatencyMs)}</td><td>{row.metrics.totalTokens??"Unavailable"}</td><td>{row.metrics.toolInvocationCount??"—"} / {row.metrics.citationCount??"—"}</td></tr>)}
+    </tbody></table></div>
+    {(batch.errors.length>0||batch.toolErrors.length>0)&&<div className="alert alert-error"><strong>Errors and partial failures</strong>{[...batch.errors,...batch.toolErrors].map((error,index)=><p key={index}>{error.questionId?`${error.questionId}: `:""}{error.message??error.code??"Operation failed."}</p>)}</div>}
+  </section>
+}
+function ms(value:number|null|undefined){return typeof value==="number"?`${value.toFixed(1)}ms`:"Unavailable"}
+function source(tool?:string){if(!tool)return"Unavailable";if(tool.startsWith("get_proposal_onchain"))return"Blockchain";if(tool==="search_verified_pdf_evidence")return"PDF/vector";if(["get_proposal_db","get_dao_proposals_db","get_proposal_votes_db"].includes(tool))return"PostgreSQL";return"Other"}
 
 function RunComparison({runs}:{runs:ResearchRunSummary[]}){return <section className="dashboard-card" style={{padding:20,marginTop:20}}><h2>Run Comparison</h2><div className="table-wrap"><table><thead><tr><th>System</th><th>Answer</th><th>Verified?</th><th>Abstained?</th><th>Evidence</th><th>Retrieval</th><th>Supported</th><th>Unsupported</th><th>Latency</th><th>Tokens</th><th>Agents</th></tr></thead><tbody>{runs.map(run=><tr key={run.runId}><td>{names[run.system]??run.system}</td><td>{run.answer}</td><td>{run.verificationStatus??"Not verified"}</td><td>{run.abstained?"Yes":"No"}</td><td>{run.evidenceCount}</td><td>{run.retrievalCount}</td><td>{run.supportedClaims}</td><td>{run.unsupportedClaims}</td><td>{run.latencyMs}ms</td><td>{run.tokens??"Unavailable"}</td><td>{run.agentsUsed.join(", ")||"—"}</td></tr>)}</tbody></table></div></section>}
 

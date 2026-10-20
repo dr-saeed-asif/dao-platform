@@ -3,6 +3,8 @@
 import { useMemo, useState, type ReactNode } from "react";
 import { CopyValueButton } from "@/components/copy-value-button";
 import type { AiQueryResponse } from "@/lib/api/types";
+import type { AiBatchQueryResponse } from "@/lib/api/types";
+import { BatchAnswerCards } from "./batch-answer-cards";
 
 export type CheckResult = "PASS" | "FAIL" | "INDETERMINATE";
 
@@ -33,7 +35,7 @@ export interface ResultModel {
   proposalTitle: string;
   proposalRef: string;
   completedAt: string;
-  status: "Completed" | "Failed" | "Abstained";
+  status: "Completed" | "Failed" | "Abstained" | "Partial";
   statusTone: "green" | "red" | "amber";
   answer: string;
   checks: ComplianceCheck[];
@@ -41,10 +43,11 @@ export interface ResultModel {
   agentTrace?: AiQueryResponse["agentTrace"];
   agentsUsed?: string[];
   latencyMs: number;
-  retrievalCount: number;
+  retrievalCount?: number;
   llmCalls?: number;
   embeddingCalls?: number;
   errors?: string[];
+  batch?: AiBatchQueryResponse;
 }
 
 const RULE_TITLES: Record<string, string> = {
@@ -367,7 +370,7 @@ export function ExportMenu({ model }: { model: ResultModel }) {
   );
 }
 
-export function OpenFullReportButton({ runId }: { runId: string }) {
+export function OpenFullReportButton({ runId, model }: { runId: string; model?: ResultModel }) {
   return (
     <button
       type="button"
@@ -375,7 +378,23 @@ export function OpenFullReportButton({ runId }: { runId: string }) {
       disabled={!runId}
       title={runId ? "Open the full report in a new tab" : "No run available"}
       onClick={() => {
-        if (runId) window.open(`/ai-assistant/results/${encodeURIComponent(runId)}`, "_blank", "noopener");
+        if (!runId) return;
+        const url = `/ai-assistant/results/${encodeURIComponent(runId)}`;
+        if (model?.batch) {
+          const key = `cyberdao-batch-report:${runId}`;
+          const reportModel: ResultModel = { ...model, batch: { ...model.batch,
+            evidence: [], results: model.batch.results.map((row) => ({ ...row, evidence: [] })) } };
+          sessionStorage.setItem(key, JSON.stringify(reportModel));
+          const report = window.open(url, "_blank");
+          if (report) {
+            report.opener = null;
+            sessionStorage.removeItem(key);
+          } else {
+            window.location.assign(url);
+          }
+          return;
+        }
+        window.open(url, "_blank", "noopener");
       }}
     >
       <span aria-hidden="true">↗</span> Open Full Report
@@ -413,7 +432,7 @@ export function AnalysisResultView({ model }: { model: ResultModel }) {
       <section className="result-meta">
         <div className="result-meta-item">
           <span>Question</span>
-          <strong>{model.question}</strong>
+          <strong style={{ whiteSpace: "pre-line" }}>{model.question}</strong>
         </div>
         <div className="result-meta-item">
           <span>Research System</span>
@@ -478,7 +497,9 @@ export function AnalysisResultView({ model }: { model: ResultModel }) {
         </>
       )}
 
-      {tab === "summary" && model.answer.trim() && (
+      {tab === "summary" && model.batch && <BatchAnswerCards batch={model.batch} />}
+
+      {tab === "summary" && !model.batch && model.answer.trim() && (
         <section className="result-section result-answer-section">
           <h3>Analysis Summary</h3>
           <FormattedAnswer answer={model.answer} />
@@ -668,12 +689,13 @@ export function AnalysisResultView({ model }: { model: ResultModel }) {
 
       {tab === "trace" && (
         <section className="result-section">
+          {model.batch && <BatchTrace batch={model.batch} />}
           <div className="trace-meta">
             <span>
               Latency <strong>{model.latencyMs}ms</strong>
             </span>
             <span>
-              Retrieved chunks <strong>{model.retrievalCount}</strong>
+              Retrieved chunks <strong>{model.retrievalCount ?? "Unavailable"}</strong>
             </span>
             {typeof model.llmCalls === "number" && (
               <span>
@@ -720,4 +742,45 @@ export function AnalysisResultView({ model }: { model: ResultModel }) {
       )}
     </div>
   );
+}
+
+function BatchTrace({ batch }: { batch: AiBatchQueryResponse }) {
+  const metrics = batch.metrics;
+  const rows: Array<[string, number | null | undefined]> = [
+    ["PostgreSQL execution (sum)", metrics.postgresLatencyMs],
+    ["Blockchain RPC (sum)", metrics.blockchainRpcLatencyMs],
+    ["PDF / vector search (sum)", metrics.pdfVectorLatencyMs],
+    ["Embedding", metrics.embeddingLatencyMs],
+    ["LLM generation (sum)", metrics.generationLatencyMs],
+    ["Tool wall time", metrics.toolWallMs],
+    ["Total end to end", metrics.latencyMs],
+  ];
+  const calls = metrics.toolCalls ?? [];
+  return <>
+    <h3>Batch Evaluation · {batch.batchId}</h3>
+    <div className="table-wrap"><table><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody>
+      {rows.map(([label, value]) => <tr key={label}><td>{label}</td><td>{typeof value === "number" ? `${value}ms` : "Unavailable"}</td></tr>)}
+      <tr><td>Tokens (input / output / total)</td><td>{metrics.inputTokens ?? "Unavailable"} / {metrics.outputTokens ?? "Unavailable"} / {metrics.totalTokens ?? "Unavailable"}</td></tr>
+      <tr><td>Sources / citations</td><td>{metrics.sourceCombination ?? "None"} · {batch.results.reduce((sum, row) => sum + (row.metrics.citationCount ?? 0), 0)} citations</td></tr>
+      <tr><td>Model</td><td>{metrics.model ?? "Unavailable"} · {metrics.embeddingModel ?? "Unavailable"} {metrics.embeddingProfile ? `(${metrics.embeddingProfile})` : ""}</td></tr>
+    </tbody></table></div>
+    <h4>Parallel tool timeline</h4>
+    <div className="table-wrap"><table><thead><tr><th>Tool</th><th>Source</th><th>Start offset</th><th>Duration</th><th>Questions</th><th>Outcome</th></tr></thead><tbody>
+      {calls.map((call, index) => <tr key={`${call.tool}-${index}`}><td>{call.tool ?? "Tool"}</td><td>{sourceName(call.tool)}</td><td>{typeof call.start_offset_ms === "number" ? `${call.start_offset_ms}ms` : "Unavailable"}</td><td>{typeof call.duration_ms === "number" ? `${call.duration_ms}ms` : "Unavailable"}</td><td>{call.question_ids?.join(", ") ?? "—"}</td><td>{call.outcome ?? call.error_code ?? "Unavailable"}</td></tr>)}
+      {!calls.length && <tr><td colSpan={6}>No tool timing data was returned.</td></tr>}
+    </tbody></table></div>
+    {batch.results.length > 0 && <><h4>Question metrics</h4><div className="table-wrap"><table><thead><tr><th>Question</th><th>Status</th><th>DB</th><th>Chain</th><th>PDF/vector</th><th>LLM</th><th>Total</th><th>Tokens</th><th>Tools / citations</th></tr></thead><tbody>
+      {batch.results.map((row, index) => <tr key={row.questionId}><td>{index + 1}. {row.question}</td><td>{row.status}</td><td>{metricText(row.metrics.postgresLatencyMs)}</td><td>{metricText(row.metrics.blockchainRpcLatencyMs)}</td><td>{metricText(row.metrics.pdfVectorLatencyMs)}</td><td>{metricText(row.metrics.generationLatencyMs)}</td><td>{metricText(row.metrics.totalLatencyMs)}</td><td>{row.metrics.totalTokens ?? "Unavailable"}</td><td>{row.metrics.toolInvocationCount ?? "—"} / {row.metrics.citationCount ?? "—"}</td></tr>)}
+    </tbody></table></div></>}
+    {batch.toolErrors.length > 0 && <div className="alert alert-error"><strong>Tool errors</strong>{batch.toolErrors.map((error, index) => <p key={index}>{error.questionId ? `${error.questionId}: ` : ""}{error.message ?? error.code ?? "Tool failed."}</p>)}</div>}
+  </>;
+}
+
+function metricText(value: number | null | undefined): string { return typeof value === "number" ? `${value}ms` : "Unavailable"; }
+function sourceName(tool?: string): string {
+  if (!tool) return "Unavailable";
+  if (tool.startsWith("get_proposal_onchain")) return "Blockchain";
+  if (tool === "search_verified_pdf_evidence") return "PDF/vector";
+  if (["get_proposal_db", "get_dao_proposals_db", "get_proposal_votes_db"].includes(tool)) return "PostgreSQL";
+  return "Other";
 }

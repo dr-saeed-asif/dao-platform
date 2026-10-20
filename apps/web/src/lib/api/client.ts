@@ -8,6 +8,8 @@ import type {
   Artefact,
   AiQueryRequest,
   AiQueryResponse,
+  AiBatchQueryRequest,
+  AiBatchQueryResponse,
   AiHealthResponse,
   ResearchRunSummary,
   ResearchRunDetail,
@@ -27,17 +29,21 @@ export class ApiError extends Error {
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const headers = new Headers(init?.headers);
-  if (init?.body != null && !(init.body instanceof FormData) && !headers.has("Content-Type")) {
+  if (
+    init?.body != null &&
+    !(init.body instanceof FormData) &&
+    !headers.has("Content-Type")
+  ) {
     headers.set("Content-Type", "application/json");
   }
   const response = await fetch(`${baseUrl}${path}`, {
     ...init,
     headers,
   });
-  const body = (await response.json().catch(() => { if (init?.signal?.aborted) throw init.signal.reason; return {}; })) as Record<
-    string,
-    unknown
-  >;
+  const body = (await response.json().catch(() => {
+    if (init?.signal?.aborted) throw init.signal.reason;
+    return {};
+  })) as Record<string, unknown>;
   if (!response.ok) {
     throw new ApiError(
       String(body.message ?? "Request failed."),
@@ -54,15 +60,42 @@ export const daoApi = {
   stageArtefacts: (files: File[]) => {
     const body = new FormData();
     files.forEach((file) => body.append("files", file));
-    return request<{ items: Artefact[] }>("/artefacts/stage", { method: "POST", body });
+    return request<{ items: Artefact[] }>("/artefacts/stage", {
+      method: "POST",
+      body,
+    });
   },
-  createManifest: (input: {daoId:string;title:string;purpose:string;description:string;proposalType:string;options:string[];startsAt:string;endsAt:string;evidenceIds:string[]}) =>
-    request<{metadataURI:string;metadataHash:string;hashAlgorithm:string}>("/artefacts/manifest", { method:"POST", body:JSON.stringify(input) }),
-  setArtefactState: (evidenceIds:string[], state:"PENDING_CHAIN"|"FAILED"|"ORPHANED") =>
-    request("/artefacts/state", { method:"POST", body:JSON.stringify({evidenceIds,state}) }),
-  linkArtefacts: (proposalId:string, evidenceIds:string[]) =>
-    request<Artefact[]>(`/proposals/${proposalId}/artefacts/link`, { method:"POST", body:JSON.stringify({evidenceIds}) }),
-  listArtefacts: (proposalId:string) => request<Artefact[]>(`/proposals/${proposalId}/artefacts`),
+  createManifest: (input: {
+    daoId: string;
+    title: string;
+    purpose: string;
+    description: string;
+    proposalType: string;
+    options: string[];
+    startsAt: string;
+    endsAt: string;
+    evidenceIds: string[];
+  }) =>
+    request<{
+      metadataURI: string;
+      metadataHash: string;
+      hashAlgorithm: string;
+    }>("/artefacts/manifest", { method: "POST", body: JSON.stringify(input) }),
+  setArtefactState: (
+    evidenceIds: string[],
+    state: "PENDING_CHAIN" | "FAILED" | "ORPHANED",
+  ) =>
+    request("/artefacts/state", {
+      method: "POST",
+      body: JSON.stringify({ evidenceIds, state }),
+    }),
+  linkArtefacts: (proposalId: string, evidenceIds: string[]) =>
+    request<Artefact[]>(`/proposals/${proposalId}/artefacts/link`, {
+      method: "POST",
+      body: JSON.stringify({ evidenceIds }),
+    }),
+  listArtefacts: (proposalId: string) =>
+    request<Artefact[]>(`/proposals/${proposalId}/artefacts`),
   listProposals: () => request<{ items: Proposal[] }>("/proposals?limit=100"),
   getProposal: (id: string) => request<Proposal>(`/proposals/${id}`),
   createProposal: (input: CreateProposalInput, actor: string) =>
@@ -78,10 +111,13 @@ export const daoApi = {
       },
     ),
   publishProposal: (id: string, actor: string) =>
-    request<{ transactionHash: string; onChainProposalId: string }>(`/proposals/${id}/publish`, {
-      method: "POST",
-      headers: actorHeaders(actor),
-    }),
+    request<{ transactionHash: string; onChainProposalId: string }>(
+      `/proposals/${id}/publish`,
+      {
+        method: "POST",
+        headers: actorHeaders(actor),
+      },
+    ),
   cancelProposal: (id: string, actor: string) =>
     request(`/proposals/${id}/cancel`, {
       method: "POST",
@@ -143,7 +179,20 @@ export const daoApi = {
       method: "POST",
       body: JSON.stringify(input),
     }),
-  listResearchRuns: (query = "") => request<{items:ResearchRunSummary[];page:number;limit:number;hasMore:boolean}>(`/research/runs${query?`?${query}`:""}`),
-  getResearchRun: (runId:string) => request<ResearchRunDetail>(`/research/runs/${encodeURIComponent(runId)}`),
-  researchRunsExportUrl: (query:string,format:"csv"|"json") => `${baseUrl}/research/runs/export?${query?`${query}&`:""}format=${format}`,
+  aiBatchQuery: (input: AiBatchQueryRequest) =>
+    request<AiBatchQueryResponse>("/ai/query/batch", {
+      method: "POST",
+      body: JSON.stringify(input),
+    }),
+  listResearchRuns: (query = "") =>
+    request<{
+      items: ResearchRunSummary[];
+      page: number;
+      limit: number;
+      hasMore: boolean;
+    }>(`/research/runs${query ? `?${query}` : ""}`),
+  getResearchRun: (runId: string) =>
+    request<ResearchRunDetail>(`/research/runs/${encodeURIComponent(runId)}`),
+  researchRunsExportUrl: (query: string, format: "csv" | "json") =>
+    `${baseUrl}/research/runs/export?${query ? `${query}&` : ""}format=${format}`,
 };

@@ -1,5 +1,5 @@
 import { basename, extname } from 'node:path';
-import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { canonicalSerialize, linkProposalManifest, PROPOSAL_MANIFEST_SCHEMA, sha256 } from '@dao-platform/database';
 import { PostgresService } from '../database/postgres.service';
@@ -12,9 +12,10 @@ const mediaTypes: Record<string, string> = { '.pdf': 'application/pdf', '.txt': 
 
 @Injectable()
 export class ResearchService {
+  private readonly logger = new Logger(ResearchService.name);
   private readonly maxSize: number;
   private readonly maxFiles: number;
-  constructor(private readonly postgres: PostgresService, config: ConfigService, private readonly storage: LocalArtefactStorage) {
+  constructor(private readonly postgres: PostgresService, private readonly config: ConfigService, private readonly storage: LocalArtefactStorage) {
     this.maxSize = config.get<number>('ARTEFACT_MAX_FILE_SIZE', 10_485_760);
     this.maxFiles = config.get<number>('ARTEFACT_MAX_FILES', 10);
   }
@@ -126,7 +127,30 @@ export class ResearchService {
     for (const id of evidenceIds) await this.download(id);
     try { await this.db.transaction().execute(tx => linkProposalManifest(tx, proposalId, evidenceIds)); }
     catch (error) { throw new BadRequestException(error instanceof Error ? error.message : 'Unable to link artefacts.'); }
+    await this.indexLinkedPdfs(evidenceIds);
     return this.listProposalArtefacts(proposalId);
+  }
+
+  private async indexLinkedPdfs(evidenceIds: string[]) {
+    const origin = this.config.get<string>('AI_SERVER_URL');
+    const token = this.config.get<string>('AI_SERVER_TOKEN', '');
+    if (!origin || !token) return;
+    let endpoint: URL;
+    try { endpoint = new URL('/rag/upload-pdf', origin); } catch { return; }
+    if (endpoint.protocol !== 'http:' || !['127.0.0.1', 'localhost', '[::1]'].includes(endpoint.hostname)) return;
+    for (const id of evidenceIds) {
+      try {
+        const file = await this.download(id);
+        if (file.mediaType !== 'application/pdf') continue;
+        const form = new FormData();
+        form.append('file', new Blob([Uint8Array.from(file.bytes)], { type: file.mediaType }), file.filename);
+        const response = await fetch(endpoint, { method: 'POST', headers: { Authorization: `Bearer ${token}` },
+          body: form, redirect: 'error', signal: AbortSignal.timeout(180_000) });
+        if (!response.ok) throw new Error(`index endpoint returned ${response.status}`);
+      } catch {
+        this.logger.warn('Verified linked PDF could not be indexed by Python AI; the link was saved.');
+      }
+    }
   }
 
   async createDataset(input: CreateDatasetDto) {

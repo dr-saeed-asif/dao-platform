@@ -57,7 +57,7 @@ export function AnalysisResultModal({
           <div className="result-modal-actions">
             <CopyAnswerButton answer={model.answer} />
             <ExportMenu model={model} />
-            <OpenFullReportButton runId={model.runId} />
+            <OpenFullReportButton runId={model.runId} model={model} />
             <button
               type="button"
               className="modal-close"
@@ -78,7 +78,7 @@ export function AnalysisResultModal({
                 technical trace, and detailed analysis.
               </p>
             </div>
-            <OpenFullReportButton runId={model.runId} />
+            <OpenFullReportButton runId={model.runId} model={model} />
           </div>
         </div>
       </div>

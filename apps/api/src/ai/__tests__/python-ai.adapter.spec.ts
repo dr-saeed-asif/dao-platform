@@ -1,5 +1,5 @@
-import { normalizePythonAnswer, queryPythonAi } from '../python-ai.adapter';
-import type { AiQueryRequest } from '../ai.dto';
+import { normalizePythonAnswer, queryPythonAi, queryPythonAiBatch } from '../python-ai.adapter';
+import type { AiBatchQueryRequest, AiQueryRequest } from '../ai.dto';
 
 const request: AiQueryRequest = { question: 'Summarize this proposal.', proposalId: 'local-1', system: 'hybrid' };
 describe('Python AI integration', () => {
@@ -46,5 +46,46 @@ describe('Python AI integration', () => {
     global.fetch = jest.fn().mockResolvedValue({ ok: false, status: 401, json: async () => ({}) });
     await expect(queryPythonAi(request, 'http://127.0.0.1:8001', 'incorrect', AbortSignal.timeout(1000)))
       .rejects.toThrow('credentials do not match');
+  });
+
+  it('forwards five and ten questions through the server-only batch bridge', async () => {
+    const body = (count: number): AiBatchQueryRequest & { daoId: string } => ({
+      daoId: 'dao-1', proposalId: 'proposal-1', system: 'hybrid',
+      questions: Array.from({ length: count }, (_, index) => `Question ${index + 1}?`),
+    });
+    global.fetch = jest.fn().mockImplementation(async (_url, init) => {
+      const sent = JSON.parse(init.body as string);
+      return { ok: true, json: async () => ({ batchId: 'batch-1', system: 'hybrid',
+        status: 'completed', scope: { dao_id: sent.daoId, proposal_id: sent.proposalId },
+        results: sent.questions.map((question: string, index: number) => ({ questionId: `q${index + 1}`, question,
+          answer: 'Answer', citations: [], evidence: [], errors: [], metrics: {} })),
+        evidence: [], errors: [], toolErrors: [], metrics: {}, toolTraces: [] }) };
+    });
+    for (const count of [5, 10]) {
+      const requestBody = body(count);
+      const response = await queryPythonAiBatch(requestBody, 'http://127.0.0.1:8001',
+        'server-only-token', AbortSignal.timeout(1000));
+      expect(response.results).toHaveLength(count);
+    }
+    const lastCall = (global.fetch as jest.Mock).mock.calls.at(-1);
+    expect(lastCall[1].headers.Authorization).toBe('Bearer server-only-token');
+    expect(JSON.parse(lastCall[1].body).questions).toHaveLength(10);
+  });
+
+  it('accepts a 200-character question and rejects 201 before the Python request', async () => {
+    const requestBody: AiBatchQueryRequest & { daoId: string } = {
+      daoId: 'dao-1', proposalId: 'proposal-1', system: 'hybrid', questions: ['x'.repeat(200)],
+    };
+    global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({
+      batchId: 'batch-1', system: 'hybrid', status: 'completed', scope: { dao_id: 'dao-1', proposal_id: 'proposal-1' },
+      results: [{ questionId: 'q1', question: requestBody.questions[0], answer: 'Answer',
+        citations: [], evidence: [], errors: [], metrics: {} }],
+      evidence: [], errors: [], toolErrors: [], metrics: {}, toolTraces: [],
+    }) });
+    await expect(queryPythonAiBatch(requestBody, 'http://127.0.0.1:8001', 'server-token', AbortSignal.timeout(1000)))
+      .resolves.toMatchObject({ batchId: 'batch-1' });
+    await expect(queryPythonAiBatch({ ...requestBody, questions: ['x'.repeat(201)] },
+      'http://127.0.0.1:8001', 'server-token', AbortSignal.timeout(1000))).rejects.toThrow('200 characters');
+    expect(global.fetch).toHaveBeenCalledTimes(1);
   });
 });

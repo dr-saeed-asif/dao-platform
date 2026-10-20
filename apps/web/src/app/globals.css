@@ -2434,6 +2434,27 @@ td code {
 }
 
 /* ===== AI Assistant form (presentation only) ===== */
+.ai-mode-switch,.batch-question-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.batch-question-editor{display:grid;gap:12px}
+.batch-question-field{display:grid;gap:6px;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fbfdff}
+.batch-question-field small,.batch-progress-list{color:var(--muted);font-size:12px}
+.batch-question-field .button{justify-self:end}
+.batch-progress-list{margin:4px 0;padding-left:22px}
+.batch-answer-list{display:grid;gap:12px}
+.batch-answer-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fbfdff;min-width:0}
+.batch-answer-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.batch-question-text{font-weight:700;color:var(--ink)}
+.batch-answer-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}
+.batch-citations{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.batch-citation{border:1px solid #dbe4f0;border-radius:999px;padding:4px 8px;background:#fff}
+.batch-evidence-details{margin-top:10px}
+.batch-evidence-list{max-height:360px;overflow:auto}
+.batch-evidence-list pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#f1f5fb;border-radius:8px;padding:10px}
+.batch-question-error{margin-top:10px}
+.batch-timeline-track{position:relative;height:10px;min-width:140px;background:#e8eef8;border-radius:99px;overflow:hidden}
+.batch-timeline-track span{position:absolute;top:0;height:100%;border-radius:99px;background:#2563eb}
+.batch-evaluation{min-width:0}
+@media(max-width:640px){.batch-answer-card{padding:12px}.batch-answer-heading{align-items:flex-start;flex-direction:column}.ai-mode-switch .button{flex:1}.batch-citations{align-items:flex-start;flex-direction:column}}
 .ai-form .form-grid {
   align-items: start;
   gap: 18px;
@@ -2514,6 +2535,7 @@ td code {
   overflow: hidden;
 }
 .result-modal-head {
+  position: relative;
   flex: none;
   display: flex;
   justify-content: space-between;
@@ -2557,6 +2579,11 @@ td code {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+}
+.result-modal-actions .modal-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
 }
 .result-modal-actions .btn-create {
   padding: 10px 16px;
@@ -3222,6 +3249,13 @@ td code {
   .result-modal-body {
     padding-left: 16px;
     padding-right: 16px;
+  }
+  .result-modal-head {
+    padding-right: 56px;
+  }
+  .result-modal-actions .modal-close {
+    top: 16px;
+    right: 16px;
   }
   .result-tabs {
     margin-left: -16px;

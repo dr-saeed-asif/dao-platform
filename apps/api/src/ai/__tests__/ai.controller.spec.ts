@@ -7,6 +7,8 @@ import { VectorSearchService, SearchResult } from '../vector-search.service';
 import { PostgresService } from '../../database/postgres.service';
 import { ResearchRunsService } from '../../research/research-runs.service';
 import { MultiAgentSystem } from '../agents/multi-agent.system';
+import { ConfigService } from '@nestjs/config';
+import { AiBatchQueryRequest } from '../ai.dto';
 
 describe('AiController', () => {
   let controller: AiController;
@@ -72,6 +74,7 @@ describe('AiController', () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AiController],
       providers: [
+        { provide: ConfigService, useValue: { get: jest.fn((_key: string, fallback?: unknown) => fallback) } },
         { provide: OllamaClient, useValue: mockOllama },
         { provide: LlmOnlySystem, useValue: mockLlmOnly },
         { provide: VectorRagSystem, useValue: mockVectorRag },
@@ -83,6 +86,11 @@ describe('AiController', () => {
     }).compile();
 
     controller = module.get<AiController>(AiController);
+  });
+
+  it('keeps the batch DTO as runtime metadata for Nest validation', () => {
+    const types = Reflect.getMetadata('design:paramtypes', AiController.prototype, 'batchQuery');
+    expect(types?.[0]).toBe(AiBatchQueryRequest);
   });
 
   describe('health', () => {

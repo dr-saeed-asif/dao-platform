@@ -7,6 +7,8 @@ import {
 import { AppModule } from './app.module';
 import { configureApp } from './configure-app';
 import multipart from '@fastify/multipart';
+import { logStartupHealth } from './health/startup-health';
+import { PostgresService } from './database/postgres.service';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -26,6 +28,7 @@ async function bootstrap(): Promise<void> {
   app.enableShutdownHooks();
 
   await app.listen(port, '0.0.0.0');
+  await logStartupHealth(configService, app.get(PostgresService), port);
 }
 
 void bootstrap();

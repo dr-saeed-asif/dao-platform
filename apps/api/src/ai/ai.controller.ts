@@ -1,9 +1,10 @@
 import { withRequestBudget, checkRequestBudget, analysisTimeoutMs, AI_PERSISTENCE_GRACE_MS, requestSignal } from './request-budget';
 import { ConfigService } from '@nestjs/config';
-import { queryPythonAi } from './python-ai.adapter';
+import { queryPythonAi, queryPythonAiBatch } from './python-ai.adapter';
 import type { FastifyRequest } from 'fastify';
 import {
   Controller,
+  Logger,
   Get,
   Post,
   Body,
@@ -13,13 +14,15 @@ import {
   HttpException,
   Req,
   ForbiddenException,
+  NotFoundException,
+  ServiceUnavailableException,
 } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { OllamaClient } from './ollama.client';
 import { LlmOnlySystem } from './llm-only.system';
 import { VectorRagSystem } from './vector-rag.system';
 import { PostgresService } from '../database/postgres.service';
-import { AiHealthResponse, type AiQueryRequest, type AiQueryResponse } from './ai.dto';
+import { AiBatchQueryRequest, type AiHealthResponse, type AiBatchQueryResponse, type AiQueryRequest, type AiQueryResponse } from './ai.dto';
 import { MultiAgentSystem } from './agents/multi-agent.system';
 import type { MultiAgentResponse } from './agents/agent.types';
 import type { AgentContext } from './agents/agent.types';
@@ -28,6 +31,8 @@ import { LiveChainQuery, asksLiveChain } from './live-chain-query';
 
 @Controller('ai')
 export class AiController {
+  private readonly logger = new Logger(AiController.name);
+
   constructor(
     private readonly ollama: OllamaClient,
     private readonly llmOnly: LlmOnlySystem,
@@ -74,6 +79,7 @@ export class AiController {
   @Post('query')
   @HttpCode(HttpStatus.OK)
   async query(@Body() request: AiQueryRequest, @Req() httpRequest?: FastifyRequest): Promise<AiQueryResponse | MultiAgentResponse> {
+    this.logger.log(`AI single request received: system=${request.system} proposalId=${request.proposalId ?? 'missing'} question=${JSON.stringify(request.question)}`);
     if (this.config.get<string>('AI_SERVER_URL')) {
       const ip = httpRequest?.ip;
       const origin = httpRequest?.headers.origin;
@@ -86,6 +92,7 @@ export class AiController {
     try {
       return await withRequestBudget(async () => {
         const { response, context } = await withRequestBudget(() => this.analyze(request), timeoutMs);
+        this.logger.log(`AI single analysis returned: runId=${'runId' in response ? response.runId : 'unknown'} evidenceCount=${'evidence' in response ? response.evidence.length : 0} answerPresent=${'answer' in response ? Boolean(response.answer) : false}`);
         checkRequestBudget();
         const persistenceStarted = performance.now();
         await this.runs.record(request, context, response);
@@ -99,25 +106,45 @@ export class AiController {
     }
   }
 
+  @Post('query/batch')
+  @HttpCode(HttpStatus.OK)
+  async batchQuery(@Body() request: AiBatchQueryRequest, @Req() httpRequest?: FastifyRequest): Promise<AiBatchQueryResponse> {
+    this.logger.log(`AI batch request received: system=${request.system} proposalId=${request.proposalId} questions=${JSON.stringify(request.questions)}`);
+    const origin = this.config.get<string>('AI_SERVER_URL');
+    if (!origin) throw new ServiceUnavailableException('Python AI batch service is not configured.');
+    const ip = httpRequest?.ip;
+    const browserOrigin = httpRequest?.headers.origin;
+    if (!ip || !['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(ip) ||
+        (browserOrigin && !['http://127.0.0.1:3001', 'http://localhost:3001'].includes(browserOrigin)))
+      throw new ForbiddenException('Python AI is currently available through local CyberDAO only.');
+    const proposal = await this.findProposal(request.proposalId);
+    if (!proposal) throw new NotFoundException('Selected proposal was not found.');
+    const result = await queryPythonAiBatch({ ...request, daoId: proposal.dao_id, proposalId: proposal.id,
+      topK: request.topK ?? 4 }, origin, this.config.get<string>('AI_SERVER_TOKEN', ''),
+      AbortSignal.any([AbortSignal.timeout(600_000), ...(requestSignal() ? [requestSignal()!] : [])]));
+    this.logger.log(`AI batch response received: batchId=${result.batchId} status=${result.status} questions=${result.results.length} tools=${result.toolTraces.map((tool) => String(tool.tool ?? 'unknown')).join(',')} sourceCount=${result.evidence.length} errors=${result.errors.length + result.toolErrors.length}`);
+    return result;
+  }
+
   private async analyze(request: AiQueryRequest): Promise<{ response: AiQueryResponse | MultiAgentResponse; context?: AgentContext }> {
     const runId = randomUUID();
     const startTime = Date.now();
     let context: AgentContext | undefined;
 
-    if (asksLiveChain(request.question)) {
-      context = await this.resolveAgentContext(request);
-      if (!this.liveChain) throw new Error('Live CyberChain tool is unavailable.');
-      return { response: await this.liveChain.answer(request, context), context };
-    }
-
     const pythonOrigin = this.config.get<string>('AI_SERVER_URL');
-    if (pythonOrigin) {
+    if (pythonOrigin && ['hybrid', 'vector-rag'].includes(request.system)) {
       context = await this.resolveAgentContext(request);
       const response = await queryPythonAi(
         request, pythonOrigin, this.config.get<string>('AI_SERVER_TOKEN', ''),
         AbortSignal.any([AbortSignal.timeout(180_000), ...(requestSignal() ? [requestSignal()!] : [])]),
       );
       return { response, context };
+    }
+
+    if (asksLiveChain(request.question)) {
+      context = await this.resolveAgentContext(request);
+      if (!this.liveChain) throw new Error('Live CyberChain tool is unavailable.');
+      return { response: await this.liveChain.answer(request, context), context };
     }
 
     try {

@@ -15,6 +15,7 @@ import * as artefactDatasetCoreMigration from "./postgres-migrations/artefact-da
 import * as proposalArtefactLinksMigration from "./postgres-migrations/proposal-artefact-links.migration.js";
 import * as documentChunksMigration from "./postgres-migrations/document-chunks.migration.js";
 import * as agentRunMetadataMigration from "./postgres-migrations/agent-run-metadata.migration.js";
+import * as restoreDocumentChunksMigration from "./postgres-migrations/restore-document-chunks.migration.js";
 
 export type PostgresDatabase = Kysely<PostgresDatabaseSchema>;
 
@@ -28,6 +29,7 @@ class PostgresMigrationProvider implements MigrationProvider {
       "005_proposal_artefact_links": proposalArtefactLinksMigration,
       "006_document_chunks": documentChunksMigration,
       "007_agent_run_metadata": agentRunMetadataMigration,
+      "008_restore_document_chunks": restoreDocumentChunksMigration,
     };
   }
 }

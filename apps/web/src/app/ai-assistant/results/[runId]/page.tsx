@@ -52,12 +52,29 @@ export default function AnalysisReportPage() {
   const params = useParams<{ runId: string }>();
   const runId = params.runId;
   const [detail, setDetail] = useState<ResearchRunDetail | null>(null);
+  const [batchReport, setBatchReport] = useState<ResultModel | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let active = true;
     setLoading(true);
+    setBatchReport(null);
+    setDetail(null);
+    setError(null);
+    const key = `cyberdao-batch-report:${runId}`;
+    const saved = sessionStorage.getItem(key);
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved) as ResultModel;
+        if (parsed.runId === runId && parsed.batch) {
+          setBatchReport(parsed);
+          setError(null);
+          setLoading(false);
+          return () => { active = false; };
+        }
+      } catch { /* Fall back to persisted single-run report. */ }
+    }
     daoApi
       .getResearchRun(runId)
       .then((result) => {
@@ -80,7 +97,7 @@ export default function AnalysisReportPage() {
     };
   }, [runId]);
 
-  const model = useMemo(() => (detail ? toModel(detail) : null), [detail]);
+  const model = useMemo(() => batchReport ?? (detail ? toModel(detail) : null), [batchReport, detail]);
 
   return (
     <main className="dashboard-content">
@@ -108,8 +125,8 @@ export default function AnalysisReportPage() {
               <span className="eyebrow">Analysis Result</span>
               <h2>{model.proposalTitle}</h2>
               <p>
-                Chat {detail?.models.chat ?? "—"} · Embedding{" "}
-                {detail?.models.embedding ?? "—"}
+                Chat {detail?.models.chat ?? model.batch?.metrics.model ?? "—"} · Embedding{" "}
+                {detail?.models.embedding ?? model.batch?.metrics.embeddingModel ?? "—"}
                 {detail?.models.embeddingDimension
                   ? ` (${detail.models.embeddingDimension})`
                   : ""}
