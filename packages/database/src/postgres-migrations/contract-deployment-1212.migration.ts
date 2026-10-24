@@ -16,7 +16,7 @@ export async function up(db: Kysely<PostgresDatabaseSchema>): Promise<void> {
       deployment_block_hash:
         "0x942427bcde6a4b59e71e41925192eb1089ca25bd77ab334b3cb14baa521686ef",
       deployment_timestamp: "2026-07-14T11:01:36.612Z",
-      initial_owner: "0xb8163f7d6d404f67a400743b90f7952d2d137b8e",
+      initial_owner: "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b",
       contract_version: null,
       abi_version: null,
       compiler_version: "0.8.36+commit.8a079791.Emscripten.clang",

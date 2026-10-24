@@ -1,45 +1,35 @@
-import { checkRequestBudget, remainingRequestMs } from '../ai/request-budget';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { sql } from 'kysely';
 import { PostgresService } from '../database/postgres.service';
-import type { AgentContext, MultiAgentResponse, ResearchSystem } from '../ai/agents/agent.types';
-import { resolveAiProviderConfig, type AiProviderConfig } from '../ai/ai-provider.config';
+import type { AiQueryResponse } from '../ai/ai.dto';
 
-type StoredSystem = ResearchSystem|'llm-only'|'vector-rag';
-type RunOutput = {models?:{chat:string;embedding:string;embeddingDimension:number};runId:string;system:StoredSystem;answer:string;latencyMs:number;evidence?:any[];retrieval?:Array<{chunkEvidenceId:string;score:number;rank:number}>;claims?:MultiAgentResponse['claims'];verification?:MultiAgentResponse['verification'];agentsUsed?:string[];toolsUsed?:string[];agentTrace?:MultiAgentResponse['agentTrace'];abstained?:boolean;errors?:string[];inputTokens?:number;outputTokens?:number;error?:string};
+interface RunContext {localProposalId:string;onChainProposalId?:string;chainId:string;contractAddress:string}
+type RunOutput = AiQueryResponse;
 export interface RunFilters {proposalId?:string;system?:string;verificationStatus?:string;from?:string;to?:string;search?:string;page?:number;limit?:number}
 
 @Injectable()
 export class ResearchRunsService {
-  private readonly ai: AiProviderConfig;
-  constructor(private readonly postgres:PostgresService,config:ConfigService){this.ai=resolveAiProviderConfig(config);}
+  constructor(private readonly postgres:PostgresService){}
   private get db(){return this.postgres.database;}
 
-  async record(request:{question:string;proposalId?:string;topK?:number;datasetVersion?:string;policyVersion?:string},context:AgentContext|undefined,output:RunOutput,error?:string){
+  async record(request:{question:string;proposalId:string;topK?:number},context:RunContext,output:RunOutput,error?:string){
     const evidenceIds=[...new Set((output.evidence??[]).flatMap((item:any)=>[item.evidenceId,item.chunkEvidenceId,item.artefactEvidenceId].filter(Boolean)))];
     const verificationStatus=output.verification?.status;
     const inputTokens=output.inputTokens??sumTraceTokens(output.agentTrace,'inputTokens');
     const outputTokens=output.outputTokens??sumTraceTokens(output.agentTrace,'outputTokens');
-    const configuration={provider:this.ai.provider,proposalId:context?.localProposalId??request.proposalId,onChainProposalId:context?.onChainProposalId,chainId:context?.chainId,contractAddress:context?.contractAddress,topK:request.topK??5,datasetVersion:request.datasetVersion,policyVersion:request.policyVersion,verificationStatus,evidenceIds,agentsUsed:output.agentsUsed??[],toolsUsed:output.toolsUsed??[],agentTrace:output.agentTrace??[],abstained:output.abstained??false,errors:output.errors??(error?[error]:[])};
+    const configuration={provider:'api-ai-server',proposalId:context.localProposalId,onChainProposalId:context.onChainProposalId,chainId:context.chainId,contractAddress:context.contractAddress,topK:request.topK??4,verificationStatus,evidenceIds,agentsUsed:output.agentsUsed??[],toolsUsed:output.toolsUsed??[],agentTrace:output.agentTrace??[],abstained:output.abstained??false,errors:output.errors??(error?[error]:[])};
     try{
-      checkRequestBudget();
       await this.db.transaction().execute(async tx=>{
-        checkRequestBudget();
-        await sql`SELECT set_config('statement_timeout', ${String(Math.max(1, Math.min(750, remainingRequestMs())))}, true)`.execute(tx);
-        const run=await tx.insertInto('experiment_runs').values({run_id:output.runId,system:output.system,dataset_version_id:null,policy_id:null,git_commit:'dev',chat_model:output.models?.chat??`${this.ai.provider}:${this.ai.chatModel}`,embedding_model:output.models?.embedding??this.ai.embeddingIdentity,embedding_dimension:output.models?.embeddingDimension??this.ai.embeddingDimension,seed:BigInt(0),configuration:JSON.stringify(configuration),started_at:new Date(Date.now()-output.latencyMs),completed_at:new Date(),status:error||output.error?'ERROR':'COMPLETED'}).returning('id').executeTakeFirstOrThrow();
-        const question=await tx.insertInto('questions').values({question_id:`q_${output.runId}`,proposal_id:context?.onChainProposalId&&/^\d+$/.test(context.onChainProposalId)?BigInt(context.onChainProposalId):null,category:'ai-query',question:request.question,canonical_answer:output.answer,required_evidence_ids:JSON.stringify(evidenceIds),answerable:!(output.abstained??false),dataset_version_id:null,metadata:JSON.stringify({proposalId:context?.localProposalId,onChainProposalId:context?.onChainProposalId,system:output.system})}).returning('id').executeTakeFirstOrThrow();
+        const run=await tx.insertInto('experiment_runs').values({run_id:output.runId,system:output.system,dataset_version_id:null,policy_id:null,git_commit:'dev',chat_model:output.models?.chat??null,embedding_model:output.models?.embedding??null,embedding_dimension:output.models?.embeddingDimension??null,seed:BigInt(0),configuration:JSON.stringify(configuration),started_at:new Date(Date.now()-output.latencyMs),completed_at:new Date(),status:error||output.error?'ERROR':'COMPLETED'}).returning('id').executeTakeFirstOrThrow();
+        const question=await tx.insertInto('questions').values({question_id:`q_${output.runId}`,proposal_id:context.onChainProposalId&&/^\d+$/.test(context.onChainProposalId)?BigInt(context.onChainProposalId):null,category:'ai-query',question:request.question,canonical_answer:output.answer,required_evidence_ids:JSON.stringify(evidenceIds),answerable:!(output.abstained??false),dataset_version_id:null,metadata:JSON.stringify({proposalId:context.localProposalId,onChainProposalId:context.onChainProposalId,system:output.system})}).returning('id').executeTakeFirstOrThrow();
         const answer=await tx.insertInto('answers').values({experiment_run_id:run.id,question_id:question.id,answer_text:output.answer,latency_ms:BigInt(output.latencyMs),input_tokens:inputTokens===undefined?null:BigInt(inputTokens),output_tokens:outputTokens===undefined?null:BigInt(outputTokens),error:error??output.error??null,raw_output:JSON.stringify(output)}).returning('id').executeTakeFirstOrThrow();
-        checkRequestBudget();
         const claims=(output.claims??[]).map((claim,index)=>{
-          const verified=output.verification?.claims[index];
+          const verified=output.verification?.claims?.[index] as {status?:string}|undefined;
           return {answer_id:answer.id,claim_index:index,claim_text:claim.text,evidence_ids:JSON.stringify(claim.evidenceIds),support_status:verified?.status??null,verification_details:verified?JSON.stringify(verified):null};
         });
         if(claims.length) await tx.insertInto('claims').values(claims).execute();
-        checkRequestBudget();
         const retrieval=(output.retrieval??[]).map((item,index)=>({experiment_run_id:run.id,question_id:question.id,rank:item.rank??index+1,evidence_id:item.chunkEvidenceId,retrieval_method:'vector',score:item.score,metadata:JSON.stringify({})}));
         if(retrieval.length) await tx.insertInto('retrieval_results').values(retrieval).onConflict(oc=>oc.columns(['experiment_run_id','question_id','retrieval_method','rank']).doNothing()).execute();
-        checkRequestBudget();
       });
     }catch(recordError){console.error('Failed to record AI run:',recordError);}
   }
@@ -82,7 +72,7 @@ export class ResearchRunsService {
 }
 
 function json(value:unknown):Record<string,any>{if(!value)return {};if(typeof value==='string'){try{return JSON.parse(value)}catch{return {};}}return value as Record<string,any>}
-function sumTraceTokens(trace:MultiAgentResponse['agentTrace']|undefined,key:'inputTokens'|'outputTokens'){if(!trace)return undefined;const values=trace.map(item=>item[key]).filter((value):value is number=>typeof value==='number');return values.length?values.reduce((sum,value)=>sum+value,0):undefined}
+function sumTraceTokens(trace:Array<Record<string,unknown>>|undefined,key:'inputTokens'|'outputTokens'){if(!trace)return undefined;const values=trace.map(item=>item[key]).filter((value):value is number=>typeof value==='number');return values.length?values.reduce((sum,value)=>sum+value,0):undefined}
 function summary(row:any){const config=json(row.configuration),raw=json(row.raw_output);const claims=raw.claims??[];const verified=raw.verification?.claims??[];const inputTokens=row.input_tokens==null?undefined:Number(row.input_tokens),outputTokens=row.output_tokens==null?undefined:Number(row.output_tokens);return {runId:row.run_id,createdAt:row.created_at,proposalId:config.proposalId??null,onChainProposalId:config.onChainProposalId??row.proposal_id??null,system:row.system,question:row.question,verificationStatus:config.verificationStatus??null,abstained:Boolean(config.abstained),evidenceCount:(config.evidenceIds??[]).length,retrievalCount:(raw.retrieval??[]).length,supportedClaims:verified.filter((item:any)=>item.status==='SUPPORTED').length,unsupportedClaims:verified.filter((item:any)=>item.status==='UNSUPPORTED').length,latencyMs:Number(row.latency_ms??0),inputTokens,outputTokens,tokens:inputTokens===undefined||outputTokens===undefined?null:inputTokens+outputTokens,status:row.status,error:row.error??null,answer:row.answer_text??'',agentsUsed:config.agentsUsed??[]};}
 function exportRow(item:any){return {runId:item.runId,timestamp:item.createdAt,proposalId:item.proposalId,question:item.question,system:item.system,verificationStatus:item.verificationStatus,abstained:item.abstained,evidenceCount:item.evidenceCount,retrievalCount:item.retrievalCount,supportedClaims:item.supportedClaims,unsupportedClaims:item.unsupportedClaims,latencyMs:item.latencyMs,tokens:item.tokens,chatModel:item.models.chat,embeddingModel:item.models.embedding,datasetVersion:item.datasetVersion,policyVersion:item.policyVersion,error:item.error};}
 function csv(value:unknown){const text=value==null?'':String(value);return /[",\n]/.test(text)?`"${text.replace(/"/g,'""')}"`:text}

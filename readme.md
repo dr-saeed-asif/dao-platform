@@ -2,10 +2,10 @@
 
 CyberDAO Platform is a full-stack governance application for CyberChain. It
 combines a CyberChain smart contract with a NestJS REST API, a Next.js DApp,
-SQLite persistence, and a blockchain event indexer.
+PostgreSQL persistence, an external AI service, and a blockchain event indexer.
 
 The blockchain is the source of truth for governance authorization and voting.
-SQLite is the indexed read model used for fast screens, reporting, transaction
+PostgreSQL is the indexed read model used for fast screens, reporting, transaction
 history, and synchronization state.
 
 ## Project purpose
@@ -16,11 +16,11 @@ The project demonstrates a maintainable DAO workflow in which:
 - eligible member wallets are assigned to individual proposals;
 - assigned members sign their own votes with MetaMask or CyberChain Wallet;
 - proposals, assignments, votes, and lifecycle actions are recorded on-chain;
-- confirmed transactions and events are indexed into SQLite;
+- confirmed transactions and events are indexed into PostgreSQL;
 - the DApp reads indexed data instead of repeatedly querying the blockchain.
 
 It uses clean architecture so domain and application rules do not depend on
-NestJS, SQLite, Next.js, or the CyberChain SDK.
+NestJS, PostgreSQL, Next.js, or the CyberChain SDK.
 
 ## Screenshots
 
@@ -40,25 +40,18 @@ current governance status, voting options, and deadlines.
 
 ## Main use cases
 
-### Fresh blockchain answers
+### AI assistant
 
-In the AI assistant, ask "Cross-check this proposal with the blockchain",
-"Answer the votes from onchain", or "How many proposals are on CyberChain?".
-These requests invoke the read-only `fetchLiveCyberChain` tool before document
-or cached-record analysis. It queries the configured CyberChain RPC on every
-request, pins contract reads to one block, and includes the block hash and fetch
-time. Proposal state, vote totals, option totals, current membership checks, and
-explicit transaction receipts come from RPC. Cross-checks compare the fresh
-snapshot with separately labelled database records and report differences.
+The Next.js dashboard sends AI requests to the NestJS API. Nest validates the
+request, resolves the selected proposal to a trusted DAO scope, and forwards it
+to `api-ai-server`. The external service owns model providers, agents, tools,
+RAG, embeddings, citations, and blockchain-aware analysis. Nest does not run a
+local LLM or fall back to a native agent implementation.
 
-Event/timeline requests fetch at most the latest 1,000 blocks and label that
-coverage; they do not claim to list complete history. Paste a transaction hash
-to inspect a specific older transaction. Contract overview requests also list
-the latest 10 on-chain proposals by ID with live state and counts.
-RPC errors produce an abstention,
-never a cached answer labelled as live. The tool uses no signing keys and
-submits no transactions. On-chain proposal totals cover the configured
-governance contract across all DAOs and exclude unpublished drafts.
+Linked proposal PDFs are uploaded to `api-ai-server` for indexing. Single-query
+responses are normalized for the frontend and recorded in the research-run
+history; batch responses are returned directly and are not persisted as single
+runs.
 
 ### Administrator
 
@@ -128,7 +121,7 @@ The current governance contract is deployed on CyberChain network `1212`.
 Contract: CyberDAOGovernance
 Address:  0x51b43885899bd0301c2beea89addc9d876145d21
 Block:    15463875
-Owner:    0xb8163f7d6d404f67a400743b90f7952d2d137b8e
+Owner:    0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b
 ```
 
 Deployment evidence is stored in
@@ -187,7 +180,7 @@ Edit the root `.env` file. The required variables are:
 |---|---|---|
 | `NODE_ENV` | Runtime environment | `development` |
 | `PORT` | REST API port | `3000` |
-| `DATABASE_URL` | SQLite database URL | `file:./data/dao.db` |
+| `POSTGRES_URL` | PostgreSQL connection URL | `postgresql://user:pass@localhost:5432/db` |
 | `CYBERCHAIN_RPC_URL` | CyberChain JSON-RPC endpoint | `http://cyberchain-bc.bisite.es:8545` |
 | `CYBERCHAIN_CHAIN_ID` | CyberChain network/chain ID | `1212` |
 | `GOVERNANCE_CONTRACT_ADDRESS` | Deployed governance contract | `0x51b43885899bd0301c2beea89addc9d876145d21` |
@@ -204,6 +197,8 @@ Edit the root `.env` file. The required variables are:
 | `MLDSA_LEVEL` | ML-DSA security level | `44`, `65`, or `87` |
 | `EXPECTED_SENDER_ADDRESS` | Safety check for the derived backend signer | Derived mixed address |
 | `JWT_SECRET` | Future/production authentication secret | Long random secret |
+| `AI_SERVER_URL` | Local `api-ai-server` origin | `http://127.0.0.1:8001` |
+| `AI_SERVER_TOKEN` | Server-to-server bearer token | Secret; never commit |
 
 The private keys in `.env` are used only by the backend service for the
 currently server-submitted administrator contract operations. Member votes are
@@ -248,7 +243,7 @@ Run the migrations from the repository root:
 npm run db:migrate --workspace=@dao-platform/database
 ```
 
-The default database is created at `data/dao.db`.
+The migrations are applied to the database configured by `POSTGRES_URL`.
 
 ## Run the project
 

@@ -1,4 +1,33 @@
-import { ArrayMaxSize, ArrayMinSize, IsArray, IsIn, IsInt, IsOptional, IsString, Matches, Max, MaxLength, Min, MinLength } from 'class-validator';
+import {
+  ArrayMaxSize,
+  ArrayMinSize,
+  IsArray,
+  IsIn,
+  IsInt,
+  IsOptional,
+  IsString,
+  Matches,
+  Max,
+  MaxLength,
+  Min,
+  MinLength,
+} from 'class-validator';
+
+export type AiQuerySystem = 'hybrid' | 'vector-rag';
+
+export class AiQueryRequest {
+  @IsString() @Matches(/\S/) @MinLength(3) @MaxLength(200)
+  question!: string;
+
+  @IsString() @MinLength(1) @MaxLength(120)
+  proposalId!: string;
+
+  @IsIn(['hybrid', 'vector-rag'])
+  system!: AiQuerySystem;
+
+  @IsOptional() @IsInt() @Min(1) @Max(8)
+  topK?: number;
+}
 
 export class AiBatchQueryRequest {
   @IsString() @MinLength(1) @MaxLength(120)
@@ -7,7 +36,7 @@ export class AiBatchQueryRequest {
   @IsIn(['hybrid', 'vector-rag', 'fixed-workflow'])
   system!: 'hybrid' | 'vector-rag' | 'fixed-workflow';
 
-  @IsArray() @ArrayMinSize(1) @ArrayMaxSize(10) @IsString({ each: true }) @Matches(/\S/, { each: true }) @MinLength(1, { each: true }) @MaxLength(200, { each: true })
+  @IsArray() @ArrayMinSize(1) @ArrayMaxSize(10) @IsString({ each: true }) @Matches(/\S/, { each: true }) @MinLength(3, { each: true }) @MaxLength(200, { each: true })
   questions!: string[];
 
   @IsOptional() @IsInt() @Min(1) @Max(8)
@@ -25,8 +54,13 @@ export interface AiBatchQueryResponse {
   combinedEvidence?: unknown[];
   combinedErrors?: Array<Record<string, unknown>>;
   results: Array<{
-    questionId: string; question: string; answer: string; status: string;
-    citations: Array<Record<string, unknown>>; evidence: unknown[]; errors: Array<Record<string, unknown>>;
+    questionId: string;
+    question: string;
+    answer: string;
+    status: string;
+    citations: Array<Record<string, unknown>>;
+    evidence: unknown[];
+    errors: Array<Record<string, unknown>>;
     metrics: Record<string, unknown>;
   }>;
   evidence: unknown[];
@@ -36,18 +70,9 @@ export interface AiBatchQueryResponse {
   metrics: Record<string, unknown>;
 }
 
-export interface AiQueryRequest {
-  question: string;
-  proposalId?: string;
-  system: 'hybrid' | 'hybrid-verified' | 'multi-agent' | 'llm-only' | 'vector-rag';
-  topK?: number;
-  datasetVersion?: string;
-  policyVersion?: string;
-}
-
 export interface AiQueryResponse {
   runId: string;
-  system: 'hybrid' | 'hybrid-verified' | 'multi-agent' | 'llm-only' | 'vector-rag';
+  system: AiQuerySystem;
   answer: string;
   evidence: Array<{
     evidenceId?: string;
@@ -61,11 +86,7 @@ export interface AiQueryResponse {
     score: number;
     rank: number;
   }>;
-  retrieval: Array<{
-    chunkEvidenceId: string;
-    score: number;
-    rank: number;
-  }>;
+  retrieval: Array<{ chunkEvidenceId: string; score: number; rank: number }>;
   latencyMs: number;
   retrievalLatencyMs?: number;
   generationLatencyMs?: number;
@@ -73,17 +94,15 @@ export interface AiQueryResponse {
   outputTokens?: number;
   toolTraces?: Array<Record<string, unknown>>;
   models?: { chat: string; embedding: string; embeddingDimension: number };
+  claims?: Array<{ text: string; type?: string; evidenceIds: string[] }>;
+  verification?: { status: string; claims?: Array<Record<string, unknown>>; correctionRounds?: number };
+  agentsUsed?: string[];
+  toolsUsed?: string[];
+  agentTrace?: Array<Record<string, unknown>>;
+  abstained?: boolean;
+  errors?: string[];
   error?: string;
+  timings?: { upstreamMs: number; persistenceMs: number; serverTotalMs: number };
 }
 
-export interface AiHealthResponse {
-  status: 'ok' | 'degraded';
-  ollama: {
-    status: 'healthy' | 'unhealthy';
-    latencyMs: number;
-    model?: string;
-    error?: string;
-  };
-  postgres: 'ok' | 'error';
-  timestamp: string;
-}
+export type AiHealthResponse = Record<string, unknown>;

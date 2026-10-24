@@ -27,7 +27,7 @@ async function bootstrap(): Promise<void> {
   });
   app.enableShutdownHooks();
 
-  await app.listen(port, '0.0.0.0');
+  await app.listen(port, configService.get<string>('API_HOST', '0.0.0.0'));
   await logStartupHealth(configService, app.get(PostgresService), port);
 }
 

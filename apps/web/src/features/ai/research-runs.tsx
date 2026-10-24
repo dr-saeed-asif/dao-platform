@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { daoApi } from "@/lib/api/client";
 import type { AiBatchQueryResponse, Proposal, ResearchRunDetail, ResearchRunSummary } from "@/lib/api/types";
 
-const names:Record<string,string>={hybrid:"Hybrid","hybrid-verified":"Hybrid + Verifier","multi-agent":"Multi-Agent Hybrid + Verifier"};
+const names:Record<string,string>={hybrid:"Hybrid","vector-rag":"Vector RAG"};
 
 export function ResearchRuns({ latestBatch }: { latestBatch?: AiBatchQueryResponse | null } = {}){
   const [runs,setRuns]=useState<ResearchRunSummary[]>([]),[proposals,setProposals]=useState<Proposal[]>([]),[detail,setDetail]=useState<ResearchRunDetail|null>(null),[selected,setSelected]=useState<string[]>([]),[loading,setLoading]=useState(true),[page,setPage]=useState(1),[hasMore,setHasMore]=useState(false);

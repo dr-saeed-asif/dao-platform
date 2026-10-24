@@ -7,7 +7,7 @@ process.env.DATABASE_URL = `file:${resolve(
 )}`;
 process.env.NODE_ENV = 'test';
 process.env.DEV_AUTH_BYPASS_ENABLED = 'true';
-process.env.DAO_ADMIN_ADDRESS = '0xb8163f7d6d404f67a400743b90f7952d2d137b8e';
+process.env.DAO_ADMIN_ADDRESS = '0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b';
 process.env.CYBERCHAIN_RPC_URL = 'http://localhost:8545';
 process.env.CYBERCHAIN_CHAIN_ID = '1212';
 process.env.GOVERNANCE_CONTRACT_ADDRESS =
@@ -21,4 +21,4 @@ process.env.MLDSA_PUBLIC_KEY = `0x${'22'.repeat(32)}`;
 process.env.MLDSA_SECRET_KEY = '';
 process.env.MLDSA_LEVEL = '44';
 process.env.EXPECTED_SENDER_ADDRESS =
-  '0xb8163f7d6d404f67a400743b90f7952d2d137b8e';
+  '0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b';

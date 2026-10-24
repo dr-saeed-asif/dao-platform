@@ -1,5 +1,5 @@
 import { validate } from 'class-validator';
-import { AiBatchQueryRequest } from '../ai.dto';
+import { AiBatchQueryRequest, AiQueryRequest } from '../ai.dto';
 
 function request(questions: string[], system = 'hybrid') {
   return Object.assign(new AiBatchQueryRequest(), {
@@ -21,6 +21,19 @@ describe('AiBatchQueryRequest', () => {
     for (const body of [request([]), request(['  ']), request(Array(11).fill('Question?')),
       request(['Question?'], 'single-agent')]) {
       expect(await validate(body)).not.toHaveLength(0);
+    }
+  });
+});
+
+describe('AiQueryRequest', () => {
+  it('accepts only api-ai-server single-query modes', async () => {
+    const valid = Object.assign(new AiQueryRequest(), {
+      proposalId: 'proposal-1', question: 'Summarize this proposal.', system: 'hybrid', topK: 4,
+    });
+    expect(await validate(valid)).toHaveLength(0);
+
+    for (const system of ['multi-agent', 'hybrid-verified', 'llm-only']) {
+      expect(await validate(Object.assign(new AiQueryRequest(), { ...valid, system }))).not.toHaveLength(0);
     }
   });
 });

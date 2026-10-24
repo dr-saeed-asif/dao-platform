@@ -1,0 +1,179 @@
+{
+  "files": [
+    "package.json",
+    "README.md",
+    "docker-compose.yml",
+    "web.dev.log",
+    "api.dev.log",
+    "web.dev.err.log",
+    "api.dev.err.log",
+    "packages/database/src/scripts/migrate.ts",
+    "apps/api/src"
+  ],
+  "commands": [
+    {
+      "command": "node --version; npm --version; docker --version; docker compose version",
+      "exit": 0
+    },
+    {
+      "command": "Get-NetTCPConnection -State Listen -LocalPort 3000,3001,55432 -ErrorAction SilentlyContinue | Format-Table -AutoSize LocalAddress,LocalPort,OwningProcess",
+      "exit": 1
+    },
+    {
+      "command": "docker compose up -d",
+      "exit": 1
+    },
+    {
+      "command": "$dockerDesktop = 'C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe'; if (Test-Path -LiteralPath $dockerDesktop) { Start-Process -FilePath $dockerDesktop; 'Docker Desktop launch requested.' } else { throw \"Docker Desktop executable not found at $dockerDesktop\" }; $deadline = (Get-Date).AddMinutes(3); do { Start-Sleep -Seconds 3; docker info *> $null; if ($LASTEXITCODE -eq 0) { 'Docker engine is ready.'; exit 0 } } while ((Get-Date) -lt $deadline); throw 'Docker engine did not become ready within 3 minutes.'",
+      "exit": 0
+    },
+    {
+      "command": "docker compose up -d; if ($?) { npm run db:migrate }",
+      "exit": 1
+    },
+    {
+      "command": "node --env-file=.env node_modules/npm/bin/npm-cli.js run db:migrate",
+      "exit": 1
+    },
+    {
+      "command": "node --env-file=.env packages/database/dist/scripts/migrate.js",
+      "exit": 0
+    },
+    {
+      "command": "$api = Start-Process -FilePath 'npm.cmd' -ArgumentList 'run','dev:api' -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput 'E:\\DAO\\cyber-chain-work\\dao-platform\\api.dev.log' -RedirectStandardError 'E:\\DAO\\cyber-chain-work\\dao-platform\\api.dev.err.log' -PassThru; $web = Start-Process -FilePath 'npm.cmd' -ArgumentList 'run','dev:web' -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput 'E:\\DAO\\cyber-chain-work\\dao-platform\\web.dev.log' -RedirectStandardError 'E:\\DAO\\cyber-chain-work\\dao-platform\\web.dev.err.log' -PassThru; \"API launcher PID: $($api.Id)\"; \"Web launcher PID: $($web.Id)\""
+    }
+  ],
+  "tools": [
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "read",
+      "path": "package.json",
+      "status": "package.json"
+    },
+    {
+      "tool": "read",
+      "path": "README.md",
+      "status": "README.md"
+    },
+    {
+      "tool": "read",
+      "path": "docker-compose.yml",
+      "status": "docker-compose.yml"
+    },
+    {
+      "tool": "read",
+      "path": "web.dev.log",
+      "status": "web.dev.log"
+    },
+    {
+      "tool": "read",
+      "path": "api.dev.log",
+      "status": "api.dev.log"
+    },
+    {
+      "tool": "read",
+      "path": "web.dev.err.log",
+      "status": "web.dev.err.log"
+    },
+    {
+      "tool": "read",
+      "path": "api.dev.err.log",
+      "status": "api.dev.err.log"
+    },
+    {
+      "tool": "grep",
+      "path": "README.md",
+      "status": "## Running|docker compose|npm run dev|localhost:3001|health"
+    },
+    {
+      "tool": "bash",
+      "command": "node --version; npm --version; docker --version; docker compose version",
+      "status": "node --version; npm --version; docker --version; docker compose version",
+      "exit": 0
+    },
+    {
+      "tool": "bash",
+      "command": "Get-NetTCPConnection -State Listen -LocalPort 3000,3001,55432 -ErrorAction SilentlyContinue | Format-Table -AutoSize LocalAddress,LocalPort,OwningProcess",
+      "status": "Get-NetTCPConnection -State Listen -LocalPort 3000,3001,55432 -ErrorAction SilentlyContinue | Format-Table -AutoSize LocalAddress,LocalPort,OwningProcess",
+      "exit": 1
+    },
+    {
+      "tool": "bash",
+      "command": "docker compose up -d",
+      "status": "docker compose up -d",
+      "exit": 1
+    },
+    {
+      "tool": "bash",
+      "command": "$dockerDesktop = 'C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe'; if (Test-Path -LiteralPath $dockerDesktop) { Start-Process -FilePath $dockerDesktop; 'Docker Desktop launch requested.' } else { throw \"Docker Desktop executable not found at $dockerDesktop\" }; $deadline = (Get-Date).AddMinutes(3); do { Start-Sleep -Seconds 3; docker info *> $null; if ($LASTEXITCODE -eq 0) { 'Docker engine is ready.'; exit 0 } } while ((Get-Date) -lt $deadline); throw 'Docker engine did not become ready within 3 minutes.'",
+      "status": "$dockerDesktop = 'C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe'; if (Test-Path -LiteralPath $dockerDesktop) { Start-Process -FilePath $dockerDesktop; 'Docker Desktop launch requested.' } else { t",
+      "exit": 0
+    },
+    {
+      "tool": "bash",
+      "command": "docker compose up -d; if ($?) { npm run db:migrate }",
+      "status": "docker compose up -d; if ($?) { npm run db:migrate }",
+      "exit": 1
+    },
+    {
+      "tool": "read",
+      "path": "README.md",
+      "status": "README.md"
+    },
+    {
+      "tool": "read",
+      "path": "packages/database/src/scripts/migrate.ts"
+    },
+    {
+      "tool": "grep",
+      "path": "apps/api/src",
+      "status": "ConfigModule|envFilePath|POSTGRES_URL"
+    },
+    {
+      "tool": "bash",
+      "command": "node --env-file=.env node_modules/npm/bin/npm-cli.js run db:migrate",
+      "status": "node --env-file=.env node_modules/npm/bin/npm-cli.js run db:migrate",
+      "exit": 1
+    },
+    {
+      "tool": "bash",
+      "command": "node --env-file=.env packages/database/dist/scripts/migrate.js",
+      "status": "node --env-file=.env packages/database/dist/scripts/migrate.js",
+      "exit": 0
+    },
+    {
+      "tool": "bash",
+      "command": "$api = Start-Process -FilePath 'npm.cmd' -ArgumentList 'run','dev:api' -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput 'E:\\DAO\\cyber-chain-work\\dao-platform\\api.dev.log' -RedirectStandardError 'E:\\DAO\\cyber-chain-work\\dao-platform\\api.dev.err.log' -PassThru; $web = Start-Process -FilePath 'npm.cmd' -ArgumentList 'run','dev:web' -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput 'E:\\DAO\\cyber-chain-work\\dao-platform\\web.dev.log' -RedirectStandardError 'E:\\DAO\\cyber-chain-work\\dao-platform\\web.dev.err.log' -PassThru; \"API launcher PID: $($api.Id)\"; \"Web launcher PID: $($web.Id)\""
+    }
+  ],
+  "claimed_done": false
+}

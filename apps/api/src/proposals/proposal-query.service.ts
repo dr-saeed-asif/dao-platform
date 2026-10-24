@@ -448,14 +448,6 @@ export class ProposalQueryService {
       if (datasetVersion && String(artefact.dataset_version_id) !== datasetVersion) warnings.push('Dataset scope mismatch.');
       return { evidenceId, valid: warnings.length === 0, sourceType: 'artefact', proposalId: artefact.proposal_id, lineage: { uri: artefact.uri, hashAlgorithm: artefact.hash_algorithm, expectedHash: artefact.expected_hash, computedHash: artefact.computed_hash, verificationStatus: artefact.verification_status, lifecycleState: artefact.lifecycle_state }, relatedEvidence: edges.flatMap((edge) => [edge.from_evidence_id, edge.to_evidence_id]).filter((id) => id !== evidenceId), warnings };
     }
-    const chunk = await this.database.executor.selectFrom('document_chunks').innerJoin('artefacts', 'artefacts.id', 'document_chunks.artefact_id').select(['document_chunks.proposal_id', 'document_chunks.artefact_id', 'document_chunks.chunk_index', 'artefacts.evidence_id as artefactEvidenceId', 'artefacts.verification_status', 'artefacts.lifecycle_state', 'artefacts.dataset_version_id']).where('document_chunks.evidence_id', '=', evidenceId).executeTakeFirst();
-    if (chunk) {
-      const warnings: string[] = [];
-      if (chunk.verification_status !== 'VERIFIED') warnings.push('Parent artefact is not verified.');
-      if (chunk.lifecycle_state !== 'LINKED') warnings.push('Parent artefact is not linked.');
-      if (datasetVersion && String(chunk.dataset_version_id) !== datasetVersion) warnings.push('Dataset scope mismatch.');
-      return { evidenceId, valid: warnings.length === 0, sourceType: 'document-chunk', proposalId: chunk.proposal_id, lineage: { artefactId: chunk.artefact_id, chunkIndex: chunk.chunk_index }, relatedEvidence: [chunk.artefactEvidenceId], warnings };
-    }
     return { evidenceId, valid: false, sourceType: 'unknown', proposalId: null, lineage: null, relatedEvidence: [], warnings: ['Evidence does not exist.'] };
   }
 

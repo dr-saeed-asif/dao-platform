@@ -129,7 +129,7 @@ describe("governance provenance", () => {
 const request = {
   localProposalId: "proposal-1",
   daoId: "dao-1",
-  creatorAddress: "0xb8163f7d6d404f67a400743b90f7952d2d137b8e",
+  creatorAddress: "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b",
   title: "Fund security audit",
   purpose: "Improve protocol safety",
   description: "Fund an independent contract security audit.",
@@ -188,12 +188,12 @@ describe("CyberChainGovernanceGateway", () => {
   it("encodes a member wallet-signable vote transaction", async () => {
     const transaction = await gateway.prepareVote(
       "1",
-      "0xb8163f7d6d404f67a400743b90f7952d2d137b8e",
+      "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b",
       2,
     );
     assert.equal(
       transaction.from,
-      "0xb8163f7d6d404f67a400743b90f7952d2d137b8e",
+      "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b",
     );
     assert.equal(transaction.to, "0x51b43885899bd0301c2beea89addc9d876145d21");
     assert.equal(transaction.value, "0");

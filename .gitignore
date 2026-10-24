@@ -14,3 +14,7 @@ data/
 uploads/
 *.tsbuildinfo
 packages/contracts/artifacts/
+
+# Browser integration artifacts may contain test sessions.
+**/test-results/
+**/playwright-report/

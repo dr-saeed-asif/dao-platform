@@ -121,3 +121,11 @@ export const CYBER_DAO_GOVERNANCE_WRITE_ABI: ABILike = [
     outputs: [],
   },
 ];
+/** Read selectors verified against CyberDAOGovernance.sol; no mutable methods. */
+export const CYBER_DAO_GOVERNANCE_READ_ABI = [
+  'function getProposal(uint256 proposalId) view returns ((bytes32 metadataHash,string metadataURI,uint64 startsAt,uint64 endsAt,uint16 optionCount,uint16 winningOption,uint32 assignedMemberCount,uint32 voteCount,uint8 proposalType,bool cancelled,bool finalized,bool tied))',
+  'function proposalState(uint256 proposalId) view returns (uint8)',
+  'function optionVoteCount(uint256 proposalId,uint16 optionIndex) view returns (uint32)',
+  'function hasVoted(uint256 proposalId,address voter) view returns (bool)',
+  'function voteOf(uint256 proposalId,address voter) view returns (uint16)',
+] as const;

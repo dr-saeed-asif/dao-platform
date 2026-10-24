@@ -1,0 +1,4 @@
+
+# Browser integration artifacts can contain short-lived test sessions.
+**/test-results/
+**/playwright-report/

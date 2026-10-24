@@ -1,7 +1,7 @@
 import { normalizePythonAnswer, queryPythonAi, queryPythonAiBatch } from '../python-ai.adapter';
 import type { AiBatchQueryRequest, AiQueryRequest } from '../ai.dto';
 
-const request: AiQueryRequest = { question: 'Summarize this proposal.', proposalId: 'local-1', system: 'hybrid' };
+const request: AiQueryRequest & { daoId: string } = { daoId: 'dao-1', question: 'Summarize this proposal.', proposalId: 'local-1', system: 'hybrid' };
 describe('Python AI integration', () => {
   const originalFetch = global.fetch;
   afterEach(() => { global.fetch = originalFetch; });
@@ -26,7 +26,7 @@ describe('Python AI integration', () => {
 
   it('rejects unsupported modes instead of silently using the old AI', async () => {
     global.fetch = jest.fn();
-    await expect(queryPythonAi({ ...request, system: 'multi-agent' }, 'http://127.0.0.1:8001', 'secret', AbortSignal.timeout(1000)))
+    await expect(queryPythonAi({ ...request, system: 'multi-agent' as any }, 'http://127.0.0.1:8001', 'secret', AbortSignal.timeout(1000)))
       .rejects.toThrow('currently supports');
     expect(global.fetch).not.toHaveBeenCalled();
   });
@@ -37,7 +37,7 @@ describe('Python AI integration', () => {
     }) });
     await queryPythonAi(request, 'http://127.0.0.1:8001', 'server-secret', AbortSignal.timeout(1000));
     expect(global.fetch).toHaveBeenCalledWith(new URL('http://127.0.0.1:8001/v1/ai/query'), expect.objectContaining({
-      headers: expect.objectContaining({ Authorization: 'Bearer server-secret' }), body: JSON.stringify(request),
+      headers: expect.objectContaining({ Authorization: 'Bearer server-secret' }), body: JSON.stringify(request), cache: 'no-store',
     }));
   });
 

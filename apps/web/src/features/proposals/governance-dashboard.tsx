@@ -22,7 +22,7 @@ interface IndexedVote extends Vote {
 }
 const adminAddress = (
   process.env.NEXT_PUBLIC_DAO_ADMIN_ADDRESS ??
-  "0xb8163f7d6d404f67a400743b90f7952d2d137b8e"
+  "0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b"
 ).toLowerCase();
 const short = (value: string) => `${value.slice(0, 7)}…${value.slice(-5)}`;
 

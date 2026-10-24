@@ -21,6 +21,13 @@ Copy `apps/web/.env.example` to `apps/web/.env.local` only when you need to
 override the defaults. `DAO_API_ORIGIN` is server-side and controls the Next.js
 proxy target.
 
+## AI boundary
+
+The dashboard calls `/api/v1/ai/query` and `/api/v1/ai/query/batch` through the
+same Next.js rewrite. Browser code never receives `AI_SERVER_TOKEN` and does not
+call `api-ai-server` directly. The NestJS API resolves proposal scope and acts
+as the only AI proxy.
+
 ## Wallet boundary
 
 `src/lib/wallet/injected-wallet.ts` is the only injected-wallet integration.

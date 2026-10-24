@@ -12,12 +12,14 @@ import { MemberManager } from "@/features/members/member-manager";
 import { VotingPanel } from "@/features/voting/voting-panel";
 import { CopyableHash } from "@/components/copy-value-button";
 import { formatLocalDateTime } from "@/lib/date-time";
+import { ProposalAssistant } from "@/features/ai/proposal-assistant";
 
 const date = formatLocalDateTime;
 
-type DetailsTab = "overview" | "voting" | "members" | "documents" | "history";
+type DetailsTab = "overview" | "voting" | "members" | "documents" | "history" | "ai";
 
 const tabs: { id: DetailsTab; label: string }[] = [
+  { id: "ai", label: "Ask AI" },
   { id: "overview", label: "Overview" },
   { id: "voting", label: "Voting" },
   { id: "members", label: "Members" },
@@ -254,6 +256,7 @@ export function ProposalDetails({
         ))}
       </div>
 
+      {tab === "ai" && <ProposalAssistant key={proposal.id} proposalId={proposal.id} daoId={proposal.daoId} title={proposal.title} />}
       {tab === "overview" && (
         <section className="dashboard-card padded">
           <h2>About this proposal</h2>

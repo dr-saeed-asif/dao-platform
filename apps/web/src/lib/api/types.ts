@@ -83,19 +83,17 @@ export interface Artefact {
   uri: string;
 }
 
-export type ResearchSystem = 'hybrid'|'vector-rag'|'hybrid-verified'|'multi-agent';
+export type ResearchSystem = 'hybrid'|'vector-rag';
 export interface AiQueryRequest {
   question: string;
   proposalId: string;
-  system: ResearchSystem | 'llm-only' | 'vector-rag';
+  system: ResearchSystem;
   topK?: number;
-  datasetVersion?: string;
-  policyVersion?: string;
 }
 
 export interface AiQueryResponse {
   runId: string;
-  system: ResearchSystem | 'llm-only' | 'vector-rag';
+  system: ResearchSystem;
   answer: string;
   evidence: Array<{
     chunkEvidenceId?: string;
@@ -191,14 +189,4 @@ export interface AiBatchQueryResponse {
 export interface ResearchRunSummary {runId:string;createdAt:string;proposalId:string|null;onChainProposalId:string|null;system:string;question:string;verificationStatus:string|null;abstained:boolean;evidenceCount:number;retrievalCount:number;supportedClaims:number;unsupportedClaims:number;latencyMs:number;inputTokens?:number;outputTokens?:number;tokens:number|null;status:string;error:string|null;answer:string;agentsUsed:string[]}
 export interface ResearchRunDetail extends ResearchRunSummary {models:{chat:string|null;embedding:string|null;embeddingDimension:number|null};datasetVersion:string|null;policyVersion:string|null;evidence:AiQueryResponse['evidence'];evidenceIds:string[];retrieval:unknown[];claims:unknown[];verification:unknown;toolsUsed:string[];agentTrace:AiQueryResponse['agentTrace'];errors:string[];rawOutput?:Record<string,unknown>}
 
-export interface AiHealthResponse {
-  status: 'ok' | 'degraded';
-  ollama: {
-    status: 'healthy' | 'unhealthy';
-    latencyMs: number;
-    model?: string;
-    error?: string;
-  };
-  postgres: 'ok' | 'error';
-  timestamp: string;
-}
+export type AiHealthResponse = Record<string, unknown>;

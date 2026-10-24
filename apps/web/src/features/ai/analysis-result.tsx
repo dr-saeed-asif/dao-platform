@@ -61,9 +61,6 @@ const RULE_TITLES: Record<string, string> = {
 
 const SYSTEM_LABELS: Record<string, string> = {
   hybrid: "Hybrid",
-  "hybrid-verified": "Hybrid + Verifier",
-  "multi-agent": "Multi-Agent Hybrid + Verifier",
-  "llm-only": "LLM Only",
   "vector-rag": "Vector RAG",
 };
 

@@ -1,4 +1,6 @@
-import { rm } from 'node:fs/promises';
+import { randomUUID } from 'node:crypto';
+import { Pool } from 'pg';
+import { ConfigService } from '@nestjs/config';
 import { Test } from '@nestjs/testing';
 import type {
   CreateProposalResult,
@@ -16,13 +18,29 @@ import type { HealthResponse } from './../src/health/health.controller';
 
 describe('DAO API (e2e)', () => {
   let app: NestFastifyApplication;
-  const databaseFile = process.env.DATABASE_URL!.slice('file:'.length);
-  const adminAddress = '0xb8163f7d6d404f67a400743b90f7952d2d137b8e';
+  const databaseName = `dao_api_e2e_${randomUUID().replaceAll('-', '')}`;
+  let administrativePool: Pool;
+  let databaseCreated = false;
+  const adminAddress = '0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b';
 
   beforeAll(async () => {
+    const source = new URL(process.env.POSTGRES_URL!);
+    administrativePool = new Pool({ connectionString: source.toString() });
+    await administrativePool.query(`CREATE DATABASE "${databaseName}"`);
+    databaseCreated = true;
+    source.pathname = `/${databaseName}`;
     const moduleFixture = await Test.createTestingModule({
       imports: [AppModule],
-    }).compile();
+    })
+      .overrideProvider(ConfigService)
+      .useValue(
+        new ConfigService({
+          ...process.env,
+          POSTGRES_URL: source.toString(),
+          VOTE_INDEXER_ENABLED: false,
+        }),
+      )
+      .compile();
     app = moduleFixture.createNestApplication<NestFastifyApplication>(
       new FastifyAdapter(),
     );
@@ -32,12 +50,12 @@ describe('DAO API (e2e)', () => {
   });
 
   afterAll(async () => {
-    await app.close();
-    await Promise.all([
-      rm(databaseFile, { force: true }),
-      rm(`${databaseFile}-shm`, { force: true }),
-      rm(`${databaseFile}-wal`, { force: true }),
-    ]);
+    await app?.close();
+    if (databaseCreated)
+      await administrativePool.query(
+        `DROP DATABASE "${databaseName}" WITH (FORCE)`,
+      );
+    await administrativePool?.end();
   });
 
   it('GET /v1/health', async () => {

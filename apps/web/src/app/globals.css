@@ -3282,3 +3282,17 @@ td code {
     align-items: stretch;
   }
 }
+
+.proposal-assistant { min-width: 0; }
+.assistant-toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 16px 0; }
+.assistant-toolbar label { flex: 1; min-width: 180px; }
+.assistant-toolbar select, .proposal-assistant textarea { display: block; width: 100%; }
+.proposal-assistant .ai-form > label { display: block; margin: 12px 0; }
+.assistant-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+.proposal-assistant pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 320px; overflow: auto; }
+.assistant-transcript { display: grid; gap: 16px; margin: 16px 0; }
+.proposal-assistant details { margin: 10px 0; }
+.proposal-assistant summary { cursor: pointer; overflow-wrap: anywhere; }
+@media (max-width: 640px) { .assistant-toolbar { flex-direction: column; align-items: stretch; } .assistant-toolbar label { min-width: 0; } .proposal-assistant .card-header { flex-wrap: wrap; } }
+
+.execution-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.execution-facts dt{font-size:.8rem;color:var(--muted)}.execution-facts dd{margin:4px 0;overflow-wrap:anywhere}.execution-details,.blockchain-verification{border:1px solid #dce6f6;border-radius:12px;padding:12px}.execution-details td,.blockchain-verification td{vertical-align:top;max-width:360px}.blockchain-verification code{overflow-wrap:anywhere}.execution-details summary,.blockchain-verification summary{font-weight:600}@media(max-width:640px){.execution-facts{grid-template-columns:1fr}.execution-details,.blockchain-verification{padding:8px}}

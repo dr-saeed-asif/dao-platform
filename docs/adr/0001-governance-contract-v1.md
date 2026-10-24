@@ -35,7 +35,7 @@ the current CyberChain SDK constructs London-compatible transactions.
 - Network ID: `1212`
 - Contract: `0x51b43885899bd0301c2beea89addc9d876145d21`
 - Transaction: `0xf161771c1b4d356ef03b2e18d7ad9202134a45283c66b1a4a7216759cf629ee8`
-- Initial owner: `0xb8163f7d6d404f67a400743b90f7952d2d137b8e`
+- Initial owner: `0x43b30c380b465d4fe632cadb7bbf0be8ea53a04b`
 
 The complete receipt metadata and bytecode digest are stored in
 `deployments/cyber-dao-governance-1212.json`.
