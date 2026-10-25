@@ -33,7 +33,9 @@ export function ProposalAssistant({
     [busy, setBusy] = useState(false);
   const [error, setError] = useState(""),
     [status, setStatus] = useState("");
-  const [questions, setQuestions] = useState([""]);
+  const [questions, setQuestions] = useState<string[]>([]);
+  const [draft, setDraft] = useState("");
+  const draftInput = useRef<HTMLTextAreaElement>(null);
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [conversation, setConversation] = useState<string>();
   const [messages, setMessages] = useState<Message[]>([]);
@@ -142,10 +144,29 @@ export function ProposalAssistant({
       setBusy(false);
     }
   }
+  function collectQuestions() {
+    const submitted = [...questions, ...splitQuestionDraft(draft)];
+    if (submitted.length > 20) throw new Error("You can submit up to 20 questions. Remove a question before adding more.");
+    if (submitted.some((q) => q.length > 4000)) throw new Error("Each question must be 4,000 characters or fewer.");
+    if (submitted.join("").length > 40000) throw new Error("The question batch must be 40,000 characters or fewer.");
+    return submitted;
+  }
+  function addDraft() {
+    try {
+      setQuestions(collectQuestions());
+      setDraft("");
+      setError("");
+      draftInput.current?.focus();
+    } catch (exc) {
+      setError((exc as Error).message);
+    }
+  }
   async function send(event: React.FormEvent) {
     event.preventDefault();
     if (!address || busy) return;
-    const submitted = questions.map((q) => q.trim()).filter(Boolean);
+    let submitted: string[];
+    try { submitted = collectQuestions(); }
+    catch (exc) { return setError((exc as Error).message); }
     if (!submitted.length) return setError("Enter at least one question.");
     const controller = new AbortController();
     abort.current = controller;
@@ -249,7 +270,8 @@ export function ProposalAssistant({
           }
         },
       );
-      setQuestions([""]);
+      setQuestions([]);
+      setDraft("");
       await refresh();
     } catch (e) {
       setError(
@@ -427,52 +449,49 @@ export function ProposalAssistant({
               : ""}
           </p>
           <form className="ai-form" onSubmit={(e) => void send(e)}>
-            <p>
-              Ask a question or add up to 20 questions. Related questions use
-              the same conversation context.
+            <p id="question-composer-help">
+              Ctrl+Enter (or Command+Enter) adds a question. Ask AI sends all questions,
+              including any text still in the box. Paste a list with one question per line. Maximum 20 questions.
             </p>
-            {questions.map((q, i) => (
-              <label key={i}>
-                Question {i + 1}
-                <textarea
-                  aria-label={`Question ${i + 1}`}
-                  value={q}
-                  maxLength={4000}
-                  rows={2}
-                  disabled={busy}
-                  onChange={(e) =>
-                    setQuestions((old) =>
-                      old.map((value, index) =>
-                        index === i ? e.target.value : value,
-                      ),
-                    )
+            {questions.length > 0 && (
+              <ol className="question-chip-list" aria-label="Questions to send">
+                {questions.map((q, i) => (
+                  <li key={i}>
+                    <strong>Q{i + 1}</strong><span>{q}</span>
+                    <button type="button" className="back-link" disabled={busy}
+                      aria-label={`Edit question ${i + 1}`}
+                      onClick={() => {
+                        if (draft.trim()) return setError("Add or clear the current text before editing a queued question.");
+                        setDraft(q);
+                        setQuestions((old) => old.filter((_, index) => index !== i));
+                        draftInput.current?.focus();
+                      }}>Edit</button>
+                    <button type="button" className="back-link" disabled={busy}
+                      aria-label={`Remove question ${i + 1}`}
+                      onClick={() => setQuestions((old) => old.filter((_, index) => index !== i))}>Remove</button>
+                  </li>
+                ))}
+              </ol>
+            )}
+            <label>
+              Question {questions.length + 1}
+              <textarea ref={draftInput} aria-label="Question text"
+                aria-describedby="question-composer-help" value={draft}
+                maxLength={40000} rows={3} disabled={busy}
+                placeholder="Type a question or paste a question list..."
+                onChange={(e) => setDraft(e.target.value)}
+                onKeyDown={(e) => {
+                  if ((e.ctrlKey || e.metaKey) && e.key === "Enter" && !e.nativeEvent.isComposing) {
+                    e.preventDefault();
+                    addDraft();
                   }
-                />
-                {questions.length > 1 && (
-                  <button
-                    type="button"
-                    className="back-link"
-                    disabled={busy}
-                    onClick={() =>
-                      setQuestions((old) =>
-                        old.filter((_, index) => index !== i),
-                      )
-                    }
-                  >
-                    Remove question {i + 1}
-                  </button>
-                )}
-              </label>
-            ))}
+                }} />
+            </label>
+            <p aria-live="polite">{questions.length} question(s) queued</p>
             <div className="batch-question-actions">
-              <button
-                type="button"
-                className="button button-secondary"
-                disabled={busy || questions.length >= 20}
-                onClick={() => setQuestions((old) => [...old, ""])}
-              >
-                Add question
-              </button>
+              <button type="button" className="button button-secondary"
+                disabled={busy || !draft.trim() || questions.length >= 20}
+                onClick={addDraft}>Add question</button>
               <button className="button button-primary" disabled={busy}>
                 {busy ? "Processing…" : "Ask AI"}
               </button>
@@ -582,4 +601,12 @@ function Answers({ results }: { results: AssistantResult[] }) {
       ))}
     </>
   );
+}
+
+
+export function splitQuestionDraft(text: string): string[] {
+  return text.split(/\r?\n/).map((line) => {
+    const cleaned = line.trim().replace(/^(?:[-*\u2022]\s+|\d+[.)]\s+)/, "");
+    return cleaned.replace(/^["\u201c]([\s\S]*)["\u201d]$/, "$1").trim();
+  }).filter(Boolean);
 }

@@ -3296,3 +3296,7 @@ td code {
 @media (max-width: 640px) { .assistant-toolbar { flex-direction: column; align-items: stretch; } .assistant-toolbar label { min-width: 0; } .proposal-assistant .card-header { flex-wrap: wrap; } }
 
 .execution-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.execution-facts dt{font-size:.8rem;color:var(--muted)}.execution-facts dd{margin:4px 0;overflow-wrap:anywhere}.execution-details,.blockchain-verification{border:1px solid #dce6f6;border-radius:12px;padding:12px}.execution-details td,.blockchain-verification td{vertical-align:top;max-width:360px}.blockchain-verification code{overflow-wrap:anywhere}.execution-details summary,.blockchain-verification summary{font-weight:600}@media(max-width:640px){.execution-facts{grid-template-columns:1fr}.execution-details,.blockchain-verification{padding:8px}}
+
+.question-chip-list { list-style: none; padding: 0; display: grid; gap: 8px; }
+.question-chip-list li { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; padding: 10px 12px; border: 1px solid #d9e4f5; border-radius: 12px; }
+.question-chip-list li span { flex: 1 1 200px; min-width: 0; overflow-wrap: anywhere; white-space: pre-wrap; }

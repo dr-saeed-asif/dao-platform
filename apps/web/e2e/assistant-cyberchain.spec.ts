@@ -96,7 +96,7 @@ test("connected CyberChain wallet verifies automatically without reconnecting or
   );
   await page.getByRole("tab", { name: "Ask AI" }).click();
   expect((await login).status()).toBe(200);
-  await expect(page.getByLabel("Question 1", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Question text", { exact: true })).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Sign in to AI", exact: true }),
   ).toHaveCount(0);
@@ -104,7 +104,7 @@ test("connected CyberChain wallet verifies automatically without reconnecting or
   expect(signatures).toBe(1);
   await page.getByRole("tab", { name: "Overview", exact: true }).click();
   await page.getByRole("tab", { name: "Ask AI", exact: true }).click();
-  await expect(page.getByLabel("Question 1", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Question text", { exact: true })).toBeVisible();
   expect(signatures).toBe(1);
   expect(await page.evaluate(() => (window as any).__reconnects)).toBe(0);
 });

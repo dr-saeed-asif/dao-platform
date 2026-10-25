@@ -46,19 +46,14 @@ async function enter(page: Page) {
     .getByRole("button", { name: "Open", exact: true })
     .click();
   await page.getByRole("tab", { name: "Ask AI" }).click();
-  await expect(page.getByLabel("Question 1", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Question text", { exact: true })).toBeVisible();
 }
 const assistant = (page: Page) =>
   page.getByRole("region", { name: "Proposal AI Assistant" });
 async function ask(page: Page, questions: string[]) {
-  for (let i = 0; i < questions.length; i++) {
-    if (i)
-      await page
-        .getByRole("button", { name: "Add question", exact: true })
-        .click();
-    await page
-      .getByLabel(`Question ${i + 1}`, { exact: true })
-      .fill(questions[i]);
+  for (const question of questions) {
+    await page.getByLabel("Question text", { exact: true }).fill(question);
+    await page.getByLabel("Question text", { exact: true }).press("Control+Enter");
   }
   const response = page.waitForResponse((r) =>
     r.url().endsWith("/ai/assistant/ask/stream"),
@@ -156,7 +151,7 @@ test("real login, proposal, cited answer, five ordered questions, follow-up and 
     assistant(page).getByText(/No documents are linked/),
   ).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
-  await expect(page.getByLabel("Question 1", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Question text", { exact: true })).toBeVisible();
   const overflow = await assistant(page).evaluate(
     (el) => el.scrollWidth > el.clientWidth + 1,
   );
@@ -168,7 +163,7 @@ test("real login, proposal, cited answer, five ordered questions, follow-up and 
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.getByRole("button", { name: "AI Assistant", exact: true }).click();
   await expect(page.getByLabel("AI proposal")).toHaveValue("onchain-28");
-  await expect(page.getByLabel("Question 1", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Question text", { exact: true })).toBeVisible();
 });
 test("real missing evidence abstains and dependent questions keep order", async ({
   page,
@@ -203,7 +198,7 @@ test("UI explains expired authentication, timeout and HTTP 500", async ({
       }),
     );
     await page
-      .getByLabel("Question 1", { exact: true })
+      .getByLabel("Question text", { exact: true })
       .fill("What is this proposal about?");
     await page.getByRole("button", { name: "Ask AI", exact: true }).click();
     await expect(assistant(page).getByRole("alert")).toContainText(message);
@@ -277,4 +272,37 @@ test("real execution details, blockchain comparison and persistent metric export
     path: "test-results/observability-mobile.png",
     fullPage: true,
   });
+});
+
+
+test("question composer queues, edits, splits pasted lists and validates limits", async ({ page }) => {
+  await enter(page);
+  const draft = page.getByLabel("Question text", { exact: true });
+  const queue = page.getByRole("list", { name: "Questions to send" });
+  await draft.fill("What is the purpose?");
+  await draft.press("Control+Enter");
+  await expect(queue.locator("li")).toHaveCount(1);
+  await expect(draft).toHaveValue("");
+  await page.getByRole("button", {name:"Edit question 1",exact:true}).click();
+  await expect(draft).toHaveValue("What is the purpose?");
+  await page.getByRole("button", {name:"Add question",exact:true}).click();
+  await draft.fill('1. "What is its title?"\n2. "When does voting end?"');
+  await draft.press("Control+Enter");
+  await expect(queue.locator("li")).toHaveCount(3);
+  await expect(queue.locator("li").nth(1)).toContainText("What is its title?");
+  await page.getByRole("button", {name:"Remove question 2",exact:true}).click();
+  await expect(queue.locator("li")).toHaveCount(2);
+  await draft.fill(Array.from({length:19},(_,i)=>`Question ${i}?`).join("\n"));
+  await draft.press("Control+Enter");
+  await expect(assistant(page).getByRole("alert")).toContainText("up to 20 questions");
+  await expect(queue.locator("li")).toHaveCount(2);
+  await draft.fill('"How many members are assigned?"');
+  let submitted: string[] = [];
+  await page.route("**/ai/assistant/ask/stream", async route => {
+    submitted = route.request().postDataJSON().question;
+    await route.fulfill({status:200,contentType:"text/event-stream",body:'event: run_complete\ndata: {"data":{"status":"completed"}}\n\n'});
+  });
+  await page.getByRole("button", {name:"Ask AI",exact:true}).click();
+  await expect.poll(()=>submitted.length).toBe(3);
+  expect(submitted).toEqual(["What is the purpose?","When does voting end?","How many members are assigned?"]);
 });
