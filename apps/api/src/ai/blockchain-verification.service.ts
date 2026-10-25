@@ -112,7 +112,7 @@ export class BlockchainVerificationService {
             : String(local).toLowerCase() === String(live).toLowerCase()
               ? 'verified'
               : 'mismatched',
-        ...(reason ? { reason } : {}),
+        ...(reason ? { reason } : local == null ? { reason: 'Database value is missing; the on-chain value was read successfully.' } : {}),
       });
     if (!p.on_chain_id) {
       report.errors.push('This proposal has no on-chain identifier.');

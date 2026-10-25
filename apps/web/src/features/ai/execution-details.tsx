@@ -127,10 +127,18 @@ export function BlockchainPanel({
 }: {
   report: BlockchainVerification;
 }) {
+  const incomplete = report.comparisons.filter((c) => c.status !== "verified");
   return (
     <details className="blockchain-verification" open>
       <summary>On-Chain Verification · {report.status}</summary>
       <p>{report.scope}</p>
+      {incomplete.length > 0 && (
+        <p className="form-message">
+          Database comparison {report.status}: {incomplete.map((c) =>
+            `${c.field}: ${c.reason ?? (c.database == null ? "database value is missing" : c.status)}`
+          ).join("; ")}. Available on-chain readings are shown below.
+        </p>
+      )}
       <div className="facts">
         <div>
           <span>Chain / proposal</span>
