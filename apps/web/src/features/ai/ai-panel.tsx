@@ -12,10 +12,18 @@ export function AiPanel({
   const proposal = proposals.find((p) => p.id === id);
   return (
     <div className="view-stack">
-      <section className="dashboard-card padded">
-        <h2>AI Assistant</h2>
-        <label>
-          Proposal
+      <section className="dashboard-card ai-proposal-context">
+        <div className="ai-proposal-summary">
+          <div className="ai-selected-proposal">
+            <span className="eyebrow">SELECTED PROPOSAL</span>
+            <strong>{proposal?.title ?? "Choose a proposal"}</strong>
+            <small>
+              {proposal?.daoId ?? "Proposal scope is verified by the server"}
+            </small>
+          </div>
+        </div>
+        <label className="ai-proposal-picker">
+          Change proposal
           <select
             aria-label="AI proposal"
             value={id}

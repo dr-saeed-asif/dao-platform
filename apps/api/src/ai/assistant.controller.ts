@@ -2,6 +2,7 @@ import {
   BadGatewayException,
   Body,
   Controller,
+  Delete,
   ForbiddenException,
   Get,
   HttpCode,
@@ -140,6 +141,22 @@ export class AssistantController {
     return (await this.upstream(`/rag/conversations?${query}`, user)).json();
   }
 
+  @Delete('conversations')
+  async deleteAllConversations(
+    @Query('proposalId') id: string,
+    @Req() req: FastifyRequest,
+  ) {
+    const user = this.auth.user(req),
+      proposal = await this.scope(id, user);
+    const query = new URLSearchParams({
+      dao_id: proposal.dao_id,
+      proposal_id: proposal.id,
+    });
+    return (
+      await this.upstream(`/rag/conversations?${query}`, user, 'DELETE')
+    ).json();
+  }
+
   @Get('conversations/:id')
   async get(
     @Param('id', ParseUUIDPipe) id: string,
@@ -149,6 +166,20 @@ export class AssistantController {
     const user = this.auth.user(req),
       proposal = await this.scope(proposalId, user);
     return this.conversation(id, proposal, user);
+  }
+
+  @Delete('conversations/:id')
+  async deleteConversation(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Query('proposalId') proposalId: string,
+    @Req() req: FastifyRequest,
+  ) {
+    const user = this.auth.user(req),
+      proposal = await this.scope(proposalId, user);
+    await this.conversation(id, proposal, user);
+    return (
+      await this.upstream(`/rag/conversations/${encodeURIComponent(id)}`, user, 'DELETE')
+    ).json();
   }
 
   @Get('conversations/:id/messages')
@@ -232,7 +263,7 @@ export class AssistantController {
       dao_id: proposal.dao_id,
       proposal_id: proposal.id,
       top_k: body.top_k ?? 4,
-      concurrency: 1,
+      concurrency: 3,
       conversation_id: body.conversation_id ?? null,
       title: body.title ?? 'Proposal AI Assistant',
     };

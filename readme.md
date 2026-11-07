@@ -211,7 +211,7 @@ override them.
 
 | Variable | Purpose | Default |
 |---|---|---|
-| `DAO_API_ORIGIN` | Server-side Next.js proxy target | `http://localhost:3000` |
+| `DAO_API_ORIGIN` | Server-side Next.js proxy target | `http://127.0.0.1:3000` |
 | `NEXT_PUBLIC_CYBERCHAIN_RPC_URL` | Wallet/network RPC URL | CyberChain RPC URL |
 | `NEXT_PUBLIC_CYBERCHAIN_CHAIN_ID` | Expected chain ID | `1212` |
 | `NEXT_PUBLIC_CYBERCHAIN_NAME` | Displayed network name | `CyberChain` |
@@ -247,15 +247,25 @@ The migrations are applied to the database configured by `POSTGRES_URL`.
 
 ## Run the project
 
-Use two VS Code terminals from the repository root.
+Start the API and web app together from the repository root:
 
-Terminal 1 — start the API and background indexer:
+```powershell
+npm run dev
+```
+
+This starts the Nest API, waits for its health endpoint, and then starts
+Next.js. Keep this terminal running while using the app. Start the Python AI
+server separately from `api-ai-server` if you use the AI Assistant.
+
+To run either app separately, use two terminals from the repository root.
+
+Terminal 1 — API and background indexer:
 
 ```powershell
 npm run dev:api
 ```
 
-Terminal 2 — start the Next.js DApp:
+Terminal 2 — Next.js DApp:
 
 ```powershell
 npm run dev:web

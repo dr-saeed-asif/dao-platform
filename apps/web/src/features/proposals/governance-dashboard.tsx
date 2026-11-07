@@ -138,7 +138,7 @@ export function GovernanceDashboard() {
   if (!wallet.connection) return <WalletGate />;
 
   const isProposals = active === "proposals" || active === "dashboard";
-  const showHero = !isProposals || proposalScreen === "list";
+  const showHero = active !== "ai" && (!isProposals || proposalScreen === "list");
 
   return (
     <AppShell

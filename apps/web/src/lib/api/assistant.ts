@@ -55,7 +55,10 @@ async function checked(path: string, init: RequestInit = {}) {
   const response = await fetch(`${base}${path}`, {
     ...init,
     cache: "no-store",
-    headers: { "Content-Type": "application/json", ...init.headers },
+    headers: {
+      ...(init.body === undefined ? {} : { "Content-Type": "application/json" }),
+      ...init.headers,
+    },
   });
   if (!response.ok) {
     const value = await response.json().catch(() => ({}));
@@ -167,6 +170,12 @@ export async function assistantJson<T>(
         : { method: "POST", body: JSON.stringify(body) }),
     })
   ).json();
+}
+export async function deleteAssistantConversation(
+  path: string,
+  address: string,
+): Promise<void> {
+  await checked(path, { method: "DELETE", headers: headers(address) });
 }
 export async function streamAssistant(
   address: string,

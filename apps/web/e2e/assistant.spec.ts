@@ -62,7 +62,7 @@ async function ask(page: Page, questions: string[]) {
   const stream = await response;
   expect(stream.status()).toBe(200);
   await expect(
-    page.getByRole("button", { name: "Processing…", exact: true }),
+    page.getByRole("button", { name: "AI response in progress", exact: true }),
   ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Ask AI", exact: true }),

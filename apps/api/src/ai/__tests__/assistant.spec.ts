@@ -83,7 +83,7 @@ describe('Assistant authentication and secure proxy', () => {
     expect(JSON.parse(options.body)).toMatchObject({
       dao_id: 'dao-1',
       proposal_id: 'proposal-1',
-      concurrency: 1,
+      concurrency: 3,
     });
     expect(options.headers).toMatchObject({
       'X-DAO-User': wallet.address.toLowerCase(),
