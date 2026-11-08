@@ -36,7 +36,7 @@ const config = new ConfigService({
   GOVERNANCE_DEPLOYMENT_BLOCK: '1',
   AI_SERVER_TOKEN: 'test-operator-token',
 });
-function fixture(overrides: Record<string, unknown> = {}) {
+function fixture(overrides: Record<string, unknown> = {}, hasStoredEvent = true) {
   const encoded = abi.encodeEventLog(abi.getEvent('ProposalCreated')!, [
     '28',
     creator,
@@ -72,7 +72,7 @@ function fixture(overrides: Record<string, unknown> = {}) {
         selectAll: () => q,
         where: () => q,
         executeTakeFirst: async () => ({ ...p, ...overrides }),
-        execute: async () => (table === 'votes' ? [] : [stored]),
+        execute: async () => (table === 'votes' || (table === 'governance_events' && !hasStoredEvent) ? [] : [stored]),
       };
       return q;
     }),
@@ -132,6 +132,17 @@ function fixture(overrides: Record<string, unknown> = {}) {
   return { service, rpc };
 }
 describe('Read-only blockchain verification', () => {
+  it('shows a chain-only event with its evidence without assuming why it is missing from the database', async () => {
+    const { service } = fixture({}, false);
+    const result = await service.verify('p', 'dao');
+    expect(result.comparisons).toContainEqual(expect.objectContaining({
+      field: `governance_event:${hash}:0`,
+      database: null,
+      blockchain: expect.objectContaining({ name: 'ProposalCreated', transaction_hash: hash }),
+      status: 'unverified',
+    }));
+  });
+
   it('pins a block, reuses the deployed ABI and verifies proposal, votes, events and receipts', async () => {
     const { service, rpc } = fixture(),
       result = await service.verify('p', 'dao');

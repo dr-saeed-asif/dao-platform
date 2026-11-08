@@ -160,7 +160,7 @@ async function run(): Promise<void> {
         ends_at: created ? new Date(Number(args.endsAt) * 1000) : iso(row.ends_at), status: effectiveStatus,
         cancelled_at: cancelled?.block_timestamp ?? null, finalized_at: finalized?.block_timestamp ?? null,
         winning_option: finalized ? Number(finalArgs.winningOption) : null, tied: finalized ? Boolean(finalArgs.tied) : null,
-        total_votes: finalized ? String(finalArgs.totalVotes) : null, creation_evidence_id: created?.evidence_id ?? null,
+        total_votes: finalized ? String(finalArgs.totalVotes) : "0", creation_evidence_id: created?.evidence_id ?? null,
         created_at: created?.block_timestamp ?? iso(row.created_at), updated_at: iso(row.updated_at),
       };
       await insertOrReport(target, "proposals", { id: values.id }, values, row);

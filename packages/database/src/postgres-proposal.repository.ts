@@ -349,7 +349,7 @@ export class PostgresProposalRepository implements ProposalRepository {
           : null,
         winning_option: null,
         tied: null,
-        total_votes: null,
+        total_votes: "0",
         creation_evidence_id: creationEvidenceId,
         created_at: proposal.createdAt,
         updated_at: proposal.updatedAt,

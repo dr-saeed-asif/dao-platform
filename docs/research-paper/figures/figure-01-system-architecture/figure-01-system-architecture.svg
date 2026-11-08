@@ -1,0 +1,339 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="1246" viewBox="0 0 1360 1246">
+<title>Figure 1. CogitX / CyberDAO overall system architecture</title>
+<defs>
+<marker id="m_ctrl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse" ><path d="M0,0 L10,5 L0,10 z" fill="#1B2540"/></marker>
+<marker id="m_data" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse" ><path d="M0,0 L10,5 L0,10 z" fill="#2C7A7B"/></marker>
+<marker id="m_chain" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse" ><path d="M0,0 L10,5 L0,10 z" fill="#C0621B"/></marker>
+<marker id="m_auth" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse" ><path d="M0,0 L10,5 L0,10 z" fill="#6A3FA0"/></marker>
+<marker id="m_retry" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse" ><path d="M0,0 L10,5 L0,10 z" fill="#1B2540"/></marker>
+</defs>
+<rect x="0" y="0" width="1360" height="1246" fill="#FFFFFF"/>
+<g id="bandA"><rect x="20" y="20" width="1040" height="226" rx="10" fill="#F4F7FC" stroke="#8EA6D0" stroke-width="1.4"/>
+<text x="34.0" y="44.0" font-family="Helvetica, Arial, sans-serif" font-size="16.5" font-weight="bold" fill="#1B2540" text-anchor="start">A · User and wallet layer</text>
+</g>
+<g id="bandC"><rect x="20" y="280" width="250" height="700" rx="10" fill="#FFF8EF" stroke="#E0B27A" stroke-width="1.4"/>
+<text x="34.0" y="304.0" font-family="Helvetica, Arial, sans-serif" font-size="16.5" font-weight="bold" fill="#1B2540" text-anchor="start">C · Blockchain layer</text>
+<text x="34.0" y="322.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#46506A" text-anchor="start">CyberChain · chain ID 1212</text>
+</g>
+<g id="bandB"><rect x="290" y="280" width="560" height="700" rx="10" fill="#F3F9F3" stroke="#8DBF96" stroke-width="1.4"/>
+<text x="304.0" y="304.0" font-family="Helvetica, Arial, sans-serif" font-size="16.5" font-weight="bold" fill="#1B2540" text-anchor="start">B · Application layer</text>
+<text x="304.0" y="322.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#46506A" text-anchor="start">Node.js · TypeScript</text>
+</g>
+<g id="bandD"><rect x="900" y="280" width="440" height="700" rx="10" fill="#F7F3FC" stroke="#B49DD6" stroke-width="1.4"/>
+<text x="914.0" y="304.0" font-family="Helvetica, Arial, sans-serif" font-size="16.5" font-weight="bold" fill="#1B2540" text-anchor="start">D · Multi-agent AI layer</text>
+<text x="914.0" y="322.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#46506A" text-anchor="start">Python</text>
+</g>
+<g id="bandE"><rect x="20" y="1024" width="1070" height="202" rx="10" fill="#F1F8F8" stroke="#86BDBD" stroke-width="1.4"/>
+<text x="34.0" y="1048.0" font-family="Helvetica, Arial, sans-serif" font-size="16.5" font-weight="bold" fill="#1B2540" text-anchor="start">E · Storage layer</text>
+</g>
+<g id="bandF"><rect x="1110" y="1024" width="230" height="202" rx="10" fill="#F6F6F6" stroke="#9A9A9A" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="1124.0" y="1048.0" font-family="Helvetica, Arial, sans-serif" font-size="16.5" font-weight="bold" fill="#1B2540" text-anchor="start">F · External interface</text>
+</g>
+<g id="contract"><rect x="36" y="470" width="218" height="496" rx="7" fill="#FFFFFF" stroke="#C98A3E" stroke-width="1.3"/>
+<text x="48.0" y="490.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="start">CyberDAOGovernance</text>
+<text x="48.0" y="509.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#46506A" text-anchor="start">smart contract · Solidity</text>
+<text x="48.0" y="526.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#46506A" text-anchor="start">Ownable2Step · 0x51b4…5d21</text>
+</g>
+<g id="next"><rect x="306" y="328" width="528" height="100" rx="7" fill="#FFFFFF" stroke="#5E9E6B" stroke-width="1.3"/>
+<text x="318.0" y="348.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="start">Next.js server (same origin)</text>
+</g>
+<g id="nest"><rect x="306" y="442" width="528" height="524" rx="7" fill="#FFFFFF" stroke="#5E9E6B" stroke-width="1.3"/>
+<text x="318.0" y="462.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="start">NestJS DAO REST API (Fastify, /v1)</text>
+</g>
+<g id="graph"><rect x="916" y="524" width="408" height="288" rx="7" fill="#FFFFFF" stroke="#8A6CBF" stroke-width="1.3"/>
+<text x="928.0" y="544.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="start">LangGraph workflow (StateGraph)</text>
+</g>
+<g id="pg"><rect x="306" y="1058" width="770" height="156" rx="7" fill="#FFFFFF" stroke="#4F9A9A" stroke-width="1.3"/>
+<text x="691.0" y="1078.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">PostgreSQL + pgvector (single database)</text>
+</g>
+<g id="legend"><rect x="1080" y="20" width="260" height="250" rx="7" fill="#FFFFFF" stroke="#B8BFCC" stroke-width="1.3"/>
+<text x="1092.0" y="40.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="start">Notation</text>
+</g>
+<g id="ccw"><rect x="40" y="56" width="220" height="86" rx="6" fill="#DCE7F7" stroke="#5B7DB8" stroke-width="1.2"/>
+<text x="150.0" y="86.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">CyberChain Wallet</text>
+<text x="150.0" y="104.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">browser extension</text>
+<text x="150.0" y="121.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">sign(tx) → signed raw tx</text>
+</g>
+<g id="mm"><rect x="40" y="152" width="220" height="86" rx="6" fill="#DCE7F7" stroke="#5B7DB8" stroke-width="1.2"/>
+<text x="150.0" y="182.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">MetaMask</text>
+<text x="150.0" y="200.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">injected EIP-1193 provider</text>
+<text x="150.0" y="217.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">signs + broadcasts (ECDSA)</text>
+</g>
+<g id="dapp"><rect x="450" y="56" width="330" height="182" rx="6" fill="#DCE7F7" stroke="#5B7DB8" stroke-width="1.2"/>
+<text x="615.0" y="109.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Next.js governance DApp</text>
+<text x="615.0" y="127.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">browser · React 19 · ethers 6</text>
+<text x="615.0" y="144.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">proposal, voting and member views</text>
+<text x="615.0" y="161.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">AI assistant chat (SSE)</text>
+<text x="615.0" y="178.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">CyberChainWalletAdapter</text>
+<text x="615.0" y="195.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">MetaMaskWalletAdapter</text>
+</g>
+<g id="admin"><rect x="850" y="66" width="180" height="66" rx="6" fill="#DCE7F7" stroke="#5B7DB8" stroke-width="1.2"/>
+<text x="940.0" y="95.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">DAO administrator</text>
+<text x="940.0" y="113.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">configured admin wallet</text>
+</g>
+<g id="member"><rect x="850" y="162" width="180" height="66" rx="6" fill="#DCE7F7" stroke="#5B7DB8" stroke-width="1.2"/>
+<text x="940.0" y="191.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">DAO member</text>
+<text x="940.0" y="209.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">assigned wallet</text>
+</g>
+<g id="rpc"><rect x="36" y="338" width="218" height="86" rx="6" fill="#FBE6CC" stroke="#C98A3E" stroke-width="1.2"/>
+<text x="145.0" y="368.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">CyberChain RPC node</text>
+<text x="145.0" y="386.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">JSON-RPC endpoint</text>
+<text x="145.0" y="403.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">network / chain ID 1212</text>
+</g>
+<g id="lc"><rect x="48" y="548" width="194" height="92" rx="6" fill="#FBE6CC" stroke="#C98A3E" stroke-width="1.2"/>
+<text x="145.0" y="574.5" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Proposal lifecycle</text>
+<text x="145.0" y="592.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">createProposal</text>
+<text x="145.0" y="608.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">Pending → Active →</text>
+<text x="145.0" y="624.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">Closed | Cancelled</text>
+</g>
+<g id="memb"><rect x="48" y="650" width="194" height="92" rx="6" fill="#FBE6CC" stroke="#C98A3E" stroke-width="1.2"/>
+<text x="145.0" y="676.5" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Membership</text>
+<text x="145.0" y="694.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">assignMembers /</text>
+<text x="145.0" y="710.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">unassignMember</text>
+<text x="145.0" y="726.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">(before voting starts)</text>
+</g>
+<g id="vote"><rect x="48" y="752" width="194" height="92" rx="6" fill="#FBE6CC" stroke="#C98A3E" stroke-width="1.2"/>
+<text x="145.0" y="778.5" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Voting &amp; finalization</text>
+<text x="145.0" y="796.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">one vote per</text>
+<text x="145.0" y="812.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">assigned wallet</text>
+<text x="145.0" y="828.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">finalizeProposal</text>
+</g>
+<g id="events"><rect x="48" y="854" width="194" height="100" rx="6" fill="#FBE6CC" stroke="#C98A3E" stroke-width="1.2"/>
+<text x="145.0" y="876.5" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Governance events</text>
+<text x="145.0" y="894.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">ProposalCreated</text>
+<text x="145.0" y="910.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">MemberAssigned / Unassigned</text>
+<text x="145.0" y="926.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">VoteCast · ProposalCancelled</text>
+<text x="145.0" y="942.5" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#1B2540" text-anchor="middle">ProposalFinalized</text>
+</g>
+<g id="rpcproxy"><rect x="318" y="358" width="250" height="62" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="443.0" y="376.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">CyberChain RPC proxy</text>
+<text x="443.0" y="394.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">/api/cyberchain/rpc</text>
+<text x="443.0" y="411.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">6 allowlisted JSON-RPC methods</text>
+</g>
+<g id="apiproxy"><rect x="580" y="358" width="242" height="62" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="701.0" y="385.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">API proxy</text>
+<text x="701.0" y="403.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">rewrite /api/* → Nest /v1/*</text>
+</g>
+<g id="gw"><rect x="318" y="476" width="256" height="96" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="446.0" y="503.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">CyberChain gateway</text>
+<text x="446.0" y="521.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">@cyberchain SDK wrapper</text>
+<text x="446.0" y="538.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">admin signer (SIGN_MODE):</text>
+<text x="446.0" y="555.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">ECDSA or ML-DSA</text>
+</g>
+<g id="props"><rect x="318" y="584" width="256" height="96" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="446.0" y="611.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Proposal services</text>
+<text x="446.0" y="629.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">create · publish · assign</text>
+<text x="446.0" y="646.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">vote prepare / confirm</text>
+<text x="446.0" y="663.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">cancel · finalize</text>
+</g>
+<g id="indexer"><rect x="318" y="692" width="256" height="80" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="446.0" y="719.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Governance event indexer</text>
+<text x="446.0" y="737.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">SyncGovernanceUseCase</text>
+<text x="446.0" y="754.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">every 30 s or manual</text>
+</g>
+<g id="core"><rect x="318" y="784" width="256" height="70" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="446.0" y="815.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Application core</text>
+<text x="446.0" y="833.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">use cases · ports · domain rules</text>
+</g>
+<g id="persist"><rect x="318" y="866" width="256" height="88" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="446.0" y="897.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Persistence adapters</text>
+<text x="446.0" y="915.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">Kysely repositories</text>
+<text x="446.0" y="932.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">LocalArtefactStorage</text>
+</g>
+<g id="aigw"><rect x="594" y="476" width="228" height="120" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="708.0" y="506.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">AI assistant gateway</text>
+<text x="708.0" y="524.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">wallet challenge / login</text>
+<text x="708.0" y="541.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">HMAC session token (30 min)</text>
+<text x="708.0" y="558.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">proposal-scope check</text>
+<text x="708.0" y="575.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">SSE relay to AI server</text>
+</g>
+<g id="research"><rect x="594" y="608" width="228" height="96" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="708.0" y="635.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Research &amp; artefacts</text>
+<text x="708.0" y="653.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">staging · SHA-256 hash</text>
+<text x="708.0" y="670.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">canonical manifest</text>
+<text x="708.0" y="687.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">proposal links · datasets</text>
+</g>
+<g id="verif"><rect x="594" y="716" width="228" height="96" rx="6" fill="#DDEFE0" stroke="#5E9E6B" stroke-width="1.2"/>
+<text x="708.0" y="743.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Blockchain verification</text>
+<text x="708.0" y="761.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">DB vs chain at pinned block</text>
+<text x="708.0" y="778.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">read-only JSON-RPC</text>
+<text x="708.0" y="795.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">internal endpoint for AI</text>
+</g>
+<g id="fastapi"><rect x="916" y="334" width="186" height="96" rx="6" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1009.0" y="361.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">FastAPI AI server</text>
+<text x="1009.0" y="379.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">/rag/* routes</text>
+<text x="1009.0" y="396.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">Bearer service token</text>
+<text x="1009.0" y="413.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">conversation store</text>
+</g>
+<g id="ollama"><rect x="1114" y="334" width="210" height="96" rx="6" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1219.0" y="361.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Ollama (local LLMs)</text>
+<text x="1219.0" y="379.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">qwen3.5:4b · 4b-instruct</text>
+<text x="1219.0" y="396.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">qwen3:0.6b (planner)</text>
+<text x="1219.0" y="413.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">qwen3-embedding:0.6b</text>
+</g>
+<g id="planner"><rect x="916" y="446" width="408" height="62" rx="6" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1120.0" y="464.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Question planner</text>
+<text x="1120.0" y="482.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">rule-based split (≤ 20 tasks);</text>
+<text x="1120.0" y="499.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">optional qwen3:0.6b JSON plan, rewrites rejected</text>
+</g>
+<g id="sup"><rect x="930" y="552" width="380" height="52" rx="6" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1120.0" y="574.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Supervisor node: deterministic routing</text>
+<text x="1120.0" y="592.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">regex intent rules · no LLM planning</text>
+</g>
+<g id="ag_bc"><rect x="930" y="660" width="122" height="36" rx="5" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="991.0" y="683.0" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Blockchain</text>
+</g>
+<g id="ag_prop"><rect x="930" y="616" width="122" height="36" rx="5" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="991.0" y="639.0" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Proposal</text>
+</g>
+<g id="ag_ev"><rect x="1059" y="616" width="122" height="36" rx="5" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1120.0" y="639.0" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Evidence</text>
+</g>
+<g id="ag_res"><rect x="1188" y="616" width="122" height="36" rx="5" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1249.0" y="639.0" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Research</text>
+</g>
+<g id="ag_gov"><rect x="1059" y="660" width="122" height="36" rx="5" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1120.0" y="683.0" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Governance</text>
+</g>
+<g id="ag_an"><rect x="1188" y="660" width="122" height="36" rx="5" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1249.0" y="683.0" font-family="Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Analysis</text>
+</g>
+<g id="verify"><rect x="930" y="712" width="180" height="88" rx="6" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1020.0" y="743.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Verify node</text>
+<text x="1020.0" y="761.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">citation &amp; amount</text>
+<text x="1020.0" y="778.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">checks · retry ≤ 2</text>
+</g>
+<g id="synth"><rect x="1130" y="712" width="180" height="88" rx="6" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1220.0" y="743.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Synthesis</text>
+<text x="1220.0" y="761.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">one final LLM</text>
+<text x="1220.0" y="778.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">answer (JSON schema)</text>
+</g>
+<g id="rag"><rect x="916" y="830" width="190" height="104" rx="6" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1011.0" y="861.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">RAG retrieval</text>
+<text x="1011.0" y="879.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">verified PDFs only</text>
+<text x="1011.0" y="896.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">pgvector top-k</text>
+<text x="1011.0" y="913.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">Ollama embeddings</text>
+</g>
+<g id="tools"><rect x="1130" y="830" width="194" height="104" rx="6" fill="#E8DDF6" stroke="#8A6CBF" stroke-width="1.2"/>
+<text x="1227.0" y="861.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">In-process tools</text>
+<text x="1227.0" y="879.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">22 StructuredTools</text>
+<text x="1227.0" y="896.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">per-agent allowlist</text>
+<text x="1227.0" y="913.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">per-run result cache</text>
+</g>
+<g id="files"><rect x="36" y="1064" width="214" height="100" rx="6" fill="#D9EEEE" stroke="#4F9A9A" stroke-width="1.2"/>
+<text x="143.0" y="1093.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">Local artefact storage</text>
+<text x="143.0" y="1111.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">data/artefacts (files)</text>
+<text x="143.0" y="1128.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">write: Nest API</text>
+<text x="143.0" y="1145.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">read: AI server</text>
+</g>
+<g id="pub"><rect x="318" y="1088" width="368" height="112" rx="6" fill="#D9EEEE" stroke="#4F9A9A" stroke-width="1.2"/>
+<text x="502.0" y="1123.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">public schema</text>
+<text x="502.0" y="1141.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">DAO read model: proposals, options,</text>
+<text x="502.0" y="1158.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">assignments, votes, chain transactions,</text>
+<text x="502.0" y="1175.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">governance events, artefacts</text>
+</g>
+<g id="ai"><rect x="698" y="1088" width="366" height="112" rx="6" fill="#D9EEEE" stroke="#4F9A9A" stroke-width="1.2"/>
+<text x="881.0" y="1123.0" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">ai schema</text>
+<text x="881.0" y="1141.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">document chunks + embeddings</text>
+<text x="881.0" y="1158.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">(pgvector, 1024-d)</text>
+<text x="881.0" y="1175.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">conversations · agent runs · traces</text>
+</g>
+<g id="mcp"><rect x="1124" y="1064" width="202" height="148" rx="6" fill="#EDEDED" stroke="#8A8A8A" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="1225.0" y="1108.5" font-family="Helvetica, Arial, sans-serif" font-size="15.5" font-weight="bold" fill="#1B2540" text-anchor="middle">MCP server (stdio)</text>
+<text x="1225.0" y="1126.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">standalone process</text>
+<text x="1225.0" y="1143.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">operator token</text>
+<text x="1225.0" y="1160.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">13 read-only tools</text>
+<text x="1225.0" y="1177.5" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1B2540" text-anchor="middle">not in agent path</text>
+</g>
+<line x1="1094" y1="60" x2="1136" y2="60" stroke="#1B2540" stroke-width="1.6" marker-end="url(#m_ctrl)"/>
+<text x="1144.0" y="64.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">control / API request</text>
+<line x1="1094" y1="77" x2="1136" y2="77" stroke="#2C7A7B" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#m_data)"/>
+<text x="1144.0" y="81.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">data access (SQL, files)</text>
+<line x1="1094" y1="94" x2="1136" y2="94" stroke="#C0621B" stroke-width="2.6" marker-end="url(#m_chain)"/>
+<text x="1144.0" y="98.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">transaction / JSON-RPC path</text>
+<line x1="1094" y1="111" x2="1136" y2="111" stroke="#6A3FA0" stroke-width="1.8" stroke-dasharray="2 3" marker-end="url(#m_auth)"/>
+<text x="1144.0" y="115.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">wallet sign-in proof</text>
+<rect x="1094" y="120" width="42" height="14" rx="3" fill="#EDEDED" stroke="#8A8A8A" stroke-dasharray="4 3"/>
+<text x="1144.0" y="132.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">separate, not in agent path</text>
+<text x="1094.0" y="152.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">① allowlisted JSON-RPC (proxied)</text>
+<text x="1094.0" y="167.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">② SDK admin txs · receipts · logs</text>
+<text x="1094.0" y="182.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">③ read-only eth_call / eth_getLogs</text>
+<text x="1094.0" y="197.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">④ HTTP + SSE · Bearer · X-DAO-User</text>
+<text x="1094.0" y="212.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">⑤ PDF upload for indexing (loopback)</text>
+<text x="1094.0" y="227.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">⑥ HTTP GET verification · Bearer</text>
+<text x="1094.0" y="242.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">⑦ HTTP /api/chat (generation)</text>
+<text x="1094.0" y="257.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="start">⑧ read-only SQL (psycopg)</text>
+<path id="e_cc_tx" d="M450,78 L260,78" fill="none" stroke="#C0621B" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#m_chain)" marker-start="url(#m_chain)"/>
+<path id="e_cc_auth" d="M450,126 L260,126" fill="none" stroke="#6A3FA0" stroke-width="1.8" stroke-dasharray="2 3" stroke-linejoin="round" marker-end="url(#m_auth)" marker-start="url(#m_auth)"/>
+<path id="e_mm_tx" d="M450,174 L260,174" fill="none" stroke="#C0621B" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#m_chain)" marker-start="url(#m_chain)"/>
+<path id="e_mm_auth" d="M450,222 L260,222" fill="none" stroke="#6A3FA0" stroke-width="1.8" stroke-dasharray="2 3" stroke-linejoin="round" marker-end="url(#m_auth)" marker-start="url(#m_auth)"/>
+<path id="e_admin" d="M850,99 L780,99" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_member" d="M850,195 L780,195" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_dapp_rpcp" d="M542,238 L542,358" fill="none" stroke="#C0621B" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#m_chain)"/>
+<path id="e_dapp_api" d="M700,238 L700,358" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_mm_rpc" d="M236,238 L236,338" fill="none" stroke="#C0621B" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#m_chain)"/>
+<path id="e_api_nest" d="M700,420 L700,442" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_rpcp_rpc" d="M318,374 L254,374" fill="none" stroke="#C0621B" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#m_chain)"/>
+<path id="e_gw_rpc" d="M318,520 L262,520 L262,446 L210,446 L210,424" fill="none" stroke="#C0621B" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#m_chain)"/>
+<path id="e_ver_rpc" d="M594,764 L584,764 L584,435 L276,435 L276,404 L254,404" fill="none" stroke="#C0621B" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#m_chain)"/>
+<path id="e_rpc_contract" d="M120,424 L120,470" fill="none" stroke="#C0621B" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#m_chain)"/>
+<path id="e_aigw_ai" d="M822,510 L866,510 L866,362 L916,362" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)" marker-start="url(#m_ctrl)"/>
+<path id="e_res_ai" d="M822,640 L880,640 L880,404 L916,404" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_bc_ver" d="M930,678 L892,678 L892,772 L822,772" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_fa_pl" d="M1009,430 L1009,446" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_pl_gr" d="M1120,508 L1120,524" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_gr_ol" d="M1324,560 L1333,560 L1333,382 L1324,382" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_sup_ag" d="M1120,604 L1120,616" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_ag_ver" d="M1000,696 L1000,712" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_ver_syn" d="M1110,756 L1130,756" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_retry" d="M1090,712 L1090,696" fill="none" stroke="#1B2540" stroke-width="1.3" stroke-dasharray="4 3" stroke-linejoin="round" marker-end="url(#m_retry)"/>
+<path id="e_gr_tools" d="M1227,812 L1227,830" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_tools_rag" d="M1130,882 L1106,882" fill="none" stroke="#1B2540" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_ctrl)"/>
+<path id="e_per_files" d="M340,954 L340,1004 L180,1004 L180,1064" fill="none" stroke="#2C7A7B" stroke-width="1.6" stroke-dasharray="6 4" stroke-linejoin="round" marker-end="url(#m_data)"/>
+<path id="e_per_pub" d="M470,954 L470,1088" fill="none" stroke="#2C7A7B" stroke-width="1.6" stroke-dasharray="6 4" stroke-linejoin="round" marker-end="url(#m_data)"/>
+<path id="e_rag_ai" d="M1000,934 L1000,1088" fill="none" stroke="#2C7A7B" stroke-width="1.6" stroke-dasharray="6 4" stroke-linejoin="round" marker-end="url(#m_data)"/>
+<path id="e_rag_files" d="M940,934 L940,1014 L476,1014 A6,6 0 0 0 464,1014 L236,1014 L236,1064" fill="none" stroke="#2C7A7B" stroke-width="1.6" stroke-dasharray="6 4" stroke-linejoin="round" marker-end="url(#m_data)"/>
+<path id="e_tools_pg" d="M1227,934 L1227,998 L1050,998 L1050,1058" fill="none" stroke="#2C7A7B" stroke-width="1.6" stroke-dasharray="6 4" stroke-linejoin="round" marker-end="url(#m_data)"/>
+<path id="e_mcp_pg" d="M1124,1174 L1076,1174" fill="none" stroke="#2C7A7B" stroke-width="1.6" stroke-dasharray="6 4" stroke-linejoin="round" marker-end="url(#m_data)"/>
+<text x="355.0" y="54.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">vote tx: sign(tx)</text>
+<text x="355.0" y="68.5" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">→ signed raw tx</text>
+<text x="355.0" y="106.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">auth: sign challenge tx</text>
+<text x="355.0" y="120.5" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">(auth chain ID, not sent)</text>
+<text x="355.0" y="166.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">vote: eth_sendTransaction</text>
+<text x="355.0" y="202.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">auth: personal_sign</text>
+<text x="355.0" y="216.5" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">(EIP-191 message)</text>
+<text x="622.0" y="267.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">signed raw tx + reads</text>
+<text x="768.0" y="267.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">HTTPS · REST · SSE</text>
+<text x="128.0" y="267.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">eth_sendTransaction via wallet RPC</text>
+<text x="120.0" y="452.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">EVM tx / call</text>
+<text x="240.0" y="996.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">file write</text>
+<text x="522.0" y="1044.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">SQL (Kysely)</text>
+<text x="958.0" y="1044.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">pgvector</text>
+<text x="820.0" y="1003.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">verified PDF read</text>
+<text x="1132.0" y="952.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">psycopg: public read-only,</text>
+<text x="1132.0" y="966.5" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#1B2540" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke" stroke-linejoin="round">ai read/write</text>
+<g id="b1"><circle cx="286" cy="374" r="9" fill="#FFFFFF" stroke="#1B2540" stroke-width="1.3"/>
+<text x="286.0" y="378.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B2540" text-anchor="middle">1</text>
+</g>
+<g id="b2"><circle cx="290" cy="520" r="9" fill="#FFFFFF" stroke="#1B2540" stroke-width="1.3"/>
+<text x="290.0" y="524.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B2540" text-anchor="middle">2</text>
+</g>
+<g id="b3"><circle cx="430" cy="435" r="9" fill="#FFFFFF" stroke="#1B2540" stroke-width="1.3"/>
+<text x="430.0" y="439.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B2540" text-anchor="middle">3</text>
+</g>
+<g id="b4"><circle cx="866" cy="436" r="9" fill="#FFFFFF" stroke="#1B2540" stroke-width="1.3"/>
+<text x="866.0" y="440.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B2540" text-anchor="middle">4</text>
+</g>
+<g id="b5"><circle cx="880" cy="520" r="9" fill="#FFFFFF" stroke="#1B2540" stroke-width="1.3"/>
+<text x="880.0" y="524.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B2540" text-anchor="middle">5</text>
+</g>
+<g id="b6"><circle cx="892" cy="728" r="9" fill="#FFFFFF" stroke="#1B2540" stroke-width="1.3"/>
+<text x="892.0" y="732.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B2540" text-anchor="middle">6</text>
+</g>
+<g id="b7"><circle cx="1333" cy="470" r="9" fill="#FFFFFF" stroke="#1B2540" stroke-width="1.3"/>
+<text x="1333.0" y="474.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B2540" text-anchor="middle">7</text>
+</g>
+<g id="b8"><circle cx="1100" cy="1174" r="9" fill="#FFFFFF" stroke="#1B2540" stroke-width="1.3"/>
+<text x="1100.0" y="1178.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B2540" text-anchor="middle">8</text>
+</g>
+</svg>

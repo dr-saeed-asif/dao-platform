@@ -8,7 +8,13 @@
     "web.dev.err.log",
     "api.dev.err.log",
     "packages/database/src/scripts/migrate.ts",
-    "apps/api/src"
+    "apps/api/src",
+    "apps/api/package.json",
+    "apps/web/package.json",
+    ".env.example",
+    "apps/web/.env.example",
+    "apps/api/src/config/env.validation.ts",
+    "apps/api/src/app.module.ts"
   ],
   "commands": [
     {
@@ -41,6 +47,53 @@
     },
     {
       "command": "$api = Start-Process -FilePath 'npm.cmd' -ArgumentList 'run','dev:api' -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput 'E:\\DAO\\cyber-chain-work\\dao-platform\\api.dev.log' -RedirectStandardError 'E:\\DAO\\cyber-chain-work\\dao-platform\\api.dev.err.log' -PassThru; $web = Start-Process -FilePath 'npm.cmd' -ArgumentList 'run','dev:web' -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput 'E:\\DAO\\cyber-chain-work\\dao-platform\\web.dev.log' -RedirectStandardError 'E:\\DAO\\cyber-chain-work\\dao-platform\\web.dev.err.log' -PassThru; \"API launcher PID: $($api.Id)\"; \"Web launcher PID: $($web.Id)\""
+    },
+    {
+      "command": "git status --short",
+      "exit": 0
+    },
+    {
+      "command": "node --version; npm --version; \"node_modules=$([bool](Test-Path -LiteralPath 'node_modules'))\"; \"root_env=$([bool](Test-Path -LiteralPath '.env'))\"; \"web_env=$([bool](Test-Path -LiteralPath 'apps\\web\\.env.local'))\"",
+      "exit": 0
+    },
+    {
+      "command": "Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object { $_.LocalPort -in @(3000,3001,55432) } | Format-Table -AutoSize LocalAddress,LocalPort,OwningProcess",
+      "exit": 0
+    },
+    {
+      "command": "docker compose ps",
+      "exit": 1
+    },
+    {
+      "command": "npm run db:migrate",
+      "exit": 1
+    },
+    {
+      "command": "Get-Service -Name 'com.docker.service' -ErrorAction SilentlyContinue | Format-Table -AutoSize Status,Name; Get-Process -Name 'Docker Desktop' -ErrorAction SilentlyContinue | Format-Table -AutoSize Id,ProcessName",
+      "exit": 1
+    },
+    {
+      "command": "Start-Service -Name 'com.docker.service' -ErrorAction Continue; Get-Service -Name 'com.docker.service' | Format-Table -AutoSize Status,Name",
+      "exit": 0
+    },
+    {
+      "command": "$candidates = @(\"$env:ProgramFiles\\Docker\\Docker\\Docker Desktop.exe\", \"$env:LOCALAPPDATA\\Docker\\Docker Desktop.exe\"); $candidate = $candidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if ($candidate) { Start-Process -FilePath $candidate; \"Started $candidate\" } else { 'Docker Desktop executable not found' }",
+      "exit": 0
+    },
+    {
+      "command": "$deadline = (Get-Date).AddSeconds(90); do { docker info *> $null; if ($LASTEXITCODE -eq 0) { 'Docker is ready'; exit 0 }; Start-Sleep -Seconds 3 } while ((Get-Date) -lt $deadline); 'Docker did not become ready within 90 seconds'; exit 1",
+      "exit": 0
+    },
+    {
+      "command": "docker compose up -d postgres",
+      "exit": 0
+    },
+    {
+      "command": "$env:POSTGRES_URL='postgresql://cybergovai:cybergovai_dev@127.0.0.1:55432/cybergovai'; npm run db:migrate",
+      "exit": 0
+    },
+    {
+      "command": "$logDir='C:\\Users\\asifs\\AppData\\Local\\Temp\\opencode'; if (-not (Test-Path -LiteralPath $logDir)) { throw \"Missing log directory: $logDir\" }; $env:POSTGRES_URL='postgresql://cybergovai:cybergovai_dev@127.0.0.1:55432/cybergovai'; $api = Start-Process -FilePath 'npm.cmd' -ArgumentList @('run','dev:api') -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput \"$logDir\\dao-platform-api.out.log\" -RedirectStandardError \"$logDir\\dao-platform-api.err.log\" -PassThru; $web = Start-Process -FilePath 'npm.cmd' -ArgumentList @('run','dev:web') -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput \"$logDir\\dao-platform-web.out.log\" -RedirectStandardError \"$logDir\\dao-platform-web.err.log\" -PassThru; \"api_pid=$($api.Id)\"; \"web_pid=$($web.Id)\""
     }
   ],
   "tools": [
@@ -173,6 +226,150 @@
     {
       "tool": "bash",
       "command": "$api = Start-Process -FilePath 'npm.cmd' -ArgumentList 'run','dev:api' -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput 'E:\\DAO\\cyber-chain-work\\dao-platform\\api.dev.log' -RedirectStandardError 'E:\\DAO\\cyber-chain-work\\dao-platform\\api.dev.err.log' -PassThru; $web = Start-Process -FilePath 'npm.cmd' -ArgumentList 'run','dev:web' -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput 'E:\\DAO\\cyber-chain-work\\dao-platform\\web.dev.log' -RedirectStandardError 'E:\\DAO\\cyber-chain-work\\dao-platform\\web.dev.err.log' -PassThru; \"API launcher PID: $($api.Id)\"; \"Web launcher PID: $($web.Id)\""
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "bash",
+      "command": "git status --short",
+      "status": "git status --short",
+      "exit": 0
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "read",
+      "path": "package.json",
+      "status": "package.json"
+    },
+    {
+      "tool": "read",
+      "path": "README.md",
+      "status": "README.md"
+    },
+    {
+      "tool": "read",
+      "path": "docker-compose.yml",
+      "status": "docker-compose.yml"
+    },
+    {
+      "tool": "read",
+      "path": "apps/api/package.json",
+      "status": "apps\\api\\package.json"
+    },
+    {
+      "tool": "read",
+      "path": "apps/web/package.json",
+      "status": "apps\\web\\package.json"
+    },
+    {
+      "tool": "read",
+      "path": ".env.example",
+      "status": ".env.example"
+    },
+    {
+      "tool": "read",
+      "path": "apps/web/.env.example",
+      "status": "apps\\web\\.env.example"
+    },
+    {
+      "tool": "bash",
+      "command": "node --version; npm --version; \"node_modules=$([bool](Test-Path -LiteralPath 'node_modules'))\"; \"root_env=$([bool](Test-Path -LiteralPath '.env'))\"; \"web_env=$([bool](Test-Path -LiteralPath 'apps\\web\\.env.local'))\"",
+      "status": "node --version; npm --version; \"node_modules=$([bool](Test-Path -LiteralPath 'node_modules'))\"; \"root_env=$([bool](Test-Path -LiteralPath '.env'))\"; \"web_env=$([bool](Test-Path -LiteralPath 'apps\\web\\",
+      "exit": 0
+    },
+    {
+      "tool": "bash",
+      "command": "Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object { $_.LocalPort -in @(3000,3001,55432) } | Format-Table -AutoSize LocalAddress,LocalPort,OwningProcess",
+      "status": "Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object { $_.LocalPort -in @(3000,3001,55432) } | Format-Table -AutoSize LocalAddress,LocalPort,OwningProcess",
+      "exit": 0
+    },
+    {
+      "tool": "bash",
+      "command": "docker compose ps",
+      "status": "docker compose ps",
+      "exit": 1
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "grep",
+      "path": "apps/api/src",
+      "status": "POSTGRES_URL|DATABASE_URL|ConfigModule|envFilePath"
+    },
+    {
+      "tool": "glob"
+    },
+    {
+      "tool": "bash",
+      "command": "npm run db:migrate",
+      "status": "npm run db:migrate",
+      "exit": 1
+    },
+    {
+      "tool": "bash",
+      "command": "Get-Service -Name 'com.docker.service' -ErrorAction SilentlyContinue | Format-Table -AutoSize Status,Name; Get-Process -Name 'Docker Desktop' -ErrorAction SilentlyContinue | Format-Table -AutoSize Id,ProcessName",
+      "status": "Get-Service -Name 'com.docker.service' -ErrorAction SilentlyContinue | Format-Table -AutoSize Status,Name; Get-Process -Name 'Docker Desktop' -ErrorAction SilentlyContinue | Format-Table -AutoSize Id,",
+      "exit": 1
+    },
+    {
+      "tool": "bash",
+      "command": "Start-Service -Name 'com.docker.service' -ErrorAction Continue; Get-Service -Name 'com.docker.service' | Format-Table -AutoSize Status,Name",
+      "status": "Start-Service -Name 'com.docker.service' -ErrorAction Continue; Get-Service -Name 'com.docker.service' | Format-Table -AutoSize Status,Name",
+      "exit": 0
+    },
+    {
+      "tool": "bash",
+      "command": "$candidates = @(\"$env:ProgramFiles\\Docker\\Docker\\Docker Desktop.exe\", \"$env:LOCALAPPDATA\\Docker\\Docker Desktop.exe\"); $candidate = $candidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if ($candidate) { Start-Process -FilePath $candidate; \"Started $candidate\" } else { 'Docker Desktop executable not found' }",
+      "status": "$candidates = @(\"$env:ProgramFiles\\Docker\\Docker\\Docker Desktop.exe\", \"$env:LOCALAPPDATA\\Docker\\Docker Desktop.exe\"); $candidate = $candidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Obj",
+      "exit": 0
+    },
+    {
+      "tool": "bash",
+      "command": "$deadline = (Get-Date).AddSeconds(90); do { docker info *> $null; if ($LASTEXITCODE -eq 0) { 'Docker is ready'; exit 0 }; Start-Sleep -Seconds 3 } while ((Get-Date) -lt $deadline); 'Docker did not become ready within 90 seconds'; exit 1",
+      "status": "$deadline = (Get-Date).AddSeconds(90); do { docker info *> $null; if ($LASTEXITCODE -eq 0) { 'Docker is ready'; exit 0 }; Start-Sleep -Seconds 3 } while ((Get-Date) -lt $deadline); 'Docker did not bec",
+      "exit": 0
+    },
+    {
+      "tool": "read",
+      "path": "apps/api/src/config/env.validation.ts",
+      "status": "apps\\api\\src\\config\\env.validation.ts"
+    },
+    {
+      "tool": "read",
+      "path": "apps/api/src/app.module.ts",
+      "status": "apps\\api\\src\\app.module.ts"
+    },
+    {
+      "tool": "bash",
+      "command": "docker compose up -d postgres",
+      "status": "docker compose up -d postgres",
+      "exit": 0
+    },
+    {
+      "tool": "bash",
+      "command": "$env:POSTGRES_URL='postgresql://cybergovai:cybergovai_dev@127.0.0.1:55432/cybergovai'; npm run db:migrate",
+      "status": "$env:POSTGRES_URL='postgresql://cybergovai:cybergovai_dev@127.0.0.1:55432/cybergovai'; npm run db:migrate",
+      "exit": 0
+    },
+    {
+      "tool": "bash",
+      "command": "$logDir='C:\\Users\\asifs\\AppData\\Local\\Temp\\opencode'; if (-not (Test-Path -LiteralPath $logDir)) { throw \"Missing log directory: $logDir\" }; $env:POSTGRES_URL='postgresql://cybergovai:cybergovai_dev@127.0.0.1:55432/cybergovai'; $api = Start-Process -FilePath 'npm.cmd' -ArgumentList @('run','dev:api') -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput \"$logDir\\dao-platform-api.out.log\" -RedirectStandardError \"$logDir\\dao-platform-api.err.log\" -PassThru; $web = Start-Process -FilePath 'npm.cmd' -ArgumentList @('run','dev:web') -WorkingDirectory 'E:\\DAO\\cyber-chain-work\\dao-platform' -RedirectStandardOutput \"$logDir\\dao-platform-web.out.log\" -RedirectStandardError \"$logDir\\dao-platform-web.err.log\" -PassThru; \"api_pid=$($api.Id)\"; \"web_pid=$($web.Id)\""
     }
   ],
   "claimed_done": false

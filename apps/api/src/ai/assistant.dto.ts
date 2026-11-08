@@ -31,7 +31,7 @@ export class AssistantConversationDto {
 export class AssistantAskDto extends AssistantConversationDto {
   @IsArray()
   @ArrayMinSize(1)
-  @ArrayMaxSize(20)
+  @ArrayMaxSize(100)
   @IsString({ each: true })
   @Matches(/\S/, { each: true })
   @MaxLength(4000, { each: true })

@@ -16,6 +16,7 @@ export interface AssistantResult {
   errors: string[];
   execution?: ExecutionMetrics;
   blockchain_verification?: BlockchainVerification | null;
+  worker_results?: AssistantResult[];
 }
 export interface Conversation {
   id: string;
@@ -46,6 +47,8 @@ export interface AssistantEvent {
   question_id?: string;
   data?: Record<string, unknown>;
   results?: AssistantResult[];
+  final_response?: AssistantResult | null;
+  reply?: string;
   status?: string;
   error?: string;
 }

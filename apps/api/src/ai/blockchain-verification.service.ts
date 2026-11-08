@@ -227,6 +227,13 @@ export class BlockchainVerificationService {
         .where('proposal_id', '=', id)
         .execute();
       compare('public.votes.count', votes.length, live.voteCount);
+      const assignments = await db
+        .selectFrom('proposal_assignments')
+        .selectAll()
+        .where('proposal_id', '=', id)
+        .where('assigned', '=', true)
+        .execute();
+      compare('public.proposal_assignments.count', assignments.length, live.assignedMemberCount);
       compare(
         'public.proposals.total_votes',
         p.total_votes?.toString(),
@@ -329,6 +336,8 @@ export class BlockchainVerificationService {
             e,
           ]),
         );
+        const storedKeys = new Set(stored.map((row) => key(row.transaction_hash, String(row.log_index))));
+        const scannedThrough = ranges.at(-1)?.[1];
         for (const row of stored) {
           const event = eventMap.get(
             key(row.transaction_hash, String(row.log_index)),
@@ -345,10 +354,32 @@ export class BlockchainVerificationService {
             );
           report.comparisons.push({
             field: `governance_event:${row.evidence_id}`,
-            database: row.event_name,
+            database: {
+              name: row.event_name,
+              transaction_hash: row.transaction_hash,
+              log_index: String(row.log_index),
+              block_number: String(row.block_number),
+              block_hash: row.block_hash,
+              args: row.event_args,
+            },
             blockchain: event ?? null,
-            status: same ? 'verified' : 'mismatched',
+            status: same ? 'verified' : event || (
+              scannedThrough !== undefined && BigInt(String(row.block_number)) >= from &&
+              BigInt(String(row.block_number)) <= scannedThrough
+            ) ? 'mismatched' : 'unverified',
           });
+        }
+        for (const event of report.events) {
+          const eventKey = key(String(event.transaction_hash), String(event.log_index));
+          if (!storedKeys.has(eventKey)) {
+            report.comparisons.push({
+              field: `governance_event:${eventKey}`,
+              database: null,
+              blockchain: event,
+              status: 'unverified',
+              reason: 'Chain event has no indexed counterpart. Check indexer progress before treating it as a discrepancy.',
+            });
+          }
         }
         const verifiedCreation = report.events.some(
           (e) => e.name === 'ProposalCreated',
@@ -388,7 +419,10 @@ export class BlockchainVerificationService {
               transaction_hash: vote.transaction_hash,
             },
             blockchain: event ?? null,
-            status: matches ? 'verified' : 'mismatched',
+            status: matches ? 'verified' : event || (
+              scannedThrough !== undefined && BigInt(String(vote.block_number)) >= from &&
+              BigInt(String(vote.block_number)) <= scannedThrough
+            ) ? 'mismatched' : 'unverified',
           });
         }
       } catch {

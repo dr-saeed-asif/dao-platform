@@ -292,9 +292,9 @@ test("question composer queues, edits, splits pasted lists and validates limits"
   await expect(queue.locator("li").nth(1)).toContainText("What is its title?");
   await page.getByRole("button", {name:"Remove question 2",exact:true}).click();
   await expect(queue.locator("li")).toHaveCount(2);
-  await draft.fill(Array.from({length:19},(_,i)=>`Question ${i}?`).join("\n"));
+  await draft.fill(Array.from({length:99},(_,i)=>`Question ${i}?`).join("\n"));
   await draft.press("Control+Enter");
-  await expect(assistant(page).getByRole("alert")).toContainText("up to 20 questions");
+  await expect(assistant(page).getByRole("alert")).toContainText("up to 100 questions");
   await expect(queue.locator("li")).toHaveCount(2);
   await draft.fill('"How many members are assigned?"');
   let submitted: string[] = [];

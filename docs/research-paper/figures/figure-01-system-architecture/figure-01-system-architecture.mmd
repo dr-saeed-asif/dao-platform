@@ -1,0 +1,118 @@
+%% Figure 1 - CogitX / CyberDAO overall system architecture (Mermaid version).
+%% Same components and connections as the .drawio/.svg master. Mermaid controls the layout itself,
+%% so positions differ. Line styles: solid = control/API, dashed = data access,
+%% thick = transaction/JSON-RPC path, dotted = wallet sign-in proof.
+%% Not shown because they are not implemented: A2A, agent-to-agent messaging, MCP inside the agent path.
+flowchart TB
+  classDef a fill:#DCE7F7,stroke:#5B7DB8,color:#1B2540
+  classDef b fill:#DDEFE0,stroke:#5E9E6B,color:#1B2540
+  classDef c fill:#FBE6CC,stroke:#C98A3E,color:#1B2540
+  classDef d fill:#E8DDF6,stroke:#8A6CBF,color:#1B2540
+  classDef e fill:#D9EEEE,stroke:#4F9A9A,color:#1B2540
+  classDef f fill:#EDEDED,stroke:#8A8A8A,stroke-dasharray:6 4,color:#1B2540
+
+  subgraph A["A · User and wallet layer"]
+    admin["DAO administrator<br/>configured admin wallet"]:::a
+    member["DAO member<br/>assigned wallet"]:::a
+    dapp["Next.js governance DApp<br/>browser · React 19 · ethers 6<br/>CyberChainWalletAdapter · MetaMaskWalletAdapter"]:::a
+    ccw["CyberChain Wallet<br/>browser extension<br/>sign(tx) → signed raw tx"]:::a
+    mm["MetaMask<br/>injected EIP-1193 provider<br/>signs + broadcasts (ECDSA)"]:::a
+  end
+
+  subgraph B["B · Application layer (Node.js / TypeScript)"]
+    subgraph NX["Next.js server (same origin)"]
+      rpcproxy["CyberChain RPC proxy<br/>/api/cyberchain/rpc<br/>6 allowlisted JSON-RPC methods"]:::b
+      apiproxy["API proxy<br/>/api/* → Nest /v1/*"]:::b
+    end
+    subgraph NEST["NestJS DAO REST API (Fastify, /v1)"]
+      gw["CyberChain gateway<br/>@cyberchain SDK wrapper<br/>admin signer: ECDSA or ML-DSA"]:::b
+      props["Proposal services<br/>create · publish · assign<br/>vote prepare / confirm · cancel · finalize"]:::b
+      indexer["Governance event indexer<br/>SyncGovernanceUseCase · 30 s or manual"]:::b
+      core["Application core<br/>use cases · ports · domain rules"]:::b
+      persist["Persistence adapters<br/>Kysely · LocalArtefactStorage"]:::b
+      aigw["AI assistant gateway<br/>wallet challenge / login · HMAC session<br/>proposal-scope check · SSE relay"]:::b
+      research["Research & artefacts<br/>SHA-256 · canonical manifest · links"]:::b
+      verif["Blockchain verification<br/>DB vs chain at pinned block (read-only)"]:::b
+    end
+  end
+
+  subgraph C["C · Blockchain layer (CyberChain, chain ID 1212)"]
+    rpc["CyberChain RPC node<br/>JSON-RPC"]:::c
+    subgraph SC["CyberDAOGovernance (Solidity, Ownable2Step)"]
+      lc["Proposal lifecycle<br/>Pending → Active → Closed | Cancelled"]:::c
+      memb["Membership<br/>assignMembers / unassignMember"]:::c
+      vote["Voting & finalization<br/>one vote per assigned wallet"]:::c
+      events["Governance events<br/>ProposalCreated · MemberAssigned/Unassigned<br/>VoteCast · ProposalCancelled · ProposalFinalized"]:::c
+    end
+  end
+
+  subgraph D["D · Multi-agent AI layer (Python)"]
+    fastapi["FastAPI AI server<br/>/rag/* · Bearer token"]:::d
+    ollama["Ollama (local LLMs)<br/>qwen3.5:4b · 4b-instruct<br/>qwen3:0.6b · qwen3-embedding:0.6b"]:::d
+    planner["Question planner<br/>rule-based split (≤ 20 tasks)<br/>optional qwen3:0.6b JSON plan"]:::d
+    subgraph LG["LangGraph workflow (StateGraph)"]
+      sup["Supervisor node<br/>deterministic routing (regex rules, no LLM)"]:::d
+      agents["Specialist agents<br/>Proposal · Evidence · Research<br/>Governance · Analysis · Blockchain"]:::d
+      verify["Verify node<br/>citation & amount checks · retry ≤ 2"]:::d
+      synth["Synthesis<br/>one final LLM answer"]:::d
+    end
+    rag["RAG retrieval<br/>verified PDFs · pgvector top-k"]:::d
+    tools["In-process tools<br/>22 StructuredTools · per-agent allowlist"]:::d
+  end
+
+  subgraph E["E · Storage layer"]
+    files[("Local artefact storage<br/>data/artefacts")]:::e
+    subgraph PG["PostgreSQL + pgvector"]
+      pub[("public schema<br/>DAO read model")]:::e
+      ai[("ai schema<br/>chunks + embeddings · runs · traces")]:::e
+    end
+  end
+
+  subgraph F["F · External interface"]
+    mcp["MCP server (stdio)<br/>13 read-only tools · operator token<br/>not in agent path"]:::f
+  end
+
+  %% A
+  admin --> dapp
+  member --> dapp
+  dapp <== "vote tx: sign(tx) → signed raw tx" ==> ccw
+  dapp <-. "auth: sign challenge tx (not broadcast)" .-> ccw
+  dapp <== "vote: eth_sendTransaction" ==> mm
+  dapp <-. "auth: personal_sign (EIP-191)" .-> mm
+  %% transaction paths
+  dapp == "signed raw tx + reads" ==> rpcproxy
+  rpcproxy == "allowlisted JSON-RPC" ==> rpc
+  mm == "eth_sendTransaction via wallet RPC" ==> rpc
+  gw == "SDK admin txs · receipts · logs" ==> rpc
+  verif == "read-only eth_call / eth_getLogs" ==> rpc
+  rpc == "EVM tx / call" ==> SC
+  %% application
+  dapp -- "HTTPS · REST · SSE" --> apiproxy
+  apiproxy --> NEST
+  aigw <-- "HTTP + SSE · Bearer · X-DAO-User" --> fastapi
+  research -- "PDF upload (loopback)" --> fastapi
+  agents -- "Blockchain agent: HTTP GET verification · Bearer" --> verif
+  %% AI internals
+  fastapi --> planner --> sup --> agents --> verify --> synth
+  verify -. "retry" .-> agents
+  LG -- "HTTP /api/chat" --> ollama
+  LG --> tools --> rag
+  %% data
+  persist -. "SQL (Kysely)" .-> pub
+  persist -. "file write" .-> files
+  rag -. "pgvector" .-> ai
+  rag -. "verified PDF read" .-> files
+  tools -. "psycopg: public read-only, ai read/write" .-> PG
+  mcp -. "read-only SQL" .-> PG
+
+  style A fill:#F4F7FC,stroke:#8EA6D0
+  style B fill:#F3F9F3,stroke:#8DBF96
+  style NX fill:#FFFFFF,stroke:#5E9E6B
+  style NEST fill:#FFFFFF,stroke:#5E9E6B
+  style C fill:#FFF8EF,stroke:#E0B27A
+  style SC fill:#FFFFFF,stroke:#C98A3E
+  style D fill:#F7F3FC,stroke:#B49DD6
+  style LG fill:#FFFFFF,stroke:#8A6CBF
+  style E fill:#F1F8F8,stroke:#86BDBD
+  style PG fill:#FFFFFF,stroke:#4F9A9A
+  style F fill:#F6F6F6,stroke:#9A9A9A,stroke-dasharray:6 4

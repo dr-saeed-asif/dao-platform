@@ -122,6 +122,65 @@ export function ExecutionDetails({ result }: { result: AssistantResult }) {
     </details>
   );
 }
+type Comparison = BlockchainVerification["comparisons"][number];
+
+function anomalyCategory(row: Comparison): string | undefined {
+  const field = row.field;
+  if (field === "public.votes.count" || field === "public.proposals.total_votes") return "Vote total";
+  if (/^option_\d+_vote_count$/.test(field)) return "Votes by option";
+  if (field === "public.proposal_assignments.count") return "Assigned members";
+  if (["voting_status", "starts_at", "ends_at", "finalized", "winning_option", "tied"].includes(field)) return "Voting lifecycle";
+  if (field.startsWith("governance_events") || (field.startsWith("governance_event:") && (row.database == null || row.blockchain == null))) return "Event coverage";
+  if (field.startsWith("governance_event:") || field.startsWith("vote:")) return "Event or vote details";
+}
+
+function AnomaliesTable({ report }: { report: BlockchainVerification }) {
+  const rows = report.comparisons.flatMap((row) => {
+    const category = anomalyCategory(row);
+    return category && row.status !== "verified" ? [{ ...row, category }] : [];
+  });
+  for (const tx of report.transactions) {
+    if (tx.status !== "mismatched" && tx.status !== "unavailable" && tx.status !== "unverified") continue;
+    rows.push({
+      category: "Transaction receipt", field: String(tx.hash), status: tx.status,
+      database: "Referenced by proposal verification", blockchain: tx,
+    });
+  }
+  return (
+    <section aria-label="Anomalies">
+      <h3>Anomalies</h3>
+      <p>Indexed database records compared with CyberChain at block {report.block_number ?? "unavailable"}.</p>
+      {rows.length > 0 ? (
+        <div className="table-wrap">
+          <table>
+            <caption>Differences and checks that need more evidence</caption>
+            <thead><tr>
+              <th scope="col">Check</th><th scope="col">Off-chain database</th>
+              <th scope="col">On-chain evidence</th><th scope="col">Finding</th>
+            </tr></thead>
+            <tbody>{rows.map((row, index) => (
+              <tr key={`${row.field}-${index}`}>
+                <th scope="row">{row.category}<details><summary>Record</summary><code>{row.field}</code></details></th>
+                <td>{row.database != null && typeof row.database === "object"
+                  ? <details><summary>Inspect record</summary><pre>{shown(row.database)}</pre></details>
+                  : shown(row.database)}</td>
+                <td>{row.blockchain != null && typeof row.blockchain === "object"
+                  ? <details><summary>Inspect evidence</summary><pre>{shown(row.blockchain)}</pre></details>
+                  : shown(row.blockchain)}</td>
+                <td>{row.status === "mismatched" ? "Observed mismatch" : "Needs verification"}
+                  {row.reason && <p>{row.reason}</p>}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+      ) : (
+        <p>{report.status === "verified" ? "No anomalies found in the verified checks." :
+          "No anomaly rows to display. Verification is incomplete. Review the details below."}</p>
+      )}
+    </section>
+  );
+}
+
 export function BlockchainPanel({
   report,
 }: {
@@ -132,6 +191,7 @@ export function BlockchainPanel({
     <details className="blockchain-verification" open>
       <summary>On-Chain Verification · {report.status}</summary>
       <p>{report.scope}</p>
+      <AnomaliesTable report={report} />
       {incomplete.length > 0 && (
         <p className="form-message">
           Database comparison {report.status}: {incomplete.map((c) =>

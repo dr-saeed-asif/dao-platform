@@ -18,6 +18,13 @@ import {
   type BlockchainVerification,
   type ExecutionSpan,
 } from "@/lib/api/assistant";
+import {
+  MAX_QUESTIONS,
+  applyAnswerSection,
+  newSectionState,
+  progressLabel,
+  validateQuestionBatch,
+} from "@/lib/api/answer-sections";
 
 export function ProposalAssistant({
   proposalId,
@@ -211,15 +218,9 @@ export function ProposalAssistant({
     }
   }
   function collectQuestions() {
-    const submitted = [...questions, ...splitQuestionDraft(draft)];
-    if (submitted.length > 20)
-      throw new Error(
-        "You can submit up to 20 questions. Remove a question before adding more.",
-      );
-    if (submitted.some((q) => q.length > 4000))
-      throw new Error("Each question must be 4,000 characters or fewer.");
-    if (submitted.join("").length > 40000)
-      throw new Error("The question batch must be 40,000 characters or fewer.");
+    const submitted = [...questions, ...(draft.trim() ? [draft.trim()] : [])];
+    const invalid = validateQuestionBatch(submitted);
+    if (invalid) throw new Error(invalid);
     return submitted;
   }
   function addDraft() {
@@ -260,16 +261,17 @@ export function ProposalAssistant({
       },
     ]);
     setResults(
-      submitted.map((question, i) => ({
-        question_id: `q${i + 1}`,
-        question,
+      [{
+        question_id: "response",
+        question: submitted.join("\n"),
         agent: "",
         status: "processing",
         citations: [],
         cited_sources: [],
         errors: [],
-      })),
+      }],
     );
+    const sectionState = newSectionState();
     try {
       await streamAssistant(
         address,
@@ -316,18 +318,7 @@ export function ProposalAssistant({
                       typeof question === "string",
                   )
                 : submitted;
-              setResults(
-                planned.map((question, index) => ({
-                  question_id: `q${index + 1}`,
-                  question,
-                  agent: "",
-                  status: "processing",
-                  citations: [],
-                  cited_sources: [],
-                  errors: [],
-                })),
-              );
-              setStatus(`Running ${planned.length} questions`);
+              setStatus(planned.length > 1 ? "Checking the requested information" : "Checking the proposal and its sources");
             }
           }
           if (event.event === "execution_update" && event.question_id) {
@@ -345,30 +336,46 @@ export function ProposalAssistant({
               }),
             );
           }
-          if (event.event === "question_error" && event.question_id) {
+          if (event.event === "response_progress") {
+            setStatus(String(data.status ?? "Combining findings"));
+          }
+          if (event.event === "answer_section") {
+            // Progressive answer: each verified section appears in plan order as soon as it is ready.
+            const partial = applyAnswerSection(sectionState, data);
             setResults((old) =>
               old.map((r) =>
-                r.question_id === event.question_id
-                  ? {
-                      ...r,
-                      status: "failed",
-                      errors: [String(data.error ?? "Question failed.")],
-                    }
+                r.question_id === "response" && r.status === "processing"
+                  ? { ...r, ...partial }
                   : r,
               ),
             );
           }
-          if (event.event === "question_complete" && event.question_id) {
-            setResults((old) =>
-              old.map((r) =>
-                r.question_id === event.question_id
-                  ? ({ ...r, ...data, status: "completed" } as AssistantResult)
-                  : r,
-              ),
-            );
+          if (event.event === "answer_progress")
+            setStatus("Composing the next section");
+          if (event.event === "requirements" || event.event === "requirement_update") {
+            const label = progressLabel(data.summary);
+            if (label) setStatus(label);
+          }
+          if (event.event === "question_start") {
+            const labels: Record<string, string> = {
+              evidence: "Checking the document", proposal: "Reading proposal details",
+              governance: "Checking stored voting records", blockchain: "Checking blockchain records",
+              research: "Finding DAO proposals", analysis: "Reviewing the available evidence",
+            };
+            setStatus(labels[String(data.agent)] ?? "Checking the requested information");
+          }
+          if (event.event === "question_error" && event.question_id) {
+            setStatus("A check could not complete; collecting available findings");
           }
           if (event.event === "run_complete") {
-            if (event.results) setResults(event.results);
+            const reply = event.reply;
+            if (reply) {
+              setMessages((old) => [...old, {
+                id: crypto.randomUUID(), role: "assistant", content: reply, metadata: {},
+              }]);
+            }
+            if (event.final_response) setResults([event.final_response]);
+            else if (event.results) setResults(event.results);
             setStatus(
               data.status === "needs_clarification"
                 ? "Clarification needed"
@@ -390,7 +397,7 @@ export function ProposalAssistant({
       setResults((old) =>
         old.map((r) =>
           r.status === "processing"
-            ? { ...r, status: "failed", errors: ["Request did not complete."] }
+            ? { ...r, status: "failed", errors: [controller.signal.aborted ? "Request stopped." : explain(e)] }
             : r,
         ),
       );
@@ -420,14 +427,9 @@ export function ProposalAssistant({
       setError("Add or edit at least one question before asking AI.");
       return;
     }
-    if (
-      submitted.length > 20 ||
-      submitted.some((question) => question.length > 4000) ||
-      submitted.join("").length > 40000
-    ) {
-      setError(
-        "Keep the preview within 20 questions, 4,000 characters per question, and 40,000 characters total.",
-      );
+    const invalid = validateQuestionBatch(submitted);
+    if (invalid) {
+      setError(invalid);
       return;
     }
     setQuestions([]);
@@ -707,7 +709,7 @@ export function ProposalAssistant({
                 role="status"
                 aria-live="polite"
               >
-                {busy ? "" : status.replaceAll("_", " ")}
+                {status.replaceAll("_", " ")}
               </div>
             </div>
 
@@ -880,8 +882,8 @@ export function ProposalAssistant({
               </div>
               <div className="assistant-composer-footer">
                 <p id="question-composer-help">
-                  {questions.length} queued · Ctrl+Enter adds a question · paste
-                  one question per line · max 20
+                  {questions.length} queued · Ask naturally, including several questions.
+                  Ctrl+Enter queues a separate request · max {MAX_QUESTIONS}
                 </p>
                 <div
                   className="assistant-suggestions"
@@ -910,7 +912,7 @@ export function ProposalAssistant({
                     <button
                       type="button"
                       className="assistant-text-action"
-                      disabled={busy || questions.length >= 20}
+                      disabled={busy || questions.length >= MAX_QUESTIONS}
                       onClick={addDraft}
                     >
                       Add to queue
@@ -955,12 +957,15 @@ function agentError(value: string) {
   if (/model.*(not found|unavailable)|404.*ollama|ollama.*404/i.test(value))
     return "The configured Ollama model is unavailable. Ask an administrator to install or select it.";
   if (/timed?\s*out|timeout|exceeded.*time/i.test(value))
-    return "AI processing timed out. Try fewer questions or retry later.";
+    return "This check timed out. Available findings are preserved; retry the unavailable part.";
   if (/citation verification/i.test(value))
     return "This answer could not be verified against the available proposal evidence.";
   return value;
 }
 function Answers({ results }: { results: AssistantResult[] }) {
+  if (results.some((r) => r.status === "processing" && !r.answer)) {
+    return <div className="batch-answer-card" role="status">Checking your request and its sources…</div>;
+  }
   return (
     <>
       {results.map((r) => (
@@ -970,22 +975,24 @@ function Answers({ results }: { results: AssistantResult[] }) {
           data-question-id={r.question_id}
         >
           <div className="batch-answer-heading">
-            <h3>{r.question}</h3>
+            <h3>{r.question_id === "response" ? "Answer" : r.question}</h3>
             {r.status !== "processing" && (
               <span className="info-chip">
-                {r.status === "completed" && !r.citations?.length
-                  ? "Insufficient evidence"
-                  : r.status}{" "}
-                {r.agent && `· ${r.agent}`}
+                {r.status === "failed" ? "Unavailable"
+                  : r.errors?.length || r.worker_results?.some((worker) => worker.status === "failed") ? "Partial answer"
+                  : !r.citations?.length ? "Insufficient evidence" : "Answer ready"}
               </span>
             )}
           </div>
-          {r.status !== "processing" && (
+          {(r.status !== "processing" || !!r.answer) && (
             <p className="assistant-text">
               {r.status === "failed"
-                ? "No verified answer is available for this question."
+                ? (r.answer ?? "The requested checks could not complete. Please retry.")
                 : (r.answer ?? "No supported answer was returned.")}
             </p>
+          )}
+          {r.status === "processing" && !!r.answer && (
+            <p className="form-message" role="status">Still checking the remaining items; this answer updates as findings are verified.</p>
           )}
           {r.errors?.map((error, i) => (
             <p className="form-message" key={i}>
@@ -996,6 +1003,20 @@ function Answers({ results }: { results: AssistantResult[] }) {
             <p>Sources: {r.citations.map((c) => `[${c}]`).join(" ")}</p>
           )}
           <ExecutionDetails result={r} />
+          {!!r.worker_results?.length && (
+            <details>
+              <summary>Specialist checks · {r.worker_results.length}</summary>
+              {r.worker_results.map((worker) => (
+                <section key={worker.question_id}>
+                  <strong>{worker.agent} · {worker.status}</strong>
+                  <p>{worker.question}</p>
+                  <p className="assistant-text">{worker.answer ?? "This check could not complete."}</p>
+                  {worker.errors?.map((error, index) => <p className="form-message" key={index}>{agentError(error)}</p>)}
+                  <ExecutionDetails result={worker} />
+                </section>
+              ))}
+            </details>
+          )}
           {r.blockchain_verification && (
             <BlockchainPanel report={r.blockchain_verification} />
           )}
