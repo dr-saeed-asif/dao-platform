@@ -1,0 +1,5 @@
+id,dao_id,title,status,total_votes,indexed_votes,assigned,dao_proposals
+16dadecc-94cc-4fae-8089-921765854976,Community Clean-Up Initiative,Community Clean-Up Initiative,VOTING_CLOSED,0,0,9,1
+38a3c43c-1e3b-47c9-8688-20e6e64ec495,cyber-test-dao,"Improve members’ understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",FINALIZED,2,2,10,1
+e3b14215-bd47-420a-ae5a-a50d15cf0255,cyber-dao-321,CyberGovAI Governance Security and Transparency Pilot,VOTING_CLOSED,0,0,10,1
+onchain-28,cyber-test,Cyber Testing,VOTING_CLOSED,0,0,0,1

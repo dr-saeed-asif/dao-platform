@@ -1,0 +1,2 @@
+mode,attempts,completed,gold_hits,first_pass_hits,first_pass_n,wilson_low,wilson_high,citing_answers,valid_refs,unique_refs,median_wall_ms,median_retrieval_ms,median_workflow_input_tokens,median_workflow_output_tokens,worker_gate_checks,worker_gate_rejections
+direct_specialist,12,12,12,4,4,0.5101091596030786,0.9999999999999999,12,12,12,157.18004999871482,0.0,0.0,0.0,12,0

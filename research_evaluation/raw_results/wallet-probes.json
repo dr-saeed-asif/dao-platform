@@ -1,0 +1,32 @@
+[
+  {
+    "name": "challenge",
+    "observed": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "name": "valid_ephemeral_signature",
+    "observed": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "name": "replayed_challenge",
+    "observed": 401,
+    "expected": 401,
+    "pass": true
+  },
+  {
+    "name": "signed_non_member_proposal_access",
+    "observed": 403,
+    "expected": 403,
+    "pass": true
+  },
+  {
+    "name": "wrong_signer",
+    "observed": 401,
+    "expected": 401,
+    "pass": true
+  }
+]

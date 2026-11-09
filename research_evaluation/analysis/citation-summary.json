@@ -1,0 +1,13 @@
+{
+  "structural_cases": 8,
+  "structural_labels_matched": 8,
+  "reviewed_claims": 16,
+  "claim_status": {
+    "supported": 15,
+    "contradicted": 1
+  },
+  "explicit_references": 14,
+  "review_scope": "Four first-repeat full answers; unblinded assistant source review; no independent annotation",
+  "live_repair_rate": null,
+  "live_repair_reason": "No full-condition worker rejection observed"
+}

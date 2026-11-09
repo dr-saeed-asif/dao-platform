@@ -1,0 +1,383 @@
+{
+  "fixture_source": [
+    {
+      "source_id": "G1",
+      "content": "{\"stored_total_votes\": 0, \"assigned_members\": 10}"
+    }
+  ],
+  "checks": [
+    {
+      "case": "valid_zero",
+      "answer": "The database recorded 0 votes [G1].",
+      "expected_structural_valid": true,
+      "structural": {
+        "valid": true,
+        "cited": [
+          "G1"
+        ],
+        "unknown": []
+      },
+      "automatic_claims": {
+        "method": "automatic claim-level check (numeric atoms + citation existence); not entailment",
+        "claims_total": 1,
+        "claims_factual": 1,
+        "counts": {
+          "supported": 1
+        },
+        "unsupported_claims": 0,
+        "unsupported_rate_lower_bound": 0.0,
+        "numeric_faithfulness": 1.0,
+        "valid": true,
+        "flagged": []
+      }
+    },
+    {
+      "case": "invalid_id",
+      "answer": "The database recorded 0 votes [G99].",
+      "expected_structural_valid": false,
+      "structural": {
+        "valid": false,
+        "cited": [
+          "G99"
+        ],
+        "unknown": [
+          "G99"
+        ]
+      },
+      "automatic_claims": {
+        "method": "automatic claim-level check (numeric atoms + citation existence); not entailment",
+        "claims_total": 1,
+        "claims_factual": 1,
+        "counts": {
+          "unknown_citation": 1
+        },
+        "unsupported_claims": 1,
+        "unsupported_rate_lower_bound": 1.0,
+        "numeric_faithfulness": 0.0,
+        "valid": false,
+        "flagged": [
+          {
+            "text": "The database recorded 0 votes [G99].",
+            "citations": [
+              "G99"
+            ],
+            "status": "unknown_citation",
+            "detail": "cites unknown source G99",
+            "absent": []
+          }
+        ]
+      }
+    },
+    {
+      "case": "mixed_ids",
+      "answer": "The database recorded 0 votes [G1][D77].",
+      "expected_structural_valid": false,
+      "structural": {
+        "valid": false,
+        "cited": [
+          "D77",
+          "G1"
+        ],
+        "unknown": [
+          "D77"
+        ]
+      },
+      "automatic_claims": {
+        "method": "automatic claim-level check (numeric atoms + citation existence); not entailment",
+        "claims_total": 1,
+        "claims_factual": 1,
+        "counts": {
+          "unknown_citation": 1
+        },
+        "unsupported_claims": 1,
+        "unsupported_rate_lower_bound": 1.0,
+        "numeric_faithfulness": 0.0,
+        "valid": false,
+        "flagged": [
+          {
+            "text": "The database recorded 0 votes [G1][D77].",
+            "citations": [
+              "G1",
+              "D77"
+            ],
+            "status": "unknown_citation",
+            "detail": "cites unknown source D77",
+            "absent": []
+          }
+        ]
+      }
+    },
+    {
+      "case": "no_reference",
+      "answer": "The database recorded 0 votes.",
+      "expected_structural_valid": false,
+      "structural": {
+        "valid": false,
+        "cited": [],
+        "unknown": []
+      },
+      "automatic_claims": {
+        "method": "automatic claim-level check (numeric atoms + citation existence); not entailment",
+        "claims_total": 1,
+        "claims_factual": 1,
+        "counts": {
+          "uncited_factual": 1
+        },
+        "unsupported_claims": 1,
+        "unsupported_rate_lower_bound": 1.0,
+        "numeric_faithfulness": null,
+        "valid": false,
+        "flagged": [
+          {
+            "text": "The database recorded 0 votes.",
+            "citations": [],
+            "status": "uncited_factual",
+            "detail": "numeric claim without a citation",
+            "absent": []
+          }
+        ]
+      }
+    },
+    {
+      "case": "wrong_value",
+      "answer": "The database recorded 25 votes [G1].",
+      "expected_structural_valid": true,
+      "structural": {
+        "valid": true,
+        "cited": [
+          "G1"
+        ],
+        "unknown": []
+      },
+      "automatic_claims": {
+        "method": "automatic claim-level check (numeric atoms + citation existence); not entailment",
+        "claims_total": 1,
+        "claims_factual": 1,
+        "counts": {
+          "unsupported_number": 1
+        },
+        "unsupported_claims": 1,
+        "unsupported_rate_lower_bound": 1.0,
+        "numeric_faithfulness": 0.0,
+        "valid": false,
+        "flagged": [
+          {
+            "text": "The database recorded 25 votes [G1].",
+            "citations": [
+              "G1"
+            ],
+            "status": "unsupported_number",
+            "detail": "numbers not in cited sources: ['25']",
+            "absent": [
+              "25"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "wrong_field_existing_number",
+      "answer": "The database recorded 10 votes [G1].",
+      "expected_structural_valid": true,
+      "structural": {
+        "valid": true,
+        "cited": [
+          "G1"
+        ],
+        "unknown": []
+      },
+      "automatic_claims": {
+        "method": "automatic claim-level check (numeric atoms + citation existence); not entailment",
+        "claims_total": 1,
+        "claims_factual": 1,
+        "counts": {
+          "supported": 1
+        },
+        "unsupported_claims": 0,
+        "unsupported_rate_lower_bound": 0.0,
+        "numeric_faithfulness": 1.0,
+        "valid": true,
+        "flagged": []
+      }
+    },
+    {
+      "case": "contradictory_availability",
+      "answer": "The vote count is unavailable [G1].",
+      "expected_structural_valid": true,
+      "structural": {
+        "valid": true,
+        "cited": [
+          "G1"
+        ],
+        "unknown": []
+      },
+      "automatic_claims": {
+        "method": "automatic claim-level check (numeric atoms + citation existence); not entailment",
+        "claims_total": 1,
+        "claims_factual": 1,
+        "counts": {
+          "unchecked_cited": 1
+        },
+        "unsupported_claims": 0,
+        "unsupported_rate_lower_bound": 0.0,
+        "numeric_faithfulness": null,
+        "valid": true,
+        "flagged": []
+      }
+    },
+    {
+      "case": "unsupported_prose",
+      "answer": "The proposal was cancelled by the chair [G1].",
+      "expected_structural_valid": true,
+      "structural": {
+        "valid": true,
+        "cited": [
+          "G1"
+        ],
+        "unknown": []
+      },
+      "automatic_claims": {
+        "method": "automatic claim-level check (numeric atoms + citation existence); not entailment",
+        "claims_total": 1,
+        "claims_factual": 1,
+        "counts": {
+          "unchecked_cited": 1
+        },
+        "unsupported_claims": 0,
+        "unsupported_rate_lower_bound": 0.0,
+        "numeric_faithfulness": null,
+        "valid": true,
+        "flagged": []
+      }
+    }
+  ],
+  "repairs": [
+    {
+      "case": "repairable_id",
+      "scripted_outputs": [
+        "Fact [G99].",
+        "Fact [G1]."
+      ],
+      "status": "completed",
+      "attempts": 2,
+      "citations": [
+        "G1"
+      ],
+      "spans": [
+        {
+          "span_id": "73fa2aa2-fa82-4b8d-9aee-1c3d344c1bed",
+          "question_id": "q1",
+          "kind": "citation_check",
+          "name": "verify_citations",
+          "agent": "supervisor",
+          "started_at": "2026-11-08T23:23:49.872926+00:00",
+          "status": "failed",
+          "completed_at": "2026-11-08T23:23:49.873016+00:00",
+          "latency_ms": 0.076299998909235,
+          "citations": [
+            "G99"
+          ],
+          "unknown": [
+            "G99"
+          ],
+          "error_type": "CitationVerificationError"
+        },
+        {
+          "span_id": "35e1f180-d7aa-4b15-8876-527b6f2f6487",
+          "question_id": "q1",
+          "kind": "citation_check",
+          "name": "verify_citations",
+          "agent": "supervisor",
+          "started_at": "2026-11-08T23:23:49.875504+00:00",
+          "status": "completed",
+          "completed_at": "2026-11-08T23:23:49.875687+00:00",
+          "latency_ms": 0.1771000024746172,
+          "citations": [
+            "G1"
+          ],
+          "unknown": [],
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "case": "persistent_id",
+      "scripted_outputs": [
+        "Fact [G99].",
+        "Fact [G99]."
+      ],
+      "status": "failed",
+      "attempts": 2,
+      "citations": [
+        "G99"
+      ],
+      "spans": [
+        {
+          "span_id": "7a7d5a42-cd72-44bb-ad34-d5b01d7f3b6f",
+          "question_id": "q1",
+          "kind": "citation_check",
+          "name": "verify_citations",
+          "agent": "supervisor",
+          "started_at": "2026-11-08T23:23:49.935213+00:00",
+          "status": "failed",
+          "completed_at": "2026-11-08T23:23:49.935403+00:00",
+          "latency_ms": 0.18519999866839498,
+          "citations": [
+            "G99"
+          ],
+          "unknown": [
+            "G99"
+          ],
+          "error_type": "CitationVerificationError"
+        },
+        {
+          "span_id": "a6a6ace7-992b-4ab9-bd94-d92008d2022c",
+          "question_id": "q1",
+          "kind": "citation_check",
+          "name": "verify_citations",
+          "agent": "supervisor",
+          "started_at": "2026-11-08T23:23:49.937933+00:00",
+          "status": "failed",
+          "completed_at": "2026-11-08T23:23:49.937981+00:00",
+          "latency_ms": 0.0425000034738332,
+          "citations": [
+            "G99"
+          ],
+          "unknown": [
+            "G99"
+          ],
+          "error_type": "CitationVerificationError"
+        }
+      ]
+    },
+    {
+      "case": "valid_first_pass",
+      "scripted_outputs": [
+        "Fact [G1]."
+      ],
+      "status": "completed",
+      "attempts": 1,
+      "citations": [
+        "G1"
+      ],
+      "spans": [
+        {
+          "span_id": "287003ba-bd75-4d3f-a3f4-dd2f4308c142",
+          "question_id": "q1",
+          "kind": "citation_check",
+          "name": "verify_citations",
+          "agent": "supervisor",
+          "started_at": "2026-11-08T23:23:49.996287+00:00",
+          "status": "completed",
+          "completed_at": "2026-11-08T23:23:49.996380+00:00",
+          "latency_ms": 0.08289999823318794,
+          "citations": [
+            "G1"
+          ],
+          "unknown": [],
+          "error_type": null
+        }
+      ]
+    }
+  ]
+}

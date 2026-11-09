@@ -1,0 +1,13 @@
+{
+  "validated_run_rows": 45,
+  "checks": [
+    "Unique run identifiers",
+    "Raw versus derived status and latency",
+    "Citation IDs against returned sources",
+    "Summary medians against score rows",
+    "CSV totals against summaries",
+    "Contradiction linked to original answer/source",
+    "SSE HTTP, completion and cleanup status"
+  ],
+  "scope_limit": "Artifact consistency verification; does not independently validate all semantic annotations or scorer accuracy"
+}

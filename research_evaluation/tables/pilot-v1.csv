@@ -1,0 +1,2 @@
+mode,attempts,completed,gold_hits,first_pass_hits,first_pass_n,wilson_low,wilson_high,citing_answers,valid_refs,unique_refs,median_wall_ms,median_retrieval_ms,median_workflow_input_tokens,median_workflow_output_tokens,worker_gate_checks,worker_gate_rejections
+worker_gate_off,1,1,1,1,1,0.2065493117918027,1.0,1,1,1,120140.74069999333,0,1146,28,0,0

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "DB1",
+    "proposal": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+    "dao": "cyber-dao-321",
+    "question": "What is the exact title of the selected proposal?",
+    "gold": "CyberGovAI Governance Security and Transparency Pilot",
+    "source": "PostgreSQL proposals.title",
+    "intent": "proposal",
+    "kind": "title"
+  },
+  {
+    "id": "DB2",
+    "proposal": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+    "dao": "cyber-test-dao",
+    "question": "How many vote records are stored in the database for the selected proposal?",
+    "gold": "2",
+    "source": "PostgreSQL COUNT(*) of votes by proposal_id",
+    "intent": "voting",
+    "kind": "votes"
+  },
+  {
+    "id": "DB3",
+    "proposal": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+    "dao": "cyber-dao-321",
+    "question": "How many members are assigned to this proposal in the database?",
+    "gold": "10",
+    "source": "PostgreSQL COUNT(*) of active proposal_assignments",
+    "intent": "voting",
+    "kind": "members"
+  },
+  {
+    "id": "DOC1",
+    "proposal": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+    "dao": "cyber-dao-321",
+    "question": "What is the total proposed budget in euros in the attached PDF?",
+    "gold": "12000",
+    "source": "CyberGovAI_Pilot_Proposal.pdf",
+    "intent": "evidence",
+    "kind": "budget"
+  },
+  {
+    "id": "DOC2",
+    "proposal": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+    "dao": "cyber-test-dao",
+    "question": "What is the total proposed budget in euros in the attached PDF?",
+    "gold": "4500",
+    "source": "CyberDAO_Community_Training_Proposal.pdf",
+    "intent": "evidence",
+    "kind": "budget"
+  },
+  {
+    "id": "DB4",
+    "proposal": "16dadecc-94cc-4fae-8089-921765854976",
+    "dao": "Community Clean-Up Initiative",
+    "question": "How many proposals are stored in this DAO?",
+    "gold": "1",
+    "source": "PostgreSQL COUNT(*) of proposals by dao_id",
+    "intent": "research",
+    "kind": "proposals"
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "completed": 3,
+  "attempts": 3,
+  "scope": "One DB1 question repeated; operator-authenticated FastAPI only; no browser/Nest timing",
+  "statistics": {
+    "headers_ms": {
+      "n": 3,
+      "median_ms": 1858.8949000040884,
+      "mean_ms": 1949.9577666671637,
+      "sample_sd_ms": 214.42587995180446,
+      "min_ms": 1796.0922999991453,
+      "max_ms": 2194.886099998257
+    },
+    "first_section_ms": {
+      "n": 3,
+      "median_ms": 3317.96839999879,
+      "mean_ms": 3524.572333333102,
+      "sample_sd_ms": 393.320035188055,
+      "min_ms": 3277.60760000092,
+      "max_ms": 3978.140999999596
+    },
+    "final_event_ms": {
+      "n": 3,
+      "median_ms": 3430.3226999982144,
+      "mean_ms": 3660.8967333328715,
+      "sample_sd_ms": 402.7085603819646,
+      "min_ms": 3426.468300000124,
+      "max_ms": 4125.899200000276
+    },
+    "eof_ms": {
+      "n": 3,
+      "median_ms": 3430.676099997072,
+      "mean_ms": 3661.436466665085,
+      "sample_sd_ms": 402.71488873661053,
+      "min_ms": 3427.1861000015633,
+      "max_ms": 4126.447199996619
+    }
+  },
+  "confidence_intervals": null,
+  "reason": "Sparse repeated trials on one question"
+}

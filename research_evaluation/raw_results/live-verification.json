@@ -1,0 +1,544 @@
+{
+  "cases": [
+    {
+      "label": "pilot",
+      "block": "20254271",
+      "chain": "1212",
+      "observed_at": "2026-11-08T23:23:12.253Z",
+      "http": 200,
+      "status": "verified",
+      "ms": 3330.0396,
+      "counts": {
+        "verified": 24
+      },
+      "rows": [
+        {
+          "field": "voting_status",
+          "status": "verified",
+          "database": "Closed",
+          "blockchain": "Closed"
+        },
+        {
+          "field": "metadata_hash",
+          "status": "verified"
+        },
+        {
+          "field": "metadata_uri",
+          "status": "verified"
+        },
+        {
+          "field": "starts_at",
+          "status": "verified"
+        },
+        {
+          "field": "ends_at",
+          "status": "verified"
+        },
+        {
+          "field": "finalized",
+          "status": "verified",
+          "database": false,
+          "blockchain": false
+        },
+        {
+          "field": "public.votes.count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "public.proposal_assignments.count",
+          "status": "verified",
+          "database": 10,
+          "blockchain": "10"
+        },
+        {
+          "field": "public.proposals.total_votes",
+          "status": "verified",
+          "database": "0",
+          "blockchain": "0"
+        },
+        {
+          "field": "option_0_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "option_1_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "option_2_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_events.count",
+          "status": "verified"
+        }
+      ],
+      "events": 11,
+      "transactions": 2,
+      "error_count": 0
+    },
+    {
+      "label": "training",
+      "block": "20254273",
+      "chain": "1212",
+      "observed_at": "2026-11-08T23:23:15.520Z",
+      "http": 200,
+      "status": "mismatched",
+      "ms": 3161.0612,
+      "counts": {
+        "mismatched": 1,
+        "verified": 28,
+        "unverified": 2
+      },
+      "rows": [
+        {
+          "field": "voting_status",
+          "status": "mismatched",
+          "database": "FINALIZED",
+          "blockchain": "Closed"
+        },
+        {
+          "field": "metadata_hash",
+          "status": "verified"
+        },
+        {
+          "field": "metadata_uri",
+          "status": "verified"
+        },
+        {
+          "field": "starts_at",
+          "status": "verified"
+        },
+        {
+          "field": "ends_at",
+          "status": "verified"
+        },
+        {
+          "field": "finalized",
+          "status": "verified",
+          "database": true,
+          "blockchain": true
+        },
+        {
+          "field": "winning_option",
+          "status": "unverified"
+        },
+        {
+          "field": "tied",
+          "status": "unverified"
+        },
+        {
+          "field": "public.votes.count",
+          "status": "verified",
+          "database": 2,
+          "blockchain": "2"
+        },
+        {
+          "field": "public.proposal_assignments.count",
+          "status": "verified",
+          "database": 10,
+          "blockchain": "10"
+        },
+        {
+          "field": "public.proposals.total_votes",
+          "status": "verified",
+          "database": "2",
+          "blockchain": "2"
+        },
+        {
+          "field": "option_0_vote_count",
+          "status": "verified",
+          "database": 2,
+          "blockchain": "2"
+        },
+        {
+          "field": "option_1_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "option_2_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_events.count",
+          "status": "verified"
+        },
+        {
+          "field": "vote",
+          "status": "verified"
+        },
+        {
+          "field": "vote",
+          "status": "verified"
+        }
+      ],
+      "events": 14,
+      "transactions": 5,
+      "error_count": 0
+    },
+    {
+      "label": "cleanup",
+      "block": "20254274",
+      "chain": "1212",
+      "observed_at": "2026-11-08T23:23:18.664Z",
+      "http": 200,
+      "status": "verified",
+      "ms": 4034.3861000000006,
+      "counts": {
+        "verified": 23
+      },
+      "rows": [
+        {
+          "field": "voting_status",
+          "status": "verified",
+          "database": "Closed",
+          "blockchain": "Closed"
+        },
+        {
+          "field": "metadata_hash",
+          "status": "verified"
+        },
+        {
+          "field": "metadata_uri",
+          "status": "verified"
+        },
+        {
+          "field": "starts_at",
+          "status": "verified"
+        },
+        {
+          "field": "ends_at",
+          "status": "verified"
+        },
+        {
+          "field": "finalized",
+          "status": "verified",
+          "database": false,
+          "blockchain": false
+        },
+        {
+          "field": "public.votes.count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "public.proposal_assignments.count",
+          "status": "verified",
+          "database": 9,
+          "blockchain": "9"
+        },
+        {
+          "field": "public.proposals.total_votes",
+          "status": "verified",
+          "database": "0",
+          "blockchain": "0"
+        },
+        {
+          "field": "option_0_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "option_1_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "option_2_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_events.count",
+          "status": "verified"
+        }
+      ],
+      "events": 10,
+      "transactions": 2,
+      "error_count": 0
+    },
+    {
+      "label": "testing",
+      "block": "20254276",
+      "chain": "1212",
+      "observed_at": "2026-11-08T23:23:22.696Z",
+      "http": 200,
+      "status": "verified",
+      "ms": 6308.6556,
+      "counts": {
+        "verified": 14
+      },
+      "rows": [
+        {
+          "field": "voting_status",
+          "status": "verified",
+          "database": "Closed",
+          "blockchain": "Closed"
+        },
+        {
+          "field": "metadata_hash",
+          "status": "verified"
+        },
+        {
+          "field": "metadata_uri",
+          "status": "verified"
+        },
+        {
+          "field": "starts_at",
+          "status": "verified"
+        },
+        {
+          "field": "ends_at",
+          "status": "verified"
+        },
+        {
+          "field": "finalized",
+          "status": "verified",
+          "database": false,
+          "blockchain": false
+        },
+        {
+          "field": "public.votes.count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "public.proposal_assignments.count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "public.proposals.total_votes",
+          "status": "verified",
+          "database": "0",
+          "blockchain": "0"
+        },
+        {
+          "field": "option_0_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "option_1_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "option_2_vote_count",
+          "status": "verified",
+          "database": 0,
+          "blockchain": "0"
+        },
+        {
+          "field": "governance_event",
+          "status": "verified"
+        },
+        {
+          "field": "governance_events.count",
+          "status": "verified"
+        }
+      ],
+      "events": 1,
+      "transactions": 1,
+      "error_count": 0
+    }
+  ],
+  "auth": [
+    {
+      "label": "no_wallet_token",
+      "expected": 401,
+      "observed": 401,
+      "pass": true
+    },
+    {
+      "label": "forged_wallet_token",
+      "expected": 401,
+      "observed": 401,
+      "pass": true
+    },
+    {
+      "label": "forged_actor_header",
+      "expected": 401,
+      "observed": 401,
+      "pass": true
+    },
+    {
+      "label": "no_operator_token",
+      "expected": 401,
+      "observed": 401,
+      "pass": true
+    },
+    {
+      "label": "wrong_operator_token",
+      "expected": 401,
+      "observed": 401,
+      "pass": true
+    },
+    {
+      "label": "wrong_dao",
+      "expected": 403,
+      "observed": 403,
+      "pass": true
+    }
+  ]
+}

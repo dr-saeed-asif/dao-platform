@@ -1,0 +1,17 @@
+regime,mode,repeat,case,claim,source,status,explicit_reference
+pilot-small,full,1,DB1,Exact title matches source aside from terminal punctuation,G1,supported,true
+pilot-small,full,1,DB2,Database contains two stored vote records,G1,supported,true
+pilot-small,full,1,DB2,The count is a database read rather than an independent chain tally,G1,supported,false
+pilot-small,full,1,DB2,No other details about votes are provided,G1,contradicted,false
+pilot-small,full,1,DOC1,Total budget EUR 12000,D1,supported,true
+pilot-small,full,1,DOC1,Security review EUR 6000,D1,supported,true
+pilot-small,full,1,DOC1,Dashboard improvements EUR 3000,D1,supported,true
+pilot-small,full,1,DOC1,AI evaluation and evidence checks EUR 2000,D1,supported,true
+pilot-small,full,1,DOC1,Contingency EUR 1000,D1,supported,true
+pilot-small,full,1,DOC1,Allocations add to EUR 12000,D1,supported,true
+pilot-small,full,1,DOC2,Total budget EUR 4500,D1,supported,true
+pilot-small,full,1,DOC2,Workshop preparation and facilitation EUR 2000,D1,supported,true
+pilot-small,full,1,DOC2,Training guides and materials EUR 1500,D1,supported,true
+pilot-small,full,1,DOC2,Accessibility and participant support EUR 750,D1,supported,true
+pilot-small,full,1,DOC2,Contingency EUR 250,D1,supported,true
+pilot-small,full,1,DOC2,Allocations add to EUR 4500,D1,supported,true

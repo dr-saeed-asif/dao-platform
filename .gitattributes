@@ -1,0 +1,4 @@
+# Preserve exact artifact bytes so recorded SHA-256 values survive checkout.
+/research_evaluation/** -text
+/research_evaluation/**/*.pdf binary
+/research_evaluation/**/*.png binary

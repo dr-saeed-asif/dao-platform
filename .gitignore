@@ -18,3 +18,8 @@ packages/contracts/artifacts/
 # Browser integration artifacts may contain test sessions.
 **/test-results/
 **/playwright-report/
+
+# Preserve measured evaluation logs while excluding research scratch files.
+!/research_evaluation/raw_results/*.log
+/research_evaluation/**/__pycache__/
+/research_evaluation/**/*.py[cod]

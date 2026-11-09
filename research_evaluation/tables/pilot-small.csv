@@ -1,0 +1,5 @@
+mode,attempts,completed,gold_hits,first_pass_hits,first_pass_n,wilson_low,wilson_high,citing_answers,valid_refs,unique_refs,median_wall_ms,median_retrieval_ms,median_workflow_input_tokens,median_workflow_output_tokens,worker_gate_checks,worker_gate_rejections
+worker_gate_off,8,8,8,4,4,0.5101091596030786,0.9999999999999999,8,8,8,4531.248849998519,451.7,1201.0,30.0,0,0
+single_evidence_worker,8,8,4,2,4,0.15003898774401986,0.8499610122559802,8,14,14,4427.637500000856,1139.95,1441.5,38.5,8,0
+full,8,8,8,4,4,0.5101091596030786,0.9999999999999999,8,8,8,4954.568350003683,459.4,1201.0,30.0,8,0
+llm_only,8,8,0,0,4,0.0,0.4898908403969213,0,0,0,9763.509149997844,,64.0,15.0,0,0

@@ -1,0 +1,322 @@
+test_multi_agent_endpoint_returns_structured_results (test_agent_api.AgentApiTests.test_multi_agent_endpoint_returns_structured_results) ... INFO:api-ai-server:request_id=0abb2d11-34ba-4cec-b6c9-5dbea083bc50 method=POST path=/rag/agents/ask status=200 duration_ms=48.52
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask "HTTP/1.1 200 OK"
+ok
+test_complete_budget_and_typo_clarification (test_agent_budgets.BudgetTests.test_complete_budget_and_typo_clarification) ... ok
+test_inconsistent_total_is_not_silently_corrected (test_agent_budgets.BudgetTests.test_inconsistent_total_is_not_silently_corrected) ... ok
+test_unmatched_number_is_never_guessed_as_a_typo (test_agent_budgets.BudgetTests.test_unmatched_number_is_never_guessed_as_a_typo) ... ok
+test_unsupported_why_or_payment_questions_are_not_replaced_by_a_breakdown (test_agent_budgets.BudgetTests.test_unsupported_why_or_payment_questions_are_not_replaced_by_a_breakdown) ... ok
+test_catalog_has_eight_agents_and_twenty_two_known_tools (test_agent_catalog.AgentCatalogTests.test_catalog_has_eight_agents_and_twenty_two_known_tools) ... ok
+test_question_split_and_citation_verification_are_deterministic (test_agent_catalog.AgentCatalogTests.test_question_split_and_citation_verification_are_deterministic) ... ok
+test_small_spelled_out_numbers_do_not_block_but_large_invented_ones_do (test_agent_claims.BlockingTests.test_small_spelled_out_numbers_do_not_block_but_large_invented_ones_do) ... ok
+test_amounts_that_look_like_years_are_still_checked (test_agent_claims.ClaimTests.test_amounts_that_look_like_years_are_still_checked) ... ok
+test_citation_after_period_stays_attached_to_its_claim (test_agent_claims.ClaimTests.test_citation_after_period_stays_attached_to_its_claim) ... ok
+test_claiming_zero_votes_are_missing_contradicts_known_value (test_agent_claims.ClaimTests.test_claiming_zero_votes_are_missing_contradicts_known_value) ... ok
+test_invented_number_and_uncited_number_are_flagged (test_agent_claims.ClaimTests.test_invented_number_and_uncited_number_are_flagged) ... ok
+test_missing_claim_is_fine_when_source_has_no_value (test_agent_claims.ClaimTests.test_missing_claim_is_fine_when_source_has_no_value) ... ok
+test_rates_use_checkable_denominators (test_agent_claims.ClaimTests.test_rates_use_checkable_denominators) ... ok
+test_unknown_citation_and_questions (test_agent_claims.ClaimTests.test_unknown_citation_and_questions) ... ok
+test_years_are_not_treated_as_numeric_claims (test_agent_claims.ClaimTests.test_years_are_not_treated_as_numeric_claims) ... ok
+test_zero_is_known_data_and_is_supported (test_agent_claims.ClaimTests.test_zero_is_known_data_and_is_supported) ... ok
+test_compact_chain_evidence_excludes_large_metadata_uri (test_agent_observability.ChainFactAnswerTests.test_compact_chain_evidence_excludes_large_metadata_uri) ... ok
+test_missing_database_total_does_not_suppress_contract_votes (test_agent_observability.ChainFactAnswerTests.test_missing_database_total_does_not_suppress_contract_votes) ... ok
+test_member_count_routing_and_grounded_answers (test_agent_observability.MemberCountAnswerTests.test_member_count_routing_and_grounded_answers) ... ok
+test_blockchain_routing_and_gold_scores (test_agent_observability.ObservabilityTests.test_blockchain_routing_and_gold_scores) ... WARNING:asyncio:Executing <Handle BaseProactorEventLoop._loop_self_reading() created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py:320> took 0.120 seconds
+ok
+test_blockchain_tool_rejects_unverified_operator_context (test_agent_observability.ObservabilityTests.test_blockchain_tool_rejects_unverified_operator_context) ... WARNING:asyncio:Executing <Task pending name='Task-9' coro=<ObservabilityTests.test_blockchain_tool_rejects_unverified_operator_context() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_agent_observability.py:76> wait_for=<Task pending name='Task-10' coro=<StructuredTool._arun() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\langchain_core\tools\structured.py:156> cb=[Task.task_wakeup()] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:412> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.298 seconds
+ok
+test_blockchain_worker_preserves_unavailable_status_and_scope (test_agent_observability.ObservabilityTests.test_blockchain_worker_preserves_unavailable_status_and_scope) ... WARNING:asyncio:Executing <Task pending name='Task-17' coro=<BoundedScheduler._guard() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\app\business\agents\scheduling.py:107> wait_for=<Task pending name='Task-18' coro=<RunnableCallable.ainvoke() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\langgraph\_internal\_runnable.py:452> cb=[Task.task_wakeup()] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:412> cb=[_wait.<locals>._on_completion() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:521] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:748> took 0.151 seconds
+ok
+test_failed_tool_is_counted_with_real_elapsed_time (test_agent_observability.ObservabilityTests.test_failed_tool_is_counted_with_real_elapsed_time) ... ok
+test_fallback_records_both_models_and_actual_final_model (test_agent_observability.ObservabilityTests.test_fallback_records_both_models_and_actual_final_model) ... ok
+test_measured_traces_are_isolated_per_question_and_have_no_prompts_or_reasoning (test_agent_observability.ObservabilityTests.test_measured_traces_are_isolated_per_question_and_have_no_prompts_or_reasoning) ... ok
+test_owner_scope_is_in_execution_read_query (test_agent_observability.ObservabilityTests.test_owner_scope_is_in_execution_read_query) ... ok
+test_unreported_tokens_remain_unknown (test_agent_observability.ObservabilityTests.test_unreported_tokens_remain_unknown) ... ok
+test_100_sections_stream_without_unbounded_writes (test_agent_progressive.ProgressiveTests.test_100_sections_stream_without_unbounded_writes) ... ok
+test_a_failure_notice_is_not_counted_as_the_first_meaningful_answer (test_agent_progressive.ProgressiveTests.test_a_failure_notice_is_not_counted_as_the_first_meaningful_answer) ... ok
+test_direct_finding_is_published_immediately_in_plan_order (test_agent_progressive.ProgressiveTests.test_direct_finding_is_published_immediately_in_plan_order) ... ok
+test_failed_sibling_worker_note_is_kept_with_successful_part (test_agent_progressive.ProgressiveTests.test_failed_sibling_worker_note_is_kept_with_successful_part) ... ok
+test_failure_kinds_stay_distinct_and_successes_survive (test_agent_progressive.ProgressiveTests.test_failure_kinds_stay_distinct_and_successes_survive) ... ok
+test_group_writes_are_bounded (test_agent_progressive.ProgressiveTests.test_group_writes_are_bounded) ... ok
+test_write_failure_falls_back_to_verbatim_finding (test_agent_progressive.ProgressiveTests.test_write_failure_falls_back_to_verbatim_finding) ... ok
+test_writer_composes_early_sections_before_slow_tasks_finish (test_agent_progressive.ProgressiveTests.test_writer_composes_early_sections_before_slow_tasks_finish) ... ok
+test_cancel_keeps_finished_results_and_marks_the_rest_cancelled (test_agent_progressive_workflow.CancellationTests.test_cancel_keeps_finished_results_and_marks_the_rest_cancelled) ... ok
+test_outer_cancellation_leaves_partial_results_readable (test_agent_progressive_workflow.CancellationTests.test_outer_cancellation_leaves_partial_results_readable) ... ok
+test_invented_currency_amount_falls_back_to_the_verbatim_finding (test_agent_progressive_workflow.ComposedSectionTests.test_invented_currency_amount_falls_back_to_the_verbatim_finding) ... ok
+test_stored_purpose_uses_final_writer_and_retains_direct_fallback (test_agent_progressive_workflow.ComposedSectionTests.test_stored_purpose_uses_final_writer_and_retains_direct_fallback) ... ok
+test_synthesis_writes_the_first_section_while_the_slow_specialist_still_runs (test_agent_progressive_workflow.ComposedSectionTests.test_synthesis_writes_the_first_section_while_the_slow_specialist_still_runs) ... ok
+test_unsupported_large_count_is_withheld_by_the_claim_gate (test_agent_progressive_workflow.ComposedSectionTests.test_unsupported_large_count_is_withheld_by_the_claim_gate) ... ok
+test_100_questions_run_with_bounded_concurrency_and_reused_reads (test_agent_progressive_workflow.HundredTaskTests.test_100_questions_run_with_bounded_concurrency_and_reused_reads) ... ok
+test_100_task_progressive_run_publishes_every_section_in_order (test_agent_progressive_workflow.HundredTaskTests.test_100_task_progressive_run_publishes_every_section_in_order) ... ok
+test_101_questions_are_rejected (test_agent_progressive_workflow.HundredTaskTests.test_101_questions_are_rejected) ... ok
+test_dependent_task_is_skipped_when_its_prerequisite_fails (test_agent_progressive_workflow.ProgressiveStreamingTests.test_dependent_task_is_skipped_when_its_prerequisite_fails) ... WARNING:asyncio:Executing <Task pending name='Task-3010' coro=<ProgressiveStreamingTests.test_dependent_task_is_skipped_when_its_prerequisite_fails() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_agent_progressive_workflow.py:125> wait_for=<Future pending cb=[Task.task_wakeup()] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:459> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.124 seconds
+ok
+test_first_section_is_published_before_the_slowest_specialist_finishes (test_agent_progressive_workflow.ProgressiveStreamingTests.test_first_section_is_published_before_the_slowest_specialist_finishes) ... ok
+test_missing_evidence_is_not_reported_as_an_execution_error (test_agent_progressive_workflow.ProgressiveStreamingTests.test_missing_evidence_is_not_reported_as_an_execution_error) ... ok
+test_partial_failure_keeps_successful_findings_and_names_the_failure_kind (test_agent_progressive_workflow.ProgressiveStreamingTests.test_partial_failure_keeps_successful_findings_and_names_the_failure_kind) ... WARNING:asyncio:Executing <Task pending name='Task-3083' coro=<ProgressiveStreamingTests.test_partial_failure_keeps_successful_findings_and_names_the_failure_kind() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_agent_progressive_workflow.py:99> wait_for=<Future pending cb=[Task.task_wakeup()] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:459> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.135 seconds
+ok
+test_streamed_sections_equal_the_persisted_final_answer (test_agent_progressive_workflow.ProgressiveStreamingTests.test_streamed_sections_equal_the_persisted_final_answer) ... ok
+test_empty_ledger_has_no_coverage_not_zero (test_agent_routing_requirements.LedgerTests.test_empty_ledger_has_no_coverage_not_zero) ... ok
+test_every_requirement_tracked_with_evidence_and_dependencies (test_agent_routing_requirements.LedgerTests.test_every_requirement_tracked_with_evidence_and_dependencies) ... ok
+test_summary_separates_failure_kinds_and_answered_from_completed (test_agent_routing_requirements.LedgerTests.test_summary_separates_failure_kinds_and_answered_from_completed) ... ok
+test_analysis_is_an_integrating_intent_its_explicit_list_is_the_source_set (test_agent_routing_requirements.RoutingTests.test_analysis_is_an_integrating_intent_its_explicit_list_is_the_source_set) ... ok
+test_invalid_or_unsupported_specialists_are_dropped_and_reported_not_rewritten (test_agent_routing_requirements.RoutingTests.test_invalid_or_unsupported_specialists_are_dropped_and_reported_not_rewritten) ... ok
+test_no_keyword_rewrite_of_a_valid_plan (test_agent_routing_requirements.RoutingTests.test_no_keyword_rewrite_of_a_valid_plan) ... ok
+test_planner_cannot_remove_the_primary_specialist_of_an_ordinary_intent (test_agent_routing_requirements.RoutingTests.test_planner_cannot_remove_the_primary_specialist_of_an_ordinary_intent) ... ok
+test_primary_first_and_valid_support_kept_in_planner_order (test_agent_routing_requirements.RoutingTests.test_primary_first_and_valid_support_kept_in_planner_order) ... ok
+test_worker_cap (test_agent_routing_requirements.RoutingTests.test_worker_cap) ... ok
+test_task_reported_failure_keeps_value_and_blocks_dependents (test_agent_scheduling.FailedResultTests.test_task_reported_failure_keeps_value_and_blocks_dependents) ... ok
+test_100_tasks_bounded_with_chain_dependencies_and_callbacks (test_agent_scheduling.SchedulerTests.test_100_tasks_bounded_with_chain_dependencies_and_callbacks) ... ok
+test_100_tasks_with_failures_keep_every_success (test_agent_scheduling.SchedulerTests.test_100_tasks_with_failures_keep_every_success) ... ok
+test_deadline_cancels_running_and_marks_unstarted (test_agent_scheduling.SchedulerTests.test_deadline_cancels_running_and_marks_unstarted) ... ok
+test_dependents_wait_and_independent_tasks_do_not_wait_for_a_wave (test_agent_scheduling.SchedulerTests.test_dependents_wait_and_independent_tasks_do_not_wait_for_a_wave) ... ok
+test_external_cancel_stops_work_and_returns_partial_results (test_agent_scheduling.SchedulerTests.test_external_cancel_stops_work_and_returns_partial_results) ... ok
+test_failure_is_isolated_and_dependents_are_not_run (test_agent_scheduling.SchedulerTests.test_failure_is_isolated_and_dependents_are_not_run) ... ok
+test_outer_task_cancellation_cancels_children (test_agent_scheduling.SchedulerTests.test_outer_task_cancellation_cancels_children) ... ok
+test_per_job_timeout_keeps_other_results (test_agent_scheduling.SchedulerTests.test_per_job_timeout_keeps_other_results) ... ok
+test_validation_rejects_cycles_unknown_and_duplicate_ids (test_agent_scheduling.SchedulerTests.test_validation_rejects_cycles_unknown_and_duplicate_ids) ... ok
+test_missing_database_comparison_does_not_hide_chain_counts (test_agent_synthesis.ChainContextTests.test_missing_database_comparison_does_not_hide_chain_counts) ... ok
+test_missing_task_section_is_rejected (test_agent_synthesis.CoverageTests.test_missing_task_section_is_rejected) ... ok
+test_currency_guard_rejects_invented_amounts_even_with_valid_citation (test_agent_synthesis.SynthesisTests.test_currency_guard_rejects_invented_amounts_even_with_valid_citation) ... ok
+test_failed_specialist_preserves_supported_answer_and_failure_notice (test_agent_synthesis.SynthesisTests.test_failed_specialist_preserves_supported_answer_and_failure_notice) ... ok
+test_invalid_synthesis_falls_back_to_supported_findings (test_agent_synthesis.SynthesisTests.test_invalid_synthesis_falls_back_to_supported_findings) ... ok
+test_multiple_specialists_get_one_final_answer (test_agent_synthesis.SynthesisTests.test_multiple_specialists_get_one_final_answer) ... ok
+test_single_worker_also_passes_through_synthesis_agent (test_agent_synthesis.SynthesisTests.test_single_worker_also_passes_through_synthesis_agent) ... ok
+test_source_collection_runs_two_workers_but_only_one_final_generation (test_agent_synthesis.SynthesisTests.test_source_collection_runs_two_workers_but_only_one_final_generation) ... ok
+test_tool_results_are_reused_across_questions (test_agent_synthesis.SynthesisTests.test_tool_results_are_reused_across_questions) ... ok
+test_worker_citation_ids_are_unique_and_answers_remapped (test_agent_synthesis.SynthesisTests.test_worker_citation_ids_are_unique_and_answers_remapped) ... ok
+test_dependent_question_runs_after_and_receives_previous_answer (test_agent_workflow.AgentWorkflowTests.test_dependent_question_runs_after_and_receives_previous_answer) ... ok
+test_independent_questions_run_with_configured_concurrency (test_agent_workflow.AgentWorkflowTests.test_independent_questions_run_with_configured_concurrency) ... ok
+test_intent_routing_covers_all_five_agents (test_agent_workflow.AgentWorkflowTests.test_intent_routing_covers_all_five_agents) ... ok
+test_invalid_citations_retry_then_terminate (test_agent_workflow.AgentWorkflowTests.test_invalid_citations_retry_then_terminate) ... ok
+test_partial_failure_does_not_discard_other_results (test_agent_workflow.AgentWorkflowTests.test_partial_failure_does_not_discard_other_results) ... ok
+test_single_question_returns_verified_structured_result (test_agent_workflow.AgentWorkflowTests.test_single_question_returns_verified_structured_result) ... ok
+test_structured_plan_routes_intents_and_dependencies (test_agent_workflow.AgentWorkflowTests.test_structured_plan_routes_intents_and_dependencies) ... ok
+test_count_with_selected_proposal_uses_dao_count (test_agent_workflow.DaoResearchScopeTests.test_count_with_selected_proposal_uses_dao_count) ... ok
+test_count_zero_is_not_missing_evidence (test_agent_workflow.DaoResearchScopeTests.test_count_zero_is_not_missing_evidence) ... ok
+test_list_with_selected_proposal_uses_dao_list (test_agent_workflow.DaoResearchScopeTests.test_list_with_selected_proposal_uses_dao_list) ... ok
+test_false_abstention_review_is_bounded_and_cited (test_agent_workflow.GroundingReviewTests.test_false_abstention_review_is_bounded_and_cited) ... WARNING:asyncio:Executing <Task pending name='Task-3714' coro=<GroundingReviewTests.test_false_abstention_review_is_bounded_and_cited() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_agent_workflow.py:181> wait_for=<Future pending cb=[Task.task_wakeup()] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:459> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.107 seconds
+ok
+test_unrelated_evidence_can_still_abstain (test_agent_workflow.GroundingReviewTests.test_unrelated_evidence_can_still_abstain) ... ok
+test_missing_token_is_unauthorized (test_api_authorization_characterization.ApiAuthorizationTests.test_missing_token_is_unauthorized) ... INFO:api-ai-server:request_id=d6833a26-c5b4-492a-ac55-8ee60dc639a8 method=POST path=/v1/ai/query status=401 duration_ms=52.63
+INFO:httpx2:HTTP Request: POST http://testserver/v1/ai/query "HTTP/1.1 401 Unauthorized"
+ok
+test_wrong_dao_is_rejected (test_api_authorization_characterization.ApiAuthorizationTests.test_wrong_dao_is_rejected) ... INFO:api-ai-server:request_id=74282180-0f36-45d6-a1e2-e5963d4791ad method=POST path=/v1/ai/query status=422 duration_ms=65.21
+INFO:httpx2:HTTP Request: POST http://testserver/v1/ai/query "HTTP/1.1 422 Unprocessable Content"
+ok
+test_authentication_and_question_limits (test_assistant_stream.AssistantStreamTests.test_authentication_and_question_limits) ... INFO:api-ai-server:request_id=1861033e-c9bf-4327-9d2a-57dc6aa9acbd method=POST path=/rag/agents/ask status=422 duration_ms=45.95
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask "HTTP/1.1 422 Unprocessable Content"
+INFO:api-ai-server:request_id=f0c156b4-7add-4be4-a201-7c03466469f3 method=POST path=/rag/agents/ask/stream status=422 duration_ms=12.74
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 422 Unprocessable Content"
+INFO:api-ai-server:request_id=dfbd61f8-3741-441b-9c49-f81a460f404d method=POST path=/rag/agents/ask/stream status=401 duration_ms=4.56
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 401 Unauthorized"
+ok
+test_domain_guard_plans_only_in_scope_part_of_mixed_request (test_assistant_stream.AssistantStreamTests.test_domain_guard_plans_only_in_scope_part_of_mixed_request) ... INFO:api-ai-server:request_id=d165b062-1d53-4c8c-ab52-0ffe6c47d394 method=POST path=/rag/agents/ask/stream status=200 duration_ms=50.35
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 200 OK"
+ok
+test_domain_guard_refuses_unrelated_question_before_planner_or_agents (test_assistant_stream.AssistantStreamTests.test_domain_guard_refuses_unrelated_question_before_planner_or_agents) ... INFO:api-ai-server:request_id=4639571d-0837-4bf8-8d80-587c385e35bf method=POST path=/rag/agents/ask/stream status=200 duration_ms=43.09
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 200 OK"
+ok
+test_greeting_in_existing_conversation_skips_planner_and_workers (test_assistant_stream.AssistantStreamTests.test_greeting_in_existing_conversation_skips_planner_and_workers) ... INFO:api-ai-server:request_id=18d193bd-2b23-4366-a074-e3c86845d487 method=POST path=/rag/agents/ask status=200 duration_ms=53.96
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask "HTTP/1.1 200 OK"
+INFO:api-ai-server:request_id=761e723a-cbcd-4e2f-a7fd-091b1fb87500 method=POST path=/rag/agents/ask/stream status=200 duration_ms=8.14
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 200 OK"
+INFO:api-ai-server:request_id=c3e9f05b-77e0-4790-9044-c38548dc4db3 method=POST path=/rag/agents/ask status=200 duration_ms=5.32
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask "HTTP/1.1 200 OK"
+INFO:api-ai-server:request_id=ebd45702-1e9e-48e1-96b5-3c725ddb0614 method=POST path=/rag/agents/ask/stream status=200 duration_ms=6.80
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 200 OK"
+INFO:api-ai-server:request_id=3ee2d56b-e6bf-4310-a42b-09799c63e1bb method=POST path=/rag/agents/ask/stream status=200 duration_ms=6.04
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 200 OK"
+INFO:api-ai-server:request_id=d409dd63-1ed2-4eda-821d-2dc62725f49c method=POST path=/rag/agents/ask/stream status=200 duration_ms=5.11
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 200 OK"
+INFO:api-ai-server:request_id=495e064b-b3ab-4dc6-97f6-9fe8d4c9a7a1 method=POST path=/rag/agents/ask status=200 duration_ms=5.19
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask "HTTP/1.1 200 OK"
+ok
+test_owner_is_applied_to_conversation_and_messages_reads (test_assistant_stream.AssistantStreamTests.test_owner_is_applied_to_conversation_and_messages_reads) ... INFO:api-ai-server:request_id=5d78b73f-05be-4059-a592-1520d78a955e method=GET path=/rag/conversations/07a7aaeb-4d99-4b94-b36f-744cf51e28c0 status=404 duration_ms=41.15
+INFO:httpx2:HTTP Request: GET http://testserver/rag/conversations/07a7aaeb-4d99-4b94-b36f-744cf51e28c0 "HTTP/1.1 404 Not Found"
+INFO:api-ai-server:request_id=fb6cb471-ae27-422e-beb3-b2efbe1a24cb method=GET path=/rag/conversations/9885f7da-f08f-4ddd-8102-87f94df980c0/messages status=404 duration_ms=4.78
+INFO:httpx2:HTTP Request: GET http://testserver/rag/conversations/9885f7da-f08f-4ddd-8102-87f94df980c0/messages "HTTP/1.1 404 Not Found"
+ok
+test_request_schema_accepts_exactly_100_questions (test_assistant_stream.AssistantStreamTests.test_request_schema_accepts_exactly_100_questions) ... ok
+test_stream_delivers_progress_results_and_terminates_after_persistence (test_assistant_stream.AssistantStreamTests.test_stream_delivers_progress_results_and_terminates_after_persistence) ... INFO:api-ai-server:request_id=b8d3d8f1-3cf7-4a92-9900-bbe20bf633a7 method=POST path=/rag/agents/ask/stream status=200 duration_ms=62.70
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 200 OK"
+ok
+test_stream_failure_emits_error_and_marks_run_failed (test_assistant_stream.AssistantStreamTests.test_stream_failure_emits_error_and_marks_run_failed) ... INFO:api-ai-server:request_id=0853e5a9-8d3f-455e-a920-02e3707c507a method=POST path=/rag/agents/ask/stream status=200 duration_ms=43.28
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 200 OK"
+ok
+test_stream_returns_clarification_without_starting_agent_run (test_assistant_stream.AssistantStreamTests.test_stream_returns_clarification_without_starting_agent_run) ... INFO:api-ai-server:request_id=4cc10c04-4399-42d5-b546-f714666d5e23 method=POST path=/rag/agents/ask/stream status=200 duration_ms=62.60
+INFO:httpx2:HTTP Request: POST http://testserver/rag/agents/ask/stream "HTTP/1.1 200 OK"
+ok
+test_sse_parsing_ignores_pings_and_joins_data (test_benchmark_harness.ClientTests.test_sse_parsing_ignores_pings_and_joins_data) ... ok
+test_timings (test_benchmark_harness.ClientTests.test_timings) ... ok
+test_binary_confusion_false_rates (test_benchmark_harness.MetricTests.test_binary_confusion_false_rates) ... ok
+test_multilabel_micro_macro (test_benchmark_harness.MetricTests.test_multilabel_micro_macro) ... ok
+test_percentiles_and_tail_guard (test_benchmark_harness.MetricTests.test_percentiles_and_tail_guard) ... ok
+test_prf_and_empty_denominator (test_benchmark_harness.MetricTests.test_prf_and_empty_denominator) ... ok
+test_tokens_measured_and_no_llm (test_benchmark_harness.ResourceTests.test_tokens_measured_and_no_llm) ... ok
+test_tokens_unmeasured_is_not_zero (test_benchmark_harness.ResourceTests.test_tokens_unmeasured_is_not_zero) ... ok
+test_export_recomputes_from_raw_and_compare (test_benchmark_harness.RunnerTests.test_export_recomputes_from_raw_and_compare) ... ok
+test_judgments_override_and_faithfulness (test_benchmark_harness.RunnerTests.test_judgments_override_and_faithfulness) ... ok
+test_run_resume_and_followup_history (test_benchmark_harness.RunnerTests.test_run_resume_and_followup_history) ... ok
+test_torn_jsonl_line_is_ignored_on_resume (test_benchmark_harness.RunnerTests.test_torn_jsonl_line_is_ignored_on_resume) ... ok
+test_duplicate_ids_and_csv (test_benchmark_harness.SchemaTests.test_duplicate_ids_and_csv) ... ok
+test_fixture_loads_and_is_marked (test_benchmark_harness.SchemaTests.test_fixture_loads_and_is_marked) ... ok
+test_validation_errors (test_benchmark_harness.SchemaTests.test_validation_errors) ... ok
+test_abstention_expected (test_benchmark_harness.ScoringTests.test_abstention_expected) ... ok
+test_coverage_routing_and_citations (test_benchmark_harness.ScoringTests.test_coverage_routing_and_citations) ... ok
+test_domain_refusal_and_system_signal (test_benchmark_harness.ScoringTests.test_domain_refusal_and_system_signal) ... ok
+test_exact_values_with_tolerance_and_alternatives (test_benchmark_harness.ScoringTests.test_exact_values_with_tolerance_and_alternatives) ... ok
+test_normalization_and_numbers (test_benchmark_harness.ScoringTests.test_normalization_and_numbers) ... ok
+test_zero_is_a_known_value (test_benchmark_harness.ScoringTests.test_zero_is_a_known_value) ... ok
+test_workflow_telemetry_is_extracted_and_aggregated (test_benchmark_harness.ServerTelemetryTests.test_workflow_telemetry_is_extracted_and_aggregated) ... ok
+test_bootstrap_is_seeded (test_benchmark_harness.StatsTests.test_bootstrap_is_seeded) ... ok
+test_mcnemar_exact (test_benchmark_harness.StatsTests.test_mcnemar_exact) ... ok
+test_permutation_exact_and_holm (test_benchmark_harness.StatsTests.test_permutation_exact_and_holm) ... ok
+test_wilson_known_value (test_benchmark_harness.StatsTests.test_wilson_known_value) ... ok
+test_levels_have_exact_distinct_task_counts (test_benchmark_harness.WorkloadTests.test_levels_have_exact_distinct_task_counts) ... ok
+test_assignment_count_keeps_dao_scope_and_active_filter (test_dao_proposal_adapter.ProposalAdapterTests.test_assignment_count_keeps_dao_scope_and_active_filter) ... ok
+test_count_is_scoped_and_parameterized (test_dao_proposal_adapter.ProposalAdapterTests.test_count_is_scoped_and_parameterized) ... ok
+test_list_and_search_bind_dao_text_and_bound_limit (test_dao_proposal_adapter.ProposalAdapterTests.test_list_and_search_bind_dao_text_and_bound_limit) ... ok
+test_vote_facts_join_proposal_scope_and_count_stored_rows (test_dao_proposal_adapter.ProposalAdapterTests.test_vote_facts_join_proposal_scope_and_count_stored_rows) ... ok
+test_ambiguous_goes_to_llm_not_keyword_decision (test_domain_guard.DomainGuardTests.test_ambiguous_goes_to_llm_not_keyword_decision) ... ok
+test_clearly_unrelated_rejected_without_llm (test_domain_guard.DomainGuardTests.test_clearly_unrelated_rejected_without_llm) ... ok
+test_cyberchain_questions_accepted_without_the_word_cyberchain (test_domain_guard.DomainGuardTests.test_cyberchain_questions_accepted_without_the_word_cyberchain) ... ok
+test_domain_word_inside_unrelated_request_is_left_to_planner (test_domain_guard.DomainGuardTests.test_domain_word_inside_unrelated_request_is_left_to_planner) ... ok
+test_empty (test_domain_guard.DomainGuardTests.test_empty) ... ok
+test_followup_inherits_scope_only_with_in_scope_history (test_domain_guard.DomainGuardTests.test_followup_inherits_scope_only_with_in_scope_history) ... ok
+test_greeting_or_help_does_not_swallow_a_real_question (test_domain_guard.DomainGuardTests.test_greeting_or_help_does_not_swallow_a_real_question) ... ok
+test_mixed_request_answers_in_scope_part_and_declines_rest (test_domain_guard.DomainGuardTests.test_mixed_request_answers_in_scope_part_and_declines_rest) ... ok
+test_planning_history_is_reserved_for_followups (test_domain_guard.DomainGuardTests.test_planning_history_is_reserved_for_followups) ... ok
+test_reproduction_request_is_in_scope_and_unchanged (test_domain_guard.DomainGuardTests.test_reproduction_request_is_in_scope_and_unchanged) ... ok
+test_required_refusal_text (test_domain_guard.DomainGuardTests.test_required_refusal_text) ... ok
+test_rejects_empty_input_without_request (test_embedding_characterization.EmbeddingTests.test_rejects_empty_input_without_request) ... ok
+test_rejects_invalid_dimensions_and_non_finite_values (test_embedding_characterization.EmbeddingTests.test_rejects_invalid_dimensions_and_non_finite_values) ... ok
+test_rejects_unexpected_model (test_embedding_characterization.EmbeddingTests.test_rejects_unexpected_model) ... ok
+test_accepts_matching_profile (test_embedding_profile_characterization.ProfileTests.test_accepts_matching_profile) ... ok
+test_rejects_stored_profile_mismatch (test_embedding_profile_characterization.ProfileTests.test_rejects_stored_profile_mismatch) ... ok
+test_recorder_swallows_persistence_failure_without_details (test_evaluation_metrics.EvaluationMetricsTests.test_recorder_swallows_persistence_failure_without_details) ... ok
+test_result_metrics_keep_ids_counts_and_token_usage (test_evaluation_metrics.EvaluationMetricsTests.test_result_metrics_keep_ids_counts_and_token_usage) ... ok
+test_query_response_has_adapter_required_fields (test_frontend_compatibility_characterization.FrontendCompatibilityTests.test_query_response_has_adapter_required_fields) ... INFO:api-ai-server:request_id=4a0064e6-a0dc-4ed5-bba1-1a4bb299146a method=POST path=/v1/ai/query status=200 duration_ms=35.06
+INFO:httpx2:HTTP Request: POST http://testserver/v1/ai/query "HTTP/1.1 200 OK"
+ok
+test_unlinked_evidence_never_reaches_chunk_adapter (test_governance_document_chunk.DocumentChunkScopeTests.test_unlinked_evidence_never_reaches_chunk_adapter) ... ok
+test_verified_link_selects_only_its_hash_index (test_governance_document_chunk.DocumentChunkScopeTests.test_verified_link_selects_only_its_hash_index) ... ok
+test_unlinked_artifact_is_reported_but_never_queried (test_governance_document_status.DocumentStatusTests.test_unlinked_artifact_is_reported_but_never_queried) ... ok
+test_verified_link_returns_metadata_from_matching_hash (test_governance_document_status.DocumentStatusTests.test_verified_link_returns_metadata_from_matching_hash) ... ok
+test_sha256_formats (test_governance_evidence.EvidenceTests.test_sha256_formats) ... ok
+test_unlinked_unverified_or_mismatched_records_are_rejected (test_governance_evidence.EvidenceTests.test_unlinked_unverified_or_mismatched_records_are_rejected) ... ok
+test_file_bytes_must_match_authoritative_hash (test_governance_file_hash.EvidenceFileTests.test_file_bytes_must_match_authoritative_hash) ... ok
+test_rejects_paths_outside_trusted_root (test_governance_file_hash.EvidenceFileTests.test_rejects_paths_outside_trusted_root) ... ok
+test_compare_requires_both_ids_and_rejects_same_id (test_governance_proposal_facts.ProposalFactsTests.test_compare_requires_both_ids_and_rejects_same_id) ... ok
+test_comparison_propagates_wrong_dao_not_found (test_governance_proposal_facts.ProposalFactsTests.test_comparison_propagates_wrong_dao_not_found) ... ok
+test_voting_facts_only_expose_stored_total_and_unsupported_fields (test_governance_proposal_facts.ProposalFactsTests.test_voting_facts_only_expose_stored_total_and_unsupported_fields) ... ok
+test_missing_authoritative_documents_returns_empty_scope (test_governance_proposal_scope.ProposalScopeTests.test_missing_authoritative_documents_returns_empty_scope) ... ok
+test_scope_uses_linked_hashes_and_one_requested_profile (test_governance_proposal_scope.ProposalScopeTests.test_scope_uses_linked_hashes_and_one_requested_profile) ... ok
+test_healthy_response_and_timing_headers (test_health_characterization.HealthContractTests.test_healthy_response_and_timing_headers) ... INFO:api-ai-server:request_id=7b04b37a-6027-4c17-891c-fc0a59017ea4 method=GET path=/health status=200 duration_ms=5.18
+INFO:httpx2:HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+ok
+test_ready_index_skips_embedding_and_persistence (test_indexing_characterization.IndexingTests.test_ready_index_skips_embedding_and_persistence) ... ok
+test_new_page_v1_index_persists_embeddings (test_legacy_indexing.LegacyIndexTests.test_new_page_v1_index_persists_embeddings) ... ok
+test_ready_page_v1_index_skips_embedding (test_legacy_indexing.LegacyIndexTests.test_ready_page_v1_index_skips_embedding) ... ok
+test_all_twelve_tools_are_discoverable_callable_and_recorded (test_mcp_all_tools.AllMcpToolsTests.test_all_twelve_tools_are_discoverable_callable_and_recorded) ... WARNING:asyncio:Executing <Task pending name='Task-3950' coro=<AllMcpToolsTests.test_all_twelve_tools_are_discoverable_callable_and_recorded() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_mcp_all_tools.py:24> wait_for=<Future pending cb=[Task.task_wakeup()] created at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1007> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.217 seconds
+WARNING:asyncio:Executing <Task pending name='Task-3950' coro=<AllMcpToolsTests.test_all_twelve_tools_are_discoverable_callable_and_recorded() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_mcp_all_tools.py:31> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.847 seconds
+ok
+test_client_discovers_tools_and_calls_health (test_mcp_discovery.McpDiscoveryTests.test_client_discovers_tools_and_calls_health) ... ok
+test_chunk_tool_returns_only_chunk_and_provenance_metadata (test_mcp_document_tools.McpDocumentToolsTests.test_chunk_tool_returns_only_chunk_and_provenance_metadata) ... ok
+test_evidence_status_reports_verified_and_ready_counts (test_mcp_document_tools.McpDocumentToolsTests.test_evidence_status_reports_verified_and_ready_counts) ... ok
+test_document_tool_keeps_only_verified_linked_rows (test_mcp_evidence_tools.McpEvidenceToolTests.test_document_tool_keeps_only_verified_linked_rows) ... ok
+test_evidence_tool_returns_scoped_source_content (test_mcp_evidence_tools.McpEvidenceToolTests.test_evidence_tool_returns_scoped_source_content) ... ok
+test_index_tool_returns_metadata_without_storage_paths (test_mcp_extended_tools.ExtendedMcpToolTests.test_index_tool_returns_metadata_without_storage_paths) ... ok
+test_time_tool_separates_stored_status_from_elapsed_window (test_mcp_extended_tools.ExtendedMcpToolTests.test_time_tool_separates_stored_status_from_elapsed_window) ... ok
+test_four_tools_return_scoped_data_and_metrics (test_mcp_governance_protocol.GovernanceProtocolTests.test_four_tools_return_scoped_data_and_metrics) ... WARNING:asyncio:Executing <Task pending name='Task-3990' coro=<GovernanceProtocolTests.test_four_tools_return_scoped_data_and_metrics() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_mcp_governance_protocol.py:27> wait_for=<Future pending cb=[Task.task_wakeup()] created at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1007> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.105 seconds
+ok
+test_dao_count_is_exact_and_instrumented (test_mcp_governance_scope.GovernanceScopeTests.test_dao_count_is_exact_and_instrumented) ... WARNING:asyncio:Executing <Task pending name='Task-3995' coro=<GovernanceScopeTests.test_dao_count_is_exact_and_instrumented() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_mcp_governance_scope.py:16> wait_for=<Future pending cb=[Task.task_wakeup()] created at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1007> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.107 seconds
+ok
+test_wrong_dao_comparison_is_rejected_over_mcp (test_mcp_governance_scope.GovernanceScopeTests.test_wrong_dao_comparison_is_rejected_over_mcp) ... ok
+test_assignment_is_diagnostic_and_never_authenticates (test_mcp_proposal_tools.McpProposalToolTests.test_assignment_is_diagnostic_and_never_authenticates) ... ok
+test_get_proposal_returns_dao_scoped_record (test_mcp_proposal_tools.McpProposalToolTests.test_get_proposal_returns_dao_scoped_record) ... ok
+test_operator_authentication_is_required (test_mcp_proposal_tools.McpProposalToolTests.test_operator_authentication_is_required) ... ok
+test_wrong_dao_is_a_structured_not_found_error (test_mcp_proposal_tools.McpProposalToolTests.test_wrong_dao_is_a_structured_not_found_error) ... ok
+test_invalid_wallet_is_rejected_by_mcp_schema (test_mcp_protocol_failures.McpProtocolFailures.test_invalid_wallet_is_rejected_by_mcp_schema) ... INFO:mcp.server.mcpserver.server:Tool 'check_proposal_assignment' rejected arguments: ['wallet_address']
+ok
+test_missing_pdf_returns_empty_results (test_mcp_protocol_failures.McpProtocolFailures.test_missing_pdf_returns_empty_results) ... ok
+test_search_adapter_failure_is_recorded_without_leaking_details (test_mcp_protocol_failures.McpProtocolFailures.test_search_adapter_failure_is_recorded_without_leaking_details) ... WARNING:app.business.mcp.errors:MCP tool failed (RuntimeError)
+ok
+test_wrong_dao_and_missing_proposal_are_structured_errors (test_mcp_protocol_failures.McpProtocolFailures.test_wrong_dao_and_missing_proposal_are_structured_errors) ... ok
+test_four_user_use_cases_return_results_and_provenance (test_mcp_protocol_use_cases.McpProtocolUseCases.test_four_user_use_cases_return_results_and_provenance) ... ok
+test_malformed_arguments_are_rejected_before_business_execution (test_mcp_registry_security.McpRegistrySecurityTests.test_malformed_arguments_are_rejected_before_business_execution) ... INFO:mcp.server.mcpserver.server:Tool 'check_proposal_assignment' rejected arguments: ['wallet_address']
+INFO:mcp.server.mcpserver.server:Tool 'list_dao_proposals' rejected arguments: ['limit']
+ok
+test_registry_has_only_read_only_named_tools (test_mcp_registry_security.McpRegistrySecurityTests.test_registry_has_only_read_only_named_tools) ... WARNING:asyncio:Executing <Task pending name='Task-4055' coro=<McpRegistrySecurityTests.test_registry_has_only_read_only_named_tools() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_mcp_registry_security.py:30> wait_for=<Future pending cb=[Task.task_wakeup()] created at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1007> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.410 seconds
+ok
+test_unverified_operator_cannot_call_any_governance_tool (test_mcp_registry_security.McpRegistrySecurityTests.test_unverified_operator_cannot_call_any_governance_tool) ... ok
+test_operator_token_must_match_without_returning_secret (test_mcp_security.McpSecurityTests.test_operator_token_must_match_without_returning_secret) ... ok
+test_unverified_context_cannot_call_tools (test_mcp_security.McpSecurityTests.test_unverified_context_cannot_call_tools) ... WARNING:asyncio:Executing <Task pending name='Task-4069' coro=<McpSecurityTests.test_unverified_context_cannot_call_tools() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_mcp_security.py:32> wait_for=<Future pending cb=[Task.task_wakeup()] created at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1007> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.102 seconds
+INFO:mcp.server.mcpserver.server:Tool 'health' failed: 'Error executing tool health: Local operator access is required.'
+ok
+test_timeouts_and_tool_errors_are_safe_and_recorded (test_mcp_timeout_and_errors.McpTimeoutAndErrorTests.test_timeouts_and_tool_errors_are_safe_and_recorded) ... WARNING:app.business.mcp.errors:MCP tool failed (TimeoutError)
+WARNING:app.business.mcp.errors:MCP tool failed (RuntimeError)
+ok
+test_staged_private_pdf_is_never_searched_or_read (test_mcp_unlinked_private_evidence.UnlinkedPrivateEvidenceTests.test_staged_private_pdf_is_never_searched_or_read) ... ok
+test_chunk_result_includes_page_and_source_provenance (test_mcp_use_case_7.McpChunkUseCase.test_chunk_result_includes_page_and_source_provenance) ... ok
+test_invalid_chunk_key_is_reported_and_timed (test_mcp_use_case_7_index_failures.McpChunkIndexFailures.test_invalid_chunk_key_is_reported_and_timed) ... ok
+test_old_ready_profile_is_not_used_for_current_chunk_access (test_mcp_use_case_7_index_failures.McpChunkIndexFailures.test_old_ready_profile_is_not_used_for_current_chunk_access) ... WARNING:asyncio:Executing <Task pending name='Task-4094' coro=<McpChunkIndexFailures.test_old_ready_profile_is_not_used_for_current_chunk_access() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_mcp_use_case_7_index_failures.py:30> wait_for=<Future pending cb=[Task.task_wakeup()] created at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1007> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.102 seconds
+ok
+test_unlinked_document_stops_before_chunk_adapter (test_mcp_use_case_7_scope.McpChunkScopeUseCases.test_unlinked_document_stops_before_chunk_adapter) ... ok
+test_wrong_dao_stops_before_chunk_adapter (test_mcp_use_case_7_scope.McpChunkScopeUseCases.test_wrong_dao_stops_before_chunk_adapter) ... ok
+test_status_explains_ready_missing_excluded_and_inconsistent_rows (test_mcp_use_case_8.McpEvidenceStatusUseCase.test_status_explains_ready_missing_excluded_and_inconsistent_rows) ... ok
+test_dates_expiration_and_ready_index_are_returned_separately (test_mcp_use_cases_5_6.McpTimeAndIndexUseCases.test_dates_expiration_and_ready_index_are_returned_separately) ... ok
+test_chat_uses_non_thinking_and_bounded_answer (test_ollama_chat_request.RequestTests.test_chat_uses_non_thinking_and_bounded_answer) ... ok
+test_retries_once_with_larger_budget (test_ollama_chat_retry.RetryTests.test_retries_once_with_larger_budget) ... ok
+test_two_truncated_responses_fail_without_exposing_thinking (test_ollama_chat_retry.RetryTests.test_two_truncated_responses_fail_without_exposing_thinking) ... ok
+test_long_unbroken_text_makes_forward_progress (test_pdf_chunking.ChunkingTests.test_long_unbroken_text_makes_forward_progress) ... ok
+test_normalize (test_pdf_chunking.ChunkingTests.test_normalize) ... ok
+test_stable_ids_pages_positions_and_overlap (test_pdf_chunking.ChunkingTests.test_stable_ids_pages_positions_and_overlap) ... ok
+test_extracts_page_text_and_creates_stable_chunk (test_pdf_extraction_characterization.PdfExtractionTests.test_extracts_page_text_and_creates_stable_chunk) ... ok
+test_blank_pdf_indicates_possible_ocr (test_pdf_input_validation.PdfInputTests.test_blank_pdf_indicates_possible_ocr) ... ok
+test_non_pdf_is_rejected (test_pdf_input_validation.PdfInputTests.test_non_pdf_is_rejected) ... ok
+test_deadline_intent_enables_cross_document_coverage (test_proposal_chunk_coverage.ProposalChunkCoverageTests.test_deadline_intent_enables_cross_document_coverage) ... ok
+test_deadline_mode_bounds_number_of_linked_documents (test_proposal_chunk_coverage.ProposalChunkCoverageTests.test_deadline_mode_bounds_number_of_linked_documents) ... ok
+test_deadline_mode_ranks_chunks_per_document (test_proposal_chunk_coverage.ProposalChunkCoverageTests.test_deadline_mode_ranks_chunks_per_document) ... ok
+test_100_questions_are_planned_in_bounded_chunks_with_rebased_dependencies (test_question_planner.ChunkedPlanningTests.test_100_questions_are_planned_in_bounded_chunks_with_rebased_dependencies) ... ok
+test_a_clarification_in_any_chunk_stops_planning (test_question_planner.ChunkedPlanningTests.test_a_clarification_in_any_chunk_stops_planning) ... INFO:app.business.agents.question_planner:Planner asked for clarification; retrying once without clarification.
+ok
+test_search_queries_use_the_topic_not_the_whole_command (test_question_planner.MixedRequestRegressionTests.test_search_queries_use_the_topic_not_the_whole_command) ... ok
+test_empty_input_is_rejected (test_question_planner.QuestionPlannerTests.test_empty_input_is_rejected) ... ok
+test_failed_planning_does_not_guess_an_ambiguous_request (test_question_planner.QuestionPlannerTests.test_failed_planning_does_not_guess_an_ambiguous_request) ... WARNING:app.business.agents.question_planner:Question planning failed: RuntimeError
+ok
+test_invalid_plan_still_routes_an_unnumbered_pdf_and_chain_question (test_question_planner.QuestionPlannerTests.test_invalid_plan_still_routes_an_unnumbered_pdf_and_chain_question) ... WARNING:app.business.agents.question_planner:Question planning failed: ValidationError
+INFO:app.business.agents.question_planner:Using source-based routing after semantic planning failed.
+ok
+test_llm_decomposes_compound_request_and_supervisor_obeys_intents (test_question_planner.QuestionPlannerTests.test_llm_decomposes_compound_request_and_supervisor_obeys_intents) ... ok
+test_numbered_requests_survive_a_planner_timeout (test_question_planner.QuestionPlannerTests.test_numbered_requests_survive_a_planner_timeout) ... WARNING:app.business.agents.question_planner:Question planning failed: TimeoutError
+INFO:app.business.agents.question_planner:Using source-based routing after semantic planning failed.
+ok
+test_planner_cannot_select_scope (test_question_planner.QuestionPlannerTests.test_planner_cannot_select_scope) ... WARNING:app.business.agents.question_planner:Question planning failed: ValidationError
+ok
+test_single_budget_request_still_uses_llm_planning (test_question_planner.QuestionPlannerTests.test_single_budget_request_still_uses_llm_planning) ... ok
+test_budget_expression_is_one_task_with_numbers_preserved (test_question_planner.SemanticRoutingTests.test_budget_expression_is_one_task_with_numbers_preserved) ... ok
+test_every_requirement_is_tracked_with_dependencies (test_question_planner.SemanticRoutingTests.test_every_requirement_is_tracked_with_dependencies) ... ok
+test_illegal_specialist_is_dropped_and_reported (test_question_planner.SemanticRoutingTests.test_illegal_specialist_is_dropped_and_reported) ... ok
+test_question_with_pdf_and_vote_words_is_not_rerouted_by_keywords (test_question_planner.SemanticRoutingTests.test_question_with_pdf_and_vote_words_is_not_rerouted_by_keywords) ... ok
+test_validated_plan_agents_are_authoritative_not_regex (test_question_planner.SemanticRoutingTests.test_validated_plan_agents_are_authoritative_not_regex) ... ok
+test_cited_answer_drops_redundant_footer (test_rag_abstention.AbstentionTests.test_cited_answer_drops_redundant_footer) ... ok
+test_specific_uncertainty_is_preserved (test_rag_abstention.AbstentionTests.test_specific_uncertainty_is_preserved) ... ok
+test_standalone_abstention_is_preserved (test_rag_abstention.AbstentionTests.test_standalone_abstention_is_preserved) ... ok
+test_uncited_footer_is_not_removed (test_rag_abstention.AbstentionTests.test_uncited_footer_is_not_removed) ... ok
+test_legacy_think_tags_are_removed (test_rag_answer_extraction.AnswerExtractionTests.test_legacy_think_tags_are_removed) ... ok
+test_normal_visible_answer (test_rag_answer_extraction.AnswerExtractionTests.test_normal_visible_answer) ... ok
+test_unclosed_and_stray_thinking_are_rejected (test_rag_answer_extraction.AnswerExtractionTests.test_unclosed_and_stray_thinking_are_rejected) ... ok
+test_thinking_only_is_an_error_without_private_content (test_rag_generation_safety.GenerationSafetyTests.test_thinking_only_is_an_error_without_private_content) ... ok
+test_truncated_visible_answer_is_retryable (test_rag_generation_safety.GenerationSafetyTests.test_truncated_visible_answer_is_retryable) ... ok
+test_generic_ask_supports_proposal_scope (test_service_characterization.ServiceContractTests.test_generic_ask_supports_proposal_scope) ... WARNING:app.business.evaluation.recorder:evaluation persistence unavailable (AttributeError)
+ok
+test_hybrid_answer_keeps_governance_and_pdf_evidence (test_service_characterization.ServiceContractTests.test_hybrid_answer_keeps_governance_and_pdf_evidence) ... WARNING:app.business.evaluation.recorder:evaluation persistence unavailable (AttributeError)
+ok
+test_vote_count_uses_stored_vote_evidence (test_service_characterization.ServiceContractTests.test_vote_count_uses_stored_vote_evidence) ... WARNING:app.business.evaluation.recorder:evaluation persistence unavailable (AttributeError)
+ok
+test_search_filters_index_and_maps_cosine_evidence (test_store_characterization.StoreContractTests.test_search_filters_index_and_maps_cosine_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 243 tests in 36.803s
+
+OK

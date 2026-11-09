@@ -1,0 +1,8 @@
+[Nest] 5752  - 09/11/2026, 00:22:12     LOG [AiController] AI response received: runId=run-1 system=hybrid
+[Nest] 5752  - 09/11/2026, 00:22:12     LOG [AiController] AI batch response received: batchId=batch-1 status=completed
+
+Test Suites: 1 skipped, 12 passed, 12 of 13 total
+Tests:       3 skipped, 65 passed, 68 total
+Snapshots:   0 total
+Time:        58.367 s
+Ran all test suites.
