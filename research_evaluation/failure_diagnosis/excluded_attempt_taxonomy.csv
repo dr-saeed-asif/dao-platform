@@ -1,0 +1,19 @@
+id,variant,raw_file,line,primary_failure,raw_status,attribution_basis
+DB-006,B3,exploratory_frozen_v1/responses.jsonl,1,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+DB-006,B4,exploratory_frozen_v1/responses.jsonl,2,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+DB-016,B3,exploratory_frozen_v1/responses.jsonl,5,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+DB-016,B4,exploratory_frozen_v1/responses.jsonl,7,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+PDF-006,B4,exploratory_frozen_v1/responses.jsonl,10,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+PDF-006,B3,exploratory_frozen_v1/responses.jsonl,11,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+PDF-026,B3,exploratory_frozen_v1/responses.jsonl,14,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+PDF-026,B4,exploratory_frozen_v1/responses.jsonl,16,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+MS-002,B4,exploratory_frozen_v1/responses.jsonl,17,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+MS-002,B2,exploratory_frozen_v1/responses.jsonl,18,pool_connection_timeout_protocol,completed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+MS-002,B3,exploratory_frozen_v1/responses.jsonl,20,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+MS-026,B4,exploratory_frozen_v1/responses.jsonl,21,recorder_dataclass_AttributeError,failed,Direct AttributeError recorded
+MS-026,B3,exploratory_frozen_v1/responses.jsonl,23,recorder_dataclass_AttributeError,failed,Direct AttributeError recorded
+MS-026,B2,exploratory_frozen_v1/responses.jsonl,24,pool_connection_timeout_protocol,completed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+UN-R001,B3,exploratory_frozen_v1/responses.jsonl,25,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+UN-R001,B4,exploratory_frozen_v1/responses.jsonl,26,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+UN-R018,B4,exploratory_frozen_v1/responses.jsonl,29,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results
+UN-R018,B3,exploratory_frozen_v1/responses.jsonl,32,pool_connection_timeout_protocol,failed,Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results

@@ -1,0 +1,29 @@
+{
+  "method": "Independent repeated SQL projection after model runs; transaction_read_only on",
+  "scopes": [
+    {
+      "scope": "pilot",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    },
+    {
+      "scope": "training",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    },
+    {
+      "scope": "cleanup",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    },
+    {
+      "scope": "testing",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    }
+  ]
+}

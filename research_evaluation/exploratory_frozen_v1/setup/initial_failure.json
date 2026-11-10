@@ -1,0 +1,6 @@
+{
+  "stage": "chain snapshot capture setup",
+  "exception": "NotImplementedError from subprocess creation on Windows SelectorEventLoop",
+  "model_calls": 0,
+  "resolution": "Run Node capture in a worker thread; keep SelectorEventLoop for psycopg"
+}

@@ -1,0 +1,149 @@
+{
+  "structural_cases": [
+    {
+      "case": "known",
+      "answer": "EUR 814 [D1].",
+      "observed": {
+        "valid": true,
+        "cited": [
+          "D1"
+        ],
+        "unknown": []
+      },
+      "expected_from_implementation": true,
+      "limitation": false
+    },
+    {
+      "case": "unknown_D",
+      "answer": "EUR 814 [D987].",
+      "observed": {
+        "valid": false,
+        "cited": [
+          "D987"
+        ],
+        "unknown": [
+          "D987"
+        ]
+      },
+      "expected_from_implementation": false,
+      "limitation": false
+    },
+    {
+      "case": "mixed_known_unknown",
+      "answer": "EUR 814 [D1] [G987].",
+      "observed": {
+        "valid": false,
+        "cited": [
+          "D1",
+          "G987"
+        ],
+        "unknown": [
+          "G987"
+        ]
+      },
+      "expected_from_implementation": false,
+      "limitation": false
+    },
+    {
+      "case": "no_marker",
+      "answer": "EUR 814.",
+      "observed": {
+        "valid": false,
+        "cited": [],
+        "unknown": []
+      },
+      "expected_from_implementation": false,
+      "limitation": false
+    },
+    {
+      "case": "bare_id",
+      "answer": "EUR 814, source D1.",
+      "observed": {
+        "valid": false,
+        "cited": [],
+        "unknown": []
+      },
+      "expected_from_implementation": false,
+      "limitation": false
+    },
+    {
+      "case": "exact_abstention",
+      "answer": "The available evidence does not establish that.",
+      "observed": {
+        "valid": true,
+        "cited": [],
+        "unknown": []
+      },
+      "expected_from_implementation": true,
+      "limitation": false
+    },
+    {
+      "case": "ignored_namespace",
+      "answer": "EUR 814 [D1] [B987].",
+      "observed": {
+        "valid": true,
+        "cited": [
+          "D1"
+        ],
+        "unknown": []
+      },
+      "expected_from_implementation": true,
+      "limitation": true
+    },
+    {
+      "case": "ignored_malformed_id",
+      "answer": "EUR 814 [D1] [D 987].",
+      "observed": {
+        "valid": true,
+        "cited": [
+          "D1"
+        ],
+        "unknown": []
+      },
+      "expected_from_implementation": true,
+      "limitation": true
+    }
+  ],
+  "active_synthesis_cases": [
+    {
+      "case": "known",
+      "accepted": true,
+      "errors": [],
+      "expected_acceptance": true
+    },
+    {
+      "case": "unknown_D",
+      "accepted": false,
+      "errors": [
+        "Combined wording was unavailable; showing the supported specialist findings together."
+      ],
+      "expected_acceptance": false
+    },
+    {
+      "case": "mixed_known_unknown",
+      "accepted": false,
+      "errors": [
+        "Combined wording was unavailable; showing the supported specialist findings together."
+      ],
+      "expected_acceptance": false
+    },
+    {
+      "case": "no_marker",
+      "accepted": false,
+      "errors": [
+        "Combined wording was unavailable; showing the supported specialist findings together."
+      ],
+      "expected_acceptance": false
+    },
+    {
+      "case": "exact_abstention",
+      "accepted": false,
+      "errors": [
+        "Combined wording was unavailable; showing the supported specialist findings together."
+      ],
+      "expected_acceptance": false
+    }
+  ],
+  "model_calls": 0,
+  "interpretation": "Unknown D/G IDs reject, including mixed valid/invalid IDs. Unsupported/malformed namespaces are ignored by the D/G regex when another valid ID is present. No semantic support guarantee."
+}

@@ -1,0 +1,10 @@
+test_failed_tool_does_not_create_evidence (test_candidate.CandidateTests.test_failed_tool_does_not_create_evidence) ... ok
+test_same_dao_comparison_is_not_limited_to_selected_proposal (test_candidate.CandidateTests.test_same_dao_comparison_is_not_limited_to_selected_proposal) ... ok
+test_single_proposal_scope_guard_is_retained (test_candidate.CandidateTests.test_single_proposal_scope_guard_is_retained) ... ok
+test_worker_local_document_ids_are_canonicalized_across_calls (test_candidate.CandidateTests.test_worker_local_document_ids_are_canonicalized_across_calls) ... ok
+test_wrong_dao_is_rejected (test_candidate.CandidateTests.test_wrong_dao_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

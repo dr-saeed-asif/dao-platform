@@ -1,0 +1,5 @@
+variant,attempts,completed,requested_count_proxy_hits,mixed_certainty_flags,abstention_wording_cases,reference_ids,valid_reference_ids,median_wall_ms,median_input_tokens,median_output_tokens,failures
+B1,8,8,0,0,7,0,0,461.7825499990431,118.5,16.0,0
+B2,8,8,2,0,5,0,0,838.0884500002139,1380.0,44.0,0
+B3,8,8,8,3,3,8,8,2618.1630499995663,1527.5,134.0,0
+B4,8,8,8,4,4,9,9,2758.207799997763,1572.0,137.5,0

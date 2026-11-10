@@ -1,0 +1,92 @@
+[
+  {
+    "id": "DB-006",
+    "variant": "B3",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "DB-006",
+    "variant": "B4",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "DB-016",
+    "variant": "B3",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "DB-016",
+    "variant": "B4",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B4",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B3",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B3",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B4",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "MS-002",
+    "variant": "B4",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "MS-002",
+    "variant": "B2",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "MS-002",
+    "variant": "B3",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "MS-026",
+    "variant": "B4",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "MS-026",
+    "variant": "B3",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "MS-026",
+    "variant": "B2",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B3",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B4",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B4",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B3",
+    "reason": "LocalRecorder called model_dump on dataclass RunMetrics; tool results masked"
+  }
+]

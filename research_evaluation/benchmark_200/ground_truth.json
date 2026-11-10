@@ -1,0 +1,4349 @@
+[
+  {
+    "id": "DB-001",
+    "expected_answer": "CyberGovAI Governance Security and Transparency Pilot",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/title"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "title"
+    ]
+  },
+  {
+    "id": "DB-002",
+    "expected_answer": "VOTING_CLOSED",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/status"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "status"
+    ]
+  },
+  {
+    "id": "DB-003",
+    "expected_answer": "0",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/indexed_votes"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "indexed_votes"
+    ]
+  },
+  {
+    "id": "DB-004",
+    "expected_answer": "10",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/assigned"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "assigned"
+    ]
+  },
+  {
+    "id": "DB-005",
+    "expected_answer": "1",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/dao_proposals"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "dao_proposals"
+    ]
+  },
+  {
+    "id": "DB-006",
+    "expected_answer": "38",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/on_chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "on_chain_id"
+    ]
+  },
+  {
+    "id": "DB-007",
+    "expected_answer": "1212",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "chain_id"
+    ]
+  },
+  {
+    "id": "DB-008",
+    "expected_answer": "STANDARD",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/proposal_type"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "proposal_type"
+    ]
+  },
+  {
+    "id": "DB-009",
+    "expected_answer": "2026-10-26 08:15:00+00:00",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/starts_at"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "starts_at"
+    ]
+  },
+  {
+    "id": "DB-010",
+    "expected_answer": "2026-10-26 09:15:00+00:00",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/ends_at"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "db",
+      "ends_at"
+    ]
+  },
+  {
+    "id": "DB-011",
+    "expected_answer": "Improve members’ understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/title"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "title"
+    ]
+  },
+  {
+    "id": "DB-012",
+    "expected_answer": "FINALIZED",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/status"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "status"
+    ]
+  },
+  {
+    "id": "DB-013",
+    "expected_answer": "2",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/indexed_votes"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "indexed_votes"
+    ]
+  },
+  {
+    "id": "DB-014",
+    "expected_answer": "10",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/assigned"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "assigned"
+    ]
+  },
+  {
+    "id": "DB-015",
+    "expected_answer": "1",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/dao_proposals"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "dao_proposals"
+    ]
+  },
+  {
+    "id": "DB-016",
+    "expected_answer": "39",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/on_chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "on_chain_id"
+    ]
+  },
+  {
+    "id": "DB-017",
+    "expected_answer": "1212",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "chain_id"
+    ]
+  },
+  {
+    "id": "DB-018",
+    "expected_answer": "STANDARD",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/proposal_type"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "proposal_type"
+    ]
+  },
+  {
+    "id": "DB-019",
+    "expected_answer": "2026-10-26 11:17:00+00:00",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/starts_at"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "starts_at"
+    ]
+  },
+  {
+    "id": "DB-020",
+    "expected_answer": "2026-10-26 12:22:00+00:00",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/ends_at"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "db",
+      "ends_at"
+    ]
+  },
+  {
+    "id": "DB-021",
+    "expected_answer": "Community Clean-Up Initiative",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/title"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "title"
+    ]
+  },
+  {
+    "id": "DB-022",
+    "expected_answer": "VOTING_CLOSED",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/status"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "status"
+    ]
+  },
+  {
+    "id": "DB-023",
+    "expected_answer": "0",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/indexed_votes"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "indexed_votes"
+    ]
+  },
+  {
+    "id": "DB-024",
+    "expected_answer": "9",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/assigned"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "assigned"
+    ]
+  },
+  {
+    "id": "DB-025",
+    "expected_answer": "1",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/dao_proposals"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "dao_proposals"
+    ]
+  },
+  {
+    "id": "DB-026",
+    "expected_answer": "36",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/on_chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "on_chain_id"
+    ]
+  },
+  {
+    "id": "DB-027",
+    "expected_answer": "1212",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "chain_id"
+    ]
+  },
+  {
+    "id": "DB-028",
+    "expected_answer": "STANDARD",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/proposal_type"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "proposal_type"
+    ]
+  },
+  {
+    "id": "DB-029",
+    "expected_answer": "2026-10-21 10:26:00+00:00",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/starts_at"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "starts_at"
+    ]
+  },
+  {
+    "id": "DB-030",
+    "expected_answer": "2026-10-21 11:26:00+00:00",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/cleanup/ends_at"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "cleanup",
+      "db",
+      "ends_at"
+    ]
+  },
+  {
+    "id": "DB-031",
+    "expected_answer": "Cyber Testing",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/title"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "title"
+    ]
+  },
+  {
+    "id": "DB-032",
+    "expected_answer": "VOTING_CLOSED",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/status"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "status"
+    ]
+  },
+  {
+    "id": "DB-033",
+    "expected_answer": "0",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/indexed_votes"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "indexed_votes"
+    ]
+  },
+  {
+    "id": "DB-034",
+    "expected_answer": "0",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/assigned"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "assigned"
+    ]
+  },
+  {
+    "id": "DB-035",
+    "expected_answer": "1",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/dao_proposals"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "dao_proposals"
+    ]
+  },
+  {
+    "id": "DB-036",
+    "expected_answer": "0",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/total_votes"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "total_votes"
+    ]
+  },
+  {
+    "id": "DB-037",
+    "expected_answer": "1212",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "chain_id"
+    ]
+  },
+  {
+    "id": "DB-038",
+    "expected_answer": "STANDARD",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/proposal_type"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "proposal_type"
+    ]
+  },
+  {
+    "id": "DB-039",
+    "expected_answer": "2026-10-09 03:23:00+00:00",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/starts_at"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "starts_at"
+    ]
+  },
+  {
+    "id": "DB-040",
+    "expected_answer": "2026-10-09 03:30:00+00:00",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/testing/ends_at"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "testing",
+      "db",
+      "ends_at"
+    ]
+  },
+  {
+    "id": "PDF-001",
+    "expected_answer": "CyberGovAI Governance Security and Transparency Pilot",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "CyberGovAI Governance Security and Transparency Pilot"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "title"
+    ]
+  },
+  {
+    "id": "PDF-002",
+    "expected_answer": "CG-DEMO-2026-01",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/1",
+      "documents/pilot/pages/2",
+      "documents/pilot/pages/3"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "CG-DEMO-2026-01"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "reference"
+    ]
+  },
+  {
+    "id": "PDF-003",
+    "expected_answer": "cyber-demo-dao",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "cyber-demo-dao"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "dao"
+    ]
+  },
+  {
+    "id": "PDF-004",
+    "expected_answer": "four-week",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "four-week"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "duration"
+    ]
+  },
+  {
+    "id": "PDF-005",
+    "expected_answer": "EUR 12,000",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/1",
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 12,000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "total"
+    ]
+  },
+  {
+    "id": "PDF-006",
+    "expected_answer": "EUR 6,000",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 6,000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "a0"
+    ]
+  },
+  {
+    "id": "PDF-007",
+    "expected_answer": "EUR 3,000",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 3,000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "a1"
+    ]
+  },
+  {
+    "id": "PDF-008",
+    "expected_answer": "EUR 2,000",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "a2"
+    ]
+  },
+  {
+    "id": "PDF-009",
+    "expected_answer": "EUR 1,000",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "a3"
+    ]
+  },
+  {
+    "id": "PDF-010",
+    "expected_answer": "Day 7",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Day 7"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "d0"
+    ]
+  },
+  {
+    "id": "PDF-011",
+    "expected_answer": "Day 14",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Day 14"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "d1"
+    ]
+  },
+  {
+    "id": "PDF-012",
+    "expected_answer": "Day 21",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Day 21"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "d2"
+    ]
+  },
+  {
+    "id": "PDF-013",
+    "expected_answer": "Day 28",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Day 28"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "d3"
+    ]
+  },
+  {
+    "id": "PDF-014",
+    "expected_answer": "at least 20",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "at least 20"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "sample"
+    ]
+  },
+  {
+    "id": "PDF-015",
+    "expected_answer": "26 October 2026",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "26 October 2026"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "prepared"
+    ]
+  },
+  {
+    "id": "PDF-016",
+    "expected_answer": "STANDARD",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "STANDARD"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "type"
+    ]
+  },
+  {
+    "id": "PDF-017",
+    "expected_answer": "Approve, Reject and Abstain",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/3"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Approve, Reject and Abstain"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "options"
+    ]
+  },
+  {
+    "id": "PDF-018",
+    "expected_answer": "No supplier has been appointed",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "No supplier has been appointed"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "supplier"
+    ]
+  },
+  {
+    "id": "PDF-019",
+    "expected_answer": "Approval does not automatically transfer funds",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Approval does not automatically transfer funds"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "payment"
+    ]
+  },
+  {
+    "id": "PDF-020",
+    "expected_answer": "synthetic test data",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "synthetic test data"
+    ],
+    "semantic_target": [
+      "pilot",
+      "pdf",
+      "synthetic"
+    ]
+  },
+  {
+    "id": "PDF-021",
+    "expected_answer": "Community Governance Training and Participation Pilot",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Community Governance Training and Participation Pilot"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "title"
+    ]
+  },
+  {
+    "id": "PDF-022",
+    "expected_answer": "CG-DEMO-2026-02",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1",
+      "documents/training/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "CG-DEMO-2026-02"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "reference"
+    ]
+  },
+  {
+    "id": "PDF-023",
+    "expected_answer": "cyber-demo-dao",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "cyber-demo-dao"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "dao"
+    ]
+  },
+  {
+    "id": "PDF-024",
+    "expected_answer": "three-week",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "three-week"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "duration"
+    ]
+  },
+  {
+    "id": "PDF-025",
+    "expected_answer": "EUR 4,500",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 4,500"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "total"
+    ]
+  },
+  {
+    "id": "PDF-026",
+    "expected_answer": "EUR 2,000",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "a0"
+    ]
+  },
+  {
+    "id": "PDF-027",
+    "expected_answer": "EUR 1,500",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,500"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "a1"
+    ]
+  },
+  {
+    "id": "PDF-028",
+    "expected_answer": "EUR 750",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 750"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "a2"
+    ]
+  },
+  {
+    "id": "PDF-029",
+    "expected_answer": "EUR 250",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 250"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "a3"
+    ]
+  },
+  {
+    "id": "PDF-030",
+    "expected_answer": "Day 7",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Day 7"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "d0"
+    ]
+  },
+  {
+    "id": "PDF-031",
+    "expected_answer": "Day 14",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Day 14"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "d1"
+    ]
+  },
+  {
+    "id": "PDF-032",
+    "expected_answer": "Day 21",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Day 21"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "d2"
+    ]
+  },
+  {
+    "id": "PDF-033",
+    "expected_answer": "30 participants",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1",
+      "documents/training/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "30 participants"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "attendance"
+    ]
+  },
+  {
+    "id": "PDF-034",
+    "expected_answer": "two workshops",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "two workshops"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "workshops"
+    ]
+  },
+  {
+    "id": "PDF-035",
+    "expected_answer": "at least five",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "at least five"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "examples"
+    ]
+  },
+  {
+    "id": "PDF-036",
+    "expected_answer": "Approve, Reject and Abstain",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "Approve, Reject and Abstain"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "options"
+    ]
+  },
+  {
+    "id": "PDF-037",
+    "expected_answer": "No provider has been appointed",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "No provider has been appointed"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "provider"
+    ]
+  },
+  {
+    "id": "PDF-038",
+    "expected_answer": "no funds have been disbursed",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "no funds have been disbursed"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "disbursement"
+    ]
+  },
+  {
+    "id": "PDF-039",
+    "expected_answer": "aggregated",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "aggregated"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "privacy"
+    ]
+  },
+  {
+    "id": "PDF-040",
+    "expected_answer": "STANDARD",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training/pages/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "STANDARD"
+    ],
+    "semantic_target": [
+      "training",
+      "pdf",
+      "type"
+    ]
+  },
+  {
+    "id": "MS-001",
+    "expected_answer": "PDF: EUR 12,000; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/assigned",
+      "blockchain/pilot/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 12,000",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "total"
+    ]
+  },
+  {
+    "id": "MS-002",
+    "expected_answer": "PDF: EUR 6,000; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/assigned",
+      "blockchain/pilot/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 6,000",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "a0"
+    ]
+  },
+  {
+    "id": "MS-003",
+    "expected_answer": "PDF: EUR 3,000; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/assigned",
+      "blockchain/pilot/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 3,000",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "a1"
+    ]
+  },
+  {
+    "id": "MS-004",
+    "expected_answer": "PDF: EUR 2,000; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/assigned",
+      "blockchain/pilot/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "a2"
+    ]
+  },
+  {
+    "id": "MS-005",
+    "expected_answer": "PDF: EUR 1,000; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/assigned",
+      "blockchain/pilot/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,000",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "a3"
+    ]
+  },
+  {
+    "id": "MS-006",
+    "expected_answer": "PDF: EUR 12,000; database indexed_votes: 0; blockchain voteCount: 0.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/indexed_votes",
+      "blockchain/pilot/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 12,000",
+      "0",
+      "0"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "total"
+    ]
+  },
+  {
+    "id": "MS-007",
+    "expected_answer": "PDF: EUR 6,000; database indexed_votes: 0; blockchain voteCount: 0.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/indexed_votes",
+      "blockchain/pilot/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 6,000",
+      "0",
+      "0"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "a0"
+    ]
+  },
+  {
+    "id": "MS-008",
+    "expected_answer": "PDF: EUR 3,000; database indexed_votes: 0; blockchain voteCount: 0.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/indexed_votes",
+      "blockchain/pilot/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 3,000",
+      "0",
+      "0"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "a1"
+    ]
+  },
+  {
+    "id": "MS-009",
+    "expected_answer": "PDF: EUR 2,000; database indexed_votes: 0; blockchain voteCount: 0.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/indexed_votes",
+      "blockchain/pilot/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000",
+      "0",
+      "0"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "a2"
+    ]
+  },
+  {
+    "id": "MS-010",
+    "expected_answer": "PDF: EUR 1,000; database indexed_votes: 0; blockchain voteCount: 0.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/indexed_votes",
+      "blockchain/pilot/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,000",
+      "0",
+      "0"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "a3"
+    ]
+  },
+  {
+    "id": "MS-011",
+    "expected_answer": "PDF: EUR 12,000; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/chain_id",
+      "blockchain/pilot/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 12,000",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "total"
+    ]
+  },
+  {
+    "id": "MS-012",
+    "expected_answer": "PDF: EUR 6,000; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/chain_id",
+      "blockchain/pilot/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 6,000",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "a0"
+    ]
+  },
+  {
+    "id": "MS-013",
+    "expected_answer": "PDF: EUR 3,000; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/chain_id",
+      "blockchain/pilot/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 3,000",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "a1"
+    ]
+  },
+  {
+    "id": "MS-014",
+    "expected_answer": "PDF: EUR 2,000; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/chain_id",
+      "blockchain/pilot/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "a2"
+    ]
+  },
+  {
+    "id": "MS-015",
+    "expected_answer": "PDF: EUR 1,000; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/chain_id",
+      "blockchain/pilot/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,000",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "a3"
+    ]
+  },
+  {
+    "id": "MS-016",
+    "expected_answer": "PDF: EUR 12,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/on_chain_id",
+      "blockchain/pilot/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 12,000",
+      "38",
+      "3"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "total"
+    ]
+  },
+  {
+    "id": "MS-017",
+    "expected_answer": "PDF: EUR 6,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/on_chain_id",
+      "blockchain/pilot/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 6,000",
+      "38",
+      "3"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "a0"
+    ]
+  },
+  {
+    "id": "MS-018",
+    "expected_answer": "PDF: EUR 3,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/on_chain_id",
+      "blockchain/pilot/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 3,000",
+      "38",
+      "3"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "a1"
+    ]
+  },
+  {
+    "id": "MS-019",
+    "expected_answer": "PDF: EUR 2,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/on_chain_id",
+      "blockchain/pilot/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000",
+      "38",
+      "3"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "a2"
+    ]
+  },
+  {
+    "id": "MS-020",
+    "expected_answer": "PDF: EUR 1,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/on_chain_id",
+      "blockchain/pilot/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,000",
+      "38",
+      "3"
+    ],
+    "semantic_target": [
+      "pilot",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "a3"
+    ]
+  },
+  {
+    "id": "MS-021",
+    "expected_answer": "PDF: EUR 4,500; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/assigned",
+      "blockchain/training/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 4,500",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "total"
+    ]
+  },
+  {
+    "id": "MS-022",
+    "expected_answer": "PDF: EUR 2,000; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/assigned",
+      "blockchain/training/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "a0"
+    ]
+  },
+  {
+    "id": "MS-023",
+    "expected_answer": "PDF: EUR 1,500; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/assigned",
+      "blockchain/training/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,500",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "a1"
+    ]
+  },
+  {
+    "id": "MS-024",
+    "expected_answer": "PDF: EUR 750; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/assigned",
+      "blockchain/training/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 750",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "a2"
+    ]
+  },
+  {
+    "id": "MS-025",
+    "expected_answer": "PDF: EUR 250; database assigned: 10; blockchain assignedMemberCount: 10.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/assigned",
+      "blockchain/training/proposal/assignedMemberCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 250",
+      "10",
+      "10"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "assigned",
+      "assignedMemberCount",
+      "a3"
+    ]
+  },
+  {
+    "id": "MS-026",
+    "expected_answer": "PDF: EUR 4,500; database indexed_votes: 2; blockchain voteCount: 2.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/indexed_votes",
+      "blockchain/training/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 4,500",
+      "2",
+      "2"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "total"
+    ]
+  },
+  {
+    "id": "MS-027",
+    "expected_answer": "PDF: EUR 2,000; database indexed_votes: 2; blockchain voteCount: 2.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/indexed_votes",
+      "blockchain/training/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000",
+      "2",
+      "2"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "a0"
+    ]
+  },
+  {
+    "id": "MS-028",
+    "expected_answer": "PDF: EUR 1,500; database indexed_votes: 2; blockchain voteCount: 2.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/indexed_votes",
+      "blockchain/training/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,500",
+      "2",
+      "2"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "a1"
+    ]
+  },
+  {
+    "id": "MS-029",
+    "expected_answer": "PDF: EUR 750; database indexed_votes: 2; blockchain voteCount: 2.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/indexed_votes",
+      "blockchain/training/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 750",
+      "2",
+      "2"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "a2"
+    ]
+  },
+  {
+    "id": "MS-030",
+    "expected_answer": "PDF: EUR 250; database indexed_votes: 2; blockchain voteCount: 2.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/indexed_votes",
+      "blockchain/training/proposal/voteCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 250",
+      "2",
+      "2"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "indexed_votes",
+      "voteCount",
+      "a3"
+    ]
+  },
+  {
+    "id": "MS-031",
+    "expected_answer": "PDF: EUR 4,500; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/chain_id",
+      "blockchain/training/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 4,500",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "total"
+    ]
+  },
+  {
+    "id": "MS-032",
+    "expected_answer": "PDF: EUR 2,000; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/chain_id",
+      "blockchain/training/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "a0"
+    ]
+  },
+  {
+    "id": "MS-033",
+    "expected_answer": "PDF: EUR 1,500; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/chain_id",
+      "blockchain/training/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,500",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "a1"
+    ]
+  },
+  {
+    "id": "MS-034",
+    "expected_answer": "PDF: EUR 750; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/chain_id",
+      "blockchain/training/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 750",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "a2"
+    ]
+  },
+  {
+    "id": "MS-035",
+    "expected_answer": "PDF: EUR 250; database chain_id: 1212; blockchain chain_id: 1212.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/chain_id",
+      "blockchain/training/chain_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 250",
+      "1212",
+      "1212"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "chain_id",
+      "chain_id",
+      "a3"
+    ]
+  },
+  {
+    "id": "MS-036",
+    "expected_answer": "PDF: EUR 4,500; database on_chain_id: 39; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/on_chain_id",
+      "blockchain/training/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 4,500",
+      "39",
+      "3"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "total"
+    ]
+  },
+  {
+    "id": "MS-037",
+    "expected_answer": "PDF: EUR 2,000; database on_chain_id: 39; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/on_chain_id",
+      "blockchain/training/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 2,000",
+      "39",
+      "3"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "a0"
+    ]
+  },
+  {
+    "id": "MS-038",
+    "expected_answer": "PDF: EUR 1,500; database on_chain_id: 39; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/on_chain_id",
+      "blockchain/training/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 1,500",
+      "39",
+      "3"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "a1"
+    ]
+  },
+  {
+    "id": "MS-039",
+    "expected_answer": "PDF: EUR 750; database on_chain_id: 39; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/on_chain_id",
+      "blockchain/training/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 750",
+      "39",
+      "3"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "a2"
+    ]
+  },
+  {
+    "id": "MS-040",
+    "expected_answer": "PDF: EUR 250; database on_chain_id: 39; blockchain optionCount: 3.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/on_chain_id",
+      "blockchain/training/proposal/optionCount"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "EUR 250",
+      "39",
+      "3"
+    ],
+    "semantic_target": [
+      "training",
+      "multi",
+      "on_chain_id",
+      "optionCount",
+      "a3"
+    ]
+  },
+  {
+    "id": "CX-001",
+    "expected_answer": "Combined EUR 9000; remaining EUR 3000.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "9000",
+      "3000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "sum_and_remaining",
+      0,
+      1
+    ]
+  },
+  {
+    "id": "CX-002",
+    "expected_answer": "Combined EUR 8000; remaining EUR 4000.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "8000",
+      "4000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "sum_and_remaining",
+      0,
+      2
+    ]
+  },
+  {
+    "id": "CX-003",
+    "expected_answer": "Combined EUR 7000; remaining EUR 5000.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "7000",
+      "5000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "sum_and_remaining",
+      0,
+      3
+    ]
+  },
+  {
+    "id": "CX-004",
+    "expected_answer": "Combined EUR 5000; remaining EUR 7000.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "5000",
+      "7000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "sum_and_remaining",
+      1,
+      2
+    ]
+  },
+  {
+    "id": "CX-005",
+    "expected_answer": "Combined EUR 4000; remaining EUR 8000.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "4000",
+      "8000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "sum_and_remaining",
+      1,
+      3
+    ]
+  },
+  {
+    "id": "CX-006",
+    "expected_answer": "Combined EUR 3000; remaining EUR 9000.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "3000",
+      "9000"
+    ],
+    "semantic_target": [
+      "pilot",
+      "sum_and_remaining",
+      2,
+      3
+    ]
+  },
+  {
+    "id": "CX-007",
+    "expected_answer": "50.00% of the proposed budget; not evidence of spending.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "50.00"
+    ],
+    "semantic_target": [
+      "pilot",
+      "percentage",
+      0
+    ]
+  },
+  {
+    "id": "CX-008",
+    "expected_answer": "25.00% of the proposed budget; not evidence of spending.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "25.00"
+    ],
+    "semantic_target": [
+      "pilot",
+      "percentage",
+      1
+    ]
+  },
+  {
+    "id": "CX-009",
+    "expected_answer": "16.67% of the proposed budget; not evidence of spending.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "16.67"
+    ],
+    "semantic_target": [
+      "pilot",
+      "percentage",
+      2
+    ]
+  },
+  {
+    "id": "CX-010",
+    "expected_answer": "8.33% of the proposed budget; not evidence of spending.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "8.33"
+    ],
+    "semantic_target": [
+      "pilot",
+      "percentage",
+      3
+    ]
+  },
+  {
+    "id": "CX-011",
+    "expected_answer": "EUR 1200.00 per assigned member as a planning ratio; it does not prove a payment.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "1200.00"
+    ],
+    "semantic_target": [
+      "pilot",
+      "per_member",
+      "database"
+    ]
+  },
+  {
+    "id": "CX-012",
+    "expected_answer": "EUR 1200.00 per assigned member as a planning ratio; it does not prove a payment.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "1200.00"
+    ],
+    "semantic_target": [
+      "pilot",
+      "per_member",
+      "blockchain"
+    ]
+  },
+  {
+    "id": "CX-013",
+    "expected_answer": "3600 seconds; PDF milestones describe delivery after kickoff.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "blockchain/pilot/proposal",
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "3600"
+    ],
+    "semantic_target": [
+      "pilot",
+      "window_delivery"
+    ]
+  },
+  {
+    "id": "CX-014",
+    "expected_answer": "Difference 0; vote-count agreement does not establish completed PDF activities.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/pilot/indexed_votes",
+      "blockchain/pilot/proposal/voteCount",
+      "documents/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "0"
+    ],
+    "semantic_target": [
+      "pilot",
+      "vote_delta_execution"
+    ]
+  },
+  {
+    "id": "CX-015",
+    "expected_answer": "PDF cyber-demo-dao; database cyber-dao-321; these identifiers differ.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/pilot",
+      "database/pilot/dao_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "cyber-demo-dao",
+      "cyber-dao-321"
+    ],
+    "semantic_target": [
+      "pilot",
+      "document_dao_mismatch"
+    ]
+  },
+  {
+    "id": "CX-016",
+    "expected_answer": "Combined EUR 3500; remaining EUR 1000.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "3500",
+      "1000"
+    ],
+    "semantic_target": [
+      "training",
+      "sum_and_remaining",
+      0,
+      1
+    ]
+  },
+  {
+    "id": "CX-017",
+    "expected_answer": "Combined EUR 2750; remaining EUR 1750.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "2750",
+      "1750"
+    ],
+    "semantic_target": [
+      "training",
+      "sum_and_remaining",
+      0,
+      2
+    ]
+  },
+  {
+    "id": "CX-018",
+    "expected_answer": "Combined EUR 2250; remaining EUR 2250.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "2250",
+      "2250"
+    ],
+    "semantic_target": [
+      "training",
+      "sum_and_remaining",
+      0,
+      3
+    ]
+  },
+  {
+    "id": "CX-019",
+    "expected_answer": "Combined EUR 2250; remaining EUR 2250.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "2250",
+      "2250"
+    ],
+    "semantic_target": [
+      "training",
+      "sum_and_remaining",
+      1,
+      2
+    ]
+  },
+  {
+    "id": "CX-020",
+    "expected_answer": "Combined EUR 1750; remaining EUR 2750.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "1750",
+      "2750"
+    ],
+    "semantic_target": [
+      "training",
+      "sum_and_remaining",
+      1,
+      3
+    ]
+  },
+  {
+    "id": "CX-021",
+    "expected_answer": "Combined EUR 1000; remaining EUR 3500.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "1000",
+      "3500"
+    ],
+    "semantic_target": [
+      "training",
+      "sum_and_remaining",
+      2,
+      3
+    ]
+  },
+  {
+    "id": "CX-022",
+    "expected_answer": "44.44% of the proposed budget; not evidence of spending.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "44.44"
+    ],
+    "semantic_target": [
+      "training",
+      "percentage",
+      0
+    ]
+  },
+  {
+    "id": "CX-023",
+    "expected_answer": "33.33% of the proposed budget; not evidence of spending.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "33.33"
+    ],
+    "semantic_target": [
+      "training",
+      "percentage",
+      1
+    ]
+  },
+  {
+    "id": "CX-024",
+    "expected_answer": "16.67% of the proposed budget; not evidence of spending.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "16.67"
+    ],
+    "semantic_target": [
+      "training",
+      "percentage",
+      2
+    ]
+  },
+  {
+    "id": "CX-025",
+    "expected_answer": "5.56% of the proposed budget; not evidence of spending.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "5.56"
+    ],
+    "semantic_target": [
+      "training",
+      "percentage",
+      3
+    ]
+  },
+  {
+    "id": "CX-026",
+    "expected_answer": "EUR 450.00 per assigned member as a planning ratio; it does not prove a payment.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "450.00"
+    ],
+    "semantic_target": [
+      "training",
+      "per_member",
+      "database"
+    ]
+  },
+  {
+    "id": "CX-027",
+    "expected_answer": "EUR 450.00 per assigned member as a planning ratio; it does not prove a payment.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "450.00"
+    ],
+    "semantic_target": [
+      "training",
+      "per_member",
+      "blockchain"
+    ]
+  },
+  {
+    "id": "CX-028",
+    "expected_answer": "3900 seconds; PDF milestones describe delivery after kickoff.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "blockchain/training/proposal",
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "3900"
+    ],
+    "semantic_target": [
+      "training",
+      "window_delivery"
+    ]
+  },
+  {
+    "id": "CX-029",
+    "expected_answer": "Difference 0; vote-count agreement does not establish completed PDF activities.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "database/training/indexed_votes",
+      "blockchain/training/proposal/voteCount",
+      "documents/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "0"
+    ],
+    "semantic_target": [
+      "training",
+      "vote_delta_execution"
+    ]
+  },
+  {
+    "id": "CX-030",
+    "expected_answer": "PDF cyber-demo-dao; database cyber-test-dao; these identifiers differ.",
+    "expected_behavior": "facts",
+    "source_identifiers": [
+      "documents/training",
+      "database/training/dao_id"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "machine_source_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [
+      "cyber-demo-dao",
+      "cyber-test-dao"
+    ],
+    "semantic_target": [
+      "training",
+      "document_dao_mismatch"
+    ]
+  },
+  {
+    "id": "UN-001",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "auditor legal name"
+    ]
+  },
+  {
+    "id": "UN-002",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "signed supplier purchase order number"
+    ]
+  },
+  {
+    "id": "UN-003",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "bank transfer reference for an executed payment"
+    ]
+  },
+  {
+    "id": "UN-004",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "exact electricity consumed by the completed initiative"
+    ]
+  },
+  {
+    "id": "UN-005",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "independent audit certificate identifier"
+    ]
+  },
+  {
+    "id": "UN-006",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "actual training satisfaction score"
+    ]
+  },
+  {
+    "id": "UN-007",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "causal effect on voter turnout"
+    ]
+  },
+  {
+    "id": "UN-008",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "actual post-project return on investment"
+    ]
+  },
+  {
+    "id": "UN-009",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "final procurement invoice identifier"
+    ]
+  },
+  {
+    "id": "UN-010",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "insurance policy identifier"
+    ]
+  },
+  {
+    "id": "UN-011",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "approved tax ruling reference"
+    ]
+  },
+  {
+    "id": "UN-012",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "signed data-processing agreement number"
+    ]
+  },
+  {
+    "id": "UN-013",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "carbon emissions measured after delivery"
+    ]
+  },
+  {
+    "id": "UN-014",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "actual accessibility audit score"
+    ]
+  },
+  {
+    "id": "UN-015",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "confirmed beneficiary bank account"
+    ]
+  },
+  {
+    "id": "UN-016",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "real-world participant attendance register"
+    ]
+  },
+  {
+    "id": "UN-017",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "independently measured literacy improvement percentage"
+    ]
+  },
+  {
+    "id": "UN-018",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "approved external grant agreement identifier"
+    ]
+  },
+  {
+    "id": "UN-019",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "signed supplier delivery acceptance certificate"
+    ]
+  },
+  {
+    "id": "UN-020",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "production incident recovery time measured after completion"
+    ]
+  },
+  {
+    "id": "UN-021",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "actual project expenditure ledger"
+    ]
+  },
+  {
+    "id": "UN-022",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "binding external regulator approval identifier"
+    ]
+  },
+  {
+    "id": "UN-023",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "completed penetration test certificate number"
+    ]
+  },
+  {
+    "id": "UN-024",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/training",
+      "documents/training",
+      "blockchain/training"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "missing",
+      "actual dispute-resolution case number"
+    ]
+  },
+  {
+    "id": "UN-025",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "expected_behavior": "abstain",
+    "source_identifiers": [
+      "database/pilot",
+      "documents/pilot",
+      "blockchain/pilot"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "bounded_absence_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "missing",
+      "supplier performance bond reference"
+    ]
+  },
+  {
+    "id": "UA-001",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/0"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "give the database title"
+    ]
+  },
+  {
+    "id": "UA-002",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/1"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "give the stored status"
+    ]
+  },
+  {
+    "id": "UA-003",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/2"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "give the indexed vote count"
+    ]
+  },
+  {
+    "id": "UA-004",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/3"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "give the active assignment count"
+    ]
+  },
+  {
+    "id": "UA-005",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/4"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "list proposals in the DAO"
+    ]
+  },
+  {
+    "id": "UA-006",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/5"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "give the chain ID"
+    ]
+  },
+  {
+    "id": "UA-007",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/6"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "give the on-chain proposal ID"
+    ]
+  },
+  {
+    "id": "UA-008",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/7"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "give the voting start timestamp"
+    ]
+  },
+  {
+    "id": "UA-009",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/8"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "give the voting end timestamp"
+    ]
+  },
+  {
+    "id": "UA-010",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/9"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "give the proposal type"
+    ]
+  },
+  {
+    "id": "UA-011",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/10"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "summarize the attached PDF"
+    ]
+  },
+  {
+    "id": "UA-012",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/11"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "give the proposed PDF budget"
+    ]
+  },
+  {
+    "id": "UA-013",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/12"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "list the PDF deliverables"
+    ]
+  },
+  {
+    "id": "UA-014",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/13"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "describe the PDF risks"
+    ]
+  },
+  {
+    "id": "UA-015",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/14"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "give the PDF contingency"
+    ]
+  },
+  {
+    "id": "UA-016",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/15"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "list the proposed voting options"
+    ]
+  },
+  {
+    "id": "UA-017",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/16"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "give on-chain member count"
+    ]
+  },
+  {
+    "id": "UA-018",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/17"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "give on-chain vote count"
+    ]
+  },
+  {
+    "id": "UA-019",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/18"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "give on-chain counts by option"
+    ]
+  },
+  {
+    "id": "UA-020",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/19"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "give on-chain voting status"
+    ]
+  },
+  {
+    "id": "UA-021",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/20"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "compare chain and database membership"
+    ]
+  },
+  {
+    "id": "UA-022",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/21"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "compare chain and database vote totals"
+    ]
+  },
+  {
+    "id": "UA-023",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/22"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "show proposal document references"
+    ]
+  },
+  {
+    "id": "UA-024",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/23"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "training",
+      "unauthenticated",
+      "explain the delivery milestones"
+    ]
+  },
+  {
+    "id": "UA-025",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "expected_behavior": "deny",
+    "source_identifiers": [
+      "authorization/probe/24"
+    ],
+    "snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+    "evidence_snapshot": "evidence/snapshot.json",
+    "ground_truth_verification_status": "live_http_denial_checked",
+    "verification_method": "Independent aggregate SQL, PDF text anchors and/or recorded chain response; arithmetic computed from source operands",
+    "human_review_status": "not_reviewed",
+    "support_anchors": [],
+    "semantic_target": [
+      "pilot",
+      "unauthenticated",
+      "identify the PDF DAO ID"
+    ]
+  }
+]

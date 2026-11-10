@@ -1,0 +1,14 @@
+{
+  "observed_utc": "2026-11-09T12:27:09.016Z",
+  "proposal_id": "d79ac7ba-c040-4e5e-9ee5-ebdbfa1d5a21",
+  "on_chain_id": "32",
+  "chain_id": "1212",
+  "block": "20277566",
+  "block_hash": "0x6b84a7cbd59c3c7faebed6714b88444c253c530e51ec8775c1237e7ea7ea28bf",
+  "sql_active_rows": 10,
+  "sql_distinct_members": 10,
+  "contract_active_count": 9,
+  "sql_members_confirmed_on_chain": 9,
+  "sql_members_not_assigned_at_pin": 1,
+  "scope": "Current read-only SQL snapshot compared with the historical contract block. Historical SQL and cause are unverified. No addresses exported."
+}

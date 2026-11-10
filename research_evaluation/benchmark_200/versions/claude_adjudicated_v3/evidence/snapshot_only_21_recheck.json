@@ -1,0 +1,326 @@
+[
+  {
+    "id": "DB-005",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "field": "dao_proposals",
+      "live_value": 1,
+      "snapshot_value": 1
+    },
+    "chain_block": "20255936",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "DB-007",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "field": "chain_id",
+      "live_value": "1212",
+      "snapshot_value": "1212"
+    },
+    "chain_block": "20255936",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "DB-011",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "field": "title",
+      "live_value": "Improve members’ understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+      "snapshot_value": "Improve members’ understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide."
+    },
+    "chain_block": "20255938",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "DB-015",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "field": "dao_proposals",
+      "live_value": 1,
+      "snapshot_value": 1
+    },
+    "chain_block": "20255938",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "DB-017",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "field": "chain_id",
+      "live_value": "1212",
+      "snapshot_value": "1212"
+    },
+    "chain_block": "20255938",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "DB-025",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "field": "dao_proposals",
+      "live_value": 1,
+      "snapshot_value": 1
+    },
+    "chain_block": "20255939",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "DB-027",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "field": "chain_id",
+      "live_value": "1212",
+      "snapshot_value": "1212"
+    },
+    "chain_block": "20255939",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "DB-035",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "field": "dao_proposals",
+      "live_value": 1,
+      "snapshot_value": 1
+    },
+    "chain_block": "20255941",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "DB-037",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "field": "chain_id",
+      "live_value": "1212",
+      "snapshot_value": "1212"
+    },
+    "chain_block": "20255941",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-011",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255936",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-012",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255936",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-013",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255936",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-014",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255936",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-015",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255936",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-031",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255938",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-032",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255938",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-033",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255938",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-034",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255938",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "MS-035",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "database_chain_id": "1212",
+      "current_network_chain_id": "1212"
+    },
+    "chain_block": "20255938",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "CX-015",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "pdf_dao_id": "cyber-demo-dao",
+      "live_database_dao_id": "cyber-dao-321"
+    },
+    "chain_block": "20255936",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  },
+  {
+    "id": "CX-030",
+    "source_recheck_passed": true,
+    "live_database_matches_snapshot": true,
+    "pinned_chain_identity_verified": true,
+    "observations": {
+      "pdf_dao_id": "cyber-demo-dao",
+      "live_database_dao_id": "cyber-test-dao"
+    },
+    "chain_block": "20255938",
+    "sql_checked_utc": "2026-11-09T00:59:40.008735+00:00",
+    "historical_sql_at_chain_block_verified": false,
+    "scope_limit": "Current SQL agrees with saved SQL projection; chain fields/hash checked at saved block. No historical SQL checkpoint reconstruction.",
+    "review_status": "Existing Claude independent-LLM ACCEPT; this fresh source check is not human adjudication"
+  }
+]

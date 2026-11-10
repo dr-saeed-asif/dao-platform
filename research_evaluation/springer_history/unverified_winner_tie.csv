@@ -1,0 +1,13 @@
+on_chain_id,block,field,database,blockchain,status
+39,20277778,winning_option,,0,unverified
+39,20277778,tied,,False,unverified
+14,20277779,winning_option,,0,unverified
+14,20277779,tied,,True,unverified
+23,20277780,winning_option,,2,unverified
+23,20277780,tied,,False,unverified
+5,20277781,winning_option,,0,unverified
+5,20277781,tied,,True,unverified
+6,20277782,winning_option,,0,unverified
+6,20277782,tied,,True,unverified
+7,20277783,winning_option,,0,unverified
+7,20277783,tied,,False,unverified

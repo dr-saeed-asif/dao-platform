@@ -1,0 +1,11 @@
+{
+  "current_literal_flags": [
+    {
+      "id": "DB-021",
+      "reason": "Literal full expected answer present in current model-visible question/scope"
+    }
+  ],
+  "method": "Literal complete-answer and direct DB integer exposure in question plus baseline scope fields",
+  "limits": "Does not establish absence of semantic leakage, source reuse or training-data contamination",
+  "historical_contaminated_attempts": "See excluded_attempts.json; not removed from raw responses"
+}

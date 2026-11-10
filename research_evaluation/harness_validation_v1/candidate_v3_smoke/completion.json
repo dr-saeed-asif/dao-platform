@@ -1,0 +1,7 @@
+{
+  "records": 1,
+  "reserved_count": 133,
+  "reserved_file_unchanged": true,
+  "chat_options_equal": true,
+  "note": "Whole-run per-call checks performed by separate analysis; this last-call check is not the aggregate audit."
+}

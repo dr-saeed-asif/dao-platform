@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\node_modules\\jest\\bin\\jest.js",
+    "src/ai/__tests__/blockchain-verification.spec.ts",
+    "--runInBand",
+    "--json",
+    "--outputFile",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\research_evaluation\\closeout\\blockchain_tests.json"
+  ],
+  "cwd": "E:\\DAO\\cyber-chain-work\\dao-platform\\apps\\api",
+  "exit_code": 0
+}

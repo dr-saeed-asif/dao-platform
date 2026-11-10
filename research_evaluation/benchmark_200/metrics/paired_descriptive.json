@@ -1,0 +1,29 @@
+[
+  {
+    "baseline": "B1",
+    "pairs": 3,
+    "B4_only_hit": 2,
+    "baseline_only_hit": 0,
+    "mean_latency_difference_ms_B4_minus_baseline": 1894.6143333329626,
+    "p_value": null,
+    "reason": "No inferential test on three purposive dependent smoke cases"
+  },
+  {
+    "baseline": "B2",
+    "pairs": 3,
+    "B4_only_hit": 2,
+    "baseline_only_hit": 0,
+    "mean_latency_difference_ms_B4_minus_baseline": -219.56183333531953,
+    "p_value": null,
+    "reason": "No inferential test on three purposive dependent smoke cases"
+  },
+  {
+    "baseline": "B3",
+    "pairs": 3,
+    "B4_only_hit": 0,
+    "baseline_only_hit": 0,
+    "mean_latency_difference_ms_B4_minus_baseline": -385.66066666680854,
+    "p_value": null,
+    "reason": "No inferential test on three purposive dependent smoke cases"
+  }
+]

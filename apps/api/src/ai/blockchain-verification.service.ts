@@ -195,6 +195,7 @@ export class BlockchainVerificationService {
           VOTING_CLOSED: 'Closed',
           CLOSED: 'Closed',
           EXECUTED: 'Closed',
+          FINALIZED: 'Closed',
           CANCELLED: 'Cancelled',
         } as Record<string, string>
       )[p.status];

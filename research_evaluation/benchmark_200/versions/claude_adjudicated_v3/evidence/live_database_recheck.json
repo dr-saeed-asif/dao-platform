@@ -1,0 +1,92 @@
+{
+  "checked_utc": "2026-11-09T00:59:40.008735+00:00",
+  "method": "Current read-only SQL projection; not a reconstruction of historical SQL state at a chain block",
+  "scopes": [
+    {
+      "scope": "pilot",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    },
+    {
+      "scope": "training",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    },
+    {
+      "scope": "cleanup",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    },
+    {
+      "scope": "testing",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    }
+  ],
+  "current_observations": {
+    "pilot": {
+      "id": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "dao_id": "cyber-dao-321",
+      "title": "CyberGovAI Governance Security and Transparency Pilot",
+      "status": "VOTING_CLOSED",
+      "proposal_type": "STANDARD",
+      "on_chain_id": "38",
+      "chain_id": "1212",
+      "starts_at": "2026-10-26 08:15:00+00:00",
+      "ends_at": "2026-10-26 09:15:00+00:00",
+      "total_votes": "0",
+      "indexed_votes": 0,
+      "assigned": 10,
+      "dao_proposals": 1
+    },
+    "training": {
+      "id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+      "dao_id": "cyber-test-dao",
+      "title": "Improve members\u2019 understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+      "status": "FINALIZED",
+      "proposal_type": "STANDARD",
+      "on_chain_id": "39",
+      "chain_id": "1212",
+      "starts_at": "2026-10-26 11:17:00+00:00",
+      "ends_at": "2026-10-26 12:22:00+00:00",
+      "total_votes": "2",
+      "indexed_votes": 2,
+      "assigned": 10,
+      "dao_proposals": 1
+    },
+    "cleanup": {
+      "id": "16dadecc-94cc-4fae-8089-921765854976",
+      "dao_id": "Community Clean-Up Initiative",
+      "title": "Community Clean-Up Initiative",
+      "status": "VOTING_CLOSED",
+      "proposal_type": "STANDARD",
+      "on_chain_id": "36",
+      "chain_id": "1212",
+      "starts_at": "2026-10-21 10:26:00+00:00",
+      "ends_at": "2026-10-21 11:26:00+00:00",
+      "total_votes": "0",
+      "indexed_votes": 0,
+      "assigned": 9,
+      "dao_proposals": 1
+    },
+    "testing": {
+      "id": "onchain-28",
+      "dao_id": "cyber-test",
+      "title": "Cyber Testing",
+      "status": "VOTING_CLOSED",
+      "proposal_type": "STANDARD",
+      "on_chain_id": "28",
+      "chain_id": "1212",
+      "starts_at": "2026-10-09 03:23:00+00:00",
+      "ends_at": "2026-10-09 03:30:00+00:00",
+      "total_votes": "0",
+      "indexed_votes": 0,
+      "assigned": 0,
+      "dao_proposals": 1
+    }
+  }
+}

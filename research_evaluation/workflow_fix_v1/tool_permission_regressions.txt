@@ -1,0 +1,11 @@
+test_malformed_arguments_are_rejected_before_business_execution (test_mcp_registry_security.McpRegistrySecurityTests.test_malformed_arguments_are_rejected_before_business_execution) ... Tool 'check_proposal_assignment' rejected arguments: ['wallet_address']
+Tool 'list_dao_proposals' rejected arguments: ['limit']
+ok
+test_registry_has_only_read_only_named_tools (test_mcp_registry_security.McpRegistrySecurityTests.test_registry_has_only_read_only_named_tools) ... ok
+test_unverified_operator_cannot_call_any_governance_tool (test_mcp_registry_security.McpRegistrySecurityTests.test_unverified_operator_cannot_call_any_governance_tool) ... Executing <Task pending name='Task-12' coro=<McpRegistrySecurityTests.test_unverified_operator_cannot_call_any_governance_tool() running at E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\tests\test_mcp_registry_security.py:44> cb=[_run_until_complete_cb() at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py:181] created at C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py:100> took 0.294 seconds
+ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.576s
+
+OK

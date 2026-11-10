@@ -1,0 +1,701 @@
+{
+  "checked": 115,
+  "mismatches": [],
+  "intentional_document_updates": [
+    "SPRINGER_EXPERIMENTAL_RESULTS.md",
+    "springer\\EVIDENCE_TO_CLAIMS.md"
+  ],
+  "archive_note": "Prior claim-mapping hash checked against byte-preserved archive.",
+  "checks": [
+    {
+      "manifest": "springer/provenance.json",
+      "file": "SPRINGER_EXPERIMENTAL_RESULTS.md",
+      "checked_path": "springer_followup\\SPRINGER_BEFORE_FOLLOWUP.md",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/analyze.py",
+      "checked_path": "springer\\analyze.py",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/baseline_comparison_exploratory.csv",
+      "checked_path": "springer\\baseline_comparison_exploratory.csv",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/deployment_checks.jsonl",
+      "checked_path": "springer\\deployment_checks.jsonl",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/EVIDENCE_TO_CLAIMS.md",
+      "checked_path": "springer_followup\\EVIDENCE_TO_CLAIMS_BEFORE_FOLLOWUP.md",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/fault_injection.json",
+      "checked_path": "springer\\fault_injection.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/faults.cjs",
+      "checked_path": "springer\\faults.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/metrics.json",
+      "checked_path": "springer\\metrics.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/reconcile.cjs",
+      "checked_path": "springer\\reconcile.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/reconciliation.jsonl",
+      "checked_path": "springer\\reconciliation.jsonl",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/reconciliation.png",
+      "checked_path": "springer\\reconciliation.png",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/reconciliation.svg",
+      "checked_path": "springer\\reconciliation.svg",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/reconciliation_config.json",
+      "checked_path": "springer\\reconciliation_config.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/reconciliation_table.csv",
+      "checked_path": "springer\\reconciliation_table.csv",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/REPRODUCE.md",
+      "checked_path": "springer\\REPRODUCE.md",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/security.py",
+      "checked_path": "springer\\security.py",
+      "matches": true
+    },
+    {
+      "manifest": "springer/provenance.json",
+      "file": "springer/security_probes.json",
+      "checked_path": "springer\\security_probes.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "affected_comparison.csv",
+      "checked_path": "springer_followup\\affected_comparison.csv",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "affected_comparison.png",
+      "checked_path": "springer_followup\\affected_comparison.png",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "affected_comparison.svg",
+      "checked_path": "springer_followup\\affected_comparison.svg",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "analyze.py",
+      "checked_path": "springer_followup\\analyze.py",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "assignment_independent.json",
+      "checked_path": "springer_followup\\assignment_independent.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "check_assignment.cjs",
+      "checked_path": "springer_followup\\check_assignment.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "deployment_checks.jsonl",
+      "checked_path": "springer_followup\\deployment_checks.jsonl",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "evaluation_preparation.json",
+      "checked_path": "springer_followup\\evaluation_preparation.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "EVIDENCE_TO_CLAIMS_BEFORE_FOLLOWUP.md",
+      "checked_path": "springer_followup\\EVIDENCE_TO_CLAIMS_BEFORE_FOLLOWUP.md",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "faults.cjs",
+      "checked_path": "springer_followup\\faults.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "fault_injection.json",
+      "checked_path": "springer_followup\\fault_injection.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "FOLLOWUP_RESULTS.md",
+      "checked_path": "springer_followup\\FOLLOWUP_RESULTS.md",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "human_assessment_template.csv",
+      "checked_path": "springer_followup\\human_assessment_template.csv",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "metrics.json",
+      "checked_path": "springer_followup\\metrics.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "prepare_review.py",
+      "checked_path": "springer_followup\\prepare_review.py",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "reconcile.cjs",
+      "checked_path": "springer_followup\\reconcile.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "reconciliation.jsonl",
+      "checked_path": "springer_followup\\reconciliation.jsonl",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "reconciliation_config.json",
+      "checked_path": "springer_followup\\reconciliation_config.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "REPRODUCE.md",
+      "checked_path": "springer_followup\\REPRODUCE.md",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "SPRINGER_BEFORE_FOLLOWUP.md",
+      "checked_path": "springer_followup\\SPRINGER_BEFORE_FOLLOWUP.md",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "unit_finalized.txt",
+      "checked_path": "springer_followup\\unit_finalized.txt",
+      "matches": true
+    },
+    {
+      "manifest": "springer_followup/provenance.json",
+      "file": "verifier_fix.patch",
+      "checked_path": "springer_followup\\verifier_fix.patch",
+      "matches": true
+    },
+    {
+      "manifest": "springer_history/provenance.json",
+      "file": "assignment_history.cjs",
+      "checked_path": "springer_history\\assignment_history.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "springer_history/provenance.json",
+      "file": "assignment_history.json",
+      "checked_path": "springer_history\\assignment_history.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer_history/provenance.json",
+      "file": "CLAIMS_BEFORE_HISTORY.md",
+      "checked_path": "springer_history\\CLAIMS_BEFORE_HISTORY.md",
+      "matches": true
+    },
+    {
+      "manifest": "springer_history/provenance.json",
+      "file": "failed_assignment_receipt.cjs",
+      "checked_path": "springer_history\\failed_assignment_receipt.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "springer_history/provenance.json",
+      "file": "failed_assignment_receipt.json",
+      "checked_path": "springer_history\\failed_assignment_receipt.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer_history/provenance.json",
+      "file": "setup_failures.json",
+      "checked_path": "springer_history\\setup_failures.json",
+      "matches": true
+    },
+    {
+      "manifest": "springer_history/provenance.json",
+      "file": "SPRINGER_BEFORE_HISTORY.md",
+      "checked_path": "springer_history\\SPRINGER_BEFORE_HISTORY.md",
+      "matches": true
+    },
+    {
+      "manifest": "springer_history/provenance.json",
+      "file": "unverified_winner_tie.csv",
+      "checked_path": "springer_history\\unverified_winner_tie.csv",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v1/provenance.json",
+      "file": "capture_chain.cjs",
+      "checked_path": "exploratory_frozen_v1\\capture_chain.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v1/provenance.json",
+      "file": "chain_snapshot.json",
+      "checked_path": "exploratory_frozen_v1\\chain_snapshot.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v1/provenance.json",
+      "file": "config.json",
+      "checked_path": "exploratory_frozen_v1\\config.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v1/provenance.json",
+      "file": "harness_exclusions.json",
+      "checked_path": "exploratory_frozen_v1\\harness_exclusions.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v1/provenance.json",
+      "file": "responses.jsonl",
+      "checked_path": "exploratory_frozen_v1\\responses.jsonl",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v1/provenance.json",
+      "file": "run.py",
+      "checked_path": "exploratory_frozen_v1\\run.py",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v1/provenance.json",
+      "file": "snapshot_session.json",
+      "checked_path": "exploratory_frozen_v1\\snapshot_session.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v1/provenance.json",
+      "file": "setup/initial_failure.json",
+      "checked_path": "exploratory_frozen_v1\\setup\\initial_failure.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v1/provenance.json",
+      "file": "setup/selector_subprocess_config.json",
+      "checked_path": "exploratory_frozen_v1\\setup\\selector_subprocess_config.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "analysis_manifest.json",
+      "checked_path": "exploratory_frozen_v2\\analysis_manifest.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "analyze.py",
+      "checked_path": "exploratory_frozen_v2\\analyze.py",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "assistant_ratings.json",
+      "checked_path": "exploratory_frozen_v2\\assistant_ratings.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "baseline_comparison.csv",
+      "checked_path": "exploratory_frozen_v2\\baseline_comparison.csv",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "baseline_outcomes.png",
+      "checked_path": "exploratory_frozen_v2\\baseline_outcomes.png",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "baseline_outcomes.svg",
+      "checked_path": "exploratory_frozen_v2\\baseline_outcomes.svg",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "capture_chain.cjs",
+      "checked_path": "exploratory_frozen_v2\\capture_chain.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "chain_snapshot.json",
+      "checked_path": "exploratory_frozen_v2\\chain_snapshot.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "claim_sample_summary.json",
+      "checked_path": "exploratory_frozen_v2\\claim_sample_summary.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "config.json",
+      "checked_path": "exploratory_frozen_v2\\config.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "diagnostic_claims.csv",
+      "checked_path": "exploratory_frozen_v2\\diagnostic_claims.csv",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "EXPLORATORY_RESULTS.md",
+      "checked_path": "exploratory_frozen_v2\\EXPLORATORY_RESULTS.md",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "exposure_ledger.json",
+      "checked_path": "exploratory_frozen_v2\\exposure_ledger.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "publish.py",
+      "checked_path": "exploratory_frozen_v2\\publish.py",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "README.md",
+      "checked_path": "exploratory_frozen_v2\\README.md",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "recorder_preflight.json",
+      "checked_path": "exploratory_frozen_v2\\recorder_preflight.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "remaining_unexposed_questions.json",
+      "checked_path": "exploratory_frozen_v2\\remaining_unexposed_questions.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "responses.jsonl",
+      "checked_path": "exploratory_frozen_v2\\responses.jsonl",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "run.py",
+      "checked_path": "exploratory_frozen_v2\\run.py",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "scores.json",
+      "checked_path": "exploratory_frozen_v2\\scores.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "snapshot_session.json",
+      "checked_path": "exploratory_frozen_v2\\snapshot_session.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "summary.json",
+      "checked_path": "exploratory_frozen_v2\\summary.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "setup/failures.json",
+      "checked_path": "exploratory_frozen_v2\\setup\\failures.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "setup/preflight_config.json",
+      "checked_path": "exploratory_frozen_v2\\setup\\preflight_config.json",
+      "matches": true
+    },
+    {
+      "manifest": "exploratory_frozen_v2/provenance.json",
+      "file": "setup/timeout_config.json",
+      "checked_path": "exploratory_frozen_v2\\setup\\timeout_config.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "accepted_gold.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\accepted_gold.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "accepted_questions.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\accepted_questions.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "BENCHMARK_READINESS.md",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\BENCHMARK_READINESS.md",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "confirmatory_gold.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\confirmatory_gold.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "confirmatory_questions.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\confirmatory_questions.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "decision_registry.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\decision_registry.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "evidence/additional_documents/f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49.pdf",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\evidence\\additional_documents\\f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49.pdf",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "evidence/additional_documents/f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49.text.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\evidence\\additional_documents\\f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49.text.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "evidence/additional_pdf_verification.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\evidence\\additional_pdf_verification.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "evidence/authorization_reconciliation.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\evidence\\authorization_reconciliation.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "evidence/diversity_inventory.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\evidence\\diversity_inventory.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "evidence/live_database_recheck.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\evidence\\live_database_recheck.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "evidence/pinned_chain_recheck.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\evidence\\pinned_chain_recheck.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "evidence/snapshot_only_21_recheck.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\evidence\\snapshot_only_21_recheck.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "exposed_exclusions.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\exposed_exclusions.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "readiness_counts.csv",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\readiness_counts.csv",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "readiness_counts.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\readiness_counts.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "rejected_registry.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\rejected_registry.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "revisions_pending.json",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\revisions_pending.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "scripts/apply_adjudication.py",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\scripts\\apply_adjudication.py",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "scripts/check_access_and_diversity.py",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\scripts\\check_access_and_diversity.py",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "scripts/inspect_additional_pdf.py",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\scripts\\inspect_additional_pdf.py",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "scripts/readiness_report.py",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\scripts\\readiness_report.py",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "scripts/recheck_snapshot_items.py",
+      "checked_path": "benchmark_200\\versions\\claude_adjudicated_v3\\scripts\\recheck_snapshot_items.py",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "questions.json",
+      "checked_path": "benchmark_200\\questions.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "ground_truth.json",
+      "checked_path": "benchmark_200\\ground_truth.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "evidence/snapshot.json",
+      "checked_path": "benchmark_200\\evidence\\snapshot.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "review/proposed_benchmark_v2.json",
+      "checked_path": "benchmark_200\\review\\proposed_benchmark_v2.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "review/proposed_gold_v2.json",
+      "checked_path": "benchmark_200\\review\\proposed_gold_v2.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "review/independent_audit/independent_adjudication.json",
+      "checked_path": "benchmark_200\\review\\independent_audit\\independent_adjudication.json",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "review/independent_audit/audit.py",
+      "checked_path": "benchmark_200\\review\\independent_audit\\audit.py",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "scripts/verify_chain.cjs",
+      "checked_path": "benchmark_200\\scripts\\verify_chain.cjs",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "scripts/check_database.py",
+      "checked_path": "benchmark_200\\scripts\\check_database.py",
+      "matches": true
+    },
+    {
+      "manifest": "benchmark_200/versions/claude_adjudicated_v3/provenance.json",
+      "file": "scripts/capture.py",
+      "checked_path": "benchmark_200\\scripts\\capture.py",
+      "matches": true
+    }
+  ]
+}

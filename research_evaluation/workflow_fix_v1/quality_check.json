@@ -1,0 +1,7 @@
+{
+  "missing_current_report_links": [],
+  "git_diff_whitespace_check": "passed",
+  "new_artifact_sensitive_pattern_scan_matches": 0,
+  "scope": "JSON/JSONL scan for wallet addresses, credential URLs and private-key headers; not a comprehensive secret audit",
+  "live_server_reload_verified": false
+}

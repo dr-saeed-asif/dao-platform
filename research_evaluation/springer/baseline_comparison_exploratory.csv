@@ -1,0 +1,5 @@
+variant,attempts,count_proxy_hits,mixed_certainty_flags,median_wall_ms
+B1,8,0,0,461.7825499990431
+B2,8,2,0,838.0884500002139
+B3,8,8,3,2618.1630499995663
+B4,8,8,4,2758.207799997763

@@ -1,0 +1,38 @@
+[
+  {
+    "sha256": "d6697aa4e64de7a39ea3c9c29993701cc19ee63b172f0113756a73d91e6e96c2",
+    "indexed_filename": "short_project_proposal.pdf",
+    "original_bytes_available": false,
+    "admission_status": "Not included in benchmark; requires independent question/gold and exposure review"
+  },
+  {
+    "sha256": "865dfe99585cee188a6ead4be60bdfdf686a26d89f38a24a84b9fb868c7d1096",
+    "indexed_filename": "01_cyber-security-dao.pdf",
+    "original_bytes_available": false,
+    "admission_status": "Not included in benchmark; requires independent question/gold and exposure review"
+  },
+  {
+    "sha256": "f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49",
+    "indexed_filename": "02_cyber-governance-dao.pdf",
+    "original_bytes_available": true,
+    "admission_status": "Not included in benchmark; requires independent question/gold and exposure review",
+    "file_hash_matches": true,
+    "pages": 1,
+    "extracted_text_characters": 904,
+    "sensitive_pattern_found": false,
+    "saved_source": "evidence/additional_documents/f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49.pdf",
+    "scope": "Additional genuine stored PDF bytes; contents are proposal statements, not proof of completed events; privacy and independent content review pending"
+  },
+  {
+    "sha256": "461f3cc03ca53a5b1ed14ee459e310b7fca1fee949db66f85abc9dcb1afd9749",
+    "indexed_filename": "03_cyber-ai-dao.pdf",
+    "original_bytes_available": false,
+    "admission_status": "Not included in benchmark; requires independent question/gold and exposure review"
+  },
+  {
+    "sha256": "5e9930ce872b63e0e6a25f5b62a3b40ab2729fd3af859397eaf494646e28d9d8",
+    "indexed_filename": "CyberDAO_Dummy_Security_Audit_Proposal.pdf",
+    "original_bytes_available": false,
+    "admission_status": "Not included in benchmark; requires independent question/gold and exposure review"
+  }
+]

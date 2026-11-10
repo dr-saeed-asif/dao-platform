@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "equivalent_tool_schemas": true,
+  "registered_tools": 22,
+  "out_of_scope_B2_denied_before_execution": true,
+  "read_only_tools": [
+    {
+      "name": "get_proposal",
+      "result": {
+        "success": true,
+        "data": {
+          "id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+          "daoId": "cyber-test-dao",
+          "onChainId": "39",
+          "chainId": "1212",
+          "contractAddress": "[redacted]",
+          "title": "Improve members\u2019 understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+          "purpose": "Improve members\u2019 understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+          "description": "Run a three-week community training pilot with a proposed budget of EUR 4,500: EUR 2,000 for workshop preparation and facilitation, EUR 1,500 for training materials, EUR 750 for accessibility support, and EUR 250 contingency. Deliver two workshops, a participation guide and a final report by Day 21. The planned attendance target is 30 participants. This is demonstration data; approval does not automatically release funds.",
+          "status": "FINALIZED",
+          "startsAt": "2026-10-26T11:17:00+00:00",
+          "endsAt": "2026-10-26T12:22:00+00:00",
+          "totalVotes": "2"
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "get_proposal_voting_facts",
+      "result": {
+        "success": true,
+        "data": {
+          "facts": {
+            "dao_id": "cyber-test-dao",
+            "proposal_id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+            "stored_total_votes": 2,
+            "stored_votes_by_option_index": [
+              {
+                "option_index": 0,
+                "vote_count": 2
+              }
+            ],
+            "stored_assigned_members": 10,
+            "assignment_source": "public.proposal_assignments; assigned IS TRUE",
+            "proposal_record_total_votes": "2",
+            "source": "public.votes joined through public.proposals",
+            "verification": "stored database records; not independently verified on-chain",
+            "unsupported_fields": [
+              "option_labels",
+              "quorum",
+              "outcome",
+              "voter_list",
+              "verified_on_chain_tally"
+            ],
+            "unsupported_reason": "On-chain verification, option labels, quorum and outcome are unavailable."
+          }
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "search_proposal_evidence",
+      "result": {
+        "success": true,
+        "data": {
+          "retrieval_ms": 3535.8,
+          "embedding_ms": 3311.0,
+          "embedding_tokens": 35,
+          "dao_id": "cyber-test-dao",
+          "proposal_id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+          "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae",
+          "evidence": [
+            {
+              "source_id": "D1",
+              "artefact_evidence_id": "artefact:sha256:a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+              "filename": "CyberDAO_Community_Training_Proposal.pdf",
+              "chunk_key": "e102106e20f0f853db72970376525ee64679d45b6ac2730dd042a7fb8730d156",
+              "page_number": 2,
+              "chunk_index": 0,
+              "score": 0.6231,
+              "content": "CG-DEMO-2026-02 / Synthetic demonstration data\n2\nDELIVERY, RISKS AND EVIDENCE BOUNDARIES\n3. Delivery milestones\nDay 1 is the kickoff after approval and confirmation of a delivery owner. These milestones are separate from\nthe voting dates configured in the DAO interface.\nDeadline\nDeliverable\nDay 7\nPublish an accessible draft guide and the workshop plan.\nDay 14\nComplete two workshops and collect voluntary participant feedback.\nDay 21\nPublish the final guide and a report summarizing attendance, feedback and unresolved\nissues.\n4. Success criteria\nDeliver two workshops and a final participation guide. Record actual attendance against the planned target of\n30 participants. Include at least five worked examples covering proposal interpretation, PDF citations, wallet\nsafety, vote confirmation and database-to-chain comparison. Report feedback without claiming a\npredetermined improvement score.\n5. Risks and mitigations\nRisk\nPlanned mitigation\nLow attendance\nShare invitations early and offer a recorded walkthrough.\nWallet or transaction confusion\nUse test wallets and guided examples; never request private keys\nor recovery phrases.\nMisunderstanding AI answers\nShow source excerpts and explain that citations require inspection.\nRPC or network interruption\nUse saved examples clearly labeled with their observation time.\nPersonal information in feedback\nCollect only necessary information and publish aggregated\nfindings.\n6. Governance and evidence boundaries\nVoting options are Approve, Reject and Abstain. Actual member assignments, voting dates, vote totals and\nfinal outcome must come from the application and contract after proposal creation. This PDF does not specify\na quorum percentage, an on-chain proposal ID, a contract address or transaction hashes.\nThis is synthetic data for a live software demonstration. The document describes proposed activities and\ntargets; it does not prove that workshops occurred, 30 people attended or the budget was approved. Approval\ndoes not automatically release funds or execute contract changes. No password or API credentials are\nprovided."
+            },
+            {
+              "source_id": "D2",
+              "artefact_evidence_id": "artefact:sha256:a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+              "filename": "CyberDAO_Community_Training_Proposal.pdf",
+              "chunk_key": "a0af9118efcece945b66442e37dbf0d801e145243e3bd88b41fc1decbab3568e",
+              "page_number": 1,
+              "chunk_index": 0,
+              "score": 0.5954,
+              "content": "CG-DEMO-2026-02 / Synthetic demonstration data\n1\nCYBERDAO / DEMONSTRATION PROPOSAL\nCommunity Governance Training\nand Participation Pilot\nA three-week initiative to help members understand proposals, inspect evidence and participate\nsafely in DAO voting.\nReference\nCG-DEMO-2026-02 / version 1.0\nDAO ID\ncyber-demo-dao\nProposal title\nCommunity Governance Training and Participation Pilot\nType / duration\nSTANDARD / 21 days after kickoff\nDecision requested\nApprove the proposed EUR 4,500 training pilot.\n1. Purpose and proposed activities\nImprove members' understanding of DAO proposals, evidence and wallet-based voting through two guided\nworkshops and an accessible participation guide. The planned attendance target is 30 participants across the\npilot; this is a target, not a recorded member or voter count.\nWorkshop 1 covers proposal purpose, supporting PDFs, source citations and differences between proposed\ncommitments and completed work. Workshop 2 covers connected-wallet use, voting eligibility, transaction\nconfirmation and comparison of database records with blockchain observations.\n2. Proposed budget\nAllocation\nAmount\nWorkshop preparation and facilitation\nEUR 2,000\nTraining guides and learning materials\nEUR 1,500\nAccessibility and participant support\nEUR 750\nContingency\nEUR 250\nTotal proposed budget\nEUR 4,500\nContingency is reserved for unexpected delivery costs. No provider has been appointed, no payment\nrecipient is specified and no funds have been disbursed under this demonstration proposal."
+            }
+          ]
+        },
+        "error": null
+      }
+    }
+  ],
+  "B2_evidence_source_ids": [
+    "D1",
+    "D2"
+  ],
+  "shared_chain_sha256": "9d48acd442fda34f50887ad810328ac2a60389daf4a880cd73874da272deccae",
+  "SQL_read_only": true,
+  "embedding_preflight_is_real": true,
+  "chat_calls": 0
+}

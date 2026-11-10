@@ -1,0 +1,73 @@
+[
+  {
+    "case": "malformed_plural_questions",
+    "checked_utc": "2026-11-09T01:00:27.980925+00:00",
+    "request_body": {
+      "proposalId": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "questions": [
+        "Show the selected proposal title."
+      ]
+    },
+    "credentials": "absent",
+    "expected": 400,
+    "status": 400,
+    "response_body": {
+      "message": [
+        "property questions should not exist",
+        "each value in question must be shorter than or equal to 4000 characters",
+        "each value in question must match /\\S/ regular expression",
+        "each value in question must be a string",
+        "question must contain no more than 100 elements",
+        "question must contain at least 1 elements",
+        "question must be an array"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    },
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 389,
+    "status_matches": true
+  },
+  {
+    "case": "valid_singular_question_no_wallet",
+    "checked_utc": "2026-11-09T01:00:27.984590+00:00",
+    "request_body": {
+      "proposalId": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "question": [
+        "Show the selected proposal title."
+      ]
+    },
+    "credentials": "absent",
+    "expected": 401,
+    "status": 401,
+    "response_body": {
+      "message": "Sign in with your wallet to use AI.",
+      "error": "Unauthorized",
+      "statusCode": 401
+    },
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 89,
+    "status_matches": true
+  },
+  {
+    "case": "valid_singular_question_invalid_wallet_token",
+    "checked_utc": "2026-11-09T01:00:27.986696+00:00",
+    "request_body": {
+      "proposalId": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "question": [
+        "Show the selected proposal title."
+      ]
+    },
+    "credentials": "invalid public test value",
+    "expected": 401,
+    "status": 401,
+    "response_body": {
+      "message": "Sign in with your wallet to use AI.",
+      "error": "Unauthorized",
+      "statusCode": 401
+    },
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 89,
+    "status_matches": true
+  }
+]

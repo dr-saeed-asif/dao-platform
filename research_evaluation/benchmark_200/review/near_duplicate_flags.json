@@ -1,0 +1,1754 @@
+[
+  {
+    "a": "DB-009",
+    "b": "DB-010",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "DB-019",
+    "b": "DB-020",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "DB-029",
+    "b": "DB-030",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "DB-039",
+    "b": "DB-040",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "PDF-001",
+    "b": "PDF-016",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "PDF-011",
+    "b": "PDF-013",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "PDF-021",
+    "b": "PDF-040",
+    "token_jaccard": 0.7333333333333333,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-001",
+    "b": "MS-002",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-001",
+    "b": "MS-003",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-001",
+    "b": "MS-004",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-001",
+    "b": "MS-005",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-001",
+    "b": "MS-006",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-001",
+    "b": "MS-011",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-001",
+    "b": "MS-016",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-003",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-004",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-005",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-007",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-008",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-009",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-012",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-013",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-014",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-002",
+    "b": "MS-017",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-003",
+    "b": "MS-004",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-003",
+    "b": "MS-005",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-003",
+    "b": "MS-007",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-003",
+    "b": "MS-008",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-003",
+    "b": "MS-009",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-003",
+    "b": "MS-012",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-003",
+    "b": "MS-013",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-003",
+    "b": "MS-014",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-003",
+    "b": "MS-018",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-004",
+    "b": "MS-005",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-004",
+    "b": "MS-007",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-004",
+    "b": "MS-008",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-004",
+    "b": "MS-009",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-004",
+    "b": "MS-012",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-004",
+    "b": "MS-013",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-004",
+    "b": "MS-014",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-004",
+    "b": "MS-019",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-005",
+    "b": "MS-010",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-005",
+    "b": "MS-015",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-005",
+    "b": "MS-020",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-007",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-008",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-009",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-010",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-011",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-012",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-013",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-014",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-015",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-006",
+    "b": "MS-016",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-008",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-009",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-010",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-011",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-012",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-013",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-014",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-015",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-017",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-018",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-007",
+    "b": "MS-019",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-009",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-010",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-011",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-012",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-013",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-014",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-015",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-017",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-018",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-008",
+    "b": "MS-019",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-009",
+    "b": "MS-010",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-009",
+    "b": "MS-011",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-009",
+    "b": "MS-012",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-009",
+    "b": "MS-013",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-009",
+    "b": "MS-014",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-009",
+    "b": "MS-015",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-009",
+    "b": "MS-017",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-009",
+    "b": "MS-018",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-009",
+    "b": "MS-019",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-010",
+    "b": "MS-011",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-010",
+    "b": "MS-012",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-010",
+    "b": "MS-013",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-010",
+    "b": "MS-014",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-010",
+    "b": "MS-015",
+    "token_jaccard": 0.9047619047619048,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-010",
+    "b": "MS-020",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-011",
+    "b": "MS-012",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-011",
+    "b": "MS-013",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-011",
+    "b": "MS-014",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-011",
+    "b": "MS-015",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-011",
+    "b": "MS-016",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-012",
+    "b": "MS-013",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-012",
+    "b": "MS-014",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-012",
+    "b": "MS-015",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-012",
+    "b": "MS-017",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-012",
+    "b": "MS-018",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-012",
+    "b": "MS-019",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-013",
+    "b": "MS-014",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-013",
+    "b": "MS-015",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-013",
+    "b": "MS-017",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-013",
+    "b": "MS-018",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-013",
+    "b": "MS-019",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-014",
+    "b": "MS-015",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-014",
+    "b": "MS-017",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-014",
+    "b": "MS-018",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-014",
+    "b": "MS-019",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-015",
+    "b": "MS-020",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-016",
+    "b": "MS-017",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-016",
+    "b": "MS-018",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-016",
+    "b": "MS-019",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-016",
+    "b": "MS-020",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-017",
+    "b": "MS-018",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-017",
+    "b": "MS-019",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-017",
+    "b": "MS-020",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-018",
+    "b": "MS-019",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-018",
+    "b": "MS-020",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-019",
+    "b": "MS-020",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-021",
+    "b": "MS-022",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-021",
+    "b": "MS-023",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-021",
+    "b": "MS-024",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-021",
+    "b": "MS-025",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-021",
+    "b": "MS-026",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-021",
+    "b": "MS-031",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-021",
+    "b": "MS-036",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-023",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-024",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-025",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-027",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-028",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-029",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-032",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-033",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-034",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-022",
+    "b": "MS-037",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-023",
+    "b": "MS-024",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-023",
+    "b": "MS-025",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-023",
+    "b": "MS-027",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-023",
+    "b": "MS-028",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-023",
+    "b": "MS-029",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-023",
+    "b": "MS-032",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-023",
+    "b": "MS-033",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-023",
+    "b": "MS-034",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-023",
+    "b": "MS-038",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-024",
+    "b": "MS-025",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-024",
+    "b": "MS-027",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-024",
+    "b": "MS-028",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-024",
+    "b": "MS-029",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-024",
+    "b": "MS-032",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-024",
+    "b": "MS-033",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-024",
+    "b": "MS-034",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-024",
+    "b": "MS-039",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-025",
+    "b": "MS-030",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-025",
+    "b": "MS-035",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-025",
+    "b": "MS-040",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-027",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-028",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-029",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-030",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-031",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-032",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-033",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-034",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-035",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-026",
+    "b": "MS-036",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-028",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-029",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-030",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-031",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-032",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-033",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-034",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-035",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-037",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-038",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-027",
+    "b": "MS-039",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-029",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-030",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-031",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-032",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-033",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-034",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-035",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-037",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-038",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-028",
+    "b": "MS-039",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-029",
+    "b": "MS-030",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-029",
+    "b": "MS-031",
+    "token_jaccard": 0.76,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-029",
+    "b": "MS-032",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-029",
+    "b": "MS-033",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-029",
+    "b": "MS-034",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-029",
+    "b": "MS-035",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-029",
+    "b": "MS-037",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-029",
+    "b": "MS-038",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-029",
+    "b": "MS-039",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-030",
+    "b": "MS-031",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-030",
+    "b": "MS-032",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-030",
+    "b": "MS-033",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-030",
+    "b": "MS-034",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-030",
+    "b": "MS-035",
+    "token_jaccard": 0.9047619047619048,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-030",
+    "b": "MS-040",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-031",
+    "b": "MS-032",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-031",
+    "b": "MS-033",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-031",
+    "b": "MS-034",
+    "token_jaccard": 0.8333333333333334,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-031",
+    "b": "MS-035",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-031",
+    "b": "MS-036",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-032",
+    "b": "MS-033",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-032",
+    "b": "MS-034",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-032",
+    "b": "MS-035",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-032",
+    "b": "MS-037",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-032",
+    "b": "MS-038",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-032",
+    "b": "MS-039",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-033",
+    "b": "MS-034",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-033",
+    "b": "MS-035",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-033",
+    "b": "MS-037",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-033",
+    "b": "MS-038",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-033",
+    "b": "MS-039",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-034",
+    "b": "MS-035",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-034",
+    "b": "MS-037",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-034",
+    "b": "MS-038",
+    "token_jaccard": 0.7692307692307693,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-034",
+    "b": "MS-039",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-035",
+    "b": "MS-040",
+    "token_jaccard": 0.8260869565217391,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-036",
+    "b": "MS-037",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-036",
+    "b": "MS-038",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-036",
+    "b": "MS-039",
+    "token_jaccard": 0.8461538461538461,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-036",
+    "b": "MS-040",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-037",
+    "b": "MS-038",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-037",
+    "b": "MS-039",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-037",
+    "b": "MS-040",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-038",
+    "b": "MS-039",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-038",
+    "b": "MS-040",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "MS-039",
+    "b": "MS-040",
+    "token_jaccard": 0.84,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-001",
+    "b": "CX-002",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-001",
+    "b": "CX-003",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-001",
+    "b": "CX-004",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-001",
+    "b": "CX-005",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-001",
+    "b": "CX-006",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-002",
+    "b": "CX-003",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-002",
+    "b": "CX-004",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-002",
+    "b": "CX-005",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-002",
+    "b": "CX-006",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-003",
+    "b": "CX-004",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-003",
+    "b": "CX-005",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-003",
+    "b": "CX-006",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-004",
+    "b": "CX-005",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-004",
+    "b": "CX-006",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-005",
+    "b": "CX-006",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-007",
+    "b": "CX-008",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-007",
+    "b": "CX-009",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-007",
+    "b": "CX-010",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-008",
+    "b": "CX-009",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-008",
+    "b": "CX-010",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-009",
+    "b": "CX-010",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-011",
+    "b": "CX-012",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-016",
+    "b": "CX-017",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-016",
+    "b": "CX-018",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-016",
+    "b": "CX-019",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-016",
+    "b": "CX-020",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-016",
+    "b": "CX-021",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-017",
+    "b": "CX-018",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-017",
+    "b": "CX-019",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-017",
+    "b": "CX-020",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-017",
+    "b": "CX-021",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-018",
+    "b": "CX-019",
+    "token_jaccard": 0.7777777777777778,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-018",
+    "b": "CX-020",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-018",
+    "b": "CX-021",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-019",
+    "b": "CX-020",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-019",
+    "b": "CX-021",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-020",
+    "b": "CX-021",
+    "token_jaccard": 0.8823529411764706,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-022",
+    "b": "CX-023",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-022",
+    "b": "CX-024",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-022",
+    "b": "CX-025",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-023",
+    "b": "CX-024",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-023",
+    "b": "CX-025",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-024",
+    "b": "CX-025",
+    "token_jaccard": 0.92,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "CX-026",
+    "b": "CX-027",
+    "token_jaccard": 0.9130434782608695,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UN-006",
+    "b": "UN-014",
+    "token_jaccard": 0.7647058823529411,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-001",
+    "b": "UA-015",
+    "token_jaccard": 0.7333333333333333,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-002",
+    "b": "UA-006",
+    "token_jaccard": 0.7333333333333333,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-002",
+    "b": "UA-010",
+    "token_jaccard": 0.7857142857142857,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-004",
+    "b": "UA-010",
+    "token_jaccard": 0.7333333333333333,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-006",
+    "b": "UA-010",
+    "token_jaccard": 0.7857142857142857,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-007",
+    "b": "UA-017",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-008",
+    "b": "UA-010",
+    "token_jaccard": 0.7333333333333333,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-010",
+    "b": "UA-012",
+    "token_jaccard": 0.7333333333333333,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-011",
+    "b": "UA-013",
+    "token_jaccard": 0.7333333333333333,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-011",
+    "b": "UA-015",
+    "token_jaccard": 0.7333333333333333,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-013",
+    "b": "UA-015",
+    "token_jaccard": 0.7333333333333333,
+    "decision": "flag only; semantic adjudication pending"
+  },
+  {
+    "a": "UA-018",
+    "b": "UA-020",
+    "token_jaccard": 0.75,
+    "decision": "flag only; semantic adjudication pending"
+  }
+]

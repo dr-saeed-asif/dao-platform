@@ -1,0 +1,9 @@
+{
+  "prior_artifacts_verified": 92,
+  "mismatches": 0,
+  "reserved_count": 133,
+  "reserved_sha256": "8ee57c7670f38bf27a1461c5e3051886463f896b9dd46446e8bab53b8e192508",
+  "model_attempts": 8,
+  "model_attempts_excluded": 0,
+  "setup_failures_separately_retained": 2
+}

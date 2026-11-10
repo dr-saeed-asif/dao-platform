@@ -1,0 +1,18 @@
+[
+  {
+    "id": "DEV-SQL-01",
+    "question": "For a diagnostic display, read the selected proposal record and report its stored on-chain proposal identifier, with a source citation.",
+    "dao": "cyber-test-dao",
+    "proposal": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+    "permission": "member",
+    "source_policy": "Already exposed training scope and facts from DB-016/PDF-026/MS-026; development only"
+  },
+  {
+    "id": "DEV-MIX-01",
+    "question": "Explain the workshop preparation and facilitation allocation in the attached PDF, then report the stored database vote tally for the selected proposal. Keep document plans separate from recorded votes.",
+    "dao": "cyber-test-dao",
+    "proposal": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+    "permission": "member",
+    "source_policy": "Already exposed training scope and facts from DB-016/PDF-026/MS-026; development only"
+  }
+]

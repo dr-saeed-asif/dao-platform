@@ -1,0 +1,50 @@
+[
+  {
+    "id": "DB-001",
+    "variant": "B3",
+    "raw_file": "raw_results/smoke/responses.jsonl",
+    "raw_line": 1,
+    "status": "completed",
+    "reason": "Exact expected title supplied in Scope label within model-visible question",
+    "criterion": "Exclude every variant of a question with exact gold-title leakage, regardless of answer, timing or status",
+    "applied_after_detection": true,
+    "retained": true,
+    "leaked_value": "CyberGovAI Governance Security and Transparency Pilot"
+  },
+  {
+    "id": "DB-001",
+    "variant": "B4",
+    "raw_file": "raw_results/smoke/responses.jsonl",
+    "raw_line": 2,
+    "status": "completed",
+    "reason": "Exact expected title supplied in Scope label within model-visible question",
+    "criterion": "Exclude every variant of a question with exact gold-title leakage, regardless of answer, timing or status",
+    "applied_after_detection": true,
+    "retained": true,
+    "leaked_value": "CyberGovAI Governance Security and Transparency Pilot"
+  },
+  {
+    "id": "DB-001",
+    "variant": "B2",
+    "raw_file": "raw_results/smoke/responses.jsonl",
+    "raw_line": 3,
+    "status": "completed",
+    "reason": "Exact expected title supplied in Scope label within model-visible question",
+    "criterion": "Exclude every variant of a question with exact gold-title leakage, regardless of answer, timing or status",
+    "applied_after_detection": true,
+    "retained": true,
+    "leaked_value": "CyberGovAI Governance Security and Transparency Pilot"
+  },
+  {
+    "id": "DB-001",
+    "variant": "B1",
+    "raw_file": "raw_results/smoke/responses.jsonl",
+    "raw_line": 4,
+    "status": "completed",
+    "reason": "Exact expected title supplied in Scope label within model-visible question",
+    "criterion": "Exclude every variant of a question with exact gold-title leakage, regardless of answer, timing or status",
+    "applied_after_detection": true,
+    "retained": true,
+    "leaked_value": "CyberGovAI Governance Security and Transparency Pilot"
+  }
+]

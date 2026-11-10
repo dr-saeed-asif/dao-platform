@@ -1,0 +1,165 @@
+{
+  "basis": "Observed historical selected-response calls and static tool catalog; not new model measurements",
+  "model": "qwen3:0.6b",
+  "model_digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+  "embedding_model": "qwen3-embedding:0.6b",
+  "observed_option_groups": [
+    {
+      "variant": "B1",
+      "model": "qwen3:0.6b",
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1536,
+        "seed": 42,
+        "temperature": 0.6
+      },
+      "calls": 8
+    },
+    {
+      "variant": "B2",
+      "model": "qwen3:0.6b",
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1536,
+        "seed": 42,
+        "temperature": 0.6
+      },
+      "calls": 12
+    },
+    {
+      "variant": "B3",
+      "model": "qwen3:0.6b",
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1536,
+        "repeat_penalty": 1.1,
+        "seed": 42,
+        "temperature": 0.6,
+        "top_k": 20,
+        "top_p": 0.8
+      },
+      "calls": 8
+    },
+    {
+      "variant": "B3",
+      "model": "qwen3:0.6b",
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 3072,
+        "temperature": 0
+      },
+      "calls": 8
+    },
+    {
+      "variant": "B4",
+      "model": "qwen3:0.6b",
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1536,
+        "repeat_penalty": 1.1,
+        "seed": 42,
+        "temperature": 0.6,
+        "top_k": 20,
+        "top_p": 0.8
+      },
+      "calls": 8
+    },
+    {
+      "variant": "B4",
+      "model": "qwen3:0.6b",
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 3072,
+        "temperature": 0
+      },
+      "calls": 8
+    }
+  ],
+  "tools_B1": [],
+  "registered_tools_B2": [
+    "health",
+    "get_proposal",
+    "check_proposal_assignment",
+    "list_proposal_documents",
+    "search_proposal_evidence",
+    "get_proposal_time_window",
+    "get_document_index_status",
+    "get_proposal_document_chunk",
+    "get_proposal_evidence_status",
+    "count_dao_proposals",
+    "list_dao_proposals",
+    "search_dao_proposals",
+    "compare_dao_proposals",
+    "get_proposal_voting_facts",
+    "split_questions",
+    "verify_citations",
+    "get_on_chain_proposal",
+    "get_on_chain_voting_status",
+    "get_on_chain_vote_counts",
+    "get_on_chain_transactions",
+    "get_on_chain_governance_events",
+    "compare_on_chain_off_chain"
+  ],
+  "full_workflow_role_tools": {
+    "synthesis": [],
+    "supervisor": [
+      "health",
+      "split_questions"
+    ],
+    "proposal": [
+      "get_proposal",
+      "get_proposal_time_window"
+    ],
+    "evidence": [
+      "list_proposal_documents",
+      "search_proposal_evidence",
+      "get_document_index_status",
+      "get_proposal_document_chunk",
+      "get_proposal_evidence_status"
+    ],
+    "research": [
+      "get_proposal",
+      "count_dao_proposals",
+      "list_dao_proposals",
+      "search_dao_proposals",
+      "compare_dao_proposals"
+    ],
+    "governance": [
+      "check_proposal_assignment",
+      "get_proposal_voting_facts",
+      "get_proposal_time_window"
+    ],
+    "blockchain": [
+      "get_on_chain_proposal",
+      "get_on_chain_voting_status",
+      "get_on_chain_vote_counts",
+      "get_on_chain_transactions",
+      "get_on_chain_governance_events",
+      "compare_on_chain_off_chain"
+    ],
+    "analysis": [
+      "get_proposal",
+      "search_proposal_evidence",
+      "get_proposal_voting_facts",
+      "verify_citations"
+    ]
+  },
+  "source_replay_sha256": "6231ca8abd5ae8c5a38d954398b10e0d2d30d6da3e4376533d14356c4fa7be15",
+  "historical_source_manifest": "../exploratory_frozen_v2/config.json",
+  "prompt_and_response_provenance": [
+    "../exploratory_frozen_v1/responses.jsonl",
+    "../exploratory_frozen_v2/responses.jsonl"
+  ],
+  "shared_scope_and_evidence": true,
+  "decoding_fully_matched": false,
+  "prompt_protocols_matched": false,
+  "inference_opportunities_matched": false,
+  "causal_architecture_comparison_validated": false,
+  "full_benchmark_gate": "BLOCKED: component tests pass, but matched new-campaign settings and end-to-end live harness preflight remain pending. Human adjudication pending for confirmatory claims.",
+  "baseline_definitions": {
+    "B1": "LLM without retrieval",
+    "B2": "One agent with all 22 permitted tools and scope guards",
+    "B3": "Full workflow with citation/currency/numeric blocking gates disabled in research process",
+    "B4": "Full workflow with those gates active"
+  }
+}

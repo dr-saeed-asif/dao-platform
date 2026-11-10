@@ -1,0 +1,17 @@
+{
+  "candidate_count": 200,
+  "released_machine_source_checked_count": 175,
+  "quarantined_count": 25,
+  "raw_smoke_attempts": 20,
+  "raw_subset_attempts": 32,
+  "raw_attempts_total": 52,
+  "duplicate_exact_texts": 0,
+  "duplicate_declared_targets": 0,
+  "detected_long_answer_prompt_leaks_in_current_DB_items": [],
+  "semantic_near_duplicate_review": "Not independently performed; distinct combinations over overlapping facts are not independent samples",
+  "semantic_ground_truth_review": "Unblinded source anchoring only; no independent human review",
+  "benchmark_release_gate": "BLOCKED",
+  "reason": "25 bounded-absence items lack independent semantic verification; smoke reveals routing and answer failures",
+  "full_evaluation_allowed": false,
+  "model_outputs_preserved": true
+}

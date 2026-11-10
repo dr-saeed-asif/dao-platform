@@ -1,0 +1,5 @@
+{
+  "error_type": "IndexError",
+  "message": "list index out of range",
+  "scope": "Preserve completed attempts; do not change eligibility or raw responses."
+}

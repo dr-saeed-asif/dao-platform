@@ -1,0 +1,17 @@
+{
+  "ids": [
+    "DB-003",
+    "DB-004",
+    "DB-013",
+    "DB-014",
+    "DB-023",
+    "DB-024",
+    "DB-033",
+    "DB-034"
+  ],
+  "classification": "Nonconfirmatory source-checked diagnostic subset, not independently adjudicated",
+  "selection_rule": "Indexed vote count and active assignment count for each of four captured proposals; no smoke questions",
+  "selected_before_new_model_outputs": true,
+  "independent_review": false,
+  "gold_never_sent_to_model": true
+}

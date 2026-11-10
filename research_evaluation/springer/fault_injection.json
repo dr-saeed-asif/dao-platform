@@ -1,0 +1,218 @@
+{
+  "environment": "Isolated in-memory DB/RPC fixtures; real freshly built verifier. No external requests.",
+  "replicates": 1,
+  "fixture": "apps/api/src/ai/__tests__/blockchain-verification.spec.ts (fixture definitions only)",
+  "compiled_sha256": "aa58f7f3b83b59f2901857abaa8ef4384e17731b4329cb80f960a6204fc03aab",
+  "cases": [
+    {
+      "id": "clean",
+      "class": "negative",
+      "expected": "verified"
+    },
+    {
+      "id": "indexed_total_mutated",
+      "class": "positive",
+      "expected": "mismatched",
+      "overrides": {
+        "total_votes": "7"
+      },
+      "field": "public.proposals.total_votes"
+    },
+    {
+      "id": "actually_open_stored_closed",
+      "class": "positive",
+      "expected": "mismatched",
+      "overrides": {
+        "status": "ACTIVE"
+      },
+      "field": "voting_status"
+    },
+    {
+      "id": "finalized_status_alias",
+      "class": "semantic_control",
+      "expected": "verified",
+      "overrides": {
+        "status": "FINALIZED"
+      },
+      "field": "voting_status"
+    },
+    {
+      "id": "indexed_event_missing_from_complete_rpc_scan",
+      "class": "positive",
+      "expected": "mismatched",
+      "rpc": "missing_chain_event",
+      "field": "governance_event:"
+    },
+    {
+      "id": "chain_event_missing_from_index_unknown_checkpoint",
+      "class": "incomplete",
+      "expected": "unverified",
+      "stored": false,
+      "field": "governance_event:"
+    },
+    {
+      "id": "known_stale_index_checkpoint",
+      "class": "capability_gap",
+      "expected": "unverified",
+      "stored": false,
+      "field": "governance_event:"
+    },
+    {
+      "id": "snapshot_hash_changes",
+      "class": "positive",
+      "expected": "unverified",
+      "rpc": "reorg",
+      "error": "reorganization"
+    },
+    {
+      "id": "rpc_unavailable",
+      "class": "infrastructure",
+      "expected": "unavailable",
+      "rpc": "offline"
+    }
+  ],
+  "results": [
+    {
+      "case": "clean",
+      "class": "negative",
+      "expected": "verified",
+      "observed": "verified",
+      "target": [],
+      "targetOK": true,
+      "matches": true,
+      "latency_ms": 12.472099999999955,
+      "errors": [],
+      "checkpoint_specific_diagnosis": null
+    },
+    {
+      "case": "indexed_total_mutated",
+      "class": "positive",
+      "expected": "mismatched",
+      "observed": "mismatched",
+      "target": [
+        {
+          "field": "public.proposals.total_votes",
+          "status": "mismatched"
+        }
+      ],
+      "targetOK": true,
+      "matches": true,
+      "latency_ms": 2.3162999999999556,
+      "errors": [],
+      "checkpoint_specific_diagnosis": null
+    },
+    {
+      "case": "actually_open_stored_closed",
+      "class": "positive",
+      "expected": "mismatched",
+      "observed": "mismatched",
+      "target": [
+        {
+          "field": "voting_status",
+          "status": "mismatched"
+        }
+      ],
+      "targetOK": true,
+      "matches": true,
+      "latency_ms": 2.544300000000021,
+      "errors": [],
+      "checkpoint_specific_diagnosis": null
+    },
+    {
+      "case": "finalized_status_alias",
+      "class": "semantic_control",
+      "expected": "verified",
+      "observed": "mismatched",
+      "target": [
+        {
+          "field": "voting_status",
+          "status": "mismatched"
+        }
+      ],
+      "targetOK": false,
+      "matches": false,
+      "latency_ms": 4.302599999999984,
+      "errors": [],
+      "checkpoint_specific_diagnosis": null
+    },
+    {
+      "case": "indexed_event_missing_from_complete_rpc_scan",
+      "class": "positive",
+      "expected": "mismatched",
+      "observed": "mismatched",
+      "target": [
+        {
+          "field": "governance_event:e1",
+          "status": "mismatched"
+        }
+      ],
+      "targetOK": true,
+      "matches": true,
+      "latency_ms": 2.5895000000000437,
+      "errors": [],
+      "checkpoint_specific_diagnosis": null
+    },
+    {
+      "case": "chain_event_missing_from_index_unknown_checkpoint",
+      "class": "incomplete",
+      "expected": "unverified",
+      "observed": "mismatched",
+      "target": [
+        {
+          "field": "governance_event:0x3333333333333333333333333333333333333333333333333333333333333333:0",
+          "status": "unverified"
+        }
+      ],
+      "targetOK": true,
+      "matches": false,
+      "latency_ms": 2.055900000000065,
+      "errors": [],
+      "checkpoint_specific_diagnosis": null
+    },
+    {
+      "case": "known_stale_index_checkpoint",
+      "class": "capability_gap",
+      "expected": "unverified",
+      "observed": "mismatched",
+      "target": [
+        {
+          "field": "governance_event:0x3333333333333333333333333333333333333333333333333333333333333333:0",
+          "status": "unverified"
+        }
+      ],
+      "targetOK": true,
+      "matches": false,
+      "latency_ms": 2.0631000000000768,
+      "errors": [],
+      "checkpoint_specific_diagnosis": false
+    },
+    {
+      "case": "snapshot_hash_changes",
+      "class": "positive",
+      "expected": "unverified",
+      "observed": "unverified",
+      "target": [],
+      "targetOK": true,
+      "matches": true,
+      "latency_ms": 2.2668999999998505,
+      "errors": [
+        "Snapshot block changed during verification (possible chain reorganization)."
+      ],
+      "checkpoint_specific_diagnosis": null
+    },
+    {
+      "case": "rpc_unavailable",
+      "class": "infrastructure",
+      "expected": "unavailable",
+      "observed": "unavailable",
+      "target": [],
+      "targetOK": true,
+      "matches": true,
+      "latency_ms": 0.09609999999997854,
+      "errors": [
+        "RPC or contract read unavailable. No on-chain verification is claimed."
+      ],
+      "checkpoint_specific_diagnosis": null
+    }
+  ]
+}

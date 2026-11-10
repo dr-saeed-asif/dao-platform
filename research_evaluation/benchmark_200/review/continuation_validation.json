@@ -1,0 +1,12 @@
+{
+  "frozen_prior_observation_artifacts_verified": 15,
+  "prior_attempts": 20,
+  "new_attempts": 32,
+  "duplicate_or_repeated_question_ids_between_campaigns": 0,
+  "independent_gold_validations": 0,
+  "population_CI_available": false,
+  "source_question_rows_audited": 200,
+  "replacement_anchors_verified": 25,
+  "benchmark_rebuilt": false,
+  "production_modified": false
+}

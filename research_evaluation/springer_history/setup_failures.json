@@ -1,0 +1,10 @@
+[
+  {
+    "stage":"Initial historical SQL lookup",
+    "error_code":"22P02",
+    "cause":"The governance_events proposal_id is numeric on-chain ID, while proposal_assignments uses the local text ID",
+    "resolution":"Use on-chain ID 32 and scoped network/contract for the event query",
+    "observations_saved_before_failure":0,
+    "writes":0
+  }
+]

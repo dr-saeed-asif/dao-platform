@@ -1,0 +1,28 @@
+{
+  "status": "prepared, not approved for larger execution",
+  "classification": "Exploratory AI-assisted evidence review; human adjudication pending",
+  "model": "qwen3:4b-instruct",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "generation_options": {
+    "seed": 42,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 1536,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repeat_penalty": 1.1
+  },
+  "required_before_larger_run": [
+    "Freeze eligible cohort ground-truth evidence and full configuration in a new version",
+    "Prospectively declare whole-answer and exhaustive claim-support rubrics and reviewer status",
+    "Declare repeated runs/seed handling and proposal/question dependence for uncertainty estimation",
+    "Retain every attempted output, including failures and fallback text"
+  ],
+  "automatic_full_campaign_enabled": false,
+  "reserved_candidate_manifest_sha256": "8ee57c7670f38bf27a1461c5e3051886463f896b9dd46446e8bab53b8e192508",
+  "baseline_candidate": "single_agent_candidate_v3.py",
+  "baseline_candidate_sha256": "dabf53a437ddc2a9b52cc2a218209de5a3f0df4869af1c693fcb32bba3cda619",
+  "observed_same_DAO_comparison_parity": true,
+  "observed_structured_error_transparency": true,
+  "confirmatory_extra_gate": "Independent human adjudication pending; this exploratory preparation does not satisfy it"
+}

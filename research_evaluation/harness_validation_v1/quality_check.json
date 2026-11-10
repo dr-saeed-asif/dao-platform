@@ -1,0 +1,10 @@
+{
+  "sealed_artifact_hash_mismatches": [],
+  "sensitive_pattern_files": [],
+  "current_report_broken_links": [],
+  "total_observations": 9,
+  "chat_requests": 26,
+  "chat_HTTP_errors": 0,
+  "largest_file_bytes": 454927,
+  "scope": "Targeted privacy patterns and artifact integrity, not a comprehensive secret audit"
+}

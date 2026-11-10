@@ -1,0 +1,136 @@
+{
+  "classification": "Exploratory; independent Claude LLM source audit; human adjudication pending",
+  "ids": [
+    "DB-006",
+    "DB-016",
+    "PDF-006",
+    "PDF-026",
+    "MS-002",
+    "MS-026",
+    "UN-R001",
+    "UN-R018"
+  ],
+  "variants": [
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "model": "qwen3:0.6b",
+  "fast_model": "qwen3:0.6b",
+  "embedding_model": "qwen3-embedding:0.6b",
+  "model_digests": {
+    "qwen3-embedding:0.6b": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+    "qwen3:0.6b": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+    "qwen3.5:4b": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+    "qwen3:8b": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "qwen3:4b-instruct": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+    "nomic-embed-text:latest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+    "qwen3:4b": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7"
+  },
+  "table_fingerprints": {
+    "answers": {
+      "rows": 295,
+      "aggregate_digest": "70769e8ba1de38d0a28aee3bcb85338a"
+    },
+    "artefacts": {
+      "rows": 10,
+      "aggregate_digest": "c710be6ddefa78e17751b876c427923a"
+    },
+    "chain_transactions": {
+      "rows": 105,
+      "aggregate_digest": "83b365d8d853101db57bce635e20277c"
+    },
+    "claims": {
+      "rows": 284,
+      "aggregate_digest": "9b0de7c949d99b52901b9008c99afc77"
+    },
+    "contract_deployments": {
+      "rows": 1,
+      "aggregate_digest": "fffeb3af0bcd3b02ddc5eee130cd10e8"
+    },
+    "dataset_versions": {
+      "rows": 0,
+      "aggregate_digest": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "experiment_runs": {
+      "rows": 295,
+      "aggregate_digest": "35da7b4ab41d3120d4ddcdb2d30b31aa"
+    },
+    "governance_events": {
+      "rows": 188,
+      "aggregate_digest": "baef7cacd929c6163d12db34c197dcb0"
+    },
+    "indexer_checkpoints": {
+      "rows": 2,
+      "aggregate_digest": "5a1beefbbc940bf10972d5e9472d984f"
+    },
+    "kysely_migration": {
+      "rows": 9,
+      "aggregate_digest": "1b5271c1d19003b89c548a495e923cbc"
+    },
+    "kysely_migration_lock": {
+      "rows": 1,
+      "aggregate_digest": "7507e6f670bc3cb51d1ce91e39eca433"
+    },
+    "proposal_artefacts": {
+      "rows": 11,
+      "aggregate_digest": "a457344993e68c81fff5af9849d19821"
+    },
+    "proposal_assignments": {
+      "rows": 111,
+      "aggregate_digest": "7d1aa1ba168e54465b4d40bbd5d36904"
+    },
+    "proposal_options": {
+      "rows": 112,
+      "aggregate_digest": "b6852cb28cb7b463ddc11dbb65b74434"
+    },
+    "proposals": {
+      "rows": 40,
+      "aggregate_digest": "2b61ec4bcec6975b1baabc1c1194181a"
+    },
+    "provenance_edges": {
+      "rows": 11,
+      "aggregate_digest": "6a42fd8c46e773b7d915029d9e9d3317"
+    },
+    "questions": {
+      "rows": 295,
+      "aggregate_digest": "73c401df0f38fe1dc8961511c281d154"
+    },
+    "research_policies": {
+      "rows": 0,
+      "aggregate_digest": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "retrieval_results": {
+      "rows": 61,
+      "aggregate_digest": "172d3d62397135ea4985ce33d58c5482"
+    },
+    "votes": {
+      "rows": 30,
+      "aggregate_digest": "6a79f96908cfdcc5bfd380708e43902f"
+    }
+  },
+  "question_file_sha256": "161547e7ce8a8459873c90e745173341ce666ad1c3f1d4b6adc9b9e4ffc7a12c",
+  "baseline_sha256": "2ca7f7b20ffde07475c4764e9d9c6f1c47eae4818e81dbb01f28f790687fbe53",
+  "runner_sha256": "72853d4d9505a8daa0ddb8980c0e05e55e4a630b2f0c332976f8c18e7721feed",
+  "verifier_source_sha256": "8b9aed1e41c43da146a1ba3bf8d4d3a2ab8b3efa56067f5bc1ed44605fd760fa",
+  "verifier_compiled_sha256": "6cc30a3269b28e705d6d196c843cd003580ffa1fb55f4216736ce908f6174284",
+  "recorder": "Local instrumentation only, preserving read-only snapshot integrity",
+  "SQL_mode": "One exported MVCC snapshot imported by all SQL tool transactions",
+  "chain_mode": "Corrected verifier captures once using the same SQL snapshot; identical sanitized response replay for B2/B3/B4",
+  "model_settings": "Existing baselines unchanged; provider options recorded for each call",
+  "timeout_seconds": 200,
+  "concurrency": 1,
+  "order_seed": 59,
+  "human_reviewed": false,
+  "gold_loaded_by_runner": false,
+  "prospective_metrics": [
+    "Whole-answer rubric correct/partial/incorrect/failed, assistant-reviewed with human status pending",
+    "Claim support assessed against recorded returned evidence; distinguish sampled review from exhaustive annotations",
+    "Structural citation validity and coverage",
+    "Appropriate and false abstention",
+    "Latency, all provider tokens and failures"
+  ],
+  "whole_answer_rubric": "Correct requires all requested, correctly attributed supported facts and no material unsupported assertion. Partial if material omissions or conflicting uncertainty. Incorrect if false facts or wrong-source substitution. Failures count separately.",
+  "independent_population_inference": false
+}

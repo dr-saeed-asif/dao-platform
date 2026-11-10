@@ -1,0 +1,18 @@
+{
+  "checked_utc": "2026-11-09T12:40:56.872Z",
+  "sql_active_rows_without_evidence_checked": 10,
+  "failed_references": [
+    {
+      "receipt_status": "0x0",
+      "receipt_block": "19347983",
+      "canonical_receipt_block": true,
+      "receipt_before_pin": true,
+      "targets_configured_contract": true,
+      "decoded_method": "assignMembers",
+      "decoded_proposal_matches": true,
+      "active_sql_member_in_transaction": true,
+      "receipt_log_count": 0
+    }
+  ],
+  "limitation": "Confirms SQL reference to a reverted assignment call; does not identify the application/import path that wrote the row. Addresses, transaction hashes and keys omitted."
+}

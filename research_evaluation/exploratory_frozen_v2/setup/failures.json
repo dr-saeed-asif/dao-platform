@@ -1,0 +1,14 @@
+[
+  {
+    "stage": "preflight",
+    "model_calls": 0,
+    "defect": "FrozenPool omitted the optional connection(timeout=...) protocol argument",
+    "resolution": "Forward timeout to underlying real connection pool"
+  },
+  {
+    "stage": "instrumentation",
+    "model_calls": 0,
+    "defect": "LocalRecorder.model_dump is invalid for dataclass RunMetrics",
+    "resolution": "Use dataclasses.asdict; source queries preflighted before any retest"
+  }
+]

@@ -1,0 +1,8 @@
+finding,count,unit,interpretation
+Bare citation IDs with missing SQL evidence,2,prior outputs,Formatting and routing/evidence failure overlap
+Absent citations in bounded unknown replies,4,prior outputs,Model citation-instruction noncompliance
+Opaque failed tool replies,4,failed chunk calls in original B2 mixed trial,Original bodies unavailable; candidate corrected
+Original B2 tool-loop failure,1,development trial,Retained; not attributed solely to model
+B4 synthesis fallback,1,development trial,Completed status is not answer success
+Different outputs for identical planner requests,1,of two paired development requests,Cause unresolved; do not infer population rate
+Setup failures before inference,3,launches,Separate from nine model-observation denominators

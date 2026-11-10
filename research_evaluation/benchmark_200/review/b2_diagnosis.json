@@ -1,0 +1,198 @@
+{
+  "method": "Saved provider/tool trace plus current unchanged application tool schemas; no model trial repeated",
+  "tool_names": [
+    "health",
+    "get_proposal",
+    "check_proposal_assignment",
+    "list_proposal_documents",
+    "search_proposal_evidence",
+    "get_proposal_time_window",
+    "get_document_index_status",
+    "get_proposal_document_chunk",
+    "get_proposal_evidence_status",
+    "count_dao_proposals",
+    "list_dao_proposals",
+    "search_dao_proposals",
+    "compare_dao_proposals",
+    "get_proposal_voting_facts",
+    "split_questions",
+    "verify_citations",
+    "get_on_chain_proposal",
+    "get_on_chain_voting_status",
+    "get_on_chain_vote_counts",
+    "get_on_chain_transactions",
+    "get_on_chain_governance_events",
+    "compare_on_chain_off_chain"
+  ],
+  "observations": [
+    {
+      "id": "PDF-005",
+      "raw_file": "raw_results/smoke/responses.jsonl",
+      "raw_line": 7,
+      "final_answer_matches_provider_content": true,
+      "provider_calls": 1,
+      "actual_options": [
+        {
+          "seed": 42,
+          "temperature": 0.6,
+          "num_ctx": 8192,
+          "num_predict": 1536
+        }
+      ],
+      "tools_available": 22,
+      "tool_events": [],
+      "schema_invalid_calls": [],
+      "observed_permission_denials": 0,
+      "evidence_search_called": false,
+      "source_ids_returned": []
+    },
+    {
+      "id": "MS-001",
+      "raw_file": "raw_results/smoke/responses.jsonl",
+      "raw_line": 10,
+      "final_answer_matches_provider_content": true,
+      "provider_calls": 2,
+      "actual_options": [
+        {
+          "seed": 42,
+          "temperature": 0.6,
+          "num_ctx": 8192,
+          "num_predict": 1536
+        },
+        {
+          "seed": 42,
+          "temperature": 0.6,
+          "num_ctx": 8192,
+          "num_predict": 1536
+        }
+      ],
+      "tools_available": 22,
+      "tool_events": [
+        {
+          "name": "list_proposal_documents",
+          "arguments": {
+            "dao_id": "cyber-dao-321",
+            "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255"
+          },
+          "status": "completed",
+          "ms": 296.7672000013408
+        },
+        {
+          "name": "get_proposal_document_chunk",
+          "arguments": {
+            "dao_id": "cyber-dao-321",
+            "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+            "evidence_id": "12345"
+          },
+          "status": "failed",
+          "ms": 6.815100001404062
+        },
+        {
+          "name": "get_proposal_voting_facts",
+          "arguments": {
+            "dao_id": "cyber-dao-321",
+            "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255"
+          },
+          "status": "completed",
+          "ms": 18.737300000793766
+        },
+        {
+          "name": "list_proposal_documents",
+          "arguments": {
+            "dao_id": "cyber-dao-321",
+            "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255"
+          },
+          "status": "completed",
+          "ms": 285.9911999985343
+        },
+        {
+          "name": "get_proposal_evidence_status",
+          "arguments": {
+            "dao_id": "cyber-dao-321",
+            "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255"
+          },
+          "status": "completed",
+          "ms": 22.367099998518825
+        },
+        {
+          "name": "get_on_chain_proposal",
+          "arguments": {
+            "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+            "dao_id": "cyber-dao-321"
+          },
+          "status": "completed",
+          "ms": 0.6509000013465993
+        }
+      ],
+      "schema_invalid_calls": [
+        {
+          "tool": "get_proposal_document_chunk",
+          "error": "ValidationError",
+          "missing_fields": [
+            [
+              "chunk_key"
+            ]
+          ]
+        }
+      ],
+      "observed_permission_denials": 0,
+      "evidence_search_called": false,
+      "source_ids_returned": [
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "G5"
+      ]
+    },
+    {
+      "id": "DB-002",
+      "raw_file": "raw_results/smoke-v2/responses.jsonl",
+      "raw_line": 3,
+      "final_answer_matches_provider_content": true,
+      "provider_calls": 2,
+      "actual_options": [
+        {
+          "seed": 42,
+          "temperature": 0.6,
+          "num_ctx": 8192,
+          "num_predict": 1536
+        },
+        {
+          "seed": 42,
+          "temperature": 0.6,
+          "num_ctx": 8192,
+          "num_predict": 1536
+        }
+      ],
+      "tools_available": 22,
+      "tool_events": [
+        {
+          "name": "get_proposal_voting_facts",
+          "arguments": {
+            "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+            "dao_id": "cyber-dao-321"
+          },
+          "status": "completed",
+          "ms": 12.408900001901202
+        }
+      ],
+      "schema_invalid_calls": [],
+      "observed_permission_denials": 0,
+      "evidence_search_called": false,
+      "source_ids_returned": [
+        "G1"
+      ]
+    }
+  ],
+  "causal_limit": "No matched intervention; model size or tool-list complexity cannot be established as causal explanations",
+  "findings": [
+    "All 22 tool definitions were exposed; valid governance and chain reads succeeded",
+    "PDF question made no tool call; claimed PDF content was inaccessible despite exposed retrieval/chunk tools",
+    "Multi-source question requested an invented evidence ID and omitted required chunk_key; schema validation failed",
+    "No evidence search was invoked in these three trials; document metadata readiness is not PDF text retrieval",
+    "Status question selected voting facts rather than the proposal/status tool and then fabricated a status",
+    "Final answer extraction exactly matches provider content in all three; no extraction loss observed",
+    "Seed, temperature, context and output-cap options match configured B2 settings; no recorded scope guard rejection explains 0/3"
+  ]
+}

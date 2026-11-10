@@ -1,0 +1,11 @@
+{
+  "raw_attempts": 20,
+  "excluded_contaminated": 4,
+  "valid_answer_attempts": 12,
+  "valid_common_auth_attempts": 4,
+  "human_reviewed_claims": 0,
+  "independent_annotation_available": false,
+  "mock_model_outputs": 0,
+  "source_replay": "B2/B3/B4 chain calls replay captured real backend responses; no claim of live chain E2E",
+  "unanswerable_runs": 0
+}

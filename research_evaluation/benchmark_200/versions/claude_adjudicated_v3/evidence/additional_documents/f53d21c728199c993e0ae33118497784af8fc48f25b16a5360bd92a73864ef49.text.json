@@ -1,0 +1,7 @@
+{
+  "source_sha256": "f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49",
+  "indexed_filename": "02_cyber-governance-dao.pdf",
+  "pages": [
+    "CYBER DAO / GOVERNANCE PROPOSAL\nUpgrade DAO Governance Voting System\nDAO ID\ncyber-governance-dao\nProposal\n02 / 05\nPurpose\nImprove voting transparency, efficiency, and fairness for all DAO members.\nDescription\nThis proposal aims to upgrade the governance voting system by improving vote tracking, proposal status\nupdates, and transaction verification. These changes will support secure and transparent decentralized\ndecision-making.\nProposed Scope\nThe planned work includes clearer proposal state tracking, reliable vote receipt references, better error handling,\nand improved visibility into finalized results. Existing eligibility and voting rules remain subject to DAO approval.\nExpected Deliverables\nA tested voting workflow, updated governance interface, and documentation of verification procedures.\nDemo document for development and PDF-RAG testing. This is not an approved or funded DAO proposal.\n"
+  ]
+}

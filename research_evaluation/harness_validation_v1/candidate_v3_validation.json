@@ -1,0 +1,42 @@
+{
+  "classification": "One affected development retest, not added to the balanced eight-case table",
+  "raw_reference": "candidate_v3_smoke/responses.jsonl:1",
+  "pre_reference": "responses.jsonl:8",
+  "status": "completed",
+  "wall_ms": 124360.42589999852,
+  "chat_calls": 6,
+  "input_tokens": 18084,
+  "output_tokens": 816,
+  "tool_failures": [
+    {
+      "name": "get_proposal_document_chunk",
+      "error": {
+        "code": "chunk_not_found",
+        "message": "Chunk not found in the linked proposal document."
+      }
+    }
+  ],
+  "reference_check": {
+    "valid": false,
+    "cited": [],
+    "unknown": []
+  },
+  "unchanged_conditions": {
+    "model": true,
+    "model_digest": true,
+    "embedding_model": true,
+    "embedding_digest": true,
+    "options_all_chat_stages": true,
+    "table_fingerprints": true,
+    "source_bundle_sha256": true,
+    "max_chat_requests_per_case": true,
+    "case_deadline_seconds": true
+  },
+  "chain_replay_identical": true,
+  "whole_answer_accuracy": "Not independently scored",
+  "human_reviewed": false,
+  "original_failure_removed": false,
+  "interpretation": "Structured chunk_not_found feedback is now preserved. A final answer was produced, but the requested PDF allocation was still not retrieved. Completion is not correctness.",
+  "setup_launch_failures_before_this_retest": 1,
+  "setup_failure_model_calls": 0
+}

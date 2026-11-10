@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "tests": 4,
+  "pass": 4,
+  "scope": "Isolated in-memory Ganache only; no configured blockchain RPC or production data"
+}

@@ -1,0 +1,85 @@
+{
+  "code_sha256": "1b845b2c6a7988e5e8060ae59932abdc8772fb0bed0903341794089fe95469f7",
+  "observations": [
+    {
+      "id": "DB-006",
+      "variant": "B3",
+      "agents": [
+        "evidence",
+        "proposal"
+      ],
+      "required_sources_covered": true
+    },
+    {
+      "id": "DB-006",
+      "variant": "B4",
+      "agents": [
+        "evidence",
+        "proposal"
+      ],
+      "required_sources_covered": true
+    },
+    {
+      "id": "DB-016",
+      "variant": "B3",
+      "agents": [
+        "evidence",
+        "proposal"
+      ],
+      "required_sources_covered": true
+    },
+    {
+      "id": "DB-016",
+      "variant": "B4",
+      "agents": [
+        "evidence",
+        "proposal"
+      ],
+      "required_sources_covered": true
+    },
+    {
+      "id": "MS-002",
+      "variant": "B4",
+      "agents": [
+        "blockchain",
+        "evidence",
+        "governance"
+      ],
+      "required_sources_covered": true
+    },
+    {
+      "id": "MS-002",
+      "variant": "B3",
+      "agents": [
+        "blockchain",
+        "evidence",
+        "governance"
+      ],
+      "required_sources_covered": true
+    },
+    {
+      "id": "MS-026",
+      "variant": "B4",
+      "agents": [
+        "blockchain",
+        "evidence",
+        "governance",
+        "research"
+      ],
+      "required_sources_covered": true
+    },
+    {
+      "id": "MS-026",
+      "variant": "B3",
+      "agents": [
+        "blockchain",
+        "evidence",
+        "governance",
+        "research"
+      ],
+      "required_sources_covered": true
+    }
+  ],
+  "model_calls": 0,
+  "tool_calls": 0
+}

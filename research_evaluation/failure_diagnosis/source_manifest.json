@@ -1,0 +1,21 @@
+{
+  "repository_heads": {
+    "DAO": "d9df7eb47298e8cb945a9f3bed71e0da103dc740",
+    "AI": "9c27c8a57dfe44abccc43f0cf509ca33e3e0ac79"
+  },
+  "inspected_file_sha256": {
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\packages\\blockchain-cyberchain\\src\\cyberchain-governance.gateway.ts": "d314d8c7addf1e9b44afffdca7431769d97f670fad3f7ec9f06c3c1c40c59a42",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\packages\\application\\src\\membership\\assign-members.use-case.ts": "1f17c7cbe7a25f3706c6b52bbc019b58de8619d26d51172534ac23c50a6eda68",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\packages\\database\\src\\postgres-assignment.repository.ts": "5d6dbc7e99002611cdc7aff0c6ed0b3459f8fdf58ab6964822b59f442433e0cf",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\packages\\database\\src\\postgres-chain-transaction.repository.ts": "2d08dc84b61a8af8c8656dec2bd41b75cef62751f1a68e9f81eea6bb4945473d",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\packages\\database\\src\\migration\\reconciler.ts": "1645c1b5fb181f6f09762014bd99fa8c474aaaec933740d2b04c8c766ce07c15",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\packages\\database\\src\\migration\\validators.ts": "085a4b43acf757259ff9aa59580cb5e6d750e3702eb9c3c19a50705db3d50d5e",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\packages\\database\\scripts\\import-sqlite.ts": "0907571e127b450710308d0544acf2eb769ad52f6a5e7387d51f13eaa6202f90",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\node_modules\\@cyberchain\\smart-contract-wrapper\\dist\\contract.js": "b9e242dd8a9b19d54793f11856169a6161168c97f7a26bf337a4693946491fe4",
+    "E:\\DAO\\cyber-chain-work\\dao-platform\\node_modules\\@cyberchain\\smart-contract-wrapper\\dist\\tx.js": "6a79a6140ff4c272f80bea7749fbdf55e248411d4db405fd1b90167852ab34cd",
+    "E:\\DAO\\cyber-chain-work\\api-ai-server1\\api-ai-server\\app\\business\\agents\\synthesis.py": "a0f3ee5b1b13a6180d075b32dbc6665119c2799559106f4fe871eab92feb196d",
+    "E:\\DAO\\cyber-chain-work\\api-ai-server1\\api-ai-server\\app\\business\\agents\\quality.py": "a62f029be23d62c23c23d1347627494c683a9ca22cf751069f076af5ed70a86b",
+    "E:\\DAO\\cyber-chain-work\\api-ai-server1\\api-ai-server\\app\\business\\agents\\planning.py": "0aecacfada1802d17e3a893347be62c3820d21afd9732b06ee677bc5f79cbf6b"
+  },
+  "scope": "Current inspected source. Historical deployment equivalence not established."
+}

@@ -168,6 +168,33 @@ describe('Read-only blockchain verification', () => {
       result.comparisons.find((c) => c.field === 'metadata_hash')?.status,
     ).toBe('mismatched');
   });
+  it('maps finalized records to closed while independently checking finalization', async () => {
+    const { service, rpc } = fixture({
+      status: 'FINALIZED',
+      finalized_at: new Date(2000 * 1000),
+      winning_option: '0',
+      tied: false,
+    });
+    const original = rpc.getMockImplementation()!;
+    rpc.mockImplementation(async (...args: any[]) => {
+      const [method, params] = args;
+      const response = await original(...args);
+      if (method !== 'eth_call') return response;
+      const call = abi.parseTransaction({ data: params[0].data });
+      if (call?.name !== 'getProposal') return response;
+      const proposal = abi.decodeFunctionResult('getProposal', response)[0].toArray();
+      proposal[10] = true;
+      return abi.encodeFunctionResult('getProposal', [proposal]);
+    });
+    const result = await service.verify('p');
+    expect(result.status).toBe('verified');
+    expect(result.comparisons.find((c) => c.field === 'voting_status')).toMatchObject({
+      database: 'Closed', blockchain: 'Closed', status: 'verified',
+    });
+    expect(result.comparisons.find((c) => c.field === 'finalized')).toMatchObject({
+      database: true, blockchain: true, status: 'verified',
+    });
+  });
   it('reports RPC failure without fabricated blockchain facts', async () => {
     const { service, rpc } = fixture();
     rpc.mockRejectedValue(new Error('RPC down'));

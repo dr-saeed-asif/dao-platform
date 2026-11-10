@@ -1,0 +1,6 @@
+{
+  "B3_unknown_id_passes_by_design": true,
+  "function_identity_restored_after_exception": true,
+  "unknown_id_rejected_after_restoration": true,
+  "scope": "Separate deterministic harness test, not extra model observations"
+}

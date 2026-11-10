@@ -1,0 +1,47 @@
+[
+  {
+    "suite": "test_citation_marker_closeout.py",
+    "exit_code": 0,
+    "tests": 6
+  },
+  {
+    "suite": "test_agent_failure_regressions.py",
+    "exit_code": 0,
+    "tests": 12
+  },
+  {
+    "suite": "test_agent_synthesis.py",
+    "exit_code": 0,
+    "tests": 10
+  },
+  {
+    "suite": "test_agent_routing_requirements.py",
+    "exit_code": 0,
+    "tests": 9
+  },
+  {
+    "suite": "test_question_planner.py",
+    "exit_code": 0,
+    "tests": 15
+  },
+  {
+    "suite": "test_agent_workflow.py",
+    "exit_code": 0,
+    "tests": 12
+  },
+  {
+    "suite": "test_agent_claims.py",
+    "exit_code": 0,
+    "tests": 10
+  },
+  {
+    "suite": "test_agent_catalog.py",
+    "exit_code": 0,
+    "tests": 2
+  },
+  {
+    "suite": "test_mcp_registry_security.py",
+    "exit_code": 0,
+    "tests": 3
+  }
+]

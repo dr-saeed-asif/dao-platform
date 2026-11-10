@@ -1,0 +1,20 @@
+{
+  "memory_bytes": 33834590208,
+  "gpu": [
+    {
+      "Name": "NVIDIA GeForce RTX 3050 4GB Laptop GPU",
+      "DriverVersion": "32.0.16.1091"
+    },
+    {
+      "Name": "Intel(R) Graphics",
+      "DriverVersion": "32.0.101.6556"
+    }
+  ],
+  "cpu": [
+    {
+      "Name": "Intel(R) Core(TM) Ultra 7 155U",
+      "NumberOfCores": 12,
+      "NumberOfLogicalProcessors": 14
+    }
+  ]
+}

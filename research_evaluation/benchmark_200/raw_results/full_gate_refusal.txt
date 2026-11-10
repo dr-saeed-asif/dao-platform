@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "E:\DAO\cyber-chain-work\dao-platform\research_evaluation\benchmark_200\scripts\run.py", line 184, in <module>
+    asyncio.run(main(parser.parse_args()),loop_factory=asyncio.SelectorEventLoop if platform.system()=='Windows' else asyncio.new_event_loop)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "E:\DAO\cyber-chain-work\dao-platform\research_evaluation\benchmark_200\scripts\run.py", line 120, in main
+    raise RuntimeError('QualityGateBlocked: 200 verified cases and independent absence review required; see quality.json')
+RuntimeError: QualityGateBlocked: 200 verified cases and independent absence review required; see quality.json

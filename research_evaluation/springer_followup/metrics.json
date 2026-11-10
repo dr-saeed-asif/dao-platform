@@ -1,0 +1,26 @@
+{
+  "affected_proposals_retested": 7,
+  "post_status": {
+    "unverified": 6,
+    "mismatched": 1
+  },
+  "pre_status": {
+    "mismatched": 7
+  },
+  "source_sha256": "8b9aed1e41c43da146a1ba3bf8d4d3a2ab8b3efa56067f5bc1ed44605fd760fa",
+  "compiled_sha256": "6cc30a3269b28e705d6d196c843cd003580ffa1fb55f4216736ce908f6174284",
+  "runtime_corrected_status_verified": true,
+  "new_regression_tests_passed": 1,
+  "affected_false_positive_control": {
+    "before": "mismatched",
+    "after": "verified",
+    "post_replicates": 1
+  },
+  "whole_39_cohort_repeated": false,
+  "post_39_confusion_matrix": null,
+  "population_confidence_intervals": null,
+  "reason": "Purposive seven-case defect retest; different chain pins and observation times",
+  "new_model_trials": 0,
+  "reserved_unexposed_candidates": 141,
+  "human_adjudicated_items": 0
+}

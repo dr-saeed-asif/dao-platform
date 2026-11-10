@@ -1,0 +1,5 @@
+variant,answer_cases,proxy_hits,transport_or_workflow_failures,median_wall_ms,median_observed_all_chat_input_tokens,median_observed_all_chat_output_tokens,median_reported_workflow_retrieval_ms,valid_reference_ids,reference_ids,fallback_or_mixed_cases,real_model_no_fallback_cases,auth_denials,auth_cases,accuracy_ci,ci_reason,unauthorized_disclosure_rate,abstention_accuracy,semantic_citation_support_rate
+B1,3,0,0,486.29629999777535,120,22,,0,0,0,3,1,1,,"Three purposive smoke questions from one proposal; dependent, nonrandom observations cannot support population inference",,,
+B2,3,0,0,1403.27210000396,3042,91,,0,0,0,3,1,1,,"Three purposive smoke questions from one proposal; dependent, nonrandom observations cannot support population inference",,,
+B3,3,2,0,2768.116100000043,1484,128,0,3,3,1,2,1,1,,"Three purposive smoke questions from one proposal; dependent, nonrandom observations cannot support population inference",,,
+B4,3,2,0,2334.2440000051283,1484,129,0,3,3,1,2,1,1,,"Three purposive smoke questions from one proposal; dependent, nonrandom observations cannot support population inference",,,

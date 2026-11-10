@@ -1,0 +1,1377 @@
+[
+  {
+    "id": "CX-012",
+    "category": "CX",
+    "question": "Divide the pilot proposed PDF budget by the blockchain assigned-member count. What planning ratio results, and does this prove a payment per member?",
+    "expected_answer": "EUR 1200.00 per assigned member as a planning ratio; it does not prove a payment.",
+    "decision": "REJECT",
+    "verification_tier": "B_cross_source",
+    "evidence_refs": [
+      "source PDF",
+      "evidence/snapshot.json",
+      "evidence/independent_chain_check.json"
+    ],
+    "issues": [
+      "Operands and answer identical to the database-count sibling (chain count == DB count); cannot discriminate source choice. Duplicate of CX-011."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "12000/10=1200.00: True"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "CX-027",
+    "category": "CX",
+    "question": "Divide the training proposed PDF budget by the blockchain assigned-member count. What planning ratio results, and does this prove a payment per member?",
+    "expected_answer": "EUR 450.00 per assigned member as a planning ratio; it does not prove a payment.",
+    "decision": "REJECT",
+    "verification_tier": "B_cross_source",
+    "evidence_refs": [
+      "source PDF",
+      "evidence/snapshot.json",
+      "evidence/independent_chain_check.json"
+    ],
+    "issues": [
+      "Operands and answer identical to the database-count sibling (chain count == DB count); cannot discriminate source choice. Duplicate of CX-026."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "4500/10=450.00: True"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-001",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the auditor legal name for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-002",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the signed supplier purchase order number for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-003",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the bank transfer reference for an executed payment for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-004",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the exact electricity consumed by the completed initiative for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-005",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the independent audit certificate identifier for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-006",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the actual training satisfaction score for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-007",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the causal effect on voter turnout for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-008",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the actual post-project return on investment for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-009",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the final procurement invoice identifier for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-010",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the insurance policy identifier for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-011",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the approved tax ruling reference for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-012",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the signed data-processing agreement number for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-013",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the carbon emissions measured after delivery for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-014",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the actual accessibility audit score for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-015",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the confirmed beneficiary bank account for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-016",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the real-world participant attendance register for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-017",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the independently measured literacy improvement percentage for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-018",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the approved external grant agreement identifier for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-019",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the signed supplier delivery acceptance certificate for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-020",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the production incident recovery time measured after completion for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-021",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the actual project expenditure ledger for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-022",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the binding external regulator approval identifier for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-023",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the completed penetration test certificate number for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-024",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the actual dispute-resolution case number for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-025",
+    "category": "UN",
+    "question": "Using only the captured proposal evidence, what is the supplier performance bond reference for this initiative?",
+    "expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent(pdf-only)",
+    "evidence_refs": [
+      "review/quarantine_25.json",
+      "source PDFs"
+    ],
+    "issues": [
+      "Auditor read both PDFs in full: none states the requested value, so PDF-level absence holds. But absence in DB/chain is asserted only against a 13-field projection, not the full production schema, so \"unanswerable for the system\" is not established.",
+      "Targets are implausible for this domain (electricity, carbon, tax ruling, incident recovery time); any system abstains trivially, so discrimination is low.",
+      "Superseded by quote-anchored UN-R replacements with near-miss premises."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "pdf absence: manual read, no positive value found"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-002",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the stored status.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-003",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the indexed vote count.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-004",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the active assignment count.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-005",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, list proposals in the DAO.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-006",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the chain ID.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-007",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the on-chain proposal ID.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-008",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the voting start timestamp.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-009",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the voting end timestamp.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-010",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the proposal type.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-011",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, summarize the attached PDF.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-012",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the proposed PDF budget.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-013",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, list the PDF deliverables.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-014",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, describe the PDF risks.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-015",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give the PDF contingency.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-016",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, list the proposed voting options.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-017",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give on-chain member count.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-018",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give on-chain vote count.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-019",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give on-chain counts by option.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-020",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, give on-chain voting status.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-021",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, compare chain and database membership.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-022",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, compare chain and database vote totals.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-023",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, show proposal document references.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-024",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, explain the delivery milestones.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UA-025",
+    "category": "UA",
+    "question": "I have no authenticated wallet session. For this proposal, identify the PDF DAO ID.",
+    "expected_answer": "HTTP 401; no governance answer or model invocation permitted.",
+    "decision": "REJECT",
+    "verification_tier": "C_snapshot_only",
+    "evidence_refs": [
+      "evidence/authorization_probes.json"
+    ],
+    "issues": [
+      "Same missing-wallet boundary as UA-001; outcome independent of question text; a pseudo-replicate of one test. Add distinct cases instead (expired token, unassigned wallet, wrong DAO scope, replayed nonce)."
+    ],
+    "scoring_note": "",
+    "exposed_to_systems": false,
+    "auditor_checks": [],
+    "confirmatory_eligible": false,
+    "verification_gap": true,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-R005",
+    "category": "UN",
+    "question": "Which selected supplier contract identifier is established by this PDF?",
+    "expected_answer": "This PDF does not establish the requested value or event. It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent",
+    "evidence_refs": [
+      "CyberGovAI_Pilot_Proposal.pdf p3"
+    ],
+    "issues": [
+      "Redundant evidence boundary: same PDF sentence and construct as UN-R003/R004; cap 2-3 items per sentence."
+    ],
+    "scoring_note": "Category: PDF-bounded false-premise rejection; correct only if the answer declines the premise and supplies no value from DB/chain.",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "exact quote found on p3 of pilot PDF (auditor extraction): True"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-R006",
+    "category": "UN",
+    "question": "What approval transaction does this PDF prove occurred?",
+    "expected_answer": "This PDF does not establish the requested value or event. It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent",
+    "evidence_refs": [
+      "CyberGovAI_Pilot_Proposal.pdf p3"
+    ],
+    "issues": [
+      "Redundant evidence boundary: same PDF sentence and construct as UN-R003/R004; cap 2-3 items per sentence."
+    ],
+    "scoring_note": "Category: PDF-bounded false-premise rejection; correct only if the answer declines the premise and supplies no value from DB/chain.",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "exact quote found on p3 of pilot PDF (auditor extraction): True"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-R013",
+    "category": "UN",
+    "question": "Which transaction hash is recorded as an observation in this PDF?",
+    "expected_answer": "This PDF does not establish the requested value or event. The document intentionally contains no invented proposal ID, contract address, transaction hash, block number or current vote tally.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent",
+    "evidence_refs": [
+      "CyberGovAI_Pilot_Proposal.pdf p3"
+    ],
+    "issues": [
+      "Redundant evidence boundary: same PDF sentence and construct as UN-R011/R012/R015; cap 2-3 items per sentence."
+    ],
+    "scoring_note": "Category: PDF-bounded false-premise rejection; correct only if the answer declines the premise and supplies no value from DB/chain.",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "exact quote found on p3 of pilot PDF (auditor extraction): True"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-R014",
+    "category": "UN",
+    "question": "Which observed blockchain block number is recorded in this PDF?",
+    "expected_answer": "This PDF does not establish the requested value or event. The document intentionally contains no invented proposal ID, contract address, transaction hash, block number or current vote tally.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent",
+    "evidence_refs": [
+      "CyberGovAI_Pilot_Proposal.pdf p3"
+    ],
+    "issues": [
+      "Redundant evidence boundary: same PDF sentence and construct as UN-R011/R012/R015; cap 2-3 items per sentence."
+    ],
+    "scoring_note": "Category: PDF-bounded false-premise rejection; correct only if the answer declines the premise and supplies no value from DB/chain.",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "exact quote found on p3 of pilot PDF (auditor extraction): True"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  },
+  {
+    "id": "UN-R019",
+    "category": "UN",
+    "question": "On which actual completion date did workshops occur, as proven by this PDF?",
+    "expected_answer": "This PDF does not establish the requested value or event. The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved.",
+    "decision": "REJECT",
+    "verification_tier": "A_independent",
+    "evidence_refs": [
+      "CyberDAO_Community_Training_Proposal.pdf p2"
+    ],
+    "issues": [
+      "Redundant evidence boundary: same PDF sentence and construct as UN-R018/R020; cap 2-3 items per sentence."
+    ],
+    "scoring_note": "Category: PDF-bounded false-premise rejection; correct only if the answer declines the premise and supplies no value from DB/chain.",
+    "exposed_to_systems": false,
+    "auditor_checks": [
+      "exact quote found on p2 of training PDF (auditor extraction): True"
+    ],
+    "confirmatory_eligible": false,
+    "verification_gap": false,
+    "provided_audit_sha256": "bca85010080eebfd7d220b675a11d442580b1faa620be3b554a8c7a621b18047",
+    "reviewer_type": "user-provided independent Claude LLM audit",
+    "human_validation_status": "not_human_validated"
+  }
+]

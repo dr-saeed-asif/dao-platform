@@ -1,0 +1,25 @@
+{
+  "raw_attempts": 50,
+  "first_campaign": 32,
+  "corrected_affected_retests": 18,
+  "harness_invalid_excluded": 18,
+  "harness_defects": [
+    "FrozenPool omitted connection timeout parameter",
+    "RunRecorder dataclass incorrectly treated as Pydantic model"
+  ],
+  "unaffected_first_campaign_retained": 14,
+  "comparison_records": 32,
+  "per_variant": 8,
+  "raw_status_counts": {
+    "failed": 16,
+    "completed": 34
+  },
+  "selected_status_counts": {
+    "completed": 32
+  },
+  "human_adjudicated": 0,
+  "SQL_fingerprints_match": true,
+  "same_chain_snapshot_bytes": true,
+  "remaining_unexposed": 133,
+  "whole_answer_AI_ratings_posthoc": true
+}

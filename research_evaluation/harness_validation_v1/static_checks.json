@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "loaded_fixed_modules": [
+    {
+      "module": "app.business.agents.planning",
+      "loaded_path": "E:\\DAO\\cyber-chain-work\\api-ai-server1\\api-ai-server\\app\\business\\agents\\planning.py",
+      "sha256": "1b845b2c6a7988e5e8060ae59932abdc8772fb0bed0903341794089fe95469f7",
+      "matches_fixed_version": true
+    },
+    {
+      "module": "app.business.agents.synthesis",
+      "loaded_path": "E:\\DAO\\cyber-chain-work\\api-ai-server1\\api-ai-server\\app\\business\\agents\\synthesis.py",
+      "sha256": "c2b43ec2b9bea051f8cd2780bb1c13a9b8c0a919eaa2dee24d21cc85132925fa",
+      "matches_fixed_version": true
+    }
+  ],
+  "interpreter": "E:\\DAO\\cyber-chain-work\\api-ai-server1\\api-ai-server\\.venv\\Scripts\\python.exe",
+  "python": "3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]",
+  "reserved_question_count": 133,
+  "reserved_sha256": "8ee57c7670f38bf27a1461c5e3051886463f896b9dd46446e8bab53b8e192508",
+  "development_exact_duplicates_of_reserved": 0,
+  "semantic_independence": "Not a new held-out cohort. Development wording reuses already exposed facts deliberately.",
+  "structural_probe_count": 8,
+  "active_synthesis_probe_count": 5,
+  "known_runtime_limitations": [
+    "Citation regex ignores unsupported/malformed IDs if a valid D/G ID is also present",
+    "Reference/amount checks do not establish semantic support"
+  ],
+  "scope": "GO for development harness smoke only; not authorization or confirmatory benchmark validation"
+}

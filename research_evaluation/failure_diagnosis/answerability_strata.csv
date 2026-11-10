@@ -1,0 +1,9 @@
+variant,stratum,n,AI_correct,AI_incorrect,AI_unanswered
+B1,answerable,6,0,2,4
+B1,bounded_unknown,2,2,0,0
+B2,answerable,6,0,2,4
+B2,bounded_unknown,2,2,0,0
+B3,answerable,6,0,3,3
+B3,bounded_unknown,2,0,0,2
+B4,answerable,6,1,2,3
+B4,bounded_unknown,2,0,0,2

@@ -1,0 +1,20 @@
+{
+  "source": "Current scoped public.indexer_checkpoints read-only query",
+  "rows": [
+    {
+      "indexer": "governance-full",
+      "version": "v1",
+      "processed_block": "20267608",
+      "updated_at": "2026-11-09T06:47:47.027000+00:00",
+      "reached_archived_pin": false
+    },
+    {
+      "indexer": "governance-votes",
+      "version": "v1",
+      "processed_block": "18898503",
+      "updated_at": "2026-10-07T17:42:40.672000+00:00",
+      "reached_archived_pin": false
+    }
+  ],
+  "limit": "Current progress cannot establish historical SQL assignment state or successful execution of a reverted transaction."
+}

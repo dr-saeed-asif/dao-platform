@@ -1,0 +1,36 @@
+{
+  "environment": "Isolated in-memory DB/RPC fixtures; real freshly built verifier. No external requests.",
+  "replicates": 1,
+  "fixture": "apps/api/src/ai/__tests__/blockchain-verification.spec.ts (fixture definitions only)",
+  "compiled_sha256": "6cc30a3269b28e705d6d196c843cd003580ffa1fb55f4216736ce908f6174284",
+  "cases": [
+    {
+      "id": "finalized_status_alias",
+      "class": "semantic_control",
+      "expected": "verified",
+      "overrides": {
+        "status": "FINALIZED"
+      },
+      "field": "voting_status"
+    }
+  ],
+  "results": [
+    {
+      "case": "finalized_status_alias",
+      "class": "semantic_control",
+      "expected": "verified",
+      "observed": "verified",
+      "target": [
+        {
+          "field": "voting_status",
+          "status": "verified"
+        }
+      ],
+      "targetOK": true,
+      "matches": true,
+      "latency_ms": 15.873600000000124,
+      "errors": [],
+      "checkpoint_specific_diagnosis": null
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+class,pre_fix_count,denominator_or_unit,current_status
+Harness pool protocol,16,excluded initial attempts,Already fixed in frozen_v2; original records retained
+Harness recorder dataclass,2,excluded initial attempts,Already fixed in frozen_v2; original records retained
+Required source coverage,8,16 usable full-workflow observations,Floor covers 8/8 affected saved plans; extra planner-selected roles can remain
+Synthesis header contract,8,16 usable full-workflow observations,2/8 replay outputs accepted; 6/8 still blocked by citation requirements
+Contradicted B4 budget relations,2,claims in one saved B4 answer,Unchanged documented semantic-validation limitation
+Contradicted B3 budget relations,2,claims in one saved B3 answer,Unchanged; verification disabled in that variant

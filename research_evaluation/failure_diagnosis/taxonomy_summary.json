@@ -1,0 +1,34 @@
+{
+  "excluded_attempts": 18,
+  "excluded_primary_classes": {
+    "pool_connection_timeout_protocol": 16,
+    "recorder_dataclass_AttributeError": 2
+  },
+  "selected_records": 32,
+  "full_workflow_records": 16,
+  "routing_or_coverage_failures": 8,
+  "retrieval_execution_errors": 0,
+  "full_workflow_records_with_returned_worker_sources": 16,
+  "completed_evidence_searches": 14,
+  "completed_DAO_count_queries": 2,
+  "synthesis_header_format_failures": 8,
+  "synthesis_citation_rejections": 1,
+  "full_workflow_HTTP_or_empty_provider_failures": 0,
+  "wrong_budget_claims_that_passed_B4_gate": 2,
+  "wrong_budget_claims_in_B3_without_gate": 2,
+  "unsupported_budget_label_answers": 2,
+  "off_target_DAO_count_answers": 2,
+  "source_config_checks": {
+    "ids": true,
+    "model_digests": true,
+    "table_fingerprints": true,
+    "baseline_sha256": true,
+    "verifier_source_sha256": true,
+    "verifier_compiled_sha256": true,
+    "chain_bytes_match": true,
+    "current_baseline_matches_manifest": true
+  },
+  "deterministic_score_aggregation_errors": 0,
+  "independent_human_reviewed_scores": 0,
+  "taxonomy_note": "Failure categories overlap. Protocol attribution on masked initial errors uses code and preflight evidence; complete underlying exception details were not retained in every raw wrapper."
+}

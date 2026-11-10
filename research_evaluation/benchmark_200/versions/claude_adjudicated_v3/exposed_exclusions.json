@@ -1,0 +1,72 @@
+[
+  {
+    "id": "DB-001",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-002",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-003",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-004",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-013",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-014",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-023",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-024",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-025",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-033",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "DB-034",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "PDF-005",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "PDF-025",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  },
+  {
+    "id": "MS-001",
+    "reason": "Claude exposure ledger; development/older pilot use",
+    "confirmatory_eligible": false
+  }
+]

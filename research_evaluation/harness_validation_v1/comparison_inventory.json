@@ -1,0 +1,6 @@
+{
+  "maximum_proposals_per_DAO": 5,
+  "DAOs_with_at_least_two_proposals": 8,
+  "SQL_mode": "read only",
+  "model_calls": 0
+}

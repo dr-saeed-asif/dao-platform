@@ -1,0 +1,14 @@
+{
+  "replayed_observations": 14,
+  "routing_cases": 8,
+  "pre_source_coverage": 0,
+  "post_source_coverage": 8,
+  "synthesis_cases": 8,
+  "pre_synthesis_accepted": 0,
+  "post_synthesis_accepted": 2,
+  "new_model_runs": 0,
+  "database_or_RPC_calls": 0,
+  "gold_loaded": false,
+  "human_adjudicated": false,
+  "scope": "Component smoke replay only. No claim of improved end-to-end answer accuracy."
+}

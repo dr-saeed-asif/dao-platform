@@ -1,0 +1,9 @@
+{
+  "error_type": "PoolTimeout",
+  "message": "pool initialization incomplete after 10 sec",
+  "scope": "Preserve completed attempts; do not change eligibility or raw responses.",
+  "root_cause": "Windows ProactorEventLoop incompatible with async psycopg",
+  "model_attempts": 0,
+  "runner_sha256": "ac9c532303c81ec219ac9ce782f69fdbe1db214aec174bdc835d882a466ee71f",
+  "resolved_by": "Explicit SelectorEventLoop for the Windows research runner"
+}

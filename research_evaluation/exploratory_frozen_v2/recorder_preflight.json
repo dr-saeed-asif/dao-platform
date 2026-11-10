@@ -1,0 +1,8 @@
+{
+  "dataclass_conversion": "asdict",
+  "tools_checked": [
+    "get_proposal",
+    "get_proposal_voting_facts"
+  ],
+  "passed": true
+}

@@ -1,0 +1,11 @@
+{
+  "historical_hashes_checked": 115,
+  "historical_hash_mismatches": 0,
+  "diagnosis_sensitive_pattern_scan_matches": 0,
+  "broken_local_report_links": [],
+  "archive_link_context": "Byte-preserved report archives checked relative to original locations.",
+  "new_model_runs": 0,
+  "new_isolated_assignment_path_observations": 1,
+  "production_changes_this_diagnosis": 0,
+  "independent_human_ratings": 0
+}

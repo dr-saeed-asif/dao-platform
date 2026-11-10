@@ -1,0 +1,5 @@
+Test Suites: 1 passed, 1 total
+Tests:       10 skipped, 1 passed, 11 total
+Snapshots:   0 total
+Time:        4.992 s
+Ran all test suites within paths "src/ai/__tests__/blockchain-verification.spec.ts".

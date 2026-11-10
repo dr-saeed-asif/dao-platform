@@ -1,0 +1,14 @@
+test_empty_ledger_has_no_coverage_not_zero (test_agent_routing_requirements.LedgerTests.test_empty_ledger_has_no_coverage_not_zero) ... ok
+test_every_requirement_tracked_with_evidence_and_dependencies (test_agent_routing_requirements.LedgerTests.test_every_requirement_tracked_with_evidence_and_dependencies) ... ok
+test_summary_separates_failure_kinds_and_answered_from_completed (test_agent_routing_requirements.LedgerTests.test_summary_separates_failure_kinds_and_answered_from_completed) ... ok
+test_analysis_is_an_integrating_intent_its_explicit_list_is_the_source_set (test_agent_routing_requirements.RoutingTests.test_analysis_is_an_integrating_intent_its_explicit_list_is_the_source_set) ... ok
+test_invalid_or_unsupported_specialists_are_dropped_and_reported_not_rewritten (test_agent_routing_requirements.RoutingTests.test_invalid_or_unsupported_specialists_are_dropped_and_reported_not_rewritten) ... ok
+test_no_keyword_rewrite_of_a_valid_plan (test_agent_routing_requirements.RoutingTests.test_no_keyword_rewrite_of_a_valid_plan) ... ok
+test_planner_cannot_remove_the_primary_specialist_of_an_ordinary_intent (test_agent_routing_requirements.RoutingTests.test_planner_cannot_remove_the_primary_specialist_of_an_ordinary_intent) ... ok
+test_primary_first_and_valid_support_kept_in_planner_order (test_agent_routing_requirements.RoutingTests.test_primary_first_and_valid_support_kept_in_planner_order) ... ok
+test_worker_cap (test_agent_routing_requirements.RoutingTests.test_worker_cap) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK

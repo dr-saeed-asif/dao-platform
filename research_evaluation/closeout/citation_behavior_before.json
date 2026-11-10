@@ -1,0 +1,25 @@
+{
+  "source_sha256": "a62f029be23d62c23c23d1347627494c683a9ca22cf751069f076af5ed70a86b",
+  "cases": [
+    {
+      "answer": "Supported [D1] [B987].",
+      "observed": {
+        "valid": true,
+        "cited": [
+          "D1"
+        ],
+        "unknown": []
+      }
+    },
+    {
+      "answer": "Supported [D1] [D 987].",
+      "observed": {
+        "valid": true,
+        "cited": [
+          "D1"
+        ],
+        "unknown": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,1281 @@
+[
+  {
+    "id": "UN-001",
+    "original_question": "Using only the captured proposal evidence, what is the auditor legal name for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "auditor legal name",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-002",
+    "original_question": "Using only the captured proposal evidence, what is the signed supplier purchase order number for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "signed supplier purchase order number",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-003",
+    "original_question": "Using only the captured proposal evidence, what is the bank transfer reference for an executed payment for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "bank transfer reference for an executed payment",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-004",
+    "original_question": "Using only the captured proposal evidence, what is the exact electricity consumed by the completed initiative for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "exact electricity consumed by the completed initiative",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-005",
+    "original_question": "Using only the captured proposal evidence, what is the independent audit certificate identifier for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "independent audit certificate identifier",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-006",
+    "original_question": "Using only the captured proposal evidence, what is the actual training satisfaction score for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "actual training satisfaction score",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-007",
+    "original_question": "Using only the captured proposal evidence, what is the causal effect on voter turnout for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "causal effect on voter turnout",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-008",
+    "original_question": "Using only the captured proposal evidence, what is the actual post-project return on investment for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "actual post-project return on investment",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-009",
+    "original_question": "Using only the captured proposal evidence, what is the final procurement invoice identifier for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "final procurement invoice identifier",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-010",
+    "original_question": "Using only the captured proposal evidence, what is the insurance policy identifier for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "insurance policy identifier",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-011",
+    "original_question": "Using only the captured proposal evidence, what is the approved tax ruling reference for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "approved tax ruling reference",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-012",
+    "original_question": "Using only the captured proposal evidence, what is the signed data-processing agreement number for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "signed data-processing agreement number",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-013",
+    "original_question": "Using only the captured proposal evidence, what is the carbon emissions measured after delivery for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "carbon emissions measured after delivery",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-014",
+    "original_question": "Using only the captured proposal evidence, what is the actual accessibility audit score for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "actual accessibility audit score",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-015",
+    "original_question": "Using only the captured proposal evidence, what is the confirmed beneficiary bank account for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "confirmed beneficiary bank account",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-016",
+    "original_question": "Using only the captured proposal evidence, what is the real-world participant attendance register for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "real-world participant attendance register",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-017",
+    "original_question": "Using only the captured proposal evidence, what is the independently measured literacy improvement percentage for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "independently measured literacy improvement percentage",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-018",
+    "original_question": "Using only the captured proposal evidence, what is the approved external grant agreement identifier for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "approved external grant agreement identifier",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-019",
+    "original_question": "Using only the captured proposal evidence, what is the signed supplier delivery acceptance certificate for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "signed supplier delivery acceptance certificate",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-020",
+    "original_question": "Using only the captured proposal evidence, what is the production incident recovery time measured after completion for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "production incident recovery time measured after completion",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-021",
+    "original_question": "Using only the captured proposal evidence, what is the actual project expenditure ledger for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "actual project expenditure ledger",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-022",
+    "original_question": "Using only the captured proposal evidence, what is the binding external regulator approval identifier for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "binding external regulator approval identifier",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-023",
+    "original_question": "Using only the captured proposal evidence, what is the completed penetration test certificate number for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "completed penetration test certificate number",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-024",
+    "original_question": "Using only the captured proposal evidence, what is the actual dispute-resolution case number for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "actual dispute-resolution case number",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "No provider has been appointed, no payment recipient is specified and no funds have been disbursed under this demonstration proposal."
+        },
+        {
+          "page": 2,
+          "quote": "Report feedback without claiming a predetermined improvement score."
+        },
+        {
+          "page": 2,
+          "quote": "This PDF does not specify a quorum percentage, an on-chain proposal ID, a contract address or transaction hashes."
+        },
+        {
+          "page": 2,
+          "quote": "The document describes proposed activities and targets; it does not prove that workshops occurred, 30 people attended or the budget was approved."
+        }
+      ],
+      "chain_block": "20255938"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  },
+  {
+    "id": "UN-025",
+    "original_question": "Using only the captured proposal evidence, what is the supplier performance bond reference for this initiative?",
+    "original_expected_answer": "Not established by the available captured evidence. Do not invent a value.",
+    "requested_unobserved_fact": "supplier performance bond reference",
+    "why_not_independently_verified": "No independent reviewer or adjudication record. The only original test was absence of this exact phrase, which cannot establish absence of a paraphrased answer.",
+    "source_review": "No positive value for this requested fact is established by the exported field projection and inspected synthetic PDF. This is a same-assistant bounded-source judgment, not proof of universal nonexistence.",
+    "authoritative_scope": {
+      "database_fields": [
+        "id",
+        "dao_id",
+        "title",
+        "status",
+        "proposal_type",
+        "on_chain_id",
+        "chain_id",
+        "starts_at",
+        "ends_at",
+        "total_votes",
+        "indexed_votes",
+        "assigned",
+        "dao_proposals"
+      ],
+      "pdf_sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pdf_evidence_boundaries": [
+        {
+          "page": 1,
+          "quote": "It is not a real auditor quotation, an approved budget or evidence of completed work."
+        },
+        {
+          "page": 2,
+          "quote": "No supplier has been appointed and no payment recipient is specified."
+        },
+        {
+          "page": 2,
+          "quote": "Missing measurements must remain unknown."
+        },
+        {
+          "page": 2,
+          "quote": "No numerical accuracy threshold or claim of achieved performance is established by this proposal."
+        },
+        {
+          "page": 3,
+          "quote": "This PDF does not establish a quorum percentage or claim an outcome."
+        },
+        {
+          "page": 3,
+          "quote": "It does not prove that a security audit has been completed, that funds were released, that a supplier was selected or that any proposal was approved."
+        }
+      ],
+      "chain_block": "20255936"
+    },
+    "independent_review_status": "unavailable",
+    "disposition": "original remains quarantined; proposed replacement requires review"
+  }
+]

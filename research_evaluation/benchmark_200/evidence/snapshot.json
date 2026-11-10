@@ -1,0 +1,703 @@
+{
+  "captured_utc": "2026-11-09T00:18:41.990047+00:00",
+  "database": {
+    "pilot": {
+      "id": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "dao_id": "cyber-dao-321",
+      "title": "CyberGovAI Governance Security and Transparency Pilot",
+      "status": "VOTING_CLOSED",
+      "proposal_type": "STANDARD",
+      "on_chain_id": "38",
+      "chain_id": "1212",
+      "starts_at": "2026-10-26 08:15:00+00:00",
+      "ends_at": "2026-10-26 09:15:00+00:00",
+      "total_votes": "0",
+      "indexed_votes": 0,
+      "assigned": 10,
+      "dao_proposals": 1
+    },
+    "training": {
+      "id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+      "dao_id": "cyber-test-dao",
+      "title": "Improve members’ understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+      "status": "FINALIZED",
+      "proposal_type": "STANDARD",
+      "on_chain_id": "39",
+      "chain_id": "1212",
+      "starts_at": "2026-10-26 11:17:00+00:00",
+      "ends_at": "2026-10-26 12:22:00+00:00",
+      "total_votes": "2",
+      "indexed_votes": 2,
+      "assigned": 10,
+      "dao_proposals": 1
+    },
+    "cleanup": {
+      "id": "16dadecc-94cc-4fae-8089-921765854976",
+      "dao_id": "Community Clean-Up Initiative",
+      "title": "Community Clean-Up Initiative",
+      "status": "VOTING_CLOSED",
+      "proposal_type": "STANDARD",
+      "on_chain_id": "36",
+      "chain_id": "1212",
+      "starts_at": "2026-10-21 10:26:00+00:00",
+      "ends_at": "2026-10-21 11:26:00+00:00",
+      "total_votes": "0",
+      "indexed_votes": 0,
+      "assigned": 9,
+      "dao_proposals": 1
+    },
+    "testing": {
+      "id": "onchain-28",
+      "dao_id": "cyber-test",
+      "title": "Cyber Testing",
+      "status": "VOTING_CLOSED",
+      "proposal_type": "STANDARD",
+      "on_chain_id": "28",
+      "chain_id": "1212",
+      "starts_at": "2026-10-09 03:23:00+00:00",
+      "ends_at": "2026-10-09 03:30:00+00:00",
+      "total_votes": "0",
+      "indexed_votes": 0,
+      "assigned": 0,
+      "dao_proposals": 1
+    }
+  },
+  "blockchain": {
+    "pilot": {
+      "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "dao_id": "cyber-dao-321",
+      "chain_id": "1212",
+      "block_number": "20255936",
+      "block_hash": "0x6eee539ac6e003da4b673e79f2722806e202dd0ff139ed6b3ded28f842335d7b",
+      "observed_at": "2026-11-09T00:18:42.580Z",
+      "status": "verified",
+      "voting_status": "Closed",
+      "proposal": {
+        "startsAt": "1793002500",
+        "endsAt": "1793006100",
+        "optionCount": "3",
+        "winningOption": "0",
+        "assignedMemberCount": "10",
+        "voteCount": "0",
+        "proposalType": "0",
+        "cancelled": false,
+        "finalized": false,
+        "tied": false
+      },
+      "vote_counts": [
+        "0",
+        "0",
+        "0"
+      ],
+      "comparisons": [
+        {
+          "field": "voting_status",
+          "database": "Closed",
+          "blockchain": "Closed",
+          "status": "verified"
+        },
+        {
+          "field": "metadata_hash",
+          "database": "0x3954661918ebf6c84ceeec59d36e66b22604e81e647cd831a488bc588d322327",
+          "blockchain": "0x3954661918ebf6c84ceeec59d36e66b22604e81e647cd831a488bc588d322327",
+          "status": "verified"
+        },
+        {
+          "field": "starts_at",
+          "database": "1793002500",
+          "blockchain": "1793002500",
+          "status": "verified"
+        },
+        {
+          "field": "ends_at",
+          "database": "1793006100",
+          "blockchain": "1793006100",
+          "status": "verified"
+        },
+        {
+          "field": "finalized",
+          "database": false,
+          "blockchain": false,
+          "status": "verified"
+        },
+        {
+          "field": "public.votes.count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "public.proposal_assignments.count",
+          "database": 10,
+          "blockchain": "10",
+          "status": "verified"
+        },
+        {
+          "field": "public.proposals.total_votes",
+          "database": "0",
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_0_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_1_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_2_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "governance_events.count",
+          "database": 11,
+          "blockchain": 11,
+          "status": "verified"
+        }
+      ],
+      "errors": []
+    },
+    "training": {
+      "proposal_id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+      "dao_id": "cyber-test-dao",
+      "chain_id": "1212",
+      "block_number": "20255938",
+      "block_hash": "0x5e199bb12314a09f1cd8d16040a6b1adb3cb62fd43caa0e10dbd56aca6fe0edf",
+      "observed_at": "2026-11-09T00:18:45.644Z",
+      "status": "mismatched",
+      "voting_status": "Closed",
+      "proposal": {
+        "startsAt": "1793013420",
+        "endsAt": "1793017320",
+        "optionCount": "3",
+        "winningOption": "0",
+        "assignedMemberCount": "10",
+        "voteCount": "2",
+        "proposalType": "0",
+        "cancelled": false,
+        "finalized": true,
+        "tied": false
+      },
+      "vote_counts": [
+        "2",
+        "0",
+        "0"
+      ],
+      "comparisons": [
+        {
+          "field": "voting_status",
+          "database": "FINALIZED",
+          "blockchain": "Closed",
+          "status": "mismatched"
+        },
+        {
+          "field": "metadata_hash",
+          "database": "0x712cbf557c1a892f29212deb9b2af8057d2a814b190877f43c66cf76da97ccea",
+          "blockchain": "0x712cbf557c1a892f29212deb9b2af8057d2a814b190877f43c66cf76da97ccea",
+          "status": "verified"
+        },
+        {
+          "field": "starts_at",
+          "database": "1793013420",
+          "blockchain": "1793013420",
+          "status": "verified"
+        },
+        {
+          "field": "ends_at",
+          "database": "1793017320",
+          "blockchain": "1793017320",
+          "status": "verified"
+        },
+        {
+          "field": "finalized",
+          "database": true,
+          "blockchain": true,
+          "status": "verified"
+        },
+        {
+          "field": "winning_option",
+          "database": null,
+          "blockchain": "0",
+          "status": "unverified",
+          "reason": "Database value is missing; the on-chain value was read successfully."
+        },
+        {
+          "field": "tied",
+          "database": null,
+          "blockchain": false,
+          "status": "unverified",
+          "reason": "Database value is missing; the on-chain value was read successfully."
+        },
+        {
+          "field": "public.votes.count",
+          "database": 2,
+          "blockchain": "2",
+          "status": "verified"
+        },
+        {
+          "field": "public.proposal_assignments.count",
+          "database": 10,
+          "blockchain": "10",
+          "status": "verified"
+        },
+        {
+          "field": "public.proposals.total_votes",
+          "database": "2",
+          "blockchain": "2",
+          "status": "verified"
+        },
+        {
+          "field": "option_0_vote_count",
+          "database": 2,
+          "blockchain": "2",
+          "status": "verified"
+        },
+        {
+          "field": "option_1_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_2_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "governance_events.count",
+          "database": 14,
+          "blockchain": 14,
+          "status": "verified"
+        }
+      ],
+      "errors": []
+    },
+    "cleanup": {
+      "proposal_id": "16dadecc-94cc-4fae-8089-921765854976",
+      "dao_id": "Community Clean-Up Initiative",
+      "chain_id": "1212",
+      "block_number": "20255939",
+      "block_hash": "0x6bc9fc1242a376076fb2085d902a2b7edd52010406a6caa32d4b1e684b40cc9f",
+      "observed_at": "2026-11-09T00:18:48.661Z",
+      "status": "verified",
+      "voting_status": "Closed",
+      "proposal": {
+        "startsAt": "1792578360",
+        "endsAt": "1792581960",
+        "optionCount": "3",
+        "winningOption": "0",
+        "assignedMemberCount": "9",
+        "voteCount": "0",
+        "proposalType": "0",
+        "cancelled": false,
+        "finalized": false,
+        "tied": false
+      },
+      "vote_counts": [
+        "0",
+        "0",
+        "0"
+      ],
+      "comparisons": [
+        {
+          "field": "voting_status",
+          "database": "Closed",
+          "blockchain": "Closed",
+          "status": "verified"
+        },
+        {
+          "field": "metadata_hash",
+          "database": "0x28091165a2732cadd995a86a00c8bd7a3a4901221629911cbef10afb3fb67221",
+          "blockchain": "0x28091165a2732cadd995a86a00c8bd7a3a4901221629911cbef10afb3fb67221",
+          "status": "verified"
+        },
+        {
+          "field": "starts_at",
+          "database": "1792578360",
+          "blockchain": "1792578360",
+          "status": "verified"
+        },
+        {
+          "field": "ends_at",
+          "database": "1792581960",
+          "blockchain": "1792581960",
+          "status": "verified"
+        },
+        {
+          "field": "finalized",
+          "database": false,
+          "blockchain": false,
+          "status": "verified"
+        },
+        {
+          "field": "public.votes.count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "public.proposal_assignments.count",
+          "database": 9,
+          "blockchain": "9",
+          "status": "verified"
+        },
+        {
+          "field": "public.proposals.total_votes",
+          "database": "0",
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_0_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_1_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_2_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "governance_events.count",
+          "database": 10,
+          "blockchain": 10,
+          "status": "verified"
+        }
+      ],
+      "errors": []
+    },
+    "testing": {
+      "proposal_id": "onchain-28",
+      "dao_id": "cyber-test",
+      "chain_id": "1212",
+      "block_number": "20255941",
+      "block_hash": "0x55cb0b8e48f50da80e68d043d851b90d99016ca4cf99cd2a41969bf791855821",
+      "observed_at": "2026-11-09T00:18:52.525Z",
+      "status": "verified",
+      "voting_status": "Closed",
+      "proposal": {
+        "startsAt": "1791516180",
+        "endsAt": "1791516600",
+        "optionCount": "3",
+        "winningOption": "0",
+        "assignedMemberCount": "0",
+        "voteCount": "0",
+        "proposalType": "0",
+        "cancelled": false,
+        "finalized": false,
+        "tied": false
+      },
+      "vote_counts": [
+        "0",
+        "0",
+        "0"
+      ],
+      "comparisons": [
+        {
+          "field": "voting_status",
+          "database": "Closed",
+          "blockchain": "Closed",
+          "status": "verified"
+        },
+        {
+          "field": "metadata_hash",
+          "database": "0x1a5c045db51c428d3790738e3d5057c48235f37d34810b46107f5fb923ac7f93",
+          "blockchain": "0x1a5c045db51c428d3790738e3d5057c48235f37d34810b46107f5fb923ac7f93",
+          "status": "verified"
+        },
+        {
+          "field": "starts_at",
+          "database": "1791516180",
+          "blockchain": "1791516180",
+          "status": "verified"
+        },
+        {
+          "field": "ends_at",
+          "database": "1791516600",
+          "blockchain": "1791516600",
+          "status": "verified"
+        },
+        {
+          "field": "finalized",
+          "database": false,
+          "blockchain": false,
+          "status": "verified"
+        },
+        {
+          "field": "public.votes.count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "public.proposal_assignments.count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "public.proposals.total_votes",
+          "database": "0",
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_0_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_1_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "option_2_vote_count",
+          "database": 0,
+          "blockchain": "0",
+          "status": "verified"
+        },
+        {
+          "field": "governance_events.count",
+          "database": 1,
+          "blockchain": 1,
+          "status": "verified"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "documents": {
+    "pilot": {
+      "filename": "CyberGovAI_Pilot_Proposal.pdf",
+      "sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "pages": [
+        "CG-DEMO-2026-01  |  Synthetic demonstration data\n1\nCYBERGOVAI / GOVERNANCE PROPOSAL\nGovernance Security\nand Transparency Pilot\nA four-week demonstration proposal for document-grounded AI assistance and read-only\nCyberChain verification.\nDocument reference\nCG-DEMO-2026-01 / version 1.0\nPrepared\n26 October 2026\nDAO ID\ncyber-demo-dao\nProposal type\nSTANDARD\nProposal title\nCyberGovAI Governance Security and Transparency Pilot\nDecision requested\nApprove the proposed pilot and its EUR 12,000 budget.\n1. Purpose and agenda\nApprove a four-week pilot to improve governance transparency, verify proposal and voting records against\nCyberChain, and evaluate evidence-based AI assistance.\nThe agenda has three parts: independently review governance security, improve visibility of proposal and\nvoting records, and assess whether AI answers are supported by the linked proposal PDF and actual\nblockchain reads.\n2. Proposed scope\nThe security review covers proposal creation, member assignment, vote recording, result finalization, wallet\nauthentication and access control. The transparency dashboard presents proposal status, recorded votes,\ntransaction references and database-to-chain discrepancies. The AI assistant summarizes linked documents,\ncites supporting excerpts and separates unavailable facts from observed facts.\nDemonstration status\nThis document is synthetic test data. It is not a real auditor quotation, an approved budget or evidence of\ncompleted work. Approval does not automatically transfer funds or execute contract changes. A separate\nauthorized process is required for any payment or implementation.\n",
+        "CG-DEMO-2026-01  |  Synthetic demonstration data\n2\nBUDGET, DELIVERY AND ACCEPTANCE\n3. Proposed budget\nWork package\nAmount\nAllocation\nIndependent security review\nEUR 6,000\n50%\nGovernance dashboard improvements\nEUR 3,000\n25%\nAI evaluation and evidence checks\nEUR 2,000\n16.67%\nContingency\nEUR 1,000\n8.33%\nTotal proposed budget\nEUR 12,000\n100%\nContingency is reserved for unexpected testing or remediation effort. It must not be treated as already spent.\nNo supplier has been appointed and no payment recipient is specified.\n4. Delivery schedule\nDay 1 means the pilot kickoff after approval and confirmation of an implementation owner. These delivery\nmilestones are separate from the on-chain voting start and end times.\nDeadline\nDeliverable\nAcceptance condition\nDay 7\nInventory and review plan\nDocument the governance components and test\ncases.\nDay 14\nSecurity findings report\nClassify findings by severity and propose\nremediation.\nDay 21\nDashboard and AI evaluation dataset\nShow governance records and evaluate at least 20\nlabeled questions.\nDay 28\nFinal pilot report\nPublish measured results, limitations and\nunresolved issues.\n5. Success criteria\nEvery factual AI answer must cite the supporting document excerpt or structured governance evidence.\nUnsupported questions must be answered without fabricated facts. On-chain checks must record the actual\nchain ID, contract address and pinned block number. Multi-question requests must preserve question order\nand show separate results. Conversation history must reopen without requiring a second wallet connection\nwhen the wallet is already connected.\nEvaluation should report routing, citation checks, tool outcomes, latency and model-reported token usage.\nMissing measurements must remain unknown. No numerical accuracy threshold or claim of achieved\nperformance is established by this proposal.\n",
+        "CG-DEMO-2026-01  |  Synthetic demonstration data\n3\nRISKS, CONTROLS AND VERIFICATION\n6. Risks and mitigations\nRisk\nPlanned mitigation\nUnsupported or misleading AI\nanswers\nUse evidence citations, abstention for missing facts and human\nreview.\nRPC outage or a changing blockchain\nsnapshot\nUse bounded read requests and a pinned block; report\nunavailable or unverified results.\nDifferences between database and\nblockchain\nDisplay both values, provenance and the specific discrepancy;\ndo not silently overwrite records.\nPrivate credentials reaching the\nbrowser\nKeep operator tokens and database credentials server-side;\nreuse authenticated backend authorization.\nPDF text unavailable to retrieval\nCheck document linkage, SHA-256 verification and a compatible\ntext/embedding index.\nBudget or delivery overrun\nReview milestones weekly and require explicit approval for\nscope changes.\n7. Governance and voting\nThe proposed voting options are Approve, Reject and Abstain. Actual eligibility, assigned members, vote\ntotals, quorum and final result are governed by the deployed contract and live application state. This PDF\ndoes not establish a quorum percentage or claim an outcome.\nFor the demonstration, configure voting dates and assign test-wallet addresses in the UI. Assignment counts\nand votes must be queried from the application or chain after creation. The document intentionally contains\nno invented proposal ID, contract address, transaction hash, block number or current vote tally.\n8. Evidence boundaries\nThis PDF supports questions about the proposed purpose, scope, budget, schedule, deliverables, risks and\nsuccess criteria. It does not prove that a security audit has been completed, that funds were released, that a\nsupplier was selected or that any proposal was approved. It does not identify a secret password or API\ncredentials.\nDocument linkage and hash verification establish which bytes were attached to the proposal. They do not\nestablish that the proposal claims are true or that the described work has happened. Live governance facts\nrequire independent database or blockchain reads.\n"
+      ]
+    },
+    "training": {
+      "filename": "CyberDAO_Community_Training_Proposal.pdf",
+      "sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "pages": [
+        "CG-DEMO-2026-02 / Synthetic demonstration data\n1\nCYBERDAO / DEMONSTRATION PROPOSAL\nCommunity Governance Training\nand Participation Pilot\nA three-week initiative to help members understand proposals, inspect evidence and participate\nsafely in DAO voting.\nReference\nCG-DEMO-2026-02 / version 1.0\nDAO ID\ncyber-demo-dao\nProposal title\nCommunity Governance Training and Participation Pilot\nType / duration\nSTANDARD / 21 days after kickoff\nDecision requested\nApprove the proposed EUR 4,500 training pilot.\n1. Purpose and proposed activities\nImprove members' understanding of DAO proposals, evidence and wallet-based voting through two guided\nworkshops and an accessible participation guide. The planned attendance target is 30 participants across the\npilot; this is a target, not a recorded member or voter count.\nWorkshop 1 covers proposal purpose, supporting PDFs, source citations and differences between proposed\ncommitments and completed work. Workshop 2 covers connected-wallet use, voting eligibility, transaction\nconfirmation and comparison of database records with blockchain observations.\n2. Proposed budget\nAllocation\nAmount\nWorkshop preparation and facilitation\nEUR 2,000\nTraining guides and learning materials\nEUR 1,500\nAccessibility and participant support\nEUR 750\nContingency\nEUR 250\nTotal proposed budget\nEUR 4,500\nContingency is reserved for unexpected delivery costs. No provider has been appointed, no payment\nrecipient is specified and no funds have been disbursed under this demonstration proposal.\n",
+        "CG-DEMO-2026-02 / Synthetic demonstration data\n2\nDELIVERY, RISKS AND EVIDENCE BOUNDARIES\n3. Delivery milestones\nDay 1 is the kickoff after approval and confirmation of a delivery owner. These milestones are separate from\nthe voting dates configured in the DAO interface.\nDeadline\nDeliverable\nDay 7\nPublish an accessible draft guide and the workshop plan.\nDay 14\nComplete two workshops and collect voluntary participant feedback.\nDay 21\nPublish the final guide and a report summarizing attendance, feedback and unresolved\nissues.\n4. Success criteria\nDeliver two workshops and a final participation guide. Record actual attendance against the planned target of\n30 participants. Include at least five worked examples covering proposal interpretation, PDF citations, wallet\nsafety, vote confirmation and database-to-chain comparison. Report feedback without claiming a\npredetermined improvement score.\n5. Risks and mitigations\nRisk\nPlanned mitigation\nLow attendance\nShare invitations early and offer a recorded walkthrough.\nWallet or transaction confusion\nUse test wallets and guided examples; never request private keys\nor recovery phrases.\nMisunderstanding AI answers\nShow source excerpts and explain that citations require inspection.\nRPC or network interruption\nUse saved examples clearly labeled with their observation time.\nPersonal information in feedback\nCollect only necessary information and publish aggregated\nfindings.\n6. Governance and evidence boundaries\nVoting options are Approve, Reject and Abstain. Actual member assignments, voting dates, vote totals and\nfinal outcome must come from the application and contract after proposal creation. This PDF does not specify\na quorum percentage, an on-chain proposal ID, a contract address or transaction hashes.\nThis is synthetic data for a live software demonstration. The document describes proposed activities and\ntargets; it does not prove that workshops occurred, 30 people attended or the budget was approved. Approval\ndoes not automatically release funds or execute contract changes. No password or API credentials are\nprovided.\n"
+      ]
+    }
+  },
+  "authorization": [
+    {
+      "method": "POST",
+      "route": "/v1/ai/assistant/ask",
+      "credentials": "absent",
+      "expected": 401,
+      "observed": 400
+    }
+  ],
+  "infrastructure": {
+    "ollama": {
+      "version": "0.40.5"
+    },
+    "models": {
+      "models": [
+        {
+          "name": "qwen3-embedding:0.6b",
+          "model": "qwen3-embedding:0.6b",
+          "modified_at": "2026-11-07T16:25:58.9716432+01:00",
+          "size": 639150858,
+          "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+          "details": {
+            "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "595.78M",
+            "quantization_level": "Q8_0",
+            "context_length": 32768,
+            "embedding_length": 1024,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "tools",
+            "thinking",
+            "embedding"
+          ]
+        },
+        {
+          "name": "qwen3:0.6b",
+          "model": "qwen3:0.6b",
+          "modified_at": "2026-11-07T16:25:58.2840664+01:00",
+          "size": 522653767,
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "751.63M",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 1024,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "completion",
+            "tools",
+            "thinking"
+          ]
+        },
+        {
+          "name": "qwen3.5:4b",
+          "model": "qwen3.5:4b",
+          "modified_at": "2026-11-07T16:25:57.0237486+01:00",
+          "size": 3324173934,
+          "digest": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+          "details": {
+            "parent_model": "model.gguf",
+            "format": "gguf",
+            "family": "qwen35",
+            "families": [
+              "qwen35"
+            ],
+            "parameter_size": "4.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 262144,
+            "embedding_length": 2560,
+            "runner": "llamacpp"
+          },
+          "capabilities": [
+            "completion",
+            "vision",
+            "tools",
+            "thinking"
+          ]
+        },
+        {
+          "name": "qwen3:8b",
+          "model": "qwen3:8b",
+          "modified_at": "2026-10-29T13:29:47.4243632+01:00",
+          "size": 5225388164,
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 4096,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "completion",
+            "tools",
+            "thinking"
+          ]
+        },
+        {
+          "name": "qwen3:4b-instruct",
+          "model": "qwen3:4b-instruct",
+          "modified_at": "2026-10-18T08:18:28.4657191+02:00",
+          "size": 2497293803,
+          "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "4.0B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 262144,
+            "embedding_length": 2560,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "tools",
+            "thinking",
+            "completion"
+          ]
+        },
+        {
+          "name": "nomic-embed-text:latest",
+          "model": "nomic-embed-text:latest",
+          "modified_at": "2026-10-09T06:22:25.689657+02:00",
+          "size": 274302450,
+          "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "nomic-bert",
+            "families": [
+              "nomic-bert"
+            ],
+            "parameter_size": "137M",
+            "quantization_level": "F16",
+            "context_length": 2048,
+            "embedding_length": 768,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "embedding"
+          ]
+        },
+        {
+          "name": "qwen3:4b",
+          "model": "qwen3:4b",
+          "modified_at": "2026-10-05T08:38:55.6015135+02:00",
+          "size": 2497293931,
+          "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "4.0B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 262144,
+            "embedding_length": 2560,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "completion",
+            "tools",
+            "thinking"
+          ]
+        }
+      ]
+    },
+    "ai_revision": "9c27c8a57dfe44abccc43f0cf509ca33e3e0ac79",
+    "python": "3.13.2",
+    "os": "Windows-11-10.0.26300-SP0"
+  }
+}

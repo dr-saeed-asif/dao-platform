@@ -1,0 +1,354 @@
+[
+  {
+    "id": "DB-006",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 1,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": true,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 3,
+    "TASK_header_format_failure": false,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "real_model"
+  },
+  {
+    "id": "DB-006",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 2,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": true,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 3,
+    "TASK_header_format_failure": false,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "real_model"
+  },
+  {
+    "id": "DB-016",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 3,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": true,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 2,
+    "TASK_header_format_failure": true,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "fallback_or_mixed"
+  },
+  {
+    "id": "DB-016",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 4,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": true,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 2,
+    "TASK_header_format_failure": true,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "fallback_or_mixed"
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 5,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": false,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 1,
+    "TASK_header_format_failure": false,
+    "synthesis_citation_gate_rejection": true,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "fallback_or_mixed"
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 6,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": false,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 1,
+    "TASK_header_format_failure": false,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "real_model"
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 7,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": false,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 2,
+    "TASK_header_format_failure": true,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "fallback_or_mixed"
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 8,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": false,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 2,
+    "TASK_header_format_failure": true,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "fallback_or_mixed"
+  },
+  {
+    "id": "MS-002",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 9,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": true,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 3,
+    "TASK_header_format_failure": false,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": true,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "real_model"
+  },
+  {
+    "id": "MS-002",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 11,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": true,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 3,
+    "TASK_header_format_failure": false,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": true,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "real_model"
+  },
+  {
+    "id": "MS-026",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 12,
+    "worker_agents": [
+      "research"
+    ],
+    "tool_names": [
+      "count_dao_proposals"
+    ],
+    "routing_or_source_coverage_failure": true,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 1,
+    "TASK_header_format_failure": false,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": true,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "real_model"
+  },
+  {
+    "id": "MS-026",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 13,
+    "worker_agents": [
+      "research"
+    ],
+    "tool_names": [
+      "count_dao_proposals"
+    ],
+    "routing_or_source_coverage_failure": true,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 1,
+    "TASK_header_format_failure": false,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": true,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "real_model"
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 15,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": false,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 3,
+    "TASK_header_format_failure": true,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "fallback_or_mixed"
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 16,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": false,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 3,
+    "TASK_header_format_failure": true,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "fallback_or_mixed"
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 17,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": false,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 2,
+    "TASK_header_format_failure": true,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "fallback_or_mixed"
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 18,
+    "worker_agents": [
+      "evidence"
+    ],
+    "tool_names": [
+      "search_proposal_evidence"
+    ],
+    "routing_or_source_coverage_failure": false,
+    "retrieval_tool_error": false,
+    "retrieved_source_count": 2,
+    "TASK_header_format_failure": true,
+    "synthesis_citation_gate_rejection": false,
+    "wrong_budget_label_generation": false,
+    "off_target_count_generation": false,
+    "transport_failure": false,
+    "provider_nonempty_and_stopped": true,
+    "output_origin": "fallback_or_mixed"
+  }
+]

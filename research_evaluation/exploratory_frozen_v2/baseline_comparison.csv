@@ -1,0 +1,5 @@
+variant,n,AI_correct,AI_incorrect,AI_unanswered,technical_unavailability,median_wall_ms,input_tokens_median,output_tokens_median,valid_reference_ids,reference_ids
+B1,8,2,2,4,0,615.5978000006144,121.0,28.5,0,0
+B2,8,2,2,4,0,1473.890900000697,2324.0,92.0,0,0
+B3,8,0,3,5,4,3842.829950000123,2063.5,109.5,16,16
+B4,8,1,2,5,4,3628.7975499999447,2063.5,109.5,17,17

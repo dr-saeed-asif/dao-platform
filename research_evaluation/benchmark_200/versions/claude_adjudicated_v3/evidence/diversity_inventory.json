@@ -1,0 +1,693 @@
+{
+  "checked_utc": "2026-11-09T01:00:27.987453+00:00",
+  "proposals": [
+    {
+      "id": "16dadecc-94cc-4fae-8089-921765854976",
+      "dao_id": "Community Clean-Up Initiative",
+      "title": "Community Clean-Up Initiative",
+      "previously_in_source_pool": true,
+      "documents": {
+        "dao_id": "Community Clean-Up Initiative",
+        "proposal_id": "16dadecc-94cc-4fae-8089-921765854976",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:d6697aa4e64de7a39ea3c9c29993701cc19ee63b172f0113756a73d91e6e96c2",
+            "filename": "short_project_proposal.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [
+          {
+            "sha256": "d6697aa4e64de7a39ea3c9c29993701cc19ee63b172f0113756a73d91e6e96c2",
+            "filename": "short_project_proposal.pdf",
+            "artefact_evidence_id": "artefact:sha256:d6697aa4e64de7a39ea3c9c29993701cc19ee63b172f0113756a73d91e6e96c2"
+          }
+        ],
+        "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae"
+      }
+    },
+    {
+      "id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+      "dao_id": "cyber-test-dao",
+      "title": "Improve members’ understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+      "previously_in_source_pool": true,
+      "documents": {
+        "dao_id": "cyber-test-dao",
+        "proposal_id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+            "filename": "CyberDAO_Community_Training_Proposal.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [
+          {
+            "sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+            "filename": "CyberDAO_Community_Training_Proposal.pdf",
+            "artefact_evidence_id": "artefact:sha256:a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa"
+          }
+        ],
+        "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae"
+      }
+    },
+    {
+      "id": "58ff79e0-ec57-4a7e-ba86-469c4b875052",
+      "dao_id": "Fund a security audit",
+      "title": "Fund a security audit",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "Fund a security audit",
+        "proposal_id": "58ff79e0-ec57-4a7e-ba86-469c4b875052",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "620bc74c-dde0-4532-9c4c-11e31b91983f",
+      "dao_id": "cyber-security-dao",
+      "title": "Fund Smart Contract Security Audit",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-security-dao",
+        "proposal_id": "620bc74c-dde0-4532-9c4c-11e31b91983f",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:865dfe99585cee188a6ead4be60bdfdf686a26d89f38a24a84b9fb868c7d1096",
+            "filename": "01_cyber-security-dao.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [
+          {
+            "sha256": "865dfe99585cee188a6ead4be60bdfdf686a26d89f38a24a84b9fb868c7d1096",
+            "filename": "01_cyber-security-dao.pdf",
+            "artefact_evidence_id": "artefact:sha256:865dfe99585cee188a6ead4be60bdfdf686a26d89f38a24a84b9fb868c7d1096"
+          }
+        ],
+        "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae"
+      }
+    },
+    {
+      "id": "a7fdaa7d-1a0b-4ab4-b23b-721c8144e744",
+      "dao_id": "Upgrade DAO Governance Voting System",
+      "title": "Upgrade DAO Governance Voting System",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "Upgrade DAO Governance Voting System",
+        "proposal_id": "a7fdaa7d-1a0b-4ab4-b23b-721c8144e744",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49",
+            "filename": "02_cyber-governance-dao.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [
+          {
+            "sha256": "f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49",
+            "filename": "02_cyber-governance-dao.pdf",
+            "artefact_evidence_id": "artefact:sha256:f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49"
+          }
+        ],
+        "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae"
+      }
+    },
+    {
+      "id": "ac3af957-4611-4995-8ff5-4fa0be44d0a8",
+      "dao_id": "Allocate Treasury Funds for AI Development",
+      "title": "Allocate Treasury Funds for AI Development",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "Allocate Treasury Funds for AI Development",
+        "proposal_id": "ac3af957-4611-4995-8ff5-4fa0be44d0a8",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:461f3cc03ca53a5b1ed14ee459e310b7fca1fee949db66f85abc9dcb1afd9749",
+            "filename": "03_cyber-ai-dao.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [
+          {
+            "sha256": "461f3cc03ca53a5b1ed14ee459e310b7fca1fee949db66f85abc9dcb1afd9749",
+            "filename": "03_cyber-ai-dao.pdf",
+            "artefact_evidence_id": "artefact:sha256:461f3cc03ca53a5b1ed14ee459e310b7fca1fee949db66f85abc9dcb1afd9749"
+          }
+        ],
+        "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae"
+      }
+    },
+    {
+      "id": "c0523e6d-ee70-4567-b804-745cd30c9e7a",
+      "dao_id": "Fund a security audit",
+      "title": "Fund a security audit",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "Fund a security audit",
+        "proposal_id": "c0523e6d-ee70-4567-b804-745cd30c9e7a",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:5e9930ce872b63e0e6a25f5b62a3b40ab2729fd3af859397eaf494646e28d9d8",
+            "filename": "CyberDAO_Dummy_Security_Audit_Proposal.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [
+          {
+            "sha256": "5e9930ce872b63e0e6a25f5b62a3b40ab2729fd3af859397eaf494646e28d9d8",
+            "filename": "CyberDAO_Dummy_Security_Audit_Proposal.pdf",
+            "artefact_evidence_id": "artefact:sha256:5e9930ce872b63e0e6a25f5b62a3b40ab2729fd3af859397eaf494646e28d9d8"
+          }
+        ],
+        "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae"
+      }
+    },
+    {
+      "id": "d29a8227-da76-4a40-80a8-33300e1c4f04",
+      "dao_id": "cyber-governance-dao",
+      "title": "Upgrade DAO Governance Voting System",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-governance-dao",
+        "proposal_id": "d29a8227-da76-4a40-80a8-33300e1c4f04",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49",
+            "filename": "02_cyber-governance-dao.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [
+          {
+            "sha256": "f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49",
+            "filename": "02_cyber-governance-dao.pdf",
+            "artefact_evidence_id": "artefact:sha256:f53d21c728199c993e0ae33118497784af8fc48f25b16a5360bd92a73864ef49"
+          }
+        ],
+        "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae"
+      }
+    },
+    {
+      "id": "d79ac7ba-c040-4e5e-9ee5-ebdbfa1d5a21",
+      "dao_id": "Allocate Treasury Funds for AI Development",
+      "title": "Allocate Treasury Funds for AI Development",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "Allocate Treasury Funds for AI Development",
+        "proposal_id": "d79ac7ba-c040-4e5e-9ee5-ebdbfa1d5a21",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:461f3cc03ca53a5b1ed14ee459e310b7fca1fee949db66f85abc9dcb1afd9749",
+            "filename": "03_cyber-ai-dao.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [
+          {
+            "sha256": "461f3cc03ca53a5b1ed14ee459e310b7fca1fee949db66f85abc9dcb1afd9749",
+            "filename": "03_cyber-ai-dao.pdf",
+            "artefact_evidence_id": "artefact:sha256:461f3cc03ca53a5b1ed14ee459e310b7fca1fee949db66f85abc9dcb1afd9749"
+          }
+        ],
+        "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae"
+      }
+    },
+    {
+      "id": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "dao_id": "cyber-dao-321",
+      "title": "CyberGovAI Governance Security and Transparency Pilot",
+      "previously_in_source_pool": true,
+      "documents": {
+        "dao_id": "cyber-dao-321",
+        "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+            "filename": "CyberGovAI_Pilot_Proposal.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [
+          {
+            "sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+            "filename": "CyberGovAI_Pilot_Proposal.pdf",
+            "artefact_evidence_id": "artefact:sha256:b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655"
+          }
+        ],
+        "profile_id": "profile-v2-fda7a3b1ca6544f0b7da3765a6ed5a135c92102cce3b0064304b6eb5927b7dae"
+      }
+    },
+    {
+      "id": "onchain-1",
+      "dao_id": "recovered-dao",
+      "title": "On-chain proposal #1",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "recovered-dao",
+        "proposal_id": "onchain-1",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-10",
+      "dao_id": "cyber-dao-10",
+      "title": "cyber-dao-10",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-dao-10",
+        "proposal_id": "onchain-10",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-11",
+      "dao_id": "cyber-dao-12",
+      "title": "title cyber-dao-12",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-dao-12",
+        "proposal_id": "onchain-11",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-12",
+      "dao_id": "cyber-dao-3",
+      "title": "Title",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-dao-3",
+        "proposal_id": "onchain-12",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-13",
+      "dao_id": "ai-context-live",
+      "title": "RGB Security and Governance Review",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "ai-context-live",
+        "proposal_id": "onchain-13",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:5728f26683da3046e58fbb349a8914bfeb0d3f86443c38baca38adaa0bee6955",
+            "filename": "RGB Blackpaper.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-14",
+      "dao_id": "traceforge project",
+      "title": "Funding require for traceforge project",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "traceforge project",
+        "proposal_id": "onchain-14",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-15",
+      "dao_id": "Validator Monitoring Infrastructure Upgrade",
+      "title": "Validator Monitoring Infrastructure Upgrade",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "Validator Monitoring Infrastructure Upgrade",
+        "proposal_id": "onchain-15",
+        "linked_artefacts": [
+          {
+            "evidence_id": "artefact:sha256:4508b8b14016f1bbab8edfe98d9dbf730def2e439601a5b7566303af35cdee91",
+            "filename": "validator-monitoring-upgrade.pdf",
+            "verification_status": "VERIFIED",
+            "lifecycle_state": "LINKED",
+            "status": "verified"
+          }
+        ],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-16",
+      "dao_id": "cyberdao",
+      "title": "Security Audit",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyberdao",
+        "proposal_id": "onchain-16",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-17",
+      "dao_id": "buildchain",
+      "title": "Website Upgrade",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "buildchain",
+        "proposal_id": "onchain-17",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-18",
+      "dao_id": "growdao",
+      "title": "Marketing Campaign",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "growdao",
+        "proposal_id": "onchain-18",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-19",
+      "dao_id": "devfund",
+      "title": "Developer Grant",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "devfund",
+        "proposal_id": "onchain-19",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-2",
+      "dao_id": "recovered-dao",
+      "title": "On-chain proposal #2",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "recovered-dao",
+        "proposal_id": "onchain-2",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-20",
+      "dao_id": "devfund",
+      "title": "Developer Grant",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "devfund",
+        "proposal_id": "onchain-20",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-21",
+      "dao_id": "cyberdao",
+      "title": "Security Audit",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyberdao",
+        "proposal_id": "onchain-21",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-22",
+      "dao_id": "buildchain",
+      "title": "Website Upgrade",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "buildchain",
+        "proposal_id": "onchain-22",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-23",
+      "dao_id": "buildchain",
+      "title": "Website Upgrade",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "buildchain",
+        "proposal_id": "onchain-23",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-24",
+      "dao_id": "growdao",
+      "title": "Marketing Campaign",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "growdao",
+        "proposal_id": "onchain-24",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-25",
+      "dao_id": "security-dao",
+      "title": "Smart Contract Security Audit",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "security-dao",
+        "proposal_id": "onchain-25",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-26",
+      "dao_id": "treasury-dao",
+      "title": "Establish Emergency Reserve",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "treasury-dao",
+        "proposal_id": "onchain-26",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-28",
+      "dao_id": "cyber-test",
+      "title": "Cyber Testing",
+      "previously_in_source_pool": true,
+      "documents": {
+        "dao_id": "cyber-test",
+        "proposal_id": "onchain-28",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-3",
+      "dao_id": "recovered-dao",
+      "title": "On-chain proposal #3",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "recovered-dao",
+        "proposal_id": "onchain-3",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-31",
+      "dao_id": "cyber-dao1234",
+      "title": "cyber",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-dao1234",
+        "proposal_id": "onchain-31",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-33",
+      "dao_id": "DAO proposal discovery",
+      "title": "governance evidence lookup",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "DAO proposal discovery",
+        "proposal_id": "onchain-33",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-35",
+      "dao_id": "cyber-History of Pakistan",
+      "title": "History of Pakistan",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-History of Pakistan",
+        "proposal_id": "onchain-35",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-4",
+      "dao_id": "recovered-dao",
+      "title": "On-chain proposal #4",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "recovered-dao",
+        "proposal_id": "onchain-4",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-5",
+      "dao_id": "recovered-dao",
+      "title": "On-chain proposal #5",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "recovered-dao",
+        "proposal_id": "onchain-5",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-6",
+      "dao_id": "cyber-dao-testing2",
+      "title": "cyber-dao-testing2",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-dao-testing2",
+        "proposal_id": "onchain-6",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-7",
+      "dao_id": "cyber-dao-3",
+      "title": "cyber-dao-3",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-dao-3",
+        "proposal_id": "onchain-7",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-8",
+      "dao_id": "cyber-dao-4",
+      "title": "cyber-dao-4",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-dao-4",
+        "proposal_id": "onchain-8",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    },
+    {
+      "id": "onchain-9",
+      "dao_id": "cyber-dao-05",
+      "title": "cyber-dao-05",
+      "previously_in_source_pool": false,
+      "documents": {
+        "dao_id": "cyber-dao-05",
+        "proposal_id": "onchain-9",
+        "linked_artefacts": [],
+        "indexed_documents": [],
+        "profile_id": null
+      }
+    }
+  ],
+  "scope": "All currently visible database proposals; only whitelisted public demo fields exported",
+  "errors": [],
+  "locally_available_original_pdfs": [
+    {
+      "filename": "CyberDAO_Community_Training_Proposal.pdf",
+      "sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "origin": "saved research PDFs"
+    },
+    {
+      "filename": "CyberGovAI_Pilot_Proposal.pdf",
+      "sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "origin": "saved research PDFs"
+    },
+    {
+      "filename": "CyberDAO_Community_Training_Proposal.pdf",
+      "sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+      "origin": "workspace original PDFs"
+    },
+    {
+      "filename": "CyberGovAI_Pilot_Proposal.pdf",
+      "sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+      "origin": "workspace original PDFs"
+    }
+  ],
+  "new_proposal_count": 36,
+  "human_review_status": "Inventory only; no new question or private-source publication approval inferred"
+}

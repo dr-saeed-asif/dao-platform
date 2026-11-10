@@ -1,0 +1,133 @@
+diff --git a/app/business/agents/planning.py b/app/business/agents/planning.py
+index a7b7bd2..a080d3a 100644
+--- a/app/business/agents/planning.py
++++ b/app/business/agents/planning.py
+@@ -4,7 +4,7 @@ import re
+ 
+ from .models import AgentName, PlannedQuestion, QuestionPlanItem
+ from .quality import split_questions
+-from .routing import resolve_agents
++from .routing import MAX_WORKERS_PER_TASK, resolve_agents
+ 
+ DEPENDENCY_MARKERS = re.compile(
+     r"\b(based on (?:that|the previous)|previous answer|above|former|latter|"
+@@ -39,13 +39,20 @@ def plan_questions(value: str | list[str],
+                 raise ValueError("Question dependencies must refer to earlier questions.")
+             agent = INTENT_AGENT[item.intent]
+             dependency = [f"q{number}" for number in item.depends_on]
+-        # A validated semantic plan is authoritative: the server only checks that the proposed specialists
+-        # are legal for the intent. Regex selection (select_agents) is the legacy path for unplanned input.
++        # Semantic routing remains the default. Explicit source requirements are a
++        # coverage floor, not a grant of tool access; worker scope guards still apply.
+         dropped: list[str] = []
+         if question_plan is not None:
+             agents, dropped = resolve_agents(item.intent, list(item.agents))
+         else:
+             agents = select_agents(question, agent)
++        required = explicit_source_agents(question)
++        if any(source not in agents for source in required):
++            merged = list(dict.fromkeys(required + agents))
++            agents = merged[:MAX_WORKERS_PER_TASK]
++            dropped.extend(merged[MAX_WORKERS_PER_TASK:])
++            if agent not in agents:
++                agent = agents[0]
+         plans.append(PlannedQuestion(question_id=f"q{index}", order=index,
+                                      question=question, agent=agent,
+                                      depends_on=dependency,
+@@ -53,6 +60,37 @@ def plan_questions(value: str | list[str],
+     return plans
+ 
+ 
++def explicit_source_agents(question: str) -> list[AgentName]:
++    """Honor unambiguous source requests even when the model picks the wrong intent.
++
++    This deliberately does not infer sources for open-ended analysis or turn a
++    proposal search topic into a live chain read.
++    """
++    text = " ".join(question.lower().split())
++    document = bool(re.search(r"\b(pdf|document|attachment)\b", text))
++    if document and re.search(r"\b(only|solely|exclusively)\b.{0,50}\b(pdf|document|attachment)\b", text):
++        return ["evidence"]
++    discovery = bool(re.search(r"\b(list|find|search|count|how many)\b.*\bproposals\b", text))
++    if discovery and not document and not re.search(r"\b(verify|compare|reconcile)\b", text):
++        return []
++    database = bool(re.search(r"\b(database|stored|indexed|off[ -]?chain)\b", text))
++    governance = bool(re.search(r"\b(votes?|voting|members?|assignments?|quorum)\b", text))
++    metadata = database and not governance and bool(re.search(
++        r"\b(identifier|id|title|purpose|description|status|start|end)\b", text))
++    required: list[AgentName] = ["evidence"] if document else []
++    if database and governance:
++        required.append("governance")
++    elif metadata:
++        required.append("proposal")
++    # An ID stored in SQL does not itself request a chain read. Other metadata,
++    # such as status, can still be explicitly compared with live chain state.
++    stored_identifier = metadata and bool(re.search(r"\b(identifier|id)\b", text)) and not re.search(
++        r"\b(verify|compare|reconcile)\b", text)
++    if not stored_identifier and re.search(r"\b(on[ -]?chain|blockchain)\b", text):
++        required.append("blockchain")
++    return required
++
++
+ def classify_intent(question: str) -> AgentName:
+     text = " ".join(question.lower().split())
+     if re.search(r"\b(blockchain|on[ -]?chain|rpc|transactions?|tx hashes?|block numbers?|contracts?|ledger|discrepanc(?:y|ies)|mismatch(?:es)?|verify.*chain)\b", text):
+diff --git a/app/business/agents/quality.py b/app/business/agents/quality.py
+index b04d0eb..f836bf8 100644
+--- a/app/business/agents/quality.py
++++ b/app/business/agents/quality.py
+@@ -13,10 +13,16 @@ def split_questions(text: str) -> list[str]:
+ 
+ def verify_citations(answer: str, evidence: list[dict]) -> dict:
+     cited = set(re.findall(r"\[((?:D|G)\d+)\]", answer))
++    # A valid reference must not hide another malformed or unsupported marker.
++    # Ignore ordinary bracketed prose/numbers, but validate citation-like tokens.
++    malformed = {token for token in re.findall(r"\[([^\]\n]*)\]", answer)
++                 if re.search(r"\b[A-Za-z]\s*\d+\b", token)
++                 and not re.fullmatch(r"[DG]\d+", token)}
+     available = {item["source_id"] for item in evidence if item.get("source_id")}
+     is_abstention = answer.strip() == ABSTENTION
+     return {
+-        "valid": is_abstention or (bool(cited) and cited <= available),
++        "valid": not malformed and (is_abstention or (bool(cited) and cited <= available)),
+         "cited": sorted(cited),
+         "unknown": sorted(cited - available),
++        "malformed": sorted(malformed),
+     }
+diff --git a/app/business/agents/synthesis.py b/app/business/agents/synthesis.py
+index fe8c757..1fb78b0 100644
+--- a/app/business/agents/synthesis.py
++++ b/app/business/agents/synthesis.py
+@@ -175,6 +175,12 @@ async def synthesize(original: str, results: list[QuestionResult], ollama, model
+             writer = getattr(ollama, 'synthesize', ollama.chat)
+             answer, latency, tokens = await writer(instructions, evidence, model=model)
+         covered = re.findall(r"(?im)^[#* \t]*TASK\s+(q\d+)\s*:?", answer)
++        # A single task has no section-assignment ambiguity. Accept its body
++        # without a transport header, but retain all citation/currency checks.
++        # Multiple tasks, wrong IDs and duplicate headers must still fail closed.
++        if not covered and len(task_ids) == 1 and answer.strip():
++            answer = f"TASK {task_ids[0]}:\n{answer}"
++            covered = task_ids
+         if covered != task_ids:
+             raise ValueError("Final answer omitted or duplicated a planned task")
+         generated_answer = answer
+diff --git a/tests/test_question_planner.py b/tests/test_question_planner.py
+index 4886058..6eb6f57 100644
+--- a/tests/test_question_planner.py
++++ b/tests/test_question_planner.py
+@@ -139,12 +139,13 @@ class SemanticRoutingTests(unittest.TestCase):
+         self.assertEqual(routed[0].agents, ["research"])
+         self.assertEqual(routed[0].dropped_agents, ["blockchain"])
+ 
+-    def test_question_with_pdf_and_vote_words_is_not_rerouted_by_keywords(self):
++    def test_explicit_pdf_source_is_required_even_with_voting_intent(self):
+         from app.business.agents.models import QuestionPlanItem
+         from app.business.agents.planning import plan_questions
+         q = "How many votes does the PDF mention?"
+         routed = plan_questions([q], [QuestionPlanItem(question=q, intent="voting")])
+-        self.assertEqual(routed[0].agents, ["governance"])      # regex select_agents would have added evidence
++        # Legal intent alone cannot satisfy an explicit document-source request.
++        self.assertEqual(routed[0].agents, ["evidence", "governance"])
+ 
+     def test_budget_expression_is_one_task_with_numbers_preserved(self):
+         from app.business.agents.models import QuestionPlanItem

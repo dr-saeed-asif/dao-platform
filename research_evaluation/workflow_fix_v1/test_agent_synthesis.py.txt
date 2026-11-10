@@ -1,0 +1,15 @@
+test_missing_database_comparison_does_not_hide_chain_counts (test_agent_synthesis.ChainContextTests.test_missing_database_comparison_does_not_hide_chain_counts) ... ok
+test_missing_task_section_is_rejected (test_agent_synthesis.CoverageTests.test_missing_task_section_is_rejected) ... ok
+test_currency_guard_rejects_invented_amounts_even_with_valid_citation (test_agent_synthesis.SynthesisTests.test_currency_guard_rejects_invented_amounts_even_with_valid_citation) ... ok
+test_failed_specialist_preserves_supported_answer_and_failure_notice (test_agent_synthesis.SynthesisTests.test_failed_specialist_preserves_supported_answer_and_failure_notice) ... ok
+test_invalid_synthesis_falls_back_to_supported_findings (test_agent_synthesis.SynthesisTests.test_invalid_synthesis_falls_back_to_supported_findings) ... ok
+test_multiple_specialists_get_one_final_answer (test_agent_synthesis.SynthesisTests.test_multiple_specialists_get_one_final_answer) ... ok
+test_single_worker_also_passes_through_synthesis_agent (test_agent_synthesis.SynthesisTests.test_single_worker_also_passes_through_synthesis_agent) ... ok
+test_source_collection_runs_two_workers_but_only_one_final_generation (test_agent_synthesis.SynthesisTests.test_source_collection_runs_two_workers_but_only_one_final_generation) ... ok
+test_tool_results_are_reused_across_questions (test_agent_synthesis.SynthesisTests.test_tool_results_are_reused_across_questions) ... ok
+test_worker_citation_ids_are_unique_and_answers_remapped (test_agent_synthesis.SynthesisTests.test_worker_citation_ids_are_unique_and_answers_remapped) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.276s
+
+OK

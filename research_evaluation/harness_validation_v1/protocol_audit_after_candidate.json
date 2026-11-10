@@ -1,0 +1,24 @@
+{
+  "prior_audit_sha256": "28b27f294952f77b1afb37407884557b5b20427c5d7443a1287ffc8ec40cd12a",
+  "candidate_comparison_scope_parity": "Observed positive/negative backend test passed",
+  "candidate_tool_error_transparency": "Observed structured chunk_not_found after static checks",
+  "post_fix_trial_kept_separate": true,
+  "real_model_observations_total": 9,
+  "fixed_seed_bitwise_determinism": "Not established; one identical planner request pair differed",
+  "decision": {
+    "development_smoke": "GO completed",
+    "larger_exploratory": "NO-GO until new cohort evidence freeze and prospective scoring/repetition protocol",
+    "confirmatory": "NO-GO: human adjudication and confirmatory evidence-freeze gates unmet",
+    "real_model_observations": 9,
+    "original_balanced_diagnostic_observations": 8,
+    "separate_affected_retests": 1,
+    "original_model_observations_excluded": 0,
+    "total_setup_launch_failures": 3,
+    "setup_failures_model_calls": 0,
+    "remaining_unexposed_candidates": 133,
+    "candidate_scope_preflight_passed": true,
+    "candidate_error_transparency_tests_passed": 2,
+    "earlier_candidate_scope_fixture_tests_passed": 5,
+    "comprehensive_tool_permission_audit": false
+  }
+}

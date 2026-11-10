@@ -1,0 +1,12 @@
+{
+  "fixture_receipt_status": "0x0",
+  "actual_gateway_result_status": "CONFIRMED",
+  "in_memory_assignment_rows": 1,
+  "recorded_operation": "ASSIGN_MEMBERS",
+  "reverted_receipt_rejected": false,
+  "external_requests": 0,
+  "production_database_writes": 0,
+  "source_sha256": "d314d8c7addf1e9b44afffdca7431769d97f670fad3f7ec9f06c3c1c40c59a42",
+  "method": "Actual source gateway and existing built AssignMembersUseCase with injected failed receipt and in-memory repositories",
+  "attribution_limit": "Confirms an executable write mechanism. Historical request/import identity requires audit logs."
+}

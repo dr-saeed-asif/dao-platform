@@ -1,0 +1,19 @@
+id,variant,claim,returned_evidence_support,authoritative_truth,source,reviewer
+DB-006,B1,Local UUID is the linked on-chain identifier,unsupported,contradicted,Frozen database links on-chain ID 38,same AI research assistant
+DB-006,B2,Local UUID is the linked on-chain identifier,unsupported,contradicted,Frozen database links on-chain ID 38,same AI research assistant
+DB-016,B1,Local UUID is the linked on-chain identifier,unsupported,contradicted,Frozen database links on-chain ID 39,same AI research assistant
+DB-016,B2,Local UUID is the linked on-chain identifier,unsupported,contradicted,Frozen database links on-chain ID 39,same AI research assistant
+MS-002,B3,EUR 6000 is allocated to governance dashboard improvements,contradicted,contradicted,D1 budget table allocates EUR 6000 to independent security review,same AI research assistant
+MS-002,B3,EUR 3000 is allocated to AI evaluation,contradicted,contradicted,D1 budget table allocates EUR 3000 to governance dashboard improvements,same AI research assistant
+MS-002,B4,EUR 6000 is allocated to governance dashboard improvements,contradicted,contradicted,D1 budget table allocates EUR 6000 to independent security review,same AI research assistant
+MS-002,B4,EUR 3000 is allocated to AI evaluation,contradicted,contradicted,D1 budget table allocates EUR 3000 to governance dashboard improvements,same AI research assistant
+MS-002,B3,Contingency is EUR 1000,supported,supported,D1 budget table,same AI research assistant
+MS-002,B4,Contingency is EUR 1000,supported,supported,D1 budget table,same AI research assistant
+MS-026,B3,Selected DAO has one proposal,supported,supported,G1 DAO proposal count; off-target for requested votes and budget,same AI research assistant
+MS-026,B4,Selected DAO has one proposal,supported,supported,G1 DAO proposal count; off-target for requested votes and budget,same AI research assistant
+PDF-006,B4,Total proposed budget is EUR 12000,supported,supported,D1 budget table,same AI research assistant
+PDF-006,B4,Independent security review is EUR 6000,supported,supported,D1 budget table,same AI research assistant
+PDF-006,B4,Governance dashboard improvements are EUR 3000,supported,supported,D1 budget table,same AI research assistant
+PDF-006,B4,AI evaluation and evidence checks are EUR 2000,supported,supported,D1 budget table,same AI research assistant
+PDF-006,B4,Contingency is EUR 1000,supported,supported,D1 budget table,same AI research assistant
+PDF-006,B4,Allocations sum to EUR 12000,supported,supported,D1 arithmetic sum,same AI research assistant

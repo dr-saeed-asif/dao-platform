@@ -1,0 +1,131 @@
+{
+  "checked_utc": "2026-11-09T00:59:39.130Z",
+  "method": "Direct eth_call at saved block; current eth_chainId plus matching historical block hash establishes network identity",
+  "networkError": null,
+  "results": [
+    {
+      "label": "pilot",
+      "block": "20255936",
+      "network_chain_id": "1212",
+      "chain_id_matches": true,
+      "block_hash_matches": true,
+      "field_matches": {
+        "startsAt": true,
+        "endsAt": true,
+        "optionCount": true,
+        "winningOption": true,
+        "assignedMemberCount": true,
+        "voteCount": true,
+        "proposalType": true,
+        "cancelled": true,
+        "finalized": true,
+        "tied": true
+      },
+      "observations": {
+        "startsAt": "1793002500",
+        "endsAt": "1793006100",
+        "optionCount": "3",
+        "winningOption": "0",
+        "assignedMemberCount": "10",
+        "voteCount": "0",
+        "proposalType": "0",
+        "cancelled": false,
+        "finalized": false,
+        "tied": false
+      }
+    },
+    {
+      "label": "training",
+      "block": "20255938",
+      "network_chain_id": "1212",
+      "chain_id_matches": true,
+      "block_hash_matches": true,
+      "field_matches": {
+        "startsAt": true,
+        "endsAt": true,
+        "optionCount": true,
+        "winningOption": true,
+        "assignedMemberCount": true,
+        "voteCount": true,
+        "proposalType": true,
+        "cancelled": true,
+        "finalized": true,
+        "tied": true
+      },
+      "observations": {
+        "startsAt": "1793013420",
+        "endsAt": "1793017320",
+        "optionCount": "3",
+        "winningOption": "0",
+        "assignedMemberCount": "10",
+        "voteCount": "2",
+        "proposalType": "0",
+        "cancelled": false,
+        "finalized": true,
+        "tied": false
+      }
+    },
+    {
+      "label": "cleanup",
+      "block": "20255939",
+      "network_chain_id": "1212",
+      "chain_id_matches": true,
+      "block_hash_matches": true,
+      "field_matches": {
+        "startsAt": true,
+        "endsAt": true,
+        "optionCount": true,
+        "winningOption": true,
+        "assignedMemberCount": true,
+        "voteCount": true,
+        "proposalType": true,
+        "cancelled": true,
+        "finalized": true,
+        "tied": true
+      },
+      "observations": {
+        "startsAt": "1792578360",
+        "endsAt": "1792581960",
+        "optionCount": "3",
+        "winningOption": "0",
+        "assignedMemberCount": "9",
+        "voteCount": "0",
+        "proposalType": "0",
+        "cancelled": false,
+        "finalized": false,
+        "tied": false
+      }
+    },
+    {
+      "label": "testing",
+      "block": "20255941",
+      "network_chain_id": "1212",
+      "chain_id_matches": true,
+      "block_hash_matches": true,
+      "field_matches": {
+        "startsAt": true,
+        "endsAt": true,
+        "optionCount": true,
+        "winningOption": true,
+        "assignedMemberCount": true,
+        "voteCount": true,
+        "proposalType": true,
+        "cancelled": true,
+        "finalized": true,
+        "tied": true
+      },
+      "observations": {
+        "startsAt": "1791516180",
+        "endsAt": "1791516600",
+        "optionCount": "3",
+        "winningOption": "0",
+        "assignedMemberCount": "0",
+        "voteCount": "0",
+        "proposalType": "0",
+        "cancelled": false,
+        "finalized": false,
+        "tied": false
+      }
+    }
+  ]
+}

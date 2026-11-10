@@ -1,0 +1,57 @@
+{
+  "raw_reference": "responses.jsonl:8",
+  "status": "failed",
+  "warning": [
+    "Tool loop limit"
+  ],
+  "chat_calls": 6,
+  "failed_tool_calls": [
+    {
+      "name": "get_proposal_document_chunk",
+      "arguments": {
+        "dao_id": "cyber-test-dao",
+        "proposal_id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+        "evidence_id": "artefact:sha256:a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+        "chunk_key": "section-4"
+      },
+      "status": "failed",
+      "ms": 565.3800000000047
+    },
+    {
+      "name": "get_proposal_document_chunk",
+      "arguments": {
+        "dao_id": "cyber-test-dao",
+        "proposal_id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+        "evidence_id": "artefact:sha256:a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+        "chunk_key": "section-3"
+      },
+      "status": "failed",
+      "ms": 598.2187000045087
+    },
+    {
+      "name": "get_proposal_document_chunk",
+      "arguments": {
+        "dao_id": "cyber-test-dao",
+        "proposal_id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+        "evidence_id": "artefact:sha256:a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+        "chunk_key": "section-2"
+      },
+      "status": "failed",
+      "ms": 581.5268000005744
+    },
+    {
+      "name": "get_proposal_document_chunk",
+      "arguments": {
+        "dao_id": "cyber-test-dao",
+        "proposal_id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+        "evidence_id": "artefact:sha256:a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+        "chunk_key": "section-1"
+      },
+      "status": "failed",
+      "ms": 577.0208000030834
+    }
+  ],
+  "underlying_failure_body_preserved": false,
+  "diagnosis": "Four chunk requests failed before the six-turn limit. The wrapper replaced business errors with exception types. Exact backend failure codes were not retained; do not classify this as solely a model failure.",
+  "candidate": "single_agent_candidate_v3.py preserves business error replies and permits same-DAO comparison IDs. Original failed trial remains included."
+}

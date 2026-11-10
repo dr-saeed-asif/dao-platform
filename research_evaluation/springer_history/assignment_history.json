@@ -1,0 +1,32 @@
+{
+  "checked_utc": "2026-11-09T12:40:06.401Z",
+  "proposal_id": "d79ac7ba-c040-4e5e-9ee5-ebdbfa1d5a21",
+  "on_chain_id": "32",
+  "from_creation_block": "19347494",
+  "pinned_block": "20277566",
+  "pinned_hash": "0x6b84a7cbd59c3c7faebed6714b88444c253c530e51ec8775c1237e7ea7ea28bf",
+  "ranges_completed": 931,
+  "full_creation_to_pin_scan": true,
+  "event_counts": {
+    "MemberAssigned": 9,
+    "MemberUnassigned": 0
+  },
+  "reconstructed_assigned_members": 9,
+  "contract_assigned_count": 9,
+  "sql_active_rows": 10,
+  "discrepancies": [
+    {
+      "contract_isAssigned": false,
+      "last_chain_membership_event": null,
+      "indexed_membership_events": [],
+      "latest_evidence_present": false,
+      "effective_from": "2026-10-18T15:47:07.682Z",
+      "updated_at": "2026-10-18T15:47:07.682Z",
+      "sql_transaction_reference_present": true,
+      "transaction_receipt_found": true,
+      "receipt_status": "0x0"
+    }
+  ],
+  "privacy": "Addresses and member transaction hashes omitted",
+  "limitation": "Current SQL state and creation-to-pin chain logs; no historical SQL row version or indexer checkpoint guarantee."
+}

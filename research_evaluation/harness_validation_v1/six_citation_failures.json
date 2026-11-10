@@ -1,0 +1,98 @@
+[
+  {
+    "id": "DB-016",
+    "variant": "B3",
+    "raw_reference": "exploratory_frozen_v2/responses.jsonl:3",
+    "writer_text": "The available evidence does not establish that. The provided sources, D1 and D2, do not specify a unique on-chain proposal identifier linked in the database. Instead, they reference synthetic demonstration data for a live software project, which is unrelated to the training proposal's details.",
+    "writer_sha256": "48f6d95f7e0a306e40284af03b52aba202a9c97ef4bb70e65ba04e0b59b2933d",
+    "bracketed_citation_count": 0,
+    "bare_source_ids": [
+      "D1",
+      "D2"
+    ],
+    "returned_source_count": 2,
+    "citation_failure": "bare source IDs instead of required bracket syntax",
+    "evidence_diagnosis": "Requested SQL metadata absent from returned PDF evidence because of routing",
+    "model_diagnosis": "Nonempty completed generation omitted required citation framing",
+    "transport_failure": false,
+    "review_status": "AI-assisted source/trace classification; human adjudication pending"
+  },
+  {
+    "id": "DB-016",
+    "variant": "B4",
+    "raw_reference": "exploratory_frozen_v2/responses.jsonl:4",
+    "writer_text": "The available evidence does not establish that. The provided sources, D1 and D2, do not specify a unique on-chain proposal identifier linked in the database. Instead, they reference synthetic demonstration data for a live software project, which is unrelated to the training proposal's details.",
+    "writer_sha256": "48f6d95f7e0a306e40284af03b52aba202a9c97ef4bb70e65ba04e0b59b2933d",
+    "bracketed_citation_count": 0,
+    "bare_source_ids": [
+      "D1",
+      "D2"
+    ],
+    "returned_source_count": 2,
+    "citation_failure": "bare source IDs instead of required bracket syntax",
+    "evidence_diagnosis": "Requested SQL metadata absent from returned PDF evidence because of routing",
+    "model_diagnosis": "Nonempty completed generation omitted required citation framing",
+    "transport_failure": false,
+    "review_status": "AI-assisted source/trace classification; human adjudication pending"
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B3",
+    "raw_reference": "exploratory_frozen_v2/responses.jsonl:15",
+    "writer_text": "The available evidence establishes that no supplier has been appointed and no payment recipient specified. The proposal does not provide information about a specific legal name for the appointed supplier. Therefore, it is not possible to determine the legal name of the supplier from the provided evidence.",
+    "writer_sha256": "b2cbce2dce3723a4341a0b61d121481423580cd06f0907f8aad5979f2ca6c8fa",
+    "bracketed_citation_count": 0,
+    "bare_source_ids": [],
+    "returned_source_count": 3,
+    "citation_failure": "citations absent",
+    "evidence_diagnosis": "Returned passages support a bounded unknown or explicit absence; requested positive fact is not established",
+    "model_diagnosis": "Nonempty completed generation omitted required citation framing",
+    "transport_failure": false,
+    "review_status": "AI-assisted source/trace classification; human adjudication pending"
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B4",
+    "raw_reference": "exploratory_frozen_v2/responses.jsonl:16",
+    "writer_text": "The available evidence establishes that no supplier has been appointed and no payment recipient specified. The proposal does not provide information about a specific legal name for the appointed supplier. Therefore, it is not possible to determine the legal name of the supplier from the provided evidence.",
+    "writer_sha256": "b2cbce2dce3723a4341a0b61d121481423580cd06f0907f8aad5979f2ca6c8fa",
+    "bracketed_citation_count": 0,
+    "bare_source_ids": [],
+    "returned_source_count": 3,
+    "citation_failure": "citations absent",
+    "evidence_diagnosis": "Returned passages support a bounded unknown or explicit absence; requested positive fact is not established",
+    "model_diagnosis": "Nonempty completed generation omitted required citation framing",
+    "transport_failure": false,
+    "review_status": "AI-assisted source/trace classification; human adjudication pending"
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B4",
+    "raw_reference": "exploratory_frozen_v2/responses.jsonl:17",
+    "writer_text": "The available evidence does not establish that. The provided sources do not provide any actual attendance count for the demonstration.",
+    "writer_sha256": "2d8b8e12b113c845067e49c7b44a9b6f4d3d8a6d66507e8b2e4bd9f39b35d2e4",
+    "bracketed_citation_count": 0,
+    "bare_source_ids": [],
+    "returned_source_count": 2,
+    "citation_failure": "citations absent",
+    "evidence_diagnosis": "Returned passages support a bounded unknown or explicit absence; requested positive fact is not established",
+    "model_diagnosis": "Nonempty completed generation omitted required citation framing",
+    "transport_failure": false,
+    "review_status": "AI-assisted source/trace classification; human adjudication pending"
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B3",
+    "raw_reference": "exploratory_frozen_v2/responses.jsonl:18",
+    "writer_text": "The available evidence does not establish that. The provided sources do not provide any actual attendance count for the demonstration.",
+    "writer_sha256": "2d8b8e12b113c845067e49c7b44a9b6f4d3d8a6d66507e8b2e4bd9f39b35d2e4",
+    "bracketed_citation_count": 0,
+    "bare_source_ids": [],
+    "returned_source_count": 2,
+    "citation_failure": "citations absent",
+    "evidence_diagnosis": "Returned passages support a bounded unknown or explicit absence; requested positive fact is not established",
+    "model_diagnosis": "Nonempty completed generation omitted required citation framing",
+    "transport_failure": false,
+    "review_status": "AI-assisted source/trace classification; human adjudication pending"
+  }
+]

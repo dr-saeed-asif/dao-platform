@@ -1,0 +1,17 @@
+test_dependent_question_runs_after_and_receives_previous_answer (test_agent_workflow.AgentWorkflowTests.test_dependent_question_runs_after_and_receives_previous_answer) ... ok
+test_independent_questions_run_with_configured_concurrency (test_agent_workflow.AgentWorkflowTests.test_independent_questions_run_with_configured_concurrency) ... ok
+test_intent_routing_covers_all_five_agents (test_agent_workflow.AgentWorkflowTests.test_intent_routing_covers_all_five_agents) ... ok
+test_invalid_citations_retry_then_terminate (test_agent_workflow.AgentWorkflowTests.test_invalid_citations_retry_then_terminate) ... ok
+test_partial_failure_does_not_discard_other_results (test_agent_workflow.AgentWorkflowTests.test_partial_failure_does_not_discard_other_results) ... ok
+test_single_question_returns_verified_structured_result (test_agent_workflow.AgentWorkflowTests.test_single_question_returns_verified_structured_result) ... ok
+test_structured_plan_routes_intents_and_dependencies (test_agent_workflow.AgentWorkflowTests.test_structured_plan_routes_intents_and_dependencies) ... ok
+test_count_with_selected_proposal_uses_dao_count (test_agent_workflow.DaoResearchScopeTests.test_count_with_selected_proposal_uses_dao_count) ... ok
+test_count_zero_is_not_missing_evidence (test_agent_workflow.DaoResearchScopeTests.test_count_zero_is_not_missing_evidence) ... ok
+test_list_with_selected_proposal_uses_dao_list (test_agent_workflow.DaoResearchScopeTests.test_list_with_selected_proposal_uses_dao_list) ... ok
+test_false_abstention_review_is_bounded_and_cited (test_agent_workflow.GroundingReviewTests.test_false_abstention_review_is_bounded_and_cited) ... ok
+test_unrelated_evidence_can_still_abstain (test_agent_workflow.GroundingReviewTests.test_unrelated_evidence_can_still_abstain) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.426s
+
+OK

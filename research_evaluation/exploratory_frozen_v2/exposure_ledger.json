@@ -1,0 +1,15 @@
+{
+  "previous_reserved": 141,
+  "newly_exposed_ids": [
+    "DB-006",
+    "DB-016",
+    "MS-002",
+    "MS-026",
+    "PDF-006",
+    "PDF-026",
+    "UN-R001",
+    "UN-R018"
+  ],
+  "remaining": 133,
+  "scope": "Both valid and harness-invalid model prompts expose a question; original v3 files preserved"
+}

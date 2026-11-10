@@ -1,0 +1,17 @@
+test_multi_task_headerless_answer_is_not_silently_assigned (test_agent_failure_regressions.SingleTaskFormatTests.test_multi_task_headerless_answer_is_not_silently_assigned) ... ok
+test_single_headerless_answer_is_validated_and_used (test_agent_failure_regressions.SingleTaskFormatTests.test_single_headerless_answer_is_validated_and_used) ... ok
+test_single_headerless_invalid_citation_still_rejected (test_agent_failure_regressions.SingleTaskFormatTests.test_single_headerless_invalid_citation_still_rejected) ... ok
+test_single_headerless_invented_currency_still_rejected (test_agent_failure_regressions.SingleTaskFormatTests.test_single_headerless_invented_currency_still_rejected) ... ok
+test_wrong_or_duplicate_headers_remain_rejected (test_agent_failure_regressions.SingleTaskFormatTests.test_wrong_or_duplicate_headers_remain_rejected) ... ok
+test_database_identifier_is_not_a_chain_state_request (test_agent_failure_regressions.SourceCoverageTests.test_database_identifier_is_not_a_chain_state_request) ... ok
+test_explicit_three_source_request_cannot_omit_required_workers (test_agent_failure_regressions.SourceCoverageTests.test_explicit_three_source_request_cannot_omit_required_workers) ... ok
+test_pdf_only_question_does_not_add_live_chain_reads (test_agent_failure_regressions.SourceCoverageTests.test_pdf_only_question_does_not_add_live_chain_reads) ... ok
+test_proposal_search_topic_is_not_a_live_chain_request (test_agent_failure_regressions.SourceCoverageTests.test_proposal_search_topic_is_not_a_live_chain_request) ... ok
+test_stored_status_comparison_still_requires_the_chain (test_agent_failure_regressions.SourceCoverageTests.test_stored_status_comparison_still_requires_the_chain) ... ok
+test_valid_semantic_routing_without_explicit_source_constraints_is_preserved (test_agent_failure_regressions.SourceCoverageTests.test_valid_semantic_routing_without_explicit_source_constraints_is_preserved) ... ok
+test_wrong_research_intent_still_collects_requested_sources (test_agent_failure_regressions.SourceCoverageTests.test_wrong_research_intent_still_collects_requested_sources) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.022s
+
+OK

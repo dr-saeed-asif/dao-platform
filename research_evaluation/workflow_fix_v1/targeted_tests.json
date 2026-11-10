@@ -1,0 +1,39 @@
+{
+  "final_distinct_tests": 61,
+  "results": [
+    {
+      "log": "guard_edge_case_regressions.txt",
+      "tests": 12,
+      "result": "pass"
+    },
+    {
+      "log": "test_agent_synthesis.py.txt",
+      "tests": 10,
+      "result": "pass"
+    },
+    {
+      "log": "test_agent_routing_requirements.py.txt",
+      "tests": 9,
+      "result": "pass"
+    },
+    {
+      "log": "planner_contract_post_fix.txt",
+      "tests": 15,
+      "result": "pass"
+    },
+    {
+      "log": "test_agent_workflow.py.txt",
+      "tests": 12,
+      "result": "pass"
+    },
+    {
+      "log": "tool_permission_regressions.txt",
+      "tests": 3,
+      "result": "pass"
+    }
+  ],
+  "pre_fix_failure_entries": 5,
+  "pre_fix_test_methods": 11,
+  "initial_related_suite_failure": "One legacy planner assertion required governance alone for an explicitly PDF-sourced question. Original test and failed log retained; revised assertion requires evidence plus governance.",
+  "rerun_scope": "New regression suite rerun after added status-comparison edge case; only planner suite rerun after updating its obsolete contract assertion."
+}

@@ -1,0 +1,11 @@
+{
+  "available_relevant_table_names": [
+    "indexer_checkpoints",
+    "kysely_migration",
+    "kysely_migration_lock"
+  ],
+  "assignment_custom_triggers": [],
+  "pgaudit_configured": false,
+  "scope": "Catalog availability only; no reconstructed historical row versions or HTTP request trace",
+  "writes": 0
+}

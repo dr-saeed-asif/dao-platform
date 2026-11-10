@@ -1,0 +1,13 @@
+{
+  "file": "single_agent_candidate_v2.py",
+  "sha256": "6413c4df81f989fedbcb33b7c3ed421187ab4047b3457b98df697208bc5b8d06",
+  "change": "Removes selected-proposal-only restriction for comparison_a/comparison_b; unchanged backend validates DAO ownership",
+  "actual_parameter_names": [
+    "proposal_a",
+    "proposal_b"
+  ],
+  "static_tests_passed": 5,
+  "real_model_runs_with_candidate": 0,
+  "required_before_larger_run": "Positive same-DAO multi-proposal backend preflight and affected development smoke",
+  "production_code_changed": false
+}

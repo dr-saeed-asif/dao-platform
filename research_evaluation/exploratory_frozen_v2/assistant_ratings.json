@@ -1,0 +1,55 @@
+{
+  "reviewer": "Same research assistant, AI-assisted source inspection; independent human adjudication pending",
+  "scoring_status": "Post-hoc descriptive rubric application; not a blinded or preregistered assessment",
+  "policy": "Correct requires the requested facts or a safe decline on a PDF-bounded unknown, with no material false assertion. Missing requested answers are unanswered. Wrong identifiers, wrong allocation labels or false database absence claims are incorrect. Citation grounding is scored separately. A technical fallback does not count as semantic abstention.",
+  "ratings": {
+    "DB-006": {
+      "B1": ["incorrect", "none", "Local UUID substituted for on-chain ID 38"],
+      "B2": ["incorrect", "none", "Local UUID substituted for on-chain ID 38"],
+      "B3": ["incorrect", "false_abstention", "Denies a linked identifier while the database links 38; inspected only PDF sources"],
+      "B4": ["unanswered", "false_abstention", "Bounded missing-evidence response omits the linked database ID"]
+    },
+    "DB-016": {
+      "B1": ["incorrect", "none", "Local UUID substituted for on-chain ID 39"],
+      "B2": ["incorrect", "none", "Local UUID substituted for on-chain ID 39"],
+      "B3": ["unanswered", "technical_unavailability", "Fallback has no identifier answer"],
+      "B4": ["unanswered", "technical_unavailability", "Fallback has no identifier answer"]
+    },
+    "PDF-006": {
+      "B1": ["unanswered", "false_abstention", "No security allocation supplied"],
+      "B2": ["unanswered", "false_abstention", "No security allocation supplied"],
+      "B3": ["unanswered", "false_abstention", "Known EUR 6000 allocation is not answered"],
+      "B4": ["correct", "none", "Cited fallback gives EUR 6000 security review and correct supporting allocations"]
+    },
+    "PDF-026": {
+      "B1": ["unanswered", "false_abstention", "No workshop allocation supplied"],
+      "B2": ["unanswered", "false_abstention", "No workshop allocation supplied"],
+      "B3": ["unanswered", "technical_unavailability", "Fallback omits EUR 2000 workshop allocation"],
+      "B4": ["unanswered", "technical_unavailability", "Fallback omits EUR 2000 workshop allocation"]
+    },
+    "MS-002": {
+      "B1": ["unanswered", "none", "No requested numeric facts supplied"],
+      "B2": ["unanswered", "none", "Claims results are reported without giving EUR 6000 or either count of 10"],
+      "B3": ["incorrect", "false_abstention", "Mislabels EUR 6000 and EUR 3000 budget allocations and omits both assignment counts"],
+      "B4": ["incorrect", "false_abstention", "Mislabels EUR 6000 and EUR 3000 budget allocations and omits both assignment counts"]
+    },
+    "MS-026": {
+      "B1": ["unanswered", "false_abstention", "No EUR 4500 budget or vote counts of 2 supplied"],
+      "B2": ["unanswered", "none", "Document metadata description supplies none of the requested numeric facts"],
+      "B3": ["incorrect", "false_abstention", "Omits budget and reports no recorded/verified votes although SQL and chain counts are 2"],
+      "B4": ["incorrect", "false_abstention", "Omits budget and reports no recorded/verified votes although SQL and chain counts are 2"]
+    },
+    "UN-R001": {
+      "B1": ["correct", "appropriate_abstention", "Declines to invent an appointed supplier name"],
+      "B2": ["correct", "appropriate_abstention", "Declines the unanswerable name request; no invented supplier value"],
+      "B3": ["unanswered", "technical_unavailability", "Technical fallback gives no source-bounded supplier answer"],
+      "B4": ["unanswered", "technical_unavailability", "Technical fallback gives no source-bounded supplier answer"]
+    },
+    "UN-R018": {
+      "B1": ["correct", "appropriate_abstention", "Declines a proven actual attendance count without converting the target into an observation"],
+      "B2": ["correct", "appropriate_abstention", "No actual attendance value is invented; source grounding remains unverified"],
+      "B3": ["unanswered", "technical_unavailability", "Technical fallback gives no attendance answer"],
+      "B4": ["unanswered", "technical_unavailability", "Technical fallback gives no attendance answer"]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "audited_records": 226,
+  "reviewer_type": "independent Claude LLM, not human",
+  "reviewer_decisions": {
+    "ACCEPT": 155,
+    "REVISE": 15,
+    "REJECT": 56
+  },
+  "accepted_pool": 155,
+  "item_specific_revisions_prepared": 15,
+  "new_revision_adjudications_pending": 14,
+  "superseded_by_already_accepted_replacement": 1,
+  "rejected": 56,
+  "accepted_exposed_excluded": 14,
+  "all_audit_records_marked_exposed": 15,
+  "accepted_snapshot_only_before": 21,
+  "snapshot_only_source_rechecked": 21,
+  "snapshot_only_recheck_failures": 0,
+  "historical_sql_at_chain_block_unverified": 21,
+  "human_validated_items": 0,
+  "confirmatory_content_eligible_under_LLM_review_policy": 141,
+  "confirmatory_eligible_categories": {
+    "DB": 28,
+    "PDF": 37,
+    "MS": 29,
+    "CX": 28,
+    "UN": 19
+  },
+  "shortfall_to_200_currently_eligible": 59,
+  "full_200_execution_ready": false,
+  "new_model_experiments": 0,
+  "original_benchmark_overwritten": false
+}

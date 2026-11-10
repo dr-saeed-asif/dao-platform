@@ -1,0 +1,503 @@
+{
+  "health": {
+    "type": "function",
+    "function": {
+      "name": "health",
+      "description": "Check PostgreSQL and Ollama health.",
+      "parameters": {
+        "properties": {},
+        "type": "object"
+      }
+    }
+  },
+  "get_proposal": {
+    "type": "function",
+    "function": {
+      "name": "get_proposal",
+      "description": "Read one proposal within a DAO.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "check_proposal_assignment": {
+    "type": "function",
+    "function": {
+      "name": "check_proposal_assignment",
+      "description": "Check a diagnostic wallet assignment.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          },
+          "wallet_address": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id",
+          "wallet_address"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "list_proposal_documents": {
+    "type": "function",
+    "function": {
+      "name": "list_proposal_documents",
+      "description": "List verified documents linked to a proposal.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "search_proposal_evidence": {
+    "type": "function",
+    "function": {
+      "name": "search_proposal_evidence",
+      "description": "Search verified indexed proposal evidence.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "top_k": {
+            "default": 4,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id",
+          "question"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_proposal_time_window": {
+    "type": "function",
+    "function": {
+      "name": "get_proposal_time_window",
+      "description": "Read stored and derived proposal timing.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_document_index_status": {
+    "type": "function",
+    "function": {
+      "name": "get_document_index_status",
+      "description": "Read a linked document index status.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          },
+          "evidence_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id",
+          "evidence_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_proposal_document_chunk": {
+    "type": "function",
+    "function": {
+      "name": "get_proposal_document_chunk",
+      "description": "Read an authorized proposal document chunk.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          },
+          "evidence_id": {
+            "type": "string"
+          },
+          "chunk_key": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id",
+          "evidence_id",
+          "chunk_key"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_proposal_evidence_status": {
+    "type": "function",
+    "function": {
+      "name": "get_proposal_evidence_status",
+      "description": "Summarize linked proposal evidence status.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "count_dao_proposals": {
+    "type": "function",
+    "function": {
+      "name": "count_dao_proposals",
+      "description": "Count proposals in one DAO.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "list_dao_proposals": {
+    "type": "function",
+    "function": {
+      "name": "list_dao_proposals",
+      "description": "List proposals in one DAO.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "dao_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "search_dao_proposals": {
+    "type": "function",
+    "function": {
+      "name": "search_dao_proposals",
+      "description": "Search proposals in one DAO.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "dao_id",
+          "query"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "compare_dao_proposals": {
+    "type": "function",
+    "function": {
+      "name": "compare_dao_proposals",
+      "description": "Compare two proposals in one DAO.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_a": {
+            "type": "string"
+          },
+          "proposal_b": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_a",
+          "proposal_b"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_proposal_voting_facts": {
+    "type": "function",
+    "function": {
+      "name": "get_proposal_voting_facts",
+      "description": "Read stored proposal voting facts.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "split_questions": {
+    "type": "function",
+    "function": {
+      "name": "split_questions",
+      "description": "Split a request into ordered questions.",
+      "parameters": {
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "verify_citations": {
+    "type": "function",
+    "function": {
+      "name": "verify_citations",
+      "description": "Verify answer citations against supplied evidence.",
+      "parameters": {
+        "properties": {
+          "answer": {
+            "type": "string"
+          },
+          "evidence": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "answer",
+          "evidence"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_on_chain_proposal": {
+    "type": "function",
+    "function": {
+      "name": "get_on_chain_proposal",
+      "description": "Read on-chain proposal details.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_on_chain_voting_status": {
+    "type": "function",
+    "function": {
+      "name": "get_on_chain_voting_status",
+      "description": "Read live voting status.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_on_chain_vote_counts": {
+    "type": "function",
+    "function": {
+      "name": "get_on_chain_vote_counts",
+      "description": "Read on-chain per-option vote counts.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_on_chain_transactions": {
+    "type": "function",
+    "function": {
+      "name": "get_on_chain_transactions",
+      "description": "Read verified proposal transactions.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "get_on_chain_governance_events": {
+    "type": "function",
+    "function": {
+      "name": "get_on_chain_governance_events",
+      "description": "Read canonical proposal governance events.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "compare_on_chain_off_chain": {
+    "type": "function",
+    "function": {
+      "name": "compare_on_chain_off_chain",
+      "description": "Compare proposal, votes and governance events with the configured blockchain.",
+      "parameters": {
+        "properties": {
+          "dao_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dao_id",
+          "proposal_id"
+        ],
+        "type": "object"
+      }
+    }
+  }
+}

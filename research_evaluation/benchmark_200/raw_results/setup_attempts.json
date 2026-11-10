@@ -1,0 +1,7 @@
+[
+  {"stage":"initial capture", "outcome":"failed before observations", "error":"ActiveSqlTransaction: SET TRANSACTION ISOLATION LEVEL must not be called in a subtransaction", "resolution":"Read-only autocommit connection plus explicit repeatable-read transaction"},
+  {"stage":"initial auth setup probe", "outcome":"HTTP 400", "cause":"Invalid DTO key questions instead of question", "preserved_in":"evidence/snapshot.json authorization", "included_as_denial":false},
+  {"stage":"source consistency validation", "outcome":"false title mismatch", "cause":"UTF-8 source read with Windows default encoding", "preserved_in":"archive/pre_encoding_fix_database_check.json", "resolution":"Explicit UTF-8; corrected check reports zero drift"},
+  {"stage":"offline analysis from DAO working directory", "outcome":"settings initialization failed", "error":"RagSettings rag_dev_token missing", "resolution":"Run with the existing AI-repository working directory and environment as documented; no model calls occurred"},
+  {"stage":"full benchmark launch", "outcome":"refused before model calls", "preserved_in":"raw_results/full_gate_refusal.txt", "cause":"Quality gate requires 200 verified cases and independent absence review"}
+]

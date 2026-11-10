@@ -1,0 +1,20 @@
+{
+  "target_category_counts": {"DB":40,"PDF":40,"MS":40,"CX":30,"UN":25,"UA":25},
+  "planned_variants":["B1","B2","B3","B4"],
+  "planned_full_observations":800,
+  "actual_full_observations":0,
+  "actual_smoke_observations":20,
+  "actual_nonconfirmatory_subset_observations":32,
+  "total_saved_attempts":52,
+  "independently_validated_items":0,
+  "excluded_smoke_observations":4,
+  "full_release_gate":"blocked",
+  "authoritative_runtime_configurations":["raw_results/smoke/config.json","raw_results/smoke-v2/config.json"],
+  "model":"qwen3:0.6b",
+  "embedding_model":"qwen3-embedding:0.6b",
+  "synthetic_model_outputs":false,
+  "chain_mode":"Real snapshot replay for comparison; separate independent live eth_call verification",
+  "production_changes":false,
+  "transactions_submitted":false,
+  "inference":"Descriptive smoke results only; no population confidence intervals or significance claims"
+}

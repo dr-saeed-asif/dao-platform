@@ -1,0 +1,339 @@
+[
+  {
+    "parent_id": "DB-021",
+    "proposed_id": "DB-R021",
+    "original_question": "What is the exact database title of this proposal? Scope: cleanup proposal.",
+    "reviewer_feedback": [
+      "Gold title equals the DAO identifier supplied to the baseline as scope context (literal leakage). Replace with DB-R021."
+    ],
+    "expected_answer": "3600",
+    "human_adjudication": "not_human_validated; no new semantic decision asserted",
+    "new_peer_review": "already ACCEPT for exact DB-R021 replacement",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "evidence/snapshot.json#database.cleanup.title"
+    ],
+    "revised_question": "How long is the selected cleanup proposal database voting window in seconds?",
+    "disposition": "Superseded by separately Claude-accepted DB-R021; original title question removed"
+  },
+  {
+    "parent_id": "DB-031",
+    "proposed_id": "DB-031.r1",
+    "original_question": "What is the exact database title of this proposal? Scope: testing proposal.",
+    "reviewer_feedback": [
+      "Near-leak: gold \"Cyber Testing\" is trivially derivable from scope dao_id \"cyber-test\". Replace with a field not derivable from scope."
+    ],
+    "expected_answer": "420",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "database/testing/starts_at",
+      "database/testing/ends_at"
+    ],
+    "revised_question": "How long is the selected testing proposal database voting window in seconds?",
+    "derivation": "ends_at minus starts_at in seconds"
+  },
+  {
+    "parent_id": "PDF-039",
+    "proposed_id": "PDF-039.r1",
+    "original_question": "What reporting form is specified for feedback findings? Use only the attached training PDF.",
+    "reviewer_feedback": [
+      "Ambiguous target: \"reporting form for feedback findings\" may mean the Day-21 report (attendance, feedback, unresolved issues) or the \"publish aggregated findings\" privacy mitigation. Name the risk row in the question."
+    ],
+    "expected_answer": "Publish aggregated findings; collect only necessary information.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "CyberDAO_Community_Training_Proposal.pdf page 2, Personal information in feedback row"
+    ],
+    "revised_question": "In the training PDF's risks-and-mitigations table, what publication format mitigates personal information in feedback?"
+  },
+  {
+    "parent_id": "MS-016",
+    "proposed_id": "MS-016.r1",
+    "original_question": "For the pilot proposal, report the PDF proposed total budget, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 12,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (pilot)",
+      "evidence/snapshot.json#database.pilot.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the pilot proposal, answer separately: (1) What total budget does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "MS-017",
+    "proposed_id": "MS-017.r1",
+    "original_question": "For the pilot proposal, report the PDF first budget allocation, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 6,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (pilot)",
+      "evidence/snapshot.json#database.pilot.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the pilot proposal, answer separately: (1) What first budget allocation does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "MS-018",
+    "proposed_id": "MS-018.r1",
+    "original_question": "For the pilot proposal, report the PDF second budget allocation, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 3,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (pilot)",
+      "evidence/snapshot.json#database.pilot.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the pilot proposal, answer separately: (1) What second budget allocation does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "MS-019",
+    "proposed_id": "MS-019.r1",
+    "original_question": "For the pilot proposal, report the PDF third budget allocation, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 2,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (pilot)",
+      "evidence/snapshot.json#database.pilot.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the pilot proposal, answer separately: (1) What third budget allocation does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "MS-020",
+    "proposed_id": "MS-020.r1",
+    "original_question": "For the pilot proposal, report the PDF contingency, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 1,000; database on_chain_id: 38; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (pilot)",
+      "evidence/snapshot.json#database.pilot.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the pilot proposal, answer separately: (1) What contingency allocation does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "MS-036",
+    "proposed_id": "MS-036.r1",
+    "original_question": "For the training proposal, report the PDF proposed total budget, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 4,500; database on_chain_id: 39; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (training)",
+      "evidence/snapshot.json#database.training.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the training proposal, answer separately: (1) What total budget does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "MS-037",
+    "proposed_id": "MS-037.r1",
+    "original_question": "For the training proposal, report the PDF first budget allocation, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 2,000; database on_chain_id: 39; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (training)",
+      "evidence/snapshot.json#database.training.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the training proposal, answer separately: (1) What first budget allocation does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "MS-038",
+    "proposed_id": "MS-038.r1",
+    "original_question": "For the training proposal, report the PDF second budget allocation, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 1,500; database on_chain_id: 39; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (training)",
+      "evidence/snapshot.json#database.training.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the training proposal, answer separately: (1) What second budget allocation does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "MS-039",
+    "proposed_id": "MS-039.r1",
+    "original_question": "For the training proposal, report the PDF third budget allocation, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 750; database on_chain_id: 39; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (training)",
+      "evidence/snapshot.json#database.training.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the training proposal, answer separately: (1) What third budget allocation does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "MS-040",
+    "proposed_id": "MS-040.r1",
+    "original_question": "For the training proposal, report the PDF contingency, then report the database and on-chain database on-chain proposal ID and chain option count. Keep document plans separate from observed records.",
+    "reviewer_feedback": [
+      "Compound wording (\"database on-chain proposal ID and chain option count\") pairs two unrelated quantities as if compared. Rewrite as two explicit sub-questions."
+    ],
+    "expected_answer": "PDF: EUR 250; database on_chain_id: 39; blockchain optionCount: 3.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "PDF budget table (training)",
+      "evidence/snapshot.json#database.training.on_chain_id",
+      "evidence/independent_chain_check.json"
+    ],
+    "revised_question": "For the training proposal, answer separately: (1) What contingency allocation does the attached PDF propose? (2) What on-chain proposal identifier is stored in the database? (3) How many voting options does the contract record at the saved block? Attribute each answer to its source.",
+    "scoring_requirements": [
+      "PDF amount with document attribution",
+      "Stored on-chain ID with database attribution",
+      "Option count with pinned-contract attribution"
+    ]
+  },
+  {
+    "parent_id": "UA-001",
+    "proposed_id": "UA-001.r1",
+    "original_question": "I have no authenticated wallet session. For this proposal, give the database title.",
+    "reviewer_feedback": [
+      "Retain as the single representative missing-wallet gateway probe after fixing: (1) conflict - snapshot.json records the credentials-absent probe as observed 400 (expected 401) while authorization_probes.json records 25x HTTP 401; (2) response body not captured (only byte count 89), so non-disclosure is unmeasured; (3) \"no model invocation\" is inferred, not observed.",
+      "The question text never reaches a model; the outcome is independent of wording and identical across variants B1-B4 (output_origin=real_http_authorization_gate_no_model)."
+    ],
+    "expected_answer": "HTTP 401 with an Unauthorized error and wallet-sign-in message. Observed response contains no proposal data. Upstream invocation count remains unmeasured.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": true,
+    "source_refs": [
+      "evidence/authorization_reconciliation.json#valid_singular_question_no_wallet"
+    ],
+    "revised_question": "For a valid assistant-ask request without a wallet session, what HTTP status and error JSON are returned?",
+    "cohort": "shared_authorization_gateway; not four independent LLM trials",
+    "request_body_schema": {
+      "proposalId": "selected proposal ID",
+      "question": [
+        "Show the selected proposal title."
+      ]
+    },
+    "confirmatory_eligible": false
+  },
+  {
+    "parent_id": "UN-R010",
+    "proposed_id": "UN-R010.r1",
+    "original_question": "Which final voting outcome is claimed by this PDF alone?",
+    "reviewer_feedback": [
+      "\"by this PDF alone\" conflicts with a platform that may legitimately report the chain outcome; reword to \"What voting outcome does this PDF state?\" and require source attribution."
+    ],
+    "expected_answer": "The PDF states no voting outcome. Attribute this absence to the PDF; any separately reported chain outcome must be explicitly identified as a chain observation.",
+    "human_adjudication": "pending",
+    "new_peer_review": "pending",
+    "admitted": false,
+    "exposed_parent": false,
+    "source_refs": [
+      "CyberGovAI_Pilot_Proposal.pdf page 3: This PDF does not establish a quorum percentage or claim an outcome."
+    ],
+    "revised_question": "What voting outcome does this PDF state?"
+  }
+]

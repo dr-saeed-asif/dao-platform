@@ -1,0 +1,22 @@
+{
+  "version": "workflow_fix_v1",
+  "AI_base_commit": "9c27c8a57dfe44abccc43f0cf509ca33e3e0ac79",
+  "before": {
+    "tests\\test_question_planner.py": "135f11c2bd27fa55cf0b496cd4f81b7e7bcd9b85b04774aedee3366788cd55e1",
+    "app\\business\\agents\\planning.py": "0aecacfada1802d17e3a893347be62c3820d21afd9732b06ee677bc5f79cbf6b",
+    "app\\business\\agents\\synthesis.py": "a0f3ee5b1b13a6180d075b32dbc6665119c2799559106f4fe871eab92feb196d",
+    "app\\business\\agents\\__pycache__\\planning.cpython-313.pyc": "5dbc85da67c67bcadee8f00b20e1799266a767effc910032f6bfbf410ecd6980",
+    "app\\business\\agents\\__pycache__\\synthesis.cpython-313.pyc": "d95f85fee52d82681e4f6d326adb55f26de20530c371900a12d59f8895a5e3df"
+  },
+  "after": {
+    "app/business/agents/planning.py": "1b845b2c6a7988e5e8060ae59932abdc8772fb0bed0903341794089fe95469f7",
+    "app/business/agents/synthesis.py": "c2b43ec2b9bea051f8cd2780bb1c13a9b8c0a919eaa2dee24d21cc85132925fa",
+    "tests/test_question_planner.py": "511f950d25625b569bff2c8dfb57c60bce1911bfc01f80472636c9f1da5464b8",
+    "tests/test_agent_failure_regressions.py": "04164fc921c8875d7d36ffb24422af705577107db3dd7490849e4c972da9f496"
+  },
+  "production_scope": "AI routing source-coverage floor and single-task synthesis framing only",
+  "deployment": "Source and isolated tests only. Running server reload not performed or verified.",
+  "new_test_in_patch": false,
+  "new_test_location": "post_fix/tests/test_agent_failure_regressions.py",
+  "historical_baseline_entry_script_unchanged": true
+}

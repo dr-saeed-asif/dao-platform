@@ -1,0 +1,74 @@
+{
+  "benchmark": {
+    "audited_records": 226,
+    "reviewer_type": "independent Claude LLM, not human",
+    "reviewer_decisions": {
+      "ACCEPT": 155,
+      "REVISE": 15,
+      "REJECT": 56
+    },
+    "accepted_pool": 155,
+    "item_specific_revisions_prepared": 15,
+    "new_revision_adjudications_pending": 14,
+    "superseded_by_already_accepted_replacement": 1,
+    "rejected": 56,
+    "accepted_exposed_excluded": 14,
+    "all_audit_records_marked_exposed": 15,
+    "accepted_snapshot_only_before": 21,
+    "snapshot_only_source_rechecked": 21,
+    "snapshot_only_recheck_failures": 0,
+    "historical_sql_at_chain_block_unverified": 21,
+    "human_validated_items": 0,
+    "confirmatory_content_eligible_under_LLM_review_policy": 141,
+    "confirmatory_eligible_categories": {
+      "DB": 28,
+      "PDF": 37,
+      "MS": 29,
+      "CX": 28,
+      "UN": 19
+    },
+    "shortfall_to_200_currently_eligible": 59,
+    "full_200_execution_ready": false,
+    "new_model_experiments": 0,
+    "original_benchmark_overwritten": false
+  },
+  "reconciliation_status": {
+    "verified": 23,
+    "mismatched": 7,
+    "unverified": 9
+  },
+  "scalar_mismatch_fields": {
+    "voting_status": 6,
+    "public.proposal_assignments.count": 1
+  },
+  "reconciliation_wall_ms": {
+    "n": 39,
+    "min": 1792.3559000000005,
+    "median": 3857.561099999999,
+    "max": 5715.804000000004,
+    "mean": 3907.6308410256415
+  },
+  "distinct_pinned_blocks": 27,
+  "http_200": 39,
+  "rpc_error_reports": 0,
+  "fault_confusion_counts": {
+    "TP": 4,
+    "FP": 1,
+    "FN": 0,
+    "TN": 1
+  },
+  "fault_wall_ms": {
+    "n": 9,
+    "min": 0.09609999999997854,
+    "median": 2.3162999999999556,
+    "max": 12.472099999999955,
+    "mean": 3.411866666666659
+  },
+  "fault_cases": 9,
+  "citation_structural_cases_matching_expected": 8,
+  "citation_structural_cases": 8,
+  "isolated_expected_tool_denials": 4,
+  "isolated_tool_attempts": 4,
+  "population_CIs": null,
+  "CI_reason": "Deployment cohort census and purposive one-run fixtures. No sampled population or replicated fault distribution."
+}

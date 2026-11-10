@@ -1,0 +1,16 @@
+{
+  "mode": "Actual SQL/tool execution with a shared read-only snapshot; zero inference",
+  "old_B2_scope_rejected_permitted_comparison": true,
+  "candidate_scope_accepts_comparison": true,
+  "full_research_worker_accepts_comparison": true,
+  "identical_backend_results": true,
+  "comparison_result_sha256": "82ff130178f9debe4f47903f32e0eb946e5ff88792b39c9a6fb7238aee8735d1",
+  "wrong_DAO_backend_denied": true,
+  "wrong_DAO_error": "proposal_not_found",
+  "distinct_proposals": 2,
+  "candidate_sha256": "dabf53a437ddc2a9b52cc2a218209de5a3f0df4869af1c693fcb32bba3cda619",
+  "limit": "One observed positive/negative comparison pair, not comprehensive permission verification",
+  "operator_context": true,
+  "member_wallet_authentication_tested": false,
+  "private_or_member_rows_exported": false
+}

@@ -1,0 +1,5 @@
+metric,count,denominator
+routing_or_coverage_failures,8,16
+retrieval_execution_errors,0,16
+synthesis_header_format_failures,8,16
+synthesis_citation_rejections,1,16

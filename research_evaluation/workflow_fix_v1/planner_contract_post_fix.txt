@@ -1,0 +1,24 @@
+test_100_questions_are_planned_in_bounded_chunks_with_rebased_dependencies (test_question_planner.ChunkedPlanningTests.test_100_questions_are_planned_in_bounded_chunks_with_rebased_dependencies) ... ok
+test_a_clarification_in_any_chunk_stops_planning (test_question_planner.ChunkedPlanningTests.test_a_clarification_in_any_chunk_stops_planning) ... ok
+test_search_queries_use_the_topic_not_the_whole_command (test_question_planner.MixedRequestRegressionTests.test_search_queries_use_the_topic_not_the_whole_command) ... ok
+test_empty_input_is_rejected (test_question_planner.QuestionPlannerTests.test_empty_input_is_rejected) ... ok
+test_failed_planning_does_not_guess_an_ambiguous_request (test_question_planner.QuestionPlannerTests.test_failed_planning_does_not_guess_an_ambiguous_request) ... Question planning failed: RuntimeError
+ok
+test_invalid_plan_still_routes_an_unnumbered_pdf_and_chain_question (test_question_planner.QuestionPlannerTests.test_invalid_plan_still_routes_an_unnumbered_pdf_and_chain_question) ... Question planning failed: ValidationError
+ok
+test_llm_decomposes_compound_request_and_supervisor_obeys_intents (test_question_planner.QuestionPlannerTests.test_llm_decomposes_compound_request_and_supervisor_obeys_intents) ... ok
+test_numbered_requests_survive_a_planner_timeout (test_question_planner.QuestionPlannerTests.test_numbered_requests_survive_a_planner_timeout) ... Question planning failed: TimeoutError
+ok
+test_planner_cannot_select_scope (test_question_planner.QuestionPlannerTests.test_planner_cannot_select_scope) ... Question planning failed: ValidationError
+ok
+test_single_budget_request_still_uses_llm_planning (test_question_planner.QuestionPlannerTests.test_single_budget_request_still_uses_llm_planning) ... ok
+test_budget_expression_is_one_task_with_numbers_preserved (test_question_planner.SemanticRoutingTests.test_budget_expression_is_one_task_with_numbers_preserved) ... ok
+test_every_requirement_is_tracked_with_dependencies (test_question_planner.SemanticRoutingTests.test_every_requirement_is_tracked_with_dependencies) ... ok
+test_explicit_pdf_source_is_required_even_with_voting_intent (test_question_planner.SemanticRoutingTests.test_explicit_pdf_source_is_required_even_with_voting_intent) ... ok
+test_illegal_specialist_is_dropped_and_reported (test_question_planner.SemanticRoutingTests.test_illegal_specialist_is_dropped_and_reported) ... ok
+test_validated_plan_agents_are_authoritative_not_regex (test_question_planner.SemanticRoutingTests.test_validated_plan_agents_are_authoritative_not_regex) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.065s
+
+OK

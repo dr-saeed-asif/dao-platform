@@ -1,0 +1,43 @@
+{
+  "status": "prepared; execution gated",
+  "question_file": "../benchmark_200/versions/claude_adjudicated_v3/confirmatory_questions.json",
+  "question_sha256": "161547e7ce8a8459873c90e745173341ce666ad1c3f1d4b6adc9b9e4ffc7a12c",
+  "eligible_candidate_count": 141,
+  "new_model_runs": 0,
+  "human_validated_items": 0,
+  "baseline_definition_source": "../benchmark_200/scripts/run.py",
+  "baseline_source_sha256": "2ca7f7b20ffde07475c4764e9d9c6f1c47eae4818e81dbb01f28f790687fbe53",
+  "B1": "One model without retrieval or tools",
+  "B2": "One model with all 22 permitted tool definitions and DAO/proposal guard; maximum six model turns",
+  "B3": "Full planner/workflow with reference, currency and numeric blocking gates disabled by process-local ablation",
+  "B4": "Full workflow with production verification gates",
+  "required_before_execution": [
+    "Freeze SQL, document-index and pinned-chain evidence for every variant",
+    "Review whole-answer and claim-support scoring independently and fix the scoring rubric before generation",
+    "Check equivalent permitted record access and document successful and failed tool requests",
+    "Record model digests, prompts/options and unequal stage/retry budgets without claiming exact inference-budget matching",
+    "Use a new campaign with the corrected verifier hash; retain every completed or failed checkpoint"
+  ],
+  "whole_answer_rubric": {
+    "correct": "All requested supported facts are correct, correctly scoped and complete; no material conflicting claim",
+    "partial": "Some requested facts are correct, but a requested part is missing or uncertainty is inconsistent",
+    "incorrect": "A material claim is false, requested source attribution is wrong, or the answer supplies unsupported facts",
+    "unassessed": "Reviewer assessment missing"
+  },
+  "claim_support_rubric": [
+    "supported",
+    "contradicted",
+    "unsupported",
+    "unassessable"
+  ],
+  "citation_metrics": [
+    "identifier validity",
+    "claim-to-source factual support",
+    "factual claim citation coverage"
+  ],
+  "abstention_metrics": [
+    "appropriate abstention on evidence-bounded unknowns",
+    "false abstention on known records"
+  ],
+  "statistics": "Retain paired question IDs and proposal clusters; report descriptive counts and justified clustered uncertainty. Human semantic metrics stay unknown until annotated."
+}

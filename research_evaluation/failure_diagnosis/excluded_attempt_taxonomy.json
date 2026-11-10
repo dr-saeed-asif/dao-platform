@@ -1,0 +1,237 @@
+[
+  {
+    "id": "DB-006",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 1,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "DB-006",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 2,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "DB-016",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 5,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "DB-016",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 7,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 10,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 11,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 14,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 16,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "MS-002",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 17,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "MS-002",
+    "variant": "B2",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 18,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "list_proposal_documents",
+      "get_proposal_voting_facts"
+    ],
+    "raw_status": "completed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "MS-002",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 20,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "MS-026",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 21,
+    "primary_failure": "recorder_dataclass_AttributeError",
+    "observed_tool_names": [
+      "count_dao_proposals"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Direct AttributeError recorded",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "MS-026",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 23,
+    "primary_failure": "recorder_dataclass_AttributeError",
+    "observed_tool_names": [
+      "count_dao_proposals"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Direct AttributeError recorded",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "MS-026",
+    "variant": "B2",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 24,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "list_proposal_documents"
+    ],
+    "raw_status": "completed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 25,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 26,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B4",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 29,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B3",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "line": 32,
+    "primary_failure": "pool_connection_timeout_protocol",
+    "observed_tool_names": [
+      "search_proposal_evidence"
+    ],
+    "raw_status": "failed",
+    "attribution_basis": "Source/preflight confirmed missing connection(timeout); masked SQL-backed tool results",
+    "exclusion": "Harness-invalid; retain raw row; affected retest is a new observation"
+  }
+]

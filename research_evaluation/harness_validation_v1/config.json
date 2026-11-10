@@ -1,0 +1,203 @@
+{
+  "classification": "Development smoke with real model and read-only SQL; chain evidence replay",
+  "questions_sha256": "a2d9db7f180413786ee0603c4ee8a619519fa393c2c5ae3cf73268d180cf350b",
+  "runner_sha256": "cb009df50bcf6e90dbe29edc7481f1bb8827b3c393b52ab8f1c9c7e29a66165d",
+  "single_agent_sha256": "dabdf85fb20daf5b577106645b3e2ff3c7100b252719e82bb358d91fa43c11bb",
+  "model": "qwen3:4b-instruct",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "embedding_model": "qwen3-embedding:0.6b",
+  "embedding_digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+  "options_all_chat_stages": {
+    "seed": 42,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 1536,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repeat_penalty": 1.1
+  },
+  "max_chat_requests_per_case": 6,
+  "case_deadline_seconds": 200,
+  "concurrency": 1,
+  "order_seed": 73,
+  "table_fingerprints": {
+    "answers": {
+      "rows": 295,
+      "aggregate_digest": "70769e8ba1de38d0a28aee3bcb85338a"
+    },
+    "artefacts": {
+      "rows": 10,
+      "aggregate_digest": "c710be6ddefa78e17751b876c427923a"
+    },
+    "chain_transactions": {
+      "rows": 105,
+      "aggregate_digest": "83b365d8d853101db57bce635e20277c"
+    },
+    "claims": {
+      "rows": 284,
+      "aggregate_digest": "9b0de7c949d99b52901b9008c99afc77"
+    },
+    "contract_deployments": {
+      "rows": 1,
+      "aggregate_digest": "fffeb3af0bcd3b02ddc5eee130cd10e8"
+    },
+    "dataset_versions": {
+      "rows": 0,
+      "aggregate_digest": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "experiment_runs": {
+      "rows": 295,
+      "aggregate_digest": "35da7b4ab41d3120d4ddcdb2d30b31aa"
+    },
+    "governance_events": {
+      "rows": 188,
+      "aggregate_digest": "baef7cacd929c6163d12db34c197dcb0"
+    },
+    "indexer_checkpoints": {
+      "rows": 2,
+      "aggregate_digest": "5a1beefbbc940bf10972d5e9472d984f"
+    },
+    "kysely_migration": {
+      "rows": 9,
+      "aggregate_digest": "1b5271c1d19003b89c548a495e923cbc"
+    },
+    "kysely_migration_lock": {
+      "rows": 1,
+      "aggregate_digest": "7507e6f670bc3cb51d1ce91e39eca433"
+    },
+    "proposal_artefacts": {
+      "rows": 11,
+      "aggregate_digest": "a457344993e68c81fff5af9849d19821"
+    },
+    "proposal_assignments": {
+      "rows": 111,
+      "aggregate_digest": "7d1aa1ba168e54465b4d40bbd5d36904"
+    },
+    "proposal_options": {
+      "rows": 112,
+      "aggregate_digest": "b6852cb28cb7b463ddc11dbb65b74434"
+    },
+    "proposals": {
+      "rows": 40,
+      "aggregate_digest": "2b61ec4bcec6975b1baabc1c1194181a"
+    },
+    "provenance_edges": {
+      "rows": 11,
+      "aggregate_digest": "6a42fd8c46e773b7d915029d9e9d3317"
+    },
+    "questions": {
+      "rows": 295,
+      "aggregate_digest": "73c401df0f38fe1dc8961511c281d154"
+    },
+    "research_policies": {
+      "rows": 0,
+      "aggregate_digest": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "retrieval_results": {
+      "rows": 61,
+      "aggregate_digest": "172d3d62397135ea4985ce33d58c5482"
+    },
+    "votes": {
+      "rows": 30,
+      "aggregate_digest": "6a79f96908cfdcc5bfd380708e43902f"
+    }
+  },
+  "source_bundle_sha256": {
+    "app/business/agents/blockchain.py": "973ba2892a1cdd4458ee95051413a28fc421b1ed2278be4044933e9b65f98a53",
+    "app/business/agents/budgets.py": "af980ebb4f02fe397d7e77c07c5aad6eaa7bdd4446ffcb4515e097f464d24cc7",
+    "app/business/agents/catalog.py": "ac20b5df9f61e211402972674bd0dc57a14834091462a02788e610c4a95a5edf",
+    "app/business/agents/claims.py": "503766804f25fb3c329140ab0c0d71aaaf2633a346aa6cf08ab06bc6f2327664",
+    "app/business/agents/domain_guard.py": "d249b9dbe5a9f175b6bb7559b8c0662bc7cb8170945a4caa3803f0ede8453995",
+    "app/business/agents/models.py": "99cd3f3c6f785aaaa47aa7599e4e12c7f4c91d75528b4b56b214ec5a653185c9",
+    "app/business/agents/observability.py": "f12f2e29c26915b5f4951dace3ce77b0ec366bcdb03ae295985739e986eeca12",
+    "app/business/agents/planning.py": "1b845b2c6a7988e5e8060ae59932abdc8772fb0bed0903341794089fe95469f7",
+    "app/business/agents/progressive.py": "60e802e28c14b6ee37a1211a631102f10afe31ddc95f409c763593244c1ce622",
+    "app/business/agents/quality.py": "a62f029be23d62c23c23d1347627494c683a9ca22cf751069f076af5ed70a86b",
+    "app/business/agents/question_planner.py": "545c53a2f62f3fc9f7b5e3f9980b0220ed0d96f314b27fb14f133a1873928c77",
+    "app/business/agents/requirements.py": "2087174790ba94b6ff01cc69c78e5fd5614c6b83812658b85ad7cbb8987d284e",
+    "app/business/agents/routing.py": "bdb9b3614ceee8afc7b884c927e2c18415a2661bf2e82bb12a2483e6e187a3b6",
+    "app/business/agents/scheduling.py": "7110dc706a2d263b9db3c71da408b17b65d63ee58309e99fb46498418afbae17",
+    "app/business/agents/synthesis.py": "c2b43ec2b9bea051f8cd2780bb1c13a9b8c0a919eaa2dee24d21cc85132925fa",
+    "app/business/agents/tools.py": "20ba795930c1034abf3c7c3daecce59d321688db1bf41f4a89a0bd2acb4f3b34",
+    "app/business/agents/workflow.py": "80ef2fc2cefca96d64cdbb9cbe36416b6f69132afb5feda8e979de6d4dafb706",
+    "app/business/agents/__init__.py": "d5686fb140c104f7790abe42f5c8b6a225b96236267706e933095fb4c34e65d4",
+    "app/business/rag/answers.py": "31a4456b16b4ff9fad16794f69a02a93c5228d6ac5daf8bf65c443f20c6891de",
+    "app/business/rag/compatibility.py": "c6505de65cfecff700bfbd7e12711068431192fbf496996a257e3bf1e00db98f",
+    "app/business/rag/embedding_profiles.py": "a6338708a24f64aa49ccedf24d04e4a180a52234bef9751a8533db7d0488eaae",
+    "app/business/rag/evidence_files.py": "8e3d4d964c9fb75b62e70497f9bf1de983f145ad42b23f4461e58f0980cca047",
+    "app/business/rag/indexing.py": "6f9caee78a2e2bc4563b523bb7d07a40a77dde4bed9705750f6ed849d5cec919",
+    "app/business/rag/legacy_indexing.py": "70f837a90c9e60630cbbdfa2abf531dda8e6b4c34949e706873b43ff7b53cc9c",
+    "app/business/rag/legacy_index_result.py": "0b1a2ba135ab4f65c3d809090dcc7694c30b1e36052a0242329aea5f376da986",
+    "app/business/rag/legacy_pdf_chunking.py": "7230713df84233d49c5cdbfd184bfecd75674b9d6022479966b5e868de2067e2",
+    "app/business/rag/legacy_pdf_policy.py": "2cbbd9067112196396e70020a8fa65fa1a3ed4ab6bbcbf159d7db269c8fba17f",
+    "app/business/rag/legacy_pdf_processing.py": "541716a77b03990d0e87d2d785461b0b75b8f333f67253d11825f0e248d5f192",
+    "app/business/rag/legacy_profile.py": "682d40f68f66b4ee304cc9bd0ae5b412fb182468bbb156e001965681176d6e1b",
+    "app/business/rag/ollama_answers.py": "87c57e06576510fd76e80004da6e41f28c26826c570c3f4cefeb6e8d9a831fcc",
+    "app/business/rag/ollama_chat.py": "2bc75e792e3528dd719fe340805b3cc01fbe2176140175916cf6bfd905ec0e86",
+    "app/business/rag/ollama_client.py": "7ee94d3e62c560f3cbfe8d91f4c4b536a3a8fbed4bf56507ab271c28d9cc88c4",
+    "app/business/rag/ollama_embedding.py": "41fafa0266ec652a71a00db740feb23cb1067df1036e77079104392e7dd42a1d",
+    "app/business/rag/ollama_prompt.py": "d0bc12e07162657a043f13232a35d922c2c7d8a16450a440981d80c3f48d5645",
+    "app/business/rag/pdf_chunking.py": "3a1d351681e85e5065e9dc22a75ac8911faeb330fb8d1180b00094b98048ebd4",
+    "app/business/rag/pdf_extraction.py": "02aecca4eb590e2e834fd3d4c8f4799849320c509c71253bd53e9755b5233675",
+    "app/business/rag/pdf_policy.py": "1d0e5c0109f7dbe03035d631a992e15fe4f5054a81f44a21a0c52a9e9f9bcd39",
+    "app/business/rag/proposal_search.py": "b7d1c036d0bc4476b61a3c3535c348be71063da1a060372c95718b0e4df1c227",
+    "app/business/rag/search.py": "fd98ccdce04747637c2a5c1ba817dff84d9b939a687cbda8c030849abe83cff7",
+    "app/business/rag/service.py": "de812af28ebfa3f55b2e03afbb3d25a0355cd1de5b4500feeeb71d0ea5fea122",
+    "app/business/rag/store.py": "ac0f61bd627216ed3e8002ae68047a1021e7ebce0e207ac839958db1b85fee19",
+    "app/business/rag/uploads.py": "c90b1ea361f3a1fc1c5d4a24cf1f5b252dc046a28c19d01e94e23c1af61dcce6",
+    "app/business/rag/__init__.py": "7449fc73b45a9443eb1b5011855009772f8a4a6f05b80a29452764442a84f5ce",
+    "app/business/mcp/chunk_result.py": "33a992934c51ba03ed1940619831274ffc84552228f8bf2e243fa299a96a58e9",
+    "app/business/mcp/chunk_tool.py": "3b485738ca27bb7120cf1de7ef6eae6325d6318fb6770cccf95a34d70c335e22",
+    "app/business/mcp/context.py": "f8f8fc44ae1df7bb10c07b889a75db4dfec7cd1591b7d79059894ae867c412f2",
+    "app/business/mcp/dao_count_tool.py": "96dca258d0719e9851018eab69ca7e3491f3f947c6b1ce88c9a19ea786e90572",
+    "app/business/mcp/dao_proposal_tools_impl.py": "d2aaf141a57af447569dcb12d1f7a73d6264de0aca54b7875ad60d9544f73ac3",
+    "app/business/mcp/document_status_result.py": "2134c4c57b356c4045b9ea5e93b60d9b33a5d16a0257ad1a8a7108ecc73e418b",
+    "app/business/mcp/document_tools.py": "b9c29ecd816044c219bd0c00183335f661ed218ce0bb7d25180650073f0257cc",
+    "app/business/mcp/errors.py": "6e0ebdc3541bd02ef0034187fc35d23310250cdd68449d88bcb6ca5a8a6d1616",
+    "app/business/mcp/evidence_results.py": "5cc38b70d95702d2e3fda7f1061b68189028f387bf7fd9153418735194c57420",
+    "app/business/mcp/evidence_search_results.py": "95953cf153a3479f93ace46f8ec2d4c618e76c34c62e2e3e6be5172203696394",
+    "app/business/mcp/evidence_status_result.py": "4c9731f49f7e6874c021adb173735f2624193abd9dcaed0ab4d12a5b4142ea53",
+    "app/business/mcp/evidence_status_tool.py": "ebfeccb5340635efda02aab6d3581402f7ec14f5ba9feaad3c5612aff15fe9d0",
+    "app/business/mcp/evidence_tool.py": "8f52d592034f9c34d26e93aeeec5130bb63e330708a2126380f57c602f76f7e9",
+    "app/business/mcp/extended_tools.py": "605113c1b7097a8fa7263715b88aa8a5e0138b5d3b804c22c4927316603daf1b",
+    "app/business/mcp/governance_results.py": "706069aa1ac64ba16fc57103714268e4cb46c3275358e8c2d92249fb9bdd33c3",
+    "app/business/mcp/governance_tools.py": "d6d3f705f7c385d879d4715669e15710893d1983dd1da01295b8684cceb1de06",
+    "app/business/mcp/governance_tools_impl.py": "7a025669d9f9d1a8e99e87ab0bc5cd99cc92392e477b6ea518462d0d7070a046",
+    "app/business/mcp/health_tool.py": "881ffef4a54cc950866ee208658e1787218966d70321c244018ffd65c70dfc21",
+    "app/business/mcp/index_status_tool.py": "27abdaac0a8de3ff0f7007950b62480e8b9940ed6a285e178c1047e1aa90b58f",
+    "app/business/mcp/inputs.py": "3fc56feb103135086f51a7f9fb0e2c06a18271dfb32c99b8b2967b6250fa3242",
+    "app/business/mcp/lifespan.py": "f6f024171c8c3d072142d6f9b645f676f1c669a3bc68c2edc28532ead6957f72",
+    "app/business/mcp/main.py": "e69e43a789b7c13aff51594065b875425bdcfdfa6a54d212fadd1bd72b4d3d18",
+    "app/business/mcp/proposal_read_tools.py": "bb75dfdd6dc7335eef092ea2a6b91451b9f82f16d88f90bd6b168a9d8d2f5d44",
+    "app/business/mcp/proposal_tools.py": "27009eef10e05dff5538966e72c4a160cb451e5303ffbc35ee89d8b4bcfa3176",
+    "app/business/mcp/results.py": "8c63f6f855a60b51d54d5b09bebd55a77ffa81b51b4511307542cbd7626c3983",
+    "app/business/mcp/server.py": "fc76d4c6193a34a24ef16a4f041e7c8609ac960a0214a0d0825855cb19d7ec2b",
+    "app/business/mcp/time_result.py": "49c219dff848b03345d1d4e99e62a3cf8afffc96b96a57c4fb72cf539c884ee4",
+    "app/business/mcp/time_window.py": "042ca8704dd4e95a8070595abfad744140ec194822daa816d631484ec0bea78f",
+    "app/business/mcp/time_window_tool.py": "efb2373443d4174c5aca15d1a0aba32060cbb0b9800c0993c9e5e143a1df976c",
+    "app/business/mcp/tool_helpers.py": "bdbe904a3a052806729b62898aa3ffc377a3554a9711f44174e62b7dcd0a79df",
+    "app/business/mcp/tool_registry.py": "8bf36f1677a887b05c2f7beed9849804c6f50787c1cba7a881df438b09c53e86",
+    "app/business/mcp/validation.py": "fdb559239fa362ba6cf547379a1a4b226fdb5ac31274ff605e64ea4374726c47",
+    "app/business/mcp/__init__.py": "1484b5e04090ea19408814d6ad105513a818d2b14938d739ddfe8c5f6d22abd4",
+    "app/business/mcp/__main__.py": "8eab0c228dd3ac4b30cfd48e7bbeff276a49722133cdbc21321d770977e39a4b"
+  },
+  "verifier_source_sha256": "8b9aed1e41c43da146a1ba3bf8d4d3a2ab8b3efa56067f5bc1ed44605fd760fa",
+  "verifier_compiled_sha256": "6cc30a3269b28e705d6d196c843cd003580ffa1fb55f4216736ce908f6174284",
+  "capture_helper_sha256": "af6feea64d0608282db8b7299f1f0e96fac512ef8a826af21448cb86460e3be7",
+  "infrastructure": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.2",
+    "ollama": {
+      "version": "0.40.5"
+    }
+  },
+  "normalization": "Research-process HTTP interceptor normalizes model and decoding only; production files unchanged",
+  "prompts": "Architecture-specific production planner/synthesis and declared single-agent prompt; exact sanitized requests retained",
+  "tool_access": "B2 uses same build_tools/context as full workflow, all 22 names; same evidence extraction and canonical citation registry",
+  "evidence": "One shared exported read-only SQL snapshot and captured corrected-verifier chain replay",
+  "human_adjudication": "pending",
+  "confirmatory": false,
+  "scoring_policy": "No whole-answer accuracy claim. Structural syntax checks, transport failures and descriptive resources only; any source-fact checks reported separately.",
+  "reserved_questions_sha256": "8ee57c7670f38bf27a1461c5e3051886463f896b9dd46446e8bab53b8e192508"
+}

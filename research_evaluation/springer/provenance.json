@@ -1,0 +1,19 @@
+{
+  "SPRINGER_EXPERIMENTAL_RESULTS.md": "0ab9df017225e4ddaa894dda86ab637b02d8325b3527ad308d01f068bca9f4f9",
+  "springer/analyze.py": "c2d149bb1a18df3146c5155f816df7dd736145b0c1100033104aaa8182d9e684",
+  "springer/baseline_comparison_exploratory.csv": "5d099bad2846aa19db4cf5f2c1345d437f70d397074179f43f7c3acd9adc36c6",
+  "springer/deployment_checks.jsonl": "ba29a0eea6be6a2c07caa10e45b2af9f1e19692f089e87eddffdac8517f4f991",
+  "springer/EVIDENCE_TO_CLAIMS.md": "d915dad142a682173caf6d5f047aa74e8bee7d489c533fd912d03ba418c46b23",
+  "springer/fault_injection.json": "5896727040eda25ffaaf88aa66bf7451b06b5965ab1be7b0231dc1091914c99f",
+  "springer/faults.cjs": "e21a90da3d1efb29cc6ee2f9da8be067ddaa7cda5f26ffc377f9d6893ca4be9f",
+  "springer/metrics.json": "718c80b19d150effb0a9da9712dfa9976e9f6603b04edded7f4fa7751b47e04e",
+  "springer/reconcile.cjs": "f276e11e98fdd8e166cd7809b91177c33925f2d57ee9380a6058be7c6bf0bc91",
+  "springer/reconciliation.jsonl": "3d228dd4402117532dc3eeecdabecf63e212cc6665d139efde74108b6d9edf2e",
+  "springer/reconciliation.png": "0f6da41a2a65271744227eac07478406bee5d0ff4cdf6e5a6e0757183e2a0801",
+  "springer/reconciliation.svg": "3c273d104d2de2ca221ad9416a088a20f5ab15697f49fa49637625b26f3b2356",
+  "springer/reconciliation_config.json": "dc955775195021be71ea4e9985a271f03e194d1a244e362e29f7e04728f3c369",
+  "springer/reconciliation_table.csv": "2922c6ec7058b4078c3355cd6e6e51e71b44c494bb4394c9326f3811fd33b83a",
+  "springer/REPRODUCE.md": "d67bdc98d2a346cf1aa6fd9a23dbca9f53e4bf9f59e36e257b504aa8def1b673",
+  "springer/security.py": "2f93eff06b10a706d28ddda497e54e3ed10c667b0c0596d2effe86558fec9d5b",
+  "springer/security_probes.json": "8a3d2be257a155e92c9fa9bcd73cc9b4ac7895e307f9ec27f190526ec370ce3f"
+}

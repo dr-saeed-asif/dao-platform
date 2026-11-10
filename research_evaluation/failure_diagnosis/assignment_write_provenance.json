@@ -1,0 +1,21 @@
+{
+  "candidate_rows": 1,
+  "database_access": "Read-only PostgreSQL and SQLite",
+  "matches": [
+    {
+      "postgres_status": "CONFIRMED",
+      "postgres_operation": "ASSIGN_MEMBERS",
+      "postgres_block_number": "19347983",
+      "latest_evidence_missing": true,
+      "legacy_assignment_found": false,
+      "legacy_transaction_reference_matches": false,
+      "legacy_assigned_at": null,
+      "postgres_effective_from": "2026-10-18T15:47:07.682000+00:00",
+      "legacy_transaction": null
+    }
+  ],
+  "legacy_database_available": true,
+  "receipt_authority": "../springer_history/failed_assignment_receipt.json (canonical status 0x0)",
+  "privacy": "Member addresses and transaction hashes omitted",
+  "historical_attribution_limit": "Matching legacy data and compatible write paths do not identify a particular HTTP request or import execution without audit logs."
+}

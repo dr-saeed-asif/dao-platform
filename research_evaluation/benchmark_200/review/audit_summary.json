@@ -1,0 +1,14 @@
+{
+  "source_checked_items": 175,
+  "source_answer_mismatches": 0,
+  "independently_validated_items": 0,
+  "quarantined_originals": 25,
+  "proposed_quote_anchored_replacements": 25,
+  "ambiguity_flags_multi_source": 10,
+  "near_duplicate_pairs_flagged": 292,
+  "current_literal_leak_flags": [
+    "DB-021"
+  ],
+  "review_decision": "Full benchmark still blocked; external review pack ready; optional labelled eight-question source-checked subset allowed",
+  "method_limit": "Existing correct-answer equality and quote checks do not constitute independent review"
+}

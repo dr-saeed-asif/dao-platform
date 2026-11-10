@@ -1,0 +1,17 @@
+{
+  "replacement_id": "DB-R021",
+  "supersedes_proposed": "DB-021",
+  "question": "How long is the selected cleanup proposal database voting window in seconds?",
+  "expected_answer": "3600",
+  "source_identifiers": [
+    "database/cleanup/starts_at",
+    "database/cleanup/ends_at"
+  ],
+  "source_operands": {
+    "starts_at": "2026-10-21 10:26:00+00:00",
+    "ends_at": "2026-10-21 11:26:00+00:00"
+  },
+  "source_check": "same-assistant timestamp subtraction",
+  "independent_validation": "pending",
+  "admission_status": "not_admitted"
+}

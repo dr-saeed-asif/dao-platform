@@ -1,0 +1,14 @@
+{
+  "sample_n": 18,
+  "returned_evidence_support": {
+    "unsupported": 4,
+    "contradicted": 4,
+    "supported": 10
+  },
+  "authoritative_truth": {
+    "contradicted": 8,
+    "supported": 10
+  },
+  "method": "Purposive diagnostic assertions reviewed by same research assistant; not exhaustive and not a general support-rate estimate",
+  "human_review": "pending"
+}

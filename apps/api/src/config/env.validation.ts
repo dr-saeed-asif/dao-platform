@@ -1,5 +1,22 @@
 import Joi from 'joi';
 
+const PLACEHOLDER_FRAGMENTS = [
+  'replace-with',
+  'changeme',
+  'change-me',
+  'placeholder',
+  'development-secret',
+  'your-secret',
+  'example',
+];
+
+function isWeakSecret(secret: unknown): boolean {
+  if (typeof secret !== 'string') return true;
+  const lowered = secret.toLowerCase();
+  if (PLACEHOLDER_FRAGMENTS.some((fragment) => lowered.includes(fragment))) return true;
+  return new Set(secret).size < 10;
+}
+
 export const envValidationSchema = Joi.object({
   NODE_ENV: Joi.string()
     .valid('development', 'test', 'production')
@@ -31,4 +48,19 @@ export const envValidationSchema = Joi.object({
   JWT_SECRET: Joi.string().min(32).required(),
   AI_SERVER_URL: Joi.string().uri().optional(),
   AI_SERVER_TOKEN: Joi.string().min(24).optional(),
+}).custom((env, helpers) => {
+  // Boot-time production guards (review finding C2). Messages never include secret values.
+  if (env.NODE_ENV !== 'production') return env;
+  if (env.DEV_AUTH_BYPASS_ENABLED) {
+    return helpers.message({
+      custom: 'DEV_AUTH_BYPASS_ENABLED must be false when NODE_ENV=production.',
+    });
+  }
+  if (isWeakSecret(env.JWT_SECRET)) {
+    return helpers.message({
+      custom:
+        'JWT_SECRET must be a unique random value when NODE_ENV=production (placeholder or low-entropy secrets are rejected).',
+    });
+  }
+  return env;
 });

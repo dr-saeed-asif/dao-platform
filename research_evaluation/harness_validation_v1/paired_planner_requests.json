@@ -1,0 +1,12 @@
+[
+  {
+    "development_id": "DEV-SQL-01",
+    "first_planner_normalized_request_hash_equal": true,
+    "first_planner_output_equal": false
+  },
+  {
+    "development_id": "DEV-MIX-01",
+    "first_planner_normalized_request_hash_equal": true,
+    "first_planner_output_equal": true
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "model_digest_after": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "model_digest_unchanged": true,
+  "module_hashes_after": {
+    "app.business.agents.planning": "1b845b2c6a7988e5e8060ae59932abdc8772fb0bed0903341794089fe95469f7",
+    "app.business.agents.synthesis": "c2b43ec2b9bea051f8cd2780bb1c13a9b8c0a919eaa2dee24d21cc85132925fa"
+  },
+  "configured_limits": {
+    "ollama_chat_model": "qwen3:4b-instruct",
+    "ollama_fast_model": "qwen3.5:4b-instruct",
+    "agent_concurrency": 1,
+    "agent_max_retries": 2,
+    "agent_max_total_time_sec": 300,
+    "agent_question_timeout_sec": 120
+  },
+  "research_effective_options": {
+    "seed": 42,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 1536,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repeat_penalty": 1.1
+  },
+  "full_runner_worker_concurrency": 1,
+  "full_runner_retrieval_top_k": 4,
+  "B2_retrieval_top_k": "Tool default 4; model may supply an allowed value",
+  "note": "Provider request records are authoritative for effective normalized model; trace model_used can reflect the caller-requested model."
+}

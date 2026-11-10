@@ -1,0 +1,36 @@
+{
+  "method": "Independent repeated SQL projection after model runs; transaction_read_only on",
+  "scopes": [
+    {
+      "scope": "pilot",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    },
+    {
+      "scope": "training",
+      "matching_fields": 12,
+      "mismatches": [
+        "title"
+      ],
+      "changed_values": {
+        "title": {
+          "captured": "Improve members\u00e2\u20ac\u2122 understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+          "post_smoke": "Improve members\u2019 understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide."
+        }
+      }
+    },
+    {
+      "scope": "cleanup",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    },
+    {
+      "scope": "testing",
+      "matching_fields": 13,
+      "mismatches": [],
+      "changed_values": {}
+    }
+  ]
+}

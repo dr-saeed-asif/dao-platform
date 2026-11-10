@@ -1,0 +1,866 @@
+[
+  {
+    "id": "DB-006",
+    "variant": "B1",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 3
+  },
+  {
+    "id": "DB-006",
+    "variant": "B2",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 4
+  },
+  {
+    "id": "DB-006",
+    "variant": "B2",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 4
+  },
+  {
+    "id": "DB-016",
+    "variant": "B2",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 6
+  },
+  {
+    "id": "DB-016",
+    "variant": "B2",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 6
+  },
+  {
+    "id": "DB-016",
+    "variant": "B1",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 8
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B2",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 9
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B1",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 12
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B1",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 13
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B2",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 15
+  },
+  {
+    "id": "MS-002",
+    "variant": "B1",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 19
+  },
+  {
+    "id": "MS-026",
+    "variant": "B1",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 22
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B2",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 27
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B1",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 28
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B1",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 30
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B2",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v1/responses.jsonl",
+    "raw_line": 31
+  },
+  {
+    "id": "DB-006",
+    "variant": "B3",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 1
+  },
+  {
+    "id": "DB-006",
+    "variant": "B3",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 1
+  },
+  {
+    "id": "DB-006",
+    "variant": "B4",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 2
+  },
+  {
+    "id": "DB-006",
+    "variant": "B4",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 2
+  },
+  {
+    "id": "DB-016",
+    "variant": "B3",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 3
+  },
+  {
+    "id": "DB-016",
+    "variant": "B3",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 3
+  },
+  {
+    "id": "DB-016",
+    "variant": "B4",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 4
+  },
+  {
+    "id": "DB-016",
+    "variant": "B4",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 4
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B4",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 5
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B4",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 5
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B3",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 6
+  },
+  {
+    "id": "PDF-006",
+    "variant": "B3",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 6
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B3",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 7
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B3",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 7
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B4",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 8
+  },
+  {
+    "id": "PDF-026",
+    "variant": "B4",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 8
+  },
+  {
+    "id": "MS-002",
+    "variant": "B4",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 9
+  },
+  {
+    "id": "MS-002",
+    "variant": "B4",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 9
+  },
+  {
+    "id": "MS-002",
+    "variant": "B2",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 10
+  },
+  {
+    "id": "MS-002",
+    "variant": "B2",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 10
+  },
+  {
+    "id": "MS-002",
+    "variant": "B3",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 11
+  },
+  {
+    "id": "MS-002",
+    "variant": "B3",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 11
+  },
+  {
+    "id": "MS-026",
+    "variant": "B4",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 12
+  },
+  {
+    "id": "MS-026",
+    "variant": "B4",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 12
+  },
+  {
+    "id": "MS-026",
+    "variant": "B3",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 13
+  },
+  {
+    "id": "MS-026",
+    "variant": "B3",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 13
+  },
+  {
+    "id": "MS-026",
+    "variant": "B2",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 14
+  },
+  {
+    "id": "MS-026",
+    "variant": "B2",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "seed": 42,
+      "temperature": 0.6,
+      "num_ctx": 8192,
+      "num_predict": 1536
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 14
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B3",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 15
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B3",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 15
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B4",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 16
+  },
+  {
+    "id": "UN-R001",
+    "variant": "B4",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 16
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B4",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 17
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B4",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 17
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B3",
+    "call": 1,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0,
+      "num_predict": 3072,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 18
+  },
+  {
+    "id": "UN-R018",
+    "variant": "B3",
+    "call": 2,
+    "model": "qwen3:0.6b",
+    "options": {
+      "temperature": 0.6,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repeat_penalty": 1.1,
+      "seed": 42,
+      "num_predict": 1536,
+      "num_ctx": 8192
+    },
+    "HTTP": 200,
+    "done_reason": "stop",
+    "raw_file": "exploratory_frozen_v2/responses.jsonl",
+    "raw_line": 18
+  }
+]

@@ -1,0 +1,16 @@
+campaign,id,variant,claim,judgment,authority,reviewer,scope
+smoke-v2,DB-002,B2,Raw database status is pilot proposal,contradicted,evidence/snapshot.json database/pilot/status,unblinded research assistant,selected diagnostic claims only
+smoke-v2,DB-002,B3,Database status is VOTING_CLOSED,supported,returned G1 stored_status,unblinded research assistant,selected diagnostic claims only
+smoke-v2,DB-002,B4,Database status is VOTING_CLOSED,supported,returned G1 stored_status,unblinded research assistant,selected diagnostic claims only
+smoke,PDF-005,B2,No available function is designed to access PDF content,contradicted,AI tool registry search_proposal_evidence and get_proposal_document_chunk,unblinded research assistant,capability claim rather than proposal fact
+smoke,PDF-005,B3,Proposed budget is EUR 12000,supported,returned D1 and original pilot PDF,unblinded research assistant,selected diagnostic claims only
+smoke,PDF-005,B4,Proposed budget is EUR 12000,supported,returned D1 and original pilot PDF,unblinded research assistant,selected diagnostic claims only
+smoke,MS-001,B1,PDF proposed budget is USD 500000,contradicted,original pilot PDF proposed EUR 12000,unblinded research assistant,selected diagnostic claims only
+smoke,MS-001,B1,Database and chain active assignments are 1000,contradicted,evidence/snapshot.json both counts equal 10,unblinded research assistant,selected diagnostic claims only
+smoke,MS-001,B2,The pilot proposal has been verified,supported,returned G5 status verified,unblinded research assistant,verification status has a bounded software meaning
+smoke,MS-001,B2,The total budget was reported,unsupported,returned sources contain no PDF budget amount,unblinded research assistant,selected diagnostic claims only
+smoke,MS-001,B2,Documents are linked and ready,supported,returned G4 verified_linked_count and ready_index_count,unblinded research assistant,selected diagnostic claims only
+smoke,MS-001,B2,The proposal starts in 2025,contradicted,returned G5 startsAt 1793002500 is in 2026,unblinded research assistant,selected diagnostic claims only
+smoke,MS-001,B2,The proposal has three options,supported,returned G5 optionCount equals 3,unblinded research assistant,selected diagnostic claims only
+smoke,MS-001,B3,Selected DAO has one proposal,supported but off-target,returned G1 proposal_count equals 1,unblinded research assistant,does not answer requested budget or assignment facts
+smoke,MS-001,B4,Selected DAO has one proposal,supported but off-target,returned G1 proposal_count equals 1,unblinded research assistant,does not answer requested budget or assignment facts
