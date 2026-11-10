@@ -5,6 +5,13 @@ coverage/
 .env
 .env.*
 !.env.example
+.envrc
+.pgpass
+*.pem
+*.key
+!*.example.pem
+!*.example.key
+/.oeval/
 *.log
 .DS_Store
 Thumbs.db
