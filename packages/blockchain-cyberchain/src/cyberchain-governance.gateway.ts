@@ -95,9 +95,7 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       ],
       this.transactionOptions(),
     );
-    if (result.receipt.status !== 1n) {
-      throw new ChainTransactionRevertedError();
-    }
+    assertMined(result.receipt);
     const event = this.contract.findEvent(result.receipt, "ProposalCreated");
     if (!event) throw new ChainEventNotFoundError("ProposalCreated");
     return {
@@ -115,6 +113,7 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       [proposalId, [...members]],
       this.transactionOptions(),
     );
+    assertMined(result.receipt);
     return confirmedTransaction(result.receipt);
   }
 
@@ -127,6 +126,7 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       [proposalId, member],
       this.transactionOptions(),
     );
+    assertMined(result.receipt);
     return confirmedTransaction(result.receipt);
   }
 
@@ -234,6 +234,7 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       [proposalId],
       this.transactionOptions(),
     );
+    assertMined(result.receipt);
     return confirmedTransaction(result.receipt);
   }
 
@@ -243,6 +244,7 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       [proposalId],
       this.transactionOptions(),
     );
+    assertMined(result.receipt);
     const event = this.contract.findEvent(result.receipt, "ProposalFinalized");
     return {
       ...confirmedTransaction(result.receipt),
@@ -304,6 +306,15 @@ function confirmedVote(
 
 function hexBytes(value: string): Buffer {
   return Buffer.from(value.replace(/^0x/i, ""), "hex");
+}
+
+/**
+ * callMutableMethod resolves with the mined receipt even when the transaction reverted,
+ * so every on-chain write must check the status before reporting CONFIRMED (review finding C1).
+ * Anything other than status 1 (including a missing status) is treated as a failure.
+ */
+function assertMined(receipt: TransactionReceipt): void {
+  if (receipt.status !== 1n) throw new ChainTransactionRevertedError();
 }
 
 function confirmedTransaction(

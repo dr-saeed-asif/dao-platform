@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import type { TestContext } from "node:test";
 import { ProposalType } from "@dao-platform/domain";
 import { ChainEventNotFoundError, ChainTransactionRevertedError } from "@dao-platform/application";
 import { CyberChainGovernanceGateway, createGovernanceEventEnvelope, eventEvidenceId } from "../src/index.js";
@@ -198,5 +199,64 @@ describe("CyberChainGovernanceGateway", () => {
     assert.equal(transaction.to, "0x51b43885899bd0301c2beea89addc9d876145d21");
     assert.equal(transaction.value, "0");
     assert.match(transaction.data, /^0x[0-9a-f]+$/);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Review finding C1: a mined-but-reverted write must never be reported as CONFIRMED.
+// ---------------------------------------------------------------------------
+describe("CyberChainGovernanceGateway write receipts (C1)", () => {
+  function writeSubject(t: TestContext, minedReceipt: unknown) {
+    const subject = new CyberChainGovernanceGateway({ rpcURL: "http://fixture.invalid", chainId: "1212", contractAddress: emitter });
+    (subject as unknown as { transactionOptions(): object }).transactionOptions = () => ({});
+    t.mock.method(SmartContractInterface.prototype, "callMutableMethod", async () => ({ receipt: minedReceipt }));
+    return subject;
+  }
+
+  const writes: ReadonlyArray<readonly [string, (gateway: CyberChainGovernanceGateway) => Promise<unknown>]> = [
+    ["assignMembers", (gateway) => gateway.assignMembers("9", [actor])],
+    ["unassignMember", (gateway) => gateway.unassignMember("9", actor)],
+    ["cancelProposal", (gateway) => gateway.cancelProposal("9")],
+    ["finalizeProposal", (gateway) => gateway.finalizeProposal("9")],
+  ];
+
+  for (const [name, call] of writes) {
+    it(`${name} rejects a reverted receipt (status 0) instead of reporting CONFIRMED`, async (t) => {
+      const subject = writeSubject(t, { ...receipt, status: 0n });
+      t.mock.method(SmartContractInterface.prototype, "findEvent", () => null);
+      await assert.rejects(call(subject), (error: unknown) => error instanceof ChainTransactionRevertedError);
+    });
+
+    it(`${name} fails closed on a receipt whose status is missing`, async (t) => {
+      const { status: _omitted, ...withoutStatus } = receipt;
+      const subject = writeSubject(t, withoutStatus);
+      t.mock.method(SmartContractInterface.prototype, "findEvent", () => null);
+      await assert.rejects(call(subject), (error: unknown) => error instanceof ChainTransactionRevertedError);
+    });
+  }
+
+  it("still reports CONFIRMED with the receipt details for successful assign, unassign and cancel", async (t) => {
+    const subject = writeSubject(t, receipt);
+    for (const result of [
+      await subject.assignMembers("9", [actor]),
+      await subject.unassignMember("9", actor),
+      await subject.cancelProposal("9"),
+    ]) {
+      assert.equal(result.status, "CONFIRMED");
+      assert.equal(result.transactionHash, txHash);
+      assert.equal(result.blockHash, blockHash);
+      assert.equal(result.blockNumber, "42");
+      assert.equal(result.gasUsed, "21000");
+    }
+  });
+
+  it("still returns the decoded result for a successful finalizeProposal", async (t) => {
+    const subject = writeSubject(t, receipt);
+    t.mock.method(SmartContractInterface.prototype, "findEvent", () => ({ parameters: [9n, 2n, true, 77n] }));
+    const result = await subject.finalizeProposal("9");
+    assert.equal(result.status, "CONFIRMED");
+    assert.equal(result.winningOption, 2);
+    assert.equal(result.tied, true);
+    assert.equal(result.totalVotes, 77);
   });
 });

@@ -2,7 +2,10 @@ import { WalletAddress } from "@dao-platform/domain";
 import { AssignmentRepository } from "../ports/assignment-repository.js";
 import { ChainTransactionRepository } from "../ports/chain-transaction-repository.js";
 import { Clock } from "../ports/clock.js";
-import { GovernanceChainGateway } from "../ports/governance-chain.gateway.js";
+import {
+  ChainTransactionRevertedError,
+  GovernanceChainGateway,
+} from "../ports/governance-chain.gateway.js";
 import { ProposalAuthorization } from "../ports/proposal-authorization.js";
 import { ProposalRepository } from "../ports/proposal-repository.js";
 import { TransactionManager } from "../ports/transaction-manager.js";
@@ -54,7 +57,18 @@ export class AssignMembersUseCase {
       );
     }
 
-    const result = await this.chain.assignMembers(proposal.onChainId, members);
+    let result;
+    try {
+      result = await this.chain.assignMembers(proposal.onChainId, members);
+    } catch (error) {
+      if (error instanceof ChainTransactionRevertedError) {
+        throw new ApplicationError(
+          "TRANSACTION_REVERTED",
+          "Member assignment was mined but reverted. No assignment was recorded.",
+        );
+      }
+      throw error;
+    }
     const now = this.clock.now();
     await this.transactionManager.runInTransaction(async () => {
       await this.assignments.addMany(

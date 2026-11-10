@@ -1,6 +1,9 @@
 import { ProposalStatus } from "@dao-platform/domain";
 import { ChainTransactionRepository } from "../../ports/chain-transaction-repository.js";
-import { GovernanceChainGateway } from "../../ports/governance-chain.gateway.js";
+import {
+  ChainTransactionRevertedError,
+  GovernanceChainGateway,
+} from "../../ports/governance-chain.gateway.js";
 import { ProposalAuthorization } from "../../ports/proposal-authorization.js";
 import { ProposalRepository } from "../../ports/proposal-repository.js";
 import { TransactionManager } from "../../ports/transaction-manager.js";
@@ -25,7 +28,18 @@ export class CancelProposalUseCase {
       actorAddress,
       daoId: proposal.daoId,
     });
-    const result = await this.chain.cancelProposal(proposal.onChainId);
+    let result;
+    try {
+      result = await this.chain.cancelProposal(proposal.onChainId);
+    } catch (error) {
+      if (error instanceof ChainTransactionRevertedError) {
+        throw new ApplicationError(
+          "TRANSACTION_REVERTED",
+          "Cancellation was mined but reverted. The proposal status was not changed.",
+        );
+      }
+      throw error;
+    }
     const now = new Date();
     await this.transactionManager.runInTransaction(async () => {
       await this.proposals.updateStatus(id, ProposalStatus.Cancelled, now);
