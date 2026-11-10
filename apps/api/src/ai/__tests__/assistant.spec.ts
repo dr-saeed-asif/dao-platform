@@ -1,14 +1,22 @@
 import { ConfigService } from '@nestjs/config';
+import {
+  createHash,
+  createPrivateKey,
+  createPublicKey,
+  verify,
+} from 'node:crypto';
 import { Wallet } from 'ethers';
 import { AssistantAuthService } from '../assistant-auth.service';
 import { AssistantController } from '../assistant.controller';
 
 describe('Assistant authentication and secure proxy', () => {
+  const identityKey = 'ab'.repeat(32);
   const config = new ConfigService({
     JWT_SECRET: 'test-session-key-at-least-32-characters',
     DAO_ADMIN_ADDRESS: '0x0000000000000000000000000000000000000001',
     AI_SERVER_URL: 'http://127.0.0.1:8001',
     AI_SERVER_TOKEN: 'operator-secret-kept-on-server',
+    DAO_IDENTITY_SIGNING_KEY: identityKey,
   });
   const wallet = Wallet.createRandom();
   let auth: AssistantAuthService;
@@ -69,6 +77,9 @@ describe('Assistant authentication and secure proxy', () => {
     expect(() => auth.login(expired.nonce, signature)).toThrow('expired');
   });
   it('derives scope and user upstream; never accepts client permission claims', async () => {
+    const request = req as { headers: Record<string, string> };
+    request.headers['x-dao-user'] = '0x' + 'b'.repeat(40);
+    request.headers['x-dao-identity'] = 'client-supplied-assertion';
     global.fetch = jest
       .fn()
       .mockResolvedValue(
@@ -78,17 +89,71 @@ describe('Assistant authentication and secure proxy', () => {
       { proposalId: proposal.id, question: ['Question?'] },
       req,
     );
-    const [url, options] = (global.fetch as jest.Mock).mock.calls[0];
+    const [url, options] = (global.fetch as jest.MockedFunction<typeof fetch>)
+      .mock.calls[0] as [
+      URL,
+      { body: string; headers: Record<string, string> },
+    ];
     expect(String(url)).toBe('http://127.0.0.1:8001/rag/agents/ask');
     expect(JSON.parse(options.body)).toMatchObject({
       dao_id: 'dao-1',
       proposal_id: 'proposal-1',
       concurrency: 3,
     });
-    expect(options.headers).toMatchObject({
-      'X-DAO-User': wallet.address.toLowerCase(),
-      Authorization: 'Bearer operator-secret-kept-on-server',
+    expect(options.headers['X-DAO-User']).toBeUndefined();
+    expect(options.headers.Authorization).toBe(
+      'Bearer operator-secret-kept-on-server',
+    );
+    const [payload, signature] = options.headers['X-DAO-Identity'].split('.');
+    const publicKey = createPublicKey(
+      createPrivateKey({
+        key: Buffer.from(
+          `302e020100300506032b657004220420${identityKey}`,
+          'hex',
+        ),
+        format: 'der',
+        type: 'pkcs8',
+      }),
+    );
+    expect(
+      verify(
+        null,
+        Buffer.from(`cyberdao-ai-identity-v1.${payload}`),
+        publicKey,
+        Buffer.from(signature, 'hex'),
+      ),
+    ).toBe(true);
+    const claims = JSON.parse(Buffer.from(payload, 'base64url').toString()) as {
+      iat: number;
+      exp: number;
+      jti: string;
+    };
+    expect(claims).toMatchObject({
+      aud: 'cyberdao-ai',
+      sub: wallet.address.toLowerCase(),
+      dao: 'dao-1',
+      proposal: 'proposal-1',
+      method: 'POST',
+      target: '/rag/agents/ask',
+      body: createHash('sha256').update(options.body).digest('hex'),
     });
+    expect(claims.exp - claims.iat).toBe(30);
+    expect(claims.jti).toMatch(/^[0-9a-f]{32}$/);
+  });
+  it('fails closed without a separate signing key', async () => {
+    jest.spyOn(config, 'get').mockImplementation(
+      (key) =>
+        ({
+          AI_SERVER_URL: 'http://127.0.0.1:8001',
+          AI_SERVER_TOKEN: 'operator-secret-kept-on-server',
+          JWT_SECRET: 'test-session-key-at-least-32-characters',
+        })[String(key)],
+    );
+    global.fetch = jest.fn();
+    await expect(
+      controller.ask({ proposalId: proposal.id, question: ['Question?'] }, req),
+    ).rejects.toThrow('not configured');
+    expect(global.fetch).not.toHaveBeenCalled();
   });
   it('blocks unassigned wallets and missing proposals before invoking AI', async () => {
     global.fetch = jest.fn();

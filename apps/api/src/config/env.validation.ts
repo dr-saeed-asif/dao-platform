@@ -48,6 +48,7 @@ export const envValidationSchema = Joi.object({
   JWT_SECRET: Joi.string().min(32).required(),
   AI_SERVER_URL: Joi.string().uri().optional(),
   AI_SERVER_TOKEN: Joi.string().min(24).optional(),
+  DAO_IDENTITY_SIGNING_KEY: Joi.string().hex().length(64).optional(),
 }).custom((env, helpers) => {
   // Boot-time production guards (review finding C2). Messages never include secret values.
   if (env.NODE_ENV !== 'production') return env;

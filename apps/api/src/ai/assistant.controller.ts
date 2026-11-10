@@ -1,3 +1,4 @@
+import { createHash, createPrivateKey, randomBytes, sign } from 'node:crypto';
 import {
   BadGatewayException,
   Body,
@@ -63,6 +64,7 @@ export class AssistantController {
       await this.upstream(
         '/rag/agents/ask',
         user,
+        proposal,
         'POST',
         this.askBody(body, proposal),
       )
@@ -86,6 +88,7 @@ export class AssistantController {
       const response = await this.upstream(
         '/rag/agents/ask/stream',
         user,
+        proposal,
         'POST',
         this.askBody(body, proposal),
         abort.signal,
@@ -121,7 +124,7 @@ export class AssistantController {
     const user = this.auth.user(req),
       proposal = await this.scope(body.proposalId, user);
     return (
-      await this.upstream('/rag/conversations', user, 'POST', {
+      await this.upstream('/rag/conversations', user, proposal, 'POST', {
         dao_id: proposal.dao_id,
         proposal_id: proposal.id,
         title: body.title,
@@ -138,7 +141,9 @@ export class AssistantController {
       proposal_id: proposal.id,
       limit: '100',
     });
-    return (await this.upstream(`/rag/conversations?${query}`, user)).json();
+    return (
+      await this.upstream(`/rag/conversations?${query}`, user, proposal)
+    ).json();
   }
 
   @Delete('conversations')
@@ -153,7 +158,12 @@ export class AssistantController {
       proposal_id: proposal.id,
     });
     return (
-      await this.upstream(`/rag/conversations?${query}`, user, 'DELETE')
+      await this.upstream(
+        `/rag/conversations?${query}`,
+        user,
+        proposal,
+        'DELETE',
+      )
     ).json();
   }
 
@@ -178,7 +188,12 @@ export class AssistantController {
       proposal = await this.scope(proposalId, user);
     await this.conversation(id, proposal, user);
     return (
-      await this.upstream(`/rag/conversations/${encodeURIComponent(id)}`, user, 'DELETE')
+      await this.upstream(
+        `/rag/conversations/${encodeURIComponent(id)}`,
+        user,
+        proposal,
+        'DELETE',
+      )
     ).json();
   }
 
@@ -195,6 +210,7 @@ export class AssistantController {
       await this.upstream(
         `/rag/conversations/${encodeURIComponent(id)}/messages?limit=100`,
         user,
+        proposal,
       )
     ).json();
   }
@@ -207,6 +223,7 @@ export class AssistantController {
       await this.upstream(
         `/rag/proposals/${encodeURIComponent(proposal.id)}/documents?dao_id=${encodeURIComponent(proposal.dao_id)}`,
         user,
+        proposal,
       )
     ).json();
   }
@@ -234,7 +251,9 @@ export class AssistantController {
       proposal_id: proposal.id,
       limit: '500',
     });
-    return (await this.upstream(`/rag/agents/runs?${query}`, user)).json();
+    return (
+      await this.upstream(`/rag/agents/runs?${query}`, user, proposal)
+    ).json();
   }
 
   @Get('runs/:id')
@@ -250,7 +269,7 @@ export class AssistantController {
       proposal_id: proposal.id,
     });
     return (
-      await this.upstream(`/rag/agents/runs/${id}?${query}`, user)
+      await this.upstream(`/rag/agents/runs/${id}?${query}`, user, proposal)
     ).json();
   }
 
@@ -302,7 +321,11 @@ export class AssistantController {
     user: string,
   ) {
     const value = await (
-      await this.upstream(`/rag/conversations/${encodeURIComponent(id)}`, user)
+      await this.upstream(
+        `/rag/conversations/${encodeURIComponent(id)}`,
+        user,
+        proposal,
+      )
     ).json();
     if (value.dao_id !== proposal.dao_id || value.proposal_id !== proposal.id)
       throw new ForbiddenException('Conversation belongs to another proposal.');
@@ -312,19 +335,56 @@ export class AssistantController {
   private async upstream(
     path: string,
     user: string,
+    proposal: { id: string; dao_id: string },
     method = 'GET',
     body?: unknown,
     signal?: AbortSignal,
   ) {
     const origin = this.config.get<string>('AI_SERVER_URL'),
-      token = this.config.get<string>('AI_SERVER_TOKEN');
-    if (!origin || !token)
+      token = this.config.get<string>('AI_SERVER_TOKEN'),
+      key = this.config.get<string>('DAO_IDENTITY_SIGNING_KEY');
+    if (
+      !origin ||
+      !token ||
+      !key ||
+      !/^[a-f0-9]{64}$/i.test(key) ||
+      key.toLowerCase() === token.toLowerCase()
+    )
       throw new ServiceUnavailableException(
         'AI server connection is not configured.',
       );
     const url = new URL(path, origin);
     if (!['http:', 'https:'].includes(url.protocol))
       throw new ServiceUnavailableException('Invalid AI server URL.');
+    const requestBody = body === undefined ? undefined : JSON.stringify(body);
+    const now = Math.floor(Date.now() / 1000);
+    const payload = Buffer.from(
+      JSON.stringify({
+        aud: 'cyberdao-ai',
+        sub: user,
+        dao: proposal.dao_id,
+        proposal: proposal.id,
+        iat: now,
+        exp: now + 30,
+        jti: randomBytes(16).toString('hex'),
+        method,
+        target: url.pathname + url.search,
+        body: createHash('sha256')
+          .update(requestBody ?? '')
+          .digest('hex'),
+      }),
+    ).toString('base64url');
+    // RFC 8410 PKCS#8 wrapper for the raw Ed25519 private seed.
+    const privateKey = createPrivateKey({
+      key: Buffer.from(`302e020100300506032b657004220420${key}`, 'hex'),
+      format: 'der',
+      type: 'pkcs8',
+    });
+    const signature = sign(
+      null,
+      Buffer.from(`cyberdao-ai-identity-v1.${payload}`),
+      privateKey,
+    ).toString('hex');
     let response: Response;
     try {
       response = await fetch(url, {
@@ -337,10 +397,10 @@ export class AssistantController {
         ]),
         headers: {
           Authorization: `Bearer ${token}`,
-          'X-DAO-User': user,
+          'X-DAO-Identity': `${payload}.${signature}`,
           'Content-Type': 'application/json',
         },
-        body: body === undefined ? undefined : JSON.stringify(body),
+        body: requestBody,
       });
     } catch {
       throw new BadGatewayException(
