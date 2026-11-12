@@ -36,11 +36,27 @@ export class SyncGovernanceUseCase {
     const latest = await this.chain.latestBlockNumber();
     const cursor = full ? null : await this.state.getLastProcessedBlock(INDEXER);
     const fromBlock = cursor === null ? this.deploymentBlock : cursor + 1n;
+    if (cursor !== null && cursor > latest) throw new Error("Indexer checkpoint is ahead of the chain target.");
+    if (this.maxBlockRange < 1n) throw new Error("Indexer range size must be positive.");
     const counts: SyncCounts = { proposals: 0, assignments: 0, unassignments: 0, votes: 0, cancellations: 0, finalizations: 0 };
     let batches = 0;
     for (let start = fromBlock; start <= latest; start += this.maxBlockRange) {
       const end = min(start + this.maxBlockRange - 1n, latest);
-      const events = await this.chain.findGovernanceEvents(start, end);
+      const page = await this.chain.findGovernanceEvents(start, end);
+      if (!Array.isArray(page)) throw new Error("Invalid governance event page.");
+      const unique = new Map<string, GovernanceChainEvent>();
+      for (const event of page) {
+        const height = BigInt(event.blockNumber);
+        if (height < start || height > end) throw new Error("Governance event outside requested range.");
+        const previous = unique.get(event.evidenceId);
+        if (previous && (previous.blockHash !== event.blockHash ||
+            previous.kind !== event.kind || JSON.stringify(previous.eventArgs) !== JSON.stringify(event.eventArgs))) {
+          throw new Error("Conflicting duplicate governance event.");
+        }
+        unique.set(event.evidenceId, event);
+      }
+      const events = [...unique.values()].sort((a, b) =>
+        Number(BigInt(a.blockNumber) - BigInt(b.blockNumber)) || a.logIndex - b.logIndex);
       for (const event of events) {
         await this.governanceEvents.saveGovernanceEvent(event);
       }
@@ -48,7 +64,7 @@ export class SyncGovernanceUseCase {
       await this.state.setLastProcessedBlock(INDEXER, end);
       batches += 1;
     }
-    return { mode: full ? "FULL" : "INCREMENTAL", fromBlock: fromBlock.toString(), toBlock: latest.toString(), batches, indexed: counts };
+    return { mode: full ? "FULL" : "INCREMENTAL", fromBlock: fromBlock.toString(), toBlock: latest.toString(), batches, indexed: counts, coverage: "scan_progress" as const };
   }
 
   private async apply(event: GovernanceChainEvent, counts: SyncCounts) {
@@ -122,7 +138,19 @@ export class SyncGovernanceUseCase {
         await this.record(event, proposal.id, "CANCEL_PROPOSAL", proposal.creatorAddress.value);
         counts.cancellations += 1;
       } else if (event.kind === "PROPOSAL_FINALIZED") {
-        await this.proposals.updateStatus(proposal.id, ProposalStatus.Closed, now);
+        if (!Number.isSafeInteger(event.winningOption) || event.winningOption < 0 ||
+            typeof event.tied !== "boolean" ||
+            !Number.isSafeInteger(event.totalVotes) || event.totalVotes < 0) {
+          throw new Error("Incomplete or invalid proposal finalization event.");
+        }
+        const finalizedAt = new Date(Number(event.blockTimestamp) * 1000);
+        if (!Number.isFinite(finalizedAt.getTime())) throw new Error("Invalid finalization block timestamp.");
+        if (this.proposals.recordFinalization) {
+          await this.proposals.recordFinalization(proposal.id, event.winningOption,
+            event.tied, String(event.totalVotes), finalizedAt);
+        } else {
+          await this.proposals.updateStatus(proposal.id, ProposalStatus.Closed, finalizedAt);
+        }
         await this.record(event, proposal.id, "FINALIZE_PROPOSAL", proposal.creatorAddress.value);
         counts.finalizations += 1;
       }

@@ -1,0 +1,16 @@
+{
+  "written_utc": "2026-11-11T16:45:47.540872+00:00",
+  "completed_B1_frozen_RAG": 532,
+  "live_saved": 707,
+  "live_planned": 1330,
+  "saved_model_attempts": 1239,
+  "direct_SQL_completed": 26,
+  "live_pipeline_pid": 29456,
+  "finalizer_pid": 44980,
+  "latest_model": "qwen3:4b-instruct",
+  "latest_condition": "B3",
+  "human_annotations": 0,
+  "status": "exploratory campaign running",
+  "preservation": "Do not rerun completed keys or old pilot/recovery/document experiments",
+  "finish": "Finalizer runs analyze.py, report_live.py, check_transport.py, figures.py, seal.py after completion. Check live_campaign/raw/finalizer-error.log for blockers."
+}

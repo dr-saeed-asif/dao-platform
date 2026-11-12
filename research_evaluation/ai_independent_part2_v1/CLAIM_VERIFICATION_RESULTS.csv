@@ -1,0 +1,1 @@
+claim_id,question_id,response_id,human_gold,gate_prediction,gate_reason,citation_ids,field,value,currency,unit,evidence_span,abstention,latency_ms

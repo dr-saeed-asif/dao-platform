@@ -1,0 +1,36 @@
+{
+  "cases": 16,
+  "correct_classifications": 15,
+  "correct_classification_rate": 0.9375,
+  "positive_injected_cases": 13,
+  "negative_controls": 3,
+  "detection_matrix": {
+    "tp": 12,
+    "fn": 1,
+    "fp": 0,
+    "tn": 3
+  },
+  "false_positive_rate": 0.0,
+  "false_negative_rate": 0.07692307692307693,
+  "unverified_or_unavailable": {
+    "n": 10,
+    "denominator": 16
+  },
+  "latency_ms": {
+    "median": 1.728099999999813,
+    "min": 0.06169999999974607,
+    "max": 14.242300000000114
+  },
+  "timeout_cases": 1,
+  "unavailable_outputs": 4,
+  "independent_rpc_comparison_performed": false,
+  "independent_rpc_agreement_rate": null,
+  "matrix_scope": "Injected unsafe or uncertainty fixture accepted as verified is a miss. Nonverified control is a false positive. This is not a blockchain-fault prevalence or security-audit estimate.",
+  "excluded_attempts": [
+    {
+      "id": "out-of-order",
+      "source": "raw.jsonl",
+      "reason": "Initial fixture added a VoteCast inconsistent with baseline storage count. Replaced only this case with coherent MemberAssigned envelope in raw-corrected.jsonl. Original preserved."
+    }
+  ]
+}

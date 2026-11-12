@@ -116,5 +116,5 @@ function describeValue(name: string, value: unknown, proposal?: Proposal): strin
   return rendered;
 }
 function fromHex(value?: string | null) { if (!value) return "Not provided by RPC"; try { return BigInt(value).toString(); } catch { return value; } }
-async function rpc<T>(method: string, params: unknown[]): Promise<T> { const response = await fetch("/api/cyberchain/rpc", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ method, params }) }); const payload = await response.json() as { result?: T; error?: { message?: string } }; if (!response.ok || payload.error) throw new Error(payload.error?.message ?? "CyberChain RPC request failed."); return payload.result as T; }
+async function rpc<T>(method: string, params: unknown[]): Promise<T> { const response = await fetch("/api/cyberchain/rpc", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: crypto.randomUUID(), method, params }) }); const payload = await response.json() as { result?: T; error?: { message?: string } }; if (!response.ok || payload.error) throw new Error(payload.error?.message ?? "CyberChain RPC request failed."); return payload.result as T; }
 function messageOf(value: unknown) { return value instanceof Error ? value.message : "Unable to decode transaction."; }

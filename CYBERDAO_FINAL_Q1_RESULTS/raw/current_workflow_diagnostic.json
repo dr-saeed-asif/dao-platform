@@ -1,0 +1,105 @@
+{
+  "models": "qwen3:0.6b",
+  "condition": "B4",
+  "reviewed_targets": 4,
+  "source": "Four previously selected canonical diagnostic targets; no new model calls",
+  "items": [
+    {
+      "id": "MS-003",
+      "question": "For the pilot proposal, report the PDF second budget allocation, then report the database and on-chain active member assignments. Keep document plans separate from observed records.",
+      "answer_sha256": "f2be9ccc60e46dc7a7035fb96db97b76e80b7853c5efce17c102dd1be4e453e6",
+      "answer": "For the pilot proposal, report the PDF second budget allocation, then report the database and on-chain active member assignments.\nStored proposal status: VOTING_CLOSED [G1]. Voting time window: ended [G1].\n\nThe source checks completed, but the explanation for this part could not be generated. Review the cited source excerpts or retry this part. [D1] [D2] [D3]\n\nThe source checks completed, but the explanation for this part could not be generated. Review the cited source excerpts or retry this part. [G2]",
+      "extraction_hits": [
+        "_stored_voting_answer"
+      ],
+      "warnings": [
+        "Combined wording was unavailable for some sections; showing the supported specialist findings."
+      ],
+      "first_planner_response": "{\n  \"questions\": [\n    {\n      \"question\": \"For the pilot proposal, report the PDF second budget allocation, then report the database and on-chain active member assignments.\",\n      \"intent\": \"voting\"\n    }\n  ],\n  \"needs_clarification\": false,\n  \"clarification\": null\n}",
+      "effective_options": {
+        "seed": 42,
+        "temperature": 0.6,
+        "num_ctx": 8192,
+        "num_predict": 1536,
+        "top_p": 0.8,
+        "top_k": 20,
+        "repeat_penalty": 1.1
+      },
+      "finding": "The output substituted voting status/time-window information and fallback placeholders for requested PDF allocation and assignment counts; the trace records _stored_voting_answer. Available evidence and operational completion did not ensure task coverage.",
+      "classification": "Purposive AI-assisted diagnosis from real saved outputs, not independent human adjudication"
+    },
+    {
+      "id": "PDF-008",
+      "question": "What is the PDF allocation for AI evaluation? Use only the attached pilot PDF.",
+      "answer_sha256": "c488e1fcdab4646b7a9fe24b9887acf5e736b7228640240833ac5a2577fd6f2c",
+      "answer": "Identify and list all proposals related to AI evaluation\nThe available evidence does not establish that. The provided source citation [G1] contains information about a proposal in the CyberGovAI Governance Security and Transparency Pilot, but it does not specify details related to AI evaluation allocations. If a question or task requires an allocation for AI evaluation, please provide the exact reference or clarification to proceed.\n\nFind the allocation for AI evaluation within the pilot PDF\nThe available evidence establishes that the allocation for AI evaluation within the pilot PDF is EUR 2,000, as detailed in [D1]. The total budget proposed by the pilot includes EUR 6,000 for security review, EUR 3,000 for governance dashboard improvements, EUR 2,000 for AI evaluation and evidence checks, and EUR 1,000 for contingency. All allocations add up to EUR 12,000, as confirmed by [D1].",
+      "extraction_hits": [
+        "_research_count_answer",
+        "budget_answer"
+      ],
+      "warnings": [],
+      "first_planner_response": "{\n  \"questions\": [\n    {\n      \"question\": \"Identify and list all proposals related to AI evaluation\",\n      \"intent\": \"research\"\n    },\n    {\n      \"question\": \"Find the allocation for AI evaluation within the pilot PDF\",\n      \"intent\": \"evidence\"\n    }\n  ],\n  \"needs_clarification\": false,\n  \"clarification\": null\n}",
+      "effective_options": {
+        "seed": 42,
+        "temperature": 0.6,
+        "num_ctx": 8192,
+        "num_predict": 1536,
+        "top_p": 0.8,
+        "top_k": 20,
+        "repeat_penalty": 1.1
+      },
+      "finding": "The requested EUR 2,000 allocation was answered, but an unrelated proposal-discovery task was also added. Factual amount correctness and instruction adherence differ.",
+      "classification": "Purposive AI-assisted diagnosis from real saved outputs, not independent human adjudication"
+    },
+    {
+      "id": "PDF-007",
+      "question": "What is the PDF allocation for dashboard improvements? Use only the attached pilot PDF.",
+      "answer_sha256": "240d2b2d598cc451577dc1516e4408aec3a98b60ae22326c5f68097f0fd06fdd",
+      "answer": "Identify and list all proposals related to governance and voting\nNo matching stored proposals were returned in the selected DAO. [G1]\n\nFind the proposal's purpose, fields, and details\nThe available evidence does not establish that.  \n\nOnly the provided evidence is used to answer this question, as no factual information about the dashboard improvements\u2019 allocation is present in the supplied data. The task requires identifying and listing the proposal\u2019s purpose, fields, and details, which are supported by [G2].\n\nCompare the pilot PDF with a blockchain database\nThe contract reports 10 assigned member(s) and 0 vote(s) cast; voting status: Closed at block 20313910 on chain 1212 [G3]. By option: Option 0: 0, Option 1: 0, Option 2: 0 [G3].\n\nThe source checks completed, but the explanation for this part could not be generated. Review the cited source excerpts or retry this part. [D1] [D2] [D3]",
+      "extraction_hits": [
+        "_research_count_answer",
+        "_proposal_fact_answer",
+        "_chain_vote_answer"
+      ],
+      "warnings": [
+        "Combined wording was unavailable for some sections; showing the supported specialist findings."
+      ],
+      "first_planner_response": "{\n  \"questions\": [\n    {\n      \"question\": \"Identify and list all proposals related to governance and voting\",\n      \"intent\": \"research\"\n    },\n    {\n      \"question\": \"Find the proposal's purpose, fields, and details\",\n      \"intent\": \"proposal\"\n    },\n    {\n      \"question\": \"Compare the pilot PDF with a blockchain database\",\n      \"intent\": \"evidence\"\n    }\n  ],\n  \"needs_clarification\": false,\n  \"clarification\": null\n}",
+      "effective_options": {
+        "seed": 42,
+        "temperature": 0.6,
+        "num_ctx": 8192,
+        "num_predict": 1536,
+        "top_p": 0.8,
+        "top_k": 20,
+        "repeat_penalty": 1.1
+      },
+      "finding": "The accepted planner/workflow added unrequested DAO research, proposal lookup and chain comparison to a PDF-only allocation request; the final answer missed the requested allocation. This is observed planning/scope drift, not absence of PDF evidence.",
+      "classification": "Purposive AI-assisted diagnosis from real saved outputs, not independent human adjudication"
+    },
+    {
+      "id": "CX-001",
+      "question": "Using the pilot PDF, calculate the combined amount of budget lines 1 and 2, and the budget remaining after them.",
+      "answer_sha256": "76b155f657cbd42e204a78843bf3f6652e201e6687b73a981e4c16981044fbd6",
+      "answer": "Using the pilot PDF, calculate the combined amount of budget lines 1 and 2, and the budget remaining after them.\nThe document proposes a total budget of EUR 12,000. [D1]\n\n- EUR 6,000 for independent security review. [D1]\n- EUR 3,000 for governance dashboard improvements. [D1]\n- EUR 2,000 for aI evaluation and evidence checks. [D1]\n- EUR 1,000 for contingency. [D1]\n\nThe allocations add up to EUR 12,000. [D1]\n\nNumbers in your question, compared with the cited budget:\n- \"1\" does not match the total or any listed allocation in the cited budget. Which amount or budget item do you mean? [D1]\n- \"2\" does not match the total or any listed allocation in the cited budget. Which amount or budget item do you mean? [D1] I have not assumed how these amounts relate to each other.\n\nThe source checks completed, but the explanation for this part could not be generated. Review the cited source excerpts or retry this part. [G1]",
+      "extraction_hits": [
+        "budget_answer"
+      ],
+      "warnings": [
+        "Combined wording was unavailable for some sections; showing the supported specialist findings."
+      ],
+      "first_planner_response": "{\n  \"questions\": [\n    {\n      \"question\": \"Using the pilot PDF, calculate the combined amount of budget lines 1 and 2, and the budget remaining after them.\",\n      \"intent\": \"blockchain\",\n      \"agents\": []\n    }\n  ],\n  \"needs_clarification\": false,\n  \"clarification\": null\n}",
+      "effective_options": {
+        "seed": 42,
+        "temperature": 0.6,
+        "num_ctx": 8192,
+        "num_predict": 1536,
+        "top_p": 0.8,
+        "top_k": 20,
+        "repeat_penalty": 1.1
+      },
+      "finding": "budget_answer executed and compared the ordinal line numbers 1 and 2 with currency allocations, asking for clarification instead of calculating the requested sum/remainder. Deterministic extractor applicability is too broad for this request. The separate correct-sum guard replay is not claimed as the cause of this particular output.",
+      "classification": "Purposive AI-assisted diagnosis from real saved outputs, not independent human adjudication"
+    }
+  ]
+}

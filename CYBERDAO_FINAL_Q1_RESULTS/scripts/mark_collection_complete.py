@@ -1,0 +1,4 @@
+import datetime,json
+from pathlib import Path
+h=Path(__file__).resolve().parents[1];l=json.loads((h/'live_campaign/completion.json').read_text());a=json.loads((h/'analysis_status.json').read_text());assert l['completed_records']==l['planned_records']==1330;assert a['benchmark_records']==1862
+(h/'CONTINUATION_STATE.json').write_text(json.dumps({'status':'All planned exploratory model data collection completed; derived reports generated','updated_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'model_workflow_attempts':1862,'direct_SQL_cases':26,'human_annotations':0,'confirmatory_status':'NO-GO: independent human adjudication unavailable','report':'FINAL_READINESS_REPORT.md','manifest':'REPRODUCIBILITY_MANIFEST.json','preservation':'No model experiments need repeating; inspect final reports and unresolved annotation/manuscript limitations'},indent=2)+'\n',encoding='utf8')

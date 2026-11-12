@@ -1,0 +1,2535 @@
+{
+  "previous_reserved_count": 133,
+  "newly_exposed_count": 133,
+  "remaining_unexposed_within_original_reserve": 0,
+  "original_reserve_file_unchanged": true,
+  "items": [
+    {
+      "id": "DB-005",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:20.870949+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-007",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:30.355130+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-008",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:24.886427+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-009",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:06.713636+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-010",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:36.269158+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-011",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:20.204333+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-012",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:59.968730+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-015",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:45.523450+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-017",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:04.658604+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-018",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:12.180806+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-019",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:27.928896+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-020",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:28.549118+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-022",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:30.750192+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-026",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:37.769160+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-027",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:58.321186+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-028",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:07.508425+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-029",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:05.630870+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-030",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:01.519439+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-032",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:09.887775+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-035",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:48.449329+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-036",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:43.865973+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-037",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:08.716347+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-038",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:23.674809+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-039",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:52.784371+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-040",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:38.622517+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-001",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:37.355771+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-002",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:42.063452+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-003",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:02.428010+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-004",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:25.506095+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-007",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:40.263633+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-008",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:33.548275+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-009",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:56.237731+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-010",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:27.395253+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-011",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:09.942833+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-012",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:45.141773+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-013",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:57.015381+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-014",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:50.175930+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-015",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:13.079015+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-016",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:59.426169+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-017",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:11.205186+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-018",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:16.819075+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-019",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:53.582558+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-020",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:15.277014+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-021",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:48.124608+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-022",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:09.338528+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-023",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:10.299754+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-024",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:33.016819+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-027",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:05.985811+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-028",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:03.370335+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-029",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:19.068489+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-030",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:41.593044+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-031",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:57.771904+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-032",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:38.090427+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-033",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:50.468274+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-034",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:18.354438+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-035",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:34.489580+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-036",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:52.440742+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-037",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:15.609838+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-038",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:14.932216+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "PDF-040",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:08.807079+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-003",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:25.870440+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-004",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:48.796183+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-005",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:24.546487+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-006",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:07.243991+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-007",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:29.447380+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-008",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:17.337241+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-009",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:18.764683+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-010",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:55.354891+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-011",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:31.940073+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-012",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:28.274133+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-013",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:03.723632+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-014",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:44.202088+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-015",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:09.270575+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-021",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:45.968620+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-022",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:31.618736+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-023",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:35.199552+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-024",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:47.567581+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-025",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:30.024021+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-027",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:23.120040+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-028",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:11.563297+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-029",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:00.859278+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-030",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:35.551294+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-031",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:38.986983+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-032",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:13.824184+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-033",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:04.700033+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-034",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:51.884116+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "MS-035",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:14.223020+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-001",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:06.765348+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-002",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:22.589799+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-003",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:08.212333+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-004",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:47.049486+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-005",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:01.950860+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-006",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:53.028192+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-007",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:47:56.121508+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-008",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:19.831130+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-009",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:00.554982+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-010",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:43.536002+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-011",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:44.852070+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-013",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:41.174714+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-014",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:11.223478+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-015",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:54.676788+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-016",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:10.299423+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-017",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:51.280333+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-018",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:39.945546+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-019",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:34.148943+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-020",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:12.709449+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-021",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:54.365887+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-022",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:46.707307+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-023",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:08.078794+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-024",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:21.967664+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-025",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:26.941406+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-026",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:58.654385+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-028",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:37.048390+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-029",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:47:55.832985+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "CX-030",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:05.045035+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R002",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:17.694220+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R003",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:02.934664+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R004",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:11.789182+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R007",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:39.541645+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R008",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:31.196425+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R009",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:54.001088+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R011",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:32.629905+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R012",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:29.184938+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R015",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:21.320823+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R016",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:16.251287+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R017",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:36.600940+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R020",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:42.577825+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R021",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:49.608913+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R022",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:42.900960+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R023",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:57.377181+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R024",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:05.187517+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "UN-R025",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:49:07.883920+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    },
+    {
+      "id": "DB-R021",
+      "previously_reserved": true,
+      "current_status": "exploratory_exposed",
+      "first_recorded_start_utc": "2026-11-11T08:48:05.580529+00:00",
+      "conditions": [
+        "A1",
+        "A12",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "models": [
+        "qwen3:0.6b",
+        "qwen3:4b-instruct"
+      ]
+    }
+  ]
+}

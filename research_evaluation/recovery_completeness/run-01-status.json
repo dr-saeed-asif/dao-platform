@@ -1,0 +1,1 @@
+{"status":"stopped","reason":"Runner started after a failed Nest build and may have loaded stale verifier JavaScript. Excluded before scientific analysis. Isolated database only."}

@@ -1,0 +1,269 @@
+{
+  "classification": "Exploratory real-model comparison; AI-assisted reference labels; no human adjudication",
+  "confirmatory": false,
+  "cohort_n": 133,
+  "phase": "Remaining live SQL conditions; previous B1/frozen-RAG runs preserved separately",
+  "cohort_sha256": "8ee57c7670f38bf27a1461c5e3051886463f896b9dd46446e8bab53b8e192508",
+  "models": [
+    "qwen3:0.6b",
+    "qwen3:4b-instruct"
+  ],
+  "model_digests": {
+    "qwen3:0.6b": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+    "qwen3:4b-instruct": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+  },
+  "embedding_model": "qwen3-embedding:0.6b",
+  "embedding_digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+  "options_all_chat_stages": {
+    "seed": 42,
+    "temperature": 0.6,
+    "num_ctx": 8192,
+    "num_predict": 1536,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repeat_penalty": 1.1
+  },
+  "maximum_chat_calls_per_case": 6,
+  "deadline_seconds": 200,
+  "concurrency": 2,
+  "order_seed": 911,
+  "conditions": [
+    "B3",
+    "B4",
+    "A1",
+    "A2",
+    "A12"
+  ],
+  "definitions": {
+    "B1": "LLM only, no evidence/tools",
+    "B2": "Plain document RAG, same indexed PDFs and embedder; no SQL or chain context",
+    "B3": "Single agent, same 22 permitted tools and canonical source normalization",
+    "B4": "Current full CyberDAO, all gates and deterministic extraction",
+    "A1": "B4 with five direct-answer helpers and budget_answer returning None",
+    "A2": "B4 with workflow and synthesis blocking_flags disabled; structural citation/currency gates retained",
+    "A12": "A1+A2",
+    "A_SQL": "Model-free parameterized governance SQL; limited applicability, no gold lookup",
+    "A_RAG": "Alias of B2; no repeated run"
+  },
+  "reference_answers_loaded_by_runner": false,
+  "source_files": {
+    "app/business/agents/blockchain.py": "973ba2892a1cdd4458ee95051413a28fc421b1ed2278be4044933e9b65f98a53",
+    "app/business/agents/budgets.py": "af980ebb4f02fe397d7e77c07c5aad6eaa7bdd4446ffcb4515e097f464d24cc7",
+    "app/business/agents/catalog.py": "ac20b5df9f61e211402972674bd0dc57a14834091462a02788e610c4a95a5edf",
+    "app/business/agents/claims.py": "11a9b81b33ee79ec2a3a84f8c4cdca2b10d9b1c2743a49af99d68b064ffc1dff",
+    "app/business/agents/domain_guard.py": "d249b9dbe5a9f175b6bb7559b8c0662bc7cb8170945a4caa3803f0ede8453995",
+    "app/business/agents/models.py": "99cd3f3c6f785aaaa47aa7599e4e12c7f4c91d75528b4b56b214ec5a653185c9",
+    "app/business/agents/observability.py": "f12f2e29c26915b5f4951dace3ce77b0ec366bcdb03ae295985739e986eeca12",
+    "app/business/agents/planning.py": "1b845b2c6a7988e5e8060ae59932abdc8772fb0bed0903341794089fe95469f7",
+    "app/business/agents/progressive.py": "60e802e28c14b6ee37a1211a631102f10afe31ddc95f409c763593244c1ce622",
+    "app/business/agents/quality.py": "eafc5b2316a3b4268e5f0341cbbcf5f52c293c367b260d8f667d6aacc4e408f2",
+    "app/business/agents/question_planner.py": "545c53a2f62f3fc9f7b5e3f9980b0220ed0d96f314b27fb14f133a1873928c77",
+    "app/business/agents/requirements.py": "2087174790ba94b6ff01cc69c78e5fd5614c6b83812658b85ad7cbb8987d284e",
+    "app/business/agents/routing.py": "bdb9b3614ceee8afc7b884c927e2c18415a2661bf2e82bb12a2483e6e187a3b6",
+    "app/business/agents/scheduling.py": "7110dc706a2d263b9db3c71da408b17b65d63ee58309e99fb46498418afbae17",
+    "app/business/agents/synthesis.py": "e46733130bd75092b4851b1e6e9deccc17e7dc196507bbc346f370f2895e117a",
+    "app/business/agents/tools.py": "20ba795930c1034abf3c7c3daecce59d321688db1bf41f4a89a0bd2acb4f3b34",
+    "app/business/agents/workflow.py": "80ef2fc2cefca96d64cdbb9cbe36416b6f69132afb5feda8e979de6d4dafb706",
+    "app/business/agents/__init__.py": "d5686fb140c104f7790abe42f5c8b6a225b96236267706e933095fb4c34e65d4",
+    "app/business/rag/answers.py": "31a4456b16b4ff9fad16794f69a02a93c5228d6ac5daf8bf65c443f20c6891de",
+    "app/business/rag/compatibility.py": "c6505de65cfecff700bfbd7e12711068431192fbf496996a257e3bf1e00db98f",
+    "app/business/rag/embedding_profiles.py": "a6338708a24f64aa49ccedf24d04e4a180a52234bef9751a8533db7d0488eaae",
+    "app/business/rag/evidence_files.py": "8e3d4d964c9fb75b62e70497f9bf1de983f145ad42b23f4461e58f0980cca047",
+    "app/business/rag/indexing.py": "6f9caee78a2e2bc4563b523bb7d07a40a77dde4bed9705750f6ed849d5cec919",
+    "app/business/rag/legacy_indexing.py": "70f837a90c9e60630cbbdfa2abf531dda8e6b4c34949e706873b43ff7b53cc9c",
+    "app/business/rag/legacy_index_result.py": "0b1a2ba135ab4f65c3d809090dcc7694c30b1e36052a0242329aea5f376da986",
+    "app/business/rag/legacy_pdf_chunking.py": "7230713df84233d49c5cdbfd184bfecd75674b9d6022479966b5e868de2067e2",
+    "app/business/rag/legacy_pdf_policy.py": "2cbbd9067112196396e70020a8fa65fa1a3ed4ab6bbcbf159d7db269c8fba17f",
+    "app/business/rag/legacy_pdf_processing.py": "541716a77b03990d0e87d2d785461b0b75b8f333f67253d11825f0e248d5f192",
+    "app/business/rag/legacy_profile.py": "682d40f68f66b4ee304cc9bd0ae5b412fb182468bbb156e001965681176d6e1b",
+    "app/business/rag/ollama_answers.py": "87c57e06576510fd76e80004da6e41f28c26826c570c3f4cefeb6e8d9a831fcc",
+    "app/business/rag/ollama_chat.py": "2bc75e792e3528dd719fe340805b3cc01fbe2176140175916cf6bfd905ec0e86",
+    "app/business/rag/ollama_client.py": "7ee94d3e62c560f3cbfe8d91f4c4b536a3a8fbed4bf56507ab271c28d9cc88c4",
+    "app/business/rag/ollama_embedding.py": "41fafa0266ec652a71a00db740feb23cb1067df1036e77079104392e7dd42a1d",
+    "app/business/rag/ollama_prompt.py": "d0bc12e07162657a043f13232a35d922c2c7d8a16450a440981d80c3f48d5645",
+    "app/business/rag/pdf_chunking.py": "3a1d351681e85e5065e9dc22a75ac8911faeb330fb8d1180b00094b98048ebd4",
+    "app/business/rag/pdf_extraction.py": "02aecca4eb590e2e834fd3d4c8f4799849320c509c71253bd53e9755b5233675",
+    "app/business/rag/pdf_policy.py": "1d0e5c0109f7dbe03035d631a992e15fe4f5054a81f44a21a0c52a9e9f9bcd39",
+    "app/business/rag/proposal_search.py": "b7d1c036d0bc4476b61a3c3535c348be71063da1a060372c95718b0e4df1c227",
+    "app/business/rag/search.py": "fd98ccdce04747637c2a5c1ba817dff84d9b939a687cbda8c030849abe83cff7",
+    "app/business/rag/service.py": "de812af28ebfa3f55b2e03afbb3d25a0355cd1de5b4500feeeb71d0ea5fea122",
+    "app/business/rag/store.py": "b10a3883282a1828f9d66e1e32a5dd4c866585b6bd79622eb7a49216a04079a0",
+    "app/business/rag/uploads.py": "c90b1ea361f3a1fc1c5d4a24cf1f5b252dc046a28c19d01e94e23c1af61dcce6",
+    "app/business/rag/__init__.py": "7449fc73b45a9443eb1b5011855009772f8a4a6f05b80a29452764442a84f5ce",
+    "app/business/governance/answers.py": "6f5b711bd130b86af4410c236f001b6cfb456d9ea07cc9774db637c09c388966",
+    "app/business/governance/answer_result.py": "227420a9eb867cb2e5ee78fba6fa3f8b0dd74ce434079834f232d4f5648701c9",
+    "app/business/governance/context.py": "577b0b5296c36ac3f1ee9e1604402dd87dd35f6f51506eefa36b7fbda907755c",
+    "app/business/governance/current_evidence.py": "4649f9be92575c0cb8d9a1fda6ddfdb8e145e9ebb0526483d6be0961f0fc8bbf",
+    "app/business/governance/dao_proposals.py": "3ec7fbde52d8b254600234a7ec814b2c1ee1c2447121a26c7b436b29fc754649",
+    "app/business/governance/documents.py": "fee9a4a5f48172e582397af09ef0b2f61f8c211c76c022a1170c8237d2bb3f59",
+    "app/business/governance/document_chunk.py": "59187c0c72d482bcb95b2c56fe15b4269b0a360186ed55c1e203fb525e6ada64",
+    "app/business/governance/document_status.py": "8f5772d97052306e241bd1335da04b05175fd6ccfaef888c2658723ad19c1761",
+    "app/business/governance/document_status_data.py": "13ea98ecc181477cf80e7265d42ede008dada669cdfeb853941d9500409f2a69",
+    "app/business/governance/document_sync.py": "9d0ea1baf28530258d3f3b829d58b831fc7a284ce4fb4db54540cad4a60bc89f",
+    "app/business/governance/evidence.py": "0fc3c649d20f93cd0035707cebe1eea128b40634943a90d0488bb941f18cbeac",
+    "app/business/governance/profiles.py": "bc22b085c0aef86e90bae6b5f8c4bc4a0f30d7c4637fe93bff1029e8b2e9b106",
+    "app/business/governance/proposals.py": "8828c12af0654aa30fd53ecf8effeb1c2787fe20e6208a144525162d24954930",
+    "app/business/governance/proposal_facts.py": "c5133926bb66a91e2bf882f9ba02164ae2e16b1b7dc581e8ba1a45fa1612769b",
+    "app/business/governance/proposal_scope.py": "d95f72006acea6b8c1cd9737c2083a977d83b84efa33ca1107edd7762513b0ea",
+    "app/business/governance/retrieval.py": "4ff0022e5dbc5776494d3bc64b1a712ee280663d9d9c59f6de4415dd6aff9824",
+    "app/business/governance/__init__.py": "c57422f12bd1555a28545b44d6f0d7d34deb7e2a9cfb0570305a7e3662572697",
+    "app/business/mcp/chunk_result.py": "33a992934c51ba03ed1940619831274ffc84552228f8bf2e243fa299a96a58e9",
+    "app/business/mcp/chunk_tool.py": "3b485738ca27bb7120cf1de7ef6eae6325d6318fb6770cccf95a34d70c335e22",
+    "app/business/mcp/context.py": "f8f8fc44ae1df7bb10c07b889a75db4dfec7cd1591b7d79059894ae867c412f2",
+    "app/business/mcp/dao_count_tool.py": "96dca258d0719e9851018eab69ca7e3491f3f947c6b1ce88c9a19ea786e90572",
+    "app/business/mcp/dao_proposal_tools_impl.py": "d2aaf141a57af447569dcb12d1f7a73d6264de0aca54b7875ad60d9544f73ac3",
+    "app/business/mcp/document_status_result.py": "2134c4c57b356c4045b9ea5e93b60d9b33a5d16a0257ad1a8a7108ecc73e418b",
+    "app/business/mcp/document_tools.py": "b9c29ecd816044c219bd0c00183335f661ed218ce0bb7d25180650073f0257cc",
+    "app/business/mcp/errors.py": "6e0ebdc3541bd02ef0034187fc35d23310250cdd68449d88bcb6ca5a8a6d1616",
+    "app/business/mcp/evidence_results.py": "5cc38b70d95702d2e3fda7f1061b68189028f387bf7fd9153418735194c57420",
+    "app/business/mcp/evidence_search_results.py": "95953cf153a3479f93ace46f8ec2d4c618e76c34c62e2e3e6be5172203696394",
+    "app/business/mcp/evidence_status_result.py": "4c9731f49f7e6874c021adb173735f2624193abd9dcaed0ab4d12a5b4142ea53",
+    "app/business/mcp/evidence_status_tool.py": "ebfeccb5340635efda02aab6d3581402f7ec14f5ba9feaad3c5612aff15fe9d0",
+    "app/business/mcp/evidence_tool.py": "8f52d592034f9c34d26e93aeeec5130bb63e330708a2126380f57c602f76f7e9",
+    "app/business/mcp/extended_tools.py": "605113c1b7097a8fa7263715b88aa8a5e0138b5d3b804c22c4927316603daf1b",
+    "app/business/mcp/governance_results.py": "706069aa1ac64ba16fc57103714268e4cb46c3275358e8c2d92249fb9bdd33c3",
+    "app/business/mcp/governance_tools.py": "d6d3f705f7c385d879d4715669e15710893d1983dd1da01295b8684cceb1de06",
+    "app/business/mcp/governance_tools_impl.py": "7a025669d9f9d1a8e99e87ab0bc5cd99cc92392e477b6ea518462d0d7070a046",
+    "app/business/mcp/health_tool.py": "881ffef4a54cc950866ee208658e1787218966d70321c244018ffd65c70dfc21",
+    "app/business/mcp/index_status_tool.py": "27abdaac0a8de3ff0f7007950b62480e8b9940ed6a285e178c1047e1aa90b58f",
+    "app/business/mcp/inputs.py": "3fc56feb103135086f51a7f9fb0e2c06a18271dfb32c99b8b2967b6250fa3242",
+    "app/business/mcp/lifespan.py": "7cdd770d0ac10815c89d28f0d0a67506231c81341b30a71d35e229189bd4946f",
+    "app/business/mcp/main.py": "e69e43a789b7c13aff51594065b875425bdcfdfa6a54d212fadd1bd72b4d3d18",
+    "app/business/mcp/proposal_read_tools.py": "bb75dfdd6dc7335eef092ea2a6b91451b9f82f16d88f90bd6b168a9d8d2f5d44",
+    "app/business/mcp/proposal_tools.py": "27009eef10e05dff5538966e72c4a160cb451e5303ffbc35ee89d8b4bcfa3176",
+    "app/business/mcp/results.py": "8c63f6f855a60b51d54d5b09bebd55a77ffa81b51b4511307542cbd7626c3983",
+    "app/business/mcp/server.py": "fc76d4c6193a34a24ef16a4f041e7c8609ac960a0214a0d0825855cb19d7ec2b",
+    "app/business/mcp/time_result.py": "49c219dff848b03345d1d4e99e62a3cf8afffc96b96a57c4fb72cf539c884ee4",
+    "app/business/mcp/time_window.py": "042ca8704dd4e95a8070595abfad744140ec194822daa816d631484ec0bea78f",
+    "app/business/mcp/time_window_tool.py": "efb2373443d4174c5aca15d1a0aba32060cbb0b9800c0993c9e5e143a1df976c",
+    "app/business/mcp/tool_helpers.py": "bdbe904a3a052806729b62898aa3ffc377a3554a9711f44174e62b7dcd0a79df",
+    "app/business/mcp/tool_registry.py": "8bf36f1677a887b05c2f7beed9849804c6f50787c1cba7a881df438b09c53e86",
+    "app/business/mcp/validation.py": "fdb559239fa362ba6cf547379a1a4b226fdb5ac31274ff605e64ea4374726c47",
+    "app/business/mcp/__init__.py": "1484b5e04090ea19408814d6ad105513a818d2b14938d739ddfe8c5f6d22abd4",
+    "app/business/mcp/__main__.py": "8eab0c228dd3ac4b30cfd48e7bbeff276a49722133cdbc21321d770977e39a4b",
+    "app/model/database/agent_observability.py": "a18bb5eabe9790fecf148605fb6ac88e8821c7dacd51d82c61d2679f4358ddfe",
+    "app/model/database/chunks.py": "71f31aa8860755fbfd04d952634467032ff0bdbd4a9ef5d9657ec33f45003f62",
+    "app/model/database/conversations.py": "3360d48a959c35eee398131f58d12bfc1b0822f2dd0180ed353bfaa42818d9da",
+    "app/model/database/dao_proposals.py": "529dfb6436a473c47d8d461ae5a8d6d8c27c628069f94cf4e8223487b6bec7a4",
+    "app/model/database/documents.py": "9d891e0cc64e2d53624ee91708d71a4ce073aa80adef600d26822a778d04bb9c",
+    "app/model/database/document_chunk.py": "eb208121ea3f8adff31df16ce0dea609dcf7f7a2414c4ae4e100e70b3e1edd49",
+    "app/model/database/document_index_status.py": "beb490245cda435c25f63e0785fafb3e25954f03c70f6498b59826570be59935",
+    "app/model/database/evaluations.py": "34387a1dd947f57197bbbca95affd7dbf50258014f83752b3ffc1565fb540aeb",
+    "app/model/database/indexes.py": "f7975dbec0121acc949582de958fc861a12aa0656c9aee9f695333cbe40b9daf",
+    "app/model/database/index_chunks.py": "4bc7e784ba6692531f78279db7519f4e896636939a6653ee10fda6b3456b6584",
+    "app/model/database/index_invalidation.py": "455862403260e40aefd9befc23c9646ce9750c65737d018c467b737c16f03863",
+    "app/model/database/index_writer.py": "31d67fa6c022cfd96e2fe14052f090b427f36d13ef54d6b968ea7e7ff73fad23",
+    "app/model/database/interfaces.py": "884c79537ee865bb04781dcc3949d1e4d944826c03784c3d52ed50e0011e8975",
+    "app/model/database/legacy_index.py": "173c056552d4e319dd0083d4fe6ab37fbd76fb0793e8da3f8c956b23b7c017b7",
+    "app/model/database/legacy_index_chunks.py": "1112db31773654dc918c8458ff37634b21a18365be9e9b7ffc69b44d6a67a24e",
+    "app/model/database/legacy_index_records.py": "8677bfc367ee4785437c591a5527baac46f51f202ea09b3673da02372c74e42b",
+    "app/model/database/legacy_index_state.py": "bc8f4f49ab00ff6f5d25b629bcb3618ae78f9b4bef4fd8ec5e00bffccad7780f",
+    "app/model/database/membership.py": "0a9bef490f427227b204f3a11609834980b7b2e28c350f93e0d6f29d2d3f463b",
+    "app/model/database/pool.py": "b644770ef525150b9eaeaa99d19aeaf481e1c8a6b66715666f0b8a133b4473c5",
+    "app/model/database/proposals.py": "1132db4f16dc6989b99ef7f9aa18eb65e13bbc44347a23ba7aa73695bd3ea1c4",
+    "app/model/database/proposal_artefacts.py": "e2a47b9eba41162711f8710a0399f4d9c55337273b15082f5a274ca16d85a82c",
+    "app/model/database/proposal_chunks.py": "f846189007548d4427b4a4fe8b0c4d0d1584b163a1b8a38540cd45997e9ff5c9",
+    "app/model/database/proposal_indexes.py": "60978df129b0b454077ba72bcaa40426cad538c3c406c4a8f6ee71a4a27ef8ba",
+    "app/model/database/proposal_queries.py": "6f4b653b501c087aa9dcb28af0d6bc0517152b54d845427d553984586454370a",
+    "app/model/database/proposal_votes.py": "10e6a7b54e293dfc60ff38c0f8e8061d418cac1ac252b02aa541e133f90e3922",
+    "app/model/database/runtime_security.py": "08e4afa12bc27d519799015df1bfffb17601fc186f9d1b79dcec8ae9e9c112dd",
+    "app/model/database/__init__.py": "b7616451c13120777dd852b67354232f4735a574e029c02580ef21b3c119172b"
+  },
+  "table_fingerprints": {
+    "answers": {
+      "rows": 295,
+      "aggregate_digest": "70769e8ba1de38d0a28aee3bcb85338a"
+    },
+    "artefacts": {
+      "rows": 10,
+      "aggregate_digest": "c710be6ddefa78e17751b876c427923a"
+    },
+    "chain_transactions": {
+      "rows": 105,
+      "aggregate_digest": "83b365d8d853101db57bce635e20277c"
+    },
+    "claims": {
+      "rows": 284,
+      "aggregate_digest": "9b0de7c949d99b52901b9008c99afc77"
+    },
+    "contract_deployments": {
+      "rows": 1,
+      "aggregate_digest": "fffeb3af0bcd3b02ddc5eee130cd10e8"
+    },
+    "dataset_versions": {
+      "rows": 0,
+      "aggregate_digest": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "experiment_runs": {
+      "rows": 295,
+      "aggregate_digest": "35da7b4ab41d3120d4ddcdb2d30b31aa"
+    },
+    "governance_events": {
+      "rows": 188,
+      "aggregate_digest": "baef7cacd929c6163d12db34c197dcb0"
+    },
+    "indexer_checkpoints": {
+      "rows": 2,
+      "aggregate_digest": "5a1beefbbc940bf10972d5e9472d984f"
+    },
+    "kysely_migration": {
+      "rows": 9,
+      "aggregate_digest": "1b5271c1d19003b89c548a495e923cbc"
+    },
+    "kysely_migration_lock": {
+      "rows": 1,
+      "aggregate_digest": "7507e6f670bc3cb51d1ce91e39eca433"
+    },
+    "proposal_artefacts": {
+      "rows": 11,
+      "aggregate_digest": "a457344993e68c81fff5af9849d19821"
+    },
+    "proposal_assignments": {
+      "rows": 111,
+      "aggregate_digest": "7d1aa1ba168e54465b4d40bbd5d36904"
+    },
+    "proposal_options": {
+      "rows": 112,
+      "aggregate_digest": "b6852cb28cb7b463ddc11dbb65b74434"
+    },
+    "proposals": {
+      "rows": 40,
+      "aggregate_digest": "2b61ec4bcec6975b1baabc1c1194181a"
+    },
+    "provenance_edges": {
+      "rows": 11,
+      "aggregate_digest": "6a42fd8c46e773b7d915029d9e9d3317"
+    },
+    "questions": {
+      "rows": 295,
+      "aggregate_digest": "73c401df0f38fe1dc8961511c281d154"
+    },
+    "research_policies": {
+      "rows": 0,
+      "aggregate_digest": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "retrieval_results": {
+      "rows": 61,
+      "aggregate_digest": "172d3d62397135ea4985ce33d58c5482"
+    },
+    "votes": {
+      "rows": 30,
+      "aggregate_digest": "6a79f96908cfdcc5bfd380708e43902f"
+    }
+  },
+  "chain_sha256": "9d48acd442fda34f50887ad810328ac2a60389daf4a880cd73874da272deccae",
+  "chain_policy": "Archived actual corrected-verifier observations from 2026-11-10 replayed unchanged to tool/full conditions; not a fresh RPC experiment",
+  "sql_policy": "One live exported read-only MVCC snapshot; table fingerprints frozen; source values archived by scope; resume requires matching fingerprints",
+  "transport_privilege": "Trusted research in-process operator context; not a wallet/C4 boundary test",
+  "prompts": "Architecture-specific, exact payloads retained without gold",
+  "historical_comparison": "0.6B model, seed42,temp0.6,ctx8192,predict1536 retained; new matched stage normalization, new baseline labels, concurrent execution differ from historical studies",
+  "hardware": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.13.2",
+    "ollama": {
+      "version": "0.40.5"
+    }
+  },
+  "runner_sha256": "0b4b822b8944aca8ef89ea7ef320d3643e88637e1a653a6aa088761e5e91449f",
+  "adapters_sha256": "77009be73019bf80e3708ad0919e274825dfca5c9d30b3cadf5c0c68d91c4934"
+}

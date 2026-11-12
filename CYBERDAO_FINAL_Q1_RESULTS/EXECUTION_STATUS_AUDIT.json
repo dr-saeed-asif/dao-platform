@@ -1,0 +1,37 @@
+{
+  "recorded": 1862,
+  "expected": 1862,
+  "missing": 0,
+  "duplicate_keys": 0,
+  "unexpected_keys": 0,
+  "parse_errors": 0,
+  "historical_failures_preserved": 38,
+  "prior_audit_failures_preserved": 44,
+  "new_recorded_attempts": 623,
+  "original_prefixes": [
+    {
+      "path": "raw/responses.jsonl",
+      "original_bytes": 686231,
+      "original_sha256": "0843f3a7582bc9770c342cb2ebafe9037d987506eb92dfaeda94b0d5855e23a2",
+      "prefix_unchanged": true,
+      "current_sha256": "0843f3a7582bc9770c342cb2ebafe9037d987506eb92dfaeda94b0d5855e23a2"
+    },
+    {
+      "path": "raw/frozen_rag_responses.jsonl",
+      "original_bytes": 3519991,
+      "original_sha256": "8db20e29fb9e99247713e0f79dba86847a9e20be107a3198dae865822119dd6b",
+      "prefix_unchanged": true,
+      "current_sha256": "8db20e29fb9e99247713e0f79dba86847a9e20be107a3198dae865822119dd6b"
+    },
+    {
+      "path": "live_campaign/raw/responses.jsonl",
+      "original_bytes": 40537268,
+      "original_sha256": "f5320b001abb3e11975a0e94d81a1ee6636859156c80c245071b636765b6cd4a",
+      "prefix_unchanged": true,
+      "current_sha256": "2b63d4dd355661a9c345fc11165b8b6546adfe6674e346d216f0cc3859f00a18"
+    }
+  ],
+  "status": "COMPLETE",
+  "failed_n": 84,
+  "new_failures": 46
+}

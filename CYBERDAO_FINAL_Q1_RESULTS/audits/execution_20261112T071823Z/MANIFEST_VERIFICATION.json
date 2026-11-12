@@ -1,0 +1,124 @@
+{
+  "historical_169": {
+    "manifest": "E:\\DAO\\cyber-chain-work\\dao-platform\\research_evaluation\\ai_independent_part2_v1\\AI_REPRODUCIBILITY_MANIFEST.json",
+    "checked": 169,
+    "matched": 169,
+    "nonmatching": []
+  },
+  "earlier_partial_status": {
+    "manifest": "E:\\DAO\\cyber-chain-work\\dao-platform\\CYBERDAO_FINAL_Q1_RESULTS\\PARTIAL_STATUS_REPRODUCIBILITY_MANIFEST.json",
+    "checked": 61,
+    "matched": 54,
+    "nonmatching": [
+      {
+        "path": "CONTINUATION_STATE.json",
+        "exists": true,
+        "matches": false
+      },
+      {
+        "path": "EXECUTION_STATUS.md",
+        "exists": true,
+        "matches": false
+      },
+      {
+        "path": "EXECUTION_STATUS_AUDIT.json",
+        "exists": true,
+        "matches": false
+      },
+      {
+        "path": "FAILED_RUNS.csv",
+        "exists": true,
+        "matches": false
+      },
+      {
+        "path": "MISSING_RUNS.csv",
+        "exists": true,
+        "matches": false
+      },
+      {
+        "path": "live_campaign/raw/responses.jsonl",
+        "exists": true,
+        "matches": false
+      },
+      {
+        "path": "scripts/seal.py",
+        "exists": true,
+        "matches": false
+      }
+    ]
+  },
+  "resume_backup": [
+    {
+      "path": "raw/responses.jsonl",
+      "matches": true
+    },
+    {
+      "path": "raw/frozen_rag_responses.jsonl",
+      "matches": true
+    },
+    {
+      "path": "live_campaign/raw/responses.jsonl",
+      "matches": true
+    },
+    {
+      "path": "live_campaign/configuration.json",
+      "matches": true
+    },
+    {
+      "path": "live_campaign/preflight.json",
+      "matches": true
+    },
+    {
+      "path": "scripts/run_live_remaining.py",
+      "matches": true
+    },
+    {
+      "path": "scripts/adapters.py",
+      "matches": true
+    },
+    {
+      "path": "live_campaign/evidence/chain_replay_scope.json",
+      "matches": true
+    },
+    {
+      "path": "live_campaign/evidence/chain_snapshot.json",
+      "matches": true
+    },
+    {
+      "path": "live_campaign/evidence/phase_equivalence.json",
+      "matches": true
+    },
+    {
+      "path": "live_campaign/evidence/proposal_type_access_check.json",
+      "matches": true
+    },
+    {
+      "path": "live_campaign/evidence/source_records.json",
+      "matches": true
+    },
+    {
+      "path": "live_campaign/evidence/tool_schemas.json",
+      "matches": true
+    }
+  ],
+  "original_raw_prefixes": [
+    {
+      "path": "raw/responses.jsonl",
+      "original_prefix_verified": true,
+      "original_bytes": 686231
+    },
+    {
+      "path": "raw/frozen_rag_responses.jsonl",
+      "original_prefix_verified": true,
+      "original_bytes": 3519991
+    },
+    {
+      "path": "live_campaign/raw/responses.jsonl",
+      "original_prefix_verified": true,
+      "original_bytes": 40537268
+    }
+  ],
+  "frozen_question_sha256_verified": true,
+  "executed_source_hash_mismatches": [],
+  "final_campaign_manifest_exists": false
+}

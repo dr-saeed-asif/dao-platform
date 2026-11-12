@@ -1,0 +1,336 @@
+{
+  "scope": "Archived original snapshot versus captured read-only SQL preflight, not a post-outage live DB check",
+  "checked_fields": 48,
+  "differing_fields": 8,
+  "unchecked": "proposal_type and fields absent from tool projection; not independent gold adjudication",
+  "checks": [
+    {
+      "scope": "pilot",
+      "field": "id",
+      "old": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "captured": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "equal": true
+    },
+    {
+      "scope": "pilot",
+      "field": "dao_id",
+      "old": "cyber-dao-321",
+      "captured": "cyber-dao-321",
+      "equal": true
+    },
+    {
+      "scope": "pilot",
+      "field": "title",
+      "old": "CyberGovAI Governance Security and Transparency Pilot",
+      "captured": "CyberGovAI Governance Security and Transparency Pilot",
+      "equal": true
+    },
+    {
+      "scope": "pilot",
+      "field": "status",
+      "old": "VOTING_CLOSED",
+      "captured": "VOTING_CLOSED",
+      "equal": true
+    },
+    {
+      "scope": "pilot",
+      "field": "on_chain_id",
+      "old": "38",
+      "captured": "38",
+      "equal": true
+    },
+    {
+      "scope": "pilot",
+      "field": "chain_id",
+      "old": "1212",
+      "captured": "1212",
+      "equal": true
+    },
+    {
+      "scope": "pilot",
+      "field": "starts_at",
+      "old": "2026-10-26 08:15:00+00:00",
+      "captured": "2026-10-26T08:15:00+00:00",
+      "equal": true
+    },
+    {
+      "scope": "pilot",
+      "field": "ends_at",
+      "old": "2026-10-26 09:15:00+00:00",
+      "captured": "2026-10-26T09:15:00+00:00",
+      "equal": true
+    },
+    {
+      "scope": "pilot",
+      "field": "total_votes",
+      "old": "0",
+      "captured": "0",
+      "equal": true
+    },
+    {
+      "scope": "pilot",
+      "field": "indexed_votes",
+      "old": 0,
+      "captured": null,
+      "equal": false
+    },
+    {
+      "scope": "pilot",
+      "field": "assigned",
+      "old": 10,
+      "captured": null,
+      "equal": false
+    },
+    {
+      "scope": "pilot",
+      "field": "dao_proposals",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "id",
+      "old": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+      "captured": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "dao_id",
+      "old": "cyber-test-dao",
+      "captured": "cyber-test-dao",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "title",
+      "old": "Improve members\u2019 understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+      "captured": "Improve members\u2019 understanding of DAO proposals, supporting evidence and wallet-based voting through two workshops and an accessible participation guide.",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "status",
+      "old": "FINALIZED",
+      "captured": "FINALIZED",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "on_chain_id",
+      "old": "39",
+      "captured": "39",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "chain_id",
+      "old": "1212",
+      "captured": "1212",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "starts_at",
+      "old": "2026-10-26 11:17:00+00:00",
+      "captured": "2026-10-26T11:17:00+00:00",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "ends_at",
+      "old": "2026-10-26 12:22:00+00:00",
+      "captured": "2026-10-26T12:22:00+00:00",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "total_votes",
+      "old": "2",
+      "captured": "2",
+      "equal": true
+    },
+    {
+      "scope": "training",
+      "field": "indexed_votes",
+      "old": 2,
+      "captured": null,
+      "equal": false
+    },
+    {
+      "scope": "training",
+      "field": "assigned",
+      "old": 10,
+      "captured": null,
+      "equal": false
+    },
+    {
+      "scope": "training",
+      "field": "dao_proposals",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "id",
+      "old": "16dadecc-94cc-4fae-8089-921765854976",
+      "captured": "16dadecc-94cc-4fae-8089-921765854976",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "dao_id",
+      "old": "Community Clean-Up Initiative",
+      "captured": "Community Clean-Up Initiative",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "title",
+      "old": "Community Clean-Up Initiative",
+      "captured": "Community Clean-Up Initiative",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "status",
+      "old": "VOTING_CLOSED",
+      "captured": "VOTING_CLOSED",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "on_chain_id",
+      "old": "36",
+      "captured": "36",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "chain_id",
+      "old": "1212",
+      "captured": "1212",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "starts_at",
+      "old": "2026-10-21 10:26:00+00:00",
+      "captured": "2026-10-21T10:26:00+00:00",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "ends_at",
+      "old": "2026-10-21 11:26:00+00:00",
+      "captured": "2026-10-21T11:26:00+00:00",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "total_votes",
+      "old": "0",
+      "captured": "0",
+      "equal": true
+    },
+    {
+      "scope": "cleanup",
+      "field": "indexed_votes",
+      "old": 0,
+      "captured": null,
+      "equal": false
+    },
+    {
+      "scope": "cleanup",
+      "field": "assigned",
+      "old": 9,
+      "captured": null,
+      "equal": false
+    },
+    {
+      "scope": "cleanup",
+      "field": "dao_proposals",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "id",
+      "old": "onchain-28",
+      "captured": "onchain-28",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "dao_id",
+      "old": "cyber-test",
+      "captured": "cyber-test",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "title",
+      "old": "Cyber Testing",
+      "captured": "Cyber Testing",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "status",
+      "old": "VOTING_CLOSED",
+      "captured": "VOTING_CLOSED",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "on_chain_id",
+      "old": "28",
+      "captured": "28",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "chain_id",
+      "old": "1212",
+      "captured": "1212",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "starts_at",
+      "old": "2026-10-09 03:23:00+00:00",
+      "captured": "2026-10-09T03:23:00+00:00",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "ends_at",
+      "old": "2026-10-09 03:30:00+00:00",
+      "captured": "2026-10-09T03:30:00+00:00",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "total_votes",
+      "old": "0",
+      "captured": "0",
+      "equal": true
+    },
+    {
+      "scope": "testing",
+      "field": "indexed_votes",
+      "old": 0,
+      "captured": null,
+      "equal": false
+    },
+    {
+      "scope": "testing",
+      "field": "assigned",
+      "old": 0,
+      "captured": null,
+      "equal": false
+    },
+    {
+      "scope": "testing",
+      "field": "dao_proposals",
+      "equal": true
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "classification": "Real Ollama embedding; cached once across models, separate from generation wall",
+  "corpus_chunks": 6,
+  "question_records": 133,
+  "query_embeddings_executed": 126,
+  "no_document_skips": 7,
+  "query_embedding_failures": 0,
+  "corpus_embedding_ms_sum": 813.5709000016504,
+  "query_embedding_ms_sum": 3371.091699995304,
+  "corpus_embedding_tokens_observed": 2023,
+  "query_embedding_tokens_observed": 2708,
+  "embedding_dimensions": [
+    1024
+  ]
+}

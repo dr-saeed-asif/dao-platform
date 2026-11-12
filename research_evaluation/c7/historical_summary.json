@@ -1,0 +1,20 @@
+{
+  "original_39": {
+    "n": 39,
+    "outcomes": {
+      "verified": 23,
+      "mismatched": 7,
+      "unverified": 9
+    },
+    "distinct_pins": 27
+  },
+  "prior_targeted_followup": {
+    "n": 7,
+    "outcomes": {
+      "unverified": 6,
+      "mismatched": 1
+    }
+  },
+  "c7_live_experiment_attempted": 0,
+  "warning": "Historical observations; do not combine differing pins/times into a new 39-proposal distribution."
+}

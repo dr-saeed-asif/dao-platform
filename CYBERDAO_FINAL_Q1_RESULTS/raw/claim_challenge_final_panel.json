@@ -1,0 +1,166 @@
+{
+  "n": 24,
+  "actual_gate_attempts_total": 26,
+  "invalid_source_attempts_preserved": 2,
+  "matrix": {
+    "supported": {
+      "accept": 4,
+      "reject": 2,
+      "abstain": 2
+    },
+    "contradicted": {
+      "accept": 0,
+      "reject": 4,
+      "abstain": 2
+    },
+    "unsupported": {
+      "accept": 0,
+      "reject": 2,
+      "abstain": 1
+    },
+    "ambiguous": {
+      "accept": 0,
+      "reject": 0,
+      "abstain": 4
+    },
+    "closed_world": {
+      "accept": 0,
+      "reject": 0,
+      "abstain": 3
+    }
+  },
+  "predictions": [
+    {
+      "id": "CH-001",
+      "gold": "supported",
+      "status": "supported"
+    },
+    {
+      "id": "CH-002",
+      "gold": "supported",
+      "status": "supported"
+    },
+    {
+      "id": "CH-003",
+      "gold": "supported",
+      "status": "supported"
+    },
+    {
+      "id": "CH-004",
+      "gold": "supported",
+      "status": "supported"
+    },
+    {
+      "id": "CH-005",
+      "gold": "contradicted",
+      "status": "contradicts_known_value"
+    },
+    {
+      "id": "CH-006",
+      "gold": "contradicted",
+      "status": "contradicts_known_value"
+    },
+    {
+      "id": "CH-007",
+      "gold": "contradicted",
+      "status": "contradicts_known_value"
+    },
+    {
+      "id": "CH-008",
+      "gold": "contradicted",
+      "status": "contradicts_known_value"
+    },
+    {
+      "id": "CH-009",
+      "gold": "unsupported",
+      "status": "unsupported_number"
+    },
+    {
+      "id": "CH-010",
+      "gold": "supported",
+      "status": "uncited_factual"
+    },
+    {
+      "id": "CH-011",
+      "gold": "supported",
+      "status": "unknown_citation"
+    },
+    {
+      "id": "CH-012",
+      "gold": "unsupported",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-013",
+      "gold": "ambiguous",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-014",
+      "gold": "ambiguous",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-015",
+      "gold": "closed_world",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-016",
+      "gold": "closed_world",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-017",
+      "gold": "ambiguous",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-018",
+      "gold": "ambiguous",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-019",
+      "gold": "supported",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-020",
+      "gold": "contradicted",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-021",
+      "gold": "supported",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-022",
+      "gold": "contradicted",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-023",
+      "gold": "closed_world",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-024",
+      "gold": "unsupported",
+      "status": "unsupported_number"
+    }
+  ],
+  "tp": 4,
+  "fp": 0,
+  "fn": 4,
+  "tn": 16,
+  "precision": 1.0,
+  "recall": 0.5,
+  "false_positive_rate": 0.0,
+  "false_negative_rate": 0.5,
+  "abstention_rate": 0.5,
+  "classification_coverage": 0.5,
+  "source": "22 original valid attempts plus 2 targeted source corrections",
+  "human_validated": false
+}

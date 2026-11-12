@@ -1,0 +1,29 @@
+{
+  "utc": "2026-11-10T14:42:26.601Z",
+  "proposal_id": "d79ac7ba-c040-4e5e-9ee5-ebdbfa1d5a21",
+  "on_chain_id": "32",
+  "pinned_block": "20325000",
+  "pinned_hash": "0x7f5d787551a2ead47dee151434eb86b4fbe08e6d33d2a02c7e4ecf05138cb7be",
+  "sql_active_rows": 10,
+  "sql_active_distinct": 10,
+  "contract_assigned_count": "9",
+  "reconstructed_count": 9,
+  "assigned_events": 9,
+  "unassigned_events": 0,
+  "creation_event_present": true,
+  "scan_coverage_status": "unverified",
+  "sql_only_assignments": 1,
+  "chain_only_assignments": 0,
+  "extra_rows": [
+    {
+      "latest_evidence_present": false,
+      "transaction_reference_present": true,
+      "receipt_found": true,
+      "receipt_status": "0x0",
+      "receipt_block": "19347983",
+      "receipt_canonical_at_provider": true,
+      "receipt_targets_governance_contract": true,
+      "receipt_log_count": 0
+    }
+  ]
+}

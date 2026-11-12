@@ -1,0 +1,14 @@
+test_actual_bounded_abstention_enum (__main__.AnalysisChecks.test_actual_bounded_abstention_enum) ... ok
+test_documented_proxy_limitation (__main__.AnalysisChecks.test_documented_proxy_limitation) ... ok
+test_numeric_grouping (__main__.AnalysisChecks.test_numeric_grouping) ... ok
+test_paired_cluster_interval (__main__.AnalysisChecks.test_paired_cluster_interval) ... ok
+test_reference_markers_never_count (__main__.AnalysisChecks.test_reference_markers_never_count) ... ok
+test_repeated_values_are_not_one (__main__.AnalysisChecks.test_repeated_values_are_not_one) ... ok
+test_uuid_never_counts (__main__.AnalysisChecks.test_uuid_never_counts) ... ok
+test_wilson_boundary (__main__.AnalysisChecks.test_wilson_boundary) ... ok
+test_wilson_empty (__main__.AnalysisChecks.test_wilson_empty) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.007s
+
+OK

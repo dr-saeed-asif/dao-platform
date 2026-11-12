@@ -1,0 +1,3 @@
+run-*/responses.jsonl
+run-*/outcomes.csv
+**/*.local.json

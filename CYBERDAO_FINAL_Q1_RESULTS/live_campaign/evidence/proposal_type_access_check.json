@@ -1,0 +1,21 @@
+{
+  "archived_report_checks": [
+    {
+      "proposal": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "type_comparisons": [],
+      "STANDARD_in_report": false
+    },
+    {
+      "proposal": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+      "type_comparisons": [],
+      "STANDARD_in_report": false
+    }
+  ],
+  "flagged_question_ids": [
+    "DB-008",
+    "DB-018",
+    "DB-028",
+    "DB-038"
+  ],
+  "finding": "proposal_type is absent from current registered governance query projections (targeted source search); direct SQL exposes it. These items need source-access/expected-abstention adjudication; retain all 133 in exploratory denominators. Do not silently change gold or claim broad tool equivalence with the SQL oracle."
+}

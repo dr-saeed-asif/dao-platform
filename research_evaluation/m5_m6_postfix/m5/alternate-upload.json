@@ -1,0 +1,17 @@
+{
+  "component": "index_upload",
+  "input": "Unlinked synthetic other.pdf",
+  "outcome": {
+    "status": "INDEXED",
+    "document_sha256": "a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc",
+    "filename": "a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc.pdf",
+    "pages": 1,
+    "chunks": 1,
+    "profile_id": "profile-v2-23d31528b3d0adf14f716d8bd81298f04e491a0a91ef6a6eac45795d3c8b82ae",
+    "embedding_model": "qwen3-embedding:0.6b",
+    "embedding_dimensions": 1024,
+    "embedding_ms": 0.0
+  },
+  "scope": "Actual use-case invocation with real SQL and synthetic vectors. HTTP authentication was outside this component test.",
+  "chain_manifest_required": false
+}

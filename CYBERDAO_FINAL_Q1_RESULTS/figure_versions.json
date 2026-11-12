@@ -1,0 +1,9 @@
+{
+  "matplotlib": "3.11.2",
+  "formats": [
+    "SVG",
+    "PDF",
+    "PNG"
+  ],
+  "fonts": "SVG text retained; PDF TrueType"
+}

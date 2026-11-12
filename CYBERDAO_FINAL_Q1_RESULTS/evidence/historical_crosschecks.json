@@ -1,0 +1,30 @@
+{
+  "pilot_records": 32,
+  "pilot_by_mode": {
+    "worker_gate_off": 8,
+    "single_evidence_worker": 8,
+    "full": 8,
+    "llm_only": 8
+  },
+  "pilot_statuses": {
+    "completed": 32
+  },
+  "recovery_cohort_n": 39,
+  "recovery_outcomes": {
+    "verified": 39
+  },
+  "postfix_cases": {
+    "M5": 15,
+    "M6": 16
+  },
+  "postfix_expected_matches": 30,
+  "M6_raw_records": 16,
+  "streaming_records": 3,
+  "source_hashes": {
+    "raw_results\\pilot-small\\runs.jsonl": "c6fd885e50218c6a6b2cb95376ff778977c5064314edc7ca34f777910977acc9",
+    "recovery_completeness\\results-01\\RECOVERY_COMPARISON.csv": "f2282cc70501c4a0c7c39105080c7637a4c2a3097f0a9c9d528a3e721f7b8a8d",
+    "m5_m6_postfix\\M5_M6_POST_FIX_RESULTS.csv": "3251a6ba7a64a068b9f368661ebc8aa410bbf04564b9ee332ab5aef0a6dae6df",
+    "m5_m6_postfix\\m6\\raw.jsonl": "250d2f81a54733be875e34abc2910ea753632a7851604039d1e2977a7bf30691",
+    "raw_results\\http-stream.jsonl": "e7d2e9c517e784eef182bf4b6174816948416fcd63809946945482f2c85765a4"
+  }
+}

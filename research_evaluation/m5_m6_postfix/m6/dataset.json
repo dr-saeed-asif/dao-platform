@@ -1,0 +1,121 @@
+{
+  "source": "Actual C7 service and existing in-memory fixture with controlled RPC/SQL changes",
+  "cases": [
+    {
+      "id": "clean",
+      "kind": "control",
+      "expected": "verified",
+      "unsafe": false
+    },
+    {
+      "id": "stale-coherent-provider",
+      "kind": "stale RPC node",
+      "expected": "unverified",
+      "unsafe": true
+    },
+    {
+      "id": "lagging-provider",
+      "kind": "lagging RPC node",
+      "expected": "unverified",
+      "unsafe": true,
+      "mode": "lag"
+    },
+    {
+      "id": "wrong-chain",
+      "kind": "wrong chain ID",
+      "expected": "mismatched",
+      "unsafe": true,
+      "mode": "chain"
+    },
+    {
+      "id": "inconsistent-block-hash",
+      "kind": "inconsistent block hash",
+      "expected": "unverified",
+      "unsafe": true,
+      "mode": "hash"
+    },
+    {
+      "id": "missing-log",
+      "kind": "missing event log",
+      "expected": "mismatched",
+      "unsafe": true,
+      "mode": "missing"
+    },
+    {
+      "id": "duplicate-log",
+      "kind": "duplicate event log",
+      "expected": "verified",
+      "unsafe": false,
+      "mode": "duplicate"
+    },
+    {
+      "id": "out-of-order",
+      "kind": "out-of-order event logs",
+      "expected": "verified",
+      "unsafe": false,
+      "mode": "unordered"
+    },
+    {
+      "id": "partial-range",
+      "kind": "partial log range",
+      "expected": "unavailable",
+      "unsafe": true,
+      "mode": "partial",
+      "target": 2000
+    },
+    {
+      "id": "timeout",
+      "kind": "RPC timeout",
+      "expected": "unavailable",
+      "unsafe": true,
+      "mode": "timeout"
+    },
+    {
+      "id": "connection",
+      "kind": "RPC connection failure",
+      "expected": "unavailable",
+      "unsafe": true,
+      "mode": "connection"
+    },
+    {
+      "id": "malformed",
+      "kind": "malformed RPC response",
+      "expected": "unavailable",
+      "unsafe": true,
+      "mode": "malformed"
+    },
+    {
+      "id": "reorg",
+      "kind": "reorganization during verification",
+      "expected": "unverified",
+      "unsafe": true,
+      "mode": "reorg"
+    },
+    {
+      "id": "checkpoint-behind",
+      "kind": "indexer checkpoint behind pin",
+      "expected": "unverified",
+      "unsafe": true,
+      "checkpoint": {
+        "processed_block_number": "99",
+        "processed_block_hash": null
+      }
+    },
+    {
+      "id": "checkpoint-missing",
+      "kind": "missing checkpoint",
+      "expected": "unverified",
+      "unsafe": true,
+      "checkpoint": null
+    },
+    {
+      "id": "joint-omission",
+      "kind": "same event absent in SQL and RPC",
+      "expected": "unverified",
+      "unsafe": true,
+      "mode": "missing",
+      "stored": false
+    }
+  ],
+  "stale_policy": "Safe expectation for deliberate stale provider is unverified. Application has no independently trusted minimum height."
+}

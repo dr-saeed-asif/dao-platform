@@ -1,0 +1,8 @@
+{
+  "n": 26,
+  "exact_scalar_matches": 26,
+  "unmatched_ids": [],
+  "interpretation": "Task-specific scalar lookup against the same SQL source used by provisional gold, not independent natural-language reasoning accuracy",
+  "human_validated": false,
+  "model_calls": 0
+}

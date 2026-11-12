@@ -1,0 +1,2036 @@
+[
+  {
+    "item_id": "DB-001",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-002",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-003",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-004",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-005",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-006",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-007",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-008",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-009",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-010",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-011",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-012",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-013",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-014",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-015",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-016",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-017",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-018",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-019",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-020",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-021",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-022",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-023",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-024",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-025",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-026",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-027",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-028",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-029",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-030",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-031",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-032",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-033",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-034",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-035",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-036",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-037",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-038",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-039",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-040",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-001",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-002",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-003",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-004",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-005",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-006",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-007",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-008",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-009",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-010",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-011",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-012",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-013",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-014",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-015",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-016",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-017",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-018",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-019",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-020",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-021",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-022",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-023",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-024",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-025",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-026",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-027",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-028",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-029",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-030",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-031",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-032",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-033",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-034",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-035",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-036",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-037",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-038",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-039",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "PDF-040",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-001",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-002",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-003",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-004",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-005",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-006",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-007",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-008",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-009",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-010",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-011",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-012",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-013",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-014",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-015",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-016",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-017",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-018",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-019",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-020",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-021",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-022",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-023",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-024",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-025",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-026",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-027",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-028",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-029",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-030",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-031",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-032",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-033",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-034",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-035",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-036",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-037",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-038",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-039",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "MS-040",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-001",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-002",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-003",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-004",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-005",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-006",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-007",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-008",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-009",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-010",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-011",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-012",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-013",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-014",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-015",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-016",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-017",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-018",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-019",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-020",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-021",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-022",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-023",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-024",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-025",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-026",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-027",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-028",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-029",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "CX-030",
+    "original_200": true,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-001",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-002",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-003",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-004",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-005",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-006",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-007",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-008",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-009",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-010",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-011",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-012",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-013",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-014",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-015",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-016",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-017",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-018",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-019",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-020",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-021",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-022",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-023",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-024",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-025",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-001",
+    "original_200": true,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-002",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-003",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-004",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-005",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-006",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-007",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-008",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-009",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-010",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-011",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-012",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-013",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-014",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-015",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-016",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-017",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-018",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-019",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-020",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-021",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-022",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-023",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-024",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UA-025",
+    "original_200": true,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R001",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R002",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R003",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R004",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R005",
+    "original_200": false,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R006",
+    "original_200": false,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R007",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R008",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R009",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R010",
+    "original_200": false,
+    "review_decision_llm": "REVISE",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R011",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R012",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R013",
+    "original_200": false,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R014",
+    "original_200": false,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R015",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R016",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R017",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R018",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": true,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R019",
+    "original_200": false,
+    "review_decision_llm": "REJECT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": false,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R020",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R021",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R022",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R023",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R024",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "UN-R025",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  },
+  {
+    "item_id": "DB-R021",
+    "original_200": false,
+    "review_decision_llm": "ACCEPT",
+    "exposed_by_recorded_ledger": false,
+    "reserved_candidate": true,
+    "human_validated": false,
+    "confirmatory_eligible": false
+  }
+]

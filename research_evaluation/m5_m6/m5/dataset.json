@@ -1,0 +1,96 @@
+{
+  "fixture_only": true,
+  "chain_anchor": "Synthetic ProposalCreated records in isolated SQL; no chain transactions",
+  "cases": [
+    {
+      "id": "valid",
+      "category": "control",
+      "expected": "accept",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "one-byte",
+      "category": "tamper",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "same-name-other-pdf",
+      "category": "tamper",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "cross-proposal",
+      "category": "scope",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "wrong-hash",
+      "category": "hash",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "manifest-entry",
+      "category": "manifest",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "uri-association",
+      "category": "manifest",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "wrong-media",
+      "category": "media",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "oversized",
+      "category": "size",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "corrupt",
+      "category": "format",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "missing",
+      "category": "availability",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "reupload",
+      "category": "control",
+      "expected": "accept",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "stale-chunks",
+      "category": "tamper",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "duplicate",
+      "category": "control",
+      "expected": "accept",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    },
+    {
+      "id": "manifest-size",
+      "category": "manifest",
+      "expected": "reject",
+      "expected_basis": "Trusted bytes, original committed manifest and usable parseable PDF; unchanged reupload/dedup should succeed"
+    }
+  ]
+}

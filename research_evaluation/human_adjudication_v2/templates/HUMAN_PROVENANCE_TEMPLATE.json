@@ -1,0 +1,14 @@
+{
+  "coordinator_id": "",
+  "verified_utc": "",
+  "independent_human_review_verified": false,
+  "reviewer_A_id": "",
+  "reviewer_B_id": "",
+  "reviewer_A_sha256": "",
+  "reviewer_B_sha256": "",
+  "verification_method": "",
+  "evidence_reference": "",
+  "adjudication_provenance_verified": false,
+  "adjudications_sha256": "",
+  "status": "Template only. Values must reflect actual coordinator verification."
+}

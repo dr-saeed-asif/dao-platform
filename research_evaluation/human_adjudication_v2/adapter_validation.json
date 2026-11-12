@@ -1,0 +1,59 @@
+{
+  "status": "NO-GO current campaign",
+  "mock_tests_passed": 9,
+  "network_calls": 0,
+  "model_generations": 0,
+  "source_configuration_sha256": null,
+  "conditions": {
+    "B1": {
+      "fixture_contract_exercised": true,
+      "scientifically_validated": false,
+      "evidence": "adapter-tests.log",
+      "findings": "Candidate path exercised with mocked HTTP. No tools or gold in prompt, unexpected tool call fails."
+    },
+    "B2": {
+      "fixture_contract_exercised": false,
+      "scientifically_validated": false,
+      "evidence": "adapter-tests.log",
+      "findings": "Requested plain RAG adapter absent. Historical B2 is a tool agent and cannot substitute."
+    },
+    "B3": {
+      "fixture_contract_exercised": true,
+      "scientifically_validated": false,
+      "evidence": "adapter-tests.log",
+      "findings": "Historical candidate tested for DAO/proposal guards and structured errors. Tool, identity, model and snapshot parity remain pending."
+    },
+    "B4": {
+      "fixture_contract_exercised": true,
+      "scientifically_validated": false,
+      "evidence": "adapter-tests.log",
+      "findings": "Current synthesis rejects swapped numerical relation in a controlled worker/model fixture. Full end-to-end fairness remains pending."
+    },
+    "A1": {
+      "fixture_contract_exercised": false,
+      "scientifically_validated": false,
+      "evidence": "adapter-tests.log",
+      "findings": "Extractor-disabled research hook absent. Must cover workflow direct-answer helpers and budget extractor."
+    },
+    "A2": {
+      "fixture_contract_exercised": false,
+      "scientifically_validated": false,
+      "evidence": "adapter-tests.log",
+      "findings": "Gate-disabled research hook absent. Historical ablation misses current synthesis.blocking_flags and disables extra gates."
+    },
+    "A3": {
+      "fixture_contract_exercised": true,
+      "scientifically_validated": false,
+      "evidence": "adapter-tests.log",
+      "findings": "Same full condition as B4 when configuration is identical. Avoid double-counting."
+    },
+    "A4": {
+      "fixture_contract_exercised": false,
+      "scientifically_validated": false,
+      "evidence": "adapter-tests.log",
+      "findings": "Whitelisted direct SQL adapter absent. Needs explicit source-field mapping, read-only permissions and applicability rules."
+    }
+  },
+  "historical_ablation_limitation_verified": "Synthesis-local claim gate remains active under old ablation context; temporary patches restore after exception",
+  "unchecked_claim_observation": "unchecked_cited numeric associations can produce no blocking flag. Report unchecked coverage separately from support."
+}

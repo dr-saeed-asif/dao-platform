@@ -1,0 +1,2 @@
+# Scoring correction
+The actual provisional-gold enum is bounded_abstention_or_reject_false_premise. The first analysis recognized only abstain/deny, so it incorrectly missed bounded-unknown matches. A regression failed before the analysis-only correction. Earlier derived tables and script are preserved in versions/scoring_v1; raw outputs and reference answers are unchanged. Recompute all conditions uniformly. Reference matching remains a proxy, never whole-answer accuracy.

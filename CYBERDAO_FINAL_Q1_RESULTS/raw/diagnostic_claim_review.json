@@ -1,0 +1,36 @@
+{
+  "classification": "Purposive AI-assisted annotation, no independent human review, not exhaustive",
+  "model": "qwen3:0.6b",
+  "condition": "B2",
+  "reviewed_answers": 4,
+  "selected_numeric_atoms": 4,
+  "supported": 2,
+  "contradicted": 2,
+  "canonical_citations": 0,
+  "claims": [
+    {
+      "id": "PDF-007",
+      "atom": "Dashboard allocation EUR 3,000; 25% of total",
+      "judgment": "supported",
+      "source_basis": "Pilot PDF p2 explicitly records EUR 3,000 and 25%."
+    },
+    {
+      "id": "PDF-008",
+      "atom": "AI evaluation allocation EUR 12,000",
+      "judgment": "contradicted",
+      "source_basis": "Pilot PDF p2 records EUR 2,000; EUR 12,000 is the total."
+    },
+    {
+      "id": "CX-001",
+      "atom": "Combined lines 1 and 2 EUR 9,000",
+      "judgment": "supported",
+      "source_basis": "EUR 6,000 + EUR 3,000 = EUR 9,000."
+    },
+    {
+      "id": "CX-001",
+      "atom": "Remaining budget EUR 9,000",
+      "judgment": "contradicted",
+      "source_basis": "EUR 12,000 - EUR 9,000 = EUR 3,000."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "reviewer": "A",
+    "file": "HUMAN_ANNOTATION_TEMPLATE.csv",
+    "rows": 226,
+    "nonempty_label_fields": 0
+  },
+  {
+    "reviewer": "A",
+    "file": "CLAIM_ANNOTATION_TEMPLATE.csv",
+    "rows": 0,
+    "nonempty_label_fields": 0
+  },
+  {
+    "reviewer": "B",
+    "file": "HUMAN_ANNOTATION_TEMPLATE.csv",
+    "rows": 226,
+    "nonempty_label_fields": 0
+  },
+  {
+    "reviewer": "B",
+    "file": "CLAIM_ANNOTATION_TEMPLATE.csv",
+    "rows": 0,
+    "nonempty_label_fields": 0
+  }
+]

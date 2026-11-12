@@ -1,0 +1,18 @@
+{
+  "checked_utc": "2026-11-10T23:50:51.980288+00:00",
+  "separate_files": true,
+  "matching_review_item_ids": 226,
+  "required_columns_present": [
+    "decision",
+    "evidence_references",
+    "expected_answer_authored_by_reviewer",
+    "item_id",
+    "question"
+  ],
+  "completed_human_decisions_A": 0,
+  "completed_human_decisions_B": 0,
+  "proposed_gold_sidecar_records": 226,
+  "reviewer_authored_expected_answer_cells_filled": 0,
+  "referenced_evidence_hash_checks": 226,
+  "independence_verified_by_software": false
+}

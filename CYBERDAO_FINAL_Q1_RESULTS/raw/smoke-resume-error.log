@@ -1,0 +1,24 @@
+WARNING:psycopg.pool:couldn't stop task 'pool-1-worker-0' within 5.0 seconds
+WARNING:psycopg.pool:couldn't stop task 'pool-1-worker-1' within 5.0 seconds
+WARNING:psycopg.pool:error connecting in 'pool-1': 
+WARNING:psycopg.pool:error connecting in 'pool-1': 
+Traceback (most recent call last):
+  File "E:\DAO\cyber-chain-work\dao-platform\CYBERDAO_FINAL_Q1_RESULTS\scripts\run.py", line 145, in <module>
+    try:asyncio.run(main(),loop_factory=lambda:asyncio.SelectorEventLoop(selectors.SelectSelector()))
+        ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\asifs\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "E:\DAO\cyber-chain-work\dao-platform\CYBERDAO_FINAL_Q1_RESULTS\scripts\run.py", line 57, in main
+    await pool.open(wait=True,timeout=20)
+  File "E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\psycopg_pool\pool_async.py", line 438, in open
+    await self.wait(timeout=timeout)
+  File "E:\DAO\cyber-chain-work\api-ai-server1\api-ai-server\.venv\Lib\site-packages\psycopg_pool\pool_async.py", line 199, in wait
+    raise PoolTimeout(f"pool initialization incomplete after {timeout} sec")
+psycopg_pool.PoolTimeout: pool initialization incomplete after 20 sec

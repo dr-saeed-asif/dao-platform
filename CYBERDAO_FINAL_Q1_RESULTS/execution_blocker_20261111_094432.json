@@ -1,0 +1,4 @@
+{
+  "type": "PoolTimeout",
+  "message": "pool initialization incomplete after 20 sec"
+}

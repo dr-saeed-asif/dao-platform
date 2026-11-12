@@ -1,0 +1,11 @@
+{
+  "legitimate_standalone_lookup_succeeded": true,
+  "revoked_standalone_lookup_blocked": true,
+  "idempotent_cleanup_second_delete_count": 0,
+  "retained_index_audit_rows": [
+    [
+      "FAILED",
+      0
+    ]
+  ]
+}

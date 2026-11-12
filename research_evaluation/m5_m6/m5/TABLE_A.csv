@@ -1,0 +1,10 @@
+attack_category,number_tested,invalid_cases,number_detected,number_missed,false_rejections,detection_rate
+availability,1,1,1,0,0,1.0
+control,3,0,0,0,0,
+format,1,1,1,0,0,1.0
+hash,1,1,1,0,0,1.0
+manifest,3,3,3,0,0,1.0
+media,1,1,1,0,0,1.0
+scope,1,1,1,0,0,1.0
+size,1,1,1,0,0,1.0
+tamper,3,3,2,1,0,0.6666666666666666

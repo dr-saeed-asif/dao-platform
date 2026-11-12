@@ -1,0 +1,36 @@
+{"completed": 1, "model": "qwen3:0.6b", "id": "DEV-MIX-01", "status": "completed"}
+{"completed": 2, "model": "qwen3:0.6b", "id": "DEV-SQL-01", "status": "completed"}
+{"completed": 3, "model": "qwen3:4b-instruct", "id": "DEV-SQL-01", "status": "completed"}
+{"completed": 4, "model": "qwen3:4b-instruct", "id": "DEV-MIX-01", "status": "failed"}
+Frozen RAG technical smoke passed; output failures retained
+query embeddings checkpoint 25
+query embeddings checkpoint 50
+query embeddings checkpoint 75
+query embeddings checkpoint 100
+query embeddings checkpoint 125
+{"completed": 10, "model": "qwen3:0.6b", "id": "DB-037", "status": "completed"}
+{"completed": 20, "model": "qwen3:0.6b", "id": "MS-035", "status": "completed"}
+{"completed": 30, "model": "qwen3:0.6b", "id": "PDF-029", "status": "completed"}
+{"completed": 40, "model": "qwen3:0.6b", "id": "DB-008", "status": "completed"}
+{"completed": 50, "model": "qwen3:0.6b", "id": "MS-025", "status": "completed"}
+{"completed": 60, "model": "qwen3:0.6b", "id": "PDF-035", "status": "completed"}
+{"completed": 70, "model": "qwen3:0.6b", "id": "MS-031", "status": "completed"}
+{"completed": 80, "model": "qwen3:0.6b", "id": "DB-036", "status": "completed"}
+{"completed": 90, "model": "qwen3:0.6b", "id": "DB-035", "status": "completed"}
+{"completed": 100, "model": "qwen3:0.6b", "id": "PDF-019", "status": "completed"}
+{"completed": 110, "model": "qwen3:0.6b", "id": "CX-026", "status": "completed"}
+{"completed": 120, "model": "qwen3:0.6b", "id": "MS-013", "status": "completed"}
+{"completed": 130, "model": "qwen3:0.6b", "id": "PDF-011", "status": "completed"}
+{"completed": 140, "model": "qwen3:4b-instruct", "id": "DB-009", "status": "completed"}
+{"completed": 150, "model": "qwen3:4b-instruct", "id": "CX-020", "status": "failed"}
+{"completed": 160, "model": "qwen3:4b-instruct", "id": "UN-R002", "status": "completed"}
+{"completed": 170, "model": "qwen3:4b-instruct", "id": "MS-027", "status": "failed"}
+{"completed": 180, "model": "qwen3:4b-instruct", "id": "DB-020", "status": "completed"}
+{"completed": 190, "model": "qwen3:4b-instruct", "id": "PDF-024", "status": "completed"}
+{"completed": 200, "model": "qwen3:4b-instruct", "id": "DB-026", "status": "completed"}
+{"completed": 210, "model": "qwen3:4b-instruct", "id": "UN-R020", "status": "completed"}
+{"completed": 220, "model": "qwen3:4b-instruct", "id": "CX-004", "status": "completed"}
+{"completed": 230, "model": "qwen3:4b-instruct", "id": "PDF-036", "status": "completed"}
+{"completed": 240, "model": "qwen3:4b-instruct", "id": "UN-R023", "status": "completed"}
+{"completed": 250, "model": "qwen3:4b-instruct", "id": "PDF-003", "status": "completed"}
+{"completed": 260, "model": "qwen3:4b-instruct", "id": "CX-003", "status": "completed"}

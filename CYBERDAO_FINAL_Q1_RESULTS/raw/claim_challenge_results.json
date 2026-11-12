@@ -1,0 +1,169 @@
+{
+  "dataset": "post-development-challenge-v1",
+  "label_provenance": "AI-authored synthetic/provisional source-based labels; no human adjudication; implementation frozen before evaluation; not independent held-out evaluation",
+  "field_aware": {
+    "n": 24,
+    "matrix": {
+      "supported": {
+        "accept": 4,
+        "reject": 3,
+        "abstain": 1
+      },
+      "contradicted": {
+        "accept": 0,
+        "reject": 5,
+        "abstain": 1
+      },
+      "unsupported": {
+        "accept": 0,
+        "reject": 2,
+        "abstain": 1
+      },
+      "ambiguous": {
+        "accept": 0,
+        "reject": 0,
+        "abstain": 4
+      },
+      "closed_world": {
+        "accept": 0,
+        "reject": 0,
+        "abstain": 3
+      }
+    },
+    "predictions": [
+      {
+        "id": "CH-001",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "CH-002",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "CH-003",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "CH-004",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "CH-005",
+        "gold": "contradicted",
+        "status": "contradicts_known_value"
+      },
+      {
+        "id": "CH-006",
+        "gold": "contradicted",
+        "status": "contradicts_known_value"
+      },
+      {
+        "id": "CH-007",
+        "gold": "contradicted",
+        "status": "contradicts_known_value"
+      },
+      {
+        "id": "CH-008",
+        "gold": "contradicted",
+        "status": "contradicts_known_value"
+      },
+      {
+        "id": "CH-009",
+        "gold": "unsupported",
+        "status": "unsupported_number"
+      },
+      {
+        "id": "CH-010",
+        "gold": "supported",
+        "status": "uncited_factual"
+      },
+      {
+        "id": "CH-011",
+        "gold": "supported",
+        "status": "unknown_citation"
+      },
+      {
+        "id": "CH-012",
+        "gold": "unsupported",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-013",
+        "gold": "ambiguous",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-014",
+        "gold": "ambiguous",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-015",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-016",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-017",
+        "gold": "ambiguous",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-018",
+        "gold": "ambiguous",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-019",
+        "gold": "supported",
+        "status": "unsupported_number"
+      },
+      {
+        "id": "CH-020",
+        "gold": "contradicted",
+        "status": "unsupported_number"
+      },
+      {
+        "id": "CH-021",
+        "gold": "supported",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-022",
+        "gold": "contradicted",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-023",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "CH-024",
+        "gold": "unsupported",
+        "status": "unsupported_number"
+      }
+    ],
+    "binary_acceptance": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 4,
+      "tn": 16
+    },
+    "precision": 1.0,
+    "recall": 0.5,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.5,
+    "abstention_rate": 0.4166666666666667
+  },
+  "claim_module_sha256": "11a9b81b33ee79ec2a3a84f8c4cdca2b10d9b1c2743a49af99d68b064ffc1dff",
+  "attribution_note": "CH-010/011 are factually true but deliberately lack valid cited support; binary semantic-support recall includes these as false negatives; attribution-aware results reported separately"
+}

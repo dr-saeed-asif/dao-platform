@@ -1,0 +1,3179 @@
+{
+  "created_utc": "2026-11-12T06:56:26.893892+00:00",
+  "original_records": 1239,
+  "historical_failures": 38,
+  "missing_records": 623,
+  "missing_keys": [
+    {
+      "id": "CX-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-002",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-002",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-002",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-002",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "CX-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "CX-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "CX-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "CX-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "CX-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-026",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-037",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-037",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-037",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-037",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-038",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-038",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-038",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-038",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-039",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-039",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-039",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-039",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-039",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "DB-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "DB-R021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "DB-R021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "DB-R021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "DB-R021",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-005",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-025",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-033",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-033",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-033",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-033",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-034",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-034",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-034",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-034",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "MS-034",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "MS-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "MS-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "MS-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "MS-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-001",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-002",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-002",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-002",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-002",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-002",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-003",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-004",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-009",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-010",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-012",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-013",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-014",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-015",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-016",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-017",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-019",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-020",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-021",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-023",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-024",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-027",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-029",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-030",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-031",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-033",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-033",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-033",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-033",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-033",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-034",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-034",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-034",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-034",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-035",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-036",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-037",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-037",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-037",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-037",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-038",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-038",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-038",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-038",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "PDF-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "PDF-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "PDF-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "PDF-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "PDF-040",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R002",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R002",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R002",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R002",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R003",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R003",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R003",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R004",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R004",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R004",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R007",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R007",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R007",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R008",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R008",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R008",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R009",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R009",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R009",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R011",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R012",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R012",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R012",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R015",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R015",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R016",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R016",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R016",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R016",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R017",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R017",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R017",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R020",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R020",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R020",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R021",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R021",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R021",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R022",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R022",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R023",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R023",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R023",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R024",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R024",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    },
+    {
+      "id": "UN-R025",
+      "model": "qwen3:4b-instruct",
+      "condition": "A1"
+    },
+    {
+      "id": "UN-R025",
+      "model": "qwen3:4b-instruct",
+      "condition": "A12"
+    },
+    {
+      "id": "UN-R025",
+      "model": "qwen3:4b-instruct",
+      "condition": "A2"
+    },
+    {
+      "id": "UN-R025",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3"
+    },
+    {
+      "id": "UN-R025",
+      "model": "qwen3:4b-instruct",
+      "condition": "B4"
+    }
+  ],
+  "preserved_files": {
+    "raw/responses.jsonl": {
+      "sha256": "0843f3a7582bc9770c342cb2ebafe9037d987506eb92dfaeda94b0d5855e23a2",
+      "bytes": 686231
+    },
+    "raw/frozen_rag_responses.jsonl": {
+      "sha256": "8db20e29fb9e99247713e0f79dba86847a9e20be107a3198dae865822119dd6b",
+      "bytes": 3519991
+    },
+    "live_campaign/raw/responses.jsonl": {
+      "sha256": "f5320b001abb3e11975a0e94d81a1ee6636859156c80c245071b636765b6cd4a",
+      "bytes": 40537268
+    },
+    "live_campaign/configuration.json": {
+      "sha256": "438175e4fd2af1a9cbb99cb0ae790f2b6e42aac642dcdb174c7ee057ee7492d6",
+      "bytes": 18768
+    },
+    "live_campaign/preflight.json": {
+      "sha256": "a4a0b990b81c77acfcb173a6bb7956226ca2d3ca8bb2a5cdfae308b3173fee38",
+      "bytes": 1642
+    },
+    "scripts/run_live_remaining.py": {
+      "sha256": "edccf76953717d635088a494faf2811ce85ca73bd87f68760c9f2ea67715fdd8",
+      "bytes": 12901
+    },
+    "scripts/adapters.py": {
+      "sha256": "77009be73019bf80e3708ad0919e274825dfca5c9d30b3cadf5c0c68d91c4934",
+      "bytes": 4376
+    },
+    "live_campaign/evidence/chain_replay_scope.json": {
+      "sha256": "0748d53489788509e2e8133da5f159d2c79165e4561aad143710a4461420464a",
+      "bytes": 651
+    },
+    "live_campaign/evidence/chain_snapshot.json": {
+      "sha256": "ea0091b10d40e63a675ce19d0839dec90b09d19f58dcf12a5e5bbc8ec2dd6828",
+      "bytes": 74835
+    },
+    "live_campaign/evidence/phase_equivalence.json": {
+      "sha256": "6580996aaa15451b271f3262a97e35f3df811f8509681f3b059d37cb77f11923",
+      "bytes": 331
+    },
+    "live_campaign/evidence/proposal_type_access_check.json": {
+      "sha256": "77d5d12f30eee93700fa9b6ea8a9da3f4c6016bdc70471b1ba2e796711dcab94",
+      "bytes": 748
+    },
+    "live_campaign/evidence/source_records.json": {
+      "sha256": "2f666fdacec587243d4fcae0b51e5e669d3b954e62e25636aa744e9ca5c5cfc2",
+      "bytes": 27637
+    },
+    "live_campaign/evidence/tool_schemas.json": {
+      "sha256": "c87429513078554243f93b591aab98a5d3090d2de012ee7a99a29ce73e813744",
+      "bytes": 11585
+    }
+  },
+  "backup_directory": "versions/resume_20261112T065626Z",
+  "policy": "Original runner/settings/baselines; append only absent keys; no retries of recorded failures."
+}

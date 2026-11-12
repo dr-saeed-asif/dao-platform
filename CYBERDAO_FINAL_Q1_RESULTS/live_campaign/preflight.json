@@ -1,0 +1,45 @@
+{
+  "same_22_tool_schemas": true,
+  "frozen_sql_read_only": true,
+  "source_tool_statuses": {
+    "pilot": {
+      "get_proposal": true,
+      "get_proposal_voting_facts": true,
+      "count_dao_proposals": true,
+      "list_dao_proposals": true,
+      "search_proposal_evidence": true
+    },
+    "training": {
+      "get_proposal": true,
+      "get_proposal_voting_facts": true,
+      "count_dao_proposals": true,
+      "list_dao_proposals": true,
+      "search_proposal_evidence": true
+    },
+    "cleanup": {
+      "get_proposal": true,
+      "get_proposal_voting_facts": true,
+      "count_dao_proposals": true,
+      "list_dao_proposals": true,
+      "search_proposal_evidence": true
+    },
+    "testing": {
+      "get_proposal": true,
+      "get_proposal_voting_facts": true,
+      "count_dao_proposals": true,
+      "list_dao_proposals": true,
+      "search_proposal_evidence": true
+    }
+  },
+  "model_inventory": {
+    "qwen3-embedding:0.6b": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+    "qwen3:0.6b": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+    "qwen3.5:4b": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+    "qwen3:8b": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "qwen3:4b-instruct": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+    "nomic-embed-text:latest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+    "qwen3:4b": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7"
+  },
+  "chain_scopes": 2,
+  "chat_calls": 0
+}

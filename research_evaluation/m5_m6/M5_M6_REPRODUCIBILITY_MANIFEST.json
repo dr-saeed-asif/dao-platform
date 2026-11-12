@@ -1,0 +1,247 @@
+{
+  "generated_utc": "2026-11-10T23:15:23.661945+00:00",
+  "repositories": {
+    "dao": {
+      "commit": "7dd447cd0c6e4b65536ab6d531ff5ac77284c177",
+      "working_tree": "M .env.example\n M apps/api/src/ai/__tests__/blockchain-verification.spec.ts\n M apps/api/src/ai/ai.module.ts\n M apps/api/src/ai/blockchain-verification.service.ts\n M apps/api/src/config/env.validation.ts\n M apps/api/src/configure-app.ts\n M apps/api/src/database/postgres.service.spec.ts\n M apps/api/src/database/postgres.service.ts\n M apps/api/src/proposals/proposal-query.service.ts\n M apps/api/src/proposals/proposals.module.ts\n M apps/web/.env.example\n M apps/web/src/app/api/cyberchain/rpc/route.ts\n M apps/web/src/features/decoder/transaction-decoder.tsx\n M apps/web/src/lib/api/assistant.ts\n M apps/web/src/lib/wallet/cyberchain-wallet.ts\n M apps/web/src/lib/wallet/injected-wallet.ts\n M packages/application/src/ports/proposal-repository.ts\n M packages/application/src/synchronization/sync-governance.use-case.ts\n M packages/application/test/sync-governance.use-case.test.ts\n M packages/blockchain-cyberchain/src/cyberchain-governance.gateway.ts\n M packages/database/src/postgres-database.ts\n?? C6_RPC_SECURITY_REPORT.md\n?? C7_BLOCKCHAIN_VERIFICATION_REPORT.md\n?? apps/api/src/database/governance-indexer-version.ts\n?? apps/api/src/rpc/\n?? apps/web/tests/\n?? packages/database/security/\n?? packages/database/src/postgres-migrations/rpc-rate-limits.migration.ts\n?? research_evaluation/c7/\n?? research_evaluation/experiment_1_m4/\n?? research_evaluation/m5_m6/\n?? research_evaluation/recovery_completeness/\n?? research_evaluation/recovery_m4/\n?? scripts/security/"
+    },
+    "ai": {
+      "commit": "9c27c8a57dfe44abccc43f0cf509ca33e3e0ac79",
+      "working_tree": "M .env.example\n M README.md\n M app/business/agents/claims.py\n M app/business/agents/planning.py\n M app/business/agents/quality.py\n M app/business/agents/synthesis.py\n M app/business/mcp/lifespan.py\n M app/model/config/settings.py\n M app/model/database/membership.py\n M app/model/database/pool.py\n M app/model/database/proposal_votes.py\n M app/presentation/api/agents.py\n M app/presentation/lifecycle.py\n M requirements.txt\n M tests/api_fixtures.py\n M tests/test_agent_api.py\n M tests/test_agent_synthesis.py\n M tests/test_assistant_stream.py\n M tests/test_question_planner.py\n?? C4_IDENTITY_SECURITY_REPORT.md\n?? C5_DATABASE_SECURITY_REPORT.md\n?? M7_FIELD_AWARE_CLAIM_VERIFICATION_REPORT.md\n?? app/model/database/runtime_security.py\n?? app/presentation/dependencies/identity.py\n?? benchmark/m7/\n?? migrations/007_identity_nonces.sql\n?? migrations/008_database_least_privilege.sql\n?? migrations/rollback/\n?? tests/c5_postgres_integration.py\n?? tests/test_agent_failure_regressions.py\n?? tests/test_c4_identity.py\n?? tests/test_citation_marker_closeout.py\n?? tests/test_m7_claims.py"
+    }
+  },
+  "fixture_database": "m5_document_integrity in loopback-only cyberdao-recovery-m4-01 PostgreSQL container",
+  "fixture_chain": "Synthetic chain 1212 records; live recovery reference block 20325000",
+  "contract": "0x51b43885899bd0301c2beea89addc9d876145d21",
+  "independent_endpoint_tested": false,
+  "live_rpc_calls_in_m5_m6": 0,
+  "m5_start_utc": "2026-11-10T23:09:28.203Z",
+  "m6_artifact_times": {
+    "created": "2026-11-10T23:11:31.839738+00:00",
+    "modified": "2026-11-10T23:11:31.887901+00:00",
+    "note": "Filesystem timestamps, not individually captured trial start times."
+  },
+  "python_dependencies": {
+    "pypdf": "6.21.1",
+    "psycopg": "3.3.5",
+    "psycopg-pool": "3.3.3",
+    "fastapi": "0.143.3",
+    "pydantic": "2.14.1"
+  },
+  "python": "3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]",
+  "node": "v22.14.0",
+  "random_seed": null,
+  "deterministic_fixtures": true,
+  "m5_metrics": {
+    "fixture_label_origin": "Synthetic developer-authored cases; no independent human adjudication",
+    "cases": 15,
+    "invalid_cases": 12,
+    "legitimate_controls": 3,
+    "effective_detection": {
+      "n": 11,
+      "denominator": 12,
+      "rate": 0.9166666666666666,
+      "wilson95": [
+        0.646120088858883,
+        0.9851349055950829
+      ]
+    },
+    "tamper_subset": {
+      "n": 7,
+      "denominator": 8,
+      "rate": 0.875,
+      "wilson95": [
+        0.5291118177871464,
+        0.9775825085499433
+      ]
+    },
+    "effective_false_acceptance": {
+      "n": 1,
+      "denominator": 12,
+      "rate": 0.08333333333333333
+    },
+    "nest_false_acceptance": {
+      "n": 2,
+      "denominator": 12
+    },
+    "false_rejection": {
+      "n": 0,
+      "denominator": 3,
+      "rate": 0.0
+    },
+    "legitimate_admission": {
+      "n": 3,
+      "denominator": 3
+    },
+    "overall_effective_acceptance": {
+      "n": 4,
+      "denominator": 15
+    },
+    "physical_cleanup": {
+      "n": 0,
+      "denominator": 1
+    },
+    "retrieval_revocation_after_status_invalidation": {
+      "n": 1,
+      "denominator": 1
+    },
+    "before_status_invalidation_stale_chunks_retrievable": true,
+    "reupload_same_identity_after_indexing": true,
+    "uncertainty": "Wilson intervals describe these selected synthetic fixtures only. They do not estimate real-world prevalence or production performance."
+  },
+  "m6_metrics": {
+    "cases": 16,
+    "correct_classifications": 15,
+    "correct_classification_rate": 0.9375,
+    "positive_injected_cases": 13,
+    "negative_controls": 3,
+    "detection_matrix": {
+      "tp": 12,
+      "fn": 1,
+      "fp": 0,
+      "tn": 3
+    },
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.07692307692307693,
+    "unverified_or_unavailable": {
+      "n": 10,
+      "denominator": 16
+    },
+    "latency_ms": {
+      "median": 1.728099999999813,
+      "min": 0.06169999999974607,
+      "max": 14.242300000000114
+    },
+    "timeout_cases": 1,
+    "unavailable_outputs": 4,
+    "independent_rpc_comparison_performed": false,
+    "independent_rpc_agreement_rate": null,
+    "matrix_scope": "Injected unsafe or uncertainty fixture accepted as verified is a miss. Nonverified control is a false positive. This is not a blockchain-fault prevalence or security-audit estimate.",
+    "excluded_attempts": [
+      {
+        "id": "out-of-order",
+        "source": "raw.jsonl",
+        "reason": "Initial fixture added a VoteCast inconsistent with baseline storage count. Replaced only this case with coherent MemberAssigned envelope in raw-corrected.jsonl. Original preserved."
+      }
+    ]
+  },
+  "files": {
+    "research_evaluation/m5_m6/.gitignore": "45fd8222d61ab26ebef300f224bbb022bdc76100eaf004a1bdb35cea38d94fce",
+    "research_evaluation/m5_m6/analyze.py": "f3f234719c46fcd737f75818ac7ebf54e8fe446e425afb47232c85194f3198f1",
+    "research_evaluation/m5_m6/M5_M6_SCIENTIFIC_SUMMARY.md": "37e3cc89e4a97f1b7aaf8a7842469852e331327045a2258131515d25d396ccc2",
+    "research_evaluation/m5_m6/m5/after-index.cjs": "35d3b7f24afb240da1d29926207330876289e5d3a7f31948679b288f862c467b",
+    "research_evaluation/m5_m6/m5/after-index.json": "eef76764367b2241b9b81a7f1e0719258e86cab8c6cc5deea1afb2467f45cd92",
+    "research_evaluation/m5_m6/m5/after_index.py": "daab529a3e463949528ea6f8387bc04a84ac165e7aec9010620e7933236aba07",
+    "research_evaluation/m5_m6/m5/alternate-upload.json": "b967e42656ff8132182de7ce912e03ee85d55682f7110860d7957bd875f7b3cf",
+    "research_evaluation/m5_m6/m5/cleanup-result.json": "8e9ef24c73848ce31aa0487803e3c91104886097c6c0f66de82e7bbdb0cf2849",
+    "research_evaluation/m5_m6/m5/dataset.json": "5f223b310dbfd01192893142e34027fb152fac02a03ffdaf756a3d0f81deee7b",
+    "research_evaluation/m5_m6/m5/index_cases.py": "78778a2ed4e0f2538b84d9585aef33e62f31936fccba0655cfb50dd436c49567",
+    "research_evaluation/m5_m6/m5/M5_DOCUMENT_TAMPER_REPORT.md": "06c209229a1ef6216bf694d118602b024fe138cd6bf35b608f562967070c8ddb",
+    "research_evaluation/m5_m6/m5/M5_DOCUMENT_TAMPER_RESULTS.csv": "915aa98a346ad93073a2e32489f5a5d78ab786fcc81157bd8b04331ad79c21b1",
+    "research_evaluation/m5_m6/m5/metrics.json": "b91a0e20fd7fed9318e32a42abe7a8dacf189db9f60f44d5f1f669824c4c1a65",
+    "research_evaluation/m5_m6/m5/nest-raw.jsonl": "fbcdfb0af66f72b194308f55f93113247d584ccd97c42fe44aa45ed8cd719741",
+    "research_evaluation/m5_m6/m5/python-raw.jsonl": "28d396e8d05a6c8a19d7f961af80287c66cbecb7296a7eb23ddb5aaea54955b4",
+    "research_evaluation/m5_m6/m5/python-regressions.log": "6439396adc7bea633f6a858f8a9f7de3887bbc3cce6ee658d1c8847913bca717",
+    "research_evaluation/m5_m6/m5/run.cjs": "e0dac6bda1a8f8fdd743208a4536f75f4e667ae252ba5e453841b742dd07ef91",
+    "research_evaluation/m5_m6/m5/sql-fixture.local.json": "39dd8096202adb1c9e05049bf66a5df339ce00735a5669dbd7a741b3817fc394",
+    "research_evaluation/m5_m6/m5/TABLE_A.csv": "48c5ba57de1ae4030c839ba0cdf789ec5461e29e8ebbd3d452e16e6c3a280b78",
+    "research_evaluation/m5_m6/m6/dataset.json": "e9265d18454f16832847936a2cb38c05ecfa157ec21cff3855a69a224ca6a8eb",
+    "research_evaluation/m5_m6/m6/M6_RPC_FAULT_INJECTION_REPORT.md": "8beb370ad2f92fbc3a12bf0752f73dce1fd21861e3a997974c5c89856e63aea0",
+    "research_evaluation/m5_m6/m6/M6_RPC_FAULT_RESULTS.csv": "39ba6dc4027eebef8086d17a02d8b74a6c8739e376865e83aa15a27f309c75c2",
+    "research_evaluation/m5_m6/m6/metrics.json": "eb6e75f304a5167c7b22fd870fb308e7f6705775f5c5e7e0bdc0989d53282479",
+    "research_evaluation/m5_m6/m6/raw-corrected.jsonl": "a01a74f5f3e3a547bb6517bd0e662d9a1b948ffe72a3e74658d801b29cfb0dc3",
+    "research_evaluation/m5_m6/m6/raw.jsonl": "2b718ece3cba45e21091b32e30a2656fa093b28de2ffa7f4d857b3aa28fdd2cc",
+    "research_evaluation/m5_m6/m6/reliability-fixtures.json": "54b2d9c6beabd374213ee72fa18b65447d394c57497fe61dc62cea8fcd343891",
+    "research_evaluation/m5_m6/m6/reliability.cjs": "0091812f7974db9280c4bbed12967c6ce26e42cdcd458c3b206f54627211c573",
+    "research_evaluation/m5_m6/m6/run.cjs": "1219a2dec2bd5ce05067375ca3272bc2b8dd1e7f309869dd8fe4a3ad01842382",
+    "research_evaluation/m5_m6/m5/fixtures/corrupt.pdf": "65bd3ead6142ebe5ec28c71a1a7ef3da37c5ea51524554812d11fbcd80be772a",
+    "research_evaluation/m5_m6/m5/fixtures/fixture-hashes.json": "24056e7666bbe33867342d082b0c39a522583b289db2f0e0d1535e1aa8dd782b",
+    "research_evaluation/m5_m6/m5/fixtures/one-byte.pdf": "388e26046119ffe0201350681872779c92abe7424ba982f92e9ca2b4267a0965",
+    "research_evaluation/m5_m6/m5/fixtures/original.pdf": "492fc30f6b870be5d7a26123863e425109de2bacae973d0dad8b8b360311d711",
+    "research_evaluation/m5_m6/m5/fixtures/other.pdf": "a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc",
+    "research_evaluation/m5_m6/m5/upload-work/data/rag_uploads/a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc.pdf": "a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc",
+    "research_evaluation/m5_m6/m5/storage/22/224a75b4fd00cea25b1cb4c1dda68fea24333ce68d12ca1e35e2d0ff89a101e6": "a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc",
+    "research_evaluation/m5_m6/m5/storage/27/270af993dcf2ce6e266ff3cfef4f3406f323537e5f961c1bca03125f4526c194": "270af993dcf2ce6e266ff3cfef4f3406f323537e5f961c1bca03125f4526c194",
+    "research_evaluation/m5_m6/m5/storage/34/343e7596e153a6f9d302176428ca9c7cd3027085c43a47316b1df087c050194c": "74e778cb396f13ad3d3b08e0a100173d2d4496932dca1a2e47d1b64ad67952ca",
+    "research_evaluation/m5_m6/m5/storage/3d/3d55263952ed0d56eeb10eb70513d1d07e34cc2d6f4ac2445fbce75c9b9a74a7": "a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc",
+    "research_evaluation/m5_m6/m5/storage/40/4074e695fd27e53eca97c708170fa2cca454329ee56e5458230556bd7dc47e29": "4074e695fd27e53eca97c708170fa2cca454329ee56e5458230556bd7dc47e29",
+    "research_evaluation/m5_m6/m5/storage/65/65bd3ead6142ebe5ec28c71a1a7ef3da37c5ea51524554812d11fbcd80be772a": "65bd3ead6142ebe5ec28c71a1a7ef3da37c5ea51524554812d11fbcd80be772a",
+    "research_evaluation/m5_m6/m5/storage/71/711d7ab466510c67e7d9531e0700f9d58b065b95ab656e12e25587e36c40042a": "711d7ab466510c67e7d9531e0700f9d58b065b95ab656e12e25587e36c40042a",
+    "research_evaluation/m5_m6/m5/storage/75/75d15b0714a5f8ec6174e12d827817ccec58b8a2e67636452cd3339b1e06e088": "75d15b0714a5f8ec6174e12d827817ccec58b8a2e67636452cd3339b1e06e088",
+    "research_evaluation/m5_m6/m5/storage/81/81cc0957e1557255b07f03406c1928ea9c088520e1ae6ae7af1c5b4e1babc1c7": "81cc0957e1557255b07f03406c1928ea9c088520e1ae6ae7af1c5b4e1babc1c7",
+    "research_evaluation/m5_m6/m5/storage/84/8403fa134928a2218ffeade57654ea81f453be07bd147347b56ce3cc160bbbca": "8403fa134928a2218ffeade57654ea81f453be07bd147347b56ce3cc160bbbca",
+    "research_evaluation/m5_m6/m5/storage/89/8994811a2c76edb1fb7ad061e716362a33236934432f574aa0dd4c0b5f42a0c3": "8994811a2c76edb1fb7ad061e716362a33236934432f574aa0dd4c0b5f42a0c3",
+    "research_evaluation/m5_m6/m5/storage/a5/a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc": "a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc",
+    "research_evaluation/m5_m6/m5/storage/e4/e4eb0d41e2aa57b4d67268748939b745acea97c449633c197257e5de0f81142f": "e4eb0d41e2aa57b4d67268748939b745acea97c449633c197257e5de0f81142f",
+    "apps/api/src/research/research.service.ts": "aeb9e352ff44a8d5659241b2aedfa878db743c5b178f5727275c5cf3f33f0643",
+    "apps/api/src/research/research.controller.ts": "97f9dc22d50379ca3c7ae4a790fe2f47864be0a555b6c1b78a2c36cc257e4c50",
+    "apps/api/src/research/local-artefact.storage.ts": "a53dcc73e85456abe0e0539495eb608ce3348aedfeb7b6ed45c1da903d094e5d",
+    "packages/database/src/proposal-manifest.ts": "4cbdb15614de08ddd1c67707dd8f84d43ef32bf1657d4f9c3a9f04d3541cb402",
+    "apps/api/src/ai/blockchain-verification.service.ts": "eb38367a5b6a48ba374ad0262192a8ff6571718a414fca15bbe487a550237642",
+    "apps/api/dist/ai/blockchain-verification.service.js": "a87a32f5b94d445e8a38d4cd7a56cbc03f9a642ad9b71871528c9dd6e48ac773",
+    "apps/api/src/ai/__tests__/blockchain-verification.spec.ts": "dbc7a0e3d770551a28143e2bc142b8884ff392d04dd80236911b9fb4d98f7cc8",
+    "package-lock.json": "2a1d7e20164a700d1b6929b635ce8cd13b240c9591a9ddc7d4aea8351bfb3b2f",
+    "research_evaluation/recovery_completeness/results-01/RECOVERY_REPRODUCIBILITY_MANIFEST.json": "fa81f0b4c67b8fd35faed25eac9612df1f4c7181161c17e046b9a47091f1475b",
+    "ai/app/business/governance/evidence.py": "0fc3c649d20f93cd0035707cebe1eea128b40634943a90d0488bb941f18cbeac",
+    "ai/app/business/governance/proposal_scope.py": "6673e59c6f344a39eb793d3a06c175204599300d6d2e0b8ba179947f6514404a",
+    "ai/app/business/governance/document_chunk.py": "cbbdc3780a968cdf54b258305e466c084865b3ce828b3769f5458fec5175d2e7",
+    "ai/app/business/governance/document_sync.py": "9d0ea1baf28530258d3f3b829d58b831fc7a284ce4fb4db54540cad4a60bc89f",
+    "ai/app/business/rag/indexing.py": "6f9caee78a2e2bc4563b523bb7d07a40a77dde4bed9705750f6ed849d5cec919",
+    "ai/app/business/rag/evidence_files.py": "8e3d4d964c9fb75b62e70497f9bf1de983f145ad42b23f4461e58f0980cca047",
+    "ai/app/business/rag/uploads.py": "c90b1ea361f3a1fc1c5d4a24cf1f5b252dc046a28c19d01e94e23c1af61dcce6",
+    "ai/app/business/rag/pdf_extraction.py": "02aecca4eb590e2e834fd3d4c8f4799849320c509c71253bd53e9755b5233675",
+    "ai/app/model/database/index_writer.py": "31d67fa6c022cfd96e2fe14052f090b427f36d13ef54d6b968ea7e7ff73fad23",
+    "ai/requirements.txt": "4ebb4a46a7068d32bb67b527afbe598b3d441c474282cb401d32443285b55d7c",
+    "ai/migrations/001_ai_vector_storage.sql": "5b952647cff76352e94641a7aaa4b43b4a938038ea40ab1358bfa20fd560b70e",
+    "ai/migrations/002_fix_chunk_uniqueness.sql": "721ab4a44e2caa786104277c61b091a54e17b1ac6340f4d5313329832d858424",
+    "research_evaluation/m5_m6/execution-notes.json": "64d3f2559cc072349d735d0f844eb21cfe7cdd9a5dd7e7020146b629ee788805"
+  },
+  "live_recovery_reference": {
+    "utc": "2026-11-10T14:40:58.994Z",
+    "status": "passed",
+    "transaction_read_only": true,
+    "transaction_isolation": "repeatable read",
+    "present": 39,
+    "missing": [],
+    "deployment_mismatch": [],
+    "rpc_origin_sha256": "620b21105cbb90a021c34878420f293e237544c3fabd5f20b1bca40491484a69",
+    "rpc_endpoint_sha256": "7bdc78f57a70ae05d39de4d37659d7b6996807a5b406fa8497b62ee2479305a8",
+    "chain_id": "1212",
+    "configured_chain_id": "1212",
+    "contract": "0x51b43885899bd0301c2beea89addc9d876145d21",
+    "deployment_block": "15463875",
+    "block_number": "20325000",
+    "block_hash": "0x7f5d787551a2ead47dee151434eb86b4fbe08e6d33d2a02c7e4ecf05138cb7be",
+    "block_timestamp": "0x6af32cfa",
+    "checkpoints": [
+      {
+        "id": "29350",
+        "chain_id": "1212",
+        "contract_address": "0x51b43885899bd0301c2beea89addc9d876145d21",
+        "indexer_name": "governance-full",
+        "indexer_version": "v1",
+        "processed_block_number": "20267608",
+        "processed_block_hash": null,
+        "updated_at": "2026-11-09T06:47:47.027Z"
+      },
+      {
+        "id": "29351",
+        "chain_id": "1212",
+        "contract_address": "0x51b43885899bd0301c2beea89addc9d876145d21",
+        "indexer_name": "governance-votes",
+        "indexer_version": "v1",
+        "processed_block_number": "18898503",
+        "processed_block_hash": null,
+        "updated_at": "2026-10-07T17:42:40.672Z"
+      }
+    ],
+    "note": "Prior experiment metadata only; these M5/M6 experiments made zero live RPC calls."
+  },
+  "node_dependencies": {
+    "@nestjs/common": "11.1.28",
+    "@nestjs/config": "4.0.4",
+    "ethers": "6.17.0",
+    "typescript": "5.9.3",
+    "@cyberchain/smart-contract-wrapper": "2.1.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-11-12T07:18:52.828241+00:00",
+  "benchmark_records": 1262,
+  "b1_n": 266,
+  "b2_n": 266,
+  "planned_b1_b2": 532,
+  "live_campaign_n": 730,
+  "planned_live_campaign": 1330,
+  "direct_SQL_n": 26,
+  "exposed_questions": 133,
+  "human_annotations": 0,
+  "source_valid_claim_cases": 24,
+  "claim_checks_executed": 26,
+  "development_smoke_n": 28,
+  "frozen_rag_smoke_n": 4
+}

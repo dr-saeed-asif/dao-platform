@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-11-10T23:35:34.829632+00:00",
+  "decision": "NO-GO confirmatory",
+  "completed": [
+    "Versioned source audit",
+    "Exposure registry",
+    "Two independent human annotation templates",
+    "Claim annotation schema",
+    "Historical baseline extraction",
+    "Prospective scoring plan"
+  ],
+  "blocked": [
+    "Two genuinely independent completed human reviews",
+    "Resolved benchmark gold",
+    "Review-approved evidence freeze",
+    "Validated implementations of new baseline and ablation definitions",
+    "Independent claim annotations"
+  ],
+  "new_inference_attempts": 0,
+  "human_judgments": 0,
+  "result_csv_policy": "Baseline CSV contains labelled archived smoke measurements. Ablation, claim and agreement CSVs have headers only.",
+  "software_validation": {
+    "existing_benchmark_harness_passed": 27,
+    "review_agreement_helper_passed": 4
+  }
+}

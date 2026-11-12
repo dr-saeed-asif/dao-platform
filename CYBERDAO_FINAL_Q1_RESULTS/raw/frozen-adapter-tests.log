@@ -1,0 +1,10 @@
+{"completed": 1, "model": "qwen3:0.6b", "id": "DEV-SQL-01", "status": "completed"}
+{"completed": 2, "model": "qwen3:0.6b", "id": "DEV-MIX-01", "status": "completed"}
+{"completed": 3, "model": "qwen3:4b-instruct", "id": "DEV-SQL-01", "status": "completed"}
+{"completed": 4, "model": "qwen3:4b-instruct", "id": "DEV-MIX-01", "status": "completed"}
+test_scope_freeze_no_gold_and_resumability (__main__.TestFrozenAdapter.test_scope_freeze_no_gold_and_resumability) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.182s
+
+OK

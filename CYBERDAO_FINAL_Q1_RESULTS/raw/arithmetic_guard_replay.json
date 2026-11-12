@@ -1,0 +1,65 @@
+{
+  "classification": "Controlled post-hoc guard replay, not a new LLM/full-workflow result or independently labelled evaluation",
+  "source_question": "CX-001",
+  "source_model": "qwen3:4b-instruct",
+  "source_answer_sha256": "045dc6701d37a1585c389584631c58de5f5c73e9ea77a90e8adc2aecb68df879",
+  "probe_claim": "Combined budget is EUR 9,000 [D1].",
+  "arithmetic_basis": "Pilot PDF page 2: EUR 6,000 + EUR 3,000 = EUR 9,000",
+  "provisional_semantic_judgment": "correct arithmetic; author/AI checked, no independent human",
+  "legacy_currency_guard_accepts": false,
+  "M7_report": {
+    "method": "automatic claim-level check (field, value, unit and citation); not entailment",
+    "claims_total": 1,
+    "claims_factual": 1,
+    "counts": {
+      "unsupported_number": 1
+    },
+    "unsupported_claims": 1,
+    "unsupported_rate_lower_bound": 1.0,
+    "numeric_faithfulness": 0.0,
+    "valid": false,
+    "claim_checks": [
+      {
+        "text": "Combined budget is EUR 9,000 [D1].",
+        "citations": [
+          "D1"
+        ],
+        "status": "unsupported_number",
+        "detail": "numbers not in cited sources: ['9000']",
+        "evidence": [],
+        "absent": [
+          "9000"
+        ]
+      }
+    ],
+    "flagged": [
+      {
+        "text": "Combined budget is EUR 9,000 [D1].",
+        "citations": [
+          "D1"
+        ],
+        "status": "unsupported_number",
+        "detail": "numbers not in cited sources: ['9000']",
+        "evidence": [],
+        "absent": [
+          "9000"
+        ]
+      }
+    ]
+  },
+  "M7_blocking_flags": [
+    {
+      "text": "Combined budget is EUR 9,000 [D1].",
+      "citations": [
+        "D1"
+      ],
+      "status": "unsupported_number",
+      "detail": "numbers not in cited sources: ['9000']",
+      "evidence": [],
+      "absent": [
+        "9000"
+      ]
+    }
+  ],
+  "interpretation": "Direct-value validation can withhold a correct derived value absent from source literals. A2 disables M7 flags only; legacy amount guard remains. This is a documented coverage/design limitation, not evidence that the underlying sum is wrong."
+}

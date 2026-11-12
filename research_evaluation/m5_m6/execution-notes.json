@@ -1,0 +1,44 @@
+{
+  "initial_harness_failures": [
+    {
+      "component": "m5/index_cases.py",
+      "stage": "module configuration",
+      "observations_written": 0,
+      "reason": "Missing RAG_DEV_TOKEN fixture setting"
+    },
+    {
+      "component": "m5/index_cases.py",
+      "stage": "database connection",
+      "observations_written": 0,
+      "reason": "Windows ProactorEventLoop incompatible with psycopg async"
+    },
+    {
+      "component": "m6/reliability.cjs",
+      "stage": "path resolution",
+      "observations_written": 0,
+      "reason": "Incorrect script-relative root"
+    }
+  ],
+  "m6_excluded_attempts": [
+    {
+      "id": "out-of-order",
+      "raw": "m6/raw.jsonl",
+      "replacement": "m6/raw-corrected.jsonl",
+      "reason": "Inconsistent added vote log versus baseline storage state. Replacement uses coherent assignment."
+    }
+  ],
+  "commands": [
+    "node research_evaluation/m5_m6/m5/run.cjs",
+    "<AI virtualenv Python> research_evaluation/m5_m6/m5/index_cases.py",
+    "node research_evaluation/m5_m6/m5/after-index.cjs",
+    "<AI virtualenv Python> research_evaluation/m5_m6/m5/after_index.py",
+    "node research_evaluation/m5_m6/m6/run.cjs",
+    "node research_evaluation/m5_m6/m6/run.cjs out-of-order",
+    "node research_evaluation/m5_m6/m6/reliability.cjs research_evaluation/m5_m6/m6"
+  ],
+  "indexing_vectors": "Deterministic synthetic unit vector, 1024 dimensions; no model API calls",
+  "governance_regressions": {
+    "passed": 13,
+    "failed": 0
+  }
+}

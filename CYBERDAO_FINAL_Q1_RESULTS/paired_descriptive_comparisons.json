@@ -1,0 +1,212 @@
+[
+  {
+    "model": "qwen3:0.6b",
+    "first": "B1",
+    "second": "B2",
+    "paired_n": 133,
+    "second_only_proxy_match": 31,
+    "first_only_proxy_match": 5,
+    "mean_paired_proxy_difference": 0.19548872180451127,
+    "cluster_bootstrap_95": [
+      0.0,
+      0.22105263157894736
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "first": "B1",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 19,
+    "first_only_proxy_match": 9,
+    "mean_paired_proxy_difference": 0.07518796992481203,
+    "cluster_bootstrap_95": [
+      0.05042016806722689,
+      0.2857142857142857
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "first": "B2",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 16,
+    "first_only_proxy_match": 32,
+    "mean_paired_proxy_difference": -0.12030075187969924,
+    "cluster_bootstrap_95": [
+      -0.16806722689075632,
+      0.2857142857142857
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "first": "B3",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 20,
+    "first_only_proxy_match": 5,
+    "mean_paired_proxy_difference": 0.11278195488721804,
+    "cluster_bootstrap_95": [
+      0.09243697478991597,
+      0.2857142857142857
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "first": "A1",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 13,
+    "first_only_proxy_match": 3,
+    "mean_paired_proxy_difference": 0.07518796992481203,
+    "cluster_bootstrap_95": [
+      0.06722689075630252,
+      0.14285714285714285
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "first": "A2",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 0,
+    "first_only_proxy_match": 2,
+    "mean_paired_proxy_difference": -0.015037593984962405,
+    "cluster_bootstrap_95": [
+      -0.07142857142857142,
+      0.0
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "first": "A12",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 12,
+    "first_only_proxy_match": 3,
+    "mean_paired_proxy_difference": 0.06766917293233082,
+    "cluster_bootstrap_95": [
+      0.04878048780487805,
+      0.08860759493670886
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:4b-instruct",
+    "first": "B1",
+    "second": "B2",
+    "paired_n": 133,
+    "second_only_proxy_match": 36,
+    "first_only_proxy_match": 6,
+    "mean_paired_proxy_difference": 0.22556390977443608,
+    "cluster_bootstrap_95": [
+      0.0,
+      0.26842105263157895
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:4b-instruct",
+    "first": "B1",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 60,
+    "first_only_proxy_match": 13,
+    "mean_paired_proxy_difference": 0.3533834586466165,
+    "cluster_bootstrap_95": [
+      0.3157894736842105,
+      0.42857142857142855
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:4b-instruct",
+    "first": "B2",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 37,
+    "first_only_proxy_match": 20,
+    "mean_paired_proxy_difference": 0.12781954887218044,
+    "cluster_bootstrap_95": [
+      0.04736842105263158,
+      0.42857142857142855
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:4b-instruct",
+    "first": "B3",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 56,
+    "first_only_proxy_match": 10,
+    "mean_paired_proxy_difference": 0.3458646616541353,
+    "cluster_bootstrap_95": [
+      0.14285714285714285,
+      0.38461538461538464
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:4b-instruct",
+    "first": "A1",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 14,
+    "first_only_proxy_match": 6,
+    "mean_paired_proxy_difference": 0.06015037593984962,
+    "cluster_bootstrap_95": [
+      0.0379746835443038,
+      0.08536585365853659
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:4b-instruct",
+    "first": "A2",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 1,
+    "first_only_proxy_match": 13,
+    "mean_paired_proxy_difference": -0.09022556390977443,
+    "cluster_bootstrap_95": [
+      -0.11052631578947368,
+      0.0
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  },
+  {
+    "model": "qwen3:4b-instruct",
+    "first": "A12",
+    "second": "B4",
+    "paired_n": 133,
+    "second_only_proxy_match": 2,
+    "first_only_proxy_match": 22,
+    "mean_paired_proxy_difference": -0.15037593984962405,
+    "cluster_bootstrap_95": [
+      -0.16182572614107885,
+      -0.07142857142857142
+    ],
+    "mcnemar_p": null,
+    "reason_no_significance_test": "Dependent source facts, four clusters, provisional gold, proxy not correctness"
+  }
+]

@@ -1,0 +1,134 @@
+{
+  "generated_utc": "2026-11-10T14:58:32.190716+00:00",
+  "complete": true,
+  "configuration": {
+    "started_utc": "2026-11-10T14:52:03.770Z",
+    "pin": "20325000",
+    "pin_hash": "0x7f5d787551a2ead47dee151434eb86b4fbe08e6d33d2a02c7e4ecf05138cb7be",
+    "source_commit": "7dd447cd0c6e4b65536ab6d531ff5ac77284c177",
+    "working_tree": " M .env.example\n M apps/api/src/ai/__tests__/blockchain-verification.spec.ts\n M apps/api/src/ai/ai.module.ts\n M apps/api/src/ai/blockchain-verification.service.ts\n M apps/api/src/config/env.validation.ts\n M apps/api/src/configure-app.ts\n M apps/api/src/database/postgres.service.spec.ts\n M apps/api/src/database/postgres.service.ts\n M apps/api/src/proposals/proposal-query.service.ts\n M apps/api/src/proposals/proposals.module.ts\n M apps/web/.env.example\n M apps/web/src/app/api/cyberchain/rpc/route.ts\n M apps/web/src/features/decoder/transaction-decoder.tsx\n M apps/web/src/lib/api/assistant.ts\n M apps/web/src/lib/wallet/cyberchain-wallet.ts\n M apps/web/src/lib/wallet/injected-wallet.ts\n M packages/database/src/postgres-database.ts\n?? C6_RPC_SECURITY_REPORT.md\n?? C7_BLOCKCHAIN_VERIFICATION_REPORT.md\n?? apps/api/src/database/governance-indexer-version.ts\n?? apps/api/src/rpc/\n?? apps/web/tests/\n?? packages/database/security/\n?? packages/database/src/postgres-migrations/rpc-rate-limits.migration.ts\n?? research_evaluation/c7/\n?? research_evaluation/experiment_1_m4/\n?? research_evaluation/recovery_m4/\n?? scripts/security/\n",
+    "chain_id": "1212",
+    "contract": "0x51b43885899bd0301c2beea89addc9d876145d21",
+    "from": "15463875",
+    "range": 1000,
+    "indexer_version": "v1",
+    "prefetch_concurrency": 8,
+    "rpc_endpoint_sha256": "7bdc78f57a70ae05d39de4d37659d7b6996807a5b406fa8497b62ee2479305a8",
+    "historical_sql_snapshot": {
+      "snapshot": "260110:260110:",
+      "observed_at": "2026-11-10T14:40:59.025Z"
+    },
+    "original_sql_sha256": "19d18e79d266c39a478bd5767ae1eedec5f80fd2dc49b27165c7a9a1ad4d89be",
+    "image_id": "sha256:ccc6e83d6e35e931dc7c5def2022729d5a6c370318d099181995567ff1fb4d6b",
+    "node": "v22.14.0",
+    "read_rpc_methods": [
+      "eth_chainId",
+      "eth_getBlockByNumber",
+      "eth_getLogs",
+      "eth_getTransactionReceipt",
+      "eth_call",
+      "eth_getTransactionByHash",
+      "eth_blockNumber"
+    ],
+    "sources": {
+      "apps/api/src/ai/blockchain-verification.service.ts": "688f51b369bfd0a87d187137d8ef6063733e95d8a8a3836e58d75fb1d8ce1601",
+      "apps/api/dist/ai/blockchain-verification.service.js": "43c5eb243a0e889247910cc9602061b384635a85d3df84e179998bf142fda2ad",
+      "apps/api/src/database/governance-indexer-version.ts": "7e18ce5fa6ab5d423d6bdf20b3fc2c37afb51923ee7bde87429f1b606ee291b4",
+      "packages/application/src/synchronization/sync-governance.use-case.ts": "c149f3b4e8886cd0634f1e641dbfb1292f07132b6ffcda48edcb73af756e155f",
+      "packages/blockchain-cyberchain/src/cyberchain-governance.gateway.ts": "a9eb10b06a099ff63ad860e721a52cbf61d867a28d2be497c25a179582ac6814",
+      "packages/database/src/postgres-database.ts": "6613fc5d95ec4c49200ba87d1c5b6c6becd1af2aeab519a80abff1779fd366f2",
+      "package-lock.json": "2a1d7e20164a700d1b6929b635ce8cd13b240c9591a9ddc7d4aea8351bfb3b2f"
+    },
+    "migrations": [
+      {
+        "name": "001_research_provenance"
+      },
+      {
+        "name": "002_contract_deployment_1212"
+      },
+      {
+        "name": "003_operational_dao"
+      },
+      {
+        "name": "004_artefact_dataset_core"
+      },
+      {
+        "name": "005_proposal_artefact_links"
+      },
+      {
+        "name": "006_document_chunks"
+      },
+      {
+        "name": "007_agent_run_metadata"
+      },
+      {
+        "name": "008_restore_document_chunks"
+      },
+      {
+        "name": "009_proposal_vote_totals"
+      },
+      {
+        "name": "010_rpc_rate_limits"
+      }
+    ]
+  },
+  "outcomes": {
+    "unverified": 15,
+    "verified": 24
+  },
+  "finish": {
+    "finished_utc": "2026-11-10T14:58:25.830Z"
+  },
+  "files": {
+    "apps/api/dist/ai/blockchain-verification.service.js": "43c5eb243a0e889247910cc9602061b384635a85d3df84e179998bf142fda2ad",
+    "apps/api/src/ai/__tests__/blockchain-verification.spec.ts": "d4f9c94d394de5b1b321039fef6f4854cc4289f2ec860fd6b2f9d1ae700be6b3",
+    "apps/api/src/ai/blockchain-verification.service.ts": "688f51b369bfd0a87d187137d8ef6063733e95d8a8a3836e58d75fb1d8ce1601",
+    "apps/api/src/database/governance-indexer-version.ts": "7e18ce5fa6ab5d423d6bdf20b3fc2c37afb51923ee7bde87429f1b606ee291b4",
+    "apps/api/src/proposals/proposal-query.service.ts": "eadd373015680569536c68bdf105957b6a654cb20e2564f9fd264df1cafa520c",
+    "apps/api/src/proposals/proposals.module.ts": "80028ba37bec6b6b1e34629694457436ca4e647a9c154d78ca5abba68820b7da",
+    "package-lock.json": "2a1d7e20164a700d1b6929b635ce8cd13b240c9591a9ddc7d4aea8351bfb3b2f",
+    "packages/application/dist/src/synchronization/sync-governance.use-case.js": "eb0702c8609c3242610461a39532e676bb96363d3397f1ca48a94eda90dcbeee",
+    "packages/application/src/synchronization/sync-governance.use-case.ts": "c149f3b4e8886cd0634f1e641dbfb1292f07132b6ffcda48edcb73af756e155f",
+    "packages/blockchain-cyberchain/dist/src/cyberchain-governance.gateway.js": "dc03aef52b6728a5c9879430722cc3ebf257b46083b05e44af2c2deb7c8edcc2",
+    "packages/blockchain-cyberchain/src/cyberchain-governance.gateway.ts": "a9eb10b06a099ff63ad860e721a52cbf61d867a28d2be497c25a179582ac6814",
+    "packages/database/dist/src/postgres-database.js": "e52aee2141d05d9311fd7a13fb2352a28c843d15052f2f3de8fde495070e478c",
+    "packages/database/src/postgres-database.ts": "6613fc5d95ec4c49200ba87d1c5b6c6becd1af2aeab519a80abff1779fd366f2",
+    "research_evaluation/experiment_1_m4/run-01/assignment_followup.json": "c9e3a39077deac70edbc22cedc3a96ef0811ccc0633890e88edfd5b06f5c1fa4",
+    "research_evaluation/experiment_1_m4/run-01/configuration.json": "be6cca054a797be85a2b9d6d5f45b4ce82e318f991efa27eadff1a73f768a675",
+    "research_evaluation/experiment_1_m4/run-01/preflight.json": "66f224c40ec0d2c08bb946992401802bafe1df774c9883dcd412cf04246f04b4",
+    "research_evaluation/experiment_1_m4/run-01/responses.jsonl": "d26055f7c102f446861e959a4c5ec66f05df1ed3d5a929db0bac016f4cef0b55",
+    "research_evaluation/experiment_1_m4/run-01/sql_evidence.local.json": "19d18e79d266c39a478bd5767ae1eedec5f80fd2dc49b27165c7a9a1ad4d89be",
+    "research_evaluation/recovery_m4/.gitignore": "5a31bb01c72bf60abdd9ec1559af4c77a98f30e5bde8328af9820ebea5c618e7",
+    "research_evaluation/recovery_m4/analyze.py": "1cd63723732d15e7080c5d4a5d3c6798a9602e0207b64b1e86169ea2437f04f6",
+    "research_evaluation/recovery_m4/README.md": "f536adf4c29a25a8561f8605db16492ae8c5de88cbd9d0de765ae48b5e538198",
+    "research_evaluation/recovery_m4/reliability.cjs": "b69372387ed6db2f1f4c11a8df16fcddd286e0b665fd83399b5c0fdf1ccd930e",
+    "research_evaluation/recovery_m4/results-01/checkpoint_diagnostics.json": "9f5ec4a59800c4859cd72afafb592e219a212bf18d74e8fcbc794620c34ea238",
+    "research_evaluation/recovery_m4/results-01/proposal_32_recovery_analysis.md": "8e10ab87eb5c24bea50688f49df48f21a8ef7fb5aed113e6edc8a47807a4e030",
+    "research_evaluation/recovery_m4/results-01/RECOVERY_EXPERIMENT_REPORT.md": "4ce44ed6a394328f0122fd03e501f98b94b163bfe3a0074e7434af77e2c08b62",
+    "research_evaluation/recovery_m4/results-01/recovery_results.csv": "78ce9853602da7495d470123eab330d53ea9a52afe0738549d8749a0e0d0a7c5",
+    "research_evaluation/recovery_m4/results-01/recovery_vs_blockchain.csv": "2aa0fc8573fbb8f9eed842d0899faf4297e88b3a907701a1b1f2d05142db2bc8",
+    "research_evaluation/recovery_m4/results-01/recovery_vs_original.csv": "68020703595e18a59db0ebf2f6b49adbf300851a8519afda15bb814d968460ad",
+    "research_evaluation/recovery_m4/run-01/configuration.json": "a575901734741ce9d00b0c0af10bdc9b1ca3b09609ce46a283608634bae3315a",
+    "research_evaluation/recovery_m4/run-01/failure.json": "81e24202515453feda27c2b462d9af0836128d5741c5a2ac1a1d566c552f570f",
+    "research_evaluation/recovery_m4/run-01/gateway-events.jsonl": "c4e039ee7e83770c04cf0a4222b795efd34e7816f8144583d1468dad32c8fb01",
+    "research_evaluation/recovery_m4/run-01/ranges.jsonl": "1f48bfb1c9ba27d94fd9855410453900b71007655bc505544e8425c8660bf12f",
+    "research_evaluation/recovery_m4/run-01/verifier.patch": "c54927157cf7e33283ec08ddc9a975ecf03ff395d856259fd18b8c934fc86715",
+    "research_evaluation/recovery_m4/run-02/checkpoint-samples.jsonl": "4c3c81704fe8ef2379a660c6a7270b5c1406b638bc1ea8b6f94a7445ab1d3087",
+    "research_evaluation/recovery_m4/run-02/checkpoint-writer-query.patch": "f46419780f70db7aa7a592cc5f99b3ea8f6d7cfc2e138f1d2bae09d6b87ab2f7",
+    "research_evaluation/recovery_m4/run-02/completed.json": "f76f79cc7875a9bfbaeefe9673912d92cc488e7e17e990bc4b22a5365c9504cc",
+    "research_evaluation/recovery_m4/run-02/configuration.json": "fa48b79e6f0a01fdec46114f6e499e1a7b7dcb50f05c3fe02f6564e400d05ff9",
+    "research_evaluation/recovery_m4/run-02/gateway-events.jsonl": "97c60698c1633cb195e066a6e5aee851587c9d7ac5cc9e5b90ccb6149e633432",
+    "research_evaluation/recovery_m4/run-02/governance-indexer-version.ts.txt": "7e18ce5fa6ab5d423d6bdf20b3fc2c37afb51923ee7bde87429f1b606ee291b4",
+    "research_evaluation/recovery_m4/run-02/ranges.jsonl": "938beaedda53db1f8173c829bfd6ad877c66d72189feaaef905bf15fa754737e",
+    "research_evaluation/recovery_m4/run-02/recovery.json": "1b7045d4168d16555f5690726499869243e3b45363dff4670839e4d9c76003e7",
+    "research_evaluation/recovery_m4/run-02/reliability-fixtures.json": "1082c38a91da3fb489df07e906e4b05ef8c98b44c906c4bc9f5922052cc80f9a",
+    "research_evaluation/recovery_m4/run-02/replay.json": "6896c4de6cb7c7788bf653e08e23c9bd86630503de3dab3b23b1885b1512f5c6",
+    "research_evaluation/recovery_m4/run-02/sql-recovered.json": "a01816b7d37e659062886334c2109c55120d1aff9fdb7a9c47816330d0ac8674",
+    "research_evaluation/recovery_m4/run-02/sql-verification-input.json": "5cbd314b484bcc3ec37641252eb6facf567d63bb64022710b25046f76d1777c1",
+    "research_evaluation/recovery_m4/run-02/verification.jsonl": "094698d375607f40c7abf372593a4e8d05ebed012da4c1c766ae43bd1104453b",
+    "research_evaluation/recovery_m4/run-02/verifier.patch": "c54927157cf7e33283ec08ddc9a975ecf03ff395d856259fd18b8c934fc86715",
+    "research_evaluation/recovery_m4/run.cjs": "b5da432943e065cb14353660bece8ce8e3f07f545ab96c4a29bfc094e21af905",
+    "research_evaluation/recovery_m4/validation.json": "fb10486d3e3895f94c2772da646de461307fcfd873127c7c703450810205d6f3",
+    "research_evaluation/springer/reconciliation.jsonl": "3d228dd4402117532dc3eeecdabecf63e212cc6665d139efde74108b6d9edf2e"
+  }
+}

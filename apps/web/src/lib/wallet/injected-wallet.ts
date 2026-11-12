@@ -43,6 +43,23 @@ async function ensureCyberChain(provider: EthereumProvider): Promise<void> {
       params: [{ chainId: chainHex }],
     });
   } catch {
+    let rpcUrl: URL;
+    try {
+      const configured = process.env.NEXT_PUBLIC_CYBERCHAIN_RPC_URL;
+      if (!configured) throw new Error();
+      rpcUrl = new URL(configured);
+      if (
+        rpcUrl.username ||
+        rpcUrl.password ||
+        !["http:", "https:"].includes(rpcUrl.protocol) ||
+        (process.env.NODE_ENV === "production" && rpcUrl.protocol !== "https:")
+      )
+        throw new Error();
+    } catch {
+      throw new Error(
+        "A secure public wallet RPC endpoint must be configured.",
+      );
+    }
     await provider.request({
       method: "wallet_addEthereumChain",
       params: [
@@ -55,10 +72,7 @@ async function ensureCyberChain(provider: EthereumProvider): Promise<void> {
               process.env.NEXT_PUBLIC_CYBERCHAIN_CURRENCY_SYMBOL ?? "CYBER",
             decimals: 18,
           },
-          rpcUrls: [
-            process.env.NEXT_PUBLIC_CYBERCHAIN_RPC_URL ??
-              "http://cyberchain-bc.bisite.es:8545",
-          ],
+          rpcUrls: [rpcUrl.toString()],
         },
       ],
     });

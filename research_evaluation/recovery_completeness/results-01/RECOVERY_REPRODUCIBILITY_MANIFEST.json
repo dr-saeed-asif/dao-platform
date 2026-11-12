@@ -1,0 +1,149 @@
+{
+  "generated_utc": "2026-11-10T23:03:28.223190+00:00",
+  "complete": true,
+  "configuration": {
+    "started_utc": "2026-11-10T17:28:24.243Z",
+    "pin": "20325000",
+    "pin_hash": "0x7f5d787551a2ead47dee151434eb86b4fbe08e6d33d2a02c7e4ecf05138cb7be",
+    "source_commit": "7dd447cd0c6e4b65536ab6d531ff5ac77284c177",
+    "working_tree": " M .env.example\n M apps/api/src/ai/__tests__/blockchain-verification.spec.ts\n M apps/api/src/ai/ai.module.ts\n M apps/api/src/ai/blockchain-verification.service.ts\n M apps/api/src/config/env.validation.ts\n M apps/api/src/configure-app.ts\n M apps/api/src/database/postgres.service.spec.ts\n M apps/api/src/database/postgres.service.ts\n M apps/api/src/proposals/proposal-query.service.ts\n M apps/api/src/proposals/proposals.module.ts\n M apps/web/.env.example\n M apps/web/src/app/api/cyberchain/rpc/route.ts\n M apps/web/src/features/decoder/transaction-decoder.tsx\n M apps/web/src/lib/api/assistant.ts\n M apps/web/src/lib/wallet/cyberchain-wallet.ts\n M apps/web/src/lib/wallet/injected-wallet.ts\n M packages/application/src/ports/proposal-repository.ts\n M packages/application/src/synchronization/sync-governance.use-case.ts\n M packages/blockchain-cyberchain/src/cyberchain-governance.gateway.ts\n M packages/database/src/postgres-database.ts\n?? C6_RPC_SECURITY_REPORT.md\n?? C7_BLOCKCHAIN_VERIFICATION_REPORT.md\n?? apps/api/src/database/governance-indexer-version.ts\n?? apps/api/src/rpc/\n?? apps/web/tests/\n?? packages/database/security/\n?? packages/database/src/postgres-migrations/rpc-rate-limits.migration.ts\n?? research_evaluation/c7/\n?? research_evaluation/experiment_1_m4/\n?? research_evaluation/recovery_completeness/\n?? research_evaluation/recovery_m4/\n?? scripts/security/\n",
+    "chain_id": "1212",
+    "contract": "0x51b43885899bd0301c2beea89addc9d876145d21",
+    "from": "15463875",
+    "range": 1000,
+    "indexer_version": "v1",
+    "prefetch_concurrency": 8,
+    "verification_concurrency": 3,
+    "rpc_endpoint_sha256": "7bdc78f57a70ae05d39de4d37659d7b6996807a5b406fa8497b62ee2479305a8",
+    "historical_sql_snapshot": {
+      "snapshot": "260110:260110:",
+      "observed_at": "2026-11-10T14:40:59.025Z"
+    },
+    "original_sql_sha256": "19d18e79d266c39a478bd5767ae1eedec5f80fd2dc49b27165c7a9a1ad4d89be",
+    "image_id": "sha256:ccc6e83d6e35e931dc7c5def2022729d5a6c370318d099181995567ff1fb4d6b",
+    "node": "v22.14.0",
+    "read_rpc_methods": [
+      "eth_chainId",
+      "eth_getBlockByNumber",
+      "eth_getLogs",
+      "eth_getTransactionReceipt",
+      "eth_call",
+      "eth_getTransactionByHash",
+      "eth_blockNumber"
+    ],
+    "sources": {
+      "apps/api/src/ai/blockchain-verification.service.ts": "eb38367a5b6a48ba374ad0262192a8ff6571718a414fca15bbe487a550237642",
+      "apps/api/dist/ai/blockchain-verification.service.js": "a87a32f5b94d445e8a38d4cd7a56cbc03f9a642ad9b71871528c9dd6e48ac773",
+      "apps/api/src/database/governance-indexer-version.ts": "7e18ce5fa6ab5d423d6bdf20b3fc2c37afb51923ee7bde87429f1b606ee291b4",
+      "packages/application/src/synchronization/sync-governance.use-case.ts": "6eaef143c5a2c209a52d37421ed2dbe618eaeec81b1c556e48221298483094f5",
+      "packages/blockchain-cyberchain/src/cyberchain-governance.gateway.ts": "1b3cf6f04be92e600ca4153556c00e7f15898fbcfed3759487dfdca2b569c029",
+      "packages/database/src/postgres-database.ts": "6613fc5d95ec4c49200ba87d1c5b6c6becd1af2aeab519a80abff1779fd366f2",
+      "packages/application/dist/src/synchronization/sync-governance.use-case.js": "27c27eda3f5fca5b7eacd506c504b66624f9a95fe273a0b7592279ecb5d9a769",
+      "packages/blockchain-cyberchain/dist/src/cyberchain-governance.gateway.js": "08b6b642a08ad955b115c79e71e4ea88d0a4fe9e9733b53be926382b621d86fa",
+      "package-lock.json": "2a1d7e20164a700d1b6929b635ce8cd13b240c9591a9ddc7d4aea8351bfb3b2f"
+    },
+    "migrations": [
+      {
+        "name": "001_research_provenance"
+      },
+      {
+        "name": "002_contract_deployment_1212"
+      },
+      {
+        "name": "003_operational_dao"
+      },
+      {
+        "name": "004_artefact_dataset_core"
+      },
+      {
+        "name": "005_proposal_artefact_links"
+      },
+      {
+        "name": "006_document_chunks"
+      },
+      {
+        "name": "007_agent_run_metadata"
+      },
+      {
+        "name": "008_restore_document_chunks"
+      },
+      {
+        "name": "009_proposal_vote_totals"
+      },
+      {
+        "name": "010_rpc_rate_limits"
+      }
+    ]
+  },
+  "expected": 39,
+  "attempted": 39,
+  "prior_outcomes": {
+    "unverified": 15,
+    "verified": 24
+  },
+  "outcomes": {
+    "verified": 39,
+    "mismatched": 0,
+    "unverified": 0,
+    "unavailable": 0,
+    "failed": 0,
+    "not_attempted": 0
+  },
+  "scan_outcomes": {
+    "complete": 39
+  },
+  "second_independent_endpoint_available": false,
+  "finished": {
+    "finished_utc": "2026-11-10T17:34:41.956Z"
+  },
+  "test_counts": {
+    "c7": 55,
+    "application": 23,
+    "gateway": 19
+  },
+  "files": {
+    "apps/api/dist/ai/blockchain-verification.service.js": "a87a32f5b94d445e8a38d4cd7a56cbc03f9a642ad9b71871528c9dd6e48ac773",
+    "apps/api/src/ai/__tests__/blockchain-verification.spec.ts": "dbc7a0e3d770551a28143e2bc142b8884ff392d04dd80236911b9fb4d98f7cc8",
+    "apps/api/src/ai/blockchain-verification.service.ts": "eb38367a5b6a48ba374ad0262192a8ff6571718a414fca15bbe487a550237642",
+    "apps/api/src/database/governance-indexer-version.ts": "7e18ce5fa6ab5d423d6bdf20b3fc2c37afb51923ee7bde87429f1b606ee291b4",
+    "package-lock.json": "2a1d7e20164a700d1b6929b635ce8cd13b240c9591a9ddc7d4aea8351bfb3b2f",
+    "packages/application/dist/src/synchronization/sync-governance.use-case.js": "27c27eda3f5fca5b7eacd506c504b66624f9a95fe273a0b7592279ecb5d9a769",
+    "packages/application/src/ports/proposal-repository.ts": "aa9e94e8291896d49d495b939d2b083761336037fb76698729eca05e5eabf146",
+    "packages/application/src/synchronization/sync-governance.use-case.ts": "6eaef143c5a2c209a52d37421ed2dbe618eaeec81b1c556e48221298483094f5",
+    "packages/application/test/sync-governance.use-case.test.ts": "45f426b41e6afa379df829b2c74ac823d07669c7bb75a87b568c71d83ad94832",
+    "packages/blockchain-cyberchain/dist/src/cyberchain-governance.gateway.js": "08b6b642a08ad955b115c79e71e4ea88d0a4fe9e9733b53be926382b621d86fa",
+    "packages/blockchain-cyberchain/src/cyberchain-governance.gateway.ts": "1b3cf6f04be92e600ca4153556c00e7f15898fbcfed3759487dfdca2b569c029",
+    "packages/database/src/postgres-database.ts": "6613fc5d95ec4c49200ba87d1c5b6c6becd1af2aeab519a80abff1779fd366f2",
+    "research_evaluation/experiment_1_m4/run-01/configuration.json": "be6cca054a797be85a2b9d6d5f45b4ce82e318f991efa27eadff1a73f768a675",
+    "research_evaluation/experiment_1_m4/run-01/sql_evidence.local.json": "19d18e79d266c39a478bd5767ae1eedec5f80fd2dc49b27165c7a9a1ad4d89be",
+    "research_evaluation/recovery_completeness/.gitignore": "79aae2a907ee343ab5826dbf42bb7688bc367274b1d9f61fd8c09750d35eb2ad",
+    "research_evaluation/recovery_completeness/analyze.py": "9316e90c38dc37b20b7ed4eefff9aa750c565c59298bd75248b68878e0b23d06",
+    "research_evaluation/recovery_completeness/application-tests.log": "8a2d104842eda9ba804047f8cd52a6049ecd0458b31c4ce7f6116f79a1384fa0",
+    "research_evaluation/recovery_completeness/c7-tests.json": "7a23b3de786b1163eedc7e7cfa99e00eb4db731b59db53051201e98fc065df52",
+    "research_evaluation/recovery_completeness/gateway-tests.log": "c9ff108730d10cd8c69747361830524ff671e6d37c4d3a77f72f9d0bffd16830",
+    "research_evaluation/recovery_completeness/README.md": "0ce527398b5104b36efb8c295ea13d5c7969d23f2f8f85a9aa20b4a0e06c0e2c",
+    "research_evaluation/recovery_completeness/reliability.cjs": "7c2965b8ce910b46439a7cf2c318bb461252bc7992e8f857dc42d3653234e17b",
+    "research_evaluation/recovery_completeness/results-01/RECOVERY_CHECKPOINT_ANALYSIS.md": "798dbb04ff19c532f355e253a7a7dace8eec990fabc742e0b812671e6f66f33a",
+    "research_evaluation/recovery_completeness/results-01/RECOVERY_COMPARISON.csv": "f2282cc70501c4a0c7c39105080c7637a4c2a3097f0a9c9d528a3e721f7b8a8d",
+    "research_evaluation/recovery_completeness/results-01/RECOVERY_COMPLETENESS_REPORT.md": "d34bd731914cdb24ecbbbd457ef829c2b73f54f1d8083e204f92080206c01cf3",
+    "research_evaluation/recovery_completeness/run-01/configuration.json": "bd38360c89a4685d95b989bebe1d8e46de0435f336ad238b82f87246bda28607",
+    "research_evaluation/recovery_completeness/run-01/gateway-events.jsonl": "f69d069a6e3c866341795ec18e5cfc8b288f76cd2460776375923598284f0653",
+    "research_evaluation/recovery_completeness/run-01/ranges.jsonl": "d92b9b6a176f6884cf8f18368f5f7b61468101914fd67dcd1fa0e33cf71c2d4a",
+    "research_evaluation/recovery_completeness/run-01/verifier.patch": "bf65db85dee3e958c387e3e6fc0fd924217d88c1a7aaefbf65c92bd738f94e73",
+    "research_evaluation/recovery_completeness/run-01-status.json": "51dd31671c1f44a0e29119abb0f6c2ae9bcdf28a28d9908aedf112df8b87a28b",
+    "research_evaluation/recovery_completeness/run-02/completed.json": "7e2288e1e546c10fb4462db5506e9ab63fd5aea488fab7ccadc75db525c15726",
+    "research_evaluation/recovery_completeness/run-02/configuration.json": "7100c58caf590eb41a57979871f5a1c06abb427f7d096192b7fe6e5256fa8f33",
+    "research_evaluation/recovery_completeness/run-02/gateway-events.jsonl": "cc41b923ee608ef13eaa471b7529d73a7a692ecd88a843eea6fd20c3055b6509",
+    "research_evaluation/recovery_completeness/run-02/ranges.jsonl": "938beaedda53db1f8173c829bfd6ad877c66d72189feaaef905bf15fa754737e",
+    "research_evaluation/recovery_completeness/run-02/recovery.json": "63ed5c0e5fd49eaaa0f269c95d08ac99733c9c74cafe83b67ce37c8ea213dd22",
+    "research_evaluation/recovery_completeness/run-02/reliability-fixtures.json": "54b2d9c6beabd374213ee72fa18b65447d394c57497fe61dc62cea8fcd343891",
+    "research_evaluation/recovery_completeness/run-02/replay.json": "855e176a78ae6366ebcf227a042b587ee1ab17cc622af18d7623b1528723def9",
+    "research_evaluation/recovery_completeness/run-02/sql-recovered.json": "1cf650e567ecefe9d942a94f78f1eff856426f8d00772e40738b8add5811838c",
+    "research_evaluation/recovery_completeness/run-02/sql-verification-input.json": "9984e161aa6a9d1b087358f5e5e60af21f4cd370cfa32c1b3449d10a9a41e559",
+    "research_evaluation/recovery_completeness/run-02/verification.jsonl": "4a98d8757c4c6f2524bd6cb3c8bec32f97dea5eb0d63edfe8644dec15d63c954",
+    "research_evaluation/recovery_completeness/run-02/verifier.patch": "37be8ec5f046552db47713c2ddb4e2615db95c92ca5c70dbd03171bd258dbbaf",
+    "research_evaluation/recovery_completeness/run.cjs": "e5f0debd2f40e4283fdc104df6967237d6f5497f0ab10bb7495fb509e145faca",
+    "research_evaluation/recovery_m4/run-02/recovery.json": "1b7045d4168d16555f5690726499869243e3b45363dff4670839e4d9c76003e7",
+    "research_evaluation/recovery_m4/run-02/verification.jsonl": "094698d375607f40c7abf372593a4e8d05ebed012da4c1c766ae43bd1104453b"
+  }
+}

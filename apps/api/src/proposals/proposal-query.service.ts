@@ -1,3 +1,4 @@
+import { GOVERNANCE_INDEXER_VERSION } from '../database/governance-indexer-version';
 import { Inject, Injectable } from '@nestjs/common';
 import type {
   PostgresProposalRepository,
@@ -460,7 +461,7 @@ export class ProposalQueryService {
     const chainId = this.proposals.getChainId();
     const contractAddress = this.proposals.getContractAddress();
     const indexerName = query.indexerName;
-    const indexerVersion = '1'; // default version from sync state repository
+    const indexerVersion = GOVERNANCE_INDEXER_VERSION;
 
     const { PostgresSyncStateRepository } = await import('@dao-platform/database');
     const syncState = new PostgresSyncStateRepository(

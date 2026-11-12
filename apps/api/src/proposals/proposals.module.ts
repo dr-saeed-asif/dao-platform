@@ -1,3 +1,4 @@
+import { GOVERNANCE_INDEXER_VERSION } from '../database/governance-indexer-version';
 import { randomUUID } from 'node:crypto';
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -118,7 +119,7 @@ import {
           database,
           config.getOrThrow<string>('CYBERCHAIN_CHAIN_ID'),
           config.getOrThrow<string>('GOVERNANCE_CONTRACT_ADDRESS'),
-          'v1',
+          GOVERNANCE_INDEXER_VERSION,
         ),
     },
     {

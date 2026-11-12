@@ -1,0 +1,7 @@
+{
+  "before_status_invalidation_stale_chunk_retrievable": false,
+  "after_status_invalidation_proposal_read_blocked": true,
+  "exception": "DocumentNotVerified",
+  "physical_stale_chunks_remaining": 0,
+  "deletion_observed": true
+}

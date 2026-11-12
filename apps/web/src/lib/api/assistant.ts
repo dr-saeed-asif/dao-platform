@@ -59,7 +59,9 @@ async function checked(path: string, init: RequestInit = {}) {
     ...init,
     cache: "no-store",
     headers: {
-      ...(init.body === undefined ? {} : { "Content-Type": "application/json" }),
+      ...(init.body === undefined
+        ? {}
+        : { "Content-Type": "application/json" }),
       ...init.headers,
     },
   });
@@ -151,7 +153,7 @@ async function authenticateAssistant(
     })
   ).json();
 }
-function headers(address: string) {
+export function walletSessionHeaders(address: string) {
   if (
     !session ||
     session.address !== address.toLowerCase() ||
@@ -167,7 +169,7 @@ export async function assistantJson<T>(
 ): Promise<T> {
   return (
     await checked(path, {
-      headers: headers(address),
+      headers: walletSessionHeaders(address),
       ...(body === undefined
         ? {}
         : { method: "POST", body: JSON.stringify(body) }),
@@ -178,7 +180,10 @@ export async function deleteAssistantConversation(
   path: string,
   address: string,
 ): Promise<void> {
-  await checked(path, { method: "DELETE", headers: headers(address) });
+  await checked(path, {
+    method: "DELETE",
+    headers: walletSessionHeaders(address),
+  });
 }
 export async function streamAssistant(
   address: string,
@@ -188,7 +193,7 @@ export async function streamAssistant(
 ) {
   const response = await checked("/ask/stream", {
     method: "POST",
-    headers: headers(address),
+    headers: walletSessionHeaders(address),
     body: JSON.stringify(body),
     signal: AbortSignal.any([signal, AbortSignal.timeout(610_000)]),
   });

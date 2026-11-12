@@ -1,0 +1,6 @@
+{
+  "different_public_table_fingerprints": [],
+  "changed_scope_records_or_chunks": [],
+  "models_unchanged": true,
+  "phase_caveat": "Same actual records/chunks and source code; later execution phase, cache/hardware state and live SQL versus frozen RAG differ. Do not pool wall timings as isolated architecture overhead."
+}

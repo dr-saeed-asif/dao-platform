@@ -1,0 +1,2 @@
+# Source projection correction
+The preliminary comparison read vote/assignment facts from data instead of data.facts and treated a missing projected key as a difference. The corrected source audit uses the actual wrapper and marks missing fields unchecked. The preliminary report is preserved in source_drift_projection_v1.json; captured source records, benchmark gold and model outputs are unchanged. No database inconsistency is inferred from the projection error.

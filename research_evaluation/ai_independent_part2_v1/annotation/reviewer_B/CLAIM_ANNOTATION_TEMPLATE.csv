@@ -1,0 +1,1 @@
+claim_id,question_id,response_id,claim_text,citation_ids,evidence_snapshot_sha256,evidence_reference,field,value,currency,unit,completeness_scope,annotator_id,reviewed_utc,independent_review_attestation,gold_label,supporting_evidence_span,notes

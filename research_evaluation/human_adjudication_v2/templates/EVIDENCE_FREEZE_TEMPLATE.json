@@ -1,0 +1,59 @@
+{
+  "status": "draft",
+  "coordinator_id": "",
+  "approved_utc": "",
+  "cohort_ids": [],
+  "source_configuration_sha256": "",
+  "artifacts": [
+    {
+      "role": "cohort_questions",
+      "path": "",
+      "sha256": ""
+    },
+    {
+      "role": "adjudicated_gold",
+      "path": "",
+      "sha256": ""
+    },
+    {
+      "role": "evaluation_criteria",
+      "path": "",
+      "sha256": ""
+    },
+    {
+      "role": "source_documents",
+      "path": "",
+      "sha256": ""
+    },
+    {
+      "role": "proposal_snapshot",
+      "path": "",
+      "sha256": ""
+    },
+    {
+      "role": "chain_snapshot",
+      "path": "",
+      "sha256": ""
+    },
+    {
+      "role": "model_configuration",
+      "path": "",
+      "sha256": ""
+    },
+    {
+      "role": "prompt_templates",
+      "path": "",
+      "sha256": ""
+    },
+    {
+      "role": "source_version",
+      "path": "",
+      "sha256": ""
+    },
+    {
+      "role": "permissions",
+      "path": "",
+      "sha256": ""
+    }
+  ]
+}

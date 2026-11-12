@@ -1,0 +1,728 @@
+{
+  "recorded_attempts": 1262,
+  "duplicate_keys": 0,
+  "effective_models": [
+    "qwen3:0.6b",
+    "qwen3:4b-instruct"
+  ],
+  "chat_attempts": 1986,
+  "options": {
+    "seed": 42,
+    "temperature": 0.6,
+    "num_ctx": 8192,
+    "num_predict": 1536,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repeat_penalty": 1.1
+  },
+  "generation_http_timeout_seconds": 100,
+  "overall_case_timeout_seconds": 200,
+  "human_validated": false,
+  "findings": [
+    {
+      "id": "MS-003",
+      "model": "qwen3:0.6b",
+      "condition": "B3",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-029",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-028",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-037",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-032",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-018",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-011",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-038",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-008",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-007",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-022",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-026",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-002",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-011",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-015",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-027",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-026",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-012",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-017",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-030",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:0.6b",
+      "condition": "B4",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-029",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-028",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-037",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-032",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-018",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-011",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-038",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-008",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-007",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-022",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-026",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-002",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-011",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-015",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-027",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-026",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-012",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-017",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-030",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:0.6b",
+      "condition": "A1",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-029",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-028",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-037",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-032",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-018",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-011",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-038",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-008",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-007",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-022",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-026",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-002",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-011",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-015",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-027",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-026",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-012",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-017",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-030",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:0.6b",
+      "condition": "A2",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-029",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-028",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-037",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-032",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-018",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-011",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-038",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-008",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-007",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-022",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-011",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-008",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-026",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-031",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-007",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "PDF-002",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-011",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-015",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-027",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-026",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-012",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-017",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "CX-030",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "MS-006",
+      "model": "qwen3:0.6b",
+      "condition": "A12",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-028",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-032",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-018",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    },
+    {
+      "id": "DB-011",
+      "model": "qwen3:4b-instruct",
+      "condition": "B3",
+      "kind": "stored_payload_hash_differs_after_redaction"
+    }
+  ],
+  "post_redaction_hash_differences": 117,
+  "configuration_mismatches": 0,
+  "classification": "Transport/configuration verification, not semantic scoring"
+}

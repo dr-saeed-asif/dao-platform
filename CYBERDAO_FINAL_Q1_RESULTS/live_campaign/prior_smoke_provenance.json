@@ -1,0 +1,6 @@
+{
+  "seeded_records": 18,
+  "source": "../raw/development_smoke.jsonl",
+  "reason": "Reuse completed smoke keys; only ten missing large-model condition keys should run",
+  "prior_configuration": "../versions/v1_interrupted/configuration.json"
+}

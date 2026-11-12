@@ -1,0 +1,86 @@
+{
+  "original_checkpoints": [
+    {
+      "id": "29350",
+      "chain_id": "1212",
+      "contract_address": "0x51b43885899bd0301c2beea89addc9d876145d21",
+      "indexer_name": "governance-full",
+      "indexer_version": "v1",
+      "processed_block_number": "20267608",
+      "processed_block_hash": null,
+      "updated_at": "2026-11-09T06:47:47.027Z"
+    },
+    {
+      "id": "29351",
+      "chain_id": "1212",
+      "contract_address": "0x51b43885899bd0301c2beea89addc9d876145d21",
+      "indexer_name": "governance-votes",
+      "indexer_version": "v1",
+      "processed_block_number": "18898503",
+      "processed_block_hash": null,
+      "updated_at": "2026-10-07T17:42:40.672Z"
+    }
+  ],
+  "recovered_checkpoints": [
+    {
+      "id": "1",
+      "chain_id": "1212",
+      "contract_address": "0x51b43885899bd0301c2beea89addc9d876145d21",
+      "indexer_name": "governance-full",
+      "indexer_version": "v1",
+      "processed_block_number": "20325000",
+      "processed_block_hash": null,
+      "updated_at": "2026-11-10T14:52:56.040Z"
+    }
+  ],
+  "scope": {
+    "name": "governance-full",
+    "writer_version": "v1",
+    "verifier_version": "v1"
+  },
+  "checkpoint_lookup_outcomes": {
+    "current": 39
+  },
+  "target": "20325000",
+  "ranges_observed": 4862,
+  "ranges_contiguous_from_deployment": true,
+  "last_successful_gateway_range_end": "20325000",
+  "range_errors": 0,
+  "checkpoint_samples": [
+    {
+      "sampled_at": "2026-11-10T14:52:47.697148+00:00",
+      "proposals": 36,
+      "events": 151,
+      "checkpoints": [
+        {
+          "id": 1,
+          "chain_id": 1212,
+          "contract_address": "0x51b43885899bd0301c2beea89addc9d876145d21",
+          "indexer_name": "governance-full",
+          "indexer_version": "v1",
+          "processed_block_number": 19525874,
+          "processed_block_hash": null,
+          "updated_at": "2026-11-10T14:52:47.689+00:00"
+        }
+      ]
+    },
+    {
+      "sampled_at": "2026-11-10T14:54:03.47939+00:00",
+      "proposals": 39,
+      "events": 188,
+      "checkpoints": [
+        {
+          "id": 1,
+          "chain_id": 1212,
+          "contract_address": "0x51b43885899bd0301c2beea89addc9d876145d21",
+          "indexer_name": "governance-full",
+          "indexer_version": "v1",
+          "processed_block_number": 20325000,
+          "processed_block_hash": null,
+          "updated_at": "2026-11-10T14:53:44.128+00:00"
+        }
+      ]
+    }
+  ],
+  "interpretation": "NestJS writer explicitly selects v1. Repository default 1 is a distinct key. No aliasing or manual cursor advance. Null checkpoint hash leaves the checkpoint itself without a stored canonical block anchor."
+}

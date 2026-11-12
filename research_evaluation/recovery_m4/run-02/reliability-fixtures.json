@@ -1,0 +1,70 @@
+{
+  "source": "Two real gateway event envelopes replayed with controlled inputs; no fixture network access",
+  "results": [
+    {
+      "case": "injected_rpc_timeout_and_partial_indexing",
+      "observed": {
+        "counts": {
+          "proposals": 0,
+          "proposal_assignments": 0,
+          "votes": 0,
+          "governance_events": 0,
+          "chain_transactions": 0
+        },
+        "checkpoint": "15464874"
+      },
+      "expected": "reject and retain checkpoint at completed range",
+      "passed": true
+    },
+    {
+      "case": "resume_from_stale_checkpoint",
+      "observed": {
+        "counts": {
+          "proposals": 1,
+          "proposal_assignments": 1,
+          "votes": 0,
+          "governance_events": 2,
+          "chain_transactions": 2
+        },
+        "checkpoint": "15465874"
+      },
+      "ranges": [
+        "15463875",
+        "15464875",
+        "15464875"
+      ],
+      "passed": true
+    },
+    {
+      "case": "duplicate_event_delivery",
+      "observed": {
+        "counts": {
+          "proposals": 1,
+          "proposal_assignments": 1,
+          "votes": 0,
+          "governance_events": 2,
+          "chain_transactions": 2
+        },
+        "checkpoint": "15465874"
+      },
+      "passed": true
+    },
+    {
+      "case": "silent_missing_rpc_event",
+      "observed": {
+        "counts": {
+          "proposals": 1,
+          "proposal_assignments": 0,
+          "votes": 0,
+          "governance_events": 1,
+          "chain_transactions": 1
+        },
+        "checkpoint": "15465874"
+      },
+      "expected_assignment_count": 1,
+      "detected_by_recovery": false,
+      "finding": "Checkpoint advanced despite an omitted successful assignment. Recovery cannot establish completeness from a successful response alone.",
+      "observation_matches_fixture": true
+    }
+  ]
+}

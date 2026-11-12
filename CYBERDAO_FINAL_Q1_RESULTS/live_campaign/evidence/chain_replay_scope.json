@@ -1,0 +1,7 @@
+{
+  "chain_mode": "Archived actual report replay, identical between tool/full/ablation conditions; no live current-verifier execution in AI benchmark",
+  "archived_verifier_source_sha256": "8b9aed1e41c43da146a1ba3bf8d4d3a2ab8b3efa56067f5bc1ed44605fd760fa",
+  "current_verifier_source_sha256": "eb38367a5b6a48ba374ad0262192a8ff6571718a414fca15bbe487a550237642",
+  "same_verifier_source": false,
+  "implication": "B4 is the full current AI workflow with frozen external chain-report evidence, not an end-to-end test of the currently deployed HTTP/C4/C7 stack. Current C7 reconciliation results are separate historical engineering experiments."
+}

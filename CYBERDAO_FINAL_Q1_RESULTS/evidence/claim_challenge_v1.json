@@ -1,0 +1,295 @@
+{
+  "version": "post-development-challenge-v1",
+  "label_provenance": "AI-authored synthetic/provisional source-based labels; no human adjudication; implementation frozen before evaluation; not independent held-out evaluation",
+  "source_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+  "cases": [
+    {
+      "id": "CH-001",
+      "answer": "Venue rental is EUR 720 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "supported",
+      "label_reason": "Explicit labeled field/value/currency"
+    },
+    {
+      "id": "CH-002",
+      "answer": "Travel is EUR 180 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "supported",
+      "label_reason": "Explicit matching travel row"
+    },
+    {
+      "id": "CH-003",
+      "answer": "Insurance is EUR 180 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "supported",
+      "label_reason": "Repeated amount under a different valid field"
+    },
+    {
+      "id": "CH-004",
+      "answer": "Duration is 9 days [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "supported",
+      "label_reason": "Matching measurement unit"
+    },
+    {
+      "id": "CH-005",
+      "answer": "Venue rental is EUR 180 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "contradicted",
+      "label_reason": "Swapped field value exists elsewhere"
+    },
+    {
+      "id": "CH-006",
+      "answer": "Travel is EUR 720 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "contradicted",
+      "label_reason": "Swapped amount belongs to venue"
+    },
+    {
+      "id": "CH-007",
+      "answer": "Insurance is USD 180 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "contradicted",
+      "label_reason": "Wrong currency"
+    },
+    {
+      "id": "CH-008",
+      "answer": "Duration is 9 hours [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "contradicted",
+      "label_reason": "Wrong unit"
+    },
+    {
+      "id": "CH-009",
+      "answer": "Travel is EUR 999 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "unsupported",
+      "label_reason": "Absent amount"
+    },
+    {
+      "id": "CH-010",
+      "answer": "Travel is EUR 180.",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "supported",
+      "label_reason": "True relation, but missing required citation"
+    },
+    {
+      "id": "CH-011",
+      "answer": "Travel is EUR 180 [D99].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "supported",
+      "label_reason": "True relation, but wrong citation identifier"
+    },
+    {
+      "id": "CH-012",
+      "answer": "Catering is EUR 180 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "unsupported",
+      "label_reason": "Amount exists, label absent"
+    },
+    {
+      "id": "CH-013",
+      "answer": "Travel is 180 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "ambiguous",
+      "label_reason": "Currency omitted"
+    },
+    {
+      "id": "CH-014",
+      "answer": "The amount is EUR 180 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "ambiguous",
+      "label_reason": "Requested field missing"
+    },
+    {
+      "id": "CH-015",
+      "answer": "There are no additional expenses [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "closed_world",
+      "label_reason": "Excerpt cannot establish completeness"
+    },
+    {
+      "id": "CH-016",
+      "answer": "All proposals have been verified [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Venue rental: EUR 720; Travel: EUR 180; Insurance: EUR 180; Duration: 9 days."
+        }
+      ],
+      "gold": "closed_world",
+      "label_reason": "No evidence of complete verification"
+    },
+    {
+      "id": "CH-017",
+      "answer": "Travel is EUR 180 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Travel: EUR 180; Travel: EUR 200."
+        }
+      ],
+      "gold": "ambiguous",
+      "label_reason": "Conflicting field values"
+    },
+    {
+      "id": "CH-018",
+      "answer": "Travel is EUR 180 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Travel Insurance\nEUR 180 EUR 200"
+        }
+      ],
+      "gold": "ambiguous",
+      "label_reason": "Ambiguous extracted table alignment"
+    },
+    {
+      "id": "CH-019",
+      "answer": "Security review is EUR 6,000 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "CG-DEMO-2026-01  |  Synthetic demonstration data\n1\nCYBERGOVAI / GOVERNANCE PROPOSAL\nGovernance Security\nand Transparency Pilot\nA four-week demonstration proposal for document-grounded AI assistance and read-only\nCyberChain verification.\nDocument reference\nCG-DEMO-2026-01 / version 1.0\nPrepared\n26 October 2026\nDAO ID\ncyber-demo-dao\nProposal type\nSTANDARD\nProposal title\nCyberGovAI Governance Security and Transparency Pilot\nDecision requested\nApprove the proposed pilot and its EUR 12,000 budget.\n1. Purpose and agenda\nApprove a four-week pilot to improve governance transparency, verify proposal and voting records against\nCyberChain, and evaluate evidence-based AI assistance.\nThe agenda has three parts: independently review governance security, improve visibility of proposal and\nvoting records, and assess whether AI answers are supported by the linked proposal PDF and actual\nblockchain reads.\n2. Proposed scope\nThe security review covers proposal creation, member assignment, vote recording, result finalization, wallet\nauthentication and access control. The transparency dashboard presents proposal status, recorded votes,\ntransaction references and database-to-chain discrepancies. The AI assistant summarizes linked documents,\ncites supporting excerpts and separates unavailable facts from observed facts.\nDemonstration status\nThis document is synthetic test data. It is not a real auditor quotation, an approved budget or evidence of\ncompleted work. Approval does not automatically transfer funds or execute contract changes. A separate\nauthorized process is required for any payment or implementation.\n"
+        }
+      ],
+      "gold": "supported",
+      "label_reason": "Provisional source-table interpretation of original pilot PDF"
+    },
+    {
+      "id": "CH-020",
+      "answer": "Dashboard improvements is EUR 6,000 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "CG-DEMO-2026-01  |  Synthetic demonstration data\n1\nCYBERGOVAI / GOVERNANCE PROPOSAL\nGovernance Security\nand Transparency Pilot\nA four-week demonstration proposal for document-grounded AI assistance and read-only\nCyberChain verification.\nDocument reference\nCG-DEMO-2026-01 / version 1.0\nPrepared\n26 October 2026\nDAO ID\ncyber-demo-dao\nProposal type\nSTANDARD\nProposal title\nCyberGovAI Governance Security and Transparency Pilot\nDecision requested\nApprove the proposed pilot and its EUR 12,000 budget.\n1. Purpose and agenda\nApprove a four-week pilot to improve governance transparency, verify proposal and voting records against\nCyberChain, and evaluate evidence-based AI assistance.\nThe agenda has three parts: independently review governance security, improve visibility of proposal and\nvoting records, and assess whether AI answers are supported by the linked proposal PDF and actual\nblockchain reads.\n2. Proposed scope\nThe security review covers proposal creation, member assignment, vote recording, result finalization, wallet\nauthentication and access control. The transparency dashboard presents proposal status, recorded votes,\ntransaction references and database-to-chain discrepancies. The AI assistant summarizes linked documents,\ncites supporting excerpts and separates unavailable facts from observed facts.\nDemonstration status\nThis document is synthetic test data. It is not a real auditor quotation, an approved budget or evidence of\ncompleted work. Approval does not automatically transfer funds or execute contract changes. A separate\nauthorized process is required for any payment or implementation.\n"
+        }
+      ],
+      "gold": "contradicted",
+      "label_reason": "Wrong allocation in original pilot PDF"
+    },
+    {
+      "id": "CH-021",
+      "answer": "Workshop preparation and facilitation is EUR 2,000 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "CG-DEMO-2026-02 / Synthetic demonstration data\n1\nCYBERDAO / DEMONSTRATION PROPOSAL\nCommunity Governance Training\nand Participation Pilot\nA three-week initiative to help members understand proposals, inspect evidence and participate\nsafely in DAO voting.\nReference\nCG-DEMO-2026-02 / version 1.0\nDAO ID\ncyber-demo-dao\nProposal title\nCommunity Governance Training and Participation Pilot\nType / duration\nSTANDARD / 21 days after kickoff\nDecision requested\nApprove the proposed EUR 4,500 training pilot.\n1. Purpose and proposed activities\nImprove members' understanding of DAO proposals, evidence and wallet-based voting through two guided\nworkshops and an accessible participation guide. The planned attendance target is 30 participants across the\npilot; this is a target, not a recorded member or voter count.\nWorkshop 1 covers proposal purpose, supporting PDFs, source citations and differences between proposed\ncommitments and completed work. Workshop 2 covers connected-wallet use, voting eligibility, transaction\nconfirmation and comparison of database records with blockchain observations.\n2. Proposed budget\nAllocation\nAmount\nWorkshop preparation and facilitation\nEUR 2,000\nTraining guides and learning materials\nEUR 1,500\nAccessibility and participant support\nEUR 750\nContingency\nEUR 250\nTotal proposed budget\nEUR 4,500\nContingency is reserved for unexpected delivery costs. No provider has been appointed, no payment\nrecipient is specified and no funds have been disbursed under this demonstration proposal.\n"
+        }
+      ],
+      "gold": "supported",
+      "label_reason": "Provisional source-table interpretation of training PDF"
+    },
+    {
+      "id": "CH-022",
+      "answer": "Training guides and learning materials is EUR 2,000 [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "CG-DEMO-2026-02 / Synthetic demonstration data\n1\nCYBERDAO / DEMONSTRATION PROPOSAL\nCommunity Governance Training\nand Participation Pilot\nA three-week initiative to help members understand proposals, inspect evidence and participate\nsafely in DAO voting.\nReference\nCG-DEMO-2026-02 / version 1.0\nDAO ID\ncyber-demo-dao\nProposal title\nCommunity Governance Training and Participation Pilot\nType / duration\nSTANDARD / 21 days after kickoff\nDecision requested\nApprove the proposed EUR 4,500 training pilot.\n1. Purpose and proposed activities\nImprove members' understanding of DAO proposals, evidence and wallet-based voting through two guided\nworkshops and an accessible participation guide. The planned attendance target is 30 participants across the\npilot; this is a target, not a recorded member or voter count.\nWorkshop 1 covers proposal purpose, supporting PDFs, source citations and differences between proposed\ncommitments and completed work. Workshop 2 covers connected-wallet use, voting eligibility, transaction\nconfirmation and comparison of database records with blockchain observations.\n2. Proposed budget\nAllocation\nAmount\nWorkshop preparation and facilitation\nEUR 2,000\nTraining guides and learning materials\nEUR 1,500\nAccessibility and participant support\nEUR 750\nContingency\nEUR 250\nTotal proposed budget\nEUR 4,500\nContingency is reserved for unexpected delivery costs. No provider has been appointed, no payment\nrecipient is specified and no funds have been disbursed under this demonstration proposal.\n"
+        }
+      ],
+      "gold": "contradicted",
+      "label_reason": "Training PDF assigns EUR 1,500 to this field"
+    },
+    {
+      "id": "CH-023",
+      "answer": "No other information is available [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "CG-DEMO-2026-02 / Synthetic demonstration data\n1\nCYBERDAO / DEMONSTRATION PROPOSAL\nCommunity Governance Training\nand Participation Pilot\nA three-week initiative to help members understand proposals, inspect evidence and participate\nsafely in DAO voting.\nReference\nCG-DEMO-2026-02 / version 1.0\nDAO ID\ncyber-demo-dao\nProposal title\nCommunity Governance Training and Participation Pilot\nType / duration\nSTANDARD / 21 days after kickoff\nDecision requested\nApprove the proposed EUR 4,500 training pilot.\n1. Purpose and proposed activities\nImprove members' understanding of DAO proposals, evidence and wallet-based voting through two guided\nworkshops and an accessible participation guide. The planned attendance target is 30 participants across the\npilot; this is a target, not a recorded member or voter count.\nWorkshop 1 covers proposal purpose, supporting PDFs, source citations and differences between proposed\ncommitments and completed work. Workshop 2 covers connected-wallet use, voting eligibility, transaction\nconfirmation and comparison of database records with blockchain observations.\n2. Proposed budget\nAllocation\nAmount\nWorkshop preparation and facilitation\nEUR 2,000\nTraining guides and learning materials\nEUR 1,500\nAccessibility and participant support\nEUR 750\nContingency\nEUR 250\nTotal proposed budget\nEUR 4,500\nContingency is reserved for unexpected delivery costs. No provider has been appointed, no payment\nrecipient is specified and no funds have been disbursed under this demonstration proposal.\n"
+        }
+      ],
+      "gold": "closed_world",
+      "label_reason": "Excerpt completeness not established"
+    },
+    {
+      "id": "CH-024",
+      "answer": "Duration is 90 days [D1].",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "CG-DEMO-2026-02 / Synthetic demonstration data\n1\nCYBERDAO / DEMONSTRATION PROPOSAL\nCommunity Governance Training\nand Participation Pilot\nA three-week initiative to help members understand proposals, inspect evidence and participate\nsafely in DAO voting.\nReference\nCG-DEMO-2026-02 / version 1.0\nDAO ID\ncyber-demo-dao\nProposal title\nCommunity Governance Training and Participation Pilot\nType / duration\nSTANDARD / 21 days after kickoff\nDecision requested\nApprove the proposed EUR 4,500 training pilot.\n1. Purpose and proposed activities\nImprove members' understanding of DAO proposals, evidence and wallet-based voting through two guided\nworkshops and an accessible participation guide. The planned attendance target is 30 participants across the\npilot; this is a target, not a recorded member or voter count.\nWorkshop 1 covers proposal purpose, supporting PDFs, source citations and differences between proposed\ncommitments and completed work. Workshop 2 covers connected-wallet use, voting eligibility, transaction\nconfirmation and comparison of database records with blockchain observations.\n2. Proposed budget\nAllocation\nAmount\nWorkshop preparation and facilitation\nEUR 2,000\nTraining guides and learning materials\nEUR 1,500\nAccessibility and participant support\nEUR 750\nContingency\nEUR 250\nTotal proposed budget\nEUR 4,500\nContingency is reserved for unexpected delivery costs. No provider has been appointed, no payment\nrecipient is specified and no funds have been disbursed under this demonstration proposal.\n"
+        }
+      ],
+      "gold": "unsupported",
+      "label_reason": "Document specifies 21-day initiative, not 90"
+    }
+  ]
+}

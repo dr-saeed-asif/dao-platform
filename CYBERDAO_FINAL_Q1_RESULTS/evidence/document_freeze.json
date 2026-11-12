@@ -1,0 +1,71 @@
+[
+  {
+    "sha256": "b0dd597df1bae8143a6cd399b267023abb5224023744000dca6609e8307a8655",
+    "filename": "CyberGovAI_Pilot_Proposal.pdf",
+    "scopes": [
+      "pilot"
+    ],
+    "bytes_found": true,
+    "trust": "SHA-256 agrees with captured artefact identity; not independent on-chain anchor validation",
+    "page_count": 3,
+    "bytes": 8156,
+    "chunk_page_checks": [
+      {
+        "source_page": 2,
+        "content_sha256": "39798d9ba93fdf3a18726774923eb0e094a5e2e0bc39cd1709dc12e7ce9eda9a",
+        "matches_normalized_page": true
+      },
+      {
+        "source_page": 3,
+        "content_sha256": "fa8184e993f2389a239c7405a58819c5d269e7686bc4a7c4a4e86e865296cdb1",
+        "matches_normalized_page": true
+      },
+      {
+        "source_page": 1,
+        "content_sha256": "5637a796c7db73a368e55e40abc2956741ce6ca3e04462f63b37c915918fd0b4",
+        "matches_normalized_page": true
+      }
+    ]
+  },
+  {
+    "sha256": "a8f5521bbb01beb375338e9bf225b35c857dc7e68ddfe52ba9e80137619935fa",
+    "filename": "CyberDAO_Community_Training_Proposal.pdf",
+    "scopes": [
+      "training"
+    ],
+    "bytes_found": true,
+    "trust": "SHA-256 agrees with captured artefact identity; not independent on-chain anchor validation",
+    "page_count": 2,
+    "bytes": 5744,
+    "chunk_page_checks": [
+      {
+        "source_page": 2,
+        "content_sha256": "3d214c27c08227ea180f65f7a662322cb5f1eafe9c9f35015d164bb93697c11a",
+        "matches_normalized_page": true
+      },
+      {
+        "source_page": 1,
+        "content_sha256": "725c654129457f56d1ca897d61abe06a89beb2208db617b88af125373a73908f",
+        "matches_normalized_page": true
+      }
+    ]
+  },
+  {
+    "sha256": "d6697aa4e64de7a39ea3c9c29993701cc19ee63b172f0113756a73d91e6e96c2",
+    "filename": "short_project_proposal.pdf",
+    "scopes": [
+      "cleanup"
+    ],
+    "bytes_found": true,
+    "trust": "SHA-256 agrees with captured artefact identity; not independent on-chain anchor validation",
+    "page_count": 1,
+    "bytes": 27143,
+    "chunk_page_checks": [
+      {
+        "source_page": 1,
+        "content_sha256": "c317c64da2d1458a56d4a5026175fb2765d7d2309cb48a195a366e3f07e5a145",
+        "matches_normalized_page": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "confirmatory_release": false,
+  "coordinator_id": "",
+  "approved_utc": "",
+  "review_import_sha256": "",
+  "reviewer_A_sha256": "",
+  "reviewer_B_sha256": "",
+  "evidence_freeze_sha256": "",
+  "adapter_validation_sha256": ""
+}

@@ -1,0 +1,57 @@
+{
+  "fixture_label_origin": "Synthetic developer-authored cases; no independent human adjudication",
+  "cases": 15,
+  "invalid_cases": 12,
+  "legitimate_controls": 3,
+  "effective_detection": {
+    "n": 11,
+    "denominator": 12,
+    "rate": 0.9166666666666666,
+    "wilson95": [
+      0.646120088858883,
+      0.9851349055950829
+    ]
+  },
+  "tamper_subset": {
+    "n": 7,
+    "denominator": 8,
+    "rate": 0.875,
+    "wilson95": [
+      0.5291118177871464,
+      0.9775825085499433
+    ]
+  },
+  "effective_false_acceptance": {
+    "n": 1,
+    "denominator": 12,
+    "rate": 0.08333333333333333
+  },
+  "nest_false_acceptance": {
+    "n": 2,
+    "denominator": 12
+  },
+  "false_rejection": {
+    "n": 0,
+    "denominator": 3,
+    "rate": 0.0
+  },
+  "legitimate_admission": {
+    "n": 3,
+    "denominator": 3
+  },
+  "overall_effective_acceptance": {
+    "n": 4,
+    "denominator": 15
+  },
+  "physical_cleanup": {
+    "n": 0,
+    "denominator": 1
+  },
+  "retrieval_revocation_after_status_invalidation": {
+    "n": 1,
+    "denominator": 1
+  },
+  "before_status_invalidation_stale_chunks_retrievable": true,
+  "reupload_same_identity_after_indexing": true,
+  "uncertainty": "Wilson intervals describe these selected synthetic fixtures only. They do not estimate real-world prevalence or production performance."
+}

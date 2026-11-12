@@ -1,0 +1,26 @@
+{
+  "condition": "B1",
+  "models": {
+    "qwen3:0.6b": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+    "qwen3:4b-instruct": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+  },
+  "options": {
+    "seed": 42,
+    "temperature": 0.6,
+    "num_ctx": 8192,
+    "num_predict": 1536,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repeat_penalty": 1.1
+  },
+  "deadline_seconds": 200,
+  "concurrency": 2,
+  "questions_sha256": "8ee57c7670f38bf27a1461c5e3051886463f896b9dd46446e8bab53b8e192508",
+  "n": 133,
+  "human_reviewed": false,
+  "gold_loaded": false,
+  "sql_connections": 0,
+  "tool_access": false,
+  "runner_sha256": "aeb705befc5e15b6362c257186ef20582fff2207b81925b90d7dcfadc511c359",
+  "adapter_sha256": "77009be73019bf80e3708ad0919e274825dfca5c9d30b3cadf5c0c68d91c4934"
+}

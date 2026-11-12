@@ -1,0 +1,16 @@
+[
+  {
+    "file": "blockchain-verification.spec.ts",
+    "baseline_errors": 37,
+    "final_errors": 64,
+    "baseline_warnings": 5,
+    "final_warnings": 13
+  },
+  {
+    "file": "blockchain-verification.service.ts",
+    "baseline_errors": 50,
+    "final_errors": 47,
+    "baseline_warnings": 17,
+    "final_warnings": 22
+  }
+]

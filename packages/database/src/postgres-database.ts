@@ -17,6 +17,7 @@ import * as documentChunksMigration from "./postgres-migrations/document-chunks.
 import * as agentRunMetadataMigration from "./postgres-migrations/agent-run-metadata.migration.js";
 import * as restoreDocumentChunksMigration from "./postgres-migrations/restore-document-chunks.migration.js";
 import * as proposalVoteTotalsMigration from "./postgres-migrations/proposal-vote-totals.migration.js";
+import * as rpcRateLimitsMigration from "./postgres-migrations/rpc-rate-limits.migration.js";
 
 export type PostgresDatabase = Kysely<PostgresDatabaseSchema>;
 
@@ -32,6 +33,7 @@ class PostgresMigrationProvider implements MigrationProvider {
       "007_agent_run_metadata": agentRunMetadataMigration,
       "008_restore_document_chunks": restoreDocumentChunksMigration,
       "009_proposal_vote_totals": proposalVoteTotalsMigration,
+      "010_rpc_rate_limits": rpcRateLimitsMigration,
     };
   }
 }

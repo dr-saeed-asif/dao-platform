@@ -1,0 +1,73 @@
+{
+  "groups": [
+    {
+      "dataset": "formerly-reserved-133-exploratory",
+      "model": "qwen3:0.6b",
+      "condition": "B1",
+      "attempted_n": 133,
+      "planned_n": 133,
+      "completed_n": 133,
+      "failed_n": 0,
+      "reference_match_proxy_n": 3,
+      "whole_answer_accuracy": null,
+      "human_scored_n": 0,
+      "structural_valid_answer_n": 0,
+      "cited_answer_n": 0,
+      "abstention_cue_n": 100,
+      "retrieved_sources_answer_n": 0,
+      "factual_claims_n": 49,
+      "automatically_flagged_claims_n": 46,
+      "automatically_supported_claims_n": 0,
+      "unchecked_claims_n": 3,
+      "median_wall_s": 0.9852268999984517,
+      "input_tokens_observed": 23976,
+      "output_tokens_observed": 6409,
+      "token_unobserved_calls_n": 0,
+      "chat_attempts_n": 133,
+      "reference_match_cluster_bootstrap_95": [
+        0.0,
+        0.031578947368421054
+      ],
+      "failure_cluster_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "dataset": "formerly-reserved-133-exploratory",
+      "model": "qwen3:4b-instruct",
+      "condition": "B1",
+      "attempted_n": 90,
+      "planned_n": 133,
+      "completed_n": 90,
+      "failed_n": 0,
+      "reference_match_proxy_n": 0,
+      "whole_answer_accuracy": null,
+      "human_scored_n": 0,
+      "structural_valid_answer_n": 0,
+      "cited_answer_n": 0,
+      "abstention_cue_n": 90,
+      "retrieved_sources_answer_n": 0,
+      "factual_claims_n": 51,
+      "automatically_flagged_claims_n": 51,
+      "automatically_supported_claims_n": 0,
+      "unchecked_claims_n": 0,
+      "median_wall_s": 11.262587550000717,
+      "input_tokens_observed": 15474,
+      "output_tokens_observed": 6473,
+      "token_unobserved_calls_n": 0,
+      "chat_attempts_n": 90,
+      "reference_match_cluster_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "failure_cluster_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "whole_answer_accuracy": "Not estimated: automatic proxy does not establish semantic correctness",
+  "provisional_reference_labels": true,
+  "human_annotations": 0
+}

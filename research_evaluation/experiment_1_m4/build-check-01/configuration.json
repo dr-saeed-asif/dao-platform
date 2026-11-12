@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-10T14:40:20.125Z",
+  "executed": false,
+  "source_commit": "7dd447cd0c6e4b65536ab6d531ff5ac77284c177",
+  "source_sha256": "dd7502c6857bf6dcccdcbaa81176cdf074683273cca0e7b6727c9f8f97d53346",
+  "source_uncommitted": true,
+  "script_sha256": "76e93b1f4eb4fa928b7487b9372e55921d3e340237d22151738534e82d53feb0",
+  "original_config_sha256": "dc955775195021be71ea4e9985a271f03e194d1a244e362e29f7e04728f3c369",
+  "original_raw_sha256": "3d228dd4402117532dc3eeecdabecf63e212cc6665d139efde74108b6d9edf2e",
+  "cohort_ids": [
+    "16dadecc-94cc-4fae-8089-921765854976",
+    "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+    "620bc74c-dde0-4532-9c4c-11e31b91983f",
+    "a7fdaa7d-1a0b-4ab4-b23b-721c8144e744",
+    "ac3af957-4611-4995-8ff5-4fa0be44d0a8",
+    "c0523e6d-ee70-4567-b804-745cd30c9e7a",
+    "d29a8227-da76-4a40-80a8-33300e1c4f04",
+    "d79ac7ba-c040-4e5e-9ee5-ebdbfa1d5a21",
+    "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+    "onchain-1",
+    "onchain-10",
+    "onchain-11",
+    "onchain-12",
+    "onchain-13",
+    "onchain-14",
+    "onchain-15",
+    "onchain-16",
+    "onchain-17",
+    "onchain-18",
+    "onchain-19",
+    "onchain-2",
+    "onchain-20",
+    "onchain-21",
+    "onchain-22",
+    "onchain-23",
+    "onchain-24",
+    "onchain-25",
+    "onchain-26",
+    "onchain-28",
+    "onchain-3",
+    "onchain-31",
+    "onchain-33",
+    "onchain-35",
+    "onchain-4",
+    "onchain-5",
+    "onchain-6",
+    "onchain-7",
+    "onchain-8",
+    "onchain-9"
+  ],
+  "cohort_n": 39,
+  "pin_policy": "One explicit C7_PIN_BLOCK for all proposals, or latest minus C7_FINALITY_DEPTH (default 0; no finality guarantee). Record block hash before/after each verification.",
+  "sql_policy": "One REPEATABLE READ, READ ONLY transaction for the campaign; contemporaneous SQL is not historical SQL at the chain block.",
+  "scope": "New observational follow-up, not a paired rerun of the original temporal database snapshot.",
+  "historical_pins": [
+    {
+      "proposal_id": "e3b14215-bd47-420a-ae5a-a50d15cf0255",
+      "block": "20277560",
+      "block_hash": "0x870d942ec9e548a5d7d25713ffee14fca3f44c1aaafada37b9e50ffb0b9bf489"
+    },
+    {
+      "proposal_id": "38a3c43c-1e3b-47c9-8688-20e6e64ec495",
+      "block": "20277561",
+      "block_hash": "0x5d9a816bb52466c37a367d90ccb20855e5ae6e92428d03693b5022c6612f0cb0"
+    },
+    {
+      "proposal_id": "16dadecc-94cc-4fae-8089-921765854976",
+      "block": "20277561",
+      "block_hash": "0x5d9a816bb52466c37a367d90ccb20855e5ae6e92428d03693b5022c6612f0cb0"
+    },
+    {
+      "proposal_id": "a7fdaa7d-1a0b-4ab4-b23b-721c8144e744",
+      "block": "20277562",
+      "block_hash": "0x33a13188b3f39ccaf7892916126c29935aac2aa612dff17051c021686ea46f0b"
+    },
+    {
+      "proposal_id": "620bc74c-dde0-4532-9c4c-11e31b91983f",
+      "block": "20277562",
+      "block_hash": "0x33a13188b3f39ccaf7892916126c29935aac2aa612dff17051c021686ea46f0b"
+    },
+    {
+      "proposal_id": "ac3af957-4611-4995-8ff5-4fa0be44d0a8",
+      "block": "20277564",
+      "block_hash": "0x44cb452b19f7c567de9c78773ac9e521fa19cc4570941dd67b80b6ce00263e51"
+    },
+    {
+      "proposal_id": "c0523e6d-ee70-4567-b804-745cd30c9e7a",
+      "block": "20277564",
+      "block_hash": "0x44cb452b19f7c567de9c78773ac9e521fa19cc4570941dd67b80b6ce00263e51"
+    },
+    {
+      "proposal_id": "d29a8227-da76-4a40-80a8-33300e1c4f04",
+      "block": "20277565",
+      "block_hash": "0xf7fc710e29b8654e508d31452d701420bd920b6c8c4a149825f4cd207785beb4"
+    },
+    {
+      "proposal_id": "d79ac7ba-c040-4e5e-9ee5-ebdbfa1d5a21",
+      "block": "20277566",
+      "block_hash": "0x6b84a7cbd59c3c7faebed6714b88444c253c530e51ec8775c1237e7ea7ea28bf"
+    },
+    {
+      "proposal_id": "onchain-1",
+      "block": "20277567",
+      "block_hash": "0x348874dcced16854ae1dd23ae586af421227d5e5247d23a812747c510dbb5c75"
+    },
+    {
+      "proposal_id": "onchain-10",
+      "block": "20277567",
+      "block_hash": "0x348874dcced16854ae1dd23ae586af421227d5e5247d23a812747c510dbb5c75"
+    },
+    {
+      "proposal_id": "onchain-11",
+      "block": "20277569",
+      "block_hash": "0x6f607850cb69510de250d58c15ce64bac29e0c0065c855e15a7f3acbfb4e6d6e"
+    },
+    {
+      "proposal_id": "onchain-12",
+      "block": "20277570",
+      "block_hash": "0x7ea0e46ae39ddcf02e0d88959a89be61196f608266947903a4ede376afd69313"
+    },
+    {
+      "proposal_id": "onchain-13",
+      "block": "20277572",
+      "block_hash": "0x46e37504a111daf3d7dfca5a52cfdb42ed70c30c32a61e7ccb0ba6200b7a1630"
+    },
+    {
+      "proposal_id": "onchain-14",
+      "block": "20277572",
+      "block_hash": "0x46e37504a111daf3d7dfca5a52cfdb42ed70c30c32a61e7ccb0ba6200b7a1630"
+    },
+    {
+      "proposal_id": "onchain-15",
+      "block": "20277574",
+      "block_hash": "0x6fd3311343df24dab31fe33555fef0b44f65fe6260ccc1bf37925a2a362a26b5"
+    },
+    {
+      "proposal_id": "onchain-16",
+      "block": "20277574",
+      "block_hash": "0x6fd3311343df24dab31fe33555fef0b44f65fe6260ccc1bf37925a2a362a26b5"
+    },
+    {
+      "proposal_id": "onchain-17",
+      "block": "20277575",
+      "block_hash": "0x47c58c38a16517477894fb32af27210a084c1e01ce9ad4b56b52623502d0cf3a"
+    },
+    {
+      "proposal_id": "onchain-18",
+      "block": "20277576",
+      "block_hash": "0x38c2dfb4be2d995f9b682396144d0391e1f864925ba11941a7ab0fdae18d2bf6"
+    },
+    {
+      "proposal_id": "onchain-19",
+      "block": "20277578",
+      "block_hash": "0xb9bb0e21e3a91eb47545b03281219eeb7cbb608b9f5c7d0e568982c5e71e0595"
+    },
+    {
+      "proposal_id": "onchain-2",
+      "block": "20277578",
+      "block_hash": "0xb9bb0e21e3a91eb47545b03281219eeb7cbb608b9f5c7d0e568982c5e71e0595"
+    },
+    {
+      "proposal_id": "onchain-20",
+      "block": "20277580",
+      "block_hash": "0x17c616a8726a0730b09dfacc2d26da4cd31c44b12d37b3e2b63d86bee87ad738"
+    },
+    {
+      "proposal_id": "onchain-21",
+      "block": "20277581",
+      "block_hash": "0xacec9b6fd4a9a053adc9306d48a74dad722df28831d21c8f2f0826691ea66a84"
+    },
+    {
+      "proposal_id": "onchain-22",
+      "block": "20277581",
+      "block_hash": "0xacec9b6fd4a9a053adc9306d48a74dad722df28831d21c8f2f0826691ea66a84"
+    },
+    {
+      "proposal_id": "onchain-23",
+      "block": "20277582",
+      "block_hash": "0xc02abd75c395229b9ae89353b2d235e34e1cdd7d1133f5850a26a2b46b6689df"
+    },
+    {
+      "proposal_id": "onchain-24",
+      "block": "20277583",
+      "block_hash": "0x22a0fc525319d070ce48798efb368d0fcb1d674b775752c5e46af957da771c52"
+    },
+    {
+      "proposal_id": "onchain-25",
+      "block": "20277585",
+      "block_hash": "0x66f43fd78e90e2bb81aa9e0cda8f4d86c4063009931c1dad2411e0aa30190c04"
+    },
+    {
+      "proposal_id": "onchain-26",
+      "block": "20277585",
+      "block_hash": "0x66f43fd78e90e2bb81aa9e0cda8f4d86c4063009931c1dad2411e0aa30190c04"
+    },
+    {
+      "proposal_id": "onchain-28",
+      "block": "20277586",
+      "block_hash": "0xaf39e0a3bc8555e97ecdd965255244a7474cbc1f0771a06a5c787dd7828b242f"
+    },
+    {
+      "proposal_id": "onchain-3",
+      "block": "20277587",
+      "block_hash": "0xb739af5fa20d39d83c058b25e390fb370ab6aadbdbc21a0165096be0a621d67b"
+    },
+    {
+      "proposal_id": "onchain-31",
+      "block": "20277588",
+      "block_hash": "0x7e8b4b1fc690e39e85d3c831ca67a2ca3f443b3b73d90d478d7cfc2b3e746a50"
+    },
+    {
+      "proposal_id": "onchain-35",
+      "block": "20277590",
+      "block_hash": "0x50c48eb97e79f2fc984233ac852a38d4b782a743581a9b069bbb190d72b33462"
+    },
+    {
+      "proposal_id": "onchain-33",
+      "block": "20277590",
+      "block_hash": "0x50c48eb97e79f2fc984233ac852a38d4b782a743581a9b069bbb190d72b33462"
+    },
+    {
+      "proposal_id": "onchain-4",
+      "block": "20277591",
+      "block_hash": "0x2052ff4a0dd792c52f9872cd2e7c07f06992d2aef477b8138689a9b3b7fcc79b"
+    },
+    {
+      "proposal_id": "onchain-5",
+      "block": "20277591",
+      "block_hash": "0x2052ff4a0dd792c52f9872cd2e7c07f06992d2aef477b8138689a9b3b7fcc79b"
+    },
+    {
+      "proposal_id": "onchain-6",
+      "block": "20277594",
+      "block_hash": "0xcfb42b0354138d94e56da8492e0c769a85738b459232bd24321486656cb00627"
+    },
+    {
+      "proposal_id": "onchain-7",
+      "block": "20277594",
+      "block_hash": "0xcfb42b0354138d94e56da8492e0c769a85738b459232bd24321486656cb00627"
+    },
+    {
+      "proposal_id": "onchain-8",
+      "block": "20277596",
+      "block_hash": "0x9bb1348c4216d6851d4dc5a11b4456beeb1f394f86fce4a53b686023c5deae26"
+    },
+    {
+      "proposal_id": "onchain-9",
+      "block": "20277597",
+      "block_hash": "0xed16ca8b7dca76a59d229d45d4bcfd288501f7a8f05143bf173344e9207ed4f3"
+    }
+  ],
+  "statuses": [
+    "verified",
+    "mismatched",
+    "unverified",
+    "unavailable"
+  ],
+  "failure_policy": "Keep unavailable and thrown exceptions separately; no selective retries or exclusions.",
+  "compiled_sha256": "ac12f081d09808d034064d154d72bfd9aecd77337e67317d9074e0b909fc3b06",
+  "compiled_source_match": true
+}

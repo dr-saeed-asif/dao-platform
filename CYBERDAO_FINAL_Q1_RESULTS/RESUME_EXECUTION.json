@@ -1,0 +1,13 @@
+{
+  "preflight": "passed; unchanged source/configuration/model digests/table fingerprints",
+  "requested_missing": 623,
+  "original_failures": 38,
+  "original_records": 1239,
+  "command": ".venv/Scripts/python.exe -X utf8 E:/DAO/cyber-chain-work/dao-platform/CYBERDAO_FINAL_Q1_RESULTS/scripts/run_live_remaining.py",
+  "runner_pid": 29564,
+  "classification": "exploratory; human adjudication pending",
+  "policy": "append only; never retry recorded failures",
+  "offline_finalizer_pid": 4760,
+  "runner_parent_pid": 5412,
+  "observed_utc": "2026-11-12T07:03:13.9321131Z"
+}

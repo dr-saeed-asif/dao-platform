@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-10T14:45:48.980431+00:00",
+  "source_commit": "7dd447cd0c6e4b65536ab6d531ff5ac77284c177",
+  "verifier_source_uncommitted": true,
+  "working_tree": "working-tree.txt",
+  "verifier_source_patch": "run-01/source.patch",
+  "build_check": {
+    "compiled_source_equal": true,
+    "config": "build-check-01/configuration.json"
+  },
+  "regression": {
+    "passed": 50,
+    "failed": 0
+  },
+  "pin": {
+    "number": "20325000",
+    "hash": "0x7f5d787551a2ead47dee151434eb86b4fbe08e6d33d2a02c7e4ecf05138cb7be"
+  },
+  "rpc_origin_sha256": "620b21105cbb90a021c34878420f293e237544c3fabd5f20b1bca40491484a69",
+  "rpc_endpoint_sha256": "7bdc78f57a70ae05d39de4d37659d7b6996807a5b406fa8497b62ee2479305a8",
+  "chain_id": "1212",
+  "contract": "0x51b43885899bd0301c2beea89addc9d876145d21",
+  "sql_snapshot": {
+    "snapshot": "260110:260110:",
+    "observed_at": "2026-11-10T14:40:59.025Z"
+  },
+  "preflight_utc": "2026-11-10T14:40:58.994Z",
+  "created_utc": "2026-11-10T14:40:54.629Z",
+  "finished_utc": "2026-11-10T14:45:45.893Z",
+  "expected": 39,
+  "attempted": 39,
+  "outcomes": {
+    "verified": 0,
+    "mismatched": 1,
+    "unverified": 38,
+    "unavailable": 0,
+    "failed": 0,
+    "not_attempted": 0
+  },
+  "runtime": {
+    "node": "v22.14.0",
+    "python": "3.13.2"
+  },
+  "configuration": "run-01/configuration.json",
+  "commands_and_policy": "experiment_1_methodology.md",
+  "private_evidence": "SQL snapshot, raw responses and runner CSV retained locally and Git-ignored",
+  "files": {
+    "apps/api/dist/ai/blockchain-verification.service.js": {
+      "sha256": "ac12f081d09808d034064d154d72bfd9aecd77337e67317d9074e0b909fc3b06",
+      "bytes": 29630
+    },
+    "apps/api/src/ai/__tests__/blockchain-verification.spec.ts": {
+      "sha256": "695f7f6c94d5d8a874215b1ab7a8677e9df759da8f46c52cccbca34a458cbb63",
+      "bytes": 20283
+    },
+    "apps/api/src/ai/blockchain-verification.service.ts": {
+      "sha256": "dd7502c6857bf6dcccdcbaa81176cdf074683273cca0e7b6727c9f8f97d53346",
+      "bytes": 27112
+    },
+    "package-lock.json": {
+      "sha256": "2a1d7e20164a700d1b6929b635ce8cd13b240c9591a9ddc7d4aea8351bfb3b2f",
+      "bytes": 729068
+    },
+    "research_evaluation/experiment_1_m4/.gitignore": {
+      "sha256": "daa888288eb9caa756c447e7f4e7f65b34e213df84e7200cd5b8c6879d407b48",
+      "bytes": 58
+    },
+    "research_evaluation/experiment_1_m4/analyze.py": {
+      "sha256": "77963149ee3d434729617b93e0ebba416bd2110401cbafc24ca3ba48493c2bbd",
+      "bytes": 13217
+    },
+    "research_evaluation/experiment_1_m4/build-check-01/configuration.json": {
+      "sha256": "95d6e804a751ec56f98e6186ca84beb8f0fbe6330d98a5c746a903db054474b0",
+      "bytes": 8917
+    },
+    "research_evaluation/experiment_1_m4/build-check-01/source.patch": {
+      "sha256": "c0f64bfb1c1bd99861e51cd195331106e2c5d59303b1c594d2a86f7dd55c8d36",
+      "bytes": 17049
+    },
+    "research_evaluation/experiment_1_m4/check-assignment.cjs": {
+      "sha256": "56e7409255b5cf7cba45322e30ebab01791b9c9a93b86cb94e2de12eacd0404d",
+      "bytes": 3589
+    },
+    "research_evaluation/experiment_1_m4/experiment_1_methodology.md": {
+      "sha256": "c4e88532ee74375807ae2da089486c9d4eda4b68fe53ba6be5b9e235f1ce191d",
+      "bytes": 4452
+    },
+    "research_evaluation/experiment_1_m4/manifest.py": {
+      "sha256": "ff4779f04bed108f84d19047e2b81cdbbcd13753171f166c4efdb22679f446d2",
+      "bytes": 3893
+    },
+    "research_evaluation/experiment_1_m4/reconcile.cjs": {
+      "sha256": "0864cd96e02bd05da38b73611301d2104eb694bd5fe61603617da4a16c8e626c",
+      "bytes": 13800
+    },
+    "research_evaluation/experiment_1_m4/reconciliation_39_comparison.md": {
+      "sha256": "25f79f810ac33ba87e57f86a4dce80f21311ca4e28677d82bcb480cf8ae93ab9",
+      "bytes": 3102
+    },
+    "research_evaluation/experiment_1_m4/reconciliation_39_results.csv": {
+      "sha256": "b0c2db31ad33c5c565b3ed4e651e0ae4c6922df69c8c17b6a9ee3e0fcdd1e6af",
+      "bytes": 23979
+    },
+    "research_evaluation/experiment_1_m4/reconciliation_39_summary.json": {
+      "sha256": "537f4dcc380bbc764ff33cce4cc9c80fe4d1114e77622b01317963520fec349d",
+      "bytes": 7619
+    },
+    "research_evaluation/experiment_1_m4/run-01/assignment_followup.json": {
+      "sha256": "c9e3a39077deac70edbc22cedc3a96ef0811ccc0633890e88edfd5b06f5c1fa4",
+      "bytes": 876
+    },
+    "research_evaluation/experiment_1_m4/run-01/configuration.json": {
+      "sha256": "be6cca054a797be85a2b9d6d5f45b4ce82e318f991efa27eadff1a73f768a675",
+      "bytes": 9268
+    },
+    "research_evaluation/experiment_1_m4/run-01/metrics.json": {
+      "sha256": "d672444a0ded45d334bb1c84d988584814fcffcbbbc0a3c18898390fe103eb75",
+      "bytes": 158
+    },
+    "research_evaluation/experiment_1_m4/run-01/outcomes.csv": {
+      "sha256": "99459f2cb13003d437e3e46beb99d22e6d4a354c0112404233ff4cfa53ad9052",
+      "bytes": 18307
+    },
+    "research_evaluation/experiment_1_m4/run-01/preflight.json": {
+      "sha256": "66f224c40ec0d2c08bb946992401802bafe1df774c9883dcd412cf04246f04b4",
+      "bytes": 1373
+    },
+    "research_evaluation/experiment_1_m4/run-01/responses.jsonl": {
+      "sha256": "d26055f7c102f446861e959a4c5ec66f05df1ed3d5a929db0bac016f4cef0b55",
+      "bytes": 624868
+    },
+    "research_evaluation/experiment_1_m4/run-01/source.patch": {
+      "sha256": "c0f64bfb1c1bd99861e51cd195331106e2c5d59303b1c594d2a86f7dd55c8d36",
+      "bytes": 17049
+    },
+    "research_evaluation/experiment_1_m4/run-01/sql_evidence.local.json": {
+      "sha256": "19d18e79d266c39a478bd5767ae1eedec5f80fd2dc49b27165c7a9a1ad4d89be",
+      "bytes": 525932
+    },
+    "research_evaluation/experiment_1_m4/run-local.cjs": {
+      "sha256": "bca72164d6ce19e0833f690acacb1a49abd941123278f43865a802a06a4b3a66",
+      "bytes": 689
+    },
+    "research_evaluation/experiment_1_m4/working-tree.txt": {
+      "sha256": "626c16f2b7efa968c1ad5ba052e93fa789f822c83ec259e014ae42ed73e78301",
+      "bytes": 965
+    },
+    "research_evaluation/failure_diagnosis/ASSIGNMENT_WRITE_PATH.md": {
+      "sha256": "ea2cc64221fa2b6ed5a93884b41bc146bd29bb3cc1401d3a883c36b777ca2d31",
+      "bytes": 4835
+    },
+    "research_evaluation/springer/reconciliation.jsonl": {
+      "sha256": "3d228dd4402117532dc3eeecdabecf63e212cc6665d139efde74108b6d9edf2e",
+      "bytes": 44457
+    },
+    "research_evaluation/springer/reconciliation_config.json": {
+      "sha256": "dc955775195021be71ea4e9985a271f03e194d1a244e362e29f7e04728f3c369",
+      "bytes": 1687
+    },
+    "research_evaluation/springer_followup/reconciliation.jsonl": {
+      "sha256": "918a35ca867457854ef84763d08022401a78990144e5fa06207b3d41ed4065fd",
+      "bytes": 8796
+    },
+    "research_evaluation/springer_history/assignment_history.json": {
+      "sha256": "45790a1d87fd44c8a9c0ddf86a67390c676597c23143b3850e39cefb8a2ca9a1",
+      "bytes": 1129
+    },
+    "research_evaluation/springer_history/failed_assignment_receipt.json": {
+      "sha256": "104b304daf548a67720d9729076ed74e826ab01b150512fd6801e0291a1e5927",
+      "bytes": 666
+    }
+  }
+}

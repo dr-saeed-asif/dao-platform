@@ -164,6 +164,7 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
 
   async findConfirmedVotes(fromBlock: bigint, toBlock: bigint) {
     const events = await this.contract.findEvents(fromBlock, toBlock);
+    if (!Array.isArray(events)) throw new Error("Invalid governance event response.");
     const hashes = new Set(
       events
         .filter((event) => event.name === "VoteCast")
@@ -186,6 +187,7 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       throw new Error("RPC chain ID does not match configured chain ID.");
     }
     const events = await this.contract.findEvents(fromBlock, toBlock);
+    if (!Array.isArray(events)) throw new Error("Invalid governance event response.");
     const receipts = new Map<string, TransactionReceipt>();
     const blocks = new Map<string, BlockData>();
     const result: GovernanceChainEvent[] = [];
@@ -195,7 +197,7 @@ export class CyberChainGovernanceGateway implements GovernanceChainGateway {
       let receipt = receipts.get(hash);
       if (!receipt) {
         const found = await Web3RPCClient.getInstance().getTransactionReceipt(hash, { rpcURL: this.options.rpcURL });
-        if (!found || found.status !== 1n) continue;
+        if (!found || found.status !== 1n) throw new Error("Governance event lacks a successful receipt.");
         receipt = found;
         receipts.set(hash, found);
       }

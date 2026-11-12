@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "observations": 4,
+  "model_generations_attempted": 4,
+  "model_failures_retained": 1,
+  "gold_loaded_by_runner": false,
+  "human_reviewed": false,
+  "note": "Technical adapter validation; no answer-quality release criterion"
+}

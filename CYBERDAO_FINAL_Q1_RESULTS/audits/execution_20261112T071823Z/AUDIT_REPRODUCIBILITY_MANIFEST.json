@@ -1,0 +1,170 @@
+{
+  "created_utc": "2026-11-12T07:19:54.543040+00:00",
+  "classification": "Exploratory point-in-time partial campaign audit",
+  "git_base_commits": {
+    "dao": "7dd447cd0c6e4b65536ab6d531ff5ac77284c177",
+    "ai": "9c27c8a57dfe44abccc43f0cf509ca33e3e0ac79"
+  },
+  "executed_source_identity": "live_campaign/configuration.json source hashes; HEAD alone does not identify uncommitted executed source",
+  "cohort_sha256": "8ee57c7670f38bf27a1461c5e3051886463f896b9dd46446e8bab53b8e192508",
+  "gold_sha256": "d4d407a1bf66e8c249af4bd6a08fa80db9da2bd48186d6a4962967a3e1555a09",
+  "files": {
+    "ABLATION_EXPERIMENT_RESULTS.csv": {
+      "sha256": "c4636cbee9017b67159ed0cc26104c2a5c29da63bfb3fef466560fc696c34c1c",
+      "bytes": 130598
+    },
+    "ABLATION_RESULTS.csv": {
+      "sha256": "e5cc6d54c8a5d18c7d0b40baf007252433295c2db638c9191c19f144c28ea744",
+      "bytes": 1165
+    },
+    "aggregate_metrics.json": {
+      "sha256": "4b2b1c27341e53f896064cd699df78a9e6a9a48281832fb400211444bac56eb2",
+      "bytes": 17120
+    },
+    "analysis_status.json": {
+      "sha256": "e0bc480324b0d1eb389273c56565c866ee95cfb7959b48cde605b17c3c1ced26",
+      "bytes": 413
+    },
+    "AUDIT_HARNESS_NOTE.md": {
+      "sha256": "63fd563fe6278f153b7f04ee1162dbe3f54cddcfb64129a7dad9890337624e0a",
+      "bytes": 497
+    },
+    "AUDIT_STATUS.json": {
+      "sha256": "041336040e60fa12a0722446142a9715d12204f3ef2e57f2ea161d4624912b3c",
+      "bytes": 2029
+    },
+    "B1_B4_COMPARISON.csv": {
+      "sha256": "9b9f90df09b51f11fbd40d0412df3e04d96f6c38abce22a8005e0b1c0512c078",
+      "bytes": 1387
+    },
+    "b1_configuration.json": {
+      "sha256": "1b5a2b04ad6e89ff48e6c8f4e9ad6119ac66043794bdc17e33ca890e6c09276c",
+      "bytes": 837
+    },
+    "b2_configuration.json": {
+      "sha256": "216f9c93dacce690a4d037755b68cd479996e62817dd534be84412f307ad7976",
+      "bytes": 1960
+    },
+    "BASELINE_B1_B4_RESULTS.csv": {
+      "sha256": "fda0d7bc8456565d291e38bb53014dcd37dbbb2476d54c0a0ce37600185241fe",
+      "bytes": 2510
+    },
+    "BENCHMARK_EXECUTION_AUDIT.md": {
+      "sha256": "72b2c75d9a912c749647adb5199a44e63c5155b1aea61b1e78ec178e732a73ba",
+      "bytes": 3800
+    },
+    "evidence/new_exposure_ledger.json": {
+      "sha256": "6176c9e68089cfaee6a8c2baf83a1e7302565858fd95c56e6847c480f69c93a8",
+      "bytes": 54903
+    },
+    "FAILED_ATTEMPTS.csv": {
+      "sha256": "a40d3e5eba4b684419048b2d7b3dc894203f4c5a7dba168a5e6cc74757e9740c",
+      "bytes": 3316
+    },
+    "FAILURE_ANALYSIS.md": {
+      "sha256": "606bd8b779697e38badf44c83e323cc2bf858525e683ae703d51ce4513486b44",
+      "bytes": 1520
+    },
+    "failure_taxonomy.json": {
+      "sha256": "4f8d66cd88922d2047667fde29b87a48a6d752bc66358856c5801a5aea7f6ec7",
+      "bytes": 2831
+    },
+    "figures/ablation.pdf": {
+      "sha256": "c6153124ab99a9c55b31e94e89d016fa2f7d98662f48d31d4150cf29ffd4d19b",
+      "bytes": 16061
+    },
+    "figures/ablation.png": {
+      "sha256": "87d860324d667664218b107298cac086dbd0533590e718729fc36011d8d4cd30",
+      "bytes": 99321
+    },
+    "figures/ablation.svg": {
+      "sha256": "dcf98625e5d2ec6f4f8068b0746cb581aac6667540793b8ce608d45f6f6124e8",
+      "bytes": 29225
+    },
+    "figures/baseline.pdf": {
+      "sha256": "b4cff0a028011ceba9d89452007e619fe078d9d915c4cb84f84f495a8c6e5757",
+      "bytes": 16113
+    },
+    "figures/baseline.png": {
+      "sha256": "d5d6ae6a67e7264deaedfd79a39ae3fa5fe1371a925b1a38bca3abfb2a54e898",
+      "bytes": 93168
+    },
+    "figures/baseline.svg": {
+      "sha256": "f5c98e1db97b8f447b178522484c71b23f15ddd4d64f351673e7b08c9f19b64f",
+      "bytes": 27511
+    },
+    "HUMAN_ANNOTATION_CHECK.json": {
+      "sha256": "e59eb16514eade167a0cca363638edf2e9f9410947fff1a8ff2dd543a92c5ca7",
+      "bytes": 517
+    },
+    "live_campaign/configuration.json": {
+      "sha256": "438175e4fd2af1a9cbb99cb0ae790f2b6e42aac642dcdb174c7ee057ee7492d6",
+      "bytes": 18768
+    },
+    "live_campaign/raw/development_smoke.jsonl": {
+      "sha256": "4c4f652a4df4f2782a8ce737ca4321ebab1b1a11f2b6bd99de4ba74dec34418d",
+      "bytes": 1497673
+    },
+    "live_campaign/raw/direct_sql.jsonl": {
+      "sha256": "f15c8fa47fb5652efb80dacbce28dd49b936dc2e596102938a3d3179a82bf141",
+      "bytes": 16004
+    },
+    "live_campaign/raw/responses.jsonl": {
+      "sha256": "7e286102c847fece49cc39d08e9248509f70b3d15fe8c90af800aaa8471bb309",
+      "bytes": 41056283
+    },
+    "MANIFEST_VERIFICATION.json": {
+      "sha256": "f4e3984adf79295a25577c8618aaa0b2126dc2ca92a4f2d7f761c3a8d2e1774e",
+      "bytes": 3060
+    },
+    "MISSING_ATTEMPTS.csv": {
+      "sha256": "475ca9b6d2210f42741f5f543a9352a37e50d8b5087ca925aa995f64f58b225b",
+      "bytes": 17793
+    },
+    "paired_descriptive_comparisons.json": {
+      "sha256": "cd0528adad98e952f8ad6087af52d3dcd78e0d3c653a8270ece5de4347a0969e",
+      "bytes": 3687
+    },
+    "per_question_automatic_metrics.csv": {
+      "sha256": "2f7e6b64d022b2417696f97bf37f669b8c484e5cd52862a7386da4b5a27af400",
+      "bytes": 280707
+    },
+    "raw/automatic_claim_diagnostics.json": {
+      "sha256": "7a7cfa8d4bbad6591a375ad00e7a9a017e72ef5a17fb5acccb2d00b70c75974f",
+      "bytes": 1755014
+    },
+    "raw/frozen_rag_responses.jsonl": {
+      "sha256": "8db20e29fb9e99247713e0f79dba86847a9e20be107a3198dae865822119dd6b",
+      "bytes": 3519991
+    },
+    "raw/frozen_rag_smoke.jsonl": {
+      "sha256": "9edf3be500fa3a4b3588c6e80cb0bd493950436212a5960841db4c7a981995a3",
+      "bytes": 45928
+    },
+    "raw/responses.jsonl": {
+      "sha256": "0843f3a7582bc9770c342cb2ebafe9037d987506eb92dfaeda94b0d5855e23a2",
+      "bytes": 686231
+    },
+    "scripts/analyze.py": {
+      "sha256": "01d561729eb99d9580f304b8d315cb35c9bc441adfd73e826ba2cc8434905bdf",
+      "bytes": 15307
+    },
+    "scripts/audit_saved_execution.py": {
+      "sha256": "835b16e6f7f2501bd8722185d4ab5a6d3df7872ca89b5c574d40460f2abe5cc5",
+      "bytes": 18284
+    },
+    "scripts/check_transport.py": {
+      "sha256": "88a07189b3d160fb7c495056e2e7929a63dde4473e1ccb9f5dc34ece0c5729a3",
+      "bytes": 2487
+    },
+    "STATISTICAL_ANALYSIS.md": {
+      "sha256": "fe493c04978f78eee8c14aa8eb55769027eb6b3d727dfd64b6e6bc4598be97f4",
+      "bytes": 1702
+    },
+    "transport_configuration_audit.json": {
+      "sha256": "7be78451dba1d16544cc761284111853e7a1f3ab61d4b2ca60f03f3c3c3e2a50",
+      "bytes": 18836
+    }
+  },
+  "excluded": "This manifest itself; no private environment files copied"
+}

@@ -7,7 +7,6 @@ import { ConfigService } from '@nestjs/config';
 import {
   checkPostgresConnection,
   createPostgresDatabase,
-  migratePostgresToLatest,
   PostgresDatabase,
 } from '@dao-platform/database';
 
@@ -17,7 +16,9 @@ export class PostgresService implements OnApplicationShutdown, OnModuleInit {
   private initialization: Promise<void> | undefined;
 
   constructor(config: ConfigService) {
-    this.database = createPostgresDatabase(config.getOrThrow<string>('POSTGRES_URL'));
+    this.database = createPostgresDatabase(
+      config.getOrThrow<string>('POSTGRES_URL'),
+    );
   }
 
   async checkConnection(): Promise<void> {
@@ -25,7 +26,13 @@ export class PostgresService implements OnApplicationShutdown, OnModuleInit {
   }
 
   async initialize(): Promise<void> {
-    this.initialization ??= migratePostgresToLatest(this.database);
+    // Schema changes run out of process with the migration owner's credentials.
+    this.initialization ??= this.database
+      .selectFrom('proposals')
+      .select('id')
+      .limit(0)
+      .execute()
+      .then(() => undefined);
     await this.initialization;
   }
 

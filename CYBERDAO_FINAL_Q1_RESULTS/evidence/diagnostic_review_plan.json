@@ -1,0 +1,17 @@
+{
+  "ids": [
+    "PDF-007",
+    "PDF-008",
+    "CX-001",
+    "MS-003"
+  ],
+  "conditions": [
+    "B2"
+  ],
+  "models": [
+    "qwen3:0.6b",
+    "qwen3:4b-instruct"
+  ],
+  "sampling": "Purposive canonical budget, arithmetic and source-boundary targets declared before inspecting these new outputs; not a random accuracy sample",
+  "reviewer": "Research assistant AI; unblinded to provisional source gold; not independent human"
+}

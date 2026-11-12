@@ -1,0 +1,53 @@
+{
+  "n": 2,
+  "matrix": {
+    "supported": {
+      "accept": 0,
+      "reject": 0,
+      "abstain": 1
+    },
+    "contradicted": {
+      "accept": 0,
+      "reject": 0,
+      "abstain": 1
+    },
+    "unsupported": {
+      "accept": 0,
+      "reject": 0,
+      "abstain": 0
+    },
+    "ambiguous": {
+      "accept": 0,
+      "reject": 0,
+      "abstain": 0
+    },
+    "closed_world": {
+      "accept": 0,
+      "reject": 0,
+      "abstain": 0
+    }
+  },
+  "predictions": [
+    {
+      "id": "CH-019",
+      "gold": "supported",
+      "status": "unchecked_cited"
+    },
+    {
+      "id": "CH-020",
+      "gold": "contradicted",
+      "status": "unchecked_cited"
+    }
+  ],
+  "binary_acceptance": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "tn": 1
+  },
+  "precision": null,
+  "recall": 0.0,
+  "false_positive_rate": 0.0,
+  "false_negative_rate": 1.0,
+  "abstention_rate": 1.0
+}

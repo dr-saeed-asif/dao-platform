@@ -1,4 +1,5 @@
 import type { PreparedTransaction } from "@/lib/api/types";
+import { signInAssistant, walletSessionHeaders } from "@/lib/api/assistant";
 import type { WalletAdapter, WalletConnection } from "./types";
 
 interface CyberChainWalletProvider {
@@ -19,11 +20,20 @@ declare global {
 
 const chainId = Number(process.env.NEXT_PUBLIC_CYBERCHAIN_CHAIN_ID ?? 1212);
 
-async function rpc<T>(method: string, params: unknown[]): Promise<T> {
+async function rpc<T>(
+  method: string,
+  params: unknown[],
+  authorization: Record<string, string> = {},
+): Promise<T> {
   const response = await fetch("/api/cyberchain/rpc", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ method, params }),
+    headers: { "Content-Type": "application/json", ...authorization },
+    body: JSON.stringify({
+      jsonrpc: "2.0",
+      id: crypto.randomUUID(),
+      method,
+      params,
+    }),
   });
   const body = (await response.json()) as {
     result?: T;
@@ -81,17 +91,24 @@ export class CyberChainWalletAdapter implements WalletAdapter {
         `Select the assigned CyberChain wallet ${transaction.from}.`,
       );
     }
-    const role = await rpc<string>("eth_getRole", [transaction.from, "latest"]);
+    await signInAssistant(transaction.from, "cyberchain");
+    const authorization = walletSessionHeaders(transaction.from);
+    const role = await rpc<string>(
+      "eth_getRole",
+      [transaction.from, "latest"],
+      authorization,
+    );
     if (role.toUpperCase() === "READER") {
       throw new Error(
         `CyberChain account ${transaction.from} has network role READER. A CyberChain ROLE_MANAGER or ADMIN must grant it WRITER before it can submit votes.`,
       );
     }
-    const nonce = await rpc<string>("eth_getTransactionCount", [
-      transaction.from,
-      "pending",
-    ]);
-    const rpcChainId = await rpc<string>("eth_chainId", []);
+    const nonce = await rpc<string>(
+      "eth_getTransactionCount",
+      [transaction.from, "pending"],
+      authorization,
+    );
+    const rpcChainId = await rpc<string>("eth_chainId", [], authorization);
     const preparedChainId = BigInt(transaction.chainId);
     if (BigInt(rpcChainId) !== preparedChainId) {
       throw new Error(
@@ -112,9 +129,11 @@ export class CyberChainWalletAdapter implements WalletAdapter {
         "CyberChain Wallet did not return a signed transaction. Unlock the wallet and approve the signing request.",
       );
     }
-    return rpc<string>("eth_sendRawTransaction", [
-      signed.startsWith("0x") ? signed : `0x${signed}`,
-    ]);
+    return rpc<string>(
+      "eth_sendRawTransaction",
+      [signed.startsWith("0x") ? signed : `0x${signed}`],
+      walletSessionHeaders(transaction.from),
+    );
   }
 
   async disconnect(): Promise<void> {

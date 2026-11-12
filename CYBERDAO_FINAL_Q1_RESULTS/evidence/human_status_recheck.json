@@ -1,0 +1,12 @@
+{
+  "reviewer_A": {
+    "rows": 226,
+    "nonempty_decisions": 0,
+    "sha256": "2ea4e7aa09d4d0208f2091c0068f43498dcd2ffeeedcd65cc4b0d8c9d3873881"
+  },
+  "reviewer_B": {
+    "rows": 226,
+    "nonempty_decisions": 0,
+    "sha256": "2ea4e7aa09d4d0208f2091c0068f43498dcd2ffeeedcd65cc4b0d8c9d3873881"
+  }
+}

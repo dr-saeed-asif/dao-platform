@@ -31,6 +31,7 @@ export const envValidationSchema = Joi.object({
   ARTEFACT_MAX_FILE_SIZE: Joi.number().integer().min(1).default(10_485_760),
   ARTEFACT_MAX_FILES: Joi.number().integer().min(1).max(20).default(10),
   CYBERCHAIN_RPC_URL: Joi.string().allow('').optional(),
+  RPC_WEB_ORIGIN: Joi.string().uri({ scheme: ['http', 'https'] }).optional(),
   CYBERCHAIN_CHAIN_ID: Joi.string().allow('').optional(),
   GOVERNANCE_CONTRACT_ADDRESS: Joi.string().allow('').optional(),
   GOVERNANCE_DEPLOYMENT_BLOCK: Joi.number().integer().min(0).default(0),

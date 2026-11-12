@@ -1,0 +1,2 @@
+// Explicit version used by the NestJS governance indexer writer.
+export const GOVERNANCE_INDEXER_VERSION = 'v1';

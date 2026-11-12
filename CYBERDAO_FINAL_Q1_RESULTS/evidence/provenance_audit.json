@@ -1,0 +1,694 @@
+{
+  "previous_hashes_checked": 169,
+  "previous_hashes_matching": 169,
+  "reserved_n": 133,
+  "categories": {
+    "DB": 26,
+    "PDF": 35,
+    "MS": 27,
+    "CX": 28,
+    "UN": 17
+  },
+  "reserved_sha256": "8ee57c7670f38bf27a1461c5e3051886463f896b9dd46446e8bab53b8e192508",
+  "source_snapshot_sha256": "c859fd8154861342705343f5eb8b4528985d8fbf3a432e272f924ccbe90cdeaa",
+  "all_reserved_ids_have_provisional_gold": true,
+  "exact_question_duplicates": 0,
+  "hash_checks": [
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/ABLATION_RESULTS.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/AI_BASELINE_RESULTS.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/AI_SCIENTIFIC_EVALUATION_REPORT.md",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/annotation/proposed_gold_reference.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/annotation/reviewer_A/CLAIM_ANNOTATION_TEMPLATE.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/annotation/reviewer_A/HUMAN_ANNOTATION_TEMPLATE.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/annotation/reviewer_B/CLAIM_ANNOTATION_TEMPLATE.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/annotation/reviewer_B/HUMAN_ANNOTATION_TEMPLATE.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/assess_reviews.py",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/audit_counts.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/benchmark-harness-tests.log",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/CLAIM_VERIFICATION_RESULTS.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/CYBERDAO_BENCHMARK_AUDIT.md",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/execution_status.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/FAILURE_ANALYSIS.md",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/hardware-cpu.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/hardware-gpu.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/HUMAN_ADJUDICATION_GUIDE.md",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/HUMAN_AGREEMENT_RESULTS.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/HUMAN_ANNOTATION_TEMPLATE.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/item_registry.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/model_inventory.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/prepare.py",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/PROPOSED_CONDITIONS.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/README.md",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/RESERVED_133_IDS.csv",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/review-completeness.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/review-statistics-tests.log",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/seal.py",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/STATISTICAL_ANALYSIS.md",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/ai_independent_part2_v1/test_assess_reviews.py",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/evidence/snapshot.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/ground_truth.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/quality.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/questions.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/questions_verified.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/review/independent_audit/independent_adjudication.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/versions/claude_adjudicated_v3/accepted_gold.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/versions/claude_adjudicated_v3/accepted_questions.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/versions/claude_adjudicated_v3/confirmatory_gold.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/versions/claude_adjudicated_v3/confirmatory_questions.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/versions/claude_adjudicated_v3/exposed_exclusions.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/versions/claude_adjudicated_v3/readiness_counts.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/benchmark_200/versions/claude_adjudicated_v3/revisions_pending.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/exploratory_frozen_v1/responses.jsonl",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/exploratory_frozen_v2/exposure_ledger.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/exploratory_frozen_v2/responses.jsonl",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/exploratory_frozen_v2/summary.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/failure_diagnosis/budget_claim_errors.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/failure_diagnosis/excluded_attempt_taxonomy.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/failure_diagnosis/FAILURE_ANALYSIS.md",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/failure_diagnosis/full_workflow_taxonomy.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/FINAL_PAPER_EVIDENCE.md",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/harness_validation_v1/BENCHMARK_READINESS.md",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/harness_validation_v1/config.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/harness_validation_v1/EXPLORATORY_PROTOCOL_AFTER_CANDIDATE.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/harness_validation_v1/READINESS_DECISION.json",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/harness_validation_v1/responses.jsonl",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/harness_validation_v1/run_smoke.py",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/harness_validation_v1/single_agent_candidate_v3.py",
+      "matches": true
+    },
+    {
+      "path": "research_evaluation/harness_validation_v1/smoke_metrics.csv",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/blockchain.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/budgets.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/catalog.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/claims.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/domain_guard.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/models.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/observability.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/planning.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/progressive.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/quality.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/question_planner.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/requirements.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/routing.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/scheduling.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/synthesis.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/tools.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/agents/workflow.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/answer_result.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/answers.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/context.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/current_evidence.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/dao_proposals.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/document_chunk.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/document_status.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/document_status_data.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/document_sync.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/documents.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/evidence.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/profiles.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/proposal_facts.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/proposal_scope.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/proposals.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/governance/retrieval.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/__main__.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/chunk_result.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/chunk_tool.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/context.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/dao_count_tool.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/dao_proposal_tools_impl.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/document_status_result.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/document_tools.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/errors.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/evidence_results.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/evidence_search_results.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/evidence_status_result.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/evidence_status_tool.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/evidence_tool.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/extended_tools.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/governance_results.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/governance_tools.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/governance_tools_impl.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/health_tool.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/index_status_tool.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/inputs.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/lifespan.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/main.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/proposal_read_tools.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/proposal_tools.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/results.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/server.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/time_result.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/time_window.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/time_window_tool.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/tool_helpers.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/tool_registry.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/mcp/validation.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/answers.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/compatibility.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/embedding_profiles.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/evidence_files.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/indexing.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/legacy_index_result.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/legacy_indexing.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/legacy_pdf_chunking.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/legacy_pdf_policy.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/legacy_pdf_processing.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/legacy_profile.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/ollama_answers.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/ollama_chat.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/ollama_client.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/ollama_embedding.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/ollama_prompt.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/pdf_chunking.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/pdf_extraction.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/pdf_policy.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/proposal_search.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/search.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/service.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/store.py",
+      "matches": true
+    },
+    {
+      "path": "ai/app/business/rag/uploads.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/client.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/export.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/m7/development-results.json",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/m7/development.json",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/m7/evaluate.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/metrics.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/runner.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/schema.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/scoring.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/stats.py",
+      "matches": true
+    },
+    {
+      "path": "ai/benchmark/workloads.py",
+      "matches": true
+    },
+    {
+      "path": "ai/requirements.txt",
+      "matches": true
+    },
+    {
+      "path": "ai/tests/test_benchmark_harness.py",
+      "matches": true
+    }
+  ]
+}

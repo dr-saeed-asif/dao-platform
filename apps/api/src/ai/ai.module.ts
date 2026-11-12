@@ -7,10 +7,16 @@ import { AssistantController } from './assistant.controller';
 import { AssistantAuthService } from './assistant-auth.service';
 import { BlockchainVerificationService } from './blockchain-verification.service';
 import { BlockchainVerificationController } from './blockchain-verification.controller';
+import { RpcController } from '../rpc/rpc.controller';
 
 @Module({
   imports: [ConfigModule, PostgresModule, ResearchModule],
-  controllers: [AiController, AssistantController, BlockchainVerificationController],
+  controllers: [
+    AiController,
+    AssistantController,
+    BlockchainVerificationController,
+    RpcController,
+  ],
   providers: [AssistantAuthService, BlockchainVerificationService],
 })
 export class AiModule {}

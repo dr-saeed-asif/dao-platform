@@ -47,7 +47,11 @@ const proposalCreated: GovernanceChainEvent = {
   endsAt: 1786147200,
 };
 
-function createSubject(persistenceError?: Error) {
+function createSubject(persistenceError?: Error, scenario?: {
+  latest: bigint;
+  range: bigint;
+  read: (start: bigint, end: bigint) => Promise<GovernanceChainEvent[]>;
+}) {
   const calls: string[] = [];
   const saved: GovernanceChainEvent[] = [];
   const proposalsByChainId = new Map<string, Proposal>();
@@ -55,6 +59,7 @@ function createSubject(persistenceError?: Error) {
   let draft: Proposal | null = null;
   let checkpoint: bigint | null = null;
   let recordedTransactions = 0;
+  const finalizations: unknown[][] = [];
 
   const proposals: ProposalRepository = {
     async findById() { return null; },
@@ -71,6 +76,7 @@ function createSubject(persistenceError?: Error) {
       if (draft) proposalsByChainId.set(onChainId, draft);
     },
     async updateStatus() {},
+    async recordFinalization(...args) { finalizations.push(args); },
   };
   const governanceEvents: GovernanceEventRepository = {
     async saveGovernanceEvent(event) {
@@ -99,15 +105,15 @@ function createSubject(persistenceError?: Error) {
       async listForProposal() { return []; },
     },
     {
-      async getLastProcessedBlock() { return null; },
+      async getLastProcessedBlock() { return checkpoint; },
       async setLastProcessedBlock(_name, block) {
         calls.push("checkpoint");
         checkpoint = block;
       },
     },
     {
-      async latestBlockNumber() { return 100n; },
-      async findGovernanceEvents() { return [chainEvent]; },
+      async latestBlockNumber() { return scenario?.latest ?? 100n; },
+      async findGovernanceEvents(start, end) { return scenario ? scenario.read(start, end) : [chainEvent]; },
       async prepareCreateProposal() { throw new Error("Not used."); },
       async publishProposal() { throw new Error("Not used."); },
       async assignMembers() { throw new Error("Not used."); },
@@ -121,13 +127,14 @@ function createSubject(persistenceError?: Error) {
     governanceEvents,
     { async runInTransaction<T>(work: () => Promise<T>) { return work(); } },
     100n,
-    1000n,
+    scenario?.range ?? 1000n,
   );
 
   return {
     subject,
     calls,
     saved,
+    finalizations,
     checkpoint: () => checkpoint,
     proposal: () => proposalsByChainId.get("7"),
     chainEvent,
@@ -190,4 +197,62 @@ describe("SyncGovernanceUseCase", () => {
     assert.equal(result.mode, "FULL");
     assert.equal(fixture.proposal()?.id, "onchain-7");
   });
+});
+
+
+const finalized: GovernanceChainEvent = {
+  ...proposalCreated, evidenceId: "final", eventName: "ProposalFinalized",
+  kind: "PROPOSAL_FINALIZED", onChainProposalId: "7", logIndex: 1,
+  winningOption: 0, tied: false, totalVotes: 0,
+};
+
+it("orders out-of-order events, deduplicates them, and preserves a zero winner and false tie", async () => {
+  const fixture = createSubject(undefined, { latest: 100n, range: 1n,
+    read: async () => [finalized, proposalCreated, finalized] });
+  const result = await fixture.subject.execute(true);
+  assert.equal(result.indexed.finalizations, 1);
+  assert.equal(result.coverage, "scan_progress");
+  assert.deepEqual(fixture.saved.map(e => e.kind), ["PROPOSAL_CREATED", "PROPOSAL_FINALIZED"]);
+  assert.deepEqual(fixture.finalizations, [["onchain-7", 0, false, "0", new Date(1785542400000)]]);
+  assert.equal(fixture.checkpoint(), 100n);
+});
+
+it("rejects incomplete finalization without advancing the checkpoint or inventing a result", async () => {
+  const fixture = createSubject(undefined, { latest: 101n, range: 1n, read: async start =>
+    start === 100n ? [proposalCreated] : [{ ...finalized, blockNumber: "101", tied: undefined } as unknown as GovernanceChainEvent] });
+  await assert.rejects(fixture.subject.execute(true), /Incomplete or invalid proposal finalization/);
+  assert.equal(fixture.checkpoint(), 100n);
+  assert.deepEqual(fixture.finalizations, []);
+});
+
+it("resumes at the first failed page and reports only scan progress for an empty page", async () => {
+  let interrupted = true;
+  const requests: bigint[] = [];
+  const fixture = createSubject(undefined, { latest: 102n, range: 1n, read: async start => {
+    requests.push(start);
+    if (start === 101n && interrupted) throw new Error("timeout");
+    return start === 100n ? [proposalCreated] : [];
+  }});
+  await assert.rejects(fixture.subject.execute(true), /timeout/);
+  assert.equal(fixture.checkpoint(), 100n);
+  interrupted = false;
+  const result = await fixture.subject.execute(false);
+  assert.deepEqual(requests, [100n, 101n, 101n, 102n]);
+  assert.equal(fixture.checkpoint(), 102n);
+  assert.equal(result.coverage, "scan_progress");
+});
+
+it("rejects an event outside its requested page and does not skip the range", async () => {
+  const fixture = createSubject(undefined, { latest: 100n, range: 1n,
+    read: async () => [{ ...proposalCreated, blockNumber: "101" }] });
+  await assert.rejects(fixture.subject.execute(true), /outside requested range/);
+  assert.equal(fixture.checkpoint(), null);
+});
+
+it("an omitted event in a successful empty page is classified only as scan progress", async () => {
+  const fixture = createSubject(undefined, { latest: 100n, range: 1n, read: async () => [] });
+  const result = await fixture.subject.execute(true);
+  assert.equal(result.indexed.proposals, 0);
+  assert.equal(result.coverage, "scan_progress");
+  assert.equal(fixture.checkpoint(), 100n);
 });

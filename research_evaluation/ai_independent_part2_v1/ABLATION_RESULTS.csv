@@ -1,0 +1,1 @@
+run_key,question_id,condition,extractor_enabled,gate_enabled,answer_origin,answer,human_correctness,latency_ms,input_tokens,output_tokens,execution_error,evidence_snapshot_sha256

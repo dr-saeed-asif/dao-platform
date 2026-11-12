@@ -19,6 +19,9 @@ export interface ProposalRepository {
     status: ProposalStatus,
     updatedAt: Date,
   ): Promise<void>;
+  recordFinalization?(
+    id: string, winningOption: number, tied: boolean, totalVotes: string, finalizedAt: Date,
+  ): Promise<void>;
   updateStatus(
     id: string,
     status: ProposalStatus,

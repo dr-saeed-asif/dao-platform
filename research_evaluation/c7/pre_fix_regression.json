@@ -1,0 +1,12 @@
+{
+  "command": "npm test --workspace=api -- --runInBand blockchain-verification.spec.ts",
+  "base_commit": "7dd447cd0c6e4b65536ab6d531ff5ac77284c177",
+  "stage": "C7 tests added before production correction",
+  "tests": 13, "passed": 11, "failed": 2,
+  "failures": [
+    {"case": "unknown SQL status", "expected": "unverified", "actual": "mismatched"},
+    {"case": "missing event totals after lagging checkpoint", "expected": "unverified", "actual": "mismatched"}
+  ],
+  "fixture_only": true,
+  "note": "npm ignored runInBand in workspace invocation; subsequent commands use the Jest binary directly. A later edit attempt used the wrong working directory and made no production change; the same two tests still failed."
+}

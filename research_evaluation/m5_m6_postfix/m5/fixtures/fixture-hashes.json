@@ -1,0 +1,18 @@
+{
+  "corrupt.pdf": {
+    "sha256": "65bd3ead6142ebe5ec28c71a1a7ef3da37c5ea51524554812d11fbcd80be772a",
+    "size": 34
+  },
+  "one-byte.pdf": {
+    "sha256": "388e26046119ffe0201350681872779c92abe7424ba982f92e9ca2b4267a0965",
+    "size": 749
+  },
+  "original.pdf": {
+    "sha256": "492fc30f6b870be5d7a26123863e425109de2bacae973d0dad8b8b360311d711",
+    "size": 749
+  },
+  "other.pdf": {
+    "sha256": "a54b052650471613b01903a1b240aeba8d01d76d21b42e5c1926781fcaffa2fc",
+    "size": 739
+  }
+}

@@ -2,3 +2,4 @@
 /research_evaluation/** -text
 /research_evaluation/**/*.pdf binary
 /research_evaluation/**/*.png binary
+/CYBERDAO_FINAL_Q1_RESULTS/** -text

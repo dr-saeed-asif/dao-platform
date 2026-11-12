@@ -1,0 +1,210 @@
+{
+  "version": "m7-development-v1",
+  "label_provenance": "Synthetic author-labelled regression fixtures used in development. No independent adjudication.",
+  "cases": [
+    {
+      "id": "equipment",
+      "answer": "Equipment budget is EUR 2,000 [D1].",
+      "gold": "supported",
+      "expected_status": "supported",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "answer": "Travel budget is EUR 500 [D1].",
+      "gold": "supported",
+      "expected_status": "supported",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "swapped-equipment",
+      "answer": "Equipment budget is EUR 500 [D1].",
+      "gold": "contradicted",
+      "expected_status": "contradicts_known_value",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "swapped-travel",
+      "answer": "Travel budget is EUR 2,000 [D1].",
+      "gold": "contradicted",
+      "expected_status": "contradicts_known_value",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "shared-amount",
+      "answer": "Venue budget is EUR 500 [D1].",
+      "gold": "supported",
+      "expected_status": "supported",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "currency",
+      "answer": "Travel budget is USD 500 [D1].",
+      "gold": "contradicted",
+      "expected_status": "contradicts_known_value",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "missing-amount",
+      "answer": "Travel budget is EUR 600 [D1].",
+      "gold": "unsupported",
+      "expected_status": "unsupported_number",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "missing-label",
+      "answer": "EUR 500 [D1].",
+      "gold": "ambiguous",
+      "expected_status": "unchecked_cited",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "ambiguous-layout",
+      "answer": "Travel budget is EUR 500 [D1].",
+      "gold": "ambiguous",
+      "expected_status": "unchecked_cited",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Travel Equipment EUR 500 EUR 2,000"
+        }
+      ]
+    },
+    {
+      "id": "conflicting-rows",
+      "answer": "Travel budget is EUR 500 [D1].",
+      "gold": "ambiguous",
+      "expected_status": "unchecked_cited",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Travel: EUR 500; Travel: EUR 700"
+        }
+      ]
+    },
+    {
+      "id": "unsupported-field",
+      "answer": "Insurance budget is EUR 500 [D1].",
+      "gold": "unsupported",
+      "expected_status": "unchecked_cited",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "unit",
+      "answer": "Training duration is 5 days [D1].",
+      "gold": "contradicted",
+      "expected_status": "contradicts_known_value",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Training duration: 5 weeks"
+        }
+      ]
+    },
+    {
+      "id": "closed-expenses",
+      "answer": "No additional expenses exist [D1].",
+      "gold": "closed_world",
+      "expected_status": "unchecked_cited",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "closed-categories",
+      "answer": "There are no other budget categories [D1].",
+      "gold": "closed_world",
+      "expected_status": "unchecked_cited",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "closed-information",
+      "answer": "No other information is available [D1].",
+      "gold": "closed_world",
+      "expected_status": "unchecked_cited",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "closed-proposals",
+      "answer": "All proposals have been verified [D1].",
+      "gold": "closed_world",
+      "expected_status": "unchecked_cited",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Equipment: EUR 2,000; Travel: EUR 500; Venue: EUR 500."
+        }
+      ]
+    },
+    {
+      "id": "closed-numeric",
+      "answer": "Only 500 proposals exist [D1].",
+      "gold": "closed_world",
+      "expected_status": "unchecked_cited",
+      "sources": [
+        {
+          "source_id": "D1",
+          "content": "Proposals: 500"
+        }
+      ]
+    }
+  ]
+}

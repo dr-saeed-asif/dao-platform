@@ -1,0 +1,234 @@
+diff --git a/app/business/governance/document_chunk.py b/app/business/governance/document_chunk.py
+index 3700d40..c9972f8 100644
+--- a/app/business/governance/document_chunk.py
++++ b/app/business/governance/document_chunk.py
+@@ -6,12 +6,13 @@ from .document_status import (DocumentNotIndexed, DocumentNotVerified,
+ from .evidence import normalized_sha256, verified_pdf_record
+ from .document_status_data import safe_filename
+ from .proposal_scope import proposal_scope
++from .current_evidence import current_evidence
+ 
+ 
+ async def proposal_document_chunk(pool, dao_id: str, proposal_id: str,
+                                   evidence_id: str, chunk_key: str) -> dict:
+     artifact = await linked_artifact(pool, dao_id, proposal_id, evidence_id)
+-    valid, reason = verified_pdf_record(artifact)
++    valid, reason = await current_evidence(pool, artifact)
+     if not valid:
+         raise DocumentNotVerified(reason)
+     scope = await proposal_scope(pool, dao_id, proposal_id)
+diff --git a/app/business/governance/document_status.py b/app/business/governance/document_status.py
+index 215a296..9998cf2 100644
+--- a/app/business/governance/document_status.py
++++ b/app/business/governance/document_status.py
+@@ -4,6 +4,7 @@ from app.model.database.document_index_status import indexes_for_hash
+ from app.model.database.proposal_artefacts import linked_artefacts
+ from .evidence import normalized_sha256, verified_pdf_record
+ from .proposals import get_proposal
++from .current_evidence import current_evidence
+ from .document_status_data import document_status_row, excluded_document
+ 
+ 
+@@ -26,7 +27,7 @@ class ProposalChunkNotFound(ValueError):
+ async def document_index_status(pool, dao_id: str, proposal_id: str,
+                                 evidence_id: str) -> dict:
+     artifact = await linked_artifact(pool, dao_id, proposal_id, evidence_id)
+-    valid, reason = verified_pdf_record(artifact)
++    valid, reason = await current_evidence(pool, artifact)
+     if not valid:
+         return excluded_document(dao_id, proposal_id, artifact, reason)
+     indexes = await indexes_for_hash(pool, normalized_sha256(artifact["computed_hash"]))
+@@ -47,7 +48,7 @@ async def proposal_evidence_status(pool, dao_id: str, proposal_id: str) -> dict:
+ 
+ 
+ async def _status_for_artifact(pool, dao_id: str, proposal_id: str, artifact: dict) -> dict:
+-    valid, reason = verified_pdf_record(artifact)
++    valid, reason = await current_evidence(pool, artifact)
+     if not valid:
+         return excluded_document(dao_id, proposal_id, artifact, reason)
+     rows = await indexes_for_hash(pool, normalized_sha256(artifact["computed_hash"]))
+diff --git a/app/business/governance/proposal_scope.py b/app/business/governance/proposal_scope.py
+index c8968e1..953a475 100644
+--- a/app/business/governance/proposal_scope.py
++++ b/app/business/governance/proposal_scope.py
+@@ -4,13 +4,22 @@ from app.model.config.settings import settings
+ from app.model.database.proposal_artefacts import linked_artefacts
+ from app.model.database.proposal_indexes import ready_proposal_indexes
+ from app.business.rag.ollama_client import Ollama
++from .current_evidence import current_evidence
+ from .profiles import candidate_hashes, profiles_by_document, select_profile
+ 
+ 
+ async def proposal_scope(pool, dao_id: str, proposal_id: str,
+                          profile_id: str | None = None, *, ollama=None) -> dict:
+     artefacts = await linked_artefacts(pool, dao_id, proposal_id)
+-    candidates, excluded = candidate_hashes(artefacts)
++    current, invalid = [], []
++    for record in artefacts:
++        valid, reason = await current_evidence(pool, record)
++        if valid:
++            current.append(record)
++        else:
++            invalid.append({"evidence_id": record["evidence_id"], "reason": reason})
++    candidates, excluded = candidate_hashes(current)
++    excluded.extend(invalid)
+     if not candidates:
+         return _empty_scope(profile_id, excluded)
+     digest = await (ollama or Ollama()).digest()
+diff --git a/app/business/rag/store.py b/app/business/rag/store.py
+index 06cc2c4..2ec7eab 100644
+--- a/app/business/rag/store.py
++++ b/app/business/rag/store.py
+@@ -7,6 +7,9 @@ from app.business.rag.ollama_client import Ollama
+ from app.model.database.chunks import search_chunks
+ from app.model.database.documents import list_documents
+ from app.model.database.indexes import ready_index
++from app.model.database.proposal_artefacts import artefacts_for_hash
++from app.business.governance.current_evidence import current_evidence
++from app.business.governance.evidence import normalized_sha256
+ 
+ 
+ class RagStore:
+@@ -18,7 +21,14 @@ class RagStore:
+         return await index_document(self.pool, self.ollama, path)
+ 
+     async def ready_index(self, digest: str) -> tuple[int, str]:
+-        return await ready_index(self.pool, digest, await self.ollama.digest())
++        normalized = normalized_sha256(digest)
++        if normalized is None:
++            raise ValueError("Invalid document digest.")
++        for record in await artefacts_for_hash(self.pool, normalized):
++            valid, reason = await current_evidence(self.pool, record)
++            if not valid:
++                raise ValueError(reason)
++        return await ready_index(self.pool, normalized, await self.ollama.digest())
+ 
+     async def search(self, index_id: int, vector: list[float], top_k: int) -> list[dict]:
+         return await search_chunks(self.pool, index_id, vector, top_k)
+diff --git a/app/model/database/document_chunk.py b/app/model/database/document_chunk.py
+index 040c4cb..02fc6ef 100644
+--- a/app/model/database/document_chunk.py
++++ b/app/model/database/document_chunk.py
+@@ -9,6 +9,7 @@ async def chunk_for_indexes(pool: AsyncConnectionPool, index_ids: list[int],
+         return None
+     query = """SELECT c.chunk_key, c.page_number, c.chunk_index, c.content
+         FROM ai.indexed_chunks AS c
++        JOIN ai.document_indexes i ON i.id=c.document_index_id AND i.status='READY'
+         WHERE c.document_index_id = ANY(%s::bigint[]) AND c.chunk_key = %s
+         ORDER BY c.document_index_id LIMIT 1"""
+     async with pool.connection(timeout=5) as conn:
+diff --git a/app/model/database/proposal_artefacts.py b/app/model/database/proposal_artefacts.py
+index f4b912d..33989d0 100644
+--- a/app/model/database/proposal_artefacts.py
++++ b/app/model/database/proposal_artefacts.py
+@@ -22,3 +22,17 @@ async def linked_artefacts(pool: AsyncConnectionPool, dao_id: str,
+               "expected_hash", "hash_algorithm", "verification_status",
+               "lifecycle_state", "media_type", "byte_size")
+     return [dict(zip(fields, row, strict=True)) for row in rows]
++
++
++async def artefacts_for_hash(pool: AsyncConnectionPool, digest: str) -> list[dict]:
++    query = """SELECT id, evidence_id, filename, storage_key, computed_hash, expected_hash,
++        hash_algorithm, verification_status, lifecycle_state, media_type, byte_size
++        FROM public.artefacts WHERE lower(computed_hash)=ANY(%s::text[])"""
++    async with pool.connection(timeout=5) as conn:
++        async with conn.cursor() as cur:
++            await cur.execute(query, ([digest, "0x" + digest, "sha256:" + digest],))
++            rows = await cur.fetchall()
++    fields = ("artefact_id", "evidence_id", "filename", "storage_key", "computed_hash",
++              "expected_hash", "hash_algorithm", "verification_status",
++              "lifecycle_state", "media_type", "byte_size")
++    return [dict(zip(fields, row, strict=True)) for row in rows]
+diff --git a/app/model/database/proposal_chunks.py b/app/model/database/proposal_chunks.py
+index b53337d..a2a02dc 100644
+--- a/app/model/database/proposal_chunks.py
++++ b/app/model/database/proposal_chunks.py
+@@ -16,6 +16,7 @@ async def search_proposal_chunks(pool: AsyncConnectionPool, index_ids: list[int]
+             row_number() OVER (PARTITION BY document_index_id
+                 ORDER BY embedding <=> %s::public.vector) AS document_rank
+         FROM ai.indexed_chunks WHERE document_index_id = ANY(%s::bigint[])
++        AND document_index_id IN (SELECT id FROM ai.document_indexes WHERE status='READY')
+         AND embedding_dimension = 1024)
+         SELECT document_index_id, chunk_key, page_number, chunk_index, content, score
+         FROM ranked WHERE document_rank <= %s
+@@ -25,6 +26,7 @@ async def search_proposal_chunks(pool: AsyncConnectionPool, index_ids: list[int]
+         query = """SELECT document_index_id, chunk_key, page_number, chunk_index,
+         content, 1 - (embedding <=> %s::public.vector) AS score
+         FROM ai.indexed_chunks WHERE document_index_id = ANY(%s::bigint[])
++        AND document_index_id IN (SELECT id FROM ai.document_indexes WHERE status='READY')
+         AND embedding_dimension = 1024 ORDER BY embedding <=> %s::public.vector
+         LIMIT %s"""
+         params = (literal, index_ids, literal, top_k)
+diff --git a/tests/mcp_adapter_fakes.py b/tests/mcp_adapter_fakes.py
+index e2bec6a..0740d3b 100644
+--- a/tests/mcp_adapter_fakes.py
++++ b/tests/mcp_adapter_fakes.py
+@@ -22,6 +22,13 @@ def install_adapter_fakes(test_case, *, links=None, chunks=None, proposal_row=No
+         start_patch(test_case, target, side_effect=proposal)
+     start_patch(test_case, "app.business.governance.proposals.is_proposal_member",
+                 new_callable=AsyncMock, return_value=True)
++    # Protocol tests isolate MCP adapters. Dedicated integrity tests use real files.
++    from app.business.governance.evidence import verified_pdf_record
++    for target in ("app.business.governance.proposal_scope.current_evidence",
++                   "app.business.governance.document_chunk.current_evidence",
++                   "app.business.governance.document_status.current_evidence"):
++        start_patch(test_case, target, new=AsyncMock(
++            side_effect=lambda pool, record: verified_pdf_record(record)))
+     rows = [artefact()] if links is None else links
+     for target in ("app.business.governance.documents.linked_artefacts",
+                    "app.business.governance.proposal_scope.linked_artefacts",
+diff --git a/tests/test_governance_document_chunk.py b/tests/test_governance_document_chunk.py
+index 13ab0b4..35a76a7 100644
+--- a/tests/test_governance_document_chunk.py
++++ b/tests/test_governance_document_chunk.py
+@@ -9,6 +9,13 @@ from governance_fakes import artefact
+ 
+ 
+ class DocumentChunkScopeTests(unittest.IsolatedAsyncioTestCase):
++    def setUp(self):
++        # Scope adapter unit fixture; filesystem integrity has dedicated regressions.
++        self.integrity = patch("app.business.governance.document_chunk.current_evidence",
++                               new=AsyncMock(return_value=(True, "fixture")))
++        self.integrity.start()
++        self.addCleanup(self.integrity.stop)
++
+     async def test_verified_link_selects_only_its_hash_index(self):
+         with patch("app.business.governance.document_status.get_proposal", new=AsyncMock()), \
+              patch("app.business.governance.document_status.linked_artefacts",
+diff --git a/tests/test_governance_document_status.py b/tests/test_governance_document_status.py
+index 1ababaa..89dd096 100644
+--- a/tests/test_governance_document_status.py
++++ b/tests/test_governance_document_status.py
+@@ -9,6 +9,13 @@ from governance_fakes import artefact
+ 
+ 
+ class DocumentStatusTests(unittest.IsolatedAsyncioTestCase):
++    def setUp(self):
++        from app.business.governance.evidence import verified_pdf_record
++        self.integrity = patch("app.business.governance.document_status.current_evidence",
++                               new=AsyncMock(side_effect=lambda pool, record: verified_pdf_record(record)))
++        self.integrity.start()
++        self.addCleanup(self.integrity.stop)
++
+     async def test_verified_link_returns_metadata_from_matching_hash(self):
+         indexes = [{"index_id": 8, "profile_id": "p1", "status": "READY",
+             "started_at": None, "completed_at": None, "model": "embed-v1",
+diff --git a/tests/test_governance_proposal_scope.py b/tests/test_governance_proposal_scope.py
+index 676b2ab..31a432e 100644
+--- a/tests/test_governance_proposal_scope.py
++++ b/tests/test_governance_proposal_scope.py
+@@ -8,6 +8,14 @@ from governance_fakes import SHA, OTHER_SHA, Pool, artefact
+ 
+ 
+ class ProposalScopeTests(unittest.IsolatedAsyncioTestCase):
++    def setUp(self):
++        # These tests isolate profile selection; byte integrity is tested with real files.
++        from app.business.governance.evidence import verified_pdf_record
++        self.integrity = patch("app.business.governance.proposal_scope.current_evidence",
++                               new=AsyncMock(side_effect=lambda pool, record: verified_pdf_record(record)))
++        self.integrity.start()
++        self.addCleanup(self.integrity.stop)
++
+     async def test_scope_uses_linked_hashes_and_one_requested_profile(self):
+         valid, unlinked = artefact(), artefact(evidence_id="other", computed_hash=OTHER_SHA,
+             expected_hash="sha256:" + OTHER_SHA, lifecycle_state="STAGED")

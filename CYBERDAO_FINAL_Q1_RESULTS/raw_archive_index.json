@@ -1,0 +1,29 @@
+[
+  {
+    "raw_path": "raw/responses.jsonl",
+    "raw_sha256": "0843f3a7582bc9770c342cb2ebafe9037d987506eb92dfaeda94b0d5855e23a2",
+    "raw_bytes": 686231,
+    "gzip_path": "raw/responses.jsonl.gz",
+    "gzip_sha256": "5c48941f621cee1276f482deb1ccda34d3226673e14f201b8461ea9d4b95f3e2",
+    "gzip_bytes": 64786,
+    "byte_identical_roundtrip": true
+  },
+  {
+    "raw_path": "raw/frozen_rag_responses.jsonl",
+    "raw_sha256": "8db20e29fb9e99247713e0f79dba86847a9e20be107a3198dae865822119dd6b",
+    "raw_bytes": 3519991,
+    "gzip_path": "raw/frozen_rag_responses.jsonl.gz",
+    "gzip_sha256": "ba1e8ff4f4c8704d736eb4d109e58efb1cd4f926ecd63661886b5bc17ddef4a7",
+    "gzip_bytes": 245600,
+    "byte_identical_roundtrip": true
+  },
+  {
+    "raw_path": "live_campaign/raw/responses.jsonl",
+    "raw_sha256": "2b63d4dd355661a9c345fc11165b8b6546adfe6674e346d216f0cc3859f00a18",
+    "raw_bytes": 81530168,
+    "gzip_path": "live_campaign/raw/responses.jsonl.gz",
+    "gzip_sha256": "35eaaf55db33c3dbc689de327e8c7e18f2778f221630f3fd01eba4169cd42b47",
+    "gzip_bytes": 15952373,
+    "byte_identical_roundtrip": true
+  }
+]

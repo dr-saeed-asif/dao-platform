@@ -1,0 +1,35 @@
+{
+  "recorded_utc": "2026-11-10T14:04:12.165747+00:00",
+  "nest_suites": 5,
+  "nest_passed": 117,
+  "nest_failed": 0,
+  "verifier_final_passed": 50,
+  "verifier_final_failed": 0,
+  "http_fixture_cases_in_verifier": 3,
+  "blockchain_adapter_passed": 19,
+  "blockchain_adapter_failed": 0,
+  "api_build_exit": 0,
+  "production_typecheck_exit": 0,
+  "full_typecheck_exit": 2,
+  "full_typecheck_existing_errors": 2,
+  "eslint_exit": 1,
+  "prettier_check_exit": 0,
+  "c7_live_reconciliation_attempts": 0,
+  "final_preparation": "prepared-v3",
+  "baseline_comparison": [
+    {
+      "file": "blockchain-verification.spec.ts",
+      "baseline_errors": 37,
+      "final_errors": 64,
+      "baseline_warnings": 5,
+      "final_warnings": 13
+    },
+    {
+      "file": "blockchain-verification.service.ts",
+      "baseline_errors": 50,
+      "final_errors": 47,
+      "baseline_warnings": 17,
+      "final_warnings": 22
+    }
+  ]
+}

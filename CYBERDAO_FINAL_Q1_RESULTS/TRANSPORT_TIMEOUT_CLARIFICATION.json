@@ -1,0 +1,17 @@
+{
+  "source_constants": {
+    "B1_B2_B3_chat": "httpx timeout=100 seconds; per-operation, not total-request deadline",
+    "full_workflow_question_planner": "httpx timeout=85 seconds inside asyncio timeout=90 seconds",
+    "full_workflow_rag_chat": "connect=5,read=300,write=30,pool=5 seconds; additionally subject to workflow/case budgets",
+    "shared_outer_case_deadline_seconds": 200,
+    "qualification": "Model decoding normalized, but internal HTTP deadlines were not made identical; no timeout was changed for continuation"
+  },
+  "executed_source_hashes": {
+    "app/business/agents/question_planner.py": "545c53a2f62f3fc9f7b5e3f9980b0220ed0d96f314b27fb14f133a1873928c77",
+    "app/business/rag/ollama_client.py": "7ee94d3e62c560f3cbfe8d91f4c4b536a3a8fbed4bf56507ab271c28d9cc88c4",
+    "app/business/rag/ollama_chat.py": "2bc75e792e3528dd719fe340805b3cc01fbe2176140175916cf6bfd905ec0e86",
+    "app/business/agents/synthesis.py": "e46733130bd75092b4851b1e6e9deccc17e7dc196507bbc346f370f2895e117a"
+  },
+  "checker_limitation": "Payload/model checks do not establish identical per-stage HTTP timeouts; the former single100s metadata was inaccurate for Full",
+  "production_and_frozen_generation_unchanged": true
+}

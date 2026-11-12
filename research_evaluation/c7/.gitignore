@@ -1,0 +1,2 @@
+# Live SQL evidence may include private governance data. Retain locally.
+**/*.local.json

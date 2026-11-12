@@ -1,0 +1,10 @@
+[
+  {
+    "Name": "NVIDIA GeForce RTX 3050 4GB Laptop GPU",
+    "DriverVersion": "32.0.16.1091"
+  },
+  {
+    "Name": "Intel(R) Graphics",
+    "DriverVersion": "32.0.101.6556"
+  }
+]

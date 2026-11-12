@@ -1,0 +1,15 @@
+{
+  "approved": false,
+  "status": "NO-GO",
+  "accepted_cohort_n": 0,
+  "reserved_screening_n": 133,
+  "blockers": [
+    "Independent human review provenance pending",
+    "133 reserved candidates await disposition",
+    "No accepted unexposed human-reviewed cohort",
+    "Evidence freeze incomplete, mismatched or not coordinator approved",
+    "Current baseline and ablation validation pending",
+    "Coordinator manual release absent or not bound to current artifact hashes"
+  ],
+  "human_provenance_limit": "Coordinator attestation is a human trust input; software cannot authenticate expertise or independence"
+}

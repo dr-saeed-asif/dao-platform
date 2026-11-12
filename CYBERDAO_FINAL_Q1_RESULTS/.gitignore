@@ -1,0 +1,8 @@
+__pycache__/
+.runtime/
+.plot_deps/
+raw/ollama-server*.log
+live_campaign/raw/resume-ollama*.log
+live_campaign/raw/resume-finalizer*.log
+
+live_campaign/raw/responses.jsonl

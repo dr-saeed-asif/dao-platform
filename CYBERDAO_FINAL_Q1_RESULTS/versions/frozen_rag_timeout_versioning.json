@@ -1,0 +1,7 @@
+{
+  "smoke_runner_sha256": "fe27453fd6112f9697e9cb1201f987c8dc55b31083c973c1ffba4c705d5e91ce",
+  "original_source_reconstructed_exactly": true,
+  "smoke_http_timeout_seconds": 180,
+  "benchmark_http_timeout_seconds": 100,
+  "reason": "Normalize generation HTTP deadline to B1 before first benchmark RAG attempt. Development smoke already underway; model prompts and decoding unchanged; all outputs retained."
+}

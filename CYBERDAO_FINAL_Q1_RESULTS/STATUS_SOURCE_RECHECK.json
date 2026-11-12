@@ -1,0 +1,13 @@
+{
+  "changed_source_modules": [],
+  "human_template_status": {
+    "reviewer_A": {
+      "rows": 226,
+      "completed_decisions": 0
+    },
+    "reviewer_B": {
+      "rows": 226,
+      "completed_decisions": 0
+    }
+  }
+}

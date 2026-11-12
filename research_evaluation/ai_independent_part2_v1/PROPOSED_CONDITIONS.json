@@ -1,0 +1,111 @@
+{
+  "version": "independent-part2-proposed-v1",
+  "status": "blocked before confirmatory inference",
+  "approval": "Human review, adjudication, evidence freeze and adapter validation pending",
+  "historical_definitions": {
+    "B1": "LLM without retrieval",
+    "B2": "One agent with tools",
+    "B3": "Full orchestration without selected citation/currency/numeric checks",
+    "B4": "Full historical workflow"
+  },
+  "new_definitions": {
+    "B1": {
+      "description": "LLM only",
+      "implementation_status": "Existing research path requires current-version validation",
+      "tools": false,
+      "retrieval": false
+    },
+    "B2": {
+      "description": "Plain document RAG",
+      "implementation_status": "New adapter not implemented or validated in this task",
+      "tools": false,
+      "retrieval": "Same authorized PDF index/profile and retrieval settings"
+    },
+    "B3": {
+      "description": "Single LLM agent with equivalent permitted tools, without full orchestration, extractor or claim gate",
+      "implementation_status": "Existing research candidate is a starting point; current security and access validation pending"
+    },
+    "B4": {
+      "description": "Full current CyberDAO",
+      "implementation_status": "Production implementation exists; source/version/evidence and experimental integration validation pending"
+    },
+    "A1": {
+      "description": "Current full workflow with deterministic extractors disabled",
+      "implementation_status": "Research hook not implemented; complete extractor callgraph and attribution audit required"
+    },
+    "A2": {
+      "description": "Current full workflow with only claim-verification gate disabled",
+      "implementation_status": "Research hook not implemented; structural citation/reference guards remain in scope and require explicit parity tests"
+    },
+    "A3": {
+      "description": "Current full workflow with extractors and gate enabled",
+      "implementation_status": "Same configuration as B4; do not duplicate observations for a cosmetic condition alias"
+    },
+    "A4": {
+      "description": "Whitelisted direct SQL facts for objectively mapped database questions",
+      "implementation_status": "Research adapter not implemented; non-database items recorded as inapplicable, not silently removed"
+    }
+  },
+  "primary_candidate_model": {
+    "name": "qwen3:4b-instruct",
+    "available_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+  },
+  "larger_optional_model": {
+    "name": "qwen3:8b",
+    "available_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "status": "available by inventory only, inference not tested"
+  },
+  "common_decoding_proposal": {
+    "temperature": 0,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "num_ctx": 8192,
+    "num_predict": 1536,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repeat_penalty": 1.1
+  },
+  "execution_order": "Paired blocked randomization by question and repeat; fixed randomization seed 73; preserve actual timestamps/cache state",
+  "repeats": "Question is the sampling unit. Repeated generations remain dependent. Fixed seeds do not prove deterministic output.",
+  "primary_correctness": "Human-scored first predeclared repeat seed 42; additional seeds for sensitivity only",
+  "statistics": "Wilson descriptive proportions; paired question bootstrap with condition/repeat groups kept together; exact McNemar only if dependence and sample-size assumptions are justified. Shared proposal/document dependence must be reported.",
+  "tool_parity": "For tool-equipped conditions, identical authenticated wallet/DAO/proposal permissions and identical source snapshots. No operator-header impersonation or shared-token-only identity fallback.",
+  "freeze_requirements": [
+    "Adjudicated question IDs and gold excluded from prompts",
+    "All prompts and tool schemas hashed",
+    "Authorized documents/SQL and pinned chain evidence frozen",
+    "Same model/embedding digests",
+    "C4 signed identity and C5 credentials provisioned in an isolated environment when HTTP routes are tested",
+    "Actual extractor/model/fallback provenance validated per answer segment",
+    "All module-local claim gate aliases audited for ablation scope",
+    "No automatic gate toggles based only on request metadata"
+  ],
+  "raw_record_schema": [
+    "run_key",
+    "question_id",
+    "source_version",
+    "condition",
+    "model_name",
+    "model_digest",
+    "embedding_model_digest",
+    "seed",
+    "effective_decoding",
+    "prompt_hashes",
+    "answer",
+    "retrieved_evidence",
+    "citation_ids",
+    "claim_gate_decisions",
+    "answer_segment_origin",
+    "input_tokens_or_null",
+    "output_tokens_or_null",
+    "latency_ms",
+    "execution_error",
+    "attempt_status",
+    "human_score_or_null",
+    "human_reviewer_reference"
+  ],
+  "no_new_runs": true
+}

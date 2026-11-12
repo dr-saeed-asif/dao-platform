@@ -1,0 +1,40 @@
+"""Logical agents and their executable tool permissions."""
+
+TOOL_NAMES = (
+    "health",
+    "get_proposal",
+    "check_proposal_assignment",
+    "list_proposal_documents",
+    "search_proposal_evidence",
+    "get_proposal_time_window",
+    "get_document_index_status",
+    "get_proposal_document_chunk",
+    "get_proposal_evidence_status",
+    "count_dao_proposals",
+    "list_dao_proposals",
+    "search_dao_proposals",
+    "compare_dao_proposals",
+    "get_proposal_voting_facts",
+    "split_questions",
+    "verify_citations",
+    "get_on_chain_proposal",
+    "get_on_chain_voting_status",
+    "get_on_chain_vote_counts",
+    "get_on_chain_transactions",
+    "get_on_chain_governance_events",
+    "compare_on_chain_off_chain",
+)
+
+AGENT_TOOLS = {
+    "synthesis": (),
+    "supervisor": ("health", "split_questions"),
+    "proposal": ("get_proposal", "get_proposal_time_window"),
+    "evidence": ("list_proposal_documents", "search_proposal_evidence",
+                 "get_document_index_status", "get_proposal_document_chunk",
+                 "get_proposal_evidence_status"),
+    "research": ("get_proposal", "count_dao_proposals", "list_dao_proposals",
+                 "search_dao_proposals", "compare_dao_proposals"),
+    "governance": ("check_proposal_assignment", "get_proposal_voting_facts", "get_proposal_time_window"),
+    "blockchain": ("get_on_chain_proposal", "get_on_chain_voting_status", "get_on_chain_vote_counts", "get_on_chain_transactions", "get_on_chain_governance_events", "compare_on_chain_off_chain"),
+    "analysis": ("get_proposal", "search_proposal_evidence", "get_proposal_voting_facts", "verify_citations"),
+}

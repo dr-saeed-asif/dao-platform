@@ -1,0 +1,261 @@
+{
+  "dataset": "m7-development-v1",
+  "label_provenance": "Synthetic author-labelled regression fixtures used in development. No independent adjudication.",
+  "field_aware": {
+    "n": 17,
+    "matrix": {
+      "supported": {
+        "accept": 3,
+        "reject": 0,
+        "abstain": 0
+      },
+      "contradicted": {
+        "accept": 0,
+        "reject": 4,
+        "abstain": 0
+      },
+      "unsupported": {
+        "accept": 0,
+        "reject": 1,
+        "abstain": 1
+      },
+      "ambiguous": {
+        "accept": 0,
+        "reject": 0,
+        "abstain": 3
+      },
+      "closed_world": {
+        "accept": 0,
+        "reject": 0,
+        "abstain": 5
+      }
+    },
+    "predictions": [
+      {
+        "id": "equipment",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "travel",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "swapped-equipment",
+        "gold": "contradicted",
+        "status": "contradicts_known_value"
+      },
+      {
+        "id": "swapped-travel",
+        "gold": "contradicted",
+        "status": "contradicts_known_value"
+      },
+      {
+        "id": "shared-amount",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "currency",
+        "gold": "contradicted",
+        "status": "contradicts_known_value"
+      },
+      {
+        "id": "missing-amount",
+        "gold": "unsupported",
+        "status": "unsupported_number"
+      },
+      {
+        "id": "missing-label",
+        "gold": "ambiguous",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "ambiguous-layout",
+        "gold": "ambiguous",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "conflicting-rows",
+        "gold": "ambiguous",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "unsupported-field",
+        "gold": "unsupported",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "unit",
+        "gold": "contradicted",
+        "status": "contradicts_known_value"
+      },
+      {
+        "id": "closed-expenses",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "closed-categories",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "closed-information",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "closed-proposals",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "closed-numeric",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      }
+    ],
+    "binary_acceptance": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "tn": 14
+    },
+    "precision": 1.0,
+    "recall": 1.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.0,
+    "abstention_rate": 0.5294117647058824
+  },
+  "baseline_revision": "9c27c8a57dfe44abccc43f0cf509ca33e3e0ac79",
+  "baseline": {
+    "n": 17,
+    "matrix": {
+      "supported": {
+        "accept": 3,
+        "reject": 0,
+        "abstain": 0
+      },
+      "contradicted": {
+        "accept": 4,
+        "reject": 0,
+        "abstain": 0
+      },
+      "unsupported": {
+        "accept": 1,
+        "reject": 1,
+        "abstain": 0
+      },
+      "ambiguous": {
+        "accept": 3,
+        "reject": 0,
+        "abstain": 0
+      },
+      "closed_world": {
+        "accept": 1,
+        "reject": 0,
+        "abstain": 4
+      }
+    },
+    "predictions": [
+      {
+        "id": "equipment",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "travel",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "swapped-equipment",
+        "gold": "contradicted",
+        "status": "supported"
+      },
+      {
+        "id": "swapped-travel",
+        "gold": "contradicted",
+        "status": "supported"
+      },
+      {
+        "id": "shared-amount",
+        "gold": "supported",
+        "status": "supported"
+      },
+      {
+        "id": "currency",
+        "gold": "contradicted",
+        "status": "supported"
+      },
+      {
+        "id": "missing-amount",
+        "gold": "unsupported",
+        "status": "unsupported_number"
+      },
+      {
+        "id": "missing-label",
+        "gold": "ambiguous",
+        "status": "supported"
+      },
+      {
+        "id": "ambiguous-layout",
+        "gold": "ambiguous",
+        "status": "supported"
+      },
+      {
+        "id": "conflicting-rows",
+        "gold": "ambiguous",
+        "status": "supported"
+      },
+      {
+        "id": "unsupported-field",
+        "gold": "unsupported",
+        "status": "supported"
+      },
+      {
+        "id": "unit",
+        "gold": "contradicted",
+        "status": "supported"
+      },
+      {
+        "id": "closed-expenses",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "closed-categories",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "closed-information",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "closed-proposals",
+        "gold": "closed_world",
+        "status": "unchecked_cited"
+      },
+      {
+        "id": "closed-numeric",
+        "gold": "closed_world",
+        "status": "supported"
+      }
+    ],
+    "binary_acceptance": {
+      "tp": 3,
+      "fp": 9,
+      "fn": 0,
+      "tn": 5
+    },
+    "precision": 0.25,
+    "recall": 1.0,
+    "false_positive_rate": 0.6428571428571429,
+    "false_negative_rate": 0.0,
+    "abstention_rate": 0.23529411764705882
+  }
+}

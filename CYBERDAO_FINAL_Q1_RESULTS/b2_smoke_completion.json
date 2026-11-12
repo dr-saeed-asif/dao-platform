@@ -1,0 +1,9 @@
+{
+  "records": 4,
+  "planned_records": 4,
+  "models": [
+    "qwen3:0.6b",
+    "qwen3:4b-instruct"
+  ],
+  "human_reviewed": false
+}

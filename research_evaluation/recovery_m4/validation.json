@@ -1,0 +1,21 @@
+{
+  "checkpoint_scope_before_fix": {
+    "command": "node node_modules/jest/bin/jest.js --config apps/api/package.json --runInBand blockchain-verification.spec.ts",
+    "passed": 42,
+    "failed": 8
+  },
+  "checkpoint_scope_after_fix": {
+    "command": "node node_modules/jest/bin/jest.js --config apps/api/package.json --runInBand blockchain-verification.spec.ts",
+    "passed": 50,
+    "failed": 0
+  },
+  "application": {
+    "command": "npm run test --workspace=@dao-platform/application",
+    "passed": 18,
+    "failed": 0
+  },
+  "api_build": {
+    "command": "npm run build --workspace=api",
+    "exit": 0
+  }
+}

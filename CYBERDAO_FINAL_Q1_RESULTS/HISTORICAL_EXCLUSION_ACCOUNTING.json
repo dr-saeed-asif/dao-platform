@@ -1,0 +1,17 @@
+{
+  "meaning": "Separate earlier development campaigns; not subtracted from the1,862 expected records",
+  "current_harness_invalid_records": 0,
+  "current_operational_failures_retained": 84,
+  "historical_exclusions": {
+    "prior_harness_invalid": {
+      "path": "research_evaluation/failure_diagnosis/excluded_attempt_taxonomy.json",
+      "count": 18,
+      "sha256": "5f05c143a77509b9173b75b7a7c2a265e9e8ca83f71b38509a34565abd2e8e87"
+    },
+    "prior_gold_title_contamination": {
+      "path": "research_evaluation/benchmark_200/review/excluded_attempts.json",
+      "count": 4,
+      "sha256": "d891674de8fadf604ab953a33323eb784de1b04869a16c0300c7cad835ce6050"
+    }
+  }
+}

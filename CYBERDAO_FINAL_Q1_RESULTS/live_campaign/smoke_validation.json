@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "active_conditions": [
+    "A1",
+    "A12",
+    "A2",
+    "B3",
+    "B4"
+  ],
+  "recorded_keys": 20,
+  "new_missing_keys_executed": 10,
+  "reused_small_model_keys": 10,
+  "other_historical_B1_B2_records": 8,
+  "model_or_workflow_failures_retained": 0,
+  "harness_errors": [],
+  "whole_answer_accuracy_validated": false,
+  "human_annotations": 0,
+  "phase_equivalence": "evidence/phase_equivalence.json"
+}

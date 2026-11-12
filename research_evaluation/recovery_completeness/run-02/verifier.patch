@@ -1,0 +1,589 @@
+diff --git a/apps/api/src/ai/blockchain-verification.service.ts b/apps/api/src/ai/blockchain-verification.service.ts
+index 7650116..58fb142 100644
+--- a/apps/api/src/ai/blockchain-verification.service.ts
++++ b/apps/api/src/ai/blockchain-verification.service.ts
+@@ -1,3 +1,4 @@
++import { GOVERNANCE_INDEXER_VERSION } from '../database/governance-indexer-version';
+ import {
+   Injectable,
+   NotFoundException,
+@@ -11,6 +12,37 @@ import {
+   CYBER_DAO_GOVERNANCE_WRITE_ABI,
+ } from '@dao-platform/blockchain-cyberchain';
+ import { PostgresService } from '../database/postgres.service';
++import { ProposalStatus } from '@dao-platform/domain';
++
++type ContractState = 'Pending' | 'Active' | 'Closed' | 'Cancelled';
++export const DATABASE_STATE_MAP = {
++  DRAFT: null,
++  PENDING: null,
++  PENDING_ON_CHAIN: null,
++  FAILED: null,
++  ACTIVE: 'Active',
++  VOTING_OPEN: 'Active',
++  VOTING_CLOSED: 'Closed',
++  CLOSED: 'Closed',
++  EXECUTED: null,
++  FINALIZED: 'Closed',
++  CANCELLED: 'Cancelled',
++} as const satisfies Record<
++  ProposalStatus | 'PENDING' | 'FINALIZED' | 'VOTING_OPEN',
++  ContractState | null
++>;
++
++interface IndexerCheckpoint {
++  indexer_name: string;
++  indexer_version: string;
++  status:
++    'current' | 'lagging' | 'ahead' | 'missing' | 'invalid' | 'unavailable';
++  processed_block_number?: string;
++  processed_block_hash?: string | null;
++  lag_blocks?: string;
++  updated_at?: string;
++  reason: string;
++}
+ 
+ export type VerificationStatus =
+   'verified' | 'mismatched' | 'unavailable' | 'unverified';
+@@ -30,6 +62,17 @@ export interface VerificationReport {
+   contract: string;
+   block_number?: string;
+   block_hash?: string;
++  event_scan?: {
++    from_block: string;
++    target_block: string;
++    page_size: number;
++    completed_ranges: number;
++    scanned_through?: string;
++    next_block?: string;
++    status: 'complete' | 'partial' | 'unavailable';
++    reason?: string;
++  };
++  indexer_checkpoint?: IndexerCheckpoint;
+   observed_at: string;
+   proposal?: Record<string, unknown>;
+   voting_status?: string;
+@@ -107,14 +150,21 @@ export class BlockchainVerificationService {
+         database: local ?? null,
+         blockchain: live ?? null,
+         status:
+-          local == null
++          local == null || live == null
+             ? 'unverified'
+             : String(local).toLowerCase() === String(live).toLowerCase()
+               ? 'verified'
+               : 'mismatched',
+-        ...(reason ? { reason } : local == null ? { reason: 'Database value is missing; the on-chain value was read successfully.' } : {}),
++        ...(reason
++          ? { reason }
++          : local == null
++            ? {
++                reason:
++                  'Database value is missing; the on-chain value was read successfully.',
++              }
++            : {}),
+       });
+-    if (!p.on_chain_id) {
++    if (p.on_chain_id == null) {
+       report.errors.push('This proposal has no on-chain identifier.');
+       return report;
+     }
+@@ -137,9 +187,88 @@ export class BlockchainVerificationService {
+       }
+       const block = await this.rpc('eth_blockNumber', []);
+       const snapshot = await this.rpc('eth_getBlockByNumber', [block, false]);
+-      if (!snapshot?.hash) throw new Error('Snapshot block unavailable');
++      if (
++        !snapshot?.hash ||
++        snapshot.number == null ||
++        BigInt(snapshot.number) !== BigInt(block)
++      )
++        throw new Error('Snapshot block unavailable or inconsistent');
+       report.block_number = BigInt(block).toString();
+       report.block_hash = snapshot.hash;
++      const checkpoint: IndexerCheckpoint = {
++        indexer_name: 'governance-full',
++        indexer_version: GOVERNANCE_INDEXER_VERSION,
++        status: 'missing',
++        reason: 'No checkpoint for this chain, contract and indexer version.',
++      };
++      report.indexer_checkpoint = checkpoint;
++      try {
++        const row = await db
++          .selectFrom('indexer_checkpoints')
++          .selectAll()
++          .where('chain_id', '=', p.chain_id)
++          .where('contract_address', '=', p.contract_address)
++          .where('indexer_name', '=', 'governance-full')
++          .where('indexer_version', '=', GOVERNANCE_INDEXER_VERSION)
++          .executeTakeFirst();
++        if (row) {
++          const height = String(row.processed_block_number);
++          checkpoint.status = 'invalid';
++          checkpoint.reason = 'Invalid checkpoint height or hash.';
++          if (/^(0|[1-9][0-9]*)$/.test(height)) {
++            checkpoint.processed_block_number = height;
++            if (row.updated_at != null) {
++              const updated = new Date(row.updated_at);
++              if (Number.isFinite(updated.getTime()))
++                checkpoint.updated_at = updated.toISOString();
++            }
++            checkpoint.processed_block_hash = row.processed_block_hash;
++            const delta = BigInt(block) - BigInt(height);
++            checkpoint.lag_blocks = delta.toString();
++            checkpoint.status =
++              delta < 0n ? 'ahead' : delta > 0n ? 'lagging' : 'current';
++            checkpoint.reason =
++              delta < 0n
++                ? 'SQL is newer than the pinned block; historical SQL is unavailable.'
++                : delta > 0n
++                  ? 'Indexer has not covered the pinned block.'
++                  : 'Indexer scan height equals the pinned block; this does not establish event completeness.';
++            if (row.processed_block_hash != null) {
++              const anchor =
++                delta === 0n
++                  ? snapshot
++                  : await this.rpc('eth_getBlockByNumber', [
++                      toBeHex(BigInt(height)),
++                      false,
++                    ]);
++              if (
++                !/^0x[0-9a-f]{64}$/i.test(row.processed_block_hash) ||
++                !anchor?.hash ||
++                anchor.number == null ||
++                BigInt(anchor.number) !== BigInt(height) ||
++                anchor.hash.toLowerCase() !==
++                  row.processed_block_hash.toLowerCase()
++              ) {
++                checkpoint.status = 'invalid';
++                checkpoint.reason =
++                  'Checkpoint hash is invalid or differs from the canonical chain.';
++              }
++            } else
++              checkpoint.reason +=
++                ' Checkpoint hash not recorded; canonical anchoring unavailable.';
++          }
++        }
++      } catch {
++        checkpoint.status = 'unavailable';
++        checkpoint.reason = 'Checkpoint query or canonical block read failed.';
++      }
++      report.comparisons.push({
++        field: 'indexer_checkpoint',
++        database: checkpoint,
++        blockchain: report.block_number,
++        status: checkpoint.status === 'current' ? 'verified' : 'unverified',
++        reason: checkpoint.reason,
++      });
+       const call = async (name: string, args: unknown[]) =>
+         this.abi.decodeFunctionResult(
+           name,
+@@ -186,30 +315,52 @@ export class BlockchainVerificationService {
+       )
+         throw new Error('Unexpected contract response');
+       report.voting_status = state;
+-      const localState = (
+-        {
+-          DRAFT: 'Pending',
+-          PENDING: 'Pending',
+-          VOTING_OPEN: 'Active',
+-          ACTIVE: 'Active',
+-          VOTING_CLOSED: 'Closed',
+-          CLOSED: 'Closed',
+-          EXECUTED: 'Closed',
+-          FINALIZED: 'Closed',
+-          CANCELLED: 'Cancelled',
+-        } as Record<string, string>
+-      )[p.status];
+-      compare('voting_status', localState ?? p.status, state);
++      const key = p.status as keyof typeof DATABASE_STATE_MAP;
++      let localState: ContractState | null = Object.hasOwn(
++        DATABASE_STATE_MAP,
++        key,
++      )
++        ? DATABASE_STATE_MAP[key]
++        : null;
++      // Publication persists ACTIVE even for scheduled proposals. Derive the
++      // temporal state using SQL times and the pinned chain clock.
++      if (key === 'ACTIVE' || key === 'VOTING_OPEN') {
++        const now =
++          snapshot.timestamp == null ? NaN : Number(BigInt(snapshot.timestamp));
++        const start = new Date(p.starts_at).getTime() / 1000;
++        const end = new Date(p.ends_at).getTime() / 1000;
++        localState =
++          Number.isFinite(now) &&
++          Number.isFinite(start) &&
++          Number.isFinite(end) &&
++          end > start
++            ? now < start
++              ? 'Pending'
++              : now < end
++                ? 'Active'
++                : 'Closed'
++            : null;
++      }
++      if (localState == null)
++        report.comparisons.push({
++          field: 'voting_status',
++          database: p.status,
++          blockchain: state,
++          status: 'unverified',
++          reason:
++            'Unknown, unsupported or unpublished SQL status, or missing pinned clock; no contract state inferred.',
++        });
++      else compare('voting_status', localState, state);
+       compare('metadata_hash', p.metadata_hash, live.metadataHash);
+       compare('metadata_uri', p.metadata_uri, live.metadataURI);
+       compare(
+         'starts_at',
+-        Math.floor(new Date(p.starts_at as any).getTime() / 1000).toString(),
++        Math.floor(new Date(p.starts_at).getTime() / 1000).toString(),
+         live.startsAt,
+       );
+       compare(
+         'ends_at',
+-        Math.floor(new Date(p.ends_at as any).getTime() / 1000).toString(),
++        Math.floor(new Date(p.ends_at).getTime() / 1000).toString(),
+         live.endsAt,
+       );
+       compare('finalized', p.finalized_at ? true : false, live.finalized);
+@@ -234,7 +385,11 @@ export class BlockchainVerificationService {
+         .where('proposal_id', '=', id)
+         .where('assigned', '=', true)
+         .execute();
+-      compare('public.proposal_assignments.count', assignments.length, live.assignedMemberCount);
++      compare(
++        'public.proposal_assignments.count',
++        assignments.length,
++        live.assignedMemberCount,
++      );
+       compare(
+         'public.proposals.total_votes',
+         p.total_votes?.toString(),
+@@ -265,27 +420,41 @@ export class BlockchainVerificationService {
+           names.map((name) => this.abi.getEvent(name)!.topicHash),
+           zeroPadValue(toBeHex(BigInt(p.on_chain_id)), 32),
+         ];
+-        const ranges: Array<[bigint, bigint]> = [];
+-        for (
+-          let start = from;
+-          start <= BigInt(block) && ranges.length < 2000;
+-          start += 1000n
+-        )
+-          ranges.push([
+-            start,
+-            start + 999n < BigInt(block) ? start + 999n : BigInt(block),
+-          ]);
+-        const fullRange =
+-          !ranges.length || ranges[ranges.length - 1][1] === BigInt(block);
+-        let next = 0;
+-        const found: any[] = [];
++        const pageSize = 1000n;
++        const target = BigInt(block);
++        const maxPages = 5000;
++        const progress: NonNullable<VerificationReport['event_scan']> = {
++          from_block: from.toString(),
++          target_block: target.toString(),
++          page_size: Number(pageSize),
++          completed_ranges: 0,
++          next_block: from.toString(),
++          status: 'partial',
++        };
++        report.event_scan = progress;
++        if (from < 0n || from > target)
++          throw new Error('Invalid event scan bounds');
+         const deadline = performance.now() + 75_000;
+-        await Promise.all(
+-          Array.from({ length: Math.min(8, ranges.length) }, async () => {
+-            while (next < ranges.length) {
+-              if (performance.now() > deadline)
+-                throw new Error('Event scan deadline exceeded');
+-              const [start, end] = ranges[next++];
++        const found = new Map<string, any>();
++        let cursor = from;
++        while (cursor <= target && progress.completed_ranges < maxPages) {
++          if (performance.now() >= deadline) {
++            progress.reason = 'Event scan time budget exhausted.';
++            break;
++          }
++          const window: Array<[bigint, bigint]> = [];
++          for (
++            let start = cursor;
++            start <= target &&
++            window.length < 8 &&
++            progress.completed_ranges + window.length < maxPages;
++            start += pageSize
++          ) {
++            const end = start + pageSize - 1n;
++            window.push([start, end < target ? end : target]);
++          }
++          const pages = await Promise.allSettled(
++            window.map(async ([start, end]) => {
+               const batch = await this.rpc('eth_getLogs', [
+                 {
+                   address: p.contract_address,
+@@ -294,21 +463,69 @@ export class BlockchainVerificationService {
+                   topics,
+                 },
+               ]);
+-              if (!Array.isArray(batch))
+-                throw new Error('Invalid log response');
+-              found.push(...batch);
+-              if (found.length > 10_000)
+-                throw new Error('Event limit exceeded');
++              if (!Array.isArray(batch) || batch.length > 10_000)
++                throw new Error('Invalid or oversized log page');
++              for (const log of batch) {
++                if (
++                  log?.removed ||
++                  log?.blockNumber == null ||
++                  log?.logIndex == null ||
++                  !/^0x[0-9a-f]{64}$/i.test(log.transactionHash) ||
++                  !/^0x[0-9a-f]{64}$/i.test(log.blockHash) ||
++                  BigInt(log.blockNumber) < start ||
++                  BigInt(log.blockNumber) > end ||
++                  BigInt(log.logIndex) < 0n ||
++                  (log.address != null &&
++                    String(log.address).toLowerCase() !==
++                      p.contract_address.toLowerCase()) ||
++                  log.topics?.[1]?.toLowerCase() !== String(topics[1]).toLowerCase() ||
++                  !this.abi.parseLog(log)
++                )
++                  throw new Error('Invalid event in log page');
++              }
++              return batch;
++            }),
++          );
++          for (const [i, page] of pages.entries()) {
++            if (page.status === 'rejected') {
++              progress.reason =
++                'A required RPC log range failed or returned invalid data.';
++              throw new Error(progress.reason);
++            }
++            for (const log of page.value) {
++              const key = `${log.transactionHash.toLowerCase()}:${BigInt(log.logIndex)}`;
++              const previous = found.get(key);
++              if (
++                previous &&
++                (previous.blockHash !== log.blockHash ||
++                  previous.blockNumber !== log.blockNumber ||
++                  previous.data !== log.data ||
++                  JSON.stringify(previous.topics) !==
++                    JSON.stringify(log.topics))
++              )
++                throw new Error('Conflicting duplicate log');
++              found.set(key, log);
++              if (found.size > 10_000)
++                throw new Error('Event scan record budget exhausted');
+             }
+-          }),
++            cursor = window[i][1] + 1n;
++            progress.completed_ranges++;
++            progress.scanned_through = (cursor - 1n).toString();
++            progress.next_block = cursor.toString();
++          }
++        }
++        const fullRange = cursor > target;
++        if (fullRange) {
++          progress.status = 'complete';
++          delete progress.next_block;
++        } else {
++          progress.reason ??= 'Event scan page budget exhausted.';
++        }
++        logs = [...found.values()].sort(
++          (a, b) =>
++            Number(BigInt(a.blockNumber) - BigInt(b.blockNumber)) ||
++            Number(BigInt(a.logIndex) - BigInt(b.logIndex)),
+         );
+-        logs = [
+-          ...new Map(
+-            found.map((log) => [`${log.transactionHash}:${log.logIndex}`, log]),
+-          ).values(),
+-        ];
+-        if (!Array.isArray(logs) || logs.length > 10_000)
+-          throw new Error('Event limit exceeded');
+         report.events = logs.map((log) => {
+           const decoded = this.abi.parseLog(log)!;
+           const args = Object.fromEntries(
+@@ -337,8 +554,13 @@ export class BlockchainVerificationService {
+             e,
+           ]),
+         );
+-        const storedKeys = new Set(stored.map((row) => key(row.transaction_hash, String(row.log_index))));
+-        const scannedThrough = ranges.at(-1)?.[1];
++        const storedKeys = new Set(
++          stored.map((row) => key(row.transaction_hash, String(row.log_index))),
++        );
++        const scannedThrough =
++          progress.scanned_through == null
++            ? undefined
++            : BigInt(progress.scanned_through);
+         for (const row of stored) {
+           const event = eventMap.get(
+             key(row.transaction_hash, String(row.log_index)),
+@@ -364,41 +586,114 @@ export class BlockchainVerificationService {
+               args: row.event_args,
+             },
+             blockchain: event ?? null,
+-            status: same ? 'verified' : event || (
+-              scannedThrough !== undefined && BigInt(String(row.block_number)) >= from &&
+-              BigInt(String(row.block_number)) <= scannedThrough
+-            ) ? 'mismatched' : 'unverified',
++            status: same
++              ? 'verified'
++              : event ||
++                  (scannedThrough !== undefined &&
++                    BigInt(String(row.block_number)) >= from &&
++                    BigInt(String(row.block_number)) <= scannedThrough)
++                ? 'mismatched'
++                : 'unverified',
+           });
+         }
+         for (const event of report.events) {
+-          const eventKey = key(String(event.transaction_hash), String(event.log_index));
++          const eventKey = key(
++            String(event.transaction_hash),
++            String(event.log_index),
++          );
+           if (!storedKeys.has(eventKey)) {
+             report.comparisons.push({
+               field: `governance_event:${eventKey}`,
+               database: null,
+               blockchain: event,
+-              status: 'unverified',
+-              reason: 'Chain event has no indexed counterpart. Check indexer progress before treating it as a discrepancy.',
++              status:
++                (checkpoint.status === 'current' ||
++                  checkpoint.status === 'lagging') &&
++                BigInt(String(event.block_number)) <=
++                  BigInt(checkpoint.processed_block_number!)
++                  ? 'mismatched'
++                  : 'unverified',
++              reason:
++                'Chain event has no indexed counterpart. A discrepancy requires validated checkpoint coverage.',
+             });
+           }
+         }
+         const verifiedCreation = report.events.some(
+           (e) => e.name === 'ProposalCreated',
+         );
+-        if (fullRange && verifiedCreation)
++        if (
++          fullRange &&
++          verifiedCreation &&
++          (checkpoint.status === 'current' || checkpoint.status === 'lagging')
++        ) {
++          const covered =
++            BigInt(checkpoint.processed_block_number!) < BigInt(block)
++              ? BigInt(checkpoint.processed_block_number!)
++              : BigInt(block);
+           compare(
+             'governance_events.count',
+-            stored.length,
+-            report.events.length,
++            stored.filter(
++              (e) =>
++                BigInt(String(e.block_number)) >= from &&
++                BigInt(String(e.block_number)) <= covered,
++            ).length,
++            report.events.filter(
++              (e) => BigInt(String(e.block_number)) <= covered,
++            ).length,
++            'Only the fully scanned, checkpoint-covered interval is compared.',
+           );
+-        else
++          if (checkpoint.status === 'lagging') {
++            const pending = report.events.filter(
++              (e) =>
++                BigInt(String(e.block_number)) > covered &&
++                !storedKeys.has(
++                  key(String(e.transaction_hash), String(e.log_index)),
++                ),
++            );
++            const deltas: Record<string, number> = {
++              'public.votes.count': pending.filter((e) => e.name === 'VoteCast')
++                .length,
++              'public.proposals.total_votes': pending.filter(
++                (e) => e.name === 'VoteCast',
++              ).length,
++              'public.proposal_assignments.count':
++                pending.filter((e) => e.name === 'MemberAssigned').length -
++                pending.filter((e) => e.name === 'MemberUnassigned').length,
++            };
++            report.vote_counts.forEach((_, i) => {
++              deltas[`option_${i}_vote_count`] = pending.filter(
++                (e) =>
++                  e.name === 'VoteCast' &&
++                  String((e.args as Record<string, unknown>).optionIndex) ===
++                    String(i),
++              ).length;
++            });
++            for (const comparison of report.comparisons) {
++              const delta = deltas[comparison.field];
++              // Do not blanket suppress mismatches when an indexer lags. Only
++              // an exact, independently observed event delta explains a count.
++              if (
++                comparison.status === 'mismatched' &&
++                delta != null &&
++                delta !== 0 &&
++                BigInt(String(comparison.blockchain)) -
++                  BigInt(String(comparison.database)) ===
++                  BigInt(delta)
++              ) {
++                comparison.status = 'unverified';
++                comparison.reason =
++                  'Exact count difference explained by canonical events after the indexer checkpoint; indexing lag, not proven divergence.';
++              }
++            }
++          }
++        } else
+           report.comparisons.push({
+             field: 'governance_events.historical_coverage',
+             database: stored.length,
+             blockchain: report.events.length,
+             status: 'unverified',
+             reason:
+-              'Historical scan incomplete or proposal creation not verified; maximum 2,000,000 blocks per request.',
++              'Historical scan incomplete, creation not verified, or checkpoint missing/invalid/ahead; consult event_scan for bounded coverage and the first unchecked block.',
+           });
+         for (const vote of votes) {
+           const event = report.events.find(
+@@ -420,13 +715,23 @@ export class BlockchainVerificationService {
+               transaction_hash: vote.transaction_hash,
+             },
+             blockchain: event ?? null,
+-            status: matches ? 'verified' : event || (
+-              scannedThrough !== undefined && BigInt(String(vote.block_number)) >= from &&
+-              BigInt(String(vote.block_number)) <= scannedThrough
+-            ) ? 'mismatched' : 'unverified',
++            status: matches
++              ? 'verified'
++              : event ||
++                  (scannedThrough !== undefined &&
++                    BigInt(String(vote.block_number)) >= from &&
++                    BigInt(String(vote.block_number)) <= scannedThrough)
++                ? 'mismatched'
++                : 'unverified',
+           });
+         }
+       } catch {
++        if (report.event_scan) {
++          report.event_scan.status = 'unavailable';
++          report.event_scan.reason ??=
++            'The event scan could not validate the returned log data.';
++        }
++        logs = null;
+         report.errors.push('Governance logs could not be completely verified.');
+         report.comparisons.push({
+           field: 'governance_events',
+@@ -454,7 +759,9 @@ export class BlockchainVerificationService {
+           ]);
+           if (!receipt || !transaction) {
+             report.transactions.push({ hash, status: 'unavailable' });
+-            report.errors.push('A proposal transaction or receipt is unavailable.');
++            report.errors.push(
++              'A proposal transaction or receipt is unavailable.',
++            );
+             continue;
+           }
+           const matchingEvents = report.events.filter(

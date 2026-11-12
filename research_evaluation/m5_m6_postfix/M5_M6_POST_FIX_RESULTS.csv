@@ -1,0 +1,32 @@
+experiment,test_id,expected,pre_fix,post_fix,correct,post_nest_admission,post_indexing,remaining_chunks,duration_ms,reason
+M5,valid,accept,accept,accept,True,accept,True,,110.5675000212891,
+M5,one-byte,reject,reject,reject,True,reject,False,,41.82200000668399,Stored document hash mismatch.
+M5,same-name-other-pdf,reject,reject,reject,True,reject,False,,41.606799984602276,Stored document hash mismatch.
+M5,cross-proposal,reject,reject,reject,True,reject,False,,49.8810000098988,Document is not committed by the proposal manifest.
+M5,wrong-hash,reject,reject,reject,True,reject,False,,43.28259997927216,Stored document hash mismatch.
+M5,manifest-entry,reject,reject,reject,True,reject,False,,50.08180001446772,Proposal manifest hash does not match ProposalCreated.
+M5,uri-association,reject,reject,reject,True,reject,False,,59.48680001599041,Proposal manifest hash does not match ProposalCreated.
+M5,wrong-media,reject,reject,reject,True,reject,False,,0.3372000098988792,Unsupported file type: proposal.pdf.
+M5,oversized,reject,reject,reject,True,reject,False,,3.6459999846019855,proposal.pdf is empty or exceeds the file-size limit.
+M5,corrupt,reject,reject,reject,True,accept,False,,85.2247000008706,PDF could not be parsed (PdfReadError).
+M5,missing,reject,reject,reject,True,reject,False,,45.2603000051613,"ENOENT: no such file or directory, stat 'E:\DAO\cyber-chain-work\dao-platform\research_evaluation\m5_m6_postfix\m5\storage\0a\0a04bc39fff803edbef5ed72a7c8e4b9709dce5d0d26338e650045ca3f075c3d'"
+M5,reupload,accept,accept,accept,True,accept,True,,137.8532999811523,
+M5,stale-chunks,reject,accept,reject,True,accept,True,0,210.45029999888493,DocumentNotVerified
+M5,duplicate,accept,accept,accept,True,accept,True,,136.92619998598957,
+M5,manifest-size,reject,reject,reject,True,reject,False,,177.87639998536406,Proposal manifest hash does not match ProposalCreated.
+M6,clean,verified,verified,verified,True,,,,20.811099999999897,[]
+M6,stale-coherent-provider,unverified,verified,verified,False,,,,3.3024999999997817,Freshness is observationally indistinguishable
+M6,lagging-provider,unverified,unverified,unverified,True,,,,4.314600000000155,[]
+M6,wrong-chain,mismatched,mismatched,mismatched,True,,,,0.07639999999992142,[]
+M6,inconsistent-block-hash,unverified,unverified,unverified,True,,,,4.311200000000099,"[""Snapshot block changed during verification (possible chain reorganization).""]"
+M6,missing-log,mismatched,mismatched,mismatched,True,,,,2.5679999999997563,[]
+M6,duplicate-log,verified,verified,verified,True,,,,5.406999999999698,[]
+M6,out-of-order,verified,verified,verified,True,,,,3.3463000000001557,[]
+M6,partial-range,unavailable,unavailable,unavailable,True,,,,3.8157999999998538,"[""Governance logs could not be completely verified.""]"
+M6,timeout,unavailable,unavailable,unavailable,True,,,,0.3020000000001346,"[""RPC or contract read unavailable. No on-chain verification is claimed.""]"
+M6,connection,unavailable,unavailable,unavailable,True,,,,0.1475999999997839,"[""RPC or contract read unavailable. No on-chain verification is claimed.""]"
+M6,malformed,unavailable,unavailable,unavailable,True,,,,1.1202000000002954,"[""RPC or contract read unavailable. No on-chain verification is claimed.""]"
+M6,reorg,unverified,unverified,unverified,True,,,,3.101599999999962,"[""Snapshot block changed during verification (possible chain reorganization).""]"
+M6,checkpoint-behind,unverified,unverified,unverified,True,,,,2.020999999999731,[]
+M6,checkpoint-missing,unverified,unverified,unverified,True,,,,1.8846000000003187,[]
+M6,joint-omission,unverified,unverified,unverified,True,,,,1.373700000000099,[]

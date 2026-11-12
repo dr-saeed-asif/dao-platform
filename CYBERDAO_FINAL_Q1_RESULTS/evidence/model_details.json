@@ -1,0 +1,89 @@
+[
+  {
+    "model": "qwen3:0.6b",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3",
+      "families": [
+        "qwen3"
+      ],
+      "parameter_size": "751.63M",
+      "quantization_level": "Q4_K_M"
+    },
+    "parameters": "repeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.6\ntop_k                          20\ntop_p                          0.95",
+    "template_sha256": "ae370d884f108d16e7cc8fd5259ebc5773a0afa6e078b11f4ed7e39a27e0dfc4",
+    "system_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "system_nonempty": false,
+    "capabilities": [
+      "completion",
+      "tools",
+      "thinking"
+    ],
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.parameter_count": 751632384,
+      "qwen3.block_count": 28,
+      "qwen3.context_length": 40960,
+      "qwen3.embedding_length": 1024
+    }
+  },
+  {
+    "model": "qwen3:4b-instruct",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3",
+      "families": [
+        "qwen3"
+      ],
+      "parameter_size": "4.0B",
+      "quantization_level": "Q4_K_M"
+    },
+    "parameters": "repeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.7\ntop_k                          20\ntop_p                          0.8",
+    "template_sha256": "40c21f34cf67d8c760ef72f8ad3ae5afad514299d4b06e91dd9a8d705af7b541",
+    "system_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "system_nonempty": false,
+    "capabilities": [
+      "tools",
+      "thinking",
+      "completion"
+    ],
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.parameter_count": 4022468096,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 262144,
+      "qwen3.embedding_length": 2560
+    }
+  },
+  {
+    "model": "qwen3-embedding:0.6b",
+    "details": {
+      "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+      "format": "gguf",
+      "family": "qwen3",
+      "families": [
+        "qwen3"
+      ],
+      "parameter_size": "595.78M",
+      "quantization_level": "Q8_0"
+    },
+    "parameters": null,
+    "template_sha256": "87a2728cb8dc9fe424d624542f6060ec05a1d285ebbec578bb078900e33396b5",
+    "system_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "system_nonempty": false,
+    "capabilities": [
+      "tools",
+      "thinking",
+      "embedding"
+    ],
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.parameter_count": 595776512,
+      "qwen3.block_count": 28,
+      "qwen3.context_length": 32768,
+      "qwen3.embedding_length": 1024
+    }
+  }
+]
